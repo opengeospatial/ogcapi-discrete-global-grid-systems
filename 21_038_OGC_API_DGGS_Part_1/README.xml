@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ogc-standard xmlns="https://www.metanorma.org/ns/ogc" type="semantic" version="1.3.2">
+<bibdata type="standard">
+<title language="en" format="text/plain">Standard template in Metanorma</title>
+<contributor>
+<role type="publisher"/>
+<organization>
+<name>Open Geospatial Consortium</name>
+</organization>
+</contributor>
+
+<language>en</language>
+<script>Latn</script>
+<status>
+<stage>approved</stage>
+</status>
+<copyright>
+<from>2021</from>
+<owner>
+<organization>
+<name>Open Geospatial Consortium</name>
+</organization>
+</owner>
+</copyright>
+<ext>
+<doctype>standard</doctype>
+<docsubtype>implementation</docsubtype>
+</ext>
+</bibdata>
+<boilerplate>
+  <copyright-statement>
+    <clause>
+      <title>Copyright notice</title>
+
+      <p align="center" id="_5fe1854e-a9a5-4d94-9bef-e95689955929">Copyright
+        &#169; 2021 Open Geospatial Consortium<br/>
+        To obtain additional rights of use, visit 
+        <link target="http://www.ogc.org/legal/">http://www.ogc.org/legal/</link></p>
+    </clause>
+    <clause>
+      <title>Note</title>
+      <p align="left" id="_2e2b9960-1c30-449d-a394-5f8b6a4471d9">Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. The Open Geospatial Consortium shall not be held responsible for identifying any or all such patent rights.</p>
+
+      <p align="left" id="_1e1e4775-ce78-4ce6-bc25-156934356e5f">Recipients of this document are requested to submit, with their comments, notification of any relevant patent claims or other intellectual property rights of which they may be aware that might be infringed by any implementation of the standard set forth in this document, and to provide supporting documentation.</p>
+    </clause>
+  </copyright-statement>
+  <license-statement>
+    <clause>
+      <title>License Agreement</title>
+
+      <p id="_ee633cc1-de0c-4cf2-95df-816e14617da2">Permission is hereby granted by the Open Geospatial
+        Consortium, (&#8220;Licensor&#8221;), free of charge and subject to the terms set
+        forth below, to any person obtaining a copy of this Intellectual Property and
+        any associated documentation, to deal in the Intellectual Property without
+        restriction (except as set forth below), including without limitation the
+        rights to implement, use, copy, modify, merge, publish, distribute, and/or
+        sublicense copies of the Intellectual Property, and to permit persons to whom
+        the Intellectual Property is furnished to do so, provided that all copyright notices
+        on the intellectual property are retained intact and that each person to whom
+        the Intellectual Property is furnished agrees to the terms of this Agreement.</p>
+
+      <p id="_ae2eb702-29cc-4583-8a67-fac5c395509a">If you modify the Intellectual Property, all copies of
+        the modified Intellectual Property must include, in addition to the above
+        copyright notice, a notice that the Intellectual Property includes
+        modifications that have not been approved or adopted by LICENSOR.</p>
+
+      <p id="_d2bf17a4-aab4-4700-b935-942726ac59ee">THIS LICENSE IS A COPYRIGHT LICENSE ONLY, AND DOES NOT
+        CONVEY ANY RIGHTS UNDER ANY PATENTS THAT MAY BE IN FORCE ANYWHERE IN THE WORLD.
+        THE INTELLECTUAL PROPERTY IS PROVIDED &#8220;AS
+        IS&#8221;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+        LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
+        AND NONINFRINGEMENT OF THIRD PARTY RIGHTS. THE COPYRIGHT HOLDER OR HOLDERS
+        INCLUDED IN THIS NOTICE DO NOT WARRANT THAT THE FUNCTIONS CONTAINED IN THE
+        INTELLECTUAL PROPERTY WILL MEET YOUR REQUIREMENTS OR THAT THE OPERATION OF THE
+        INTELLECTUAL PROPERTY WILL BE UNINTERRUPTED OR ERROR FREE. ANY USE OF THE
+        INTELLECTUAL PROPERTY SHALL BE MADE ENTIRELY AT THE USER&#8217;S OWN RISK. IN NO
+        EVENT SHALL THE COPYRIGHT HOLDER OR ANY CONTRIBUTOR OF INTELLECTUAL PROPERTY
+        RIGHTS TO THE INTELLECTUAL PROPERTY BE LIABLE FOR ANY CLAIM, OR ANY DIRECT,
+        SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES, OR ANY DAMAGES WHATSOEVER RESULTING
+        FROM ANY ALLEGED INFRINGEMENT OR ANY LOSS OF USE, DATA OR PROFITS, WHETHER IN
+        AN ACTION OF CONTRACT, NEGLIGENCE OR UNDER ANY OTHER LEGAL THEORY, ARISING OUT
+        OF OR IN CONNECTION WITH THE IMPLEMENTATION, USE, COMMERCIALIZATION OR
+        PERFORMANCE OF THIS INTELLECTUAL PROPERTY.</p>
+
+      <p id="_1e467a7c-7bdc-4a08-a03f-84c5b525dfc4">This license is effective until terminated. You may
+        terminate it at any time by destroying the Intellectual Property together with
+        all copies in any form. The license will also terminate if you fail to comply
+        with any term or condition of this Agreement. Except as provided in the
+        following sentence, no such termination of this license shall require the
+        termination of any third party end-user sublicense to the Intellectual Property
+        which is in force as of the date of notice of such termination. In addition,
+        should the Intellectual Property, or the operation of the Intellectual
+        Property, infringe, or in LICENSOR&#8217;s sole opinion be
+        likely to infringe, any patent, copyright, trademark or other right of a third
+        party, you agree that LICENSOR, in its sole discretion, may terminate this
+        license without any compensation or liability to you, your licensees or any
+        other party. You agree upon termination of any kind to destroy or cause to be
+        destroyed the Intellectual Property together with all copies in any form,
+        whether held by you or by any third party.</p>
+
+      <p id="_1d544521-d5cc-4c3e-82f5-25052b8f5582">Except as contained in this notice, the name of
+        LICENSOR or of any other holder of a copyright in all or part of the Intellectual
+        Property shall not be used in advertising or otherwise to promote the sale, use
+        or other dealings in this Intellectual Property without prior written
+        authorization of LICENSOR or such copyright holder. LICENSOR is and shall at
+        all times be the sole entity that may authorize you or any third party to use
+        certification marks, trademarks or other special designations to indicate
+        compliance with any LICENSOR standards or specifications.
+        This Agreement is
+        governed by the laws of the Commonwealth of Massachusetts. The application to
+        this Agreement of the United Nations Convention on Contracts for the
+        International Sale of Goods is hereby expressly excluded. In the event any
+        provision of this Agreement shall be deemed unenforceable, void or invalid, such
+        provision shall be modified so as to make it valid and enforceable, and as so
+        modified the entire Agreement shall remain in full force and effect. No
+        decision, action or inaction by LICENSOR shall be construed to be a waiver of
+        any rights or remedies available to it.</p>
+
+      <p id="_e782c802-1378-4444-af17-4bda3fee6d50">None of the Intellectual Property or underlying information or technology may be downloaded or otherwise exported or reexported in violation of U.S. export laws and regulations. In addition, you are responsible for complying with any local laws in your jurisdiction which may impact your right to import, export or use the Intellectual Property, and you represent that you have complied with any regulations or registration procedures required by applicable law to make this license enforceable.</p>
+    </clause>
+  </license-statement>
+
+  <legal-statement>
+    
+    
+    <clause>
+      <title>Warning</title>
+      <p id="_1bf3c2b3-36d8-45ed-8d3b-8a27e2f4776c">This document is an OGC Member approved international standard. This document is available on a royalty free, non-discriminatory basis. Recipients of this document are invited to submit, with their comments, notification of any relevant patent rights of which they are aware and to provide supporting documentation.
+      </p>
+    </clause>
+    
+
+
+    
+
+  </legal-statement>
+
+
+
+
+  <feedback-statement>
+    
+    <clause id="boilerplate-standard-feedback">
+      <p id="_2dee4195-ba09-441c-95aa-d2a4618fad1f">Suggested additions, changes and comments on this standard are welcome and encouraged. Such suggestions may be submitted using the online change request form on OGC web site: <link target="http://portal.opengeospatial.org/public_ogc/change_request.php">http://portal.opengeospatial.org/public_ogc/change_request.php</link></p>
+    </clause>
+    
+  </feedback-statement>
+</boilerplate>
+<preface><clause type="security" id="_f97c3e19-ff05-4db4-ad8a-f706ad347ce3" obligation="informative"><title>Security Considerations</title><p id="_7926a986-b959-449d-8959-83fc801c1976">No security considerations have been made for this standard.</p></clause></preface><sections><clause id="_content" obligation="normative"><title>Content</title><p id="_e261e3c0-b39d-4b3a-9b9c-6d44c76e6f0a">This repository contains the content for an OGC standard.</p>
+<ul id="_df395816-df05-4f2c-a4e6-60bd12681bc4">
+<li>
+<p id="_b133c13e-686e-4277-ad13-bcc920f42f6c"><tt>document.adoc</tt>&#8201;&#8212;&#8201;the main standard document with references to all sections</p>
+</li>
+<li>
+<p id="_b5fd75f0-8e37-44a6-b7b9-0b816c1b72f3">remaining <tt>adoc</tt>s&#8201;&#8212;&#8201;each section of the standard document is in a separate document: follow directions in each document to populate</p>
+</li>
+<li>
+<p id="_e18d246c-9528-4e03-b066-8f93208cbb45"><tt>figures</tt>&#8201;&#8212;&#8201;figures go here</p>
+</li>
+<li>
+<p id="_2196c1ad-4c04-4a6a-9cd5-2ff5d6597d4f"><tt>images</tt>&#8201;&#8212;&#8201;Image files for graphics go here. Image files for figures go in the <tt>figures</tt> directory. Only place in here images not used in figures (e.g., as parts of tables, as logos, etc.)</p>
+</li>
+<li>
+<p id="_32ceb51c-3be4-473f-90e5-ea8db9692438"><tt>requirements</tt>&#8201;&#8212;&#8201;directory for requirements and requirement classes to be referenced in <tt>clause_7_normative_text.adoc</tt></p>
+</li>
+<li>
+<p id="_6521954b-c905-4bc1-9f11-1a4c70b1680a"><tt>code</tt>&#8201;&#8212;&#8201;sample code to accompany the standard, if desired</p>
+</li>
+<li>
+<p id="_ab72d354-4691-4ddd-a541-d3cdf6202c21"><tt>abstract_tests</tt>&#8201;&#8212;&#8201;the Abstract Test Suite comprising one test for every requirement, optional</p>
+</li>
+<li>
+<p id="_d0a029c6-4ece-4be1-982e-ea56e3fa4a73"><tt>UML</tt>&#8201;&#8212;&#8201;UML diagrams, if applicable</p>
+</li>
+</ul></clause>
+<clause id="_building" obligation="normative">
+<title>Building</title>
+<p id="_ae75470c-dd87-40ca-987d-60c8f92a9d5d">Run <tt>make</tt>.</p>
+</clause></sections>
+</ogc-standard>

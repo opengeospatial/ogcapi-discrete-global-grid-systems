@@ -1,0 +1,28 @@
+21_038_OGC_API_DGGS_Part_1/README.err errors
+
+
+== Document Attributes
+
+(): 'article' is not a legal document type: reverting to 'standard'
+(): '' is not a permitted subtype of Standard: reverting to 'implementation'
+(): Version required for standard
+
+
+== Style
+
+(): Abstract is missing!
+(): Keywords are missing!
+(): Preface is missing!
+(): Submitting Organizations is missing!
+(): Submitters is missing!
+(): Prefatory material must be followed by (clause) Scope
+(): Scope must be followed by Conformance
+(): Document must contain at least one clause
+
+
+== Metanorma XML Syntax
+
+(XML Line 000028:7): element "ext" incomplete; missing required element "editorialgroup"
+(XML Line 000149:102): element "clause" not allowed here; expected element "abstract" or "foreword"
+(XML Line 000149:269): element "preface" incomplete; missing required element "foreword"
+(XML Line 000180:16): element "ogc-standard" incomplete; missing required element "bibliography"
