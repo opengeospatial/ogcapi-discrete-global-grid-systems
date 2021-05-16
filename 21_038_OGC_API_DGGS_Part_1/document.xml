@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ogc-standard xmlns="https://www.metanorma.org/ns/ogc" type="semantic" version="1.3.2">
+<bibdata type="standard">
+<title language="en" format="text/plain">OGC (add title text)</title>
+<uri type="xml">./document.xml</uri>
+<uri type="pdf">./document.pdf</uri>
+<uri type="doc">./document.doc</uri>
+<docidentifier type="ogc-external">http://www.opengis.net/doc/{doc-type}/{standard}/{m.n}</docidentifier><docidentifier type="ogc-internal">YY-999</docidentifier>
+
+<docnumber>YY-999</docnumber>
+<date type="published">
+<on>2029-03-30</on>
+</date>
+<date type="issued">
+<on>2029-03-30</on>
+</date>
+<date type="received">
+<on>2029-03-30</on>
+</date>
+<contributor>
+<role type="author"/>
+<organization>
+<name>Organization One</name>
+</organization>
+</contributor>
+<contributor>
+<role type="author"/>
+<organization>
+<name>Organization Two</name>
+</organization>
+</contributor>
+<contributor>
+<role type="editor"/>
+<person>
+<name>
+<completename>Editor One</completename>
+</name>
+</person>
+</contributor>
+<contributor>
+<role type="editor"/>
+<person>
+<name>
+<completename>Editor Two</completename>
+</name>
+</person>
+</contributor>
+<contributor>
+<role type="publisher"/>
+<organization>
+<name>Open Geospatial Consortium</name>
+</organization>
+</contributor>
+<edition>1.0</edition>
+<version>
+<draft>3.0</draft>
+</version>
+<language>en</language>
+<script>Latn</script><abstract>
+<p>&lt;Insert Abstract Text here&gt;</p>
+</abstract>
+<status>
+<stage>draft</stage>
+</status>
+<copyright>
+<from>2021</from>
+<owner>
+<organization>
+<name>Open Geospatial Consortium</name>
+</organization>
+</owner>
+</copyright>
+<keyword>ogcdoc</keyword>
+<keyword>OGC document</keyword>
+<keyword>API</keyword>
+<keyword>openapi</keyword>
+<keyword>html</keyword>
+<ext>
+<doctype>standard</doctype>
+<docsubtype>implementation</docsubtype>
+<editorialgroup>
+<committee>technical</committee>
+</editorialgroup>
+</ext>
+</bibdata>
+<boilerplate>
+  <copyright-statement>
+    <clause>
+      <title>Copyright notice</title>
+
+      <p align="center" id="_e22d6dac-fab9-4f57-bafb-5b2b8f87ae50">Copyright
+        &#169; 2021 Open Geospatial Consortium<br/>
+        To obtain additional rights of use, visit 
+        <link target="http://www.ogc.org/legal/">http://www.ogc.org/legal/</link></p>
+    </clause>
+    <clause>
+      <title>Note</title>
+      <p align="left" id="_1d9d9c1c-f02f-4c56-b1d1-778880b7370c">Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. The Open Geospatial Consortium shall not be held responsible for identifying any or all such patent rights.</p>
+
+      <p align="left" id="_c028c144-aa91-439d-bcfe-c24f3e14c8f3">Recipients of this document are requested to submit, with their comments, notification of any relevant patent claims or other intellectual property rights of which they may be aware that might be infringed by any implementation of the standard set forth in this document, and to provide supporting documentation.</p>
+    </clause>
+  </copyright-statement>
+  <license-statement>
+    <clause>
+      <title>License Agreement</title>
+
+      <p id="_250e964e-67cb-4ea7-a82d-13c8965cf139">Permission is hereby granted by the Open Geospatial
+        Consortium, (&#8220;Licensor&#8221;), free of charge and subject to the terms set
+        forth below, to any person obtaining a copy of this Intellectual Property and
+        any associated documentation, to deal in the Intellectual Property without
+        restriction (except as set forth below), including without limitation the
+        rights to implement, use, copy, modify, merge, publish, distribute, and/or
+        sublicense copies of the Intellectual Property, and to permit persons to whom
+        the Intellectual Property is furnished to do so, provided that all copyright notices
+        on the intellectual property are retained intact and that each person to whom
+        the Intellectual Property is furnished agrees to the terms of this Agreement.</p>
+
+      <p id="_a0a5751a-f4d6-45d4-9ce5-be07f91cdff8">If you modify the Intellectual Property, all copies of
+        the modified Intellectual Property must include, in addition to the above
+        copyright notice, a notice that the Intellectual Property includes
+        modifications that have not been approved or adopted by LICENSOR.</p>
+
+      <p id="_bfdbe307-e646-434b-a095-902e65e1ab95">THIS LICENSE IS A COPYRIGHT LICENSE ONLY, AND DOES NOT
+        CONVEY ANY RIGHTS UNDER ANY PATENTS THAT MAY BE IN FORCE ANYWHERE IN THE WORLD.
+        THE INTELLECTUAL PROPERTY IS PROVIDED &#8220;AS
+        IS&#8221;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+        LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
+        AND NONINFRINGEMENT OF THIRD PARTY RIGHTS. THE COPYRIGHT HOLDER OR HOLDERS
+        INCLUDED IN THIS NOTICE DO NOT WARRANT THAT THE FUNCTIONS CONTAINED IN THE
+        INTELLECTUAL PROPERTY WILL MEET YOUR REQUIREMENTS OR THAT THE OPERATION OF THE
+        INTELLECTUAL PROPERTY WILL BE UNINTERRUPTED OR ERROR FREE. ANY USE OF THE
+        INTELLECTUAL PROPERTY SHALL BE MADE ENTIRELY AT THE USER&#8217;S OWN RISK. IN NO
+        EVENT SHALL THE COPYRIGHT HOLDER OR ANY CONTRIBUTOR OF INTELLECTUAL PROPERTY
+        RIGHTS TO THE INTELLECTUAL PROPERTY BE LIABLE FOR ANY CLAIM, OR ANY DIRECT,
+        SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES, OR ANY DAMAGES WHATSOEVER RESULTING
+        FROM ANY ALLEGED INFRINGEMENT OR ANY LOSS OF USE, DATA OR PROFITS, WHETHER IN
+        AN ACTION OF CONTRACT, NEGLIGENCE OR UNDER ANY OTHER LEGAL THEORY, ARISING OUT
+        OF OR IN CONNECTION WITH THE IMPLEMENTATION, USE, COMMERCIALIZATION OR
+        PERFORMANCE OF THIS INTELLECTUAL PROPERTY.</p>
+
+      <p id="_3b4a533f-d996-44c9-a896-c331d7c91348">This license is effective until terminated. You may
+        terminate it at any time by destroying the Intellectual Property together with
+        all copies in any form. The license will also terminate if you fail to comply
+        with any term or condition of this Agreement. Except as provided in the
+        following sentence, no such termination of this license shall require the
+        termination of any third party end-user sublicense to the Intellectual Property
+        which is in force as of the date of notice of such termination. In addition,
+        should the Intellectual Property, or the operation of the Intellectual
+        Property, infringe, or in LICENSOR&#8217;s sole opinion be
+        likely to infringe, any patent, copyright, trademark or other right of a third
+        party, you agree that LICENSOR, in its sole discretion, may terminate this
+        license without any compensation or liability to you, your licensees or any
+        other party. You agree upon termination of any kind to destroy or cause to be
+        destroyed the Intellectual Property together with all copies in any form,
+        whether held by you or by any third party.</p>
+
+      <p id="_0dd8a318-209b-463c-8552-30667e3ebba8">Except as contained in this notice, the name of
+        LICENSOR or of any other holder of a copyright in all or part of the Intellectual
+        Property shall not be used in advertising or otherwise to promote the sale, use
+        or other dealings in this Intellectual Property without prior written
+        authorization of LICENSOR or such copyright holder. LICENSOR is and shall at
+        all times be the sole entity that may authorize you or any third party to use
+        certification marks, trademarks or other special designations to indicate
+        compliance with any LICENSOR standards or specifications.
+        This Agreement is
+        governed by the laws of the Commonwealth of Massachusetts. The application to
+        this Agreement of the United Nations Convention on Contracts for the
+        International Sale of Goods is hereby expressly excluded. In the event any
+        provision of this Agreement shall be deemed unenforceable, void or invalid, such
+        provision shall be modified so as to make it valid and enforceable, and as so
+        modified the entire Agreement shall remain in full force and effect. No
+        decision, action or inaction by LICENSOR shall be construed to be a waiver of
+        any rights or remedies available to it.</p>
+
+      <p id="_0b3f1216-b4ed-4b80-ae60-0e1b2f658e00">None of the Intellectual Property or underlying information or technology may be downloaded or otherwise exported or reexported in violation of U.S. export laws and regulations. In addition, you are responsible for complying with any local laws in your jurisdiction which may impact your right to import, export or use the Intellectual Property, and you represent that you have complied with any regulations or registration procedures required by applicable law to make this license enforceable.</p>
+    </clause>
+  </license-statement>
+
+  <legal-statement>
+    
+    
+    <clause>
+      <title>Warning for Drafts</title>
+      <p id="_721d7fc0-7518-4da0-88ac-71ca7ea38733">This document is not an OGC Standard. This document is distributed for review and comment. This document is subject to change without notice and may not be referred to as an OGC Standard.</p>
+
+      <p id="_efaf6a6c-39d3-40e1-ba43-a9e1239aaa33">Recipients of this document are invited to submit, with their comments, notification of any relevant patent rights of which they are aware and to provide supporting documentation.</p>
+    </clause>
+    
+
+
+    
+
+  </legal-statement>
+
+
+
+
+  <feedback-statement>
+    
+    <clause id="boilerplate-standard-feedback">
+      <p id="_f3af9750-3aa7-411c-a9f5-ad68dc2aee40">Suggested additions, changes and comments on this standard are welcome and encouraged. Such suggestions may be submitted using the online change request form on OGC web site: <link target="http://portal.opengeospatial.org/public_ogc/change_request.php">http://portal.opengeospatial.org/public_ogc/change_request.php</link></p>
+    </clause>
+    
+  </feedback-statement>
+</boilerplate>
+<preface><abstract id="_abstract"><title>Abstract</title>
+<p id="_837592fd-09f9-4eed-8e51-69a8dcb15b49">&lt;Insert Abstract Text here&gt;</p>
+</abstract><foreword id="_7ae3a11d-6aae-48d1-9b1a-53e8e6ec875a" obligation="informative"><title>Preface</title><note id="_fb1d3db8-5c45-4c7d-bed3-665bf950d10a">
+<p id="_fc9e26f7-b737-4d53-bac8-c0e98610ab18">Insert Preface Text here. Give OGC specific commentary: describe the technical content, reason for document, history of the document and precursors, and plans for future work.</p>
+</note>
+<p id="_787a426b-cb0f-4c72-8e2b-8d06b0714f83">Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. The Open Geospatial Consortium shall not be held responsible for identifying any or all such patent rights.</p>
+<p id="_50302ba1-8908-44e2-86fe-f9380621a6da">Recipients of this document are requested to submit, with their comments, notification of any relevant patent claims or other intellectual property rights of which they may be aware that might be infringed by any implementation of the standard set forth in this document, and to provide supporting documentation.</p></foreword><clause type="security" id="_d0fe0436-4b84-4ae2-87c0-0b889a87e731" obligation="informative"><title>Security Considerations</title><p id="_eb8679f4-e33c-49c0-a5c7-703e9be07fda">No security considerations have been made for this standard.</p></clause></preface><sections>
+
+<clause id="_scope" type="scope" obligation="normative">
+<title>Scope</title>
+<note id="_587cd1ef-be40-4efa-a32c-55253ac38546">
+<p id="_df284cf8-078d-4908-8efe-2c432821b048">Insert Scope text here. Give the subject of the document and the aspects of that scope covered by the document.</p>
+</note>
+</clause>
+<clause id="_conformance" type="conformance" obligation="normative"><title>Conformance</title><p id="_183ada34-67c6-4b2a-8dfd-7a628fe3baa4">This standard defines XXXX.</p>
+<p id="_e6c56ba4-90a1-46a6-b42a-7958201b1a2d">Requirements for N standardization target types are considered:</p>
+<ul id="_d369fb9b-ef55-4565-afbb-21c543efc1e5">
+<li>
+<p id="_153c07aa-d0ce-418a-8bd3-ea8314624b34">AAAA</p>
+</li>
+<li>
+<p id="_751fe734-517f-4e71-ab89-090b682d8acc">BBBB</p>
+</li>
+</ul>
+<p id="_23464b9b-5cc0-41b8-a737-4e73e00018c8">Conformance with this standard shall be checked using all the relevant tests specified in Annex A (normative) of this document. The framework, concepts, and methodology for testing, and the criteria to be achieved to claim conformance are specified in the OGC Compliance Testing Policies and Procedures and the OGC Compliance Testing web site.</p>
+<p id="_6185016f-14e9-4683-a95f-debdf00fdad5">In order to conform to this OGC&#174; interface standard, a software implementation shall choose to implement:</p>
+<ul id="_bb9226e6-a86a-4ec6-aaff-2b232db6b8b5">
+<li>
+<p id="_f38c1987-80c0-4228-bd56-211df80add3c">Any one of the conformance levels specified in Annex A (normative).</p>
+</li>
+<li>
+<p id="_6ba47355-65b1-41f5-a913-5e16bb9723f2">Any one of the Distributed Computing Platform profiles specified in Annexes TBD through TBD (normative).</p>
+</li>
+</ul>
+<p id="_6a257f39-d162-42db-9332-bf1aa9d41f62">All requirements-classes and conformance-classes described in this document are owned by the standard(s) identified.</p></clause>
+
+<terms id="_terms_and_definitions" obligation="normative"><title>Terms and definitions</title><p id="_3c06dce3-d3d6-4bdf-a95c-660a8f47f6c8">For the purposes of this document, 
+    the following terms and definitions apply.</p>
+<p id="_ac18c10d-e4b0-4d00-bed2-4c546c37770c">This document uses the terms defined in Sub-clause 5.3 of <xref target="OGC06-121r9"/>, which is based on the ISO/IEC Directives, Part 2, Rules for the structure and drafting of International Standards. In particular, the word &#8220;shall&#8221; (not &#8220;must&#8221;) is the verb form used to indicate a requirement to be strictly followed to conform to this standard.</p>
+<p id="_f79a7c74-c9ce-48ec-bac4-3dabf989ad9a">For the purposes of this document, the following additional terms and definitions apply.</p>
+<term id="term-example-term"><preferred>example term</preferred><definition><p id="_13bc7212-afc3-4f54-9d98-477d22a115ed">term used for exemplary purposes</p></definition>
+
+
+<termnote id="_e827d43b-990f-4528-a409-348fe3dd607a">
+<p id="_554862b6-4def-4d3f-a15a-e7b5b6a807a0">An example note.</p>
+</termnote><termexample id="_00692c96-bcf0-4d67-bc90-d0468db0bbb4">
+<p id="_b96f6918-240c-46da-8f3b-485131da3d26">Here&#8217;s an example of an example term.</p>
+</termexample><termsource status="identical">
+<origin bibitemid="ISO19101-1" type="inline" citeas="ISO 19101-1:2014"/>
+</termsource></term></terms>
+<clause id="_conventions" obligation="normative"><title>Conventions</title><p id="_639f5114-50da-4bb1-92f7-39cab604785e">This sections provides details and examples for any conventions used in the document. Examples of conventions are symbols, abbreviations, use of XML schema, or special notes regarding how to read the document.</p>
+<clause id="_identifiers" obligation="normative"><title>Identifiers</title><p id="_4008a17d-8064-4f9d-9886-f0a07ae657b3">The normative provisions in this standard are denoted by the URI</p>
+<p id="_bb5c3813-4648-4a93-882e-ff9481038fb9">
+<tt>
+<link target="http://www.opengis.net/spec/{standard}/{m.n}"/>
+</tt>
+</p>
+<p id="_43d33da0-3e56-47c1-ba80-379d80a34b9b">All requirements and conformance tests that appear in this document are denoted by partial URIs which are relative to this base.</p></clause></clause>
+<clause id="_clauses_not_containing_normative_material" obligation="informative"><title>Clauses not Containing Normative Material</title><p id="_8235b201-c526-4643-acf8-f067639033e8">Paragraph</p>
+<clause id="_clauses_not_containing_normative_material_sub_clause_1" obligation="informative">
+<title>Clauses not containing normative material sub-clause 1</title>
+<p id="_15bb284d-62aa-43c2-8801-61aa28b89838">Paragraph</p>
+</clause>
+<clause id="_clauses_not_containing_normative_material_sub_clause_2" obligation="informative">
+<title>Clauses not containing normative material sub-clause 2</title>
+</clause></clause>
+<clause id="_clause_containing_normative_material" obligation="normative"><title>Clause containing normative material</title><p id="_bc607085-f49f-4f03-b8cb-c9b76cae6ca2">Paragraph</p>
+<clause id="_requirement_class_a_or_requirement_a_example" obligation="normative"><title>Requirement Class A or Requirement A Example</title><p id="_8d9afea3-e2fa-4938-b60f-d6456b20b346">Paragraph &#8211; intro text for the requirement class.</p>
+<p id="_86bca6da-0c38-43a2-9445-89d79c4bcbfc">Use the following table for Requirements Classes.</p>
+<requirement id="http___www.opengis.net_spec_ABCD_m.n_req_req-class-a" obligation="requirement" type="class"><description><p id="_45892215-2dce-4ee5-a394-4befa320113d">Requirements Class</p>
+<ul id="_b43fc823-3d0e-4ce7-90f8-85f7e64414d1">
+<li>
+<p id="_60faf1bc-5f02-467e-990b-bc00a4e89e4f">
+<link target="http://www.example.org/req/blah"/>
+</p>
+</li>
+<li>
+<p id="_f26877d1-7711-48db-950b-7a18d443e9fa">urn:iso:ts:iso:19139:clause:6</p>
+</li>
+</ul>
+</description><requirement id="http___www.opengis.net_spec_ABCD_m.n_req_req-class-a_req-name-1" type="general"><description>
+<p id="_64947a15-138f-4401-b20f-ba2a88c07e29">requirement description</p>
+</description></requirement>
+<requirement id="http___www.opengis.net_spec_ABCD_m.n_req_req-class-a_req-name-2" type="general"><description>
+<p id="_d68d545a-0cea-4801-98cb-cee7129e296a">requirement description</p>
+</description></requirement>
+<requirement id="http___www.opengis.net_spec_ABCD_m.n_req_req-class-a_req-name-3" type="general"><description>
+<p id="_8f5b4ebb-c12c-4c31-867a-935bf58990d9">requirement description</p>
+</description></requirement></requirement>
+<clause id="_requirement_1" obligation="normative"><title>Requirement 1</title><p id="_2c09792d-1837-4442-8872-518f1c05881a">Paragraph&#8201;&#8212;&#8201;intro text for the requirement.</p>
+<p id="_52f9d5eb-5779-48ad-93ac-d28eee253752">Use the following table for Requirements, number sequentially.</p>
+<requirement id="_req_req-class-a_req-name-1" obligation="requirement" type="general"><description>
+<p id="_a239aaea-e96c-432a-9f04-08e12d915f1a">Requirement &#8216;shall&#8217; statement</p>
+</description></requirement>
+<p id="_ac10e90e-1fcf-4904-add7-f6590f9b2cdb">Dictionary tables for requirements can be added as necessary. Modify the following example as needed.</p>
+<table id="_0e9b23dd-bf58-42c2-bb89-297dbbe93d60" width="90%">
+<thead>
+<tr>
+<th valign="top" align="left">Names</th>
+<th valign="top" align="left">Definition</th>
+<th valign="top" align="left">Data types and values</th>
+<th valign="top" align="left">Multiplicity and use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td valign="top" align="left">name 1</td>
+<td valign="top" align="left">definition of name 1</td>
+<td valign="top" align="left">float</td>
+<td valign="top" align="left">One or more (mandatory)</td>
+</tr>
+<tr>
+<td valign="top" align="left">name 2</td>
+<td valign="top" align="left">definition of name 2</td>
+<td valign="top" align="left">character string type, not empty</td>
+<td valign="top" align="left">Zero or one (optional)</td>
+</tr>
+<tr>
+<td valign="top" align="left">name 3</td>
+<td valign="top" align="left">definition of name 3</td>
+<td valign="top" align="left">GML:: Point PropertyType</td>
+<td valign="top" align="left">One (mandatory)</td>
+</tr>
+</tbody>
+</table></clause></clause></clause>
+<clause id="_media_types_for_any_data_encodings" obligation="normative">
+<title>Media Types for any data encoding(s)</title>
+<p id="_03150af5-cc4c-4f74-8c4a-3971736a9651">A section describing the MIME-types to be used is mandatory for any standard involving data encodings. If no suitable MIME type exists in <link target="http://www.iana.org/assignments/media-types/index.html"/> then this section may be used to define a new MIME type for registration with IANA.</p>
+</clause>
+
+
+
+</sections><annex id="_conformance_class_abstract_test_suite_normative" obligation="normative"><title>Conformance Class Abstract Test Suite (Normative)</title><note id="_398698b0-0473-47f8-9d6a-8f24200ab456">
+<p id="_a542e7c6-6880-489b-b066-9b15224eef9d">Ensure that there is a conformance class for each requirements class and a test for each requirement (identified by requirement name and number)</p>
+</note>
+<clause id="_conformance_class_a" obligation="normative"><title>Conformance Class A</title><clause id="_requirement_1_2" obligation="normative">
+<title>Requirement 1</title>
+<requirement id="_cccc0340-8654-4773-ba02-eedd5b8f22f0" type="pseudocode">
+<label>/req/req-class-a/req-name-1</label><description>
+<example id="_0d130b95-c786-4745-88f8-69257a3373a0">
+<dl id="_cddcf3f5-9c77-4ac5-9f39-a57ec12bfd41">
+<dt>Test purpose</dt>
+<dd>
+<p id="_497539b0-69db-4ef9-a6e5-244c0404bf35">Verify that&#8230;&#8203;</p>
+</dd>
+<dt>Test method</dt>
+<dd>
+<p id="_865f0d8b-b13f-4971-aa1f-2960c949e0bb">Inspect&#8230;&#8203;</p>
+</dd>
+</dl>
+</example>
+</description></requirement>
+</clause>
+<clause id="_requirement_2" obligation="normative">
+<title>Requirement 2</title>
+</clause></clause></annex><annex id="_title" obligation="informative">
+<title>Title</title>
+<note id="_af5981ec-da76-4484-97ff-951f15b8b011">
+<p id="_51f2d999-6a74-424e-b903-9fd0ebd8acce">Place other Annex material in sequential annexes beginning with &#8220;B&#8221; and leave final two annexes for the Revision History and Bibliography</p>
+</note>
+</annex><annex id="_revision_history" obligation="normative">
+<title>Revision History</title>
+<table id="_71b8d4af-f31f-4740-9283-99564de2aba7" width="90%">
+<thead>
+<tr>
+<th valign="top" align="left">Date</th>
+<th valign="top" align="left">Release</th>
+<th valign="top" align="left">Editor</th>
+<th valign="top" align="left">Primary clauses modified</th>
+<th valign="top" align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td valign="top" align="left">2016-04-28</td>
+<td valign="top" align="left">0.1</td>
+<td valign="top" align="left">G. Editor</td>
+<td valign="top" align="left">all</td>
+<td valign="top" align="left">initial version</td>
+</tr>
+</tbody>
+</table>
+</annex><bibliography><references id="_references" normative="true" obligation="informative"><title>Normative references</title><p id="_d913c6ad-08e7-4ecb-b8f3-d3ffd2e87dca">The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
+
+<bibitem id="Smith81"><formattedref format="application/x-isodoc+xml"><em>Identification of Common Molecular Subsequences</em>. Smith, T.F., Waterman, M.S., J. Mol. Biol. 147, 195&#8211;197 (1981)</formattedref><docidentifier>Identification of Common Molecular Subsequences</docidentifier></bibitem><bibitem id="May06"><formattedref format="application/x-isodoc+xml"><em>ZIB Structure Prediction Pipeline: Composing a Complex Biological Workflow through Web Services</em>. May, P., Ehrlich, H.C., Steinke, T. In: Nagel, W.E., Walter, W.V., Lehner, W. (eds.) Euro-Par 2006. LNCS, vol. 4128, pp. 1148&#8211;1158. Springer, Heidelberg (2006)</formattedref><docidentifier>ZIB Structure Prediction Pipeline</docidentifier></bibitem><bibitem id="Grid"><formattedref format="application/x-isodoc+xml"><em>The Grid: Blueprint for a New Computing Infrastructure.</em>, Foster, I., Kesselman, C.. Morgan Kaufmann, San Francisco (1999).</formattedref><docidentifier>The Grid</docidentifier></bibitem><bibitem id="Czajkowski01"><formattedref format="application/x-isodoc+xml"><em>Grid Information Services for Distributed Resource Sharing.</em>Czajkowski, K., Fitzgerald, S., Foster, I., Kesselman, C. In: 10th IEEE International Symposium on High Performance Distributed Computing, pp. 181&#8211;184. IEEE Press, New York (2001)</formattedref><docidentifier>Grid Information Services for Distributed Resource Sharing</docidentifier></bibitem><bibitem id="Foster02"><formattedref format="application/x-isodoc+xml"><em>The Physiology of the Grid: an Open Grid Services Architecture for Distributed Systems Integration.</em>Foster, I., Kesselman, C., Nick, J., Tuecke, S. Technical report, Global Grid Forum (2002)</formattedref><docidentifier>The Physiology of the Grid</docidentifier></bibitem><bibitem id="NCBI"><formattedref format="application/x-isodoc+xml"><em>National Center for Biotechnology Information</em>, <link target="http://www.ncbi.nlm.nih.gov"/></formattedref><docidentifier>NCBI</docidentifier></bibitem><bibitem id="ISO19101-1" type="standard">  <fetched>2021-05-16</fetched>  <title type="title-intro" format="text/plain" language="en" script="Latn">Geographic information</title>  <title type="title-main" format="text/plain" language="en" script="Latn">Reference model</title>  <title type="title-part" format="text/plain" language="en" script="Latn">Part 1: Fundamentals</title>  <title type="main" format="text/plain" language="en" script="Latn">Geographic information&#8201;&#8212;&#8201;Reference model&#8201;&#8212;&#8201;Part 1: Fundamentals</title>  <uri type="src">https://www.iso.org/standard/59164.html</uri>  <uri type="obp">https://www.iso.org/obp/ui/#!iso:std:59164:en</uri>  <uri type="rss">https://www.iso.org/contents/data/standard/05/91/59164.detail.rss</uri>  <docidentifier type="ISO">ISO 19101-1:2014</docidentifier>  <docidentifier type="URN">urn:iso:std:iso:19101:-1:stage-90.93:ed-1:en</docidentifier>  <docnumber>19101</docnumber>  <date type="published">    <on>2014-11</on>  </date>  <contributor>    <role type="publisher"/>    <organization>      <name>International Organization for Standardization</name>      <abbreviation>ISO</abbreviation>      <uri>www.iso.org</uri>    </organization>  </contributor>  <edition>1</edition>  <language>en</language>  <script>Latn</script>  <abstract format="text/plain" language="en" script="Latn">ISO 19101-1:2014 defines the reference model for standardization in the field of geographic information. This reference model describes the notion of interoperability and sets forth the fundamentals by which this standardization takes place.Although structured in the context of information technology and information technology standards, ISO 19101-1:2014 is independent of any application development method or technology implementation approach.</abstract>  <status>    <stage>90</stage>    <substage>93</substage>  </status>  <copyright>    <from>2014</from>    <owner>      <organization>        <name>ISO</name>      </organization>    </owner>  </copyright>  <relation type="obsoletes">    <bibitem type="standard">      <formattedref format="text/plain">ISO 19101:2002</formattedref>    </bibitem>  </relation>  <relation type="updates">    <bibitem type="standard">      <formattedref format="text/plain">ISO/WD 19101-1</formattedref>      <date type="circulated">        <on>2020-04-27</on>      </date>    </bibitem>  </relation>  <place>Geneva</place></bibitem> <bibitem id="ISO19115-1" type="standard">  <fetched>2021-05-16</fetched>  <title type="title-intro" format="text/plain" language="en" script="Latn">Geographic information</title>  <title type="title-main" format="text/plain" language="en" script="Latn">Metadata</title>  <title type="title-part" format="text/plain" language="en" script="Latn">Part 1: Fundamentals</title>  <title type="main" format="text/plain" language="en" script="Latn">Geographic information&#8201;&#8212;&#8201;Metadata&#8201;&#8212;&#8201;Part 1: Fundamentals</title>  <uri type="src">https://www.iso.org/standard/53798.html</uri>  <uri type="obp">https://www.iso.org/obp/ui/#!iso:std:53798:en</uri>  <uri type="rss">https://www.iso.org/contents/data/standard/05/37/53798.detail.rss</uri>  <docidentifier type="ISO">ISO 19115-1:2014</docidentifier>  <docidentifier type="URN">urn:iso:std:iso:19115:-1:stage-90.93:ed-1:en</docidentifier>  <docnumber>19115</docnumber>  <date type="published">    <on>2014-04</on>  </date>  <contributor>    <role type="publisher"/>    <organization>      <name>International Organization for Standardization</name>      <abbreviation>ISO</abbreviation>      <uri>www.iso.org</uri>    </organization>  </contributor>  <edition>1</edition>  <language>en</language>  <script>Latn</script>  <abstract format="text/plain" language="en" script="Latn">ISO 19115-1:2014 defines the schema required for describing geographic information and services by means of metadata. It provides information about the identification, the extent, the quality, the spatial and temporal aspects, the content, the spatial reference, the portrayal, distribution, and other properties of digital geographic data and services.ISO 19115-1:2014 is applicable to:-the cataloguing of all types of resources, clearinghouse activities, and the full description of datasets and services;-geographic services, geographic datasets, dataset series, and individual geographic features and feature properties.ISO 19115-1:2014 defines:-mandatory and conditional metadata sections, metadata entities, and metadata elements;-the minimum set of metadata required to serve most metadata applications (data discovery, determining data fitness for use, data access, data transfer, and use of digital data and services);-optional metadata elements to allow for a more extensive standard description of resources, if required;-a method for extending metadata to fit specialized needs.Though ISO 19115-1:2014 is applicable to digital data and services, its principles can be extended to many other types of resources such as maps, charts, and textual documents as well as non-geographic data. Certain conditional metadata elements might not apply to these other forms of data.</abstract>  <status>    <stage>90</stage>    <substage>93</substage>  </status>  <copyright>    <from>2014</from>    <owner>      <organization>        <name>ISO</name>      </organization>    </owner>  </copyright>  <relation type="obsoletes">    <bibitem type="standard">      <formattedref format="text/plain">ISO 19115:2003</formattedref>    </bibitem>  </relation>  <relation type="obsoletes">    <bibitem type="standard">      <formattedref format="text/plain">ISO 19115:2003/Cor 1:2006</formattedref>    </bibitem>  </relation>  <relation type="updates">    <bibitem type="standard">      <formattedref format="text/plain">ISO 19115-1:2014/Amd 1:2018</formattedref>      <date type="circulated">        <on>2019-06-13</on>      </date>    </bibitem>  </relation>  <relation type="updates">    <bibitem type="standard">      <formattedref format="text/plain">ISO 19115-1:2014/Amd 2:2020</formattedref>      <date type="circulated">        <on>2019-06-13</on>      </date>    </bibitem>  </relation>  <place>Geneva</place></bibitem> <bibitem id="ISO19157" type="standard">  <fetched>2021-05-16</fetched>  <title type="title-intro" format="text/plain" language="en" script="Latn">Geographic information </title>  <title type="title-main" format="text/plain" language="en" script="Latn">Data quality</title>  <title type="main" format="text/plain" language="en" script="Latn">Geographic information &#8201;&#8212;&#8201;Data quality</title>  <uri type="src">https://www.iso.org/standard/32575.html</uri>  <uri type="obp">https://www.iso.org/obp/ui/#!iso:std:32575:en</uri>  <uri type="rss">https://www.iso.org/contents/data/standard/03/25/32575.detail.rss</uri>  <docidentifier type="ISO">ISO 19157:2013</docidentifier>  <docidentifier type="URN">urn:iso:std:iso:19157:stage-90.92:ed-1:en</docidentifier>  <docnumber>19157</docnumber>  <date type="published">    <on>2013-12</on>  </date>  <contributor>    <role type="publisher"/>    <organization>      <name>International Organization for Standardization</name>      <abbreviation>ISO</abbreviation>      <uri>www.iso.org</uri>    </organization>  </contributor>  <edition>1</edition>  <language>en</language>  <script>Latn</script>  <abstract format="text/plain" language="en" script="Latn">ISO 19157:2013 establishes the principles for describing the quality of geographic data. It-   defines components for describing data quality;-   specifies components and content structure of a register for data quality measures;-   describes general procedures for evaluating the quality of geographic data;-   establishes principles for reporting data quality.ISO 19157:2013 also defines a set of data quality measures for use in evaluating and reporting data quality. It is applicable to data producers providing quality information to describe and assess how well a data set conforms to its product specification and to data users attempting to determine whether or not specific geographic data are of sufficient quality for their particular application.ISO 19157:2013 does not attempt to define minimum acceptable levels of quality for geographic data.</abstract>  <status>    <stage>90</stage>    <substage>92</substage>  </status>  <copyright>    <from>2013</from>    <owner>      <organization>        <name>ISO</name>      </organization>    </owner>  </copyright>  <relation type="obsoletes">    <bibitem type="standard">      <formattedref format="text/plain">ISO 19113:2002</formattedref>    </bibitem>  </relation>  <relation type="obsoletes">    <bibitem type="standard">      <formattedref format="text/plain">ISO 19114:2003</formattedref>    </bibitem>  </relation>  <relation type="obsoletes">    <bibitem type="standard">      <formattedref format="text/plain">ISO/TS 19138:2006</formattedref>    </bibitem>  </relation>  <relation type="obsoletes">    <bibitem type="standard">      <formattedref format="text/plain">ISO/CD 19157-1</formattedref>    </bibitem>  </relation>  <relation type="updates">    <bibitem type="standard">      <formattedref format="text/plain">ISO 19157:2013/Amd 1:2018</formattedref>      <date type="circulated">        <on>2019-07-01</on>      </date>    </bibitem>  </relation>  <place>Geneva</place></bibitem><bibitem id="ISO19139" type="standard"><title format="text/plain">Geographic information&#8201;&#8212;&#8201;Metadata&#8201;&#8212;&#8201;XML schema implementation</title><docidentifier type="ISO">ISO 19139:2007</docidentifier><docnumber>19139</docnumber><date type="published"><on>2007</on></date><contributor><role type="publisher"/><organization><name>ISO</name></organization></contributor></bibitem><bibitem id="ISO19115-3" type="standard">  <fetched>2021-05-16</fetched>  <title type="title-intro" format="text/plain" language="en" script="Latn">Geographic information</title>  <title type="title-main" format="text/plain" language="en" script="Latn">Metadata</title>  <title type="title-part" format="text/plain" language="en" script="Latn">Part 3: XML schema implementation for fundamental concepts</title>  <title type="main" format="text/plain" language="en" script="Latn">Geographic information&#8201;&#8212;&#8201;Metadata&#8201;&#8212;&#8201;Part 3: XML schema implementation for fundamental concepts</title>  <uri type="src">https://www.iso.org/standard/80874.html</uri>  <uri type="rss">https://www.iso.org/contents/data/standard/08/08/80874.detail.rss</uri>  <docidentifier type="ISO">ISO/CD 19115-3</docidentifier>  <docidentifier type="URN">urn:iso:std:iso-cd:19115:-3:stage-30.99:ed-1:en</docidentifier>  <docnumber>19115</docnumber>  <contributor>    <role type="publisher"/>    <organization>      <name>International Organization for Standardization</name>      <abbreviation>ISO</abbreviation>      <uri>www.iso.org</uri>    </organization>  </contributor>  <edition>1</edition>  <language>en</language>  <script>Latn</script>  <status>    <stage>30</stage>    <substage>99</substage>  </status>  <copyright>    <from>unknown</from>    <owner>      <organization>        <name>ISO/CD</name>      </organization>    </owner>  </copyright>  <relation type="obsoletes">    <bibitem type="standard">      <formattedref format="text/plain">ISO/TS 19115-3:2016</formattedref>    </bibitem>  </relation>  <relation type="instance">    <bibitem type="standard">      <fetched>2021-05-16</fetched>      <title type="title-intro" format="text/plain" language="en" script="Latn">Geographic information</title>      <title type="title-main" format="text/plain" language="en" script="Latn">Metadata</title>      <title type="title-part" format="text/plain" language="en" script="Latn">Part 3: XML schema implementation for fundamental concepts</title>      <title type="main" format="text/plain" language="en" script="Latn">Geographic information&#8201;&#8212;&#8201;Metadata&#8201;&#8212;&#8201;Part 3: XML schema implementation for fundamental concepts</title>      <uri type="src">https://www.iso.org/standard/80874.html</uri>      <uri type="rss">https://www.iso.org/contents/data/standard/08/08/80874.detail.rss</uri>      <docidentifier type="ISO">ISO/CD 19115-3</docidentifier>      <docidentifier type="URN">urn:iso:std:iso-cd:19115:-3:stage-30.99:ed-1:en</docidentifier>      <docnumber>19115</docnumber>      <contributor>        <role type="publisher"/>        <organization>          <name>International Organization for Standardization</name>          <abbreviation>ISO</abbreviation>          <uri>www.iso.org</uri>        </organization>      </contributor>      <edition>1</edition>      <language>en</language>      <script>Latn</script>      <status>        <stage>30</stage>        <substage>99</substage>      </status>      <copyright>        <from>unknown</from>        <owner>          <organization>            <name>ISO/CD</name>          </organization>        </owner>      </copyright>      <relation type="obsoletes">        <bibitem type="standard">          <formattedref format="text/plain">ISO/TS 19115-3:2016</formattedref>        </bibitem>      </relation>      <place>Geneva</place>    </bibitem>  </relation>  <place>Geneva</place></bibitem> <bibitem id="OGC15-097" type="standard">  <fetched>2021-05-16</fetched>  <title type="title-main" format="text/plain" language="en" script="Latn">OGC&#174; Geospatial User Feedback Standard: Conceptual Model</title>  <title type="main" format="text/plain" language="en" script="Latn">OGC&#174; Geospatial User Feedback Standard: Conceptual Model</title>  <uri type="obp">http://docs.opengeospatial.org/is/15-097r1/15-097r1.html</uri>  <docidentifier type="OGC">15-097r1</docidentifier>  <date type="published">    <on>2016-12-22</on>  </date>  <contributor>    <role type="author"/>    <person>      <name>        <completename>Joan Mas&#243; and Lucy Bastin </completename>      </name>    </person>  </contributor>  <contributor>    <role type="publisher"/>    <organization>      <name>Open Geospatial Consortium</name>    </organization>  </contributor>  <edition>1</edition>  <language>en</language>  <script>Latn</script>  <abstract format="text/plain" language="en" script="Latn">This standard defines a conceptual Geospatial User Feedback (GUF) data model. Geospatial User Feedback is metadata that is predominantly produced by the consumers of geospatial data products as they use and gain experience with those products. This standard complements existing metadata conventions whereby documents recording dataset characteristics and production workflows are generated by the creator, publisher or curator of a data product. As a part of metadata, the GUF data model reuses some elements of ISO 19115-1:2014 (the updated version of the OGC Abstract Specification Topic 11) but not the general structure. This selective use of ISO metadata elements prioritizes future interoperability with developing ISO metadata models. This standard is designed to be used combination with an encoding standard. Initially an XML encoding following the ISO 19139 encoding rules is specified in a separate OGC implementation standard (OGC 15-098). In the future other encodings may be defined, including examples such as the use of JSON-LD based on parts of schema.org.</abstract>  <ext>    <doctype>standard</doctype>    <docsubtype>implementation</docsubtype>    <editorialgroup>      <committee>technical</committee>    </editorialgroup>  </ext></bibitem> <bibitem id="OGC12-019" type="standard">  <fetched>2021-05-16</fetched>  <title type="title-main" format="text/plain" language="en" script="Latn">OGC City Geography Markup Language (CityGML) Encoding Standard</title>  <title type="main" format="text/plain" language="en" script="Latn">OGC City Geography Markup Language (CityGML) Encoding Standard</title>  <uri type="obp">https://portal.ogc.org/files/?artifact_id=47842</uri>  <docidentifier type="OGC">12-019</docidentifier>  <date type="published">    <on>2012-04-04</on>  </date>  <contributor>    <role type="author"/>    <person>      <name>        <completename>Gerhard Gr&#246;ger</completename>      </name>    </person>  </contributor>  <contributor>    <role type="author"/>    <person>      <name>        <completename>Thomas H. Kolbe</completename>      </name>    </person>  </contributor>  <contributor>    <role type="author"/>    <person>      <name>        <completename>Claus Nagel</completename>      </name>    </person>  </contributor>  <contributor>    <role type="author"/>    <person>      <name>        <completename>Karl-Heinz H&#228;fele</completename>      </name>    </person>  </contributor>  <contributor>    <role type="publisher"/>    <organization>      <name>Open Geospatial Consortium</name>    </organization>  </contributor>  <language>en</language>  <script>Latn</script>  <abstract format="text/plain" language="en" script="Latn">CityGML is an open data model and XML-based format for the storage and exchange of virtual 3D city models. It is an application schema for the Geography Markup Language version 3.1.1 (GML3), the extendible international standard for spatial data exchange issued by the Open Geospatial Consortium (OGC) and the ISO TC211.  The aim of the development of CityGML is to reach a common definition of the basic entities, attributes, and relations of a 3D city model. This is especially important with respect to the cost-effective sustainable maintenance of 3D city models, allowing the reuse of the same data in different application fields. </abstract>  <ext>    <doctype>standard</doctype>    <docsubtype>implementation</docsubtype>    <editorialgroup>      <committee>technical</committee>    </editorialgroup>  </ext></bibitem> <bibitem id="OGC14-005r3" type="standard">  <fetched>2021-05-16</fetched>  <title type="title-main" format="text/plain" language="en" script="Latn">OGC&#174; IndoorGML</title>  <title type="main" format="text/plain" language="en" script="Latn">OGC&#174; IndoorGML</title>  <uri type="obp">http://docs.opengeospatial.org/is/14-005r3/14-005r3.html</uri>  <docidentifier type="OGC">14-005r3</docidentifier>  <date type="published">    <on>2014-12-02</on>  </date>  <contributor>    <role type="author"/>    <person>      <name>        <completename>Jiyeong Lee</completename>      </name>    </person>  </contributor>  <contributor>    <role type="author"/>    <person>      <name>        <completename>Ki-Joune Li</completename>      </name>    </person>  </contributor>  <contributor>    <role type="author"/>    <person>      <name>        <completename>Sisi Zlatanova</completename>      </name>    </person>  </contributor>  <contributor>    <role type="author"/>    <person>      <name>        <completename>Thomas H. Kolbe</completename>      </name>    </person>  </contributor>  <contributor>    <role type="author"/>    <person>      <name>        <completename>Claus Nagel</completename>      </name>    </person>  </contributor>  <contributor>    <role type="author"/>    <person>      <name>        <completename>Thomas Becker</completename>      </name>    </person>  </contributor>  <contributor>    <role type="publisher"/>    <organization>      <name>Open Geospatial Consortium</name>    </organization>  </contributor>  <edition>3</edition>  <language>en</language>  <script>Latn</script>  <abstract format="text/plain" language="en" script="Latn">This OGC&#174; IndoorGML standard specifies an open data model and XML schema for indoor spatial information. IndoorGML is an application schema of OGC&#174; GML 3.2.1. While there are several 3D building modelling standards such as CityGML, KML, and IFC, which deal with interior space of buildings from geometric, cartographic, and semantic viewpoints, IndoorGML intentionally focuses on modelling indoor spaces for navigation purposes.</abstract>  <ext>    <doctype>standard</doctype>    <docsubtype>implementation</docsubtype>    <editorialgroup>      <committee>technical</committee>    </editorialgroup>  </ext></bibitem> <bibitem id="OGC06121r9" type="standard">  <fetched>2021-05-16</fetched>  <title type="title-main" format="text/plain" language="en" script="Latn">OGC Web Service Common Implementation Specification</title>  <title type="main" format="text/plain" language="en" script="Latn">OGC Web Service Common Implementation Specification</title>  <uri type="obp">https://portal.ogc.org/files/?artifact_id=38867</uri>  <docidentifier type="OGC">06-121r9</docidentifier>  <date type="published">    <on>2010-04-07</on>  </date>  <contributor>    <role type="author"/>    <person>      <name>        <completename>Arliss Whiteside Jim Greenwood </completename>      </name>    </person>  </contributor>  <contributor>    <role type="publisher"/>    <organization>      <name>Open Geospatial Consortium</name>    </organization>  </contributor>  <edition>9</edition>  <language>en</language>  <script>Latn</script>  <abstract format="text/plain" language="en" script="Latn">This document specifies many of the aspects that are, or should be, common to all or multiple OGC Web Service (OWS) interface Implementation Standards. These common aspects are primarily some of the parameters and data structures used in operation requests and responses. Of course, each such Implementation Standard must specify the additional aspects of that interface, including specifying all additional parameters and data structures needed in all operation requests and responses.</abstract>  <ext>    <doctype>standard</doctype>    <docsubtype>implementation</docsubtype>    <editorialgroup>      <committee>technical</committee>    </editorialgroup>  </ext></bibitem></references><references id="Bibliography" normative="false" obligation="informative"><title>Bibliography</title><note id="_b1c6a6b5-df58-460b-a6ee-2750b1665e16"><p id="_52fcb8a4-03d4-4724-af3f-502d6a047301">The TC has approved Springer LNCS as the official document citation type.</p>
+<p id="_c8301282-3939-4735-8d20-83e291f542b5">Springer LNCS is widely used in technical and computer science journals and other publications</p>
+
+<p id="_722524f9-dd47-4a6f-8c44-943bf58e356e">&#8211; Actual References:</p>
+<p id="_1243b793-3565-4356-a705-1639ade0628c">[n] Journal: Author Surname, A.: Title. Publication Title. Volume number, Issue number, Pages Used (Year Published)</p>
+<p id="_ddae1050-035e-4af6-ab9c-f692c721b649">[n] Web: Author Surname, A.: Title, <link target="http://Website-Url"/></p></note><bibitem id="OGC2015">
+  <formattedref format="application/x-isodoc+xml"><em>OGC: OGC Testbed 12 Annex B: Architecture</em> (2015).</formattedref>
+  <docidentifier type="OGC">OGCTB12</docidentifier>
+  <docnumber>12</docnumber>
+</bibitem>
+</references></bibliography>
+</ogc-standard>
