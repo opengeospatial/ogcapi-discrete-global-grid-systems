@@ -10,39 +10,39 @@
 == AsciiDoc Input
 
 (Section: Bibliography): no anchor on reference, markup may be malformed: see https://www.metanorma.com/author/topics/document-format/bibliography/ , https://www.metanorma.com/author/iso/topics/markup/#bibliographies: For citations in the text please use square brackets and consecutive numbers: [1], [2], [3]
-	#<Asciidoctor::List@47276524109440 {context: :ulist, style: nil, items: 1}>
+	#<Asciidoctor::List@47345733115720 {context: :ulist, style: nil, items: 1}>
 
 
 == Anchors
 
 (XML Line 000154): normalised identifier in <requirement id="http___www.opengis.net_spec_ABCD_m.n_req_req-class-a" obligation="requirement" type="class"/> from http://www.opengis.net/spec/ABCD/m.n/req/req-class-a
-	<requirement id="http___www.opengis.net_spec_ABCD_m.n_req_req-class-a" obligation="requirement" type="class"><description><p id="_3c709e40-e419-4e19-a112-856796dac7ba">Requirements Class</p>
-	<ul id="_edd4689c-08b5-47eb-baab-1c7f52b4a8a8">
+	<requirement id="http___www.opengis.net_spec_ABCD_m.n_req_req-class-a" obligation="requirement" type="class"><description><p id="_0eab42d5-29ff-4c9a-8a3f-339605b9d8f8">Requirements Class</p>
+	<ul id="_fc8d8e19-e124-41a8-af55-adcf5579842b">
 	<li>
-	<p id="_32441090-de5f-4a38-93a0-6163b0d256a6">
+	<p id="_55159824-8d08-4b1a-a95b-203441f7c1b2">
 	<link target="http://www.example.org/req/blah"/>
 (XML Line 000165): normalised identifier in <requirement id="http___www.opengis.net_spec_ABCD_m.n_req_req-class-a_req-name-1" type="general"/> from http://www.opengis.net/spec/ABCD/m.n/req/req-class-a/req-name-1
 	<requirement id="http___www.opengis.net_spec_ABCD_m.n_req_req-class-a_req-name-1" type="general">
 	  <description>
-	<p id="_221a4f7d-a30e-4cd7-a7f5-ce54abd85616">requirement description</p>
+	<p id="_9e764eaf-406f-436f-94da-e36b2548ba0c">requirement description</p>
 	</description>
 	</requirement>
 (XML Line 000168): normalised identifier in <requirement id="http___www.opengis.net_spec_ABCD_m.n_req_req-class-a_req-name-2" type="general"/> from http://www.opengis.net/spec/ABCD/m.n/req/req-class-a/req-name-2
 	<requirement id="http___www.opengis.net_spec_ABCD_m.n_req_req-class-a_req-name-2" type="general">
 	  <description>
-	<p id="_34a2995c-834a-44b2-a007-d6436fc207ff">requirement description</p>
+	<p id="_8d0053bb-ecb8-4c60-bcfa-fb0bcde1ad21">requirement description</p>
 	</description>
 	</requirement>
 (XML Line 000171): normalised identifier in <requirement id="http___www.opengis.net_spec_ABCD_m.n_req_req-class-a_req-name-3" type="general"/> from http://www.opengis.net/spec/ABCD/m.n/req/req-class-a/req-name-3
 	<requirement id="http___www.opengis.net_spec_ABCD_m.n_req_req-class-a_req-name-3" type="general">
 	  <description>
-	<p id="_f58e778a-a354-46ed-829e-9fda23239689">requirement description</p>
+	<p id="_637caa8e-0276-4d0f-bec5-015ef98c731e">requirement description</p>
 	</description>
 	</requirement>
 (XML Line 000176): normalised identifier in <requirement id="_req_req-class-a_req-name-1" obligation="requirement" type="general"/> from /req/req-class-a/req-name-1
 	<requirement id="_req_req-class-a_req-name-1" obligation="requirement" type="general">
 	  <description>
-	<p id="_96b1034e-ffce-4250-96ce-150203677194">Requirement ‘shall’ statement</p>
+	<p id="_e65f6bf4-e50e-4add-aea0-282b789e670c">Requirement ‘shall’ statement</p>
 	</description>
 	</requirement>
 
@@ -55,49 +55,49 @@
 == Metanorma XML Style Warning
 
 (XML Line 000135): Hanging paragraph in clause
-	<clause id="_conventions" obligation="normative"><title>Conventions</title><p id="_d1ea9d5c-433c-4861-a1a0-7bfb3b4061b5">This sections provides details and examples for any conventions used in the document. Examples of conventions are symbols, abbreviations, use of XML schema, or special notes regarding how to read the document.</p>
-	<clause id="_identifiers" obligation="normative"><title>Identifiers</title><p id="_1577f781-9180-4f1b-b1e3-1429f67b477b">The normative provisions in this standard are denoted by the URI</p>
-	<p id="_a2f84090-5c45-47ee-9057-2cb7dc7058b5">
+	<clause id="_conventions" obligation="normative"><title>Conventions</title><p id="_dbf1648b-7b93-4b44-8764-a89d032ed4f0">This sections provides details and examples for any conventions used in the document. Examples of conventions are symbols, abbreviations, use of XML schema, or special notes regarding how to read the document.</p>
+	<clause id="_identifiers" obligation="normative"><title>Identifiers</title><p id="_6312f626-f13e-47d6-9d87-ef34809c1cf9">The normative provisions in this standard are denoted by the URI</p>
+	<p id="_cb6720c4-93ca-435e-86e9-fe63fb079ca1">
 	<tt>
 	<link target="http://www.opengis.net/spec/{standard}/{m.n}"/>
 (XML Line 000143): Hanging paragraph in clause
-	<clause id="_clauses_not_containing_normative_material" obligation="informative"><title>Clauses not Containing Normative Material</title><p id="_05fc24c9-d425-4857-b7e2-3e2c497a64ff">Paragraph</p>
+	<clause id="_clauses_not_containing_normative_material" obligation="informative"><title>Clauses not Containing Normative Material</title><p id="_006219c5-1ab5-4492-b4f4-b61e6a323edc">Paragraph</p>
 	<clause id="_clauses_not_containing_normative_material_sub_clause_1" obligation="informative">
 	<title>Clauses not containing normative material sub-clause 1</title>
-	<p id="_4fc71ffb-84a6-40c1-806e-9bd0c6de2a06">Paragraph</p>
+	<p id="_21e2870e-4105-4974-9945-6ee0bf5250ec">Paragraph</p>
 	</clause>
 (XML Line 000151): Hanging paragraph in clause
-	<clause id="_clause_containing_normative_material" obligation="normative"><title>Clause containing normative material</title><p id="_21843890-0d20-48f9-a3ab-2d3b839ab792">Paragraph</p>
-	<clause id="_requirement_class_a_or_requirement_a_example" obligation="normative"><title>Requirement Class A or Requirement A Example</title><p id="_223d6664-6c6b-4076-8721-844dab410a8f">Paragraph – intro text for the requirement class.</p>
-	<p id="_f38b5fc6-2243-4910-bd16-ce8735cdb831">Use the following table for Requirements Classes.</p>
-	<requirement id="http___www.opengis.net_spec_ABCD_m.n_req_req-class-a" obligation="requirement" type="class"><description><p id="_3c709e40-e419-4e19-a112-856796dac7ba">Requirements Class</p>
-	<ul id="_edd4689c-08b5-47eb-baab-1c7f52b4a8a8">
+	<clause id="_clause_containing_normative_material" obligation="normative"><title>Clause containing normative material</title><p id="_1fcc17a9-725c-4343-8695-9d91531c527f">Paragraph</p>
+	<clause id="_requirement_class_a_or_requirement_a_example" obligation="normative"><title>Requirement Class A or Requirement A Example</title><p id="_a7ae3f40-1c1c-422e-9adc-427b9ed768ce">Paragraph – intro text for the requirement class.</p>
+	<p id="_b8fc0be8-2106-498d-8483-db53e0a75f6c">Use the following table for Requirements Classes.</p>
+	<requirement id="http___www.opengis.net_spec_ABCD_m.n_req_req-class-a" obligation="requirement" type="class"><description><p id="_0eab42d5-29ff-4c9a-8a3f-339605b9d8f8">Requirements Class</p>
+	<ul id="_fc8d8e19-e124-41a8-af55-adcf5579842b">
 (XML Line 000152): Hanging paragraph in clause
-	<clause id="_requirement_class_a_or_requirement_a_example" obligation="normative"><title>Requirement Class A or Requirement A Example</title><p id="_223d6664-6c6b-4076-8721-844dab410a8f">Paragraph – intro text for the requirement class.</p>
-	<p id="_f38b5fc6-2243-4910-bd16-ce8735cdb831">Use the following table for Requirements Classes.</p>
-	<requirement id="http___www.opengis.net_spec_ABCD_m.n_req_req-class-a" obligation="requirement" type="class"><description><p id="_3c709e40-e419-4e19-a112-856796dac7ba">Requirements Class</p>
-	<ul id="_edd4689c-08b5-47eb-baab-1c7f52b4a8a8">
+	<clause id="_requirement_class_a_or_requirement_a_example" obligation="normative"><title>Requirement Class A or Requirement A Example</title><p id="_a7ae3f40-1c1c-422e-9adc-427b9ed768ce">Paragraph – intro text for the requirement class.</p>
+	<p id="_b8fc0be8-2106-498d-8483-db53e0a75f6c">Use the following table for Requirements Classes.</p>
+	<requirement id="http___www.opengis.net_spec_ABCD_m.n_req_req-class-a" obligation="requirement" type="class"><description><p id="_0eab42d5-29ff-4c9a-8a3f-339605b9d8f8">Requirements Class</p>
+	<ul id="_fc8d8e19-e124-41a8-af55-adcf5579842b">
 	<li>
 (XML Line 000180): Table should have title
-	<table id="_8845e6fc-0587-4a97-ab81-86412b3288ac" width="90%">
+	<table id="_26e3af01-822e-403f-8ca8-ab2cdf5b3c55" width="90%">
 	<thead>
 	<tr>
 	<th valign="top" align="left">Names</th>
 	<th valign="top" align="left">Definition</th>
 (XML Line 000214): Hanging paragraph in clause
-	<annex id="_conformance_class_abstract_test_suite_normative" obligation="normative"><title>Conformance Class Abstract Test Suite (Normative)</title><note id="_b5498b9d-5657-47e0-8d03-357669a0167d">
-	<p id="_0dfec4e8-4a85-4d67-ad7c-0ef237dae097">Ensure that there is a conformance class for each requirements class and a test for each requirement (identified by requirement name and number)</p>
+	<annex id="_conformance_class_abstract_test_suite_normative" obligation="normative"><title>Conformance Class Abstract Test Suite (Normative)</title><note id="_f3561b58-da51-469f-ab41-76cbd8cf56f9">
+	<p id="_489afece-9a8a-4be0-8e51-7e78298a85e1">Ensure that there is a conformance class for each requirements class and a test for each requirement (identified by requirement name and number)</p>
 	</note>
 	<clause id="_conformance_class_a" obligation="normative"><title>Conformance Class A</title><clause id="_requirement_1_2" obligation="normative">
 	<title>Requirement 1</title>
 (XML Line 000217): Hanging paragraph in clause
 	<clause id="_conformance_class_a" obligation="normative"><title>Conformance Class A</title><clause id="_requirement_1_2" obligation="normative">
 	<title>Requirement 1</title>
-	<requirement id="_e6194b18-b36b-42ef-9727-c763c546433d" type="pseudocode">
+	<requirement id="_ad87b3d9-794d-444b-94d5-af8495ce0952" type="pseudocode">
 	<label>/req/req-class-a/req-name-1</label><description>
-	<example id="_2e209de0-1c3f-470b-b7ed-9355d602c497">
+	<example id="_9fba0bf8-4e00-4b31-86df-11c7d9873c23">
 (XML Line 000246): Table should have title
-	<table id="_b126e2c4-c572-4958-8cf8-93e9a7288e07" width="90%">
+	<table id="_c856a6d2-9ae9-4078-8a49-6a3f400119d9" width="90%">
 	<thead>
 	<tr>
 	<th valign="top" align="left">Date</th>

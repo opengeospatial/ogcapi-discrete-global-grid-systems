@@ -1,4 +1,4 @@
-= OGC (add title text)
+= OGC API - Discrete Global Grid Systems - Part 1: Core
 :doctype: standard
 :encoding: utf-8
 :lang: en
@@ -6,15 +6,15 @@
 :committee: technical
 :draft: 3.0
 :external-id: http://www.opengis.net/doc/{doc-type}/{standard}/{m.n}
-:docnumber: YY-999
+:docnumber: 21-038
 :received-date: 2029-03-30
 :issued-date: 2029-03-30
 :published-date: 2029-03-30
-:fullname: Editor One
+:fullname: Dr. Matthew Brian John Purss
 :fullname_2: Editor Two
 :docsubtype: Interface
 :keywords: ogcdoc, OGC document, API, openapi, html
-:submitting-organizations: Organization One; Organization Two
+:submitting-organizations: Pangaea Innovations Pty. Ltd.; Organization Two; Organization Three; Organization Four;
 :docfile: document.adoc
 :mn-document-class: ogc
 :mn-output-extensions: xml,html,doc,pdf
