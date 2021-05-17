@@ -27,8 +27,8 @@ docker run -i -v "$(pwd)":/metanorma metanorma/mn  metanorma new -d standard -t 
 docker cp ./ <Docker_Container_ID>:"/metanorma/21_038_OGC_API_DGGS_Part_1"
 
 Example:
-
-docker cp ./ 2622352e28ed:"/metanorma/21_038_OGC_API_DGGS_Part_1"
+cd ./21_038_OGC_API_DGGS_Part_1
+docker cp ./ 2622352e28ed:"/metanorma"
 ====
 
 
@@ -36,9 +36,15 @@ docker cp ./ 2622352e28ed:"/metanorma/21_038_OGC_API_DGGS_Part_1"
 
 [NOTE]
 ====
+docker start <docker_container>
+docker exec -it <docker_container> /bin/bash
+$> metanorma compile --agree-to-terms -t ogc -x xml,html,doc 21_038_OGC_API_DGGS_Part_1/document.adoc
 Example:
 
-docker run -v "$(pwd)":/metanorma -v ${HOME}/.fontist/fonts/:/config/fonts  metanorma/mn  metanorma compile --agree-to-terms -t ogc -x xml,html,doc 21_038_OGC_API_DGGS_Part_1/document.adoc
+docker start 2622352e28ed
+docker exec -it 2622352e28ed /bin/bash
+$> metanorma compile --agree-to-terms -t ogc -x xml,html,doc 21_038_OGC_API_DGGS_Part_1/document.adoc
+
 
 ====
 
