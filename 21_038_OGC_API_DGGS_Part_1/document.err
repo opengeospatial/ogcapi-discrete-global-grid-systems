@@ -1,0 +1,116 @@
+21_038_OGC_API_DGGS_Part_1/document.err errors
+
+
+== Document Attributes
+
+(): 'Interface' is not a permitted subtype of Standard: reverting to 'implementation'
+(): draft is not a recognised status
+
+
+== AsciiDoc Input
+
+(Section: Bibliography): no anchor on reference, markup may be malformed: see https://www.metanorma.com/author/topics/document-format/bibliography/ , https://www.metanorma.com/author/iso/topics/markup/#bibliographies: For citations in the text please use square brackets and consecutive numbers: [1], [2], [3]
+	#<Asciidoctor::List@47196449865320 {context: :ulist, style: nil, items: 1}>
+
+
+== Anchors
+
+(XML Line 000166): normalised identifier in <requirement id="http___www.opengis.net_spec_ABCD_m.n_req_req-class-a" obligation="requirement" type="class"/> from http://www.opengis.net/spec/ABCD/m.n/req/req-class-a
+	<requirement id="http___www.opengis.net_spec_ABCD_m.n_req_req-class-a" obligation="requirement" type="class"><description><p id="_d83d229a-4e00-4bfa-b9a0-9cbaf631eed1">Requirements Class</p>
+	<ul id="_16e69e7c-4542-49e7-936c-caba95d2573d">
+	<li>
+	<p id="_cd7700c0-b324-48a4-8c96-be28c008f747">
+	<link target="http://www.example.org/req/blah"/>
+(XML Line 000177): normalised identifier in <requirement id="http___www.opengis.net_spec_ABCD_m.n_req_req-class-a_req-name-1" type="general"/> from http://www.opengis.net/spec/ABCD/m.n/req/req-class-a/req-name-1
+	<requirement id="http___www.opengis.net_spec_ABCD_m.n_req_req-class-a_req-name-1" type="general">
+	  <description>
+	<p id="_f40e2b29-27ed-4fd5-856f-3fd7ba7bb3d4">requirement description</p>
+	</description>
+	</requirement>
+(XML Line 000180): normalised identifier in <requirement id="http___www.opengis.net_spec_ABCD_m.n_req_req-class-a_req-name-2" type="general"/> from http://www.opengis.net/spec/ABCD/m.n/req/req-class-a/req-name-2
+	<requirement id="http___www.opengis.net_spec_ABCD_m.n_req_req-class-a_req-name-2" type="general">
+	  <description>
+	<p id="_5f760a5f-1873-4a88-88d1-c459b7a87c4d">requirement description</p>
+	</description>
+	</requirement>
+(XML Line 000183): normalised identifier in <requirement id="http___www.opengis.net_spec_ABCD_m.n_req_req-class-a_req-name-3" type="general"/> from http://www.opengis.net/spec/ABCD/m.n/req/req-class-a/req-name-3
+	<requirement id="http___www.opengis.net_spec_ABCD_m.n_req_req-class-a_req-name-3" type="general">
+	  <description>
+	<p id="_da04b40a-d6f4-472c-8d1b-db756dfd9e1f">requirement description</p>
+	</description>
+	</requirement>
+(XML Line 000188): normalised identifier in <requirement id="_req_req-class-a_req-name-1" obligation="requirement" type="general"/> from /req/req-class-a/req-name-1
+	<requirement id="_req_req-class-a_req-name-1" obligation="requirement" type="general">
+	  <description>
+	<p id="_b077739f-ba55-42d5-ad69-483bc033c02a">Requirement ‘shall’ statement</p>
+	</description>
+	</requirement>
+
+
+== Style
+
+(): Submitters is missing!
+
+
+== Metanorma XML Style Warning
+
+(XML Line 000147): Hanging paragraph in clause
+	<clause id="_conventions" obligation="normative"><title>Conventions</title><p id="_828bc351-78ae-4b9d-9cea-355854920bae">This sections provides details and examples for any conventions used in the document. Examples of conventions are symbols, abbreviations, use of XML schema, or special notes regarding how to read the document.</p>
+	<clause id="_identifiers" obligation="normative"><title>Identifiers</title><p id="_b127291d-427a-4833-bc26-4789c221eac3">The normative provisions in this standard are denoted by the URI</p>
+	<p id="_09394d40-2e4e-4038-b1fa-d3376220a5b5">
+	<tt>
+	<link target="http://www.opengis.net/spec/{standard}/{m.n}"/>
+(XML Line 000155): Hanging paragraph in clause
+	<clause id="_clauses_not_containing_normative_material" obligation="informative"><title>Clauses not Containing Normative Material</title><p id="_031bc3c0-8a8c-442c-a816-eca90be75c1a">Paragraph</p>
+	<clause id="_clauses_not_containing_normative_material_sub_clause_1" obligation="informative">
+	<title>Clauses not containing normative material sub-clause 1</title>
+	<p id="_b69a43e8-0dd5-4871-8a6b-c0fa443a7371">Paragraph</p>
+	</clause>
+(XML Line 000163): Hanging paragraph in clause
+	<clause id="_clause_containing_normative_material" obligation="normative"><title>Clause containing normative material</title><p id="_9fac10ab-9824-4652-ac93-2d2da9a38dcf">Paragraph</p>
+	<clause id="_requirement_class_a_or_requirement_a_example" obligation="normative"><title>Requirement Class A or Requirement A Example</title><p id="_d8359d05-6273-4bcb-a7d4-14d6b07151e9">Paragraph – intro text for the requirement class.</p>
+	<p id="_60eebb74-953f-4232-8efb-b907aa737eb3">Use the following table for Requirements Classes.</p>
+	<requirement id="http___www.opengis.net_spec_ABCD_m.n_req_req-class-a" obligation="requirement" type="class"><description><p id="_d83d229a-4e00-4bfa-b9a0-9cbaf631eed1">Requirements Class</p>
+	<ul id="_16e69e7c-4542-49e7-936c-caba95d2573d">
+(XML Line 000164): Hanging paragraph in clause
+	<clause id="_requirement_class_a_or_requirement_a_example" obligation="normative"><title>Requirement Class A or Requirement A Example</title><p id="_d8359d05-6273-4bcb-a7d4-14d6b07151e9">Paragraph – intro text for the requirement class.</p>
+	<p id="_60eebb74-953f-4232-8efb-b907aa737eb3">Use the following table for Requirements Classes.</p>
+	<requirement id="http___www.opengis.net_spec_ABCD_m.n_req_req-class-a" obligation="requirement" type="class"><description><p id="_d83d229a-4e00-4bfa-b9a0-9cbaf631eed1">Requirements Class</p>
+	<ul id="_16e69e7c-4542-49e7-936c-caba95d2573d">
+	<li>
+(XML Line 000192): Table should have title
+	<table id="_4d0d9e2b-16c8-41b0-9cf5-7ce3e13248dd" width="90%">
+	<thead>
+	<tr>
+	<th valign="top" align="left">Names</th>
+	<th valign="top" align="left">Definition</th>
+(XML Line 000226): Hanging paragraph in clause
+	<annex id="_conformance_class_abstract_test_suite_normative" obligation="normative"><title>Conformance Class Abstract Test Suite (Normative)</title><note id="_8f9e05a0-ecce-4ed5-8e56-09f5df1ae9e7">
+	<p id="_f83f6fa2-5864-4ade-be3e-2ec876279dbe">Ensure that there is a conformance class for each requirements class and a test for each requirement (identified by requirement name and number)</p>
+	</note>
+	<clause id="_conformance_class_a" obligation="normative"><title>Conformance Class A</title><clause id="_requirement_1_2" obligation="normative">
+	<title>Requirement 1</title>
+(XML Line 000229): Hanging paragraph in clause
+	<clause id="_conformance_class_a" obligation="normative"><title>Conformance Class A</title><clause id="_requirement_1_2" obligation="normative">
+	<title>Requirement 1</title>
+	<requirement id="_ea3af541-2190-4ef0-a5d5-9019cabee7ee" type="pseudocode">
+	<label>/req/req-class-a/req-name-1</label><description>
+	<example id="_0a3df981-c554-447a-9703-09bc22f4904b">
+(XML Line 000258): Table should have title
+	<table id="_1d2aa44c-9afd-454b-bb52-28bf5ebdee63" width="90%">
+	<thead>
+	<tr>
+	<th valign="top" align="left">Date</th>
+	<th valign="top" align="left">Release</th>
+
+
+== Metanorma XML Syntax
+
+(XML Line 000224:466): element "clause" not allowed here; expected the element end-tag or element "submitters"
+(XML Line 000272:62): element "link" not allowed here; expected the element end-tag, text or element "br", "em", "hi", "index", "smallcap", "strike", "strong", "sub", "sup", "tt" or "underline"
+(XML Line 000402:12926): character content of element "from" invalid; must be a year
+(XML Line 000402:14629): character content of element "from" invalid; must be a year
+(XML Line 000402:17089): element "ext" not allowed here; expected the element end-tag or element "abstract", "accesslocation", "classification", "copyright", "extent", "keyword", "license", "medium", "place", "price", "relation", "series", "status" or "validity"
+(XML Line 000402:19327): element "ext" not allowed here; expected the element end-tag or element "abstract", "accesslocation", "classification", "copyright", "extent", "keyword", "license", "medium", "place", "price", "relation", "series", "status" or "validity"
+(XML Line 000402:21599): element "ext" not allowed here; expected the element end-tag or element "abstract", "accesslocation", "classification", "copyright", "extent", "keyword", "license", "medium", "place", "price", "relation", "series", "status" or "validity"
+(XML Line 000402:23234): element "ext" not allowed here; expected the element end-tag or element "abstract", "accesslocation", "classification", "copyright", "extent", "keyword", "license", "medium", "place", "price", "relation", "series", "status" or "validity"
