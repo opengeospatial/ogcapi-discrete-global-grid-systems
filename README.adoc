@@ -1,5 +1,10 @@
 # ogcapi-discrete-global-grid-systems
 
+== SwaggerHub API definition
+
+The file dggs-zonequery.yml can be pasted into a SwaggerHub project to test the structure of the API
+An example such project is: https://app.swaggerhub.com/apis/rggibb/dggs-zonequery/
+
 == OGC Standard Document Template Initialisation (Linux)
 
 Commands to initialise and compile the OGC Metanorma Standard document template. These should be run from the root directory of this github repository.
