@@ -136,7 +136,6 @@ paths:
       summary: Access the definition of a particular zone
       parameters: 
         - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
-        - $ref: '#/components/parameters/zonalId'
       responses:
         '200':
           $ref: '#/components/responses/Zone'
@@ -144,6 +143,9 @@ paths:
           $ref: '#/components/responses/NotSupported'
         '500':
           $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
+
+# Start ZoneQuery <<set>> operations
+
   /collections/{collectionId}/zone/{zoneId}/child:
     get:
       tags:
@@ -152,9 +154,30 @@ paths:
       parameters: 
         - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
         - $ref: '#/components/parameters/zoneId'
-        - $ref: '#/components/parameters/zonalId'
         - $ref: '#/components/parameters/inheritId'
         - $ref: '#/components/parameters/levels'
+        # - $ref: '#/components/parameters/projectTo'
+      responses:
+        '200':
+          $ref: '#/components/responses/ZoneList'
+        '406':
+          $ref: '#/components/responses/NotSupported'
+        '500':
+          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'            
+
+# Start ZoneQuery <<query>> operations
+
+  /collections/{collectionId}/zone/{zoneId}/childOf:
+    get:
+      tags:
+        - DGGS access
+      summary: Get the list of zones children of a given zone (should it return just a list of identifiers instead of a GeoJSON collection?)
+      parameters: 
+        - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/another'
+        - $ref: '#/components/parameters/inheritId'
+        # - $ref: '#/components/parameters/projectTo'
       responses:
         '200':
           $ref: '#/components/responses/ZoneList'
@@ -163,6 +186,9 @@ paths:
         '500':
           $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'            
           
+
+# Start ZoneQuery <<reference>> operations
+
 
 components:
   schemas:
@@ -568,6 +594,19 @@ components:
             type: string
 
   parameters:
+
+# Start parameters in path ordered alphabetically
+
+    zoneId:
+      name: zoneId
+      in: path
+      required: true
+      schema:
+        type: string
+        example: Q3
+
+# Start zone parameters in query ordered alphabetically
+
     bbox:
       name: bbox
       in: query
@@ -607,18 +646,6 @@ components:
           type: number
       style: form
       explode: false
-    inheritId:
-      name: inheritId
-      in: query
-      required: false
-      schema:
-        type: boolean
-    levels:
-      name: levels
-      in: query
-      required: false
-      schema:
-        type: integer
     limit:
       name: limit
       in: query
@@ -642,6 +669,38 @@ components:
       required: true
       schema:
         type: number
+    zoneIdList:
+      name: zoneIdList
+      in: query
+      description: |-
+        Comma separated list of zone identifiers
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+
+# Start ZoneQuery parameters in query ordered alphabetically
+
+    another:
+      name: zonalId
+      in: query
+      required: true
+      schema:
+        type: string
+        example: Q3
+    inheritId:
+      name: inheritId
+      in: query
+      required: false
+      schema:
+        type: boolean
+    levels:
+      name: levels
+      in: query
+      required: false
+      schema:
+        type: integer
     rangeRefine:
       name: rangeRefine
       in: query
@@ -654,30 +713,6 @@ components:
           type: integer
       style: form
       explode: false
-    zoneId:
-      name: zoneId
-      in: path
-      required: true
-      schema:
-        type: string
-        example: Q3
-    zonalId:
-      name: zonalId
-      in: query
-      required: true
-      schema:
-        type: string
-        example: Q3
-    zoneIdList:
-      name: zoneIdList
-      in: query
-      description: |-
-        Comma separated list of zone identifiers
-      required: false
-      schema:
-        type: array
-        items:
-          type: string
 
 
 servers:
