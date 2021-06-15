@@ -136,7 +136,7 @@ paths:
       summary: Access the definition of a particular zone
       parameters: 
         - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
-        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/zonalId'
       responses:
         '200':
           $ref: '#/components/responses/Zone'
@@ -144,6 +144,25 @@ paths:
           $ref: '#/components/responses/NotSupported'
         '500':
           $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
+  /collections/{collectionId}/zone/{zoneId}/child:
+    get:
+      tags:
+        - DGGS access
+      summary: Get the list of zones children of a given zone (should it return just a list of identifiers instead of a GeoJSON collection?)
+      parameters: 
+        - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/zonalId'
+        - $ref: '#/components/parameters/inheritId'
+        - $ref: '#/components/parameters/levels'
+      responses:
+        '200':
+          $ref: '#/components/responses/ZoneList'
+        '406':
+          $ref: '#/components/responses/NotSupported'
+        '500':
+          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'            
+          
 
 components:
   schemas:
@@ -588,6 +607,12 @@ components:
           type: number
       style: form
       explode: false
+    inheritId:
+      name: inheritId
+      in: query
+      required: false
+      schema:
+        type: boolean
     levels:
       name: levels
       in: query
@@ -631,6 +656,13 @@ components:
       explode: false
     zoneId:
       name: zoneId
+      in: path
+      required: true
+      schema:
+        type: string
+        example: Q3
+    zonalId:
+      name: zonalId
       in: query
       required: true
       schema:
