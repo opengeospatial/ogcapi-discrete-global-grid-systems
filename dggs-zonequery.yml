@@ -145,6 +145,25 @@ paths:
           $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
 
   # Start ZoneQuery <<set>> operations
+  /collections/{collectionId}/zone/{zoneId}/buffer:
+    get:
+      tags:
+        - DGGS access
+      summary: Get the list of zones children of a given zone (should it return just a list of identifiers instead of a GeoJSON collection?)
+      parameters:
+        - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/distance'
+        - $ref: '#/components/parameters/projectTo'
+      responses:
+        '200':
+          $ref: '#/components/responses/ZoneList'
+        '406':
+          $ref: '#/components/responses/NotSupported'
+        '500':
+          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
+
+  # Start ZoneQuery <<set>> operations
   /collections/{collectionId}/zone/{zoneId}/child:
     get:
       tags:
@@ -494,59 +513,59 @@ components:
           example:
             - type: FeatureCollection
               features:
-              - type: Feature
-                id: 'P4'
-                geometry:
-                  type: Polygon
-                  coordinates:
-                    - ...
-                properties:
-                  resolution: 0
-                  center:
-                    type: Point
-                    coordinates: [0, 0]
-              - type: Feature
-                id: 'Q4'
-                geometry:
-                  type: Polygon
-                  coordinates:
-                    - ...
-                properties:
-                  resolution: 0
-                  center:
-                    type: Point
-                    coordinates: [0, 0]
+                - type: Feature
+                  id: 'P4'
+                  geometry:
+                    type: Polygon
+                    coordinates:
+                      - ...
+                  properties:
+                    resolution: 0
+                    center:
+                      type: Point
+                      coordinates: [0, 0]
+                - type: Feature
+                  id: 'Q4'
+                  geometry:
+                    type: Polygon
+                    coordinates:
+                      - ...
+                  properties:
+                    resolution: 0
+                    center:
+                      type: Point
+                      coordinates: [0, 0]
         application/dggs+json:
           schema:
             $ref: '#/components/schemas/zoneCollectionDGGSJSON'
           example:
             - type: FeatureCollection
               features:
-              - type: Feature
-                id: 'P4'
-                geometry: [ 'P4' ]
-                properties: null
-              - type: Feature
-                id: 'Q4'
-                geometry: ['Q4']
-                properties:
-                  myAttribute: 3
-                  otherAttribute: "abc"
-              - type: Feature
-                id: 'myFeature.1'
-                geometry: ['Q4', 'P4', 'P32']
-                properties:
-                  myAttribute: 3
-                  otherAttribute: "abc"
+                - type: Feature
+                  id: 'P4'
+                  geometry: [ 'P4' ]
+                  properties: null
+                - type: Feature
+                  id: 'Q4'
+                  geometry: ['Q4']
+                  properties:
+                    myAttribute: 3
+                    otherAttribute: "abc"
+                - type: Feature
+                  id: 'myFeature.1'
+                  geometry: ['Q4', 'P4', 'P32']
+                  properties:
+                    myAttribute: 3
+                    otherAttribute: "abc"
         application/zoneids+json:
           schema:
             $ref: '#/components/schemas/zoneList'
           example:
             - zones:
-               - O
-               - P
-               - Q
-               - R
+                - O
+                - P
+                - Q
+                - R
               links:
                 - href: 'http://data.example.org/dggs/rHeadPix/zones?bbox=-20,-40,20,40&startIndex=1000'
                   rel: next
@@ -704,6 +723,12 @@ components:
       required: false
       schema:
         type: integer
+    distance:
+      name: distance
+      in: query
+      required: false
+      schema:
+        type: number
     matrix:
       name: matrix
       in: query
