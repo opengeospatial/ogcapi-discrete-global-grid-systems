@@ -704,6 +704,28 @@ components:
       required: false
       schema:
         type: integer
+    matrix:
+      name: matrix
+      in: query
+      required: false
+      schema:
+        type: array
+        minItems: 9
+        maxItems: 9
+        items:
+          type: string
+      style: form
+    projectTo:
+      name: projectTo
+      in: query
+      required: false
+      schema:
+        type: array
+        minItems: 4
+        maxItems: 4
+        items:
+          type: string
+      style: form
     rangeRefine:
       name: rangeRefine
       in: query
@@ -716,6 +738,12 @@ components:
           type: integer
       style: form
       explode: false
+    relate:
+      name: relate
+      in: query
+      required: false
+      schema:
+        type: RelativePosition
 
 servers:
   # Added by API Auto Mocking Plugin
