@@ -169,16 +169,52 @@ paths:
     get:
       tags:
         - DGGS access
-      summary: Get the list of zones children of a given zone (should it return just a list of identifiers instead of a GeoJSON collection?)
+      summary: Determine if the another: ZonalID is a childOf the input ZonaID
       parameters:
         - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
         - $ref: '#/components/parameters/zoneId'
         - $ref: '#/components/parameters/another'
         - $ref: '#/components/parameters/inheritId'
-        # - $ref: '#/components/parameters/projectTo'
+        - $ref: '#/components/parameters/projectTo'
       responses:
         '200':
-          $ref: '#/components/responses/ZoneList'
+          $ref: '#/components/responses/Boolean'
+        '406':
+          $ref: '#/components/responses/NotSupported'
+        '500':
+          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
+  /collections/{collectionId}/zone/{zoneId}/parentOf:
+    get:
+      tags:
+        - DGGS access
+      summary: Determine if the another: ZonalID is a parentOf the input ZonaID
+      parameters:
+        - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/another'
+        - $ref: '#/components/parameters/inheritId'
+        - $ref: '#/components/parameters/projectTo'
+      responses:
+        '200':
+          $ref: '#/components/responses/Boolean'
+        '406':
+          $ref: '#/components/responses/NotSupported'
+        '500':
+          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
+  /collections/{collectionId}/zone/{zoneId}/siblingOf:
+    get:
+      tags:
+        - DGGS access
+      summary: Determine if the another: ZonalID is a siblingOf the input ZonaID
+      parameters:
+        - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/another'
+        - $ref: '#/components/parameters/inheritId'
+        - $ref: '#/components/parameters/projectTo'
+      responses:
+        '200':
+          $ref: '#/components/responses/Boolean'
         '406':
           $ref: '#/components/responses/NotSupported'
         '500':
