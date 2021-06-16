@@ -144,8 +144,7 @@ paths:
         '500':
           $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
 
-# Start ZoneQuery <<set>> operations
-
+  # Start ZoneQuery <<set>> operations
   /collections/{collectionId}/zone/{zoneId}/child:
     get:
       tags:
@@ -165,8 +164,7 @@ paths:
         '500':
           $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'            
 
-# Start ZoneQuery <<query>> operations
-
+  # Start ZoneQuery <<query>> operations
   /collections/{collectionId}/zone/{zoneId}/childOf:
     get:
       tags:
@@ -186,9 +184,7 @@ paths:
         '500':
           $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'            
           
-
-# Start ZoneQuery <<reference>> operations
-
+  # Start ZoneQuery <<reference>> operations
 
 components:
   schemas:
@@ -595,8 +591,7 @@ components:
 
   parameters:
 
-# Start parameters in path ordered alphabetically
-
+    # Start parameters in path ordered alphabetically
     zoneId:
       name: zoneId
       in: path
@@ -605,8 +600,7 @@ components:
         type: string
         example: Q3
 
-# Start zone parameters in query ordered alphabetically
-
+    # Start zone parameters in query ordered alphabetically
     bbox:
       name: bbox
       in: query
@@ -680,8 +674,7 @@ components:
         items:
           type: string
 
-# Start ZoneQuery parameters in query ordered alphabetically
-
+    # Start ZoneQuery parameters in query ordered alphabetically
     another:
       name: zonalId
       in: query
@@ -714,8 +707,7 @@ components:
       style: form
       explode: false
 
-
 servers:
   # Added by API Auto Mocking Plugin
   - description: SwaggerHub API Auto Mocking
-    url: https://virtserver.swaggerhub.com/rggibb/dggs-zonequery/0.0.1
+    url: https://virtserver.swaggerhub.com/rggibb/dggs-zonequery/0.0.4
