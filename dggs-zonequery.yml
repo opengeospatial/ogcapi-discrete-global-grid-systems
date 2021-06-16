@@ -5,41 +5,41 @@ info:
     WARNING - This is work-in-progress.
 
     The API is an evolution of https://app.swaggerhub.com/apis/aaime-sh/dggs-process/0.0.3#/DGGS%20access.
-    
+
     Basic ideas:
     * The same API elements are used for a DGGS-RS service and a DGGS-Data service
-    * In the case of a DGGS-RS service, the collections are the DGGS instances themselves, 
+    * In the case of a DGGS-RS service, the collections are the DGGS instances themselves,
       and the returned features have no properties other than the geometry and resolution
       (e.g., in GeoJSON the properties object will be ``null``)
     * In the case of a DGGS-Data service, the collections are the sample DGGS data (hence, made available in a particular DGGS instance, too), and the returned features have
       actual values associated in the ``properties`` object.
-      
+
     To care for different use cases, three different output formats will be implemented
     for each endpoint returning cells:
-    * A classic GeoJSON output, with geometry being either the boundary or the center 
+    * A classic GeoJSON output, with geometry being either the boundary or the center
       point of the zone (to be controlled with a request parameter), for usage in classic
-      GIS tools. The longitudes ill eventually be extended outside of the -180,180 
+      GIS tools. The longitudes ill eventually be extended outside of the -180,180
       range to allow visualization by tools that cannot deal properly with dateline crossing.
-    * A DGGSJSON output, small variation of the classic GeoJSON where the geometry is 
+    * A DGGSJSON output, small variation of the classic GeoJSON where the geometry is
       replaced by an array of zone-ids, to be used in both zone oriented and feature oriented
       API (e.g., the)
     * A plain array of DGGS zone ids, for cases where the attributes are not needed and data transfer compactness is paramount.
-    
+
     Questions, discussion topics:
-    * Support for multiple DDGSs, we are using rHealPix and H3, to offer the 
+    * Support for multiple DDGSs, we are using rHealPix and H3, to offer the
       clients and DGGS data server at least a DGGS they are not already supporting natively
     * Is the API going to be sufficiently self describing that the clients
       can figure out everything it needs by just walking the API, or will it need specific knowledge contained in an API profile (e.g, a profile for rHeadlPix, one for H3, cosider for example zoneId and how to determine them)
     * For parametric DDGSs (e.g., rHealPix) do we expose a specific instance as its own DGGS, or somehow expose the full parameters of the DGGS in each resource?
     * This API follows a process API, where most resources are a process and one needs to know valid values to hit them
-      
+
 
     CHANGES
     * 2020-07-02 initial version
     * 2020-07-23 usage of zones instead of cells everywhere, extending to support also data DGGS servers.
     * 2021-06-15 addition of definitions for ZoneQuery operations
   contact:
-    # name: Andrea Aime 
+    # name: Andrea Aime
     # email: andrea.aime@geo-solutions.it
     name: Robert Gibb
     email: gibbr@landcareresearch.co.nz
@@ -94,13 +94,13 @@ paths:
           $ref: '#/components/responses/NotSupported'
         '500':
           $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
-          
+
   /collections/{collectionId}/describe:
     get:
       tags:
         - DGGS access
       summary: Describes a particular DGGS
-      parameters: 
+      parameters:
         - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
       responses:
         '200':
@@ -109,13 +109,13 @@ paths:
           $ref: '#/components/responses/NotSupported'
         '500':
           $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
-  
+
   /collections/{collectionId}/zones:
     get:
       tags:
         - DGGS access
-      summary: Access the list of zones in a given DGGS. Can list either all the zones, or a particular subset based on resolution, WGS84 bbox, or list of containing zones (e.g., polygon defined in DGGS terms) 
-      parameters: 
+      summary: Access the list of zones in a given DGGS. Can list either all the zones, or a particular subset based on resolution, WGS84 bbox, or list of containing zones (e.g., polygon defined in DGGS terms)
+      parameters:
         - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
         - $ref: '#/components/parameters/resolution'
         - $ref: '#/components/parameters/bbox'
@@ -127,14 +127,14 @@ paths:
         '406':
           $ref: '#/components/responses/NotSupported'
         '500':
-          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'        
-  
+          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
+
   /collections/{collectionId}/zone:
     get:
       tags:
         - DGGS access
       summary: Access the definition of a particular zone
-      parameters: 
+      parameters:
         - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
       responses:
         '200':
@@ -150,7 +150,7 @@ paths:
       tags:
         - DGGS access
       summary: Get the list of zones children of a given zone (should it return just a list of identifiers instead of a GeoJSON collection?)
-      parameters: 
+      parameters:
         - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
         - $ref: '#/components/parameters/zoneId'
         - $ref: '#/components/parameters/inheritId'
@@ -162,7 +162,7 @@ paths:
         '406':
           $ref: '#/components/responses/NotSupported'
         '500':
-          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'            
+          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
 
   # Start ZoneQuery <<query>> operations
   /collections/{collectionId}/zone/{zoneId}/childOf:
@@ -170,7 +170,7 @@ paths:
       tags:
         - DGGS access
       summary: Get the list of zones children of a given zone (should it return just a list of identifiers instead of a GeoJSON collection?)
-      parameters: 
+      parameters:
         - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
         - $ref: '#/components/parameters/zoneId'
         - $ref: '#/components/parameters/another'
@@ -182,8 +182,8 @@ paths:
         '406':
           $ref: '#/components/responses/NotSupported'
         '500':
-          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'            
-          
+          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
+
   # Start ZoneQuery <<reference>> operations
 
 components:
@@ -241,7 +241,7 @@ components:
             type: string
     zoneGeoJSON:
       allOf:
-        - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/schemas/featureGeoJSON'  
+        - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/schemas/featureGeoJSON'
         - type: object
           required:
             - resolution
@@ -251,7 +251,7 @@ components:
     DGGSJSON:
       type: object
       required:
-        - id 
+        - id
         - type
         - geometry
         - properties
@@ -267,7 +267,7 @@ components:
         geometry:
           description: The geometry of the feature, as a list of DGGS zone ids
           type: array
-          items: 
+          items:
             type: string
         properties:
           type: object
@@ -422,7 +422,7 @@ components:
             resolutions: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
             links:
               - href: 'https://iopscience.iop.org/article/10.1088/1755-1315/34/1/012012/pdf'
-                rel: describedBy 
+                rel: describedBy
                 type: application/PDF
                 title: The rHealPix DGGS specification
         text/html:
@@ -460,19 +460,19 @@ components:
                 resolutions: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
                 links:
                   - href: 'https://iopscience.iop.org/article/10.1088/1755-1315/34/1/012012/pdf'
-                    rel: describedBy 
+                    rel: describedBy
                     type: application/PDF
                     title: The rHealPix DGGS specification
                   - href: 'http://data.example.org/dggs/rHealPix/zones'
                     rel: zones
                     type: appplication/json
               - id: H3
-                title: H3 
+                title: H3
                 description: The H3 DGGS
                 resolutions: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
                 links:
                   - href: 'https://eng.uber.com/h3/'
-                    rel: describedBy 
+                    rel: describedBy
                     type: text/html
                     title: The H3 specification
                   - href: 'http://data.example.org/dggs/H3/zones'
@@ -485,7 +485,7 @@ components:
       description: |-
         A list of DGGS zones.
 
-        The response contains a list of DGGS zones. The response can be a GeoJSON payload with full boundaries, for traditional clients, or 
+        The response contains a list of DGGS zones. The response can be a GeoJSON payload with full boundaries, for traditional clients, or
         a simple list of zone ids, for DGGS aware clients
       content:
         application/geo+json:
@@ -542,7 +542,7 @@ components:
           schema:
             $ref: '#/components/schemas/zoneList'
           example:
-            - zones: 
+            - zones:
                - O
                - P
                - Q
@@ -682,6 +682,16 @@ components:
       schema:
         type: string
         example: Q3
+    dist:
+      name: dist
+      in: query
+      required: false
+      schema:
+        type: array
+        minItems: 1
+        maxItems: 2
+        items:
+          type: string
     inheritId:
       name: inheritId
       in: query
