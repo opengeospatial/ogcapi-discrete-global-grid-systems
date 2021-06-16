@@ -685,6 +685,8 @@ components:
     dist:
       name: dist
       in: query
+      description: |-
+          a distance measure with units
       required: false
       schema:
         type: array
