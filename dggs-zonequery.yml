@@ -706,6 +706,12 @@ components:
           type: integer
       style: form
       explode: false
+    relate:
+      name: relate
+      in: query
+      required: false
+      schema:
+        type: RelativePosition
 
 servers:
   # Added by API Auto Mocking Plugin
