@@ -733,8 +733,27 @@ components:
       in: query
       required: false
       schema:
-        type: RelativePosition
-
+        type: array 
+        uniqueItems: true 
+        items: 
+          type: string 
+          enum: 
+            - Before 
+            - After 
+            - Meets
+            - MetBy
+            - Overlaps
+            - OverlappedBy
+            - Starts
+            - StartedBy
+            - During
+            - Contains
+            - Finishes
+            - FinishedBy
+            - Equals
+            - In
+            - Disjoint
+            
 servers:
   # Added by API Auto Mocking Plugin
   - description: SwaggerHub API Auto Mocking
