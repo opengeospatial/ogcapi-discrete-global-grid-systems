@@ -222,11 +222,192 @@ paths:
           $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
 
   # Start ZoneQuery <<query>> operations
+  /collections/{collectionId}/zone/{zoneId}/relativePosition:
+    get:
+      tags:
+        - ZoneQuery <<query>>
+      summary: Determine the relativePosition of another ZonalID to the current ZoneId 
+      parameters:
+        - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/another'
+        - $ref: '#/components/parameters/projectTo'
+      responses:
+        '200':
+          $ref: '#/components/responses/RelativePosition'
+        '406':
+          $ref: '#/components/responses/NotSupported'
+        '500':
+          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
+
+  /collections/{collectionId}/zone/{zoneId}/contains:
+    get:
+      tags:
+        - ZoneQuery <<query>>
+      summary: Test if the current ZoneId contains another ZonalID
+      parameters:
+        - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/another'
+        - $ref: '#/components/parameters/projectTo'
+      responses:
+        '200':
+          $ref: '#/components/responses/BooleanResponse'
+        '406':
+          $ref: '#/components/responses/NotSupported'
+        '500':
+          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
+
+  /collections/{collectionId}/zone/{zoneId}/crosses:
+    get:
+      tags:
+        - ZoneQuery <<query>>
+      summary: Test if the current ZoneId crosses another ZonalID
+      parameters:
+        - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/another'
+        - $ref: '#/components/parameters/projectTo'
+      responses:
+        '200':
+          $ref: '#/components/responses/BooleanResponse'
+        '406':
+          $ref: '#/components/responses/NotSupported'
+        '500':
+          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
+
+  /collections/{collectionId}/zone/{zoneId}/disjoint:
+    get:
+      tags:
+        - ZoneQuery <<query>>
+      summary: Test if the current ZoneId is disjoint another ZonalID
+      parameters:
+        - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/another'
+        - $ref: '#/components/parameters/projectTo'
+      responses:
+        '200':
+          $ref: '#/components/responses/BooleanResponse'
+        '406':
+          $ref: '#/components/responses/NotSupported'
+        '500':
+          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
+
+  /collections/{collectionId}/zone/{zoneId}/equals:
+    get:
+      tags:
+        - ZoneQuery <<query>>
+      summary: Test if the current ZoneId equals another ZonalID
+      parameters:
+        - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/another'
+        - $ref: '#/components/parameters/projectTo'
+      responses:
+        '200':
+          $ref: '#/components/responses/BooleanResponse'
+        '406':
+          $ref: '#/components/responses/NotSupported'
+        '500':
+          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
+
+  /collections/{collectionId}/zone/{zoneId}/intersects:
+    get:
+      tags:
+        - ZoneQuery <<query>>
+      summary: Test if the current ZoneId intersects another ZonalID
+      parameters:
+        - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/another'
+        - $ref: '#/components/parameters/projectTo'
+      responses:
+        '200':
+          $ref: '#/components/responses/BooleanResponse'
+        '406':
+          $ref: '#/components/responses/NotSupported'
+        '500':
+          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
+
+  /collections/{collectionId}/zone/{zoneId}/overlaps:
+    get:
+      tags:
+        - ZoneQuery <<query>>
+      summary: Test if the current ZoneId overlaps another ZonalID
+      parameters:
+        - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/another'
+        - $ref: '#/components/parameters/projectTo'
+      responses:
+        '200':
+          $ref: '#/components/responses/BooleanResponse'
+        '406':
+          $ref: '#/components/responses/NotSupported'
+        '500':
+          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
+
+  /collections/{collectionId}/zone/{zoneId}/touches:
+    get:
+      tags:
+        - ZoneQuery <<query>>
+      summary: Test if the current ZoneId touches another ZonalID
+      parameters:
+        - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/another'
+        - $ref: '#/components/parameters/projectTo'
+      responses:
+        '200':
+          $ref: '#/components/responses/BooleanResponse'
+        '406':
+          $ref: '#/components/responses/NotSupported'
+        '500':
+          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
+
+  /collections/{collectionId}/zone/{zoneId}/within:
+    get:
+      tags:
+        - ZoneQuery <<query>>
+      summary: Test if the current ZoneId within another ZonalID
+      parameters:
+        - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/another'
+        - $ref: '#/components/parameters/projectTo'
+      responses:
+        '200':
+          $ref: '#/components/responses/BooleanResponse'
+        '406':
+          $ref: '#/components/responses/NotSupported'
+        '500':
+          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
+
+  /collections/{collectionId}/zone/{zoneId}/withinDistance:
+    get:
+      tags:
+        - ZoneQuery <<query>>
+      summary: Test if the current ZoneId is withinDistance another ZonalID
+      parameters:
+        - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/another'
+        - $ref: '#/components/parameters/dist'
+        - $ref: '#/components/parameters/projectTo'
+      responses:
+        '200':
+          $ref: '#/components/responses/BooleanResponse'
+        '406':
+          $ref: '#/components/responses/NotSupported'
+        '500':
+          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
+
   /collections/{collectionId}/zone/{zoneId}/childOf:
     get:
       tags:
-        - DGGS access
-      summary: Determine if the another ZonalID is a childOf the input ZonaID
+        - ZoneQuery <<query>>
+      summary: Test if the current ZoneId is childOf another ZonalID
       parameters:
         - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
         - $ref: '#/components/parameters/zoneId'
@@ -240,11 +421,12 @@ paths:
           $ref: '#/components/responses/NotSupported'
         '500':
           $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
+          
   /collections/{collectionId}/zone/{zoneId}/parentOf:
     get:
       tags:
-        - DGGS access
-      summary: Determine if the another ZonalID is a parentOf the input ZonaID
+        - ZoneQuery <<query>>
+      summary: Test if the current ZoneId is parentOf another ZonalID
       parameters:
         - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
         - $ref: '#/components/parameters/zoneId'
@@ -258,11 +440,12 @@ paths:
           $ref: '#/components/responses/NotSupported'
         '500':
           $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
+          
   /collections/{collectionId}/zone/{zoneId}/siblingOf:
     get:
       tags:
-        - DGGS access
-      summary: Determine if the another ZonalID is a siblingOf the input ZonaID
+        - ZoneQuery <<query>>
+      summary: Test if the current ZoneId is siblingOf another ZonalID
       parameters:
         - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
         - $ref: '#/components/parameters/zoneId'
@@ -278,40 +461,6 @@ paths:
           $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
 
   # Start ZoneQuery <<reference>> operations
-  /collections/{collectionId}/zone/{zoneId}/intersects:
-    get:
-      tags:
-        - DGGS access
-      summary: Determine if the another ZonalID intersects with the ZonaID
-      parameters:
-        - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
-        - $ref: '#/components/parameters/zoneId'
-        - $ref: '#/components/parameters/another'
-        - $ref: '#/components/parameters/projectTo'
-      responses:
-        '200':
-          $ref: '#/components/responses/BooleanResponse'
-        '406':
-          $ref: '#/components/responses/NotSupported'
-        '500':
-          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
-  /collections/{collectionId}/zone/{zoneId}/overlaps:
-    get:
-      tags:
-        - DGGS access
-      summary: Determine if the another ZonalID overlaps with the ZonaID
-      parameters:
-        - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
-        - $ref: '#/components/parameters/zoneId'
-        - $ref: '#/components/parameters/another'
-        - $ref: '#/components/parameters/projectTo'
-      responses:
-        '200':
-          $ref: '#/components/responses/BooleanResponse'
-        '406':
-          $ref: '#/components/responses/NotSupported'
-        '500':
-          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
 
 components:
   schemas:
@@ -352,6 +501,7 @@ components:
             - href: http://example.com/concepts/buildings.html
               rel: describedBy
               type: text/html
+              
     collection-list:
       type: object
       required:
@@ -366,6 +516,7 @@ components:
           type: array
           items:
             type: string
+            
     zoneGeoJSON:
       allOf:
         - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/schemas/featureGeoJSON'
@@ -375,6 +526,7 @@ components:
           properties:
             resolution:
               type: number
+              
     DGGSJSON:
       type: object
       required:
@@ -403,6 +555,7 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/link"
+            
     zoneCollectionGeoJSON:
       type: object
       required:
@@ -427,6 +580,7 @@ components:
           $ref: "#/components/schemas/numberMatched"
         numberReturned:
           $ref: "#/components/schemas/numberReturned"
+          
     zoneCollectionDGGSJSON:
       type: object
       required:
@@ -451,6 +605,7 @@ components:
           $ref: "#/components/schemas/numberMatched"
         numberReturned:
           $ref: "#/components/schemas/numberReturned"
+          
     zoneList:
       type: object
       required:
@@ -471,6 +626,7 @@ components:
           $ref: "#/components/schemas/numberMatched"
         numberReturned:
           $ref: "#/components/schemas/numberReturned"
+          
     link:
       type: object
       required:
@@ -493,11 +649,13 @@ components:
           example: Trierer Strasse 70, 53115 Bonn
         length:
           type: integer
+          
     timeStamp:
       description: This property indicates the time and date when the response was generated.
       type: string
       format: date-time
       example: '2017-08-17T08:05:32Z'
+      
     numberMatched:
       description: |-
         The number of features of the feature type that match the selection
@@ -505,6 +663,7 @@ components:
       type: integer
       minimum: 0
       example: 127
+      
     numberReturned:
       description: |-
         The number of features in the feature collection.
@@ -517,9 +676,10 @@ components:
       type: integer
       minimum: 0
       example: 10
-    RelativePosition:
+      
+    relativePosition:
       description: |-
-        a RelativePosition enumeration as defined in W3C/OGC 16-071r3 as one of
+        a RelativePosition enumeration as defined in W3C/OGC 16-071r3
       type: array
       uniqueItems: true
       items:
@@ -551,6 +711,7 @@ components:
         text/html:
           schema:
             type: string
+            
     DGGSDescription:
       description: |-
         Describes a particular DGGS
@@ -578,6 +739,7 @@ components:
         text/html:
           schema:
             type: string
+            
     DGGSList:
       description: |-
         The list of DGGS available and link to the processes
@@ -631,6 +793,17 @@ components:
         text/html:
           schema:
             type: string
+
+    RelativePosition:
+      description: |-
+        The relativePosition of one ZoneId to another in a projectTo dimension
+
+        The response contains a member of the relativePosition enumerated schema.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/relativePosition'
+
     ZoneList:
       description: |-
         A list of DGGS zones.
@@ -705,6 +878,7 @@ components:
         text/html:
           schema:
             type: string
+            
     Zone:
       description: |-
         A single DGGS zone
@@ -738,6 +912,7 @@ components:
         text/html:
           schema:
             type: string
+            
     BooleanResponse:
       description: |-
         A single boolean type response
@@ -752,7 +927,6 @@ components:
             type: boolean
 
   parameters:
-
     # Start parameters in path ordered alphabetically
     zoneId:
       name: zoneId
@@ -802,6 +976,7 @@ components:
           type: number
       style: form
       explode: false
+      
     limit:
       name: limit
       in: query
@@ -819,12 +994,14 @@ components:
         maximum: 10000
         default: 10
       style: form
+      
     resolution:
       name: resolution
       in: query
       required: true
       schema:
         type: number
+        
     zoneIdList:
       name: zoneIdList
       in: query
@@ -844,6 +1021,7 @@ components:
       schema:
         type: string
         example: Q3
+        
     dist:
       name: dist
       in: query
@@ -854,24 +1032,28 @@ components:
         maxItems: 2
         items:
           type: string
+          
     inheritId:
       name: inheritId
       in: query
       required: false
       schema:
         type: boolean
+        
     levels:
       name: levels
       in: query
       required: false
       schema:
         type: integer
+        
     distance:
       name: distance
       in: query
       required: false
       schema:
         type: number
+        
     matrix:
       name: matrix
       in: query
@@ -883,6 +1065,7 @@ components:
         items:
           type: string
       style: form
+      
     projectTo:
       name: projectTo
       in: query
@@ -894,6 +1077,7 @@ components:
         items:
           type: string
       style: form
+      
     rangeRefine:
       name: rangeRefine
       in: query
@@ -906,12 +1090,13 @@ components:
           type: integer
       style: form
       explode: false
+      
     relate:
       name: relate
       in: query
       required: false
       schema:
-        $ref: '#/components/schemas/RelativePosition'
+        $ref: '#/components/schemas/relativePosition'
 
 servers:
   # Added by API Auto Mocking Plugin
