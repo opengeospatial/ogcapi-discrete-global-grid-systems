@@ -144,6 +144,25 @@ paths:
         '500':
           $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
 
+  # Start ZoneQuery operations
+  /collections/{collectionId}/zone/{zoneId}/distance:
+    get:
+      tags:
+        - ZoneQuery ops
+      summary: Test if the current ZoneId is withinDistance another ZonalID
+      parameters:
+        - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/another'
+        - $ref: '#/components/parameters/projectTo'
+      responses:
+        '200':
+          $ref: '#/components/responses/Distance'
+        '406':
+          $ref: '#/components/responses/NotSupported'
+        '500':
+          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
+
   # Start ZoneQuery <<set>> operations
   /collections/{collectionId}/zone/{zoneId}/buffer:
     get:
@@ -537,19 +556,39 @@ paths:
           $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
 
   # Start ZoneQuery <<reference>> operations
-  /collections/{collectionId}/zone/{zoneId}/distance:
+  /collections/{collectionId}/zone/{zoneId}/relate:
     get:
       tags:
-        - ZoneQuery <<query>>
-      summary: Test if the current ZoneId is withinDistance another ZonalID
+        - ZoneQuery <<reference>>
+      summary: Test if the current ZoneId satisfies relate matrix another ZonalID
       parameters:
         - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
         - $ref: '#/components/parameters/zoneId'
         - $ref: '#/components/parameters/another'
+        - $ref: '#/components/parameters/matrix'
         - $ref: '#/components/parameters/projectTo'
       responses:
         '200':
-          $ref: '#/components/responses/Distance'
+          $ref: '#/components/responses/BooleanResponse'
+        '406':
+          $ref: '#/components/responses/NotSupported'
+        '500':
+          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
+
+  /collections/{collectionId}/zone/{zoneId}/relatePosition:
+    get:
+      tags:
+        - ZoneQuery <<reference>>
+      summary: Test if the current ZoneId satisfies relatePosition relativePosition another ZonalID
+      parameters:
+        - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/another'
+        - $ref: '#/components/parameters/relate'
+        - $ref: '#/components/parameters/projectTo'
+      responses:
+        '200':
+          $ref: '#/components/responses/BooleanResponse'
         '406':
           $ref: '#/components/responses/NotSupported'
         '500':
@@ -774,7 +813,7 @@ components:
     distance:
       description: |-
         A spatial OR (inclusive) a temporal distance each with their respective uom.
-      type:
+      type: array
       minItems: 1
       maxItems: 2
       items:
@@ -898,13 +937,14 @@ components:
             type: string
 
     Distance:
-       description: |-
+      description: |-
         The Distance of one ZoneId to another in a projectTo dimension
 
         The response contains a spatial and a temporal distance with their respective uom.
       content:
         application/json:
-          $ref: '#/components/schemas/distance'
+          schema:
+            $ref: '#/components/schemas/distance'
           
     RelativePosition:
       description: |-
