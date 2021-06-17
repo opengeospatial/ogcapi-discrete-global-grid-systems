@@ -149,11 +149,12 @@ paths:
     get:
       tags:
         - ZoneQuery <<set>>
-      summary: Get the list of zones children of a given zone (should it return just a list of identifiers instead of a GeoJSON collection?)
+      summary: Get the list of zonalId that are within a buffer of dist from the given zoneId
       parameters:
         - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
         - $ref: '#/components/parameters/zoneId'
-        - $ref: '#/components/parameters/distance'
+        - $ref: '#/components/parameters/dist'
+        - $ref: '#/components/parameters/rangeRefine'
         - $ref: '#/components/parameters/projectTo'
       responses:
         '200':
@@ -163,6 +164,81 @@ paths:
         '500':
           $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
 
+  /collections/{collectionId}/zone/{zoneId}/difference:
+    get:
+      tags:
+        - ZoneQuery <<set>>
+      summary: Get the list of zonalID that are the result of zoneId.difference(another)
+      parameters:
+        - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/another'
+        - $ref: '#/components/parameters/rangeRefine'
+        - $ref: '#/components/parameters/projectTo'
+      responses:
+        '200':
+          $ref: '#/components/responses/ZoneList'
+        '406':
+          $ref: '#/components/responses/NotSupported'
+        '500':
+          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
+
+  /collections/{collectionId}/zone/{zoneId}/intersection:
+    get:
+      tags:
+        - ZoneQuery <<set>>
+      summary: Get the list of zonalID that are the result of zoneId.intersection(another)
+      parameters:
+        - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/another'
+        - $ref: '#/components/parameters/rangeRefine'
+        - $ref: '#/components/parameters/projectTo'
+      responses:
+        '200':
+          $ref: '#/components/responses/ZoneList'
+        '406':
+          $ref: '#/components/responses/NotSupported'
+        '500':
+          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
+
+  /collections/{collectionId}/zone/{zoneId}/symDifference:
+    get:
+      tags:
+        - ZoneQuery <<set>>
+      summary: Get the list of zonalID that are the result of zoneId.symDifference(another)
+      parameters:
+        - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/another'
+        - $ref: '#/components/parameters/rangeRefine'
+        - $ref: '#/components/parameters/projectTo'
+      responses:
+        '200':
+          $ref: '#/components/responses/ZoneList'
+        '406':
+          $ref: '#/components/responses/NotSupported'
+        '500':
+          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
+
+  /collections/{collectionId}/zone/{zoneId}/union:
+    get:
+      tags:
+        - ZoneQuery <<set>>
+      summary: Get the list of zonalID that are the result of zoneId.union(another)
+      parameters:
+        - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/another'
+        - $ref: '#/components/parameters/rangeRefine'
+        - $ref: '#/components/parameters/projectTo'
+      responses:
+        '200':
+          $ref: '#/components/responses/ZoneList'
+        '406':
+          $ref: '#/components/responses/NotSupported'
+        '500':
+          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
 
   /collections/{collectionId}/zone/{zoneId}/child:
     get:
@@ -1046,13 +1122,6 @@ components:
       required: false
       schema:
         type: integer
-        
-    distance:
-      name: distance
-      in: query
-      required: false
-      schema:
-        type: number
         
     matrix:
       name: matrix
