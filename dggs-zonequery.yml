@@ -1242,4 +1242,4 @@ components:
 servers:
   # Added by API Auto Mocking Plugin
   - description: SwaggerHub API Auto Mocking
-    url: https://virtserver.swaggerhub.com/rggibb/dggs-zonequery/0.0.4
+    url: https://virtserver.swaggerhub.com/rggibb/dggs-zonequery/0.0.5
