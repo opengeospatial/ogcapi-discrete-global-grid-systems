@@ -13,7 +13,7 @@
 :fullname: Dr. Matthew Brian John Purss
 :fullname_2: Editor Two
 :docsubtype: Interface
-:keywords: ogcdoc, OGC document, API, openapi, html
+:keywords: ogcdoc, OGC document, API, openapi, html, ogcapi
 :submitting-organizations: Pangaea Innovations Pty. Ltd.; Organization Two; Organization Three; Organization Four;
 :docfile: document.adoc
 :mn-document-class: ogc
