@@ -148,7 +148,7 @@ paths:
   /collections/{collectionId}/zone/{zoneId}/buffer:
     get:
       tags:
-        - DGGS access
+        - ZoneQuery <<set>>
       summary: Get the list of zones children of a given zone (should it return just a list of identifiers instead of a GeoJSON collection?)
       parameters:
         - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
@@ -163,18 +163,56 @@ paths:
         '500':
           $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
 
-  # Start ZoneQuery <<set>> operations
+
   /collections/{collectionId}/zone/{zoneId}/child:
     get:
       tags:
-        - DGGS access
-      summary: Get the list of zones children of a given zone (should it return just a list of identifiers instead of a GeoJSON collection?)
+        - ZoneQuery <<set>>
+      summary: Get the list of zones children of a given zone
       parameters:
         - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
         - $ref: '#/components/parameters/zoneId'
         - $ref: '#/components/parameters/inheritId'
         - $ref: '#/components/parameters/levels'
-        # - $ref: '#/components/parameters/projectTo'
+        - $ref: '#/components/parameters/projectTo'
+      responses:
+        '200':
+          $ref: '#/components/responses/ZoneList'
+        '406':
+          $ref: '#/components/responses/NotSupported'
+        '500':
+          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
+
+  /collections/{collectionId}/zone/{zoneId}/parent:
+    get:
+      tags:
+        - ZoneQuery <<set>>
+      summary: Get the list of zones parents of a given zone
+      parameters:
+        - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/inheritId'
+        - $ref: '#/components/parameters/levels'
+        - $ref: '#/components/parameters/projectTo'
+      responses:
+        '200':
+          $ref: '#/components/responses/ZoneList'
+        '406':
+          $ref: '#/components/responses/NotSupported'
+        '500':
+          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
+
+  /collections/{collectionId}/zone/{zoneId}/sibling:
+    get:
+      tags:
+        - ZoneQuery <<set>>
+      summary: Get the list of zones siblings of a given zone
+      parameters:
+        - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/inheritId'
+        - $ref: '#/components/parameters/levels'
+        - $ref: '#/components/parameters/projectTo'
       responses:
         '200':
           $ref: '#/components/responses/ZoneList'
