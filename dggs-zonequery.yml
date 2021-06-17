@@ -188,7 +188,7 @@ paths:
     get:
       tags:
         - DGGS access
-      summary: Determine if the another: ZonalID is a childOf the input ZonaID
+      summary: Determine if the another ZonalID is a childOf the input ZonaID
       parameters:
         - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
         - $ref: '#/components/parameters/zoneId'
@@ -197,7 +197,7 @@ paths:
         - $ref: '#/components/parameters/projectTo'
       responses:
         '200':
-          $ref: '#/components/responses/Boolean'
+          $ref: '#/components/responses/BooleanResponse'
         '406':
           $ref: '#/components/responses/NotSupported'
         '500':
@@ -206,7 +206,7 @@ paths:
     get:
       tags:
         - DGGS access
-      summary: Determine if the another: ZonalID is a parentOf the input ZonaID
+      summary: Determine if the another ZonalID is a parentOf the input ZonaID
       parameters:
         - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
         - $ref: '#/components/parameters/zoneId'
@@ -215,7 +215,7 @@ paths:
         - $ref: '#/components/parameters/projectTo'
       responses:
         '200':
-          $ref: '#/components/responses/Boolean'
+          $ref: '#/components/responses/BooleanResponse'
         '406':
           $ref: '#/components/responses/NotSupported'
         '500':
@@ -224,7 +224,7 @@ paths:
     get:
       tags:
         - DGGS access
-      summary: Determine if the another: ZonalID is a siblingOf the input ZonaID
+      summary: Determine if the another ZonalID is a siblingOf the input ZonaID
       parameters:
         - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
         - $ref: '#/components/parameters/zoneId'
@@ -233,13 +233,47 @@ paths:
         - $ref: '#/components/parameters/projectTo'
       responses:
         '200':
-          $ref: '#/components/responses/Boolean'
+          $ref: '#/components/responses/BooleanResponse'
         '406':
           $ref: '#/components/responses/NotSupported'
         '500':
           $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
 
   # Start ZoneQuery <<reference>> operations
+  /collections/{collectionId}/zone/{zoneId}/intersects:
+    get:
+      tags:
+        - DGGS access
+      summary: Determine if the another ZonalID intersects with the ZonaID
+      parameters:
+        - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/another'
+        - $ref: '#/components/parameters/projectTo'
+      responses:
+        '200':
+          $ref: '#/components/responses/BooleanResponse'
+        '406':
+          $ref: '#/components/responses/NotSupported'
+        '500':
+          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
+  /collections/{collectionId}/zone/{zoneId}/overlaps:
+    get:
+      tags:
+        - DGGS access
+      summary: Determine if the another ZonalID overlaps with the ZonaID
+      parameters:
+        - $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/collectionId'
+        - $ref: '#/components/parameters/zoneId'
+        - $ref: '#/components/parameters/another'
+        - $ref: '#/components/parameters/projectTo'
+      responses:
+        '200':
+          $ref: '#/components/responses/BooleanResponse'
+        '406':
+          $ref: '#/components/responses/NotSupported'
+        '500':
+          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError'
 
 components:
   schemas:
@@ -445,6 +479,29 @@ components:
       type: integer
       minimum: 0
       example: 10
+    RelativePosition:
+      description: |-
+        a RelativePosition enumeration as defined in W3C/OGC 16-071r3 as one of
+      type: array
+      uniqueItems: true
+      items:
+        type: string
+        enum:
+          - Before
+          - After
+          - Meets
+          - MetBy
+          - Overlaps
+          - OverlappedBy
+          - Starts
+          - StartedBy
+          - During
+          - Contains
+          - Finishes
+          - FinishedBy
+          - Equals
+          - In
+          - Disjoint
 
   responses:
     NotSupported:
@@ -643,6 +700,18 @@ components:
         text/html:
           schema:
             type: string
+    BooleanResponse:
+      description: |-
+        A single boolean type response
+      content:
+        application/json:
+          schema:
+            type: boolean
+          example:
+            result: true
+        text/html:
+          schema:
+            type: boolean
 
   parameters:
 
@@ -804,27 +873,8 @@ components:
       in: query
       required: false
       schema:
-        type: array 
-        uniqueItems: true 
-        items: 
-          type: string 
-          enum: 
-            - Before 
-            - After 
-            - Meets
-            - MetBy
-            - Overlaps
-            - OverlappedBy
-            - Starts
-            - StartedBy
-            - During
-            - Contains
-            - Finishes
-            - FinishedBy
-            - Equals
-            - In
-            - Disjoint
-            
+        $ref: '#/components/schemas/RelativePosition'
+
 servers:
   # Added by API Auto Mocking Plugin
   - description: SwaggerHub API Auto Mocking
