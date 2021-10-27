@@ -1,0 +1,58 @@
+# Implementations
+
+#work-in-progress#
+
+This page lists software packages that implement approved or draft OGC API - DGGS standards. Draft standards are only added once they have a tagged version. Currently the following parts are covered:
+
+Two types of software packages are distinguished:
+
+* Server implementations are software products that can be used to set up APIs that implement OGC API - DGGS conformance classes.
+* Client implementations are software products that connect to APIs implementing OGC API - DGGS conformance classes to use the feature data.
+
+
+## Contribute
+
+If you have a server or client implementation of OGC API - DGGS, we welcome a pull request to update this page to add or update an entry for the product. Please include a contact email address so that we may later contact you in case of page updates or questions.
+
+//If you have a server product, please consider to https://www.ogc.org/resource/products/registration[register it in the OGC Product Database] and https://cite.opengeospatial.org/teamengine/[test it for compliance], too.
+
+## Servers
+
+The columns for each part list the conformance classes of the standard that are implemented by the server implementation. The conformance classes available in a specific API that is provided using the implementation will be listed in the Conformance Declaration resource (`/conformance`) of the API.
+
+.Server implementations
+[cols="6,4",options="header",grid="rows",stripes="hover"]
+|===
+| Product | Contact email or GitHub handle
+
+| https://pangaeainnovations.com/services/products/pangaeagrid/[TerraNexus OGC API Server]
+| https://www.ogc.org/resource/products/details/?pid=1675[Link]
+
+| https://tb16.geo-solutions.it/geoserver/ogc/dggs[GeoServer]
+| https://github.com/aaime[@aaime]
+
+| TBA
+| TBA
+
+|===
+
+## Clients
+
+The columns for each part list the conformance classes of the standard that the client uses when connecting to an API and the API supports that conformance class.
+
+### Desktop
+
+.Desktop clients
+[cols="6,4",options="header",grid="rows",stripes="hover"]
+|===
+| Product | Contact email or GitHub handle
+
+|https://dggs-api-bozea3cspa-ew.a.run.app/dggs-api[Prototype by the University of Tartu]
+|https://github.com/allixender[@allixender]
+
+|https://github.com/opengeospatial/T17-API-D176-dev[Testbed-17 WorldWind Client]
+|https://github.com/karriojala[@karriojala]
+
+|TBA
+|TBA
+|===
