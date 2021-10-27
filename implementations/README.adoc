@@ -28,7 +28,9 @@ The columns for each part list the conformance classes of the standard that are 
 | https://pangaeainnovations.com/services/products/pangaeagrid/[TerraNexus OGC API Server]
 | https://www.ogc.org/resource/products/details/?pid=1675[Link]
 
-| TBA
+| https://tb16.geo-solutions.it/geoserver/ogc/dggs[GeoServer]
+| https://github.com/aaime[@aaime]
+
 | TBA
 | TBA
 
@@ -45,11 +47,11 @@ The columns for each part list the conformance classes of the standard that the 
 |===
 | Product | Contact email or GitHub handle
 
-| https://tb16.geo-solutions.it/geoserver/ogc/dggs[GeoServer]
-| https://github.com/aaime[@aaime]
-
 |https://dggs-api-bozea3cspa-ew.a.run.app/dggs-api[Prototype by the University of Tartu]
 |https://github.com/allixender[@allixender]
+
+|https://github.com/opengeospatial/T17-API-D176-dev[Testbed-17 WorldWind Client]
+|https://github.com/karriojala[@karriojala]
 
 |TBA
 |TBA
