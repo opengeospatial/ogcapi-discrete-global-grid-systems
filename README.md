@@ -40,6 +40,8 @@ Access the definition of a particular zone
 
 The draft standard can be accessed [here](https://htmlpreview.github.io/?https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/21_038_OGC_API_DGGS_Part_1/document.html).
 
+The example **OpenAPI** definition document for the draft OGC API - DGGS standard is on SwaggerHub [here](https://app.swaggerhub.com/apis/geofizzydrink/ogc_api_dggs/0.0.6).
+
 ## Server and client implementations
 
 [Overview of tools implementing OGC API - DGGS](implementations/README.adoc)
@@ -55,7 +57,6 @@ so browse there to get a good idea of what is happening, as well as past decisio
 ## Additional information
 
 The draft **OGC API - DGGS** standard references the [OGC Abstract Specification Topic 21 v2.0 - Part 1 (ISO/19170-1)](https://docs.ogc.org/as/20-040r3/20-040r3.html).
-
 
 ## Building
 
