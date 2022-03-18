@@ -1,0 +1,12 @@
+name: compact-zones
+in: query
+description: >-
+  If set to true (default), when the list of DGGS zones to be returned at the requested resolution (zone-level) includes all children of a parent zone, the parent zone will be returned as a shorthand for that list of children zone.
+  If set to false, all zones returned will be of the requested zone level.
+
+required: false
+schema:
+  type: boolean
+  default: true
+style: form
+explode: false

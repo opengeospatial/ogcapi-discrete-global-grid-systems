@@ -1,0 +1,11 @@
+name: f
+in: query
+description: The format of the zone data response (e.g. GeoJSON, GeoTIFF).
+required: false
+schema:
+  type: string
+  enum:
+    - geotiff
+    - geojson
+style: form
+explode: false

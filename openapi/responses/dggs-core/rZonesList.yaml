@@ -1,0 +1,31 @@
+description: |-
+   List of DGGS Zones. In addition to a compact JSON response intended for fast DGGS client/server exchange (which should support compression),
+   visual representations such as GeoTIFF and/or GeoJSON may also be supported.
+content:
+  application/json:
+    schema:
+      type: object
+      required:
+        - zones
+      properties:
+         zones:
+           type: array
+           items:
+              type: string
+         links:
+           type: array
+           items:
+             $ref: '../../schemas/common-core/link.yaml'
+  application/geo+json:
+    schema:
+      allOf:
+         - format: geojson-feature-collection
+         # JSON Schema not supported in OpenAPI 3.0
+         - $ref: '../../schemas/geojson/FeatureCollection.yaml'
+  image/tiff; application=geotiff:
+    schema:
+       type: string
+       format: binary
+  text/html:
+    schema:
+      type: string
