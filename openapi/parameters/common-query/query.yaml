@@ -1,0 +1,11 @@
+name: query
+in: query
+description: >-
+  The query parameter specifies an expression in a query language (e.g. a generalized query language based on CQL2) which may return e.g. a geometry, coverage, summation, or aggregation.
+  The language of the query is specified by the `query-lang` query parameter.
+
+required: false
+schema:
+  type: string
+style: form
+explode: false

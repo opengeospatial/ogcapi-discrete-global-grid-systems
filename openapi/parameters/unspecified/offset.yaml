@@ -1,0 +1,13 @@
+name: offset
+description: >-
+ The optional offset parameter indicates the offset within the result
+ set from which the server shall begin presenting results in the response
+ document. The first element has an offset of 0 (default).
+explode: false
+in: query
+required: false
+schema:
+  default: 0
+  minimum: 0
+  type: integer
+style: form

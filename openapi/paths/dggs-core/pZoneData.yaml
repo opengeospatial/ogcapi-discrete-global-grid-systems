@@ -1,0 +1,28 @@
+get:
+   tags:
+     - DGGS Data Retrieval
+   summary: Retrieve data from a DGGS Zone, potentially as optimized DGGS zone data packet
+   operationId: retrieveDGGSZoneData
+   parameters:
+     - $ref: '../../parameters/unspecified/dggsId.yaml'
+     - $ref: '../../parameters/dggs-core/zoneId.yaml'
+     - $ref: '../../parameters/common-geodata/collections.yaml'
+     - $ref: '../../parameters/unspecified/f-zoneData.yaml'
+     - $ref: '../../parameters/common-geodata/properties.yaml'
+     - $ref: '../../parameters/common-geodata/subset.yaml'
+     - $ref: '../../parameters/common-filter/filter.yaml'
+     - $ref: '../../parameters/common-filter/filter-lang.yaml'
+     - $ref: '../../parameters/common-query/query.yaml'
+     - $ref: '../../parameters/common-query/query-lang.yaml'
+     - $ref: '../../parameters/common-geodata/datetime.yaml'
+   responses:
+     '200':
+       $ref: '../../responses/dggs-core/rZoneData.yaml'
+     '204':
+       $ref: '../../responses/dggs-core/rEmptyData.yaml'
+     '404':
+       $ref: '../../responses/common-core/rNotFound.yaml'
+     '406':
+       $ref: '../../responses/common-core/rNotAcceptable.yaml'
+     '500':
+       $ref: '../../responses/common-core/rServerError.yaml'

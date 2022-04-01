@@ -1,0 +1,21 @@
+name: properties
+in: query
+description: |-
+  Select specific data record fields (measured/observed properties) to be returned.
+
+  ```
+  PropertiesSpec:     "properties"=field[,fieldName]*
+  field:              {fieldName}|{fieldIndex}
+  fieldName:          {text}
+  fieldIndex:         {number}
+
+  Where:
+     {number} is an integer number, and
+     {text} is some general ASCII text.
+  ```
+
+  The field name must be one of the id defined in the RangeType DataRecord fields or feature properties schema.
+
+required: false
+schema:
+  type: string

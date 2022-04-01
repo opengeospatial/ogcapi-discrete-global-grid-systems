@@ -1,0 +1,13 @@
+description: List of Discrete Global Grid Systems.
+content:
+   application/json:
+     schema:
+       type: object
+       properties:
+         dggs:
+           type: array
+           items:
+             $ref: '../../schemas/dggs/dggs-item.yaml'
+   text/html:
+     schema:
+       type: string

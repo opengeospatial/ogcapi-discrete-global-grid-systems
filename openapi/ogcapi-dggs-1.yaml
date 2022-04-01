@@ -1,0 +1,254 @@
+openapi: 3.0.0
+info:
+   version: '1.0'
+   title: OGC API - Discrete Global Grid Systems
+   description: |-
+      Example API Definition for OGC API - DGGS - Part 1: Core
+   contact:
+      name: Open Geospatial Consortium
+      email: info@ogc.org
+   license:
+      name: OGC License
+      url: http://www.opengeospatial.org/legal/
+servers:
+  - description: Example OGC API - DGGS server
+    url: https://example.com/ogcapi
+paths:
+   # OGC API - Common - Part 1: Core
+   /:
+      $ref: 'paths/common-core/pLandingPage.yaml'
+   /conformance:
+      $ref: 'paths/common-core/pConformance.yaml'
+   /api:
+      $ref: 'paths/common-core/pAPI.yaml'
+
+   # Dynamic enumeration of resources specific to this implementation
+   /api/all-collections:
+      $ref: 'paths/dynamic/pAllCollections.yaml'
+   /api/dggs:
+      $ref: 'paths/dynamic/pDGGS.yaml'
+
+   # OGC API - Common - Part 2: Geospatial data
+   /collections:
+      $ref: 'paths/common-geodata/pCollectionsList.yaml'
+   /collections/{collectionId}:
+      $ref: 'paths/common-geodata/pCollection.yaml'
+
+   # OGC API - DGGS - Part 1: Core
+   # -----------------------------
+   # ### CORE ### (Conformance Class)
+
+   # DataSet DGGS definitions (If shared for all collections, or supported for Data Set)
+   /dggs: # List of DGGS including URI, link to definition ('self'), links for retrieval ('dggs-zone'data') and/or search ('dggs-zone-query') for each DGGS -- 'dggs-list' link relation type from Landing Page
+      $ref: 'paths/dggs-core/pDGGSList.yaml'
+   /dggs/{dggsId}: # DGGS information (Recommendation/Optional)
+      $ref: 'paths/dggs-core/pDGGS.yaml'
+   /dggs/{dggsId}/zones/{zoneId}: # (Recommendation/Optional) Zone information and/or geometry; Include link for retrieval if data is available for this zone?
+      $ref: 'paths/dggs-core/pZone.yaml'
+
+   # Collection DGGS definitions: Collection Zone Data (If available for a specific collection)
+   /collections/{collectionId}/dggs: # List of DGGS including URI, link to definition ('self'), links for retrieval ('dggs-zone-data') and/or search ('dggs-zone-query') for each DGGS -- 'dggs-list' link relation type from Collection
+      $ref: 'paths/dggs-core/pCollectionDGGSList.yaml'
+   /collections/{collectionId}/dggs/{dggsId}: # (Recommendation/Optional)
+      $ref: 'paths/dggs-core/pCollectionDGGS.yaml'
+   /collections/{collectionId}/dggs/{dggsId}/zones/{zoneId}: # (Recommendation/Optional) Zone information and/or geometry; Include link for retrieval if data is available for this zone?
+      $ref: 'paths/dggs-core/pCollectionZone.yaml'
+
+   # ### DATA RETRIEVAL (What is here?) ### (Conformance Class)
+
+   # DGGS Zone Data: Data Set Zone Data (all collections)
+   # Part 1: collections= parameter; Later parts: filter= (whole feature), query= (e.g. intersections)
+   /dggs/{dggsId}/data: # Retrieve data from multiple zones at once, potentially in optimized DGGS zone data packets.
+      $ref: 'paths/dggs-core/pData.yaml'
+   /dggs/{dggsId}/zones/{zoneId}/data: # Retrieve data from a single zone, potentially in optimized DGGS zone data packet, filter= (whole feature), query= (e.g. intersections)
+      $ref: 'paths/dggs-core/pZoneData.yaml'
+
+   # DGGS Zone Data: Collection Zone Data (specific collection)
+   # Later parts: filter= (whole feature), query= (e.g. intersections)
+   /collections/{collectionId}/dggs/{dggsId}/data: # Retrieve data from multiple zones at once, potentially in optimized DGGS zone data packets.
+      $ref: 'paths/dggs-core/pCollectionData.yaml'
+   /collections/{collectionId}/dggs/{dggsId}/zones/{zoneId}/data: # Retrieve data from a single zone, potentially in optimized DGGS zone data packet.
+      $ref: 'paths/dggs-core/pCollectionZoneData.yaml'
+
+   # ### ZONE QUERY (Where is it?) ### (Conformance Class)
+
+   # DGGS Search: Data Set Zones (all collections)
+   # Part 1: collections= parameter; Later parts: filter= (return zones for whole feature), query= (e.g. return intersections)
+   /dggs/{dggsId}/zones:
+      $ref: 'paths/dggs-core/pZones.yaml'
+
+   # DGGS Search: Collection Zones (specific collection)
+   # Later parts: filter= (return zones for whole feature), query= (e.g. return intersections)
+   /collections/{collectionId}/dggs/{dggsId}/zones:
+      $ref: 'paths/dggs-core/pCollectionZones.yaml'
+   # -----------------------------
+
+   # Remote Collections (Include in Part 1?)
+   # dataset/collections= parameter supporting remote OGC API dataset/collections ?
+
+   # OGC API - DGGS - Part 2: ...
+   #  -- Additional Conformance classes in Future Parts
+
+   # Filter (filter, filter-lang query parameters e.g. CQL, extended) -- See also:
+   #   https://github.com/opengeospatial/ogcapi-features/tree/master/extensions/filtering
+   #   https://github.com/opengeospatial/ogcapi-coverages/issues/103
+   #   https://github.com/opengeospatial/ogcapi-coverages/issues/146
+
+   # Search (query, query-lang query parametere.g. CQL-derived query language) -- See also https://github.com/opengeospatial/ogcapi-features/tree/master/proposals/search
+
+   # Aggregation (either as extension to Search CQL queries, or separate parameter (shared with Coverages, EDR), e.g. see DAPA https://docs.ogc.org/per/20-025r1.html#_aggregate)
+
+   # OGC API - DGGS - Part 3: ...
+   # Zone Topological functions (from previous DGGS API iteration)
+
+   # Not a part, but combination with Processes - Part 3:
+   # Advanced Analytics: DGGS as access mechanism to triggering OGC API - Processes - Part 3: Workflows and Chaining Collection/DataSet Output
+
+components:
+   schemas:
+      # $ref: './schemas/index.yaml' # Not supported?
+      # https://davidgarcia.dev/posts/how-to-split-open-api-spec-into-multiple-files/ vs.
+      # https://stackoverflow.com/questions/64940379/ref-ing-multiple-files-at-the-components-schemas-top-level-in-openapi-3
+
+      # Common - Core
+      confClasses:
+         $ref: 'schemas/common-core/confClasses.yaml'
+      link:
+         $ref: 'schemas/common-core/link.yaml'
+      landingPage:
+         $ref: 'schemas/common-core/landingPage.yaml'
+      exception:
+         $ref: 'schemas/common-core/exception.yaml'
+
+      # Common - Geospatial Data
+      collections:
+         $ref: 'schemas/common-geodata/collections.yaml'
+      collectionInfo:
+         $ref: 'schemas/common-geodata/collectionInfo.yaml'
+      extent:
+         $ref: 'schemas/common-geodata/extent.yaml'
+      extent-uad:
+         $ref: 'schemas/common-geodata/extent-uad.yaml'
+      crs:
+         $ref: 'schemas/common-geodata/crs.yaml'
+      dataType:
+         $ref: 'schemas/common-geodata/dataType.yaml'
+      timeStamp:
+         $ref: 'schemas/common-geodata/timeStamp.yaml'
+      # projJSON:
+      #   $ref: 'schemas/common-geodata/projJSON.yaml'
+      numberReturned:
+         $ref: 'schemas/common-geodata/numberReturned.yaml'
+      numberMatched:
+         $ref: 'schemas/common-geodata/numberMatched.yaml'
+
+      # Dicrete Global Grid Systems
+      dggs:
+         $ref: 'schemas/dggs/dggs.yaml'
+      dggs-item:
+         $ref: 'schemas/dggs/dggs-item.yaml'
+
+      # GeoJSON
+      FeatureCollection:
+         $ref: 'schemas/geojson/FeatureCollection.yaml'
+
+      # Dynamic (or implementation-specific)
+      enumeration:
+         $ref: 'schemas/dynamic/enumeration.yaml'
+
+      all-collections:
+         $ref: 'schemas/dynamic/all-collections.yaml'
+      all-dggs:
+         $ref: 'schemas/dynamic/all-dggs.yaml'
+
+   parameters:
+      # Common - Core
+      f-metadata:
+         $ref: 'parameters/unspecified/f-metadata.yaml'
+      offset:
+         $ref: 'parameters/unspecified/offset.yaml'
+
+      # Common - Geospatial data
+      collectionId-all:
+         $ref: 'parameters/common-geodata/collectionId-all.yaml'
+      collections:
+         $ref: 'parameters/common-geodata/collections.yaml'
+      datetime:
+         $ref: 'parameters/common-geodata/datetime.yaml'
+      subset:
+         $ref: 'parameters/common-geodata/subset.yaml'
+      properties:
+         $ref: 'parameters/common-geodata/properties.yaml'
+
+      # Common - Filter
+      filter:
+         $ref: 'parameters/common-filter/filter.yaml'
+      filter-lang:
+         $ref: 'parameters/common-filter/filter-lang.yaml'
+
+      # Common - Query
+      query:
+         $ref: 'parameters/common-query/query.yaml'
+      query-lang:
+         $ref: 'parameters/common-query/query-lang.yaml'
+
+      # DGGS - Core
+      zoneId:
+         $ref: 'parameters/dggs-core/zoneId.yaml'
+      zones:
+         $ref: 'parameters/dggs-core/compact-zones.yaml'
+      zone-level:
+         $ref: 'parameters/dggs-core/compact-zones.yaml'
+      compact-zones:
+         $ref: 'parameters/dggs-core/compact-zones.yaml'
+      limit:
+         $ref: 'parameters/dggs-core/limit-zones.yaml'
+
+      # DGGS - Core (unspecified)
+      dggsId:
+         $ref: 'parameters/unspecified/dggsId.yaml'
+      f-zoneData:
+         $ref: 'parameters/unspecified/f-zoneData.yaml'
+
+   responses:
+      # Generic Errors
+      NotFound:
+         $ref: 'responses/common-core/rNotFound.yaml'
+      NotAcceptable:
+         $ref: 'responses/common-core/rNotAcceptable.yaml'
+      ServerError:
+         $ref: 'responses/common-core/rServerError.yaml'
+      InvalidParameter:
+         $ref: 'responses/common-core/rInvalidParameter.yaml'
+      Exception:
+         $ref: 'responses/common-core/rException.yaml'
+
+      # Common - Core
+      LandingPage:
+         $ref: 'responses/common-core/rLandingPage.yaml'
+      Conformance:
+         $ref: 'responses/common-core/rConformance.yaml'
+      API:
+         $ref: 'responses/common-core/rAPI.yaml'
+
+      # Dynamic enumeration of resources specific to this implementation
+      Enumeration:
+         $ref: 'responses/dynamic/rEnumeration.yaml'
+
+      # Common - Geospatial Data
+      CollectionsList:
+         $ref: 'responses/common-geodata/rCollectionsList.yaml'
+      Collection:
+         $ref: 'responses/common-geodata/rCollection.yaml'
+
+      # DGGS - Core
+      DGGSList:
+         $ref: 'responses/dggs-core/rDGGSList.yaml'
+      DGGS:
+         $ref: 'responses/dggs-core/rDGGS.yaml'
+      ZoneData:
+         $ref: 'responses/dggs-core/rZoneData.yaml'
+      EmptyData:
+         $ref: 'responses/dggs-core/rEmptyData.yaml'
+      ZonesList:
+         $ref: 'responses/dggs-core/rZonesList.yaml'

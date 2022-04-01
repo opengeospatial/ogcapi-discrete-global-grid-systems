@@ -1,0 +1,10 @@
+{
+   "type" : "string",
+   "enum" : [
+      "OpenEAGGR",
+      "rHEALPix",
+      "H3",
+      "GNOSISGlobalGrid",
+      "GeoSOT"
+   ]
+}

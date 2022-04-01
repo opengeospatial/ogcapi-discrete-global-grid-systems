@@ -1,0 +1,9 @@
+description: |-
+  DGGS zone information returned as a response, potentially including id, geometry, links to DGGS (rel: dggs), dataset, (rel: dataset), collection (rel: geodata), data (rel: dggs-zone-data) (if available for this zone)
+content:
+  application/geo+json:
+    schema:
+      allOf:
+         - format: geojson-feature
+         # JSON Schema not supported in OpenAPI 3.0
+         - $ref: '../../schemas/geojson/PolygonFeature.yaml'

@@ -1,0 +1,10 @@
+name: query-lang
+in: query
+description: >-
+  The `query-lang` parameter specifies the query language for the `query` query parameter.
+
+required: false
+schema:
+  type: string
+style: form
+explode: false

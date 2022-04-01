@@ -1,0 +1,8 @@
+name: zoneId
+in: path
+description: |-
+  Identifier for a specific zone of a Discrete Global Grid Systems. This identifier usually includes a component corresponding to a hierarchy level / scale / resolution, components identifying a spatial region, and a optionally a temporal component.
+required: true
+schema:
+  type: string
+example: '7-10-59'

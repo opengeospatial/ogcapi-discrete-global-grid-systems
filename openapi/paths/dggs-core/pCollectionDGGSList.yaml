@@ -1,0 +1,17 @@
+get:
+   tags:
+     - DGGS Definition
+   summary: Retrieve the list of available DGGS for the specified collection
+   operationId: getCollectionDGGSList
+   parameters:
+     - $ref: '../../parameters/unspecified/f-metadata.yaml'
+     - $ref: '../../parameters/common-geodata/collectionId-all.yaml'
+   responses:
+     '200':
+       $ref: '../../responses/dggs-core/rDGGSList.yaml'
+     '404':
+       $ref: '../../responses/common-core/rNotFound.yaml'
+     '406':
+       $ref: '../../responses/common-core/rNotAcceptable.yaml'
+     '500':
+       $ref: '../../responses/common-core/rServerError.yaml'

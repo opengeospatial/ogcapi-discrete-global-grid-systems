@@ -1,0 +1,12 @@
+name: zones
+in: query
+style: form
+description: |-
+  A list of identifiers for specific zones of a Discrete Global Grid Systems. These identifiers usually include a component corresponding to a hierarchy level / scale / resolution, components identifying a spatial region, and a optionally a temporal component.
+required: false
+explode: false
+schema:
+  type: array
+  items:
+     type: string
+example: [ '6-5-30', '7-10-61', '7-10-62', '7-11-61' ]

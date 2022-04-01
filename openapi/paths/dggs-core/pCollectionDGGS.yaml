@@ -1,0 +1,18 @@
+get:
+   tags:
+     - DGGS Definition
+   summary: (Optional) Retrieve the definition of the specified Discrete Global Grid System in the context of a specified collection
+   operationId: getCollectionDGGS
+   parameters:
+     - $ref: '../../parameters/unspecified/dggsId.yaml'
+     - $ref: '../../parameters/unspecified/f-metadata.yaml'
+     - $ref: '../../parameters/common-geodata/collectionId-all.yaml'
+   responses:
+     '200':
+       $ref: '../../responses/dggs-core/rDGGS.yaml'
+     '404':
+       $ref: '../../responses/common-core/rNotFound.yaml'
+     '406':
+       $ref: '../../responses/common-core/rNotAcceptable.yaml'
+     '500':
+       $ref: '../../responses/common-core/rServerError.yaml'
