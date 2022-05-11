@@ -16,7 +16,7 @@
   "servers": [
     {
       "description": "Example OGC API - DGGS server",
-      "url": "https://example.com/ogcapi"
+      "url": "https://maps.ecere.com/ogcapi"
     }
   ],
   "paths": {
@@ -575,10 +575,7 @@
             "$ref": "#/components/parameters/filter-lang"
           },
           {
-            "$ref": "#/components/parameters/query"
-          },
-          {
-            "$ref": "#/components/parameters/query-lang"
+            "$ref": "#/components/parameters/sortby"
           },
           {
             "$ref": "#/components/parameters/datetime"
@@ -636,10 +633,7 @@
             "$ref": "#/components/parameters/filter-lang"
           },
           {
-            "$ref": "#/components/parameters/query"
-          },
-          {
-            "$ref": "#/components/parameters/query-lang"
+            "$ref": "#/components/parameters/sortby"
           },
           {
             "$ref": "#/components/parameters/datetime"
@@ -700,10 +694,7 @@
             "$ref": "#/components/parameters/filter-lang"
           },
           {
-            "$ref": "#/components/parameters/query"
-          },
-          {
-            "$ref": "#/components/parameters/query-lang"
+            "$ref": "#/components/parameters/sortby"
           },
           {
             "$ref": "#/components/parameters/datetime"
@@ -764,10 +755,7 @@
             "$ref": "#/components/parameters/filter-lang"
           },
           {
-            "$ref": "#/components/parameters/query"
-          },
-          {
-            "$ref": "#/components/parameters/query-lang"
+            "$ref": "#/components/parameters/sortby"
           },
           {
             "$ref": "#/components/parameters/datetime"
@@ -836,13 +824,7 @@
             "$ref": "#/components/parameters/filter-lang"
           },
           {
-            "$ref": "#/components/parameters/query"
-          },
-          {
-            "$ref": "#/components/parameters/query-lang"
-          },
-          {
-            "$ref": "#/components/parameters/f-metadata"
+            "$ref": "#/components/parameters/f-zoneQueries"
           }
         ],
         "responses": {
@@ -897,13 +879,7 @@
             "$ref": "#/components/parameters/filter-lang"
           },
           {
-            "$ref": "#/components/parameters/query"
-          },
-          {
-            "$ref": "#/components/parameters/query-lang"
-          },
-          {
-            "$ref": "#/components/parameters/f-metadata"
+            "$ref": "#/components/parameters/f-zoneQueries"
           }
         ],
         "responses": {
@@ -1913,11 +1889,27 @@
       "properties": {
         "name": "properties",
         "in": "query",
-        "description": "Select specific data record fields (measured/observed properties) to be returned.\n\n```\nPropertiesSpec:     \"properties\"=field[,fieldName]*\nfield:              {fieldName}|{fieldIndex}\nfieldName:          {text}\nfieldIndex:         {number}\n\nWhere:\n   {number} is an integer number, and\n   {text} is some general ASCII text.\n```\n\nThe field name must be one of the id defined in the RangeType DataRecord fields or feature properties schema.",
+        "description": "Select specific data record fields (measured/observed properties) to be returned.\n\n```\nPropertiesSpec:     \"properties\"=field[,fieldName]*\nfield:              {fieldName}|{fieldIndex}\nfieldName:          {text}\nfieldIndex:         {number}\n\nWhere:\n   {number} is an integer number, and\n   {text} is some general ASCII text.\n```\n\nThe field name must be one of the id defined in the RangeType DataRecord fields or feature properties schema.\n\nComplex expressions may also be supported instead of fields to define derived fields, potentially also\nincluding the possibility to use aggregation functons.",
         "required": false,
         "schema": {
           "type": "string"
         }
+      },
+      "sortby": {
+        "name": "sortby",
+        "in": "query",
+        "description": "Specifies a comma-separated list of property names by which the response shall\nbe sorted.  If the property name is preceded by a plus (+) sign it indicates\nan ascending sort for that property.  If the property name is preceded by a\nminus (-) sign it indicates a descending sort for that property.  If the\nproperty is not preceded by a plus or minus, then the default sort order\nimplied is ascending (+).",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "[+|-]?[A-Za-z_].*"
+          }
+        },
+        "explode": false,
+        "style": "form"
       },
       "filter": {
         "name": "filter",
@@ -1934,28 +1926,6 @@
         "name": "filter-lang",
         "in": "query",
         "description": "The `filter-lang` parameter specifies the query language for the `filter` query parameter.",
-        "required": false,
-        "schema": {
-          "type": "string"
-        },
-        "style": "form",
-        "explode": false
-      },
-      "query": {
-        "name": "query",
-        "in": "query",
-        "description": "The query parameter specifies an expression in a query language (e.g. a generalized query language based on CQL2) which may return e.g. a geometry, coverage, summation, or aggregation. The language of the query is specified by the `query-lang` query parameter.",
-        "required": false,
-        "schema": {
-          "type": "string"
-        },
-        "style": "form",
-        "explode": false
-      },
-      "query-lang": {
-        "name": "query-lang",
-        "in": "query",
-        "description": "The `query-lang` parameter specifies the query language for the `query` query parameter.",
         "required": false,
         "schema": {
           "type": "string"
@@ -2025,6 +1995,24 @@
           "enum": [
             "geotiff",
             "geojson"
+          ]
+        },
+        "style": "form",
+        "explode": false
+      },
+      "f-zoneQueries": {
+        "name": "f",
+        "in": "query",
+        "description": "The format of the response. If no value is provided, the accept header is used to determine the format. Accepted values are 'json', 'html', 'geojson', 'geotiff' or 'uint64'.",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "json",
+            "html",
+            "geojson",
+            "geotiff",
+            "uint64"
           ]
         },
         "style": "form",

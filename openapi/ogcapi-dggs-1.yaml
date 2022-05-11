@@ -12,7 +12,7 @@ info:
       url: http://www.opengeospatial.org/legal/
 servers:
   - description: Example OGC API - DGGS server
-    url: https://example.com/ogcapi
+    url: https://maps.ecere.com/ogcapi
 paths:
    # OGC API - Common - Part 1: Core
    /:
@@ -178,19 +178,15 @@ components:
       subset:
          $ref: 'parameters/common-geodata/subset.yaml'
       properties:
-         $ref: 'parameters/common-geodata/properties.yaml'
+         $ref: 'parameters/common-fields/properties.yaml'
+      sortby:
+         $ref: 'parameters/common-fields/sortby.yaml'
 
       # Common - Filter
       filter:
          $ref: 'parameters/common-filter/filter.yaml'
       filter-lang:
          $ref: 'parameters/common-filter/filter-lang.yaml'
-
-      # Common - Query
-      query:
-         $ref: 'parameters/common-query/query.yaml'
-      query-lang:
-         $ref: 'parameters/common-query/query-lang.yaml'
 
       # DGGS - Core
       zoneId:
@@ -209,6 +205,8 @@ components:
          $ref: 'parameters/unspecified/dggsId.yaml'
       f-zoneData:
          $ref: 'parameters/unspecified/f-zoneData.yaml'
+      f-zoneQueries:
+         $ref: 'parameters/unspecified/f-zoneQueries.yaml'
 
    responses:
       # Generic Errors

@@ -1,7 +1,7 @@
 # OpenAPI definitions
 
 This example API definition can be used to provide an OpenAPI 3.0 definition for an implementation of _OGC API - DGGS_.
-The API definition can be visualized with [SwaggerUI](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/jerstlouis/ogcapi-discrete-global-grid-systems/master/openapi/ogcapi-dggs-1.bundled.json).
+The API definition can be visualized with [SwaggerUI](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/opengeospatial/ogcapi-discrete-global-grid-systems/master/openapi/ogcapi-dggs-1.bundled.json).
 
 The lists of collections and DGGS reference systems in the `/api` sub-directory should be tailored to the implementation and deployment, or those `/api/*` paths can be implemented dynamically by the server instead.
 
