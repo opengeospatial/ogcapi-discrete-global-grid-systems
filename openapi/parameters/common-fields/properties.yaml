@@ -16,6 +16,9 @@ description: |-
 
   The field name must be one of the id defined in the RangeType DataRecord fields or feature properties schema.
 
+  Complex expressions may also be supported instead of fields to define derived fields, potentially also
+  including the possibility to use aggregation functons.
+
 required: false
 schema:
   type: string

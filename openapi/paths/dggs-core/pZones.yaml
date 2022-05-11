@@ -13,8 +13,6 @@ get:
      - $ref: '../../parameters/common-geodata/datetime.yaml'
      - $ref: '../../parameters/common-filter/filter.yaml'
      - $ref: '../../parameters/common-filter/filter-lang.yaml'
-     - $ref: '../../parameters/common-query/query.yaml'
-     - $ref: '../../parameters/common-query/query-lang.yaml'
      - $ref: '../../parameters/unspecified/f-metadata.yaml'
    responses:
      '200':
