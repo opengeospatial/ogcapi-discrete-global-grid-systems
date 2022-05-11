@@ -824,7 +824,7 @@
             "$ref": "#/components/parameters/filter-lang"
           },
           {
-            "$ref": "#/components/parameters/f-metadata"
+            "$ref": "#/components/parameters/f-zoneQueries"
           }
         ],
         "responses": {
@@ -879,7 +879,7 @@
             "$ref": "#/components/parameters/filter-lang"
           },
           {
-            "$ref": "#/components/parameters/f-metadata"
+            "$ref": "#/components/parameters/f-zoneQueries"
           }
         ],
         "responses": {
@@ -1995,6 +1995,24 @@
           "enum": [
             "geotiff",
             "geojson"
+          ]
+        },
+        "style": "form",
+        "explode": false
+      },
+      "f-zoneQueries": {
+        "name": "f",
+        "in": "query",
+        "description": "The format of the response. If no value is provided, the accept header is used to determine the format. Accepted values are 'json', 'html', 'geojson', 'geotiff' or 'uint64'.",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "json",
+            "html",
+            "geojson",
+            "geotiff",
+            "uint64"
           ]
         },
         "style": "form",

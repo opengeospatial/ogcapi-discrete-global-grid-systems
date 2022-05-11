@@ -205,6 +205,8 @@ components:
          $ref: 'parameters/unspecified/dggsId.yaml'
       f-zoneData:
          $ref: 'parameters/unspecified/f-zoneData.yaml'
+      f-zoneQueries:
+         $ref: 'parameters/unspecified/f-zoneQueries.yaml'
 
    responses:
       # Generic Errors
