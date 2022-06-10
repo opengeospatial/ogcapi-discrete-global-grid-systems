@@ -5,4 +5,4 @@ description: |-
 required: true
 schema:
   type: string
-example: '7-10-59'
+example: '3-4-F'

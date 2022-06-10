@@ -16,6 +16,10 @@ content:
            type: array
            items:
              $ref: '../../schemas/common-core/link.yaml'
+  image/png:
+    schema:
+      type: string
+      format: binary
   application/geo+json:
     schema:
       allOf:
