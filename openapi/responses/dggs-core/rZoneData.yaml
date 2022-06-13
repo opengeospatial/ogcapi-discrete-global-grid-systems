@@ -1,5 +1,9 @@
 description: DGGS zone data returned as a response.
 content:
+  image/png:
+    schema:
+      type: string
+      format: binary
   image/tiff; application=geotiff:
     schema:
       type: string

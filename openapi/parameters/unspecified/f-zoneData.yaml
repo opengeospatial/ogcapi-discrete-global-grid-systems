@@ -7,5 +7,6 @@ schema:
   enum:
     - geotiff
     - geojson
+    - png
 style: form
 explode: false

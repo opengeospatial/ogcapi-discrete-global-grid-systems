@@ -9,6 +9,7 @@ schema:
     - html
     - geojson
     - geotiff
+    - png
     - uint64
 style: form
 explode: false

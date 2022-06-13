@@ -1789,22 +1789,22 @@
       "all-collections": {
         "type": "string",
         "enum": [
+          "SRTM_ViewFinderPanorama",
+          "NaturalEarth:cultural:ne_10m_admin_0_countries",
+          "HRDEM-Ottawa",
+          "HRDEM-RedRiver",
           "blueMarble",
           "NaturalEarth:raster:HYP_HR_SR_OB_DR",
-          "NaturalEarth:cultural:ne_10m_admin_0_countries",
-          "NaturalEarth:physical:bathymetry",
-          "SRTM_ViewFinderPanorama",
-          "HRDEM-Ottawa",
-          "HRDEM-RedRiver"
+          "NaturalEarth:physical:bathymetry"
         ]
       },
       "all-dggs": {
         "type": "string",
         "enum": [
+          "GNOSISGlobalGrid",
           "OpenEAGGR",
           "rHEALPix",
           "H3",
-          "GNOSISGlobalGrid",
           "GeoSOT"
         ]
       }
@@ -1941,7 +1941,7 @@
         "schema": {
           "type": "string"
         },
-        "example": "7-10-59"
+        "example": "3-4-F"
       },
       "zones": {
         "name": "compact-zones",
@@ -1994,7 +1994,8 @@
           "type": "string",
           "enum": [
             "geotiff",
-            "geojson"
+            "geojson",
+            "png"
           ]
         },
         "style": "form",
@@ -2012,6 +2013,7 @@
             "html",
             "geojson",
             "geotiff",
+            "png",
             "uint64"
           ]
         },
@@ -2438,6 +2440,12 @@
       "ZoneData": {
         "description": "DGGS zone data returned as a response.",
         "content": {
+          "image/png": {
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            }
+          },
           "image/tiff; application=geotiff": {
             "schema": {
               "type": "string",
@@ -2484,6 +2492,12 @@
                   }
                 }
               }
+            }
+          },
+          "image/png": {
+            "schema": {
+              "type": "string",
+              "format": "binary"
             }
           },
           "application/geo+json": {
