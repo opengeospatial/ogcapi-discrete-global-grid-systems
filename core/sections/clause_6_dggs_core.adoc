@@ -1,5 +1,5 @@
-[obligation=informative]
-== Clauses not Containing Normative Material
+[obligation=normative]
+== DGGS - Core Conformance Class
 
 Paragraph
 

@@ -40,11 +40,13 @@ include::sections/clause_4_terms_and_definitions.adoc[]
 
 include::sections/clause_5_conventions.adoc[]
 
-include::sections/clause_6_informative_text.adoc[]
+include::sections/clause_6_dggs_core.adoc[]
 
-include::sections/clause_7_normative_text.adoc[]
+include::sections/clause_7_dggs_data_retrieval.adoc[]
 
-include::sections/clause_8_media_types.adoc[]
+include::sections/clause_8_dggs_zone_query.adoc[]
+
+include::sections/clause_9_media_types.adoc[]
 
 ////
 add or remove annexes after "A" as necessary
