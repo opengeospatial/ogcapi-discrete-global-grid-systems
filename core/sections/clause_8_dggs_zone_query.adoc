@@ -1,4 +1,4 @@
-== Clause containing normative material
+== DGGS - Zone Query Conformance Class
 
 Paragraph
 
