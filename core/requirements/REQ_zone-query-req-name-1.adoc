@@ -1,0 +1,10 @@
+[requirement]
+====
+[%metadata]
+label:: /req/zone-query/req-name-1
+description:: For each UML class defined or referenced in the Relief Package:
+part:: The Implementation Specification SHALL contain an element which represents the
+same concept as that defined for the UML class.
+part:: The Implementation Specification SHALL represent associations with the same
+source, target, direction, roles, and multiplicities as those of the UML class.
+====
