@@ -38,7 +38,7 @@ Access the definition of a particular zone
 
 ## Using the draft standard
 
-The draft standard can be accessed [here](https://htmlpreview.github.io/?https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/21_038_OGC_API_DGGS_Part_1/document.html).
+The draft standard can be accessed [here](https://opengeospatial.github.io/ogcna-auto-review/21-038.html).
 
 The example **OpenAPI** definition document for the draft OGC API - DGGS standard is on SwaggerHub [here](https://app.swaggerhub.com/apis/geofizzydrink/ogc_api_dggs/0.0.6).
 
