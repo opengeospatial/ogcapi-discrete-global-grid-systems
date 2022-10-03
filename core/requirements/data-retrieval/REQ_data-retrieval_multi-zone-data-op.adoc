@@ -1,0 +1,13 @@
+[requirement]
+====
+[%metadata]
+label:: /req/data-retrieval/multi-zone-data-op
+description:: For retrieving data for multiple DGGS zones:
+part:: The Implementation SHALL support an HTTP GET operation at a resource path
+ending with `.../dggs/{dggsId}/zones/data`.
+part:: The Implementation SHALL support a `zones` query parameter, consisting of a list
+of zone IDs in a format consistent with the indexing scheme for the selected DGGS ID.
+part:: The Implementation SHALL provide a link to this resource path using
+the link relation type http://www.opengis.net/def/rel/ogc/1.0/dggs-zone-data
+and the variable `{zoneID}` in the template URL.
+====
