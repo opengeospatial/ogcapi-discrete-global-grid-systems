@@ -1,0 +1,10 @@
+[requirement]
+====
+[%metadata]
+label:: /req/data-retrieval/single-zone-data-op
+description:: For retrieving data for a single DGGS zone:
+part:: The Implementation SHALL support an HTTP GET operation at a resource path
+ending with `.../dggs/{dggsId}/zones/{zoneId}/data`.
+part:: The Implementation SHALL provide a templated  link to this resource path using
+the link relation type http://www.opengis.net/def/rel/ogc/1.0/dggs-zone-data.
+====

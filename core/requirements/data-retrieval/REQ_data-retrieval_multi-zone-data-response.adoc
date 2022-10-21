@@ -1,0 +1,12 @@
+[requirement]
+====
+[%metadata]
+label:: /req/data-retrieval/multi-zone-data-response
+description:: For the response to a query retrieving data for multiple DGGS zones:
+part:: The response of the HTTP GET operation SHALL have a status code of 200.
+part:: The content of the response SHALL package data packets corresponding
+precisely to the area covered by each of the DGGS zones being requested, at the
+resolution / scale corresponding to these zones.
+part:: The selection of an encoding for the response SHALL be consistent with
+HTTP content negotiation.
+====

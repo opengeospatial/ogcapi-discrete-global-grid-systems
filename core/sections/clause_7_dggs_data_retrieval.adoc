@@ -1,29 +1,43 @@
 == DGGS - Data Retrieval Conformance Class
 
-Paragraph
+=== Requirement Class DGGS - Data Retrieval
 
-=== Requirement Class A or Requirement A Example
-
-Paragraph – intro text for the requirement class.
-
-Use the following table for Requirements Classes.
+The Data Retrieval conformance class allows to retrieve data from a specific
+Discrete Global Grid System (DGGS) in a particular indexing scheme from either an individual
+zone, or a list of zones referenced by ID.
+It describes an HTTP GET operation, as well as its response.
+The selected DGGS is listed as available and described in the Core conformance class,
+and conforms to OGC Topic 21.
+The conformance makes use of URI templates for a variable representing the Zone ID.
+The data retrieved from a Web API using this conformance class can either be
+for a particular collection of geospatial data, for a dataset as a whole, or
+in connection with _OGC API - Processes - Part 3: Workflows & Chaining_, the output of
+a processing workflow.
 
 include::../requirements/requirements_class_data_retrieval.adoc[]
 
-==== Requirement 1
+==== Retrieve data from single zone
 
-Paragraph - intro text for the requirement.
+The following requirements describe how a client can retrieve data from a single DGGS zone
+at the resource path `.../dggs/{dggsId}/zones/{zoneId}/data`.
 
-Use the following table for Requirements, number sequentially.
+===== Operation
 
-include::../requirements/REQ_data-retrieval-req-name-1.adoc[]
+include::../requirements/data-retrieval/REQ_data-retrieval_single-zone-data-op.adoc[]
 
-Dictionary tables for requirements can be added as necessary. Modify the following example as needed.
+===== Response
 
-[width="90%",options="header"]
-|===
-|Names |Definition |Data types and values |Multiplicity and use
-|name 1 |definition of name 1 |float |One or more (mandatory)
-|name 2 |definition of name 2 |character string type, not empty |Zero or one (optional)
-|name 3 |definition of name 3 |GML:: Point PropertyType |One (mandatory)
-|===
+include::../requirements/data-retrieval/REQ_data-retrieval_single-zone-data-response.adoc[]
+
+==== Retrieve data from multiple zones
+
+The following requirements describe how a client can retrieve data from a single DGGS zone
+at the resource path `.../dggs/{dggsId}/data?zones={zoneId},...`.
+
+===== Operation
+
+include::../requirements/data-retrieval/REQ_data-retrieval_multi-zone-data-op.adoc[]
+
+===== Response
+
+include::../requirements/data-retrieval/REQ_data-retrieval_multi-zone-data-response.adoc[]
