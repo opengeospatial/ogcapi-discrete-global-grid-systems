@@ -1,0 +1,8 @@
+[requirement]
+====
+[%metadata]
+label:: /req/zone-query/zone-level-parameter
+description:: For specifying a level at which to return a list of DGGS zones:
+part:: The Implementation SHALL support a `zone-level` query parameter for the zone query
+operation (resource path ending with `.../dggs/{dggsId}/zones`).
+====

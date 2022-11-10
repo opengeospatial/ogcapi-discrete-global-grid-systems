@@ -2,27 +2,27 @@
 :doctype: standard
 :encoding: utf-8
 :lang: en
-:status: draft
+:status: swg-draft
 :committee: technical
-:draft: 3.0
-:external-id: http://www.opengis.net/doc/{doc-type}/{standard}/{m.n}
+:draft: 1.0
+:external-id: http://www.opengis.net/doc/is/ogcapi-dggs/{m.n}
 :docnumber: 21-038
 :received-date: 2029-03-30
 :issued-date: 2029-03-30
 :published-date: 2029-03-30
 :fullname: Dr. Matthew Brian John Purss
-:fullname_2: Editor Two
-:docsubtype: Interface
+:fullname_2: Jérôme Jacovella-St-Louis
+:docsubtype: implementation
 :keywords: ogcdoc, OGC document, API, openapi, html, ogcapi
-:submitting-organizations: Pangaea Innovations Pty. Ltd.; Organization Two; Organization Three; Organization Four;
+:submitting-organizations: Pangaea Innovations Pty. Ltd.; Ecere Corporation;
 :docfile: document.adoc
 :mn-document-class: ogc
 :mn-output-extensions: xml,html,doc,pdf
 :local-cache-only:
 :data-uri-image:
-:pdf-uri: ./document.pdf
-:xml-uri: ./document.xml
-:doc-uri: ./document.doc
+:pdf-uri: ./21-038.pdf
+:xml-uri: ./21-038.xml
+:doc-uri: ./21-038.doc
 :edition: 1.0
 
 ////
