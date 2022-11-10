@@ -1,0 +1,9 @@
+[requirement]
+====
+[%metadata]
+label:: /req/zone-query/zones-list-response
+description:: For the response to querying a list of DGGS zones using `zone-level` query parameter:
+part:: If a compact zones list is used (the default), the zones returned in the response SHALL be of the DGGS hierarchy level specified by the `zone-level` query parameter,
+or of a lower hierarchy level standing in for a compact representation of multiple zones at the requested hierarchy level.
+part:: If a compact zones list is not used, the zones returned in the response SHALL be of the DGGS hierarchy level specified by the `zone-level` query parameter.
+====

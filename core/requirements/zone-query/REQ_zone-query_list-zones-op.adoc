@@ -1,0 +1,10 @@
+[requirement]
+====
+[%metadata]
+label:: /req/zone-query/list-zones-op
+description:: For retrieving a list of DGGS zones:
+part:: The Implementation SHALL support an HTTP GET operation at a resource path
+ending with `.../dggs/{dggsId}/zones`.
+part:: The Implementation SHALL provide a link to this resource path using
+the link relation type http://www.opengis.net/def/rel/ogc/1.0/dggs-zone-query.
+====

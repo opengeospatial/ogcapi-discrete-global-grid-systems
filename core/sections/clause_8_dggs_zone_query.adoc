@@ -1,29 +1,69 @@
 == DGGS - Zone Query Conformance Class
 
-Paragraph
+=== Requirement Class DGGS - Zone Query
 
-=== Requirement Class A or Requirement A Example
+The Zone Query conformance class allows to request the list of DGGS zones from a specific
+Discrete Global Grid System (DGGS) in a particular indexing scheme for which there is
+data available, or matching a particular query (e.g., using a filtering parameter).
+It describes an HTTP GET operation, as well as its response.
+The selected DGGS is listed as available and described in the Core conformance class,
+and conforms to OGC Topic 21.
+The list of zones from a Web API using this conformance class can either be
+for a particular collection of geospatial data, for a dataset as a whole, or
+in connection with _OGC API - Processes - Part 3: Workflows & Chaining_, the output of
+a processing workflow.
 
-Paragraph – intro text for the requirement class.
+include::../requirements/requirements_class_zone-query.adoc[]
 
-Use the following table for Requirements Classes.
+==== Retrieve the list of zones
 
-include::../requirements/requirements_class_zone_query.adoc[]
+The following requirements describe how a client can retrieve the list of zones from
+which data is available at the resource path `.../dggs/{dggsId}/zones`.
 
-==== Requirement 1
+===== Operation
 
-Paragraph - intro text for the requirement.
+include::../requirements/zone-query/REQ_zone-query_list-zones-op.adoc[]
 
-Use the following table for Requirements, number sequentially.
+===== Response
 
-include::../requirements/REQ_zone-query-req-name-1.adoc[]
+include::../requirements/zone-query/REQ_zone-query_zones-list-response.adoc[]
 
-Dictionary tables for requirements can be added as necessary. Modify the following example as needed.
+==== `zone-level` parameter
 
-[width="90%",options="header"]
-|===
-|Names |Definition |Data types and values |Multiplicity and use
-|name 1 |definition of name 1 |float |One or more (mandatory)
-|name 2 |definition of name 2 |character string type, not empty |Zero or one (optional)
-|name 3 |definition of name 3 |GML:: Point PropertyType |One (mandatory)
-|===
+The following requirements describe how a client can specify the DGGS hierarchy level at which
+to retrieve the list of zones.
+
+===== Parameter
+
+include::../requirements/zone-query/REQ_zone-query_zone-level-parameter.adoc[]
+
+===== Response
+
+include::../requirements/zone-query/REQ_zone-query_zone-level-response.adoc[]
+
+==== `compact-zones` parameter
+
+By default, implementations return a compact list of zones where children zones fully covering a parent
+are recursively replaced by the parent zones, allowing to express large areas in a much more compact list of zones.
+The following requirements describe how a client can disable returning a compact list of zones. (the default),
+
+===== Parameter
+
+include::../requirements/zone-query/REQ_zone-query_compact-zones-parameter.adoc[]
+
+===== Response
+
+include::../requirements/zone-query/REQ_zone-query_compact-zones-response.adoc[]
+
+==== Paging capability and `limit` parameter
+
+The following requirements describe how a client can specify a limit to the number of zones to be returned
+and page through large list of zones as multiple requests and responses.
+
+===== Parameter
+
+include::../requirements/zone-query/REQ_zone-query-limit-parameter.adoc[]
+
+===== Response
+
+include::../requirements/zone-query/REQ_zone-query-limit-response.adoc[]

@@ -1,0 +1,12 @@
+[requirement]
+====
+[%metadata]
+label:: /req/zone-query/limit-response
+description:: For the response to a zone query:
+part:: The response SHALL not contain more zones than specified by the optional `limit` parameter (if specified).
+part:: If the API definition specifies a maximum value for the `limit` parameter, the response SHALL not contain more zones than this maximum value.
+part:: If the value of the `limit` parameter is larger than the maximum value, this SHALL NOT result in an error (but instead be replaced by the maximum as the parameter value).
+part:: If using compact zones, the parent zones SHALL count as a single zone, rather than the number of children zones they stand in for.
+part:: If an implementation does not return the full list of zones for the request, a link with relation type `next` SHALL be included in a `links` array property of the response,
+which a client can request to resume listing the zones.
+====

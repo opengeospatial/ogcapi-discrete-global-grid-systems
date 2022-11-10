@@ -1,0 +1,7 @@
+[requirement]
+====
+[%metadata]
+label:: /req/zone-query/limit-parameter
+description:: For specifying a limit to how many zones should be returned in a zone query:
+part:: The Implementation SHALL support a parameter `limit` integer query parameter, with a minimum value of 1.
+====
