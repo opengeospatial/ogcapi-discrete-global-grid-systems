@@ -5,7 +5,11 @@ label:: /req/data-retrieval/single-zone-data-response
 description:: For the response to a query retrieving data for a single DGGS zone:
 part:: The response of the HTTP GET operation SHALL have a status code of 200.
 part:: The content of the response SHALL be a data packet corresponding precisely to the area
-covered by the DGGS zone, at the resolution / scale corresponding to that zone.
-part:: The selection of an encoding for the response SHALL be consistent with
-HTTP content negotiation.
+covered by the DGGS zone.
+part:: The content of the response SHALL be a data packet whose resolution / scale correspond to that zone's hierarchy level.
+This would usually imply more than a single value being returned for each zone request.
+The data packet would include values for descendent zones at _x_ levels deeper than the requested zone's level, where _x_ may be defined
+by the indexing scheme or data packet encoding, or otherwise be specified. e.g., requesting data for a level 10 zones might be returning
+individual values for each level 18 zones contained within that level 10 zone for which data is being requested.
+part:: The selection of an encoding for the response SHALL be consistent with HTTP content negotiation.
 ====

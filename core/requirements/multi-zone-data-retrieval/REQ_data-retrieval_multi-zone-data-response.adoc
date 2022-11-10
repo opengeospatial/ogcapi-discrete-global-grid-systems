@@ -5,8 +5,12 @@ label:: /req/data-retrieval/multi-zone-data-response
 description:: For the response to a query retrieving data for multiple DGGS zones:
 part:: The response of the HTTP GET operation SHALL have a status code of 200.
 part:: The content of the response SHALL package data packets corresponding
-precisely to the area covered by each of the DGGS zones being requested, at the
-resolution / scale corresponding to these zones.
-part:: The selection of an encoding for the response SHALL be consistent with
-HTTP content negotiation.
+precisely to the area covered by each of the DGGS zones being requested.
+
+part:: The content of the response SHALL package data packets whose resolution / scale correspond to those zones' hierarchy levels.
+This would usually imply more than a single value being returned for each zone returned.
+The data packet would include values for descendent zones at _x_ levels deeper than the requested zone's level, where _x_ may be defined
+by the indexing scheme or data packet encoding, or otherwise be specified. e.g., requesting data for a level 10 zones might be returning
+individual values for each level 18 zones contained within that level 10 zone for which data is being requested.
+part:: The selection of an encoding for the response SHALL be consistent with HTTP content negotiation.
 ====
