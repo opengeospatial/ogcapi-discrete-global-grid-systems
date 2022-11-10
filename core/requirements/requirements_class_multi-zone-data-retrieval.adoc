@@ -1,0 +1,8 @@
+[[rc_multi-zone-data-retrieval]]
+[requirements_class]
+====
+[%metadata]
+label:: http://www.opengis.net/spec/ogcapi-dggs-1/0.0/req/multi-zone-data-retrieval
+subject:: DGGS Multi-Zone Data Retrieval
+inherit:: link:http://www.opengis.net/spec/ogcapi-common-1/1.0/req/core[http://www.opengis.net/spec/ogcapi-common-1/1.0/req/core]
+====
