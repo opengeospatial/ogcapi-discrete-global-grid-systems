@@ -2,7 +2,12 @@
 
 [NOTE]
 ====
-Insert Preface Text here. Give OGC specific commentary: describe the technical content, reason for document, history of the document and precursors, and plans for future work.
+OGC API standards define modular API building blocks to spatially enable Web APIs in a consistent way. The OpenAPI specification is used to define the API building blocks.
+
+_OGC API - Discrete Global Grid Systems_ provides API building blocks to retrieve data and query zones based on Discrete Global Grid Systems (DGGS) concepts defined in
+https://docs.ogc.org/as/20-040r3/20-040r3.html[OGC Abstract Topic 21].
+Additional parts for _OGC API - Discrete Global Grid Systems_ may be defined in the future to provide additional capabilities.
+
 ====
 
 ////
@@ -30,5 +35,19 @@ Attention is drawn to the possibility that some of the elements of this document
 [abstract]
 == Abstract
 
-<Insert Abstract Text here>
+This specification defines building blocks which can be used as part of a Web API to retrieve geospatial data for a specific
+area, time and resolution of interest, based on a specific Discrete Global Grid System (DGGS) and indexing scheme,
+as defined in https://docs.ogc.org/as/20-040r3/20-040r3.html[OGC Abstract Topic 21], as well to query the list of DGGS zones from which data is available and/or
+matching a specify query (in combination with other building blocks defining queries, such as a filter defined using
+the https://docs.ogc.org/DRAFTS/21-065.html[OGC Common Query Language (CQL2)].
 
+== Submitters
+
+All questions regarding this submission should be directed to the editors or the submitters:
+
+[%unnumbered]
+|===
+| *Name*                                  | *Affiliation*
+| Matthew Brian John Purss (editor)       | Pangaea Innovations Pty. Ltd.
+| Jérôme Jacovella-St-Louis (editor)      | Ecere Corporation
+|===
