@@ -31,6 +31,9 @@ The columns for each part list the conformance classes of the standard that are 
 | https://tb16.geo-solutions.it/geoserver/ogc/dggs[GeoServer]
 | https://github.com/aaime[@aaime]
 
+| https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/[GNOSIS Map Server]
+| https://github.com/jerstlouis[Jerome St-Louis]
+
 | TBA
 | TBA
 
