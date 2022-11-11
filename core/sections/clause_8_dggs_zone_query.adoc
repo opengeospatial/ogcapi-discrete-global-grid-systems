@@ -45,7 +45,7 @@ include::../requirements/zone-query/REQ_zone-query_zone-level-response.adoc[]
 
 By default, implementations return a compact list of zones where children zones fully covering a parent
 are recursively replaced by the parent zones, allowing to express large areas in a much more compact list of zones.
-The following requirements describe how a client can disable returning a compact list of zones. (the default),
+The following requirements describe how a client can disable returning a compact list of zones.
 
 ===== Parameter
 
