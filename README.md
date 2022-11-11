@@ -2,45 +2,49 @@
 
 This GitHub repository contains the draft [OGC API - Discrete Global Grid Systems](https://ogcapi.ogc.org/dggs/) standard, as well as supporting information.
 
-[OGC API standards](https://ogcapi.ogc.org/) define modular API building blocks to spatially enable Web APIs
-in a consistent way. [OpenAPI](https://openapis.org) is used to define the reusable
-API building blocks with responses in JSON and HTML.
+The latest draft candidate standard can be accessed [here in HTML](https://opengeospatial.github.io/ogcna-auto-review/21-038.html) and [here in PDF](https://opengeospatial.github.io/ogcna-auto-review/21-038.pdf).
 
-The OGC API family of standards is organized by resource type. **OGC API - DGGS** specifies an API for accessing data organised according to a Discrete Global Grid System (DGGS). A DGGS is a spatial reference system that uses a hierarchical tessellation of cells to partition and address the globe. DGGS are characterized by the properties of their cell structure, geo-encoding, quantization strategy and associated mathematical functions.
+The OpenAPI building blocks defined by the specification as well as complete bundled example API definition are [available here](https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/tree/master/openapi), and can also be visualized and experimented with an example implementation [with SwaggerUI here](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/opengeospatial/ogcapi-discrete-global-grid-systems/master/openapi/ogcapi-dggs-1.bundled.json).
+
+[OGC API standards](https://ogcapi.ogc.org/) define modular API building blocks to spatially enable Web APIs
+in a consistent way. [OpenAPI](https://openapis.org) can be used to describe and document the reusable API building blocks (resource paths, query parameters, responses supporting different representations such as JSON and HTML, schemas for both request payload and responses).
+
+The OGC API family of standards is organized by resource type. **OGC API - DGGS** specifies an API for accessing data organised according to a Discrete Global Grid System (DGGS). A DGGS is a spatial reference system that uses a hierarchical tessellation of zones to partition and address the globe. DGGS are characterized by the properties of their zone structure, geo-encoding, quantization strategy and associated mathematical functions.
 
 ## Overview
 
 **OGC API - DGGS** provides access to data organised according to one or more DGGS.
 
 ```
-GET /dggs
+GET .../dggs
 ```
 
 List of DGGS Resource Instances
 
 ```
-GET /dggs/{dggsRSID}
+GET .../dggs/{dggsRSID}
 ```
 
-Structural definition and links to OGC API Resources implemented on this server for the selected DGGS Reference System. This describes the key parameters and structure of the selected DGGS Reference System as specified by [OGC Abstract Specification Topic 21 v2.0 - Part 1 (ISO/19170-1)](https://docs.ogc.org/as/20-040r3/20-040r3.html).
+Description of the DGGS instance, providing links to the definition of the DGGS and indexing scheme it implements, as well as links to the data retrieval mechanism and zone query end-points. The DGGS definition describes the parameters and structure of the selected DGGS Reference System as specified by [OGC Abstract Specification Topic 21 v2.0 - Part 1 (ISO/19170-1)](https://docs.ogc.org/as/20-040r3/20-040r3.html).
 
 ```
-GET /dggs/{dggsRSID}/zones
+GET .../dggs/{dggsRSID}/zones
 ```
 
-Access the list of zones defined by the selected DGGS_RS. This can list either all the zones of the DGGS_RS (not advisable without the use of Limits and Offsets), or a particular subset based on a range of refinement Levels, a WGS84 bounding box or a <still to be defined> polygon search area.
+Query the list of zones where data is available and/or match certain query criteria (e.g., a bounding box, a [CQL2](http://docs.ogc.org/DRAFTS/21-065.html) filter), for a selected DGGS_RS, optionally specifying a particular DGGS hierarchy level. This end-point supports a compact representation based on zone hierarchy, as well as paging in order to handle potentially large responses.
 
 ```
-GET /dggs/{dggsRSID}/zone/{ZonalID}
+GET /dggs/{dggsRSID}/zones/{ZonalID}
 ```
 
-Access the definition of a particular zone
+Information about a specific zone for a specific DGGS instance, such as its geometry and area.
 
-## Using the draft standard
+```
+GET /dggs/{dggsRSID}/zones/{ZonalID}/data
+```
 
-The draft standard can be accessed [here](https://opengeospatial.github.io/ogcna-auto-review/21-038.html).
-
-The example **OpenAPI** definition document for the draft OGC API - DGGS standard is on SwaggerHub [here](https://app.swaggerhub.com/apis/geofizzydrink/ogc_api_dggs/0.0.6).
+Retrieve the data for a specific zone of a particular DGGS instance, at a resolution corresponding to the DGGS hierarchy level of that zone, in one or more available data packet encodings.
+Typically, the data packet would include values for descendent zones at a number of levels deeper than the requested zone's level, as opposed to a single value for the requested zone zone.
 
 ## Server and client implementations
 
