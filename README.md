@@ -46,7 +46,7 @@ GET .../dggs/{dggsRSID}/zones/{ZonalID}/data
 ```
 
 Retrieve the data for a specific zone of a particular DGGS instance, at a resolution corresponding to the DGGS hierarchy level of that zone, in one or more available data packet encodings.
-Typically, the data packet would include values for descendent zones at a number of levels deeper than the requested zone's level, as opposed to a single value for the requested zone zone.
+Typically, the data packet would include values for descendent zones at a number of levels deeper than the requested zone's level, as opposed to a single value for the requested zone.
 
 ## Server and client implementations
 
