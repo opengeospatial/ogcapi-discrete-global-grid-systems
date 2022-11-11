@@ -15,6 +15,8 @@ The OGC API family of standards is organized by resource type. **OGC API - DGGS*
 
 **OGC API - DGGS** provides access to data organised according to one or more DGGS.
 
+The following transportable end-point resources can be attached either to an OGC API dataset (as defined by [OGC API - Common - Part 1: Core](http://docs.ogc.org/DRAFTS/19-072.html)) or to an OGC API collection (as defined by [OGC API - Common - Part 2: Geospatial data](http://docs.ogc.org/DRAFTS/20-024.html)).
+
 ```
 GET .../dggs
 ```
@@ -34,13 +36,13 @@ GET .../dggs/{dggsRSID}/zones
 Query the list of zones where data is available and/or match certain query criteria (e.g., a bounding box, a [CQL2](http://docs.ogc.org/DRAFTS/21-065.html) filter), for a selected DGGS_RS, optionally specifying a particular DGGS hierarchy level. This end-point supports a compact representation based on zone hierarchy, as well as paging in order to handle potentially large responses.
 
 ```
-GET /dggs/{dggsRSID}/zones/{ZonalID}
+GET .../dggs/{dggsRSID}/zones/{ZonalID}
 ```
 
 Information about a specific zone for a specific DGGS instance, such as its geometry and area.
 
 ```
-GET /dggs/{dggsRSID}/zones/{ZonalID}/data
+GET .../dggs/{dggsRSID}/zones/{ZonalID}/data
 ```
 
 Retrieve the data for a specific zone of a particular DGGS instance, at a resolution corresponding to the DGGS hierarchy level of that zone, in one or more available data packet encodings.
