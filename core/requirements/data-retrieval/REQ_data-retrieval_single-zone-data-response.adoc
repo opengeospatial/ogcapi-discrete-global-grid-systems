@@ -6,10 +6,20 @@ description:: For the response to a query retrieving data for a single DGGS zone
 part:: The response of the HTTP GET operation SHALL have a status code of 200.
 part:: The content of the response SHALL be a data packet corresponding precisely to the area
 covered by the DGGS zone.
-part:: The content of the response SHALL be a data packet whose resolution / scale correspond to that zone's hierarchy level.
-This would usually imply more than a single value being returned for each zone request.
-The data packet would include values for descendent zones at _x_ levels deeper than the requested zone's level, where _x_ may be defined
-by the indexing scheme or data packet encoding, or otherwise be specified. e.g., requesting data for a level 10 zones might be returning
-individual values for each level 18 zones contained within that level 10 zone for which data is being requested.
+part:: If a `zone-depth` is specified, the implementation SHALL return the data at the resolution / scale specified
+by the `zone-depth` parameter, in accordance to the capabilities of the data packet encoding.
+The data encoding may support a fixed depth, a range of depth, and/or an arbitrary selection of depths.
+part:: If the `zone-depth` parameter is omitted, a default zone depth SHALL be assumed corresponding
+to that specified by the data packet encoding, or if none is specified by the data encoding, to the one specified
+by the DGGS Reference System, or if none is specified by the DGGS Reference System, to 0.
 part:: The selection of an encoding for the response SHALL be consistent with HTTP content negotiation.
 ====
+
+NOTE: A use case for a `zone-depth` of 0 would be to query the single set values for a specific zone.
+
+NOTE: For use cases such as visualization and performing analysis over a certain area,
+a non-zero `zone-depth` would normally be used to avoid an overwhelming number of server round-trips.
+In this case, more than a single value would be returned for each zone request,
+with values returned for descendent zones at `zone-depth` levels deeper than the requested zone's level.
+For example, requesting data for a level 10 zone with a `zone-depth` of 8 would return
+individual values for each level 18 zones contained within that level 10 zone being requested.
