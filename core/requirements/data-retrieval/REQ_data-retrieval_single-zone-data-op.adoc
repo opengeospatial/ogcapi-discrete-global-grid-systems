@@ -1,15 +1,13 @@
+[[req_data-retrieval_single-zone-data-op]]
+
 [requirement]
 ====
 [%metadata]
 label:: /req/data-retrieval/single-zone-data-op
-description:: For retrieving data for a single DGGS zone:
-part:: The Implementation SHALL support an HTTP GET operation at a resource path
+description:: Operation for retrieving data from a single DGGS zone:
+part:: The operation SHALL support an HTTP GET operation at a resource path
 ending with `.../dggs/{dggsId}/zones/{zoneId}/data`.
-part:: The implementation SHALL support a `zone-depth` parameter indicating the resolution levels
-beyond the current zone's hierarchy level at which to retrieve the data. This `zone-depth` parameter
-can be either a single integer value, a range of values in the form `{low}-{high}`, or a comma-separated
-list of depths to be included.
-A `zone-depth` of 0 corresponds to a single set of range (properties / field values) values for the requested zone.
-part:: The Implementation SHALL provide a templated  link to this resource path using
+part:: The operation SHALL satisfy requirement <<req_data-retrieval_zone-depth-definition,/req/data-retrieval/rc-zone-depth-definition>>.
+part:: The operation SHALL provide a templated  link to this resource path using
 the link relation type http://www.opengis.net/def/rel/ogc/1.0/dggs-zone-data.
 ====

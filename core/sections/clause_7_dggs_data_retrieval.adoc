@@ -21,6 +21,10 @@ include::../requirements/requirements_class_data-retrieval.adoc[]
 The following requirements describe how a client can retrieve data from a single DGGS zone
 at the resource path `.../dggs/{dggsId}/zones/{zoneId}/data`.
 
+==== Parameter zone-depth
+include::../requirements/data-retrieval/REQ_parameter_zone_depth_definition.adoc[]
+include::../requirements/data-retrieval/REQ_parameter_zone_depth_response.adoc[]
+
 ==== Operation
 
 include::../requirements/data-retrieval/REQ_data-retrieval_single-zone-data-op.adoc[]
@@ -28,3 +32,7 @@ include::../requirements/data-retrieval/REQ_data-retrieval_single-zone-data-op.a
 ==== Response
 
 include::../requirements/data-retrieval/REQ_data-retrieval_single-zone-data-response.adoc[]
+
+
+
+
