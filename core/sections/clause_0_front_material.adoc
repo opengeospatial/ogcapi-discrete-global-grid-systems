@@ -32,6 +32,18 @@ The main task of technical committees is to prepare International Standards. Dra
 Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. ISO shall not be held responsible for identifying any or all such patent rights.
 ////
 
+== Submitters
+
+All questions regarding this submission should be directed to the editors or the submitters:
+
+
+[%unnumbered]
+|===
+| *Name*                                  | *Affiliation*
+| Matthew Brian John Purss (editor)       | Pangaea Innovations Pty. Ltd.
+| Jérôme Jacovella-St-Louis (editor)      | Ecere Corporation
+|===
+
 [abstract]
 == Abstract
 
@@ -40,14 +52,3 @@ area, time and resolution of interest, based on a specific Discrete Global Grid 
 as defined in https://docs.ogc.org/as/20-040r3/20-040r3.html[OGC Abstract Topic 21], as well to query the list of DGGS zones from which data is available and/or
 matching a specify query (in combination with other building blocks defining queries, such as a filter defined using
 the https://docs.ogc.org/DRAFTS/21-065.html[OGC Common Query Language (CQL2)].
-
-== Submitters
-
-All questions regarding this submission should be directed to the editors or the submitters:
-
-[%unnumbered]
-|===
-| *Name*                                  | *Affiliation*
-| Matthew Brian John Purss (editor)       | Pangaea Innovations Pty. Ltd.
-| Jérôme Jacovella-St-Louis (editor)      | Ecere Corporation
-|===
