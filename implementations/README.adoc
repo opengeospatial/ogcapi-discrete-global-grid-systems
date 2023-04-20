@@ -59,3 +59,19 @@ The columns for each part list the conformance classes of the standard that the 
 |TBA
 |TBA
 |===
+
+## Offline
+
+DGGS analysis implementations which don't directly involve the internet.
+
+.Offline implementations
+[cols="6,4",options="header",grid="rows",stripes="hover"]
+|===
+| Product | Contact email or GitHub handle
+
+|https://git.openwork.nz/libdggs.git/tree/
+|opensource@openwork.nz
+
+|TBA
+|TBA
+|===
