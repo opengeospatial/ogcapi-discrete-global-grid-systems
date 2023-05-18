@@ -659,6 +659,9 @@
             "$ref": "#/components/parameters/collections"
           },
           {
+            "$ref": "#/paths/~1collections/get/parameters/1"
+          },
+          {
             "name": "zone-level",
             "in": "query",
             "description": "The DGGS hierarchy level at which to return the list of zones. The precision of the calculation to return the results depends on this parameter. Returned zones will have a level equal or smaller to this specified level. If `compact-zones` is set to true, all returned zones will be of this zone level. If not specified, this defaults to the most detailed zone that the system is able to return for the specific request.",
@@ -722,7 +725,10 @@
             "$ref": "#/components/parameters/collections"
           },
           {
-            "$ref": "#/paths/~1dggs~1%7BdggsId%7D~1zones/get/parameters/2"
+            "$ref": "#/paths/~1collections/get/parameters/1"
+          },
+          {
+            "$ref": "#/paths/~1dggs~1%7BdggsId%7D~1zones/get/parameters/3"
           },
           {
             "$ref": "#/components/parameters/zones"

@@ -7,6 +7,7 @@ get:
      - $ref: '../../parameters/unspecified/dggsId.yaml'
      - $ref: '../../parameters/common-geodata/collectionId-all.yaml'
      - $ref: '../../parameters/common-geodata/collections.yaml'
+     - $ref: '../../parameters/common-geodata/bbox.yaml'
      - $ref: '../../parameters/dggs-core/zone-level.yaml'
      - $ref: '../../parameters/dggs-core/compact-zones.yaml'
      - $ref: '../../parameters/dggs-core/limit-zones.yaml'
