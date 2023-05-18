@@ -58,15 +58,15 @@ paths:
 
    # DGGS Zone Data: Data Set Zone Data (all collections)
    # Part 1: collections= parameter; Later parts: filter= (whole feature), query= (e.g. intersections)
-   /dggs/{dggsId}/data: # Retrieve data from multiple zones at once, potentially in optimized DGGS zone data packets.
-      $ref: 'paths/dggs-core/pData.yaml'
+   # /dggs/{dggsId}/data: # Retrieve data from multiple zones at once, potentially in optimized DGGS zone data packets.
+   #    $ref: 'paths/dggs-core/pData.yaml'
    /dggs/{dggsId}/zones/{zoneId}/data: # Retrieve data from a single zone, potentially in optimized DGGS zone data packet, filter= (whole feature), query= (e.g. intersections)
       $ref: 'paths/dggs-core/pZoneData.yaml'
 
    # DGGS Zone Data: Collection Zone Data (specific collection)
    # Later parts: filter= (whole feature), query= (e.g. intersections)
-   /collections/{collectionId}/dggs/{dggsId}/data: # Retrieve data from multiple zones at once, potentially in optimized DGGS zone data packets.
-      $ref: 'paths/dggs-core/pCollectionData.yaml'
+   #/collections/{collectionId}/dggs/{dggsId}/data: # Retrieve data from multiple zones at once, potentially in optimized DGGS zone data packets.
+   #   $ref: 'paths/dggs-core/pCollectionData.yaml'
    /collections/{collectionId}/dggs/{dggsId}/zones/{zoneId}/data: # Retrieve data from a single zone, potentially in optimized DGGS zone data packet.
       $ref: 'paths/dggs-core/pCollectionZoneData.yaml'
 
