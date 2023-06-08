@@ -24,25 +24,25 @@ GET .../dggs
 List of DGGS Resource Instances
 
 ```
-GET .../dggs/{dggsRSID}
+GET .../dggs/{dggsID}
 ```
 
 Description of the DGGS instance, providing links to the definition of the DGGS and indexing scheme it implements, as well as links to the data retrieval mechanism and zone query end-points. The DGGS definition describes the parameters and structure of the selected DGGS Reference System as specified by [OGC Abstract Specification Topic 21 v2.0 - Part 1 (ISO/19170-1)](https://docs.ogc.org/as/20-040r3/20-040r3.html).
 
 ```
-GET .../dggs/{dggsRSID}/zones
+GET .../dggs/{dggsID}/zones
 ```
 
 Query the list of zones where data is available and/or match certain query criteria (e.g., a bounding box, a [CQL2](http://docs.ogc.org/DRAFTS/21-065.html) filter), for a selected DGGS_RS, optionally specifying a particular DGGS hierarchy level. This end-point supports a compact representation based on zone hierarchy, as well as paging in order to handle potentially large responses.
 
 ```
-GET .../dggs/{dggsRSID}/zones/{ZonalID}
+GET .../dggs/{dggsID}/zones/{ZonalID}
 ```
 
 Information about a specific zone for a specific DGGS instance, such as its geometry and area.
 
 ```
-GET .../dggs/{dggsRSID}/zones/{ZonalID}/data
+GET .../dggs/{dggsID}/zones/{ZonalID}/data
 ```
 
 Retrieve the data for a specific zone of a particular DGGS instance, at a resolution corresponding to the DGGS hierarchy level of that zone, in one or more available data packet encodings.
