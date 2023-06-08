@@ -1,0 +1,30 @@
+dggrs:
+  title: DGGRS
+  oneOf:
+  - description: Simplification of the object into a url if the other properties are
+      not present
+    type: string
+  - oneOf:
+    - properties:
+        uri:
+          description: Reference to one Discrete Global Grid System Specification
+          format: uri
+          type: string
+      required:
+      - uri
+    - properties:
+        wkt:
+          description: A string defining the DGGRS using the JSON encodng for Well
+            Known Text
+          type: object
+      required:
+      - wkt
+    - properties:
+        referenceSystem:
+          $ref: '#/components/schemas/dggsStructure'
+          description: A reference system data structure as defined in the DGG_ReferenceSystem
+            of ISO 19170-1
+      required:
+      - referenceSystem
+    type: object
+  

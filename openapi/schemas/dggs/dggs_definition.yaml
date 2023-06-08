@@ -1,0 +1,28 @@
+dggsDescription:
+  type: object
+  required:
+  - dggsID
+  - DGGRS
+  - links
+  properties:
+    DGGRS:
+      allOf:
+      - description: Discrete Global Grid Reference System (DGGRS)
+      - $ref: '#/components/schemas/dggrs'
+    dggsID:
+      description: The unique identifier for the Discrete Global Grid System implementation.
+      example: TerraNexus_S_IT9_GRS80_2d10b58e2088c7e2
+      type: string
+    dggsRsZoneClasses:
+      items:
+        $ref: '#/components/schemas/zoneClass'
+      type: array
+    links:
+      items:
+        $ref: '#/components/schemas/link'
+      type: array
+    title:
+      description: Title Description of the Discrete Global Grid System
+      example: TerraNexus Equal Area Surface DGGS - Icosahedron Base Polyhedron -
+        Triangular Zone Topology Type - 1:9 Refinement Ratio - GRS80 Earth Model.
+      type: string
