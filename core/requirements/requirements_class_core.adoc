@@ -1,0 +1,39 @@
+[[rc_core]]
+[requirements_class]
+====
+[%metadata]
+label:: http://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/core
+subject:: Web API
+====
+
+=== Requirements
+
+==== Listing available DGGS (`.../dggs`)
+
+[requirement]
+====
+[%metadata]
+label:: /req/core/dggs-list
+description:: For retrieving the list of available DGGS:
+part:: The Implementation SHALL support an HTTP GET operation at a resource path ending with `.../dggs`.
+====
+
+==== Retrieving DGGS information (`.../dggs/{dggsId}`)
+
+[requirement]
+====
+[%metadata]
+label:: /req/core/dggs-info
+description:: For retrieving information for a particular available DGGS:
+part:: The Implementation SHALL support an HTTP GET operation at a resource path ending with `.../dggs/{dggsId}`.
+====
+
+==== Listing zone information (`.../dggs/{dggsId}/zones/{zoneId}`)
+
+[requirement]
+====
+[%metadata]
+label:: /req/core/zone-info
+description:: For retrieving information for a particular DGGS zone:
+part:: The Implementation SHALL support an HTTP GET operation at a resource path ending with `.../dggs/{dggsId}/zones/{zoneId}`.
+====

@@ -1,4 +1,4 @@
-== DGGS - Zone Query Conformance Class
+== Requirement Class "Zone Query"
 
 === Overview
 

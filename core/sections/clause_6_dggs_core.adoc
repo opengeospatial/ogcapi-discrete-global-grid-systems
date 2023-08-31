@@ -1,10 +1,12 @@
 [obligation=normative]
-== DGGS - Core Conformance Class
+== Requirement Class "Core"
 
-Paragraph
+=== Overview
 
-=== Clauses not containing normative material sub-clause 1
+The "Core" Requirement Class allows a client to list available DGGS for a given resource,
+retrieve additional information about a particular DGGS, and retrieve information about a particular DGGS zone.
 
-Paragraph
+The "Core" Requirement Class is the only mandatory Requirements Class, but an implementation with practical use
+is expected to additionally implement either the "Zone Data Retrieval" Requirement Class, the "Zone Query" Requirement Class, or both.
 
-=== Clauses not containing normative material sub-clause 2
+include::../requirements/requirements_class_core.adoc[]

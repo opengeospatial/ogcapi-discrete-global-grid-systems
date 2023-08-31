@@ -1,4 +1,4 @@
-== DGGS - Data Retrieval Conformance Class
+== Requirement Class "Data Retrieval"
 
 === Overview
 

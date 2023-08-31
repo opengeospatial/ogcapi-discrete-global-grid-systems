@@ -46,7 +46,11 @@ include::sections/clause_7_dggs_data_retrieval.adoc[]
 
 include::sections/clause_8_dggs_zone_query.adoc[]
 
-include::sections/clause_9_media_types.adoc[]
+include::sections/clause_9_dataset_dggs.adoc[]
+
+include::sections/clause_10_collections_dggs..adoc[]
+
+include::sections/clause_11_media_types.adoc[]
 
 ////
 add or remove annexes after "A" as necessary

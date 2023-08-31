@@ -1,0 +1,7 @@
+== Requirement Class "Collections"
+
+=== Overview
+
+The "Collections" Requirement Class defines the availability of DGGS resources applying to one or more collections of geospatial data, as defined by _OGC API - Common - Part 2: Geospatial data_.
+
+include::../requirements/requirements_class_collections.adoc[]
