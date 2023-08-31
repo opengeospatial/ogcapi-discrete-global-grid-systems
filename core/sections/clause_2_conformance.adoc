@@ -1,16 +1,62 @@
 == Conformance
-This standard defines XXXX.
+The one Standardization Target for this standard is Web APIs.
 
-Requirements for N standardization target types are considered:
+_OGC API - Common_ provides a common foundation for OGC API standards.
+Some conformance classes of this standard have a dependency on, or are designed to be easily integrated with, conformance classes defined in _OGC API - Common_ _Part 1_ and/or _Part 2_,
+as well as within a Web API conforming to additional OGC API standards.
 
-* AAAA
-* BBBB
+This standard identifies five Conformance Classes. Each Conformance Class has an associated Requirements Class.
+The Requirements Classes define the functional requirements which will be tested through the associated Conformance Class.
+Only the Core requirements class is mandatory, all others are optional.
 
-Conformance with this standard shall be checked using all the relevant tests specified in Annex A (normative) of this document. The framework, concepts, and methodology for testing, and the criteria to be achieved to claim conformance are specified in the OGC Compliance Testing Policies and Procedures and the OGC Compliance Testing web site.
+The Requirements Classes for _OGC API - Discrete Global Grid Systems_ are:
 
-In order to conform to this OGC® interface standard, a software implementation shall choose to implement:
+=== Requirements classes defining resources
 
-* Any one of the conformance levels specified in Annex A (normative).
-* Any one of the Distributed Computing Platform profiles specified in Annexes TBD through TBD (normative).
+* <<rc-core,*Core*>>
+* <<rc-zone-data-retrieval-tiles,*Zone Data Retrieval*>>
+* <<rc-zone-query,*Zone Query*>>
+
+=== Requirements classes defining origins
+
+* <<rc-dataset,*Dataset*>>
+* <<rc-collections,*Collections*>>
+
+=== Requirements classes defining resource representations
+
+* <<rc-encoding-html,HTML>>
+* <<rc-encoding-geojson,GeoJSON>>
+* <<rc-encoding-geotiff,GeoTIFF>>
+* <<rc-encoding-netcdf,netCDF>>
+* <<rc-encoding-coveragejson,CoverageJSON>>
+* <<rc-encoding-jpg,JPG>>
+* <<rc-encoding-png,PNG>>
+* <<rc-encoding-jpegxl,JPEG XL>>
+* <<rc-encoding-zarr,(Geo)Zarr>>
+* <<rc-oas30,*OpenAPI 3.0*>>
+
+The Encoding Requirements Classes address support for formats commonly used for encoding geospatial data.
+
+The _OpenAPI 3.0_ Requirements Class defines additonal requirements in addition to those defined in _OGC API - Common - Part 1: Core_ to facilitate identifying DGGS resources from an OpenAPI 3.0 API Definition.
+
+Conformance with this standard shall be checked using all the relevant tests specified in Annex A (normative) of this document.
+The framework, concepts, and methodology for testing, and the criteria to be achieved to claim conformance are specified in the OGC Compliance Testing Policies and Procedures and the OGC Compliance Testing web site.
+
+In order to conform to this OGC® interface standard, a software implementation shall implement at minimum the "Core" requirements class defined in Annex A (normative).
 
 All requirements-classes and conformance-classes described in this document are owned by the standard(s) identified.
+
+=== Summary of conformance URIs
+
+[#table_conformance_urls,reftext='{table-caption} {counter:table-num}']
+.Conformance class URIs
+[cols="30,70",options="header"]
+|===
+| Corresponding requirements class           | Conformance class URI
+| <<rc_core,Core>>                           | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/core
+| <<rc_data-retrieval,Zone Data Retrieval>>  | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-retrieval
+| <<rc_zone-query,Zone Query>>               | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-query
+| <<rc_dataset,Dataset>>                     | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/dataset
+| <<rc_collections,Collections>>             | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/collections
+| <<rc_oas30,OpenAPI Specification 3.0>>     | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/oas30
+|===
