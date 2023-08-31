@@ -28,7 +28,7 @@ description:: For retrieving information for a particular available DGGS:
 part:: The Implementation SHALL support an HTTP GET operation at a resource path ending with `.../dggs/{dggsId}`.
 ====
 
-==== Listing zone information (`.../dggs/{dggsId}/zones/{zoneId}`)
+==== Retrieving zone information (`.../dggs/{dggsId}/zones/{zoneId}`)
 
 [requirement]
 ====
