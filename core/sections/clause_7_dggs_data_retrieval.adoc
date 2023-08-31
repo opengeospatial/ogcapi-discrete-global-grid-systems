@@ -1,5 +1,7 @@
 == DGGS - Data Retrieval Conformance Class
 
+=== Overview
+
 The Data Retrieval conformance class allows to retrieve data from a specific
 Discrete Global Grid System (DGGS) in a particular indexing scheme from an individual zone.
 It describes an HTTP GET operation, as well as its response.
@@ -15,20 +17,3 @@ in connection with _OGC API - Processes - Part 3: Workflows & Chaining_, the out
 a processing workflow.
 
 include::../requirements/requirements_class_data-retrieval.adoc[]
-
-=== Retrieving data from a zone
-
-The following requirements describe how a client can retrieve data from a single DGGS zone
-at the resource path `.../dggs/{dggsId}/zones/{zoneId}/data`.
-
-==== Operation
-
-include::../requirements/data-retrieval/REQ_data-retrieval_single-zone-data-op.adoc[]
-
-==== Response
-
-include::../requirements/data-retrieval/REQ_data-retrieval_single-zone-data-response.adoc[]
-
-==== Parameter `zone-depth`
-
-include::../requirements/data-retrieval/REQ_data-retrieval_depth-parameter.adoc[]

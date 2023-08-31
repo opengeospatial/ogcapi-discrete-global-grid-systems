@@ -1,9 +1,0 @@
-[requirement]
-====
-[%metadata]
-label:: /req/zone-query/compact-zones-parameter
-description:: For specifying whether to return a compact list of zones:
-part:: The Implementation SHALL support a boolean `compact-zones` query parameter for the zone query
-operation (resource path ending with `.../dggs/{dggsId}/zones`), where a value of `true` corresponds to the
-default behavior when the paramter is not specified, and a value of `false` disables the use of compact-zones in the response.
-====

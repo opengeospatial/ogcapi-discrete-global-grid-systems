@@ -1,6 +1,6 @@
 == DGGS - Zone Query Conformance Class
 
-=== Requirement Class DGGS - Zone Query
+=== Overview
 
 The Zone Query conformance class allows to request the list of DGGS zones from a specific
 Discrete Global Grid System (DGGS) in a particular indexing scheme for which there is
@@ -14,56 +14,3 @@ in connection with _OGC API - Processes - Part 3: Workflows & Chaining_, the out
 a processing workflow.
 
 include::../requirements/requirements_class_zone-query.adoc[]
-
-==== Retrieve the list of zones
-
-The following requirements describe how a client can retrieve the list of zones from
-which data is available at the resource path `.../dggs/{dggsId}/zones`.
-
-===== Operation
-
-include::../requirements/zone-query/REQ_zone-query_list-zones-op.adoc[]
-
-===== Response
-
-include::../requirements/zone-query/REQ_zone-query_zones-list-response.adoc[]
-
-==== `zone-level` parameter
-
-The following requirements describe how a client can specify the DGGS hierarchy level at which
-to retrieve the list of zones.
-
-===== Parameter
-
-include::../requirements/zone-query/REQ_zone-query_zone-level-parameter.adoc[]
-
-===== Response
-
-include::../requirements/zone-query/REQ_zone-query_zone-level-response.adoc[]
-
-==== `compact-zones` parameter
-
-By default, implementations return a compact list of zones where children zones fully covering a parent
-are recursively replaced by the parent zones, allowing to express large areas in a much more compact list of zones.
-The following requirements describe how a client can disable returning a compact list of zones.
-
-===== Parameter
-
-include::../requirements/zone-query/REQ_zone-query_compact-zones-parameter.adoc[]
-
-===== Response
-
-include::../requirements/zone-query/REQ_zone-query_compact-zones-response.adoc[]
-
-==== Paging capability and `limit` parameter
-
-The following requirements describe how a client can specify a limit to the number of zones to be returned
-and page through large list of zones as multiple requests and responses.
-
-===== Parameter
-
-include::../requirements/zone-query/REQ_zone-query-limit-parameter.adoc[]
-
-===== Response
-
-include::../requirements/zone-query/REQ_zone-query-limit-response.adoc[]
