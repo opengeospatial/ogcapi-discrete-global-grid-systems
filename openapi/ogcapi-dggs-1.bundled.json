@@ -2589,7 +2589,7 @@
         }
       },
       "DGGSList": {
-        "description": "List of available Discrete Global Grid Systems.",
+        "description": "List of available Discrete Global Grid Reference Systems.",
         "content": {
           "application/json": {
             "schema": {
@@ -2621,7 +2621,7 @@
         }
       },
       "DGGS": {
-        "description": "List of Discrete Global Grid Systems.",
+        "description": "Description for a specific Discrete Global Grid Reference System.",
         "content": {
           "application/json": {
             "schema": {

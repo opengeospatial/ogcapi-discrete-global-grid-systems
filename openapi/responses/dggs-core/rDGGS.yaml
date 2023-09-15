@@ -1,4 +1,4 @@
-description: List of Discrete Global Grid Systems.
+description: Description for a specific Discrete Global Grid Reference System.
 content:
    application/json:
      schema:
