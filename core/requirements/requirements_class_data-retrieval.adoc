@@ -14,7 +14,7 @@ inherit:: http://www.opengis.net/spec/ogcapi-common-1/1.0/req/core
 The following requirements describe how a client can retrieve data from a single DGGS zone
 at the resource path `.../dggs/{dggsId}/zones/{zoneId}/data`.
 
-[[req_data-retrieval_single-zone-data]]
+[[req_data-retrieval_zone-data]]
 
 [requirement]
 ====

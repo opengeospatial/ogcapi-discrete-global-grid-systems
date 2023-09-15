@@ -5,7 +5,7 @@ _OGC API - Common_ provides a common foundation for OGC API standards.
 Some conformance classes of this standard have a dependency on, or are designed to be easily integrated with, conformance classes defined in _OGC API - Common_ _Part 1_ and/or _Part 2_,
 as well as within a Web API conforming to additional OGC API standards.
 
-This standard identifies seventeen Conformance Classes. Each Conformance Class has an associated Requirements Class.
+This standard identifies twenty-two Conformance Classes. Each Conformance Class has an associated Requirements Class.
 The Requirements Classes define the functional requirements which will be tested through the associated Conformance Class.
 Only the Core requirements class is mandatory, all others are optional.
 
@@ -13,34 +13,41 @@ The Requirements Classes for _OGC API - Discrete Global Grid Systems_ are:
 
 === Requirements classes defining resources
 
-* <<rc-core,*Core*>>
-* <<rc-zone-data-retrieval-tiles,*Zone Data Retrieval*>>
-* <<rc-zone-query,*Zone Query*>>
+* <<rc_core,*Core*>>
+* <<rc_data-retrieval,*Zone Data Retrieval*>>
+* <<rc_zone-query,*Zone Query*>>
 
 === Requirements classes defining origins
 
-* <<rc-root-dggs,*Root DGGS*>>
-* <<rc-collection-dggs,*Collection DGGS*>>
+* <<rc_root-dggs,*Root DGGS*>>
+* <<rc_collection-dggs,*Collection DGGS*>>
 
 === Requirements classes defining parameters
 
-* <<rc-data-subsetting,*Data subsetting*>>
-* <<rc-data-custom-depths,*Data custom depths*>>
+* <<rc_data-subsetting,*Zone data subsetting*>>
+* <<rc_data-custom-depths,*Zone data custom depths*>>
 
 === Requirements classes defining resource representations
 
-* <<rc-encoding-html,HTML>>
-* <<rc-encoding-geojson,GeoJSON>>
-* <<rc-encoding-geotiff,GeoTIFF>>
-* <<rc-encoding-netcdf,netCDF>>
-* <<rc-encoding-coveragejson,CoverageJSON>>
-* <<rc-encoding-jpg,JPG>>
-* <<rc-encoding-png,PNG>>
-* <<rc-encoding-jpegxl,JPEG XL>>
-* <<rc-encoding-zarr,(Geo)Zarr>>
-* <<rc-oas30,*OpenAPI 3.0*>>
+* <<rc_data-html,HTML Data>>
+* <<rc_data-geojson,GeoJSON Data>>
+* <<rc_data-geotiff,GeoTIFF Data>>
+* <<rc_data-netcdf,netCDF Data>>
+* <<rc_data-coveragejson,CoverageJSON Data>>
+* <<rc_data-jpg,JPG Data>>
+* <<rc_data-png,PNG Data>>
+* <<rc_data-jpegxl,JPEG XL Data>>
+* <<rc_data-zarr,(Geo)Zarr Data>>
+* <<rc_zone-html,HTML Zone List>>
+* <<rc_zone-geojson,JSON Zone List>>
+* <<rc_zone-geotiff,64-bit Binary Zone List>>
+* <<rc_zone-geojson,GeoJSON Zone List>>
+* <<rc_zone-geotiff,GeoTIFF Zone List>>
+* <<rc_oas30,*OpenAPI 3.0*>>
 
-The Encoding Requirements Classes address support for formats commonly used for encoding geospatial data.
+The Data Encoding Requirements Classes address support for formats commonly used for encoding geospatial data.
+
+The Zone List Encoding Requirements Classes address support for formats efficiently and/or intuitively encoding a list of DGGS zone identifiers.
 
 The _OpenAPI 3.0_ Requirements Class defines additonal requirements in addition to those defined in _OGC API - Common - Part 1: Core_ to facilitate identifying DGGS resources from an OpenAPI 3.0 API Definition.
 
@@ -58,12 +65,26 @@ All requirements-classes and conformance-classes described in this document are 
 [cols="30,70",options="header"]
 |===
 | Corresponding requirements class               | Conformance class URI
-| <<rc-core,Core>>                               | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/core
-| <<rc-data-retrieval,Zone Data Retrieval>>      | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-retrieval
-| <<rc-zone-query,Zone Query>>                   | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-query
-| <<rc-root,Root DGGS>>                          | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/root-dggs
-| <<rc-collections,Collection DGGS>>             | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/collection-dggs
-| <<rc-data-subsetting,Data subsetting>>         | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-subsetting
-| <<rc-data-custom-depths,Data custom depths>>   | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-custom-depths
-| <<rc-oas30,OpenAPI Specification 3.0>>         | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/oas30
+| <<rc_core,Core>>                               | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/core
+| <<rc_data-retrieval,Zone Data Retrieval>>      | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-retrieval
+| <<rc_zone-query,Zone Query>>                   | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-query
+| <<rc_root-dggs,Root DGGS>>                     | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/root-dggs
+| <<rc_collection-dggs,Collection DGGS>>         | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/collection-dggs
+| <<rc_data-subsetting,Data subsetting>>         | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-subsetting
+| <<rc_data-custom-depths,Data custom depths>>   | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-custom-depths
+| <<rc_data-html,HTML Data>>                     | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-html
+| <<rc_data-geojson,GeoJSON Data>>               | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-geojson
+| <<rc_data-geotiff,GeoTIFF Data>>               | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-tiff
+| <<rc_data-netcdf,netCDF Data>>                 | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-netcdf
+| <<rc_data-coveragejson,CoverageJSON Data>>     | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-jpeg
+| <<rc_data-jpg,JPEG Data>>                      | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-png
+| <<rc_data-png,PNG Data>>                       | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-jpegxl
+| <<rc_data-jpegxl,JPEG XL Data>>                | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-png
+| <<rc_data-zarr,(Geo)Zarr Data>>                | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-zarr
+| <<rc_zone-html,HTML Zone List>>                | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-html
+| <<rc_zone-geojson,JSON Zone List>>             | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-json
+| <<rc_zone-geotiff,64-bit Binary Zone List>>    | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-uint64
+| <<rc_zone-geojson,GeoJSON Zone List>>          | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-geojson
+| <<rc_zone-geotiff,GeoTIFF Zone List>>          | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-tiff
+| <<rc_oas30,OpenAPI Specification 3.0>>         | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/oas30
 |===

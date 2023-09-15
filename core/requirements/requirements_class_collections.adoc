@@ -1,4 +1,4 @@
-[[rc-collection-dggs]]
+[[rc_collection-dggs]]
 [requirements_class]
 ====
 [%metadata]
