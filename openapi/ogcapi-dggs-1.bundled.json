@@ -2625,15 +2625,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "type": "object",
-              "properties": {
-                "dggs": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/dggs-item"
-                  }
-                }
-              }
+              "$ref": "#/components/schemas/dggs"
             }
           },
           "text/html": {

@@ -2,12 +2,7 @@ description: List of Discrete Global Grid Systems.
 content:
    application/json:
      schema:
-       type: object
-       properties:
-         dggs:
-           type: array
-           items:
-             $ref: '../../schemas/dggs-core/dggs-item.yaml'
+       $ref: '../../schemas/dggs-core/dggs.yaml'
    text/html:
      schema:
        type: string
