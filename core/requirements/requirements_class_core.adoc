@@ -61,8 +61,8 @@ part:: The zone information resource SHALL include a link back to the correspond
 ====
 [%metadata]
 label:: /rec/core/zone-info
-part:: The zone information resource SHOULD include an `areaMetersSquare` property indicating the surface area of the zone in meters square.
-part:: For a DGGS with three spatial dimension, the zone information resource SHOULD include a `volumeMetersCube` property indicating the surface area of the zone in meters cube.
+part:: The zone information resource SHOULD include an `areaMetersSquare` property indicating the surface area of the zone in square meters.
+part:: For a DGGS with three spatial dimension, the zone information resource SHOULD include a `volumeMetersCube` property indicating the volume of the zone in cubic meters.
 part:: For a temporal DGGS, the zone information resource SHOULD include a `temporalDurationSeconds` property indicating the amount of time covered by the zone in seconds.
 part:: The zone information resource SHOULD include a `geometry` property indicating the 2D and/or 3D spatial geometry of the zone, using GeoJSON or OGC Features & Geometry JSON for the JSON encoding.
 part:: For a temporal DGGS, the zone information resource SHOULD include a `temporalInterval` property indicating the start and end time of the zone.
