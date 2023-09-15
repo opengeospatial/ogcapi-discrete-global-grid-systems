@@ -45,6 +45,12 @@ properties:
     example: cellEqualSized
     type: string
   referenceSystemType:
+    type: object
+    required:
+    - MDRS
+    - CRS
+    - ZIRS
+    - GLOBE
     properties:
       CRS:
         allOf:
@@ -61,10 +67,16 @@ properties:
         type: string
       ZIRS:
         description: Zone Identifier Reference System Identifier/Specification
+        type: object
+        required:
+        - ZoneIdentifiers
         properties:
           ZoneIdentifiers:
             description: array of zone identification schemas defined by the Discrete
               Global Grid System
+            type: array
+            items:
+              type: string #$ref: '#/components/schemas/ZoneId'
             example:
             - topologicalMortonCode:
                 description: Topological Morton Code (Space Filling Curve) Identifier.
@@ -82,18 +94,6 @@ properties:
                   structure that is fixed in nature regardless of the topological
                   zone index used by each DGGS.
                 idType: string
-            items:
-            - type: string #$ref: '#/components/schemas/ZoneId'
-            type: array
-        required:
-        - ZoneIdentifiers
-        type: object
-    required:
-    - MDRS
-    - CRS
-    - ZIRS
-    - GLOBE
-    type: object
   refinementRatio:
     description: The ratio of child zones to parent zones
     example: 9

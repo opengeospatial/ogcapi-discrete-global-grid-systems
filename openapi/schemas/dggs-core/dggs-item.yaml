@@ -1,0 +1,23 @@
+title: Discrete Global Grid Reference System description (item)
+description: A minimal Discrete Global Grid Reference System element for use within a list of DGGRS linking to a full description.
+type: object
+required:
+- id
+- title
+- links
+properties:
+  id:
+    description: Local DGGRS identifierc consistent with the `{dggsId}` parameter of `/dggs/{dggsId}` resources.
+    type: string
+  title:
+    description: Title of this Discrete Global Grid System, normally used for display to a human
+    type: string
+  uri:
+    description: Identifier for this Discrete Global Grid Reference System registered with an authority.
+    type: string
+    format: uri
+  links:
+    description: Links to related resources. A `self` link to the Discrete Global Grid Reference System description and an `[ogc-rel:dggs-definition]` link to the DGGRS definition (using the schema defined by https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/schemas/dggs/dggrs.yaml) are required.
+    type: array
+    items:
+      $ref: '../../schemas/common-core/link.yaml'

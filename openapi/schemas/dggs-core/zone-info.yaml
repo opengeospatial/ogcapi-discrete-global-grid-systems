@@ -1,0 +1,51 @@
+title: Information for a specific Discrete Global Grid System zone
+description: Zone information for a particular zone of a DGGS, including useful information such as zone geometry, data access links and statistics
+type: object
+required:
+- id
+- links
+properties:
+  id:
+    description: Zone identifier based on the DGGRS.
+    type: string
+  links:
+    description: Links to related resources. A `[ogc-rel:dggs-zone-data]` link to retrieve data for this zone and a `[ogc-rel:dggs]` back to the `.../dggs` resource must be included.
+    type: array
+    items:
+      $ref: '../../schemas/common-core/link.yaml'
+  areaMetersSquare:
+    description: Surface area of the zone in meters square.
+    type: number
+  volumeMetersCube:
+    description: Volume of the zone in meters cube for a DGGS with three spatial dimension.
+    type: number
+  temporalDurationSeconds:
+    description: Amount of time covered by the zone for a temporal DGGS.
+    type: number
+  geometry:
+    description: Spatial geometry of the zone.
+    allOf:
+      - format: geojson-feature
+      # JSON Schema not supported in OpenAPI 3.0
+      - $ref: '../../schemas/geojson/PolygonFeature.yaml'
+  temporalInterval:
+    description: Sart and end time of the zone.
+    type: array
+    items:
+      type: string
+    minItems: 2
+    maxItems: 2
+  statistics:
+    type: object
+    description: Statistics for individual fields of the data (e.g., fields of the range of a coverage, or relevant numeric properties of a feature collection)
+    additionalProperties:
+      type: object
+      properties:
+        minimum:
+          type: number
+        maximum:
+          type: number
+        average:
+          type: number
+        stdDev:
+          type: number

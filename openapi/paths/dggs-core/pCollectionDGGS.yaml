@@ -4,7 +4,7 @@ get:
    summary: (Optional) Retrieve the definition of the specified Discrete Global Grid System in the context of a specified collection
    operationId: getCollectionDGGS
    parameters:
-     - $ref: '../../parameters/unspecified/dggsId.yaml'
+     - $ref: '../../parameters/dggs-core/dggsId.yaml'
      - $ref: '../../parameters/unspecified/f-metadata.yaml'
      - $ref: '../../parameters/common-geodata/collectionId-all.yaml'
    responses:

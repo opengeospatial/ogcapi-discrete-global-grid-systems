@@ -7,7 +7,7 @@ content:
          dggs:
            type: array
            items:
-             $ref: '../../schemas/dggs/dggs-item.yaml'
+             $ref: '../../schemas/dggs-core/dggs-item.yaml'
    text/html:
      schema:
        type: string

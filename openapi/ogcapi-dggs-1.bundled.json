@@ -163,29 +163,7 @@
             "$ref": "#/components/parameters/datetime"
           },
           {
-            "name": "bbox",
-            "in": "query",
-            "description": "Only features that have a geometry that intersects the bounding box are selected. The bounding box is provided as four or six numbers, depending on whether the coordinate reference system includes a vertical axis (height or depth):\n* Lower left corner, coordinate axis 1 * Lower left corner, coordinate axis 2 * Minimum value, coordinate axis 3 (optional) * Upper right corner, coordinate axis 1 * Upper right corner, coordinate axis 2 * Maximum value, coordinate axis 3 (optional)\nThe coordinate reference system of the values is WGS 84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84) unless a different coordinate reference system is specified in the parameter `bbox-crs`.\nFor WGS 84 longitude/latitude the values are in most cases the sequence of minimum longitude, minimum latitude, maximum longitude and maximum latitude. However, in cases where the box spans the antimeridian the first value (west-most box edge) is larger than the third value (east-most box edge).\nIf the vertical axis is included, the third and the sixth number are the bottom and the top of the 3-dimensional bounding box.\nIf a feature has multiple spatial geometry properties, it is the decision of the server whether only a single spatial geometry property is used to determine the extent or all relevant geometries.",
-            "required": false,
-            "schema": {
-              "type": "array",
-              "oneOf": [
-                {
-                  "minItems": 4,
-                  "maxItems": 4
-                },
-                {
-                  "minItems": 6,
-                  "maxItems": 6
-                }
-              ],
-              "items": {
-                "type": "number",
-                "format": "double"
-              }
-            },
-            "style": "form",
-            "explode": false
+            "$ref": "#/components/parameters/bbox"
           },
           {
             "name": "limit",
@@ -322,6 +300,11 @@
           "200": {
             "description": "DGGS zone information returned as a response, potentially including id, geometry, links to DGGS (rel: dggs), dataset, (rel: dataset), collection (rel: geodata), data (rel: dggs-zone-data) (if available for this zone)",
             "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/zone-info"
+                }
+              },
               "application/geo+json": {
                 "schema": {
                   "allOf": [
@@ -329,79 +312,7 @@
                       "format": "geojson-feature"
                     },
                     {
-                      "title": "GeoJSON Polygon Feature",
-                      "type": "object",
-                      "required": [
-                        "type",
-                        "properties",
-                        "geometry"
-                      ],
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "enum": [
-                            "Feature"
-                          ]
-                        },
-                        "id": {
-                          "oneOf": [
-                            {
-                              "type": "number"
-                            },
-                            {
-                              "type": "string"
-                            }
-                          ]
-                        },
-                        "properties": {
-                          "type": "object",
-                          "nullable": true
-                        },
-                        "geometry": {
-                          "title": "GeoJSON Polygon",
-                          "type": "object",
-                          "required": [
-                            "type",
-                            "coordinates"
-                          ],
-                          "properties": {
-                            "type": {
-                              "type": "string",
-                              "enum": [
-                                "Polygon"
-                              ]
-                            },
-                            "coordinates": {
-                              "type": "array",
-                              "items": {
-                                "type": "array",
-                                "minItems": 4,
-                                "items": {
-                                  "type": "array",
-                                  "minItems": 2,
-                                  "items": {
-                                    "type": "number"
-                                  }
-                                }
-                              }
-                            },
-                            "bbox": {
-                              "type": "array",
-                              "minItems": 4,
-                              "items": {
-                                "type": "number"
-                              }
-                            }
-                          }
-                        },
-                        "bbox": {
-                          "type": "array",
-                          "minItems": 4,
-                          "items": {
-                            "type": "number"
-                          }
-                        }
-                      }
+                      "$ref": "#/components/schemas/zone-info/properties/geometry/allOf/1"
                     }
                   ]
                 }
@@ -562,6 +473,9 @@
           },
           {
             "$ref": "#/components/parameters/datetime"
+          },
+          {
+            "$ref": "#/components/parameters/zone-depth"
           }
         ],
         "responses": {
@@ -623,6 +537,9 @@
           },
           {
             "$ref": "#/components/parameters/datetime"
+          },
+          {
+            "$ref": "#/components/parameters/zone-depth"
           }
         ],
         "responses": {
@@ -653,13 +570,16 @@
         "operationId": "queryZones",
         "parameters": [
           {
-            "$ref": "#/components/parameters/dggsId"
-          },
-          {
             "$ref": "#/components/parameters/collections"
           },
           {
-            "$ref": "#/paths/~1collections/get/parameters/1"
+            "$ref": "#/components/parameters/bbox"
+          },
+          {
+            "$ref": "#/components/parameters/bbox-crs"
+          },
+          {
+            "$ref": "#/components/parameters/dggsId"
           },
           {
             "name": "zone-level",
@@ -673,7 +593,7 @@
             "explode": false
           },
           {
-            "$ref": "#/components/parameters/zones"
+            "$ref": "#/components/parameters/zone-level"
           },
           {
             "$ref": "#/components/parameters/limit"
@@ -683,6 +603,12 @@
           },
           {
             "$ref": "#/components/parameters/datetime"
+          },
+          {
+            "$ref": "#/components/parameters/subset"
+          },
+          {
+            "$ref": "#/components/parameters/subset-crs"
           },
           {
             "$ref": "#/components/parameters/filter"
@@ -716,22 +642,25 @@
         "operationId": "queryCollectionZones",
         "parameters": [
           {
-            "$ref": "#/components/parameters/dggsId"
-          },
-          {
             "$ref": "#/components/parameters/collectionId-all"
           },
           {
             "$ref": "#/components/parameters/collections"
           },
           {
-            "$ref": "#/paths/~1collections/get/parameters/1"
+            "$ref": "#/components/parameters/bbox"
           },
           {
-            "$ref": "#/paths/~1dggs~1%7BdggsId%7D~1zones/get/parameters/3"
+            "$ref": "#/components/parameters/bbox-crs"
           },
           {
-            "$ref": "#/components/parameters/zones"
+            "$ref": "#/components/parameters/dggsId"
+          },
+          {
+            "$ref": "#/paths/~1dggs~1%7BdggsId%7D~1zones/get/parameters/4"
+          },
+          {
+            "$ref": "#/components/parameters/zone-level"
           },
           {
             "$ref": "#/components/parameters/limit"
@@ -741,6 +670,12 @@
           },
           {
             "$ref": "#/components/parameters/datetime"
+          },
+          {
+            "$ref": "#/components/parameters/subset"
+          },
+          {
+            "$ref": "#/components/parameters/subset-crs"
           },
           {
             "$ref": "#/components/parameters/filter"
@@ -1275,12 +1210,22 @@
         "example": 127
       },
       "dggs": {
-        "title": "Discrete Global Grid System definition",
-        "description": "A definition of a Discrete Global Grid System following the Discrete Global Grid System standard.",
+        "title": "Discrete Global Grid Reference System description",
+        "description": "A description of a Discrete Global Grid Reference System provided by the API.",
         "type": "object",
+        "required": [
+          "id",
+          "title",
+          "description",
+          "links"
+        ],
         "properties": {
+          "id": {
+            "description": "Local DGGRS identifierc consistent with the `{dggsId}` parameter of `/dggs/{dggsId}` resources.",
+            "type": "string"
+          },
           "title": {
-            "description": "Title of this Discrete Global Grid System, normally used for display to a human",
+            "description": "Title of this Discrete Global Grid Rfeference System, intended for displaying to a human",
             "type": "string"
           },
           "description": {
@@ -1288,58 +1233,21 @@
             "type": "string"
           },
           "keywords": {
-            "description": "Unordered list of one or more commonly used or formalized word(s) or phrase(s) used to describe this Discrete Global Grid System",
+            "description": "Unordered list of one or more commonly used or formalized word(s) or phrase(s) used to describe this Discrete Global Grid Reference System",
             "type": "array",
             "items": {
               "type": "string"
             }
           },
-          "id": {
-            "description": "Discrete Global Grid System identifier. Implementation of 'identifier'",
-            "type": "string"
-          },
           "uri": {
-            "description": "Reference to an official source for this Discrete Global Grid System",
+            "description": "Identifier for this Discrete Global Grid Reference System registered with an authority.",
             "type": "string",
             "format": "uri"
           },
           "crs": {
             "allOf": [
               {
-                "description": "Coordinate Reference System (CRS)"
-              },
-              {
-                "$ref": "#/components/schemas/crs"
-              }
-            ]
-          }
-        }
-      },
-      "dggs-item": {
-        "title": "Discrete Global Grid System definition (item)",
-        "description": "A minimal Discrete Global Grid System element for use within a list of DGGS linking to a full definition.",
-        "type": "object",
-        "required": [
-          "links"
-        ],
-        "properties": {
-          "id": {
-            "description": "Optional local DGGS identifier, e.g. for use as unspecified `{dggsId}` parameter. Implementation of 'identifier'",
-            "type": "string"
-          },
-          "title": {
-            "description": "Title of this Discrete Global Grid System, normally used for display to a human",
-            "type": "string"
-          },
-          "uri": {
-            "description": "Reference to an official source for this Dicrete Global Grid System",
-            "type": "string",
-            "format": "uri"
-          },
-          "crs": {
-            "allOf": [
-              {
-                "description": "Coordinate Reference System (CRS)"
+                "description": "Coordinate Reference System (CRS) used by this DGGS  (mandatory if applicable), specified as a URI if one exists."
               },
               {
                 "$ref": "#/components/schemas/crs"
@@ -1347,11 +1255,375 @@
             ]
           },
           "links": {
-            "description": "Links to related resources. A 'self' link to the Discrete Global Grid System definition is required. A templated 'dggs-zone-data' link to retrieve data and/or a 'dggs-zone-query` link to query DGGS zones should also be included.",
+            "description": "Links to related resources. A `self` link to the Discrete Global Grid Reference System description and an `[ogc-rel:dggs-definition]` link to the DGGRS definition (using the schema defined by https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/schemas/dggs/dggrs.yaml) are required. A templated `[ogc-rel:dggs-zone-data]` link to retrieve data and/or a `[dggs-zone-query]` link to query DGGS zones should also be included.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/link"
             }
+          }
+        }
+      },
+      "dggs-item": {
+        "title": "Discrete Global Grid Reference System description (item)",
+        "description": "A minimal Discrete Global Grid Reference System element for use within a list of DGGRS linking to a full description.",
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "links"
+        ],
+        "properties": {
+          "id": {
+            "description": "Local DGGRS identifierc consistent with the `{dggsId}` parameter of `/dggs/{dggsId}` resources.",
+            "type": "string"
+          },
+          "title": {
+            "description": "Title of this Discrete Global Grid System, normally used for display to a human",
+            "type": "string"
+          },
+          "uri": {
+            "description": "Identifier for this Discrete Global Grid Reference System registered with an authority.",
+            "type": "string",
+            "format": "uri"
+          },
+          "links": {
+            "description": "Links to related resources. A `self` link to the Discrete Global Grid Reference System description and an `[ogc-rel:dggs-definition]` link to the DGGRS definition (using the schema defined by https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/schemas/dggs/dggrs.yaml) are required.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/link"
+            }
+          }
+        }
+      },
+      "zone-info": {
+        "title": "Information for a specific Discrete Global Grid System zone",
+        "description": "Zone information for a particular zone of a DGGS, including useful information such as zone geometry, data access links and statistics",
+        "type": "object",
+        "required": [
+          "id",
+          "links"
+        ],
+        "properties": {
+          "id": {
+            "description": "Zone identifier based on the DGGRS.",
+            "type": "string"
+          },
+          "links": {
+            "description": "Links to related resources. A `[ogc-rel:dggs-zone-data]` link to retrieve data for this zone and a `[ogc-rel:dggs]` back to the `.../dggs` resource must be included.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/link"
+            }
+          },
+          "areaMetersSquare": {
+            "description": "Surface area of the zone in meters square.",
+            "type": "number"
+          },
+          "volumeMetersCube": {
+            "description": "Volume of the zone in meters cube for a DGGS with three spatial dimension.",
+            "type": "number"
+          },
+          "temporalDurationSeconds": {
+            "description": "Amount of time covered by the zone for a temporal DGGS.",
+            "type": "number"
+          },
+          "geometry": {
+            "description": "Spatial geometry of the zone.",
+            "allOf": [
+              {
+                "format": "geojson-feature"
+              },
+              {
+                "title": "GeoJSON Polygon Feature",
+                "type": "object",
+                "required": [
+                  "type",
+                  "properties",
+                  "geometry"
+                ],
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "Feature"
+                    ]
+                  },
+                  "id": {
+                    "oneOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "properties": {
+                    "type": "object",
+                    "nullable": true
+                  },
+                  "geometry": {
+                    "title": "GeoJSON Polygon",
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "coordinates"
+                    ],
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "Polygon"
+                        ]
+                      },
+                      "coordinates": {
+                        "type": "array",
+                        "items": {
+                          "type": "array",
+                          "minItems": 4,
+                          "items": {
+                            "type": "array",
+                            "minItems": 2,
+                            "items": {
+                              "type": "number"
+                            }
+                          }
+                        }
+                      },
+                      "bbox": {
+                        "type": "array",
+                        "minItems": 4,
+                        "items": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  },
+                  "bbox": {
+                    "type": "array",
+                    "minItems": 4,
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "temporalInterval": {
+            "description": "Sart and end time of the zone.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "statistics": {
+            "type": "object",
+            "description": "Statistics for individual fields of the data (e.g., fields of the range of a coverage, or relevant numeric properties of a feature collection)",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "minimum": {
+                  "type": "number"
+                },
+                "maximum": {
+                  "type": "number"
+                },
+                "average": {
+                  "type": "number"
+                },
+                "stdDev": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      },
+      "dggrs": {
+        "description": "Discrete Global Grid System Reference System Structure Definition.",
+        "type": "object",
+        "required": [
+          "gridConstraint",
+          "zoneGeometry",
+          "surfaceInterpolation",
+          "referenceSystemType",
+          "refinementStrategy",
+          "refinementRatio"
+        ],
+        "properties": {
+          "basePolyhedron": {
+            "properties": {
+              "orientation": {
+                "properties": {
+                  "latitude": {
+                    "description": "Reference Latitude to fix the orientation of the polyhedron.",
+                    "example": 0,
+                    "type": "number"
+                  },
+                  "longitude": {
+                    "description": "Reference Longitude to fix the orientation of the polyhedron.",
+                    "example": 0,
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "longitude",
+                  "latitude"
+                ],
+                "type": "object"
+              },
+              "polyhedronType": {
+                "description": "The Type/Class of Polyhedron used to construct the Discrete Global Grid System - if it is constructued using a Base Polyhedron.",
+                "example": "icosahedron",
+                "type": "string"
+              }
+            },
+            "required": [
+              "polyhedronType",
+              "orientation"
+            ],
+            "type": "object"
+          },
+          "gridConstraint": {
+            "description": "Constraints used to define different categories of DGGS. Each constraint is a constraint on the shape, size, or orientation of cells in a DiscreteGlobalGrid.",
+            "enum": [
+              "cellAxisAligned",
+              "cellConformal",
+              "cellEquiAngular",
+              "cellEquiDistant",
+              "cellEqualSized"
+            ],
+            "example": "cellEqualSized",
+            "type": "string"
+          },
+          "referenceSystemType": {
+            "type": "object",
+            "required": [
+              "MDRS",
+              "CRS",
+              "ZIRS",
+              "GLOBE"
+            ],
+            "properties": {
+              "CRS": {
+                "allOf": [
+                  {
+                    "description": "Coordinate Reference System (CRS)"
+                  },
+                  {
+                    "$ref": "#/components/schemas/crs"
+                  }
+                ],
+                "example": "EPSG:7789"
+              },
+              "GLOBE": {
+                "description": "Globe Reference System Identifier/Specification",
+                "example": "EPGS:7019",
+                "type": "string"
+              },
+              "MDRS": {
+                "description": "Metadata Reference System Identifier/Specification",
+                "example": "TerraNexus_S_IT9_GRS80_2d10b58e2088c7e2",
+                "type": "string"
+              },
+              "ZIRS": {
+                "description": "Zone Identifier Reference System Identifier/Specification",
+                "type": "object",
+                "required": [
+                  "ZoneIdentifiers"
+                ],
+                "properties": {
+                  "ZoneIdentifiers": {
+                    "description": "array of zone identification schemas defined by the Discrete Global Grid System",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "example": [
+                      {
+                        "topologicalMortonCode": {
+                          "description": "Topological Morton Code (Space Filling Curve) Identifier. With a Level 0 alphabetical identifier from 'A' to 'S' followed by a numeric reference from 1 to 9 for all subsequent levels representing the arrangement of child zones following a Morton (Z-code) subdivision of the parent zone. The length of the identifier represents the level of refinement.",
+                          "idType": "string"
+                        }
+                      },
+                      {
+                        "universalMortonCode": {
+                          "description": "Universal Morton Code (Space Filling Curve) Identifier. An ellipsoidal bitwise concatination of longitude and latitude direct position to form a direct Morton code. This can be used across multiple DGGS infrastructures to provide a common index structure that is fixed in nature regardless of the topological zone index used by each DGGS.",
+                          "idType": "string"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "refinementRatio": {
+            "description": "The ratio of child zones to parent zones",
+            "example": 9,
+            "type": "integer"
+          },
+          "refinementStrategy": {
+            "description": "The refinement strategy used by the Discrete Global Grid System",
+            "enum": [
+              "centredChildCell",
+              "nestedChildCell",
+              "nodeCentredChildCell",
+              "edgeCentredChildCell",
+              "faceCentredChildCell",
+              "solidCentredChildCell"
+            ],
+            "example": "nestedChildCell",
+            "type": "string"
+          },
+          "surfaceInterpolation": {
+            "description": "The Surface Interpolation type used to define zone geometries of the Discrete Global Grid System",
+            "enum": [
+              "spherical",
+              "elliptical"
+            ],
+            "example": "elliptical",
+            "type": "string"
+          },
+          "zoneGeometry": {
+            "description": "Zone Geometry Specification",
+            "properties": {
+              "spatialDimension": {
+                "description": "Number of Spatial Dimensions defined by the Discrete Global Grid System.",
+                "example": 2,
+                "type": "integer"
+              },
+              "temporalDimension": {
+                "description": "Number of Temporal Dimensions defined by the Discrete Global Grid System.",
+                "example": 0,
+                "type": "integer"
+              },
+              "topologicalDimension": {
+                "description": "Number of Topological Dimensions (Spatial + Temporal Dimensions) defined by the Discrete Global Grid System.",
+                "example": 2,
+                "type": "integer"
+              },
+              "zoneType": {
+                "enum": [
+                  "triangle",
+                  "square",
+                  "hexagon",
+                  "pentagon",
+                  "diamond"
+                ],
+                "example": "triangle",
+                "type": "string"
+              }
+            },
+            "required": [
+              "spatialDimension",
+              "temporalDimension",
+              "topologicalDimension"
+            ],
+            "type": "object"
           }
         }
       },
@@ -1742,6 +2014,42 @@
         "style": "form",
         "explode": false
       },
+      "bbox": {
+        "name": "bbox",
+        "in": "query",
+        "description": "Only features that have a geometry that intersects the bounding box are selected. The bounding box is provided as four or six numbers, depending on whether the coordinate reference system includes a vertical axis (height or depth):\n* Lower left corner, coordinate axis 1 * Lower left corner, coordinate axis 2 * Minimum value, coordinate axis 3 (optional) * Upper right corner, coordinate axis 1 * Upper right corner, coordinate axis 2 * Maximum value, coordinate axis 3 (optional)\nThe coordinate reference system of the values is WGS 84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84) unless a different coordinate reference system is specified in the parameter `bbox-crs`.\nFor WGS 84 longitude/latitude the values are in most cases the sequence of minimum longitude, minimum latitude, maximum longitude and maximum latitude. However, in cases where the box spans the antimeridian the first value (west-most box edge) is larger than the third value (east-most box edge).\nIf the vertical axis is included, the third and the sixth number are the bottom and the top of the 3-dimensional bounding box.\nIf a feature has multiple spatial geometry properties, it is the decision of the server whether only a single spatial geometry property is used to determine the extent or all relevant geometries.",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "oneOf": [
+            {
+              "minItems": 4,
+              "maxItems": 4
+            },
+            {
+              "minItems": 6,
+              "maxItems": 6
+            }
+          ],
+          "items": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "style": "form",
+        "explode": false
+      },
+      "bbox-crs": {
+        "name": "bbox-crs",
+        "in": "query",
+        "description": "crs for the specified bbox",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "string"
+        }
+      },
       "subset": {
         "name": "subset",
         "in": "query",
@@ -1754,6 +2062,17 @@
           "items": {
             "type": "string"
           }
+        }
+      },
+      "subset-crs": {
+        "name": "subset-crs",
+        "in": "query",
+        "description": "crs for the specified subset",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "string"
         }
       },
       "properties": {
@@ -1803,6 +2122,16 @@
         "style": "form",
         "explode": false
       },
+      "dggsId": {
+        "name": "dggsId",
+        "in": "path",
+        "description": "Identifier for a supported Discrete Global Grid System",
+        "required": true,
+        "allowEmptyValue": false,
+        "schema": {
+          "$ref": "#/components/schemas/all-dggs"
+        }
+      },
       "zoneId": {
         "name": "zoneId",
         "in": "path",
@@ -1813,7 +2142,7 @@
         },
         "example": "3-4-F"
       },
-      "zones": {
+      "zone-level": {
         "name": "compact-zones",
         "in": "query",
         "description": "If set to true (default), when the list of DGGS zones to be returned at the requested resolution (zone-level) includes all children of a parent zone, the parent zone will be returned as a shorthand for that list of children zone. If set to false, all zones returned will be of the requested zone level.",
@@ -1825,11 +2154,28 @@
         "style": "form",
         "explode": false
       },
-      "zone-level": {
-        "$ref": "#/components/parameters/zones"
+      "zone-depth": {
+        "name": "zone-depth",
+        "in": "query",
+        "description": "The DGGS resolution levels beyond the requested DGGS zone’s hierarchy level to include in the response, when retrieving data for that zone. This can be either: • A single positive integer value — representing a specific zone depth to return (e.g., `zone-depth=5`); • A range of positive integer values in the form “{low}-{high}” — representing a\n  continuous range of zone depths to return (e.g., `zone-depth=1-8`); or,\n• A comma separated list of at least two (2) positive integer values — representing a\n  set of specific zone depths to return (e.g., `zone-depth=1,3,7`). Some or all of\n  these forms of the zone-depth parameter may not be supported with particular\n  data packet encodings (the data encoding may support a fixed depth, a range of\n  depths, and/or an arbitrary selection of depths).\nWhen this parameter is omitted, the default value specified in the `defaultDepth` property of the `.../dggs/{dggsId}` DGGRS description is used.",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "string",
+              "description": "A comma separated list of positive integers, or a {min}-{max} range of relative zone depths"
+            }
+          ]
+        },
+        "style": "form",
+        "explode": false
       },
       "compact-zones": {
-        "$ref": "#/components/parameters/zones"
+        "$ref": "#/components/parameters/zone-level"
       },
       "limit": {
         "name": "limit",
@@ -1844,16 +2190,6 @@
         },
         "style": "form",
         "explode": false
-      },
-      "dggsId": {
-        "name": "dggsId",
-        "in": "path",
-        "description": "Identifier for a supported Discrete Global Grid System",
-        "required": true,
-        "allowEmptyValue": false,
-        "schema": {
-          "$ref": "#/components/schemas/all-dggs"
-        }
       },
       "f-zoneData": {
         "name": "f",

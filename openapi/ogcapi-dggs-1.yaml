@@ -144,9 +144,13 @@ components:
 
       # Dicrete Global Grid Systems
       dggs:
-         $ref: 'schemas/dggs/dggs.yaml'
+         $ref: 'schemas/dggs-core/dggs.yaml'
       dggs-item:
-         $ref: 'schemas/dggs/dggs-item.yaml'
+         $ref: 'schemas/dggs-core/dggs-item.yaml'
+      zone-info:
+         $ref: 'schemas/dggs-core/zone-info.yaml'
+      dggrs:
+         $ref: 'schemas/dggs-core/dggrs.yaml'
 
       # GeoJSON
       FeatureCollection:
@@ -175,8 +179,14 @@ components:
          $ref: 'parameters/common-geodata/collections.yaml'
       datetime:
          $ref: 'parameters/common-geodata/datetime.yaml'
+      bbox:
+         $ref: 'parameters/common-geodata/bbox.yaml'
+      bbox-crs:
+         $ref: 'parameters/common-crs/bbox-crs.yaml'
       subset:
          $ref: 'parameters/common-geodata/subset.yaml'
+      subset-crs:
+         $ref: 'parameters/common-crs/subset-crs.yaml'
       properties:
          $ref: 'parameters/common-fields/properties.yaml'
       sortby:
@@ -189,20 +199,22 @@ components:
          $ref: 'parameters/common-filter/filter-lang.yaml'
 
       # DGGS - Core
+      dggsId:
+         $ref: 'parameters/dggs-core/dggsId.yaml'
       zoneId:
          $ref: 'parameters/dggs-core/zoneId.yaml'
-      zones:
-         $ref: 'parameters/dggs-core/compact-zones.yaml'
       zone-level:
          $ref: 'parameters/dggs-core/compact-zones.yaml'
+      zone-depth:
+         $ref: 'parameters/dggs-core/zone-depth.yaml'
       compact-zones:
          $ref: 'parameters/dggs-core/compact-zones.yaml'
       limit:
          $ref: 'parameters/dggs-core/limit-zones.yaml'
+      #zones: # this was for multi-zones data retrieval
+      #   $ref: 'parameters/dggs-core/zones.yaml'
 
       # DGGS - Core (unspecified)
-      dggsId:
-         $ref: 'parameters/unspecified/dggsId.yaml'
       f-zoneData:
          $ref: 'parameters/unspecified/f-zoneData.yaml'
       f-zoneQueries:

@@ -4,7 +4,7 @@ get:
    summary: (Optional) Retrieve information about a DGGS Zone, such as geometry and data availability, in the context of a specific collection.
    operationId: getCollectionDGGSZone
    parameters:
-     - $ref: '../../parameters/unspecified/dggsId.yaml'
+     - $ref: '../../parameters/dggs-core/dggsId.yaml'
      - $ref: '../../parameters/dggs-core/zoneId.yaml'
      - $ref: '../../parameters/common-geodata/collectionId-all.yaml'
      - $ref: '../../parameters/common-geodata/collections.yaml'
