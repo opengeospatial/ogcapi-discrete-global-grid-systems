@@ -55,7 +55,7 @@ NOTE: When the _interval_ values fall partially outside of the range of valid va
 ====
 [%metadata]
 label:: /req/data-subsetting/datetime
-description:: For specifying a multi-dimensional subset for which to retrieve data from a zone:
+description:: For specifying a time instant or interval for which to retrieve data from a zone for a non-temporal DGGS:
 part::
 +
 --
