@@ -1,30 +1,151 @@
-dggrs:
-  title: DGGRS
-  oneOf:
-  - description: Simplification of the object into a url if the other properties are
-      not present
-    type: string
-  - oneOf:
-    - properties:
-        uri:
-          description: Reference to one Discrete Global Grid System Specification
-          format: uri
-          type: string
-      required:
-      - uri
-    - properties:
-        wkt:
-          description: A string defining the DGGRS using the JSON encodng for Well
-            Known Text
-          type: object
-      required:
-      - wkt
-    - properties:
-        referenceSystem:
-          $ref: '#/components/schemas/dggsStructure'
-          description: A reference system data structure as defined in the DGG_ReferenceSystem
-            of ISO 19170-1
-      required:
-      - referenceSystem
+description: Discrete Global Grid System Reference System Structure Definition.
+type: object
+required:
+- gridConstraint
+- zoneGeometry
+- surfaceInterpolation
+- referenceSystemType
+- refinementStrategy
+- refinementRatio
+properties:
+  basePolyhedron:
+    properties:
+      orientation:
+        properties:
+          latitude:
+            description: Reference Latitude to fix the orientation of the polyhedron.
+            example: 0.0
+            type: number
+          longitude:
+            description: Reference Longitude to fix the orientation of the polyhedron.
+            example: 0.0
+            type: number
+        required:
+        - longitude
+        - latitude
+        type: object
+      polyhedronType:
+        description: The Type/Class of Polyhedron used to construct the Discrete
+          Global Grid System - if it is constructued using a Base Polyhedron.
+        example: icosahedron
+        type: string
+    required:
+    - polyhedronType
+    - orientation
     type: object
-  
+  gridConstraint:
+    description: Constraints used to define different categories of DGGS. Each constraint
+      is a constraint on the shape, size, or orientation of cells in a DiscreteGlobalGrid.
+    enum:
+    - cellAxisAligned
+    - cellConformal
+    - cellEquiAngular
+    - cellEquiDistant
+    - cellEqualSized
+    example: cellEqualSized
+    type: string
+  referenceSystemType:
+    properties:
+      CRS:
+        allOf:
+        - description: Coordinate Reference System (CRS)
+        - $ref: '../common-geodata/crs.yaml'
+        example: EPSG:7789
+      GLOBE:
+        description: Globe Reference System Identifier/Specification
+        example: EPGS:7019
+        type: string
+      MDRS:
+        description: Metadata Reference System Identifier/Specification
+        example: TerraNexus_S_IT9_GRS80_2d10b58e2088c7e2
+        type: string
+      ZIRS:
+        description: Zone Identifier Reference System Identifier/Specification
+        properties:
+          ZoneIdentifiers:
+            description: array of zone identification schemas defined by the Discrete
+              Global Grid System
+            example:
+            - topologicalMortonCode:
+                description: Topological Morton Code (Space Filling Curve) Identifier.
+                  With a Level 0 alphabetical identifier from 'A' to 'S' followed
+                  by a numeric reference from 1 to 9 for all subsequent levels representing
+                  the arrangement of child zones following a Morton (Z-code) subdivision
+                  of the parent zone. The length of the identifier represents the
+                  level of refinement.
+                idType: string
+            - universalMortonCode:
+                description: Universal Morton Code (Space Filling Curve) Identifier.
+                  An ellipsoidal bitwise concatination of longitude and latitude
+                  direct position to form a direct Morton code. This can be used
+                  across multiple DGGS infrastructures to provide a common index
+                  structure that is fixed in nature regardless of the topological
+                  zone index used by each DGGS.
+                idType: string
+            items:
+            - type: string #$ref: '#/components/schemas/ZoneId'
+            type: array
+        required:
+        - ZoneIdentifiers
+        type: object
+    required:
+    - MDRS
+    - CRS
+    - ZIRS
+    - GLOBE
+    type: object
+  refinementRatio:
+    description: The ratio of child zones to parent zones
+    example: 9
+    type: integer
+  refinementStrategy:
+    description: The refinement strategy used by the Discrete Global Grid System
+    enum:
+    - centredChildCell
+    - nestedChildCell
+    - nodeCentredChildCell
+    - edgeCentredChildCell
+    - faceCentredChildCell
+    - solidCentredChildCell
+    example: nestedChildCell
+    type: string
+  surfaceInterpolation:
+    description: The Surface Interpolation type used to define zone geometries of
+      the Discrete Global Grid System
+    enum:
+    - spherical
+    - elliptical
+    example: elliptical
+    type: string
+  zoneGeometry:
+    description: Zone Geometry Specification
+    properties:
+      spatialDimension:
+        description: Number of Spatial Dimensions defined by the Discrete Global
+          Grid System.
+        example: 2
+        type: integer
+      temporalDimension:
+        description: Number of Temporal Dimensions defined by the Discrete Global
+          Grid System.
+        example: 0
+        type: integer
+      topologicalDimension:
+        description: Number of Topological Dimensions (Spatial + Temporal Dimensions)
+          defined by the Discrete Global Grid System.
+        example: 2
+        type: integer
+      zoneType:
+        enum:
+        - triangle
+        - square
+        - hexagon
+        - pentagon
+        - diamond
+        example: triangle
+        type: string
+    required:
+    - spatialDimension
+    - temporalDimension
+    - topologicalDimension
+    type: object
