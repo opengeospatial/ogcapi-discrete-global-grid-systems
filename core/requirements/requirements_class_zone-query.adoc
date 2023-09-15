@@ -21,8 +21,8 @@ label:: /req/zone-query/zones-list
 description:: For retrieving a list of DGGS zones:
 part:: The Implementation SHALL support an HTTP GET operation at a resource path
 ending with `.../dggs/{dggsId}/zones`.
-part:: The Implementation SHALL provide a link to this resource path using
-the link relation type http://www.opengis.net/def/rel/ogc/1.0/dggs-zone-query.
+part:: The Implementation SHALL include a link to this resource path in the "Core" .../dggs/{dggsId}` resource links
+using the link relation type http://www.opengis.net/def/rel/ogc/1.0/dggs-zone-query.
 part:: The response of the HTTP GET operation SHALL have a status code of 200.
 part:: The content of the response SHALL be a list of zones fully covering where data is available
 (in the case where the resource is associated with a particular dataset), and
@@ -191,7 +191,9 @@ conforming to the following Augmented Backus Naur Form (ABNF) fragment:
 --
 part:: The implementation SHALL support as axis names `Lat` and `Lon` for geographic CRS and `x` and `y` for projected CRS, which are to be interpreted as the best matching spatial axis in the CRS definition.
 part:: If a third spatial dimension is supported (if the resource's spatial extent bounding box is three dimensional), the implementation SHALL also support a `h` dimension (elevation above the ellipsoid in EPSG:4979 or CRS84h) for geographic CRS and `z` for projected CRS, which are to be interpreted as the vertical axis in the CRS definition.
-part:: The implementation SHALL return a 400 error status code if an axis name does not correspond to one of the axes of the Coordinate Reference System (CRS) of the target resource.
+part:: The implementation SHALL support as axis names `time` for a temporal dataset.
+part:: The implementation SHALL support as axis names any additional dimension (beyond spatial and temporal) as described in the `extent` property of the collection or dataset description.
+part:: The implementation SHALL return a 400 error status code if an axis name does not correspond to one of the axes of the Coordinate Reference System (CRS) of the data or an axis defined in the relevant `extent` property.
 part:: For a CRS where an axis can wrap around, such as subsetting across the dateline (anti-meridian) in a geographic CRS, a _low_ value greater than _high_ SHALL
 be supported to indicate an extent crossing that wrapping point.
 part:: The implementation SHALL interpret the coordinates as values for the named axis of the CRS specified in the `subset-crs` parameter value or in http://www.opengis.net/def/crs/OGC/1.3/CRS84 (http://www.opengis.net/def/crs/OGC/1.3/CRS84h for vertical dimension) if the `subset-crs` parameter is missing.
@@ -232,38 +234,19 @@ description:: For specifying a multi-dimensional subset for which to return a li
 part::
 +
 --
-The Implementation SHALL support a `subset` query parameter for the zone query operation (resource path ending with `.../dggs/{dggsId}/zones`)
-conforming to the following Augmented Backus Naur Form (ABNF) fragment:
-[source,ABNF]
-----
-  SubsetSpec:       "subset"=axisName(intervalOrPoint)
-  axisName:         {text}
-  intervalOrPoint:  interval \| point
-  interval:         low : high
-  low:              point \| *
-  high:             point \| *
-  point:            {number} \| "{text}"
+The implementation SHALL support a `datetime` parameter expressed corresponding to either a date-time instant or a time interval, conforming to the following syntax (using link:https://tools.ietf.org/html/rfc5234[ABNF]):
 
-  Where:
-     \" = double quote = ASCII code 0x42,
-     {number} is an integer or floating-point number, and
-     {text} is some general ASCII text (such as a time and date notation in ISO 8601).
+[source]
+----
+interval-closed     = date-time "/" date-time
+interval-open-start = [".."] "/" date-time
+interval-open-end   = date-time "/" [".."]
+interval            = interval-closed / interval-open-start / interval-open-end
+datetime            = date-time / interval
 ----
 --
-part:: The implementation SHALL support as axis names `Lat` and `Lon` for geographic CRS and `x` and `y` for projected CRS, which are to be interpreted as the best matching spatial axis in the CRS definition.
-part:: If a third spatial dimension is supported (if the resource's spatial extent bounding box is three dimensional), the implementation SHALL also support a `h` dimension (elevation above the ellipsoid in EPSG:4979 or CRS84h) for geographic CRS and `z` for projected CRS, which are to be interpreted as the vertical axis in the CRS definition.
-part:: The implementation SHALL return a 400 error status code if an axis name does not correspond to one of the axes of the Coordinate Reference System (CRS) of the target resource.
-part:: For a CRS where an axis can wrap around, such as subsetting across the dateline (anti-meridian) in a geographic CRS, a _low_ value greater than _high_ SHALL
-be supported to indicate an extent crossing that wrapping point.
-part:: The implementation SHALL interpret the coordinates as values for the named axis of the CRS specified in the `subset-crs` parameter value or in http://www.opengis.net/def/crs/OGC/1.3/CRS84 (http://www.opengis.net/def/crs/OGC/1.3/CRS84h for vertical dimension) if the `subset-crs` parameter is missing.
-part:: If the `subset` parameter including any of the dimensions corresponding to those of the map bounding box is used with a `bbox`, the server SHALL return a 400 client error.
-part:: The implementation SHALL interpret multiple `subset` parameters, as if all dimension subsetting values were provided in a single `subset` parameter (comma separated).
-Example: `subset=Lat(-90:90)&subset=Lon(-180:180)` is equivalent to `subset=Lat(-90:90),Lon(-180:180)`
+part:: The syntax of `date-time` is specified by link:https://tools.ietf.org/html/rfc3339#section-5.6[RFC 3339, 5.6].
+part:: Only the zones with data whose geometry intersect with the specified temporal interval SHALL be part of the zone list response.
+part:: The implementation SHALL support a double-dot (`..`) or an empty string for the start/end as indicating an unbounded or half-bounded interval (only having a start or end).
+part:: If a `datetime` parameter is specified requesting zone data where no temporal dimension applies, the implementation SHALL either ignore the parameter or return a 4xx client error.
 ====
-
-NOTE: A subset parameter for http://www.opengis.net/def/crs/OGC/1.3/CRS84 will read as subset=Lon(left_lon:right_lon),Lat(lower_lat:upper_lat).
-
-NOTE: When the _inteval_ values fall partially outside of the range of valid values defined by the CRS for the identified axis, the service is expected to return the non-empty portion of the resource resulting from the subset.
-
-NOTE: For the operation of returning a list of zone IDs, there normally is no value in preserving dimensionality, therefore a _slicing_ operation (using the _point_ notation) is usually equivalent to
-a _trimming_ operation (using the _interval_ notation) when the low and high bounds of an interval are the same. Therefore, use of the point notation is encouraged in these cases.

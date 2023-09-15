@@ -14,18 +14,34 @@ subject:: Web API
 ====
 [%metadata]
 label:: /req/core/dggs-list
-description:: For retrieving the list of available DGGS:
+description:: For retrieving the list of available discrete global grid reference systems:
 part:: The Implementation SHALL support an HTTP GET operation at a resource path ending with `.../dggs`.
+part:: The Implementation SHALL support a JSON representation of this `.../dggs` resource.
+part:: The `.../dggs` resource SHALL include a `dggs` array property listing all discrete global grid reference systems supported by the Implementation.
+part:: Each element of the `dggs` array SHALL include a subset of the information available in the individual DGGS information described below, including at minimum the `id`, `title`, `uri` (if applicable), and `links`.
+part:: The `links` property SHALL include at minimum a link to the discrete global grid reference system using the `self` link relation type, as well as a link to the discrete global grid reference system using the `[ogc-rel:dggs-definition]` relation type.
 ====
 
-==== Retrieving DGGS information (`.../dggs/{dggsId}`)
+==== Discrete global grid reference system information (`.../dggs/{dggsId}`)
 
 [requirement]
 ====
 [%metadata]
 label:: /req/core/dggs-info
-description:: For retrieving information for a particular available DGGS:
+description:: For retrieving information for a particular available discrete global grid reference system:
 part:: The Implementation SHALL support an HTTP GET operation at a resource path ending with `.../dggs/{dggsId}`.
+part:: The Implementation SHALL support a JSON representation of this `.../dggs/{dggsId}` resource.
+part:: The `.../dggs/{dggsId}` resource SHALL include an `id` property consistent with the `{dggsId}` resource path parameter.
+part:: The `.../dggs/{dggsId}` resource SHALL include a link to the resource itself using the `self` link relation type.
+part:: The `.../dggs/{dggsId}` resource SHALL include a link to a definition of the discrete global grid reference system (describing both the discrete global grid as well as the particular indexing scheme to identify zones by identifiers),
+using the link relation type `[ogc-rel:dggs-definition]`.
+The schema for that definition is likely to evolve in order to support describing a growing number of classes of DGGS.
+A first draft of this schema is available https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/schemas/dggs/dggrs.yaml[here].
+part:: The `.../dggs/{dggsId}` resource SHALL include a templated link to request information for a particular zone using the link relation type `[ogc-rel:dggs-zone-info]`.
+part:: If the discrete global grid reference system (the combination of the discrete global grid and indexing system) is registered with an authority, the resource SHALL include `uri` property corresponding to that registered discrete global grid reference system.
+part:: If the discrete global grid reference system is based on a particular coordinate reference system, the resource shall specify that CRS in a `crs` property, preferably as a URI (if one is available).
+part:: The Implementation SHALL include a short `title` property identifying the discrete global grid reference system intended for display to a human.
+part:: The Implementation SHALL include a `description` property providing a summary description of the discrete global grid reference system used by this particular DGGS instance.
 ====
 
 ==== Retrieving zone information (`.../dggs/{dggsId}/zones/{zoneId}`)
@@ -35,5 +51,24 @@ part:: The Implementation SHALL support an HTTP GET operation at a resource path
 [%metadata]
 label:: /req/core/zone-info
 description:: For retrieving information for a particular DGGS zone:
-part:: The Implementation SHALL support an HTTP GET operation at a resource path ending with `.../dggs/{dggsId}/zones/{zoneId}`.
+part:: The Implementation SHALL support an HTTP GET operation at a resource path ending with `.../dggs/{dggsId}/zones/{zoneId}` providing information for a valid individual zones of the discrete global grid reference system.
+part:: The zone information resource SHALL support a JSON representation.
+part:: The zone information resource SHALL include an `id` property corresponding to the `{zoneId}` resource path parameter.
+part:: The zone information resource SHALL include a link back to the corresponding DGGS resource (`.../dggs`) using the `[ogc-rel:dggs]` link relation type.
+====
+
+[recommendation]
+====
+[%metadata]
+label:: /rec/core/zone-info
+part:: The zone information resource SHOULD include an `areaMetersSquare` property indicating the surface area of the zone in meters square.
+part:: For a DGGS with three spatial dimension, the zone information resource SHOULD include a `volumeMetersCube` property indicating the surface area of the zone in meters cube.
+part:: For a temporal DGGS, the zone information resource SHOULD include a `temporalDurationSeconds` property indicating the amount of time covered by the zone in seconds.
+part:: The zone information resource SHOULD include a `geometry` property indicating the 2D and/or 3D spatial geometry of the zone, using GeoJSON or OGC Features & Geometry JSON for the JSON encoding.
+part:: For a temporal DGGS, the zone information resource SHOULD include a `temporalInterval` property indicating the start and end time of the zone.
+part:: The implementation SHOULD support a GeoJSON and/or OGC Features & Geometry JSON representation of the zone information resource where the top-level object is a feature representing the zone geometry,
+while the other properties are properties of that feature.
+part:: For a zone associated with a particular collection, the implementation SHOULD provide summary statistics (`minimum`, `maximum`, `average`, `standardDeviation`) pertaining to this zone for each field (fields of the range of a coverage, or relevant numeric properties of a feature collection) of the data. In the JSON encoding, this SHOULD be implemented as a JSON dictionary mapping field names to an object with each statistic.
+part:: For a zone associated with a particular collection, the implementation SHOULD provide `areaMetersSquareWithData`, `volumeMetersCubeWithData`, `temporalDurationSecondsWithData` properties corresponding to
+the respective properties defined above for the overall zones, but considering only the portions of the zone where there is data (e.g., regions of the zone excluding NODATA values for a gridded coverage, or within geometry for a feature collection).
 ====

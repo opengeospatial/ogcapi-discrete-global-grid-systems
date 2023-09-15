@@ -44,13 +44,17 @@ include::sections/clause_6_dggs_core.adoc[]
 
 include::sections/clause_7_dggs_data_retrieval.adoc[]
 
-include::sections/clause_8_dggs_zone_query.adoc[]
+include::sections/clause_8_dggs_data_subsetting.adoc[]
 
-include::sections/clause_9_dataset_dggs.adoc[]
+include::sections/clause_9_dggs_data_custom_depths.adoc[]
 
-include::sections/clause_10_collections_dggs.adoc[]
+include::sections/clause_10_dggs_zone_query.adoc[]
 
-include::sections/clause_11_media_types.adoc[]
+include::sections/clause_11_root_dggs.adoc[]
+
+include::sections/clause_12_collections_dggs.adoc[]
+
+include::sections/clause_13_encodings.adoc[]
 
 ////
 add or remove annexes after "A" as necessary

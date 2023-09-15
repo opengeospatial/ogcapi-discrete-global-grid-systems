@@ -1,20 +1,20 @@
-[[rc_dataset]]
+[[rc-root-dggs]]
 [requirements_class]
 ====
 [%metadata]
-label:: http://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/dataset
+label:: http://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/root-dggs
 subject:: Web API
 inherit:: http://www.opengis.net/spec/ogcapi-common-1/1.0/req/core
 ====
 
 === Requirements
 
-==== Collection DGGS (`/dggs`)
+==== Root DGGS (`/dggs`)
 
 [requirement]
 ====
 [%metadata]
-label:: /req/dataset/dggs
+label:: /req/root-dggs/dggs
 description:: For API/dataset-wide DGGS resources:
 part:: The Implementation SHALL support DGGS resources for the dataset as a whole, for the "Core" requirement class, as well as any resources defined in additional supported requirements classes.
 ====

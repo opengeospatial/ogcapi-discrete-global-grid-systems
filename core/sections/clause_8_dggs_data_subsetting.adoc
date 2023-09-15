@@ -1,0 +1,11 @@
+== Requirement Class "Data Subsetting"
+
+=== Overview
+
+The Data Subsetting requirements class extends the zone data retrieval requirements with the ability
+to subset data on additional dimensions beyond those defined by the discrete global grid reference systems (DGGRS),
+for example along time or vertical dimension if those axes are not part the DGGRS definition, or along additional dimensions
+such as atmospheric pressure levels. Two parameters are defined for this purpose: `datetime` (specifically for time) and
+`subset` (for any dimension, including time).
+
+include::../requirements/requirements_class_data-subsetting.adoc[]

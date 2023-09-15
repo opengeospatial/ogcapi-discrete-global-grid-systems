@@ -5,7 +5,7 @@ _OGC API - Common_ provides a common foundation for OGC API standards.
 Some conformance classes of this standard have a dependency on, or are designed to be easily integrated with, conformance classes defined in _OGC API - Common_ _Part 1_ and/or _Part 2_,
 as well as within a Web API conforming to additional OGC API standards.
 
-This standard identifies five Conformance Classes. Each Conformance Class has an associated Requirements Class.
+This standard identifies seventeen Conformance Classes. Each Conformance Class has an associated Requirements Class.
 The Requirements Classes define the functional requirements which will be tested through the associated Conformance Class.
 Only the Core requirements class is mandatory, all others are optional.
 
@@ -19,8 +19,13 @@ The Requirements Classes for _OGC API - Discrete Global Grid Systems_ are:
 
 === Requirements classes defining origins
 
-* <<rc-dataset,*Dataset*>>
-* <<rc-collections,*Collections*>>
+* <<rc-root-dggs,*Root DGGS*>>
+* <<rc-collection-dggs,*Collection DGGS*>>
+
+=== Requirements classes defining parameters
+
+* <<rc-data-subsetting,*Data subsetting*>>
+* <<rc-data-custom-depths,*Data custom depths*>>
 
 === Requirements classes defining resource representations
 
@@ -52,11 +57,13 @@ All requirements-classes and conformance-classes described in this document are 
 .Conformance class URIs
 [cols="30,70",options="header"]
 |===
-| Corresponding requirements class           | Conformance class URI
-| <<rc_core,Core>>                           | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/core
-| <<rc_data-retrieval,Zone Data Retrieval>>  | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-retrieval
-| <<rc_zone-query,Zone Query>>               | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-query
-| <<rc_dataset,Dataset>>                     | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/dataset
-| <<rc_collections,Collections>>             | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/collections
-| <<rc_oas30,OpenAPI Specification 3.0>>     | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/oas30
+| Corresponding requirements class               | Conformance class URI
+| <<rc-core,Core>>                               | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/core
+| <<rc-data-retrieval,Zone Data Retrieval>>      | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-retrieval
+| <<rc-zone-query,Zone Query>>                   | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-query
+| <<rc-root,Root DGGS>>                          | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/root-dggs
+| <<rc-collections,Collection DGGS>>             | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/collection-dggs
+| <<rc-data-subsetting,Data subsetting>>         | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-subsetting
+| <<rc-data-custom-depths,Data custom depths>>   | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-custom-depths
+| <<rc-oas30,OpenAPI Specification 3.0>>         | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/oas30
 |===
