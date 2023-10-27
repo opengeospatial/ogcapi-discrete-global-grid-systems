@@ -12,8 +12,8 @@ These requirements classes include:
 * <<rc_data-geotiff,GeoTIFF Data>>
 * <<rc_data-netcdf,netCDF Data>>
 * <<rc_data-coveragejson,CoverageJSON Data>>
-* <<rc_data-png,PNG Data>>
 * <<rc_data-jpegxl,JPEG XL Data>>
+* <<rc_data-png,PNG Data>>
 
 *For zone list:*
 
@@ -85,6 +85,16 @@ The CoverageJSON requirements class defines support for encoding a DGGS Zone dat
 
 // TODO: include::requirements/requirements_class_zone_data_coveragejson.adoc[]
 
+==== Requirements Class "JPEG-XL Zone data encoding"
+
+===== Overview
+
+The JPEG XL requirements class defines support for encoding a DGGS Zone data response according to the https://jpeg.org/jpegxl/[JPEG XL] https://www.iso.org/standard/77977.html[ISO/IEC 18181 Standard].
+
+JPEG XL supports a large number of bands, image dimensions, and floating point values.
+
+// TODO: include::requirements/requirements_class_zone_data_jpegxl.adoc[]
+
 ==== Requirements Class "PNG Zone data encoding"
 
 ===== Overview
@@ -97,29 +107,7 @@ used for that quantization.
 
 // TODO: include::requirements/requirements_class_zone_data_png.adoc[]
 
-==== Requirements Class "JPEG-XL Zone data encoding"
-
-===== Overview
-
-The JPEG XL requirements class defines support for encoding a DGGS Zone data response according to the https://jpeg.org/jpegxl/[JPEG XL] https://www.iso.org/standard/77977.html[ISO/IEC 18181 Standard].
-
-JPEG XL supports a large number of bands, image dimensions, and floating point values.
-
-// TODO: include::requirements/requirements_class_zone_data_jpegxl.adoc[]
-
 === Zone list encodings
-
-==== Requirements Class "HTML zone list encoding"
-
-===== Overview
-
-The HTML zone list encoding requirements class defines at a high level the ability to retrieve an HTML response for the DGGS zone list resource intended primarily for users accessing the API from a Web browser.
-
-The exact content of the HTML response is not prescribed, leaving the flexibility for implementations to choose a preferred approach.
-
-HTML is the core language of the World Wide Web. An API that supports HTML will support browsing the spatial resources with a web browser and will also enable search engines to crawl and index those resources.
-
-// TODO: include::requirements/requirements_class_zone_list_html.adoc[]
 
 ==== Requirements Class "JSON zone list encoding"
 
@@ -133,6 +121,18 @@ The object can also include a `"links"` objects linking back to other resources 
 This requirement class provides an easy to implement, reasonably efficient and interoperable mechanism to exchange lists of zone identifiers.
 
 // TODO: include::requirements/requirements_class_zone_list_json.adoc[]
+
+==== Requirements Class "HTML zone list encoding"
+
+===== Overview
+
+The HTML zone list encoding requirements class defines at a high level the ability to retrieve an HTML response for the DGGS zone list resource intended primarily for users accessing the API from a Web browser.
+
+The exact content of the HTML response is not prescribed, leaving the flexibility for implementations to choose a preferred approach.
+
+HTML is the core language of the World Wide Web. An API that supports HTML will support browsing the spatial resources with a web browser and will also enable search engines to crawl and index those resources.
+
+// TODO: include::requirements/requirements_class_zone_list_html.adoc[]
 
 ==== Requirements Class "Binary 64-bit integer zone list encoding"
 
