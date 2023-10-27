@@ -1,3 +1,180 @@
-== Media Types for any data encoding(s)
+[[encodings-section]]
+== Requirements Classes for Encodings of Zone data and Zone list
 
-A section describing the MIME-types to be used is mandatory for any standard involving data encodings. If no suitable MIME type exists in http://www.iana.org/assignments/media-types/index.html then this section may be used to define a new MIME type for registration with IANA.
+This standard does not mandate any particular encoding or format in which to return the `../dggs/zones` and `../dggs/zones/{zoneId}/data` resources.
+DGGS Zone Data and Zone Lists can be encoded in any suitable data format.
+However, it does define requirements class for encodings which are expected to be commonly supported in implementations of this standard.
+These requirements classes include:
+
+*For zone data:*
+
+* <<rc_data-geojson,GeoJSON Data>>
+* <<rc_data-geotiff,GeoTIFF Data>>
+* <<rc_data-netcdf,netCDF Data>>
+* <<rc_data-coveragejson,CoverageJSON Data>>
+* <<rc_data-png,PNG Data>>
+* <<rc_data-jpegxl,JPEG XL Data>>
+
+*For zone list:*
+
+* <<rc_zone-html,HTML Zone List>>
+* <<rc_zone-json,JSON Zone List>>
+* <<rc_zone-binary64bit,64-bit Binary Zone List>>
+* <<rc_zone-geojson,GeoJSON Zone List>>
+* <<rc_zone-geotiff,GeoTIFF Zone List>>
+
+=== Media Types
+
+A table of the media types used in the encoding requirements classes defined in this standard follows.
+
+[#api-dggs-media-types,reftext='{table-caption} {counter:table-num}']
+.Media Types used for encoding requirements classes
+[width="90%",cols="2,4"]
+|====
+^|*Encoding*              ^|*media type*
+|GeoTIFF data or zone list|image/tiff; application=geotiff
+|GeoJSON data or zone list|application/geo+json
+|netCDF zone data         |application/x-netcdf
+|CoverageJSON zone data   |application/prs.coverage+json
+|PNG zone data            |image/png
+|JPEG XL zone data        |image/jxl
+|JSON zone list           |application/json
+|HTML zone list           |text/html
+|Binary 64-bit zone list  |application/x-binary
+|====
+
+=== Zone data encodings
+
+==== Requirements Class "GeoTIFF Zone data encoding"
+
+===== Overview
+
+The GeoTIFF requirements class defines support for encoding a DGGS Zone data response according to the https://docs.ogc.org/is/19-008r4/19-008r4.html[OGC GeoTIFF standard].
+
+GeoTIFF is a commonly used format for representing 2-dimensional gridded coverages.
+
+For a DGGS with non-rectangular zones (e.g., hexagonal zones), a GeoTIFF representation can be the minimal bounding rectangle of the zone shape, with NODATA values used outside the bounds of the zone.
+
+// TODO: include::requirements/requirements_class_zone_data_geotiff.adoc[]
+
+==== Requirements Class "GeoJSON Zone data encoding"
+
+===== Overview
+
+The GeoJSON requirements class defines support for encoding a DGGS Zone data response according to the https://datatracker.ietf.org/doc/html/rfc7946[GeoJSON specification].
+
+GeoJSON is a commonly used format for representing features with simple geometries and related properties.
+GeoJSON is simple to understand and well supported by tools and software libraries.
+Since most Web developers are comfortable with using JSON-based formats, supporting GeoJSON is recommended for a vector representation of DGGS Zone data.
+
+// TODO: include::requirements/requirements_class_zone_data_geojson.adoc[]
+
+==== Requirements Class "netCDF zone data encoding"
+
+===== Overview
+
+The netCDF requirements class defines support for encoding a DGGS Zone data response according to the https://portal.ogc.org/files/?artifact_id=43732[OGC netCDF standard].
+
+// TODO: include::requirements/requirements_class_zone_data_netcdf.adoc[]
+
+==== Requirements Class "CoverageJSON zone data encoding"
+
+===== Overview
+
+The CoverageJSON requirements class defines support for encoding a DGGS Zone data response according to the https://docs.ogc.org/cs/21-069r2/21-069r2.html[OGC CoverageJSON Community Standard].
+
+// TODO: include::requirements/requirements_class_zone_data_coveragejson.adoc[]
+
+==== Requirements Class "PNG Zone data encoding"
+
+===== Overview
+
+The PNG requirements class defines support for encoding a DGGS Zone data response according to the https://www.w3.org/TR/2003/REC-PNG-20031110/[W3C Portable Network Graphics (PNG) Specification] (https://www.iso.org/standard/29581.html[ISO/IEC 15948:2003]).
+
+Because PNG encoding is limited to an integer data values, this requirements class defines additional parameters and response headers allowing a client to request
+a specific scale factor and offset to be used to quantize data values, and allowing the implementation to inform the client of the scale factor and offset
+used for that quantization.
+
+// TODO: include::requirements/requirements_class_zone_data_png.adoc[]
+
+==== Requirements Class "JPEG-XL Zone data encoding"
+
+===== Overview
+
+The JPEG XL requirements class defines support for encoding a DGGS Zone data response according to the https://jpeg.org/jpegxl/[JPEG XL] https://www.iso.org/standard/77977.html[ISO/IEC 18181 Standard].
+
+JPEG XL supports a large number of bands, image dimensions, and floating point values.
+
+// TODO: include::requirements/requirements_class_zone_data_jpegxl.adoc[]
+
+=== Zone list encodings
+
+==== Requirements Class "HTML zone list encoding"
+
+===== Overview
+
+The HTML zone list encoding requirements class defines at a high level the ability to retrieve an HTML response for the DGGS zone list resource intended primarily for users accessing the API from a Web browser.
+
+The exact content of the HTML response is not prescribed, leaving the flexibility for implementations to choose a preferred approach.
+
+HTML is the core language of the World Wide Web. An API that supports HTML will support browsing the spatial resources with a web browser and will also enable search engines to crawl and index those resources.
+
+// TODO: include::requirements/requirements_class_zone_list_html.adoc[]
+
+==== Requirements Class "JSON zone list encoding"
+
+===== Overview
+
+The JSON zone list encoding requirements class defines the ability to retrieve a JSON response for the DGGS zone list resource.
+
+The response consists of a simple JSON object with a `"zones"` array property listing the zone identifiers as strings.
+The object can also include a `"links"` objects linking back to other resources of the DGGS.
+
+This requirement class provides an easy to implement, reasonably efficient and interoperable mechanism to exchange lists of zone identifiers.
+
+// TODO: include::requirements/requirements_class_zone_list_json.adoc[]
+
+==== Requirements Class "Binary 64-bit integer zone list encoding"
+
+===== Overview
+
+The binary 64-bit integer zone list encoding requirements class defines the ability to retrieve a binary response for the DGGS zone list resource for
+DGGRS whose zone identifiers can be expressed as a single 64-bit integer.
+
+The response consists of a 64-bit integer count of zones, followed by that count of zones, also 64-bit integers.
+With compact zones and additional HTTP content encoding compression, this provides an optimal way to exchange DGGS zone lists.
+
+// TODO: include::requirements/requirements_class_zone_list_binary_64bit.adoc[]
+
+==== Requirements Class "GeoJSON zone list encoding"
+
+===== Overview
+
+The GeoJSON zone list encoding requirements class defines support for encoding a DGGS Zone list response according to the https://datatracker.ietf.org/doc/html/rfc7946[GeoJSON specification].
+
+The response is a feature collection where each feature represents a zone in the list.
+The geometry of the zone shold be polygons or multipolygons (e.g., in the case of zone geometry which must be split on the anti-meridian or pole).
+The zone identifier is represented in the `id` field of each feature.
+
+While not intended to efficiently exchange zone list, as the response carries the geometry of the zones which could easily be computed client-side which takes considerable bandwidth and is
+not necessary for a DGGS client working natively with the same DGGRS, this requirement class provides an easy way to readily visualize the response in a variety of tools.
+This requirements class is therefore intended for convenience, demonstration and educational purposes.
+
+// TODO: include::requirements/requirements_class_zone_list_geojson.adoc[]
+
+==== Requirements Class "GeoTIFF zone list encoding"
+
+===== Overview
+
+The GeoTIFF zone list encoding requirements class defines support for encoding a DGGS Zone list response according to the https://docs.ogc.org/is/19-008r4/19-008r4.html[OGC GeoTIFF standard],
+intended primarily for DGGS with rectangular zones.
+
+The response is a 2D gridded coverage where each cell is a zone in the list, in the coordinate reference system of that DGGS.
+
+For DGGS with non-rectangular zones, the resolution would need to be higher than a single pixel per the most detailed zone to be returned in order to be able to recognize the zone geometry,
+and would therefore be very sub-optimal. While for rectangular zones it would be easy to identify zones with a one-to-one correspondence, recognizing non-rectangular zones would be significantly more difficult.
+
+While not intended to efficiently exchange zone list, this requirement class provides an easy way to readily visualize the response in a variety of tools.
+This requirements class is therefore intended for convenience, demonstration and educational purposes.
+
+// TODO: include::requirements/requirements_class_zone_list_geotiff.adoc[]
