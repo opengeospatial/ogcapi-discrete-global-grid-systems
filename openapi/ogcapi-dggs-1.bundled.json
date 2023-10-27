@@ -599,6 +599,9 @@
             "$ref": "#/components/parameters/limit"
           },
           {
+            "$ref": "#/components/parameters/parent-zone"
+          },
+          {
             "$ref": "#/components/parameters/offset"
           },
           {
@@ -664,6 +667,9 @@
           },
           {
             "$ref": "#/components/parameters/limit"
+          },
+          {
+            "$ref": "#/components/parameters/parent-zone"
           },
           {
             "$ref": "#/components/parameters/offset"
@@ -2201,6 +2207,17 @@
           "minimum": 1,
           "maximum": 10000,
           "default": 1000
+        },
+        "style": "form",
+        "explode": false
+      },
+      "parent-zone": {
+        "name": "parent-zone",
+        "in": "query",
+        "description": "The optional parent zone parameter restricts a zone query to only return zones within that parent zone. Used together with `zone-level`, it allows to explore the response for a large zone query in a hierarchical manner.",
+        "required": false,
+        "schema": {
+          "type": "string"
         },
         "style": "form",
         "explode": false

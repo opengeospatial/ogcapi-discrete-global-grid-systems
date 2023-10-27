@@ -1,0 +1,10 @@
+name: parent-zone
+in: query
+description: >-
+  The optional parent zone parameter restricts a zone query to only return zones within that parent zone.
+  Used together with `zone-level`, it allows to explore the response for a large zone query in a hierarchical manner.
+required: false
+schema:
+  type: string
+style: form
+explode: false

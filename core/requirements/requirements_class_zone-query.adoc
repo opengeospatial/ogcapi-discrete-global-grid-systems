@@ -74,22 +74,36 @@ part:: When the `compact-zones` parameter is to true (or unspecified), the zones
 the area of a parent zone SHALL be replaced by that parent zone, in a recursive manner all the way to the lowest DGGS hierarchy level.
 ====
 
-==== Parameter `limit` for paging
+==== Parameter `parent-zone` for hierarchical exploration
 
-The following requirements describe how a client can specify a limit to the number of zones to be returned
-and page through large list of zones as multiple requests and responses.
+The following requirement describe how a client can specify a parent zone to only return zones within this parent zone,
+allowing to explore a large list in a hierarchical manner (in combination with `zone-level`) as multiple requests and responses.
 
 [requirement]
 ====
 [%metadata]
+label:: /rec/zone-query/parent-zone
+description:: For specifying a parent zone within which to restrict zone listing using a `parent-zone` query parameter:
+part:: The Implementation SHALL support a parameter `parent-zone` zone identifier query parameter.
+part:: When specified, the response SHALL NOT contain zones which are not this parent zone itself or a descendant of that zone.
+====
+
+==== Parameter `limit` for paging
+
+The following recommendation describe how a client can specify a limit to the number of zones to be returned
+and page through large list of zones as multiple requests and responses.
+
+[recommendation]
+====
+[%metadata]
 label:: /req/zone-query/limit
 description:: For specifying a paging limit for the list of zones using a `limit` query parameter:
-part:: The Implementation SHALL support a parameter `limit` integer query parameter, with a minimum value of 1.
-part:: The response SHALL not contain more zones than specified by the optional `limit` parameter (if specified).
-part:: If the API definition specifies a maximum value for the `limit` parameter, the response SHALL not contain more zones than this maximum value.
-part:: If the value of the `limit` parameter is larger than the maximum value, this SHALL NOT result in an error (but instead be replaced by the maximum as the parameter value).
-part:: If using compact zones, the parent zones SHALL count as a single zone, rather than the number of children zones they stand in for.
-part:: If an implementation does not return the full list of zones for the request, a link with relation type `next` SHALL be included in a `links` array property of the response,
+part:: The Implementation SHOULD support a parameter `limit` integer query parameter, with a minimum value of 1.
+part:: The response SHOULD not contain more zones than specified by the optional `limit` parameter (if specified).
+part:: If the API definition specifies a maximum value for the `limit` parameter, the response SHOULD not contain more zones than this maximum value.
+part:: If the value of the `limit` parameter is larger than the maximum value, this SHOULD NOT result in an error (but instead be replaced by the maximum as the parameter value).
+part:: If using compact zones, the parent zones SHOULD count as a single zone, rather than the number of children zones they stand in for.
+part:: If an implementation does not return the full list of zones for the request, a link with relation type `next` SHOULD be included in a `links` array property of the response,
 which a client can request to resume listing the zones.
 ====
 

@@ -12,6 +12,7 @@ get:
      - $ref: '../../parameters/dggs-core/zone-level.yaml'
      - $ref: '../../parameters/dggs-core/compact-zones.yaml'
      - $ref: '../../parameters/dggs-core/limit-zones.yaml'
+     - $ref: '../../parameters/dggs-core/parent-zone.yaml'
      - $ref: '../../parameters/unspecified/offset.yaml'
      - $ref: '../../parameters/common-geodata/datetime.yaml'
      - $ref: '../../parameters/common-geodata/subset.yaml'

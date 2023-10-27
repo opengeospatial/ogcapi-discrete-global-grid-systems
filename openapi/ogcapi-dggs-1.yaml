@@ -211,6 +211,8 @@ components:
          $ref: 'parameters/dggs-core/compact-zones.yaml'
       limit:
          $ref: 'parameters/dggs-core/limit-zones.yaml'
+      parent-zone:
+         $ref: 'parameters/dggs-core/parent-zone.yaml'
       #zones: # this was for multi-zones data retrieval
       #   $ref: 'parameters/dggs-core/zones.yaml'
 
