@@ -1,0 +1,11 @@
+[[rc_table-data_geotiff]]
+
+[requirements_class]
+.Requirements Class GeoTIFF Data
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-geotiff
+subject:: Web API
+inherit:: <<TIFF_V6>>
+inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
+====

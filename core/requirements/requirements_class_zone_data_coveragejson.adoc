@@ -1,0 +1,11 @@
+[[rc_table-data_coveragejson]]
+
+[requirements_class]
+.Requirements Class CoverageJSON Data
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-coveragejson
+subject:: Web API
+inherit:: <<CoverageJSON>>
+inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
+====

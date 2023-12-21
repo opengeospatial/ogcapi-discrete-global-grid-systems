@@ -1,0 +1,11 @@
+[[rc_table-data_netcdf]]
+
+[requirements_class]
+.Requirements Class NetCDF
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-netcdf
+subject:: Web API
+inherit:: <<OGC10-090r3, OGC Network Common Data Form (NetCDF) Core Encoding Standard version 1.0>>
+inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
+====

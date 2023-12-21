@@ -1,0 +1,11 @@
+[[rc_table-zone_geotiff]]
+
+[requirements_class]
+.Requirements Class GeoTIFF Zone List
+====
+[%metadata]
+identifier:: http://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-geotiff
+subject:: Web API
+inherit:: <<TIFF_V6>>
+inherit:: http://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
+====

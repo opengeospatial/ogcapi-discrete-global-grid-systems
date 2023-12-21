@@ -1,0 +1,12 @@
+[[rc_table-data_jpegxl]]
+
+[requirements_class]
+.Requirements Class JPEG XL Data
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-jpegxl
+subject:: Web API
+inherit:: <<JPEG_XL1>>
+inherit:: <<JPEG_XL2>>
+inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
+====

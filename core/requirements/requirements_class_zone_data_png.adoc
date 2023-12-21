@@ -1,0 +1,11 @@
+[[rc_table-data_png]]
+
+[requirements_class]
+.Requirements Class PNG Data
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-png
+subject:: Web API
+inherit:: <<ISO/IEC 15948 standard>>
+inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
+====

@@ -1,0 +1,11 @@
+[[rc_table-zone_html]]
+
+[requirement_class]
+.Requirements Class HTML Zone List
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-html
+subject:: Web API
+inherit:: https://html.spec.whatwg.org/: HTML Living Standard
+inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
+====

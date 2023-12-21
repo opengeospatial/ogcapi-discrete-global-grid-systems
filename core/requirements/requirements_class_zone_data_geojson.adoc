@@ -1,0 +1,11 @@
+[[rc_table-data_geojson]]
+
+[requirements_class]
+.Requirements Class GeoJSON
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-geojson
+subject:: Web API
+inherit:: <<rfc7946, GeoJSON>>
+inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
+====

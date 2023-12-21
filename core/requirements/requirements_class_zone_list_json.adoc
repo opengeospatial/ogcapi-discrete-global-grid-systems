@@ -1,0 +1,11 @@
+[[rc_table-zone_json]]
+
+[requirements_class]
+.Requirements Class JSON Zone List
+====
+[%metadata]
+identifier:: http://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-json
+subject:: Web API
+inherit:: <<rfc8259, JSON>>
+inherit:: http://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
+====

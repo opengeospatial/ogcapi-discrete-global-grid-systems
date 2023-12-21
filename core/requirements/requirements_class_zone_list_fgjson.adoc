@@ -1,0 +1,11 @@
+[[rc_table-zone_fgjson]]
+
+[requirements_class]
+.Requirements Class FG-JSON Zone List
+====
+[%metadata]
+identifier:: http://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-geojson
+subject:: Web API
+inherit:: <<rfc7946, GeoJSON>>
+inherit:: http://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
+====
