@@ -1,0 +1,31 @@
+type: object
+required:
+  - tref
+  - rel
+properties:
+  tref:
+    type: string
+    description: Supplies the URL template to a remote resource (or resource fragment), with template variables surrounded by curly brackets (`{` `}`).
+    example: http://data.example.com/buildings/{featureId}
+  rel:
+    type: string
+    description: The type or semantics of the relation.
+    example: alternate
+  type:
+    type: string
+    description: A hint indicating what the media type of the result of dereferencing the link templates should be.
+    example: application/geo+json
+  varBase:
+    description: A base path to retrieve semantic information about the variables used in URL template.
+    type: string
+    example: /ogcapi/vars/
+  hreflang:
+    type: string
+    description: A hint indicating what the language of the result of dereferencing the link should be.
+    example: en
+  title:
+    type: string
+    description: Used to label the destination of a link template such that it can be used as a human-readable identifier.
+    example: Trierer Strasse 70, 53115 Bonn
+  length:
+    type: integer

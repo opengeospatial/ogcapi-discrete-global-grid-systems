@@ -23,7 +23,7 @@ label:: /req/data-retrieval/zone-data
 description:: For retrieving data for a single DGGS zone:
 part:: The operation SHALL support an HTTP GET operation at a resource path
 ending with `.../dggs/{dggsId}/zones/{zoneId}/data`.
-part:: The operation SHALL include a templated link to this resource path in the "Core" `.../dggs/{dggsId}` resource links, and regular link in the `.../dggs/{dggsId}/zones/{zoneId}` resource links
+part:: The operation SHALL include a templated link to this resource path in the "Core" `.../dggs/{dggsId}` resource link templates, and regular link in the `.../dggs/{dggsId}/zones/{zoneId}` resource links
 using the link relation type `[ogc-rel:dggs-zone-data]`.
 part:: The response of the HTTP GET operation SHALL have a status code of 200.
 part:: The content of the response SHALL be a data packet corresponding precisely to the area covered by the DGGS zone.

@@ -37,7 +37,7 @@ part:: The `.../dggs/{dggsId}` resource SHALL include a link to a definition of 
 using the link relation type `[ogc-rel:dggs-definition]`.
 The schema for that definition is likely to evolve in order to support describing a growing number of classes of DGGS.
 A first draft of this schema is available https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/schemas/dggs-core/dggrs.yaml[here].
-part:: The `.../dggs/{dggsId}` resource SHALL include a templated link to request information for a particular zone using the link relation type `[ogc-rel:dggs-zone-info]`.
+part:: The `.../dggs/{dggsId}` resource SHALL include a templated link in the `linkTemplates` array to request information for a particular zone using the link relation type `[ogc-rel:dggs-zone-info]`.
 part:: If the discrete global grid reference system (the combination of the discrete global grid and indexing system) is registered with an authority, the resource SHALL include `uri` property corresponding to that registered discrete global grid reference system.
 part:: If the discrete global grid reference system is based on a particular coordinate reference system, the resource shall specify that CRS in a `crs` property, preferably as a URI (if one is available).
 part:: The Implementation SHALL include a short `title` property identifying the discrete global grid reference system intended for display to a human.
