@@ -2,7 +2,7 @@
 
 [NOTE]
 ====
-OGC API standards define modular API building blocks to spatially enable Web APIs in a consistent way. The OpenAPI specification is used to define the API building blocks.
+OGC API Standards define modular API building blocks to spatially enable Web APIs in a consistent way. OGC API Standards use the OpenAPI specification for describing the API building blocks.
 
 _OGC API - Discrete Global Grid Systems_ provides API building blocks to retrieve data and query zones based on Discrete Global Grid Systems (DGGS) concepts defined in
 https://docs.ogc.org/as/20-040r3/20-040r3.html[OGC Abstract Topic 21].
