@@ -22,7 +22,7 @@ These requirements classes include:
 * <<rc_zone-json,JSON Zone List>>
 * <<rc_zone-binary64bit,64-bit Binary Zone List>>
 * <<rc_zone-geojson,GeoJSON Zone List>>
-* <<rc_zone-fgjson,FG-SON Zone List>>
+* <<rc_zone-fgjson,FG-JSON Zone List>>
 * <<rc_zone-geotiff,GeoTIFF Zone List>>
 
 === Media Types

@@ -1,6 +1,6 @@
 [[rc_table-zone_html]]
 
-[requirement_class]
+[requirements_class]
 .Requirements Class HTML Zone List
 ====
 [%metadata]
