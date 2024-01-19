@@ -1,5 +1,4 @@
 == Scope
-[NOTE]
-====
-Insert Scope text here. Give the subject of the document and the aspects of that scope covered by the document.
-====
+
+This OGC Standard specifies a Web API that enables the direct retrieval of geospatial data for a specified area, time and resolution of interest, based on a specific DGGS and indexing scheme and/or the query of DGGS resources to return a list of DGGS Zones from which data is available. Queries can be specified in combination with other building blocks defining queries, such as a filter defined using
+the https://docs.ogc.org/DRAFTS/21-065.html[OGC Common Query Language (CQL2)]. 
