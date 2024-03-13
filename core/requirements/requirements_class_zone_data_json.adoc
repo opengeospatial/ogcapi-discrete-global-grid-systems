@@ -1,0 +1,11 @@
+[[rc_table-data_json]]
+
+[requirements_class]
+.Requirements Class JSON
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-json
+subject:: Web API
+inherit:: <<rfc8259, JSON>>
+inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
+====

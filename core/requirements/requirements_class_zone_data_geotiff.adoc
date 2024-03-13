@@ -14,9 +14,23 @@ inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
 ====
 [%metadata]
 identifier:: /req/data-geotiff/content
-part:: Every 200 response of the server for zone data with the media type image/tiff SHALL be a TIFF document representing the data values for all selected fields for a single zone.
-part:: If the TIFF encoding incorporates a GeoTIFF georeference, this information SHALL be consistent with the DGGRS Zone ID and the CRS implied by the DGGRS.
-part:: If the zone geometry is not rectangular, the closest bounding rectangle SHALL be used for referencing the image, and null values SHALL be used for cells lying outside the zone geometry.
+part:: Every 200 response of the server for zone data with the media type `image/tiff` SHALL be a TIFF document representing the data values for all selected fields for a single zone.
+part:: If the TIFF encoding incorporates a GeoTIFF georeference, this information SHALL be consistent with the DGGRS Zone ID.
+part:: If the zone geometry is not rectangular, the closest bounding rectangle SHALL be used for referencing the image.
 part:: A distinct value for each sub-zone implied from the requested `zone-depth` SHALL correspond to at least one distinct cell value in the response.
 part:: For implementations supporting Data Custom Depths, each depth of the requested zone depth pyramid SHALL be a separate image (overview) in the response.
+====
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/data-geotiff/null-values
+part:: Null values SHOULD be used for cells lying outside the zone geometry.
+====
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/data-geotiff/crs
+part:: The CRS of the response SHOULD be consistent with either the DGGRS or the underlying geographic CRS (e.g., CRS84).
 ====
