@@ -2009,6 +2009,8 @@
       "all-dggs": {
         "type": "string",
         "enum": [
+          "ISEA3H",
+          "ISEA9R",
           "GNOSISGlobalGrid",
           "OpenEAGGR",
           "rHEALPix",
