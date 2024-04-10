@@ -9,3 +9,93 @@ subject:: Web API
 inherit:: <<rfc8259, JSON>>
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
 ====
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/data-json/content
+part:: Every 200 response of the server for zone data with the media type `application/json` SHALL be a JSON document representing the data values for all selected fields for a single zone.
+part:: The schema for the JSON document SHALL follow the JSON Schema for DGGS-JSON described below.
+part:: Every zone depth requested using the `zone-depth` parameter SHALL be included in the response.
+part:: At every depth, each individual value SHALL correspond exactly to the data sampled representative of that zone geometry.
+part:: The list of data values SHALL follow the default zone order  as specified by the Discrete Global Grid Reference System (for example based on a scanline or space-filling curved defined therein) for which the request is made.
+part:: Null values SHALL use the `null` JSON value.
+====
+
+.JSON Schema for DGGS-JSON
+[source,json]
+----
+{
+   "type": "object",
+   "properties":
+   {
+      "dggrs" : { "type": "string", "format": "uri" },
+      "zoneId" : { "type": "string" },
+      "depths" : { "type": "array", "items": "integer", "minimum": 0 },
+      "schema" : { "$ref": "https://json-schema.org/draft/2020-12/schema" },
+      "dimensions" :
+      {
+         "type": "array",
+         "items":
+         {
+            "type": "object",
+            "properties":
+            {
+               "name": { "type": "string" },
+               "definition": { "type": "string", "format": "uri" },
+               "unit": { "type": "string" },
+               "unitLang": { "type": "string", "format": "uri" },
+               "grid":
+               {
+                  "type": "object",
+                  "properties":
+                  {
+                     "cellsCount" : { "type": "integer" },
+                     "resolution" : { },
+                     "coordinates": { "type": "array" }
+                  }
+               },
+               "interval": { "type": "array" }
+            },
+            "required": [ "name", "interval" ]
+         }
+      },
+      "values" :
+      {
+         "additionalProperties":
+         {
+            "type": "array",
+            "items":
+            {
+               "type": "object",
+               "properties":
+               {
+                  "depth": { "type": "integer" },
+                  "shape":
+                  {
+                     "type": "object",
+                     "properties":
+                     {
+                        "count": { "type": "integer" },
+                        "subZones": { "type": "integer" },
+                        "dimensions":
+                        {
+                           "type": "object",
+                           "additionalProperties": { "type": "integer" }
+                        }
+                     },
+                     "required": [ "count", "subZones" ]
+                  },
+                  "data":
+                  {
+                     "type": "array",
+                     "item": "number"
+                  }
+               }
+            }
+         }
+      }
+   },
+   "required": [ "dggrs", "zoneId", "depths", "values" ]
+}
+----

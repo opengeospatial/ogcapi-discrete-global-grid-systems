@@ -41,6 +41,8 @@ A table of the media types used in the encoding requirements classes defined in 
 |CoverageJSON zone data   |application/prs.coverage+json
 |PNG zone data            |image/png
 |JPEG XL zone data        |image/jxl
+|JSON zone data           |application/json
+|UB-JSON zone data        |application/ubjson
 |JSON zone list           |application/json
 |HTML zone list           |text/html
 |Binary 64-bit zone list  |application/x-binary
@@ -53,17 +55,64 @@ A table of the media types used in the encoding requirements classes defined in 
 
 ===== Overview
 
-The JSON Zone Data encoding requirements class defines support for encoding a DGGS Zone data response according in JSON.
+The JSON Zone Data encoding requirements class defines support for encoding a DGGS Zone data response according to JSON.
 
 This encoding is intended to support one-to-one mapping of sub-zones values, for one or more zone depths, regardless of zone geometry type, in a human-readable format.
 
 Values are encoded as a one-dimensional array following a sub-zone order defined by the DGGRS.
 
-An example encoding follows:
+Example encodings follow:
 
-```json
+.Example encoding for DGGS-JSON
+[source,json]
+----
 {
-   "dggrs": "http://www.opengis.net/def/dggrs/OGC/1.0/ISEA3H",
+   "$schema" : "https://schemas.opengis.net/ogcapi/dggs/part1/1.0/openapi/schemas/dggs-json/schema",
+   "dggrs": "https://www.opengis.net/def/dggrs/OGC/1.0/ISEA3H",
+   "zoneId": "C0-2B-A",
+   "depths": [ 0, 1 ],
+   "schema":
+   {
+      "$schema" : "https://json-schema.org/draft/2020-12/schema",
+      "$id" : "https://example.com/ogcapi/collections/climate/schema",
+      "title" : "Tempeature",
+      "type": "object",
+      "properties":
+      {
+         "t": {
+            "type": "temperature",
+            "title": "air temperature in celsius",
+            "x-ogc-property-seq" : 1,
+            "x-ogc-definition": "https://qudt.org/vocab/quantitykind/Temperature",
+            "x-ogc-unit": "C"
+         }
+      }
+   },
+   "values":
+   {
+      "t": [
+         {
+            "depth": 0,
+            "shape": { "count": 1, "subZones": 1 },
+            "data": [ 22.8 ]
+         },
+         {
+            "depth": 1,
+            "shape": { "count": 7, "subZones": 7,
+            "data": [ 25.1, 25.8, 22.0, 23.1, 22.8, 20.0, 17.1 ]
+         }
+      ]
+   }
+}
+----
+
+
+.A more complex example encoding for DGGS-JSON with more variables and additional dimensions beyond those of the DGGRS
+[source,json]
+----
+{
+   "$schema" : "https://schemas.opengis.net/ogcapi/dggs/part1/1.0/openapi/schemas/dggs-json/schema",
+   "dggrs": "https://www.opengis.net/def/dggrs/OGC/1.0/ISEA3H",
    "zoneId": "C0-2B-A",
    "depths": [ 0, 1 ],
    "schema":
@@ -74,21 +123,45 @@ An example encoding follows:
       "type": "object",
       "properties":
       {
-         "rh": { "type": "number", "title": "relative humidity", "x-ogc-property-seq" : 1 },
-         "t": { "type": "temperature", "title": "temperature in celsius", "x-ogc-property-seq" : 2 },
-         "ua": { "type": "number", "title": "Eastward wind", "x-ogc-property-seq" : 3 },
-         "va": { "type": "number", "title": "Northward wind", "x-ogc-property-seq" : 4 },
+         "rh": {
+            "type": "number",
+            "title": "relative humidity",
+            "x-ogc-property-seq" : 1,
+            "x-ogc-definition": "https://qudt.org/vocab/quantitykind/RelativeHumidity"
+         },
+         "t": {
+            "type": "temperature",
+            "title": "air temperature in celsius",
+            "x-ogc-property-seq" : 2,
+            "x-ogc-definition": "https://qudt.org/vocab/quantitykind/Temperature",
+            "x-ogc-unit": "C"
+         },
+         "ua": {
+            "type": "number",
+            "title": "Eastward wind",
+            "x-ogc-property-seq" : 3,
+            "x-ogc-definition": "https://qudt.org/vocab/quantitykind/Speed",
+            "x-ogc-unit": "m/s"
+         },
+         "va": {
+            "type": "number",
+            "title": "Northward wind",
+            "x-ogc-property-seq" : 4,
+            "x-ogc-definition": "https://qudt.org/vocab/quantitykind/Speed",
+            "x-ogc-unit": "m/s"
+         }
       }
    },
    "dimensions" : [
       {
-         "axis": "time",
+         "name": "time",
          "interval" : [ "2020-01-01", "2020-03-31" ],
          "grid" : { "cellsCount" : 3, "resolution" : "P1M" }
       },
       {
-         "axis": "pressure",
-         "uom" : "hPa",
+         "name": "pressure",
+         "definition": "https://qudt.org/vocab/quantitykind/AtmosphericPressure",
+         "unit" : "hPa",
          "interval" : [ 850.0, 50.0 ],
          "grid" : { "cellsCount" : 3, "coordinates" : [ 850.0, 250.0, 50.0 ] }
       }
@@ -98,7 +171,7 @@ An example encoding follows:
       "rh": [
          {
             "depth": 0,
-            "shape": { "count": 9, "subZones": 1, "dimensions": { "pressure": 3, { "time": 3 } },
+            "shape": { "count": 9, "subZones": 1, "dimensions": { "pressure": 3, "time": 3 } },
             "data": [
                25.1, 25.8, 22.0,
                23.1, 22.8, 20.0,
@@ -107,31 +180,35 @@ An example encoding follows:
          },
          {
             "depth": 1,
-            "shape": { "count": 63, "subZones": 7, "dimensions": { "pressure": 3, { "time": 3 } },
+            "shape": { "count": 63, "subZones": 7, "dimensions": { "pressure": 3, "time": 3 } },
             "data": [
-               25.1, 25.8, 22.0,
-               23.1, 22.8, 20.0,
-               17.1, 12.8, 14.0,
+               25.1, 25.8, 22.0, 23.1, 22.8, 20.0, 17.1, 12.8, 14.0,
+               25.1, 25.8, 22.0, 23.1, 22.8, 20.0, 17.1, 12.8, 14.0,
+               25.1, 25.8, 22.0, 23.1, 22.8, 20.0, 17.1, 12.8, 14.0,
+               25.1, 25.8, 22.0, 23.1, 22.8, 20.0, 17.1, 12.8, 14.0,
+               25.1, 25.8, 22.0, 23.1, 22.8, 20.0, 17.1, 12.8, 14.0,
+               25.1, 25.8, 22.0, 23.1, 22.8, 20.0, 17.1, 12.8, 14.0,
+               25.1, 25.8, 22.0, 23.1, 22.8, 20.0, 17.1, 12.8, 14.0,
+               25.1, 25.8, 22.0, 23.1, 22.8, 20.0, 17.1, 12.8, 14.0,
+               25.1, 25.8, 22.0, 23.1, 22.8, 20.0, 17.1, 12.8, 14.0
             ]
          }
       ],
-      "t":
-      [
-
-      ],
-      "ua":
-      [
-
-      ],
-      "va":
-      [
-
-      ]
+      "t": [ ... ], "ua": [ ... ], "va": [ ... ]
    }
 }
-```
+----
 
 include::../requirements/requirements_class_zone_data_json.adoc[]
+
+[[rc_data-ubjson]]
+==== Requirements Class "UB-JSON Zone data encoding"
+
+===== Overview
+
+The UB-JSON Zone Data encoding requirements class defines support for encoding a DGGS Zone data response using the same JSON structure as the above JSON data requirement class, but using the binary UB-JSON encoding.
+
+include::../requirements/requirements_class_zone_data_ubjson.adoc[]
 
 [[rc_data-geotiff]]
 ==== Requirements Class "GeoTIFF Zone data encoding"
