@@ -1,0 +1,38 @@
+{
+   "$schema" : "https://schemas.opengis.net/ogcapi/dggs/part1/1.0/openapi/schemas/dggs-json/schema",
+   "dggrs": "https://www.opengis.net/def/dggrs/OGC/1.0/ISEA3H",
+   "zoneId": "C0-2B-A",
+   "depths": [ 0, 1 ],
+   "schema":
+   {
+      "$schema" : "https://json-schema.org/draft/2020-12/schema",
+      "$id" : "https://example.com/ogcapi/collections/climate/schema",
+      "title" : "Temperature",
+      "type": "object",
+      "properties":
+      {
+         "t": {
+            "type": "temperature",
+            "title": "air temperature in celsius",
+            "x-ogc-property-seq" : 1,
+            "x-ogc-definition": "https://qudt.org/vocab/quantitykind/Temperature",
+            "x-ogc-unit": "C"
+         }
+      }
+   },
+   "values":
+   {
+      "t": [
+         {
+            "depth": 0,
+            "shape": { "count": 1, "subZones": 1 },
+            "data": [ 22.8 ]
+         },
+         {
+            "depth": 1,
+            "shape": { "count": 7, "subZones": 7 },
+            "data": [ 25.1, 25.8, 22.0, 23.1, 22.8, 20.0, 17.1 ]
+         }
+      ]
+   }
+}

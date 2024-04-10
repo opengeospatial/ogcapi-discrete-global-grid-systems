@@ -1,0 +1,87 @@
+{
+   "$schema" : "https://schemas.opengis.net/ogcapi/dggs/part1/1.0/openapi/schemas/dggs-json/schema",
+   "dggrs": "https://www.opengis.net/def/dggrs/OGC/1.0/ISEA3H",
+   "zoneId": "C0-2B-A",
+   "depths": [ 0, 1 ],
+   "schema":
+   {
+      "$schema" : "https://json-schema.org/draft/2020-12/schema",
+      "$id" : "https://example.com/ogcapi/collections/climate/schema",
+      "title" : "Climate Variables",
+      "type": "object",
+      "properties":
+      {
+         "rh": {
+            "type": "number",
+            "title": "relative humidity",
+            "x-ogc-property-seq" : 1,
+            "x-ogc-definition": "https://qudt.org/vocab/quantitykind/RelativeHumidity"
+         },
+         "t": {
+            "type": "temperature",
+            "title": "air temperature in celsius",
+            "x-ogc-property-seq" : 2,
+            "x-ogc-definition": "https://qudt.org/vocab/quantitykind/Temperature",
+            "x-ogc-unit": "C"
+         },
+         "ua": {
+            "type": "number",
+            "title": "Eastward wind",
+            "x-ogc-property-seq" : 3,
+            "x-ogc-definition": "https://qudt.org/vocab/quantitykind/Speed",
+            "x-ogc-unit": "m/s"
+         },
+         "va": {
+            "type": "number",
+            "title": "Northward wind",
+            "x-ogc-property-seq" : 4,
+            "x-ogc-definition": "https://qudt.org/vocab/quantitykind/Speed",
+            "x-ogc-unit": "m/s"
+         }
+      }
+   },
+   "dimensions" : [
+      {
+         "name": "time",
+         "interval" : [ "2020-01-01", "2020-03-31" ],
+         "grid" : { "cellsCount" : 3, "resolution" : "P1M" }
+      },
+      {
+         "name": "pressure",
+         "definition": "https://qudt.org/vocab/quantitykind/AtmosphericPressure",
+         "unit" : "hPa",
+         "interval" : [ 850.0, 50.0 ],
+         "grid" : { "cellsCount" : 3, "coordinates" : [ 850.0, 250.0, 50.0 ] }
+      }
+   ],
+   "values":
+   {
+      "rh": [
+         {
+            "depth": 0,
+            "shape": { "count": 9, "subZones": 1, "dimensions": { "pressure": 3, "time": 3 } },
+            "data": [
+               25.1, 25.8, 22.0,
+               23.1, 22.8, 20.0,
+               17.1, 12.8, 14.0,
+            ]
+         },
+         {
+            "depth": 1,
+            "shape": { "count": 63, "subZones": 7, "dimensions": { "pressure": 3, "time": 3 } },
+            "data": [
+               25.1, 25.8, 22.0, 23.1, 22.8, 20.0, 17.1, 12.8, 14.0,
+               25.1, 25.8, 22.0, 23.1, 22.8, 20.0, 17.1, 12.8, 14.0,
+               25.1, 25.8, 22.0, 23.1, 22.8, 20.0, 17.1, 12.8, 14.0,
+               25.1, 25.8, 22.0, 23.1, 22.8, 20.0, 17.1, 12.8, 14.0,
+               25.1, 25.8, 22.0, 23.1, 22.8, 20.0, 17.1, 12.8, 14.0,
+               25.1, 25.8, 22.0, 23.1, 22.8, 20.0, 17.1, 12.8, 14.0,
+               25.1, 25.8, 22.0, 23.1, 22.8, 20.0, 17.1, 12.8, 14.0,
+               25.1, 25.8, 22.0, 23.1, 22.8, 20.0, 17.1, 12.8, 14.0,
+               25.1, 25.8, 22.0, 23.1, 22.8, 20.0, 17.1, 12.8, 14.0
+            ]
+         }
+      ],
+      "t": [ ... ], "ua": [ ... ], "va": [ ... ]
+   }
+}
