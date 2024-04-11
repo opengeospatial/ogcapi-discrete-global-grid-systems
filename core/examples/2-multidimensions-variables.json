@@ -14,27 +14,27 @@
          "rh": {
             "type": "number",
             "title": "relative humidity",
-            "x-ogc-property-seq" : 1,
+            "x-ogc-propertySeq" : 1,
             "x-ogc-definition": "https://qudt.org/vocab/quantitykind/RelativeHumidity"
          },
          "t": {
-            "type": "temperature",
+            "type": "number",
             "title": "air temperature in celsius",
-            "x-ogc-property-seq" : 2,
+            "x-ogc-propertySeq" : 2,
             "x-ogc-definition": "https://qudt.org/vocab/quantitykind/Temperature",
             "x-ogc-unit": "C"
          },
          "ua": {
             "type": "number",
             "title": "Eastward wind",
-            "x-ogc-property-seq" : 3,
+            "x-ogc-propertySeq" : 3,
             "x-ogc-definition": "https://qudt.org/vocab/quantitykind/Speed",
             "x-ogc-unit": "m/s"
          },
          "va": {
             "type": "number",
             "title": "Northward wind",
-            "x-ogc-property-seq" : 4,
+            "x-ogc-propertySeq" : 4,
             "x-ogc-definition": "https://qudt.org/vocab/quantitykind/Speed",
             "x-ogc-unit": "m/s"
          }

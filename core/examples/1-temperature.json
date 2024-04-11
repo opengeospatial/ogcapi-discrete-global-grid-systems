@@ -12,9 +12,9 @@
       "properties":
       {
          "t": {
-            "type": "temperature",
+            "type": "number",
             "title": "air temperature in celsius",
-            "x-ogc-property-seq" : 1,
+            "x-ogc-propertySeq" : 1,
             "x-ogc-definition": "https://qudt.org/vocab/quantitykind/Temperature",
             "x-ogc-unit": "C"
          }
