@@ -9,3 +9,27 @@ subject:: Web API
 inherit:: <<OGC10-090r3, OGC Network Common Data Form (NetCDF) Core Encoding Standard version 1.0>>
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
 ====
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/data-netcdf/content
+part:: Every 200 response of the server for zone data with the media type `application/netcdf` SHALL be a netCDF file representing the data values for all selected fields for a single zone.
+part:: If the netCDF encoding incorporates georeferencing information, this information SHALL be consistent with the DGGRS Zone ID.
+part:: If the zone geometry is not rectilinear, the closest bounding rectangle (or volume) SHALL be used for referencing the data.
+part:: A distinct value for each sub-zone implied from the requested `zone-depth` SHALL correspond to at least one distinct cell value in the response.
+====
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/data-netcdf/null-values
+part:: Null values SHOULD be used for cells lying outside the zone geometry.
+====
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/data-netcdf/crs
+part:: The CRS of the response SHOULD be consistent with either the DGGRS or the underlying geographic CRS (e.g., CRS84).
+====

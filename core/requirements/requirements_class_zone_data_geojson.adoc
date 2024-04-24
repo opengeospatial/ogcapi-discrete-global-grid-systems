@@ -9,3 +9,34 @@ subject:: Web API
 inherit:: <<rfc7946, GeoJSON>>
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
 ====
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/data-geojson/content
+part:: Every 200 response of the server for zone data with the media type `application/geo+json` SHALL be a https://datatracker.ietf.org/doc/html/rfc7946[GeoJSON] document representing the features, including their geometry and associated properties, for a single zone.
+part:: Unless otherwise specified by a prior arrangement (for example, a `crs` output parameter), the coordinate reference system SHALL be CRS84(h) in longitude and latitude (and optional height above the WGS84 ellipsoid).
+part:: Features whose geometry lie wholly outside of the zone geometry SHALL not be included in the response.
+====
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/data-geojson/clipping
+part:: For features partially inside of the zone geometry, the geometry included in the response SHOULD be clipped to the boundaries of the zone geometry.
+====
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/data-geojson/generalization
+part:: The geometry of the features in the response SHOULD be generalized to the scale associated with the hierarchy level implied from the `zone-depth` relative to the requested zone.
+====
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/data-geojson/omission
+part:: For datasets whose features have either a size (such as areal or linear feature) or other properties making some features irrelevant at lower hierarchy levels, such irrelevant features SHOULD
+be omitted from the response based on the hierarchy level implied from the `zone-depth` relative to the requested zone.
+====
