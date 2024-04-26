@@ -4,8 +4,8 @@
 .Requirements Class FG-JSON Zone List
 ====
 [%metadata]
-identifier:: http://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-geojson
+identifier:: http://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-fgjson
 subject:: Web API
-inherit:: <<rfc7946, GeoJSON>>
+inherit:: <<FG-JSON>>
 inherit:: http://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
 ====
