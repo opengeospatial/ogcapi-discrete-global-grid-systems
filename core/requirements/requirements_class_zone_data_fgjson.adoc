@@ -6,7 +6,7 @@
 [%metadata]
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-fgjson
 subject:: Web API
-inherit:: <<FG-JSON>>
+inherit:: <<OGC21-045r1>>
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
 ====
 

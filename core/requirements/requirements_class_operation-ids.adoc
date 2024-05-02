@@ -1,0 +1,51 @@
+[[rc_operation-ids]]
+[requirements_class]
+====
+[%metadata]
+label:: http://www.opengis.net/spec/ogcapi-dggs-1/0.0/req/operation-ids
+subject:: Web API
+inherit:: http://www.opengis.net/spec/ogcapi-common-1/0.0/req/landing-page
+====
+
+=== Requirements
+
+==== Operation IDs
+
+[requirement]
+====
+[%metadata]
+label:: /req/operation-ids/
+description:: For specifying the operation identifiers associated with the capabilities defined in OGC API - DGGS
+part:: The API definition SHALL identify the supported operations defined in this Standard using the identifier suffixes defined in table <<api-operation-id-suffixes>>.
+====
+
+[#api-operation-id-suffixes,reftext='{table-caption} {counter:table-num}']
+.API operation identifier suffixes
+[width = "100%",options="header",cols="12%,23%,53%"]
+|===
+|Origin          |Resource                    |Operation id suffixes
+3+|_With the origins described in this document_
+|DataSet^4^      |DGGRS List^1^               |`.dataset.getDGGRSList`
+|DataSet^4^      |DGGRS Description^1^        |`.dataset.getDGGRS`
+|DataSet^4^      |DGGRS Zones^2^              |`.dataset.getDGGRSZones`
+|DataSet^4^      |DGGRS Zone Information^1^   |`.dataset.getDGGRSZoneInfo
+|DataSet^4^      |DGGRS Zone Data^3^          |`.dataset.getDGGRSZoneData
+|Collection^5^   |DGGRS List^1^               |`.collection.getDGGRSList`
+|Collection^5^   |DGGRS Description^1^        |`.collection.getDGGRS`
+|Collection^5^   |DGGRS Zones^2^              |`.collection.getDGGRSZones`
+|Collection^5^   |DGGRS Zone Information^1^   |`.collection.getDGGRSZoneInfo
+|Collection^5^   |DGGRS Zone Data^3^          |`.collection.getDGGRSZoneData
+3+|_With other potential origins_^6^
+|_other_      |DGGRS List^1^               |`#.getDGGRSList`
+|_other_      |DGGRS Description^1^        |`#.getDGGRS`
+|_other_      |DGGRS Zones^2^              |`#.getDGGRSZones`
+|_other_      |DGGRS Zone Information^1^   |`#.getDGGRSZoneInfo
+|_other_      |DGGRS Zone Data^3^          |`#.getDGGRSZoneData
+
+3+|^1^ The _DGGRS List_ (`.../dggs`), _DGGRS Description_ (`.../dggs/{dggsId}`) and _DGGRS Zone Information_ (`.../dggs/{dggsId}/zones/{zoneId}`) resources are defined in requirements class "Core".
+3+|^2^ The _DGGRS Zones_ resource (`.../dggs/{dggsId}/zones`) is defined in the "Zone Query" requirements class.
+3+|^3^ The _DGGRS Zone Data_ resource (`.../dggs/{dggsId}/zones/{zoneId}/data`) is defined in the "Data Retrieval" requirements class.
+3+|^4^ The _DataSet_ origin is defined in requirements class "Root DGGS" and depends on _OGC API - Common - Part 1: Core_.
+3+|^5^ The _Collection_ origin is defined in requirements class "Collection DGGS" and depends on the _Collections_ requirements class defined in _OGC API - Common - Part 2: Geospatial data_.
+3+|^6^ '#' represents an optional _origin_ that could be defined in another relevant standard.
+|===

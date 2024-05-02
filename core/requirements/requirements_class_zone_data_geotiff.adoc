@@ -7,6 +7,7 @@
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-geotiff
 subject:: Web API
 inherit:: <<TIFF_V6>>
+inherit:: <<OGC19-008r4, GeoTIFF>>
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
 ====
 

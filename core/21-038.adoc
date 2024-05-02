@@ -56,6 +56,8 @@ include::sections/clause_12_collections_dggs.adoc[]
 
 include::sections/clause_13_encodings.adoc[]
 
+include::sections/clause_14_operation_ids.adoc[]
+
 ////
 add or remove annexes after "A" as necessary
 ////

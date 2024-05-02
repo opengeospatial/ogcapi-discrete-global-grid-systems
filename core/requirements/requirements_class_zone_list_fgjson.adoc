@@ -6,6 +6,6 @@
 [%metadata]
 identifier:: http://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-fgjson
 subject:: Web API
-inherit:: <<FG-JSON>>
+inherit:: <<OGC21-045r1>>
 inherit:: http://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
 ====

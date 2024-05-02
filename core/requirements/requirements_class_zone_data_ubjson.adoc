@@ -6,7 +6,7 @@
 [%metadata]
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-ubjson
 subject:: Web API
-inherit:: https://ubjson.org/
+inherit:: https://ubjson.org/[https://ubjson.org/]
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
 ====
 

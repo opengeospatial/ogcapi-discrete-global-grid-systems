@@ -6,7 +6,7 @@
 [%metadata]
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-coveragejson
 subject:: Web API
-inherit:: <<CoverageJSON>>
+inherit:: <<OGC21-069r2>>
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
 ====
 
