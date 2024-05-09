@@ -19,7 +19,7 @@ part:: The Implementation SHALL support an HTTP GET operation at a resource path
 part:: The Implementation SHALL support a JSON representation of this `.../dggs` resource.
 part:: The `.../dggs` resource SHALL include a `dggs` array property listing all discrete global grid reference systems supported by the Implementation.
 part:: Each element of the `dggs` array SHALL include a subset of the information available in the individual DGGS information described below, including at minimum the `id`, `title`, `uri` (if applicable), and `links`.
-part:: The `links` property SHALL include at minimum a link to the discrete global grid reference system using the `self` link relation type, as well as a link to the discrete global grid reference system using the `[ogc-rel:dggs-definition]` relation type.
+part:: The `links` property SHALL include at minimum a link to the discrete global grid reference system using the `self` link relation type, as well as a link to the discrete global grid reference system using the `[ogc-rel:dggrs-definition]` relation type.
 ====
 
 ==== Discrete global grid reference system information (`.../dggs/{dggsId}`)
@@ -34,7 +34,7 @@ part:: The Implementation SHALL support a JSON representation of this `.../dggs/
 part:: The `.../dggs/{dggsId}` resource SHALL include an `id` property consistent with the `{dggsId}` resource path parameter.
 part:: The `.../dggs/{dggsId}` resource SHALL include a link to the resource itself using the `self` link relation type.
 part:: The `.../dggs/{dggsId}` resource SHALL include a link to a definition of the discrete global grid reference system (describing both the discrete global grid as well as the particular indexing scheme to identify zones by identifiers),
-using the link relation type `[ogc-rel:dggs-definition]`.
+using the link relation type `[ogc-rel:dggrs-definition]`.
 The schema for that definition is likely to evolve in order to support describing a growing number of classes of DGGS.
 A first draft of this schema is available https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/schemas/dggs-core/dggrs.yaml[here].
 part:: The `.../dggs/{dggsId}` resource SHALL include a templated link in the `linkTemplates` array to request information for a particular zone using the link relation type `[ogc-rel:dggs-zone-info]`.

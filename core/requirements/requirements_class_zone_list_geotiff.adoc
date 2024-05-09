@@ -10,3 +10,33 @@ inherit:: <<TIFF_V6>>
 inherit:: <<OGC19-008r4,GeoTIFF>>
 inherit:: http://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
 ====
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/zone-geotiff/content
+part:: Every 200 response of the server for zone query with the media type `image/tiff` SHALL be a GeoTIFF document representing the zones matching the query in a geo-referenced image
+where each zone corresponds to at least one pixel.
+part:: The GeoTIFF SHALL be encoded as `Pixel-Is-Area`.
+====
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/data-geotiff/crs
+part:: The CRS of the response SHOULD be consistent with either the DGGRS or the underlying geographic CRS (e.g., CRS84).
+====
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/zone-geotiff/values
+part:: The value of the pixel SHOULD be a 64-bit integer identifier representing the zone, if the DGGRS provides for such an identifier.
+====
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/zone-geotiff/non-rectilinear
+part:: For DGGRS where the zones do not correspond to a rectilinear structure, the resolution of the response image SHOULD be high enough so that the shape of the zone geometry is recognizable.
+====

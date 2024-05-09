@@ -4,8 +4,42 @@
 .Requirements Class JSON Zone List
 ====
 [%metadata]
-identifier:: http://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-json
+identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-json
 subject:: Web API
 inherit:: <<rfc8259, JSON>>
-inherit:: http://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
+inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
+====
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/zone-json/content
+part:: Every 200 response of the server for zone query with the media type `application/json` SHALL be a JSON document listing the textual identifiers for all zones matching the query.
+part:: The schema for the JSON document SHALL follow the JSON Schema for DGGS Zone Query described below, where the zone identifiers are strings within a `zones` array property.
+====
+
+.JSON Schema for a DGGS Zone Query response
+[source,json]
+----
+{
+   "$schema" : "https://json-schema.org/draft/2020-12/schema",
+   "$id" : "https://schemas.opengis.net/ogcapi/dggs/part1/1.0/openapi/schemas/dggs-core/dggs-zones.json",
+   "type": "object",
+   "properties":
+   {
+      "zones" : { "type": "array", "items": { "type": "string" } },
+      "links" :
+      {
+         "description": "Links to related resources. An `[ogc-rel:dggrs]` link to the Discrete Global Grid Reference System description resource and an `[ogc-rel:dggrs-definition]` link to the DGGRS definition (using the schema defined by https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/schemas/dggs/dggrs.yaml) are required. A `[ogc-rel:dggs-zone-data]` link to retrieve data from each of these DGGS zones should also be included if _DGGS Zone Data Retrieval_ is supported. An `[ogc-rel:geodata]` link should also be included for zone listing pertaining to a particular collection (for _Collection DGGS requirement class_)."
+         "items": { "$ref" : "https://schemas.opengis.net/ogcapi/dggs/part1/1.0/openapi/schemas/common-core/link.yaml"
+      }
+   }
+}
+----
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/zone-json/zone-order
+part:: For responses where zones of multiple hierarchy levels are returned (when `compact-zones` is true, the zones SHOULD be listed with the coarser resolution level first (larger zones).
 ====
