@@ -25,6 +25,7 @@ part:: The schema for the JSON document SHALL follow the JSON Schema for DGGS Zo
    "$schema" : "https://json-schema.org/draft/2020-12/schema",
    "$id" : "https://schemas.opengis.net/ogcapi/dggs/part1/1.0/openapi/schemas/dggs-core/dggs-zones.json",
    "type": "object",
+   "required": [ "zones" ],
    "properties":
    {
       "zones" : { "type": "array", "items": { "type": "string" } },
