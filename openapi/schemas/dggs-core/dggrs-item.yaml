@@ -7,7 +7,7 @@ required:
 - links
 properties:
   id:
-    description: Local DGGRS identifierc consistent with the `{dggrsId}` parameter of `/dggs/{dggrsId}` resources.
+    description: Local DGGRS identifier consistent with the `{dggrsId}` parameter of `/dggs/{dggrsId}` resources.
     type: string
   title:
     description: Title of this Discrete Global Grid System, normally used for display to a human
@@ -17,7 +17,7 @@ properties:
     type: string
     format: uri
   links:
-    description: Links to related resources. A `self` link to the Discrete Global Grid Reference System description and an `[ogc-rel:dggs-definition]` link to the DGGRS definition (using the schema defined by https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/schemas/dggs/dggrs.yaml) are required.
+    description: Links to related resources. A `self` link to the Discrete Global Grid Reference System description and an `[ogc-rel:dggrs-definition]` link to the DGGRS definition (using the schema defined by https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/schemas/dggs/dggrs-definition.yaml) are required.
     type: array
     items:
       $ref: '../../schemas/common-core/link.yaml'
