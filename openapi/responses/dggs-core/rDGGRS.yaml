@@ -2,7 +2,7 @@ description: Description for a specific Discrete Global Grid Reference System.
 content:
    application/json:
      schema:
-       $ref: '../../schemas/dggs-core/dggs.yaml'
+       $ref: '../../schemas/dggs-core/dggrs.yaml'
    text/html:
      schema:
        type: string

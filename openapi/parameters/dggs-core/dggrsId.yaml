@@ -1,7 +1,7 @@
-name: dggsId
+name: dggrsId
 in: path
 description: Identifier for a supported Discrete Global Grid System
 required: true
 allowEmptyValue: false
 schema:
-  $ref: '../../schemas/dynamic/all-dggs.yaml'
+  $ref: '../../schemas/dynamic/all-dggrs.yaml'

@@ -12,7 +12,7 @@ description: >-
     data packet encodings (the data encoding may support a fixed depth, a range of
     depths, and/or an arbitrary selection of depths).
   When this parameter is omitted, the default value specified in the `defaultDepth` property of the
-  `.../dggs/{dggsId}` DGGRS description is used.
+  `.../dggs/{dggrsId}` DGGRS description is used.
 
 required: false
 schema:

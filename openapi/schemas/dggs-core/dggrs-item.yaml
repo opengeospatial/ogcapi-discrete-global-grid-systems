@@ -7,7 +7,7 @@ required:
 - links
 properties:
   id:
-    description: Local DGGRS identifierc consistent with the `{dggsId}` parameter of `/dggs/{dggsId}` resources.
+    description: Local DGGRS identifierc consistent with the `{dggrsId}` parameter of `/dggs/{dggrsId}` resources.
     type: string
   title:
     description: Title of this Discrete Global Grid System, normally used for display to a human

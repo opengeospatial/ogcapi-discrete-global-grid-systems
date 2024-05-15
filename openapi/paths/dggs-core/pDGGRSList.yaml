@@ -1,13 +1,13 @@
 get:
    tags:
-     - DGGS Definition
-   summary: Retrieve the list of available DGGS
-   operationId: getDGGSList
+     - DGGRS Definition
+   summary: Retrieve the list of available DGGRS
+   operationId: getDGGRSList
    parameters:
      - $ref: '../../parameters/unspecified/f-metadata.yaml'
    responses:
      '200':
-       $ref: '../../responses/dggs-core/rDGGSList.yaml'
+       $ref: '../../responses/dggs-core/rDGGRSList.yaml'
      '406':
        $ref: '../../responses/common-core/rNotAcceptable.yaml'
      '500':

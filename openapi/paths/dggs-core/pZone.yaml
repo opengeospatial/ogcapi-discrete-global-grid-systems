@@ -1,10 +1,10 @@
 get:
    tags:
-     - DGGS Definition
-   summary: (Optional) Retrieve information about a DGGS Zone, such as geometry and data availability.
-   operationId: getDGGSZone
+     - DGGRS Definition
+   summary: (Optional) Retrieve information about a DGGRS Zone, such as geometry and data availability.
+   operationId: getDGGRSZone
    parameters:
-     - $ref: '../../parameters/dggs-core/dggsId.yaml'
+     - $ref: '../../parameters/dggs-core/dggrsId.yaml'
      - $ref: '../../parameters/dggs-core/zoneId.yaml'
      - $ref: '../../parameters/common-geodata/collections.yaml'
      - $ref: '../../parameters/common-geodata/datetime.yaml'

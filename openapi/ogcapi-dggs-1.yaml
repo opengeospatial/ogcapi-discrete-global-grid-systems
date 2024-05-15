@@ -26,7 +26,7 @@ paths:
    /api/all-collections:
       $ref: 'paths/dynamic/pAllCollections.yaml'
    /api/dggs:
-      $ref: 'paths/dynamic/pDGGS.yaml'
+      $ref: 'paths/dynamic/pDGGRS.yaml'
 
    # OGC API - Common - Part 2: Geospatial data
    /collections:
@@ -38,48 +38,48 @@ paths:
    # -----------------------------
    # ### CORE ### (Conformance Class)
 
-   # DataSet DGGS definitions (If shared for all collections, or supported for Data Set)
-   /dggs: # List of DGGS including URI, link to definition ('self'), links for retrieval ('dggs-zone'data') and/or search ('dggs-zone-query') for each DGGS -- 'dggs-list' link relation type from Landing Page
-      $ref: 'paths/dggs-core/pDGGSList.yaml'
-   /dggs/{dggsId}: # DGGS information (Recommendation/Optional)
-      $ref: 'paths/dggs-core/pDGGS.yaml'
-   /dggs/{dggsId}/zones/{zoneId}: # (Recommendation/Optional) Zone information and/or geometry; Include link for retrieval if data is available for this zone?
+   # DataSet DGGRS definitions (If shared for all collections, or supported for Data Set)
+   /dggs: # List of DGGRS including URI, link to definition ('self'), links for retrieval ('dggs-zone'data') and/or search ('dggs-zone-query') for each DGGS -- 'dggs-list' link relation type from Landing Page
+      $ref: 'paths/dggs-core/pDGGRSList.yaml'
+   /dggs/{dggrsId}: # DGGRS information (Recommendation/Optional)
+      $ref: 'paths/dggs-core/pDGGRS.yaml'
+   /dggs/{dggrsId}/zones/{zoneId}: # (Recommendation/Optional) Zone information and/or geometry; Include link for retrieval if data is available for this zone?
       $ref: 'paths/dggs-core/pZone.yaml'
 
-   # Collection DGGS definitions: Collection Zone Data (If available for a specific collection)
-   /collections/{collectionId}/dggs: # List of DGGS including URI, link to definition ('self'), links for retrieval ('dggs-zone-data') and/or search ('dggs-zone-query') for each DGGS -- 'dggs-list' link relation type from Collection
-      $ref: 'paths/dggs-core/pCollectionDGGSList.yaml'
-   /collections/{collectionId}/dggs/{dggsId}: # (Recommendation/Optional)
-      $ref: 'paths/dggs-core/pCollectionDGGS.yaml'
-   /collections/{collectionId}/dggs/{dggsId}/zones/{zoneId}: # (Recommendation/Optional) Zone information and/or geometry; Include link for retrieval if data is available for this zone?
+   # Collection DGGRS definitions: Collection Zone Data (If available for a specific collection)
+   /collections/{collectionId}/dggs: # List of DGGRS including URI, link to definition ('self'), links for retrieval ('dggs-zone-data') and/or search ('dggs-zone-query') for each DGGS -- 'dggs-list' link relation type from Collection
+      $ref: 'paths/dggs-core/pCollectionDGGRSList.yaml'
+   /collections/{collectionId}/dggs/{dggrsId}: # (Recommendation/Optional)
+      $ref: 'paths/dggs-core/pCollectionDGGRS.yaml'
+   /collections/{collectionId}/dggs/{dggrsId}/zones/{zoneId}: # (Recommendation/Optional) Zone information and/or geometry; Include link for retrieval if data is available for this zone?
       $ref: 'paths/dggs-core/pCollectionZone.yaml'
 
    # ### DATA RETRIEVAL (What is here?) ### (Conformance Class)
 
    # DGGS Zone Data: Data Set Zone Data (all collections)
    # Part 1: collections= parameter; Later parts: filter= (whole feature), query= (e.g. intersections)
-   # /dggs/{dggsId}/data: # Retrieve data from multiple zones at once, potentially in optimized DGGS zone data packets.
+   # /dggs/{dggrsId}/data: # Retrieve data from multiple zones at once, potentially in optimized DGGS zone data packets.
    #    $ref: 'paths/dggs-core/pData.yaml'
-   /dggs/{dggsId}/zones/{zoneId}/data: # Retrieve data from a single zone, potentially in optimized DGGS zone data packet, filter= (whole feature), query= (e.g. intersections)
+   /dggs/{dggrsId}/zones/{zoneId}/data: # Retrieve data from a single zone, potentially in optimized DGGS zone data packet, filter= (whole feature), query= (e.g. intersections)
       $ref: 'paths/dggs-core/pZoneData.yaml'
 
    # DGGS Zone Data: Collection Zone Data (specific collection)
    # Later parts: filter= (whole feature), query= (e.g. intersections)
-   #/collections/{collectionId}/dggs/{dggsId}/data: # Retrieve data from multiple zones at once, potentially in optimized DGGS zone data packets.
+   #/collections/{collectionId}/dggs/{dggrsId}/data: # Retrieve data from multiple zones at once, potentially in optimized DGGS zone data packets.
    #   $ref: 'paths/dggs-core/pCollectionData.yaml'
-   /collections/{collectionId}/dggs/{dggsId}/zones/{zoneId}/data: # Retrieve data from a single zone, potentially in optimized DGGS zone data packet.
+   /collections/{collectionId}/dggs/{dggrsId}/zones/{zoneId}/data: # Retrieve data from a single zone, potentially in optimized DGGS zone data packet.
       $ref: 'paths/dggs-core/pCollectionZoneData.yaml'
 
    # ### ZONE QUERY (Where is it?) ### (Conformance Class)
 
    # DGGS Search: Data Set Zones (all collections)
    # Part 1: collections= parameter; Later parts: filter= (return zones for whole feature), query= (e.g. return intersections)
-   /dggs/{dggsId}/zones:
+   /dggs/{dggrsId}/zones:
       $ref: 'paths/dggs-core/pZones.yaml'
 
    # DGGS Search: Collection Zones (specific collection)
    # Later parts: filter= (return zones for whole feature), query= (e.g. return intersections)
-   /collections/{collectionId}/dggs/{dggsId}/zones:
+   /collections/{collectionId}/dggs/{dggrsId}/zones:
       $ref: 'paths/dggs-core/pCollectionZones.yaml'
    # -----------------------------
 
@@ -143,14 +143,14 @@ components:
          $ref: 'schemas/common-geodata/numberMatched.yaml'
 
       # Dicrete Global Grid Systems
-      dggs:
-         $ref: 'schemas/dggs-core/dggs.yaml'
-      dggs-item:
-         $ref: 'schemas/dggs-core/dggs-item.yaml'
-      zone-info:
-         $ref: 'schemas/dggs-core/zone-info.yaml'
       dggrs:
          $ref: 'schemas/dggs-core/dggrs.yaml'
+      dggrs-item:
+         $ref: 'schemas/dggs-core/dggrs-item.yaml'
+      zone-info:
+         $ref: 'schemas/dggs-core/zone-info.yaml'
+      dggrs-definition:
+         $ref: 'schemas/dggs-core/dggrs-definition.yaml'
 
       # GeoJSON
       FeatureCollection:
@@ -162,8 +162,8 @@ components:
 
       all-collections:
          $ref: 'schemas/dynamic/all-collections.yaml'
-      all-dggs:
-         $ref: 'schemas/dynamic/all-dggs.yaml'
+      all-dggrs:
+         $ref: 'schemas/dynamic/all-dggrs.yaml'
 
    parameters:
       # Common - Core
@@ -199,8 +199,8 @@ components:
          $ref: 'parameters/common-filter/filter-lang.yaml'
 
       # DGGS - Core
-      dggsId:
-         $ref: 'parameters/dggs-core/dggsId.yaml'
+      dggrsId:
+         $ref: 'parameters/dggs-core/dggrsId.yaml'
       zoneId:
          $ref: 'parameters/dggs-core/zoneId.yaml'
       zone-level:
@@ -255,9 +255,9 @@ components:
 
       # DGGS - Core
       DGGSList:
-         $ref: 'responses/dggs-core/rDGGSList.yaml'
-      DGGS:
-         $ref: 'responses/dggs-core/rDGGS.yaml'
+         $ref: 'responses/dggs-core/rDGGRSList.yaml'
+      DGGRS:
+         $ref: 'responses/dggs-core/rDGGRS.yaml'
       ZoneData:
          $ref: 'responses/dggs-core/rZoneData.yaml'
       EmptyData:

@@ -128,8 +128,8 @@
         "tags": [
           "API"
         ],
-        "operationId": "getAPIDGGS",
-        "summary": "Retrieve the list of shared Discrete Global Grid Systems available from this API implementation & deployment.",
+        "operationId": "getAPIDGGRS",
+        "summary": "Retrieve the list of shared Discrete Global Grid Reference Systems available from this API implementation & deployment.",
         "parameters": [
           {
             "$ref": "#/components/parameters/f-metadata"
@@ -215,10 +215,10 @@
     "/dggs": {
       "get": {
         "tags": [
-          "DGGS Definition"
+          "DGGRS Definition"
         ],
-        "summary": "Retrieve the list of available DGGS",
-        "operationId": "getDGGSList",
+        "summary": "Retrieve the list of available DGGRS",
+        "operationId": "getDGGRSList",
         "parameters": [
           {
             "$ref": "#/components/parameters/f-metadata"
@@ -237,16 +237,16 @@
         }
       }
     },
-    "/dggs/{dggsId}": {
+    "/dggs/{dggrsId}": {
       "get": {
         "tags": [
-          "DGGS Definition"
+          "DGGRS Definition"
         ],
-        "summary": "(Optional) Retrieve the definition of the specified Discrete Global Grid System",
-        "operationId": "getDGGS",
+        "summary": "(Optional) Retrieve the definition of the specified Discrete Global Grid Reference System",
+        "operationId": "getDGGRS",
         "parameters": [
           {
-            "$ref": "#/components/parameters/dggsId"
+            "$ref": "#/components/parameters/dggrsId"
           },
           {
             "$ref": "#/components/parameters/f-metadata"
@@ -254,7 +254,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/DGGS"
+            "$ref": "#/components/responses/DGGRS"
           },
           "404": {
             "description": "The requested DGGS id was not found",
@@ -275,16 +275,16 @@
         }
       }
     },
-    "/dggs/{dggsId}/zones/{zoneId}": {
+    "/dggs/{dggrsId}/zones/{zoneId}": {
       "get": {
         "tags": [
-          "DGGS Definition"
+          "DGGRS Definition"
         ],
-        "summary": "(Optional) Retrieve information about a DGGS Zone, such as geometry and data availability.",
-        "operationId": "getDGGSZone",
+        "summary": "(Optional) Retrieve information about a DGGRS Zone, such as geometry and data availability.",
+        "operationId": "getDGGRSZone",
         "parameters": [
           {
-            "$ref": "#/components/parameters/dggsId"
+            "$ref": "#/components/parameters/dggrsId"
           },
           {
             "$ref": "#/components/parameters/zoneId"
@@ -334,10 +334,10 @@
     "/collections/{collectionId}/dggs": {
       "get": {
         "tags": [
-          "DGGS Definition"
+          "DGGRS Definition"
         ],
-        "summary": "Retrieve the list of available DGGS for the specified collection",
-        "operationId": "getCollectionDGGSList",
+        "summary": "Retrieve the list of available DGGRS for the specified collection",
+        "operationId": "getCollectionDGGRSList",
         "parameters": [
           {
             "$ref": "#/components/parameters/f-metadata"
@@ -362,16 +362,16 @@
         }
       }
     },
-    "/collections/{collectionId}/dggs/{dggsId}": {
+    "/collections/{collectionId}/dggs/{dggrsId}": {
       "get": {
         "tags": [
-          "DGGS Definition"
+          "DGGRS Definition"
         ],
         "summary": "(Optional) Retrieve the definition of the specified Discrete Global Grid System in the context of a specified collection",
-        "operationId": "getCollectionDGGS",
+        "operationId": "getCollectionDGGRS",
         "parameters": [
           {
-            "$ref": "#/components/parameters/dggsId"
+            "$ref": "#/components/parameters/dggrsId"
           },
           {
             "$ref": "#/components/parameters/f-metadata"
@@ -382,7 +382,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/DGGS"
+            "$ref": "#/components/responses/DGGRS"
           },
           "404": {
             "$ref": "#/components/responses/NotFound"
@@ -396,16 +396,16 @@
         }
       }
     },
-    "/collections/{collectionId}/dggs/{dggsId}/zones/{zoneId}": {
+    "/collections/{collectionId}/dggs/{dggrsId}/zones/{zoneId}": {
       "get": {
         "tags": [
-          "DGGS Definition"
+          "DGGRS Definition"
         ],
-        "summary": "(Optional) Retrieve information about a DGGS Zone, such as geometry and data availability, in the context of a specific collection.",
-        "operationId": "getCollectionDGGSZone",
+        "summary": "(Optional) Retrieve information about a DGGRS Zone, such as geometry and data availability, in the context of a specific collection.",
+        "operationId": "getCollectionDGGRSZone",
         "parameters": [
           {
-            "$ref": "#/components/parameters/dggsId"
+            "$ref": "#/components/parameters/dggrsId"
           },
           {
             "$ref": "#/components/parameters/zoneId"
@@ -422,7 +422,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/paths/~1dggs~1%7BdggsId%7D~1zones~1%7BzoneId%7D/get/responses/200"
+            "$ref": "#/paths/~1dggs~1%7BdggrsId%7D~1zones~1%7BzoneId%7D/get/responses/200"
           },
           "404": {
             "$ref": "#/components/responses/NotFound"
@@ -436,7 +436,7 @@
         }
       }
     },
-    "/dggs/{dggsId}/zones/{zoneId}/data": {
+    "/dggs/{dggrsId}/zones/{zoneId}/data": {
       "get": {
         "tags": [
           "DGGS Data Retrieval"
@@ -445,7 +445,7 @@
         "operationId": "retrieveDGGSZoneData",
         "parameters": [
           {
-            "$ref": "#/components/parameters/dggsId"
+            "$ref": "#/components/parameters/dggrsId"
           },
           {
             "$ref": "#/components/parameters/zoneId"
@@ -497,7 +497,7 @@
         }
       }
     },
-    "/collections/{collectionId}/dggs/{dggsId}/zones/{zoneId}/data": {
+    "/collections/{collectionId}/dggs/{dggrsId}/zones/{zoneId}/data": {
       "get": {
         "tags": [
           "DGGS Data Retrieval"
@@ -506,7 +506,7 @@
         "operationId": "retrieveCollectionDGGSZoneData",
         "parameters": [
           {
-            "$ref": "#/components/parameters/dggsId"
+            "$ref": "#/components/parameters/dggrsId"
           },
           {
             "$ref": "#/components/parameters/zoneId"
@@ -561,7 +561,7 @@
         }
       }
     },
-    "/dggs/{dggsId}/zones": {
+    "/dggs/{dggrsId}/zones": {
       "get": {
         "tags": [
           "DGGS Zone Query"
@@ -579,7 +579,7 @@
             "$ref": "#/components/parameters/bbox-crs"
           },
           {
-            "$ref": "#/components/parameters/dggsId"
+            "$ref": "#/components/parameters/dggrsId"
           },
           {
             "name": "zone-level",
@@ -636,7 +636,7 @@
         }
       }
     },
-    "/collections/{collectionId}/dggs/{dggsId}/zones": {
+    "/collections/{collectionId}/dggs/{dggrsId}/zones": {
       "get": {
         "tags": [
           "DGGS Zone Query"
@@ -657,10 +657,10 @@
             "$ref": "#/components/parameters/bbox-crs"
           },
           {
-            "$ref": "#/components/parameters/dggsId"
+            "$ref": "#/components/parameters/dggrsId"
           },
           {
-            "$ref": "#/paths/~1dggs~1%7BdggsId%7D~1zones/get/parameters/4"
+            "$ref": "#/paths/~1dggs~1%7BdggrsId%7D~1zones/get/parameters/4"
           },
           {
             "$ref": "#/components/parameters/zone-level"
@@ -1215,7 +1215,7 @@
         "minimum": 0,
         "example": 127
       },
-      "dggs": {
+      "dggrs": {
         "title": "Discrete Global Grid Reference System description",
         "description": "A description of a Discrete Global Grid Reference System provided by the API.",
         "type": "object",
@@ -1228,7 +1228,7 @@
         ],
         "properties": {
           "id": {
-            "description": "Local DGGRS identifierc consistent with the `{dggsId}` parameter of `/dggs/{dggsId}` resources.",
+            "description": "Local DGGRS identifier consistent with the `{dggrsId}` parameter of `/dggs/{dggrsId}` resources.",
             "type": "string"
           },
           "title": {
@@ -1275,7 +1275,7 @@
             ]
           },
           "links": {
-            "description": "Links to related resources. A `self` link to the Discrete Global Grid Reference System description and an `[ogc-rel:dggs-definition]` link to the DGGRS definition (using the schema defined by https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/schemas/dggs/dggrs.yaml) are required. A `[dggs-zone-query]` link to query DGGS zones should also be included if _DGGS Zone Query_ is supported.",
+            "description": "Links to related resources. A `self` link to the Discrete Global Grid Reference System description and an `[ogc-rel:dggrs-definition]` link to the DGGRS definition (using the schema defined by https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/schemas/dggs/dggrs.yaml) are required. An `[ogc-rel:dggs-zone-query]` link to query DGGS zones should also be included if _DGGS Zone Query_ is supported.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/link"
@@ -1329,7 +1329,7 @@
           }
         }
       },
-      "dggs-item": {
+      "dggrs-item": {
         "title": "Discrete Global Grid Reference System description (item)",
         "description": "A minimal Discrete Global Grid Reference System element for use within a list of DGGRS linking to a full description.",
         "type": "object",
@@ -1340,7 +1340,7 @@
         ],
         "properties": {
           "id": {
-            "description": "Local DGGRS identifierc consistent with the `{dggsId}` parameter of `/dggs/{dggsId}` resources.",
+            "description": "Local DGGRS identifierc consistent with the `{dggrsId}` parameter of `/dggs/{dggrsId}` resources.",
             "type": "string"
           },
           "title": {
@@ -1508,7 +1508,7 @@
           }
         }
       },
-      "dggrs": {
+      "dggrs-definition": {
         "description": "Discrete Global Grid System Reference System Structure Definition.",
         "type": "object",
         "required": [
@@ -2006,7 +2006,7 @@
           "NaturalEarth:physical:bathymetry"
         ]
       },
-      "all-dggs": {
+      "all-dggrs": {
         "type": "string",
         "enum": [
           "ISEA3H",
@@ -2190,14 +2190,14 @@
         "style": "form",
         "explode": false
       },
-      "dggsId": {
-        "name": "dggsId",
+      "dggrsId": {
+        "name": "dggrsId",
         "in": "path",
         "description": "Identifier for a supported Discrete Global Grid System",
         "required": true,
         "allowEmptyValue": false,
         "schema": {
-          "$ref": "#/components/schemas/all-dggs"
+          "$ref": "#/components/schemas/all-dggrs"
         }
       },
       "zoneId": {
@@ -2225,7 +2225,7 @@
       "zone-depth": {
         "name": "zone-depth",
         "in": "query",
-        "description": "The DGGS resolution levels beyond the requested DGGS zone’s hierarchy level to include in the response, when retrieving data for that zone. This can be either: • A single positive integer value — representing a specific zone depth to return (e.g., `zone-depth=5`); • A range of positive integer values in the form “{low}-{high}” — representing a\n  continuous range of zone depths to return (e.g., `zone-depth=1-8`); or,\n• A comma separated list of at least two (2) positive integer values — representing a\n  set of specific zone depths to return (e.g., `zone-depth=1,3,7`). Some or all of\n  these forms of the zone-depth parameter may not be supported with particular\n  data packet encodings (the data encoding may support a fixed depth, a range of\n  depths, and/or an arbitrary selection of depths).\nWhen this parameter is omitted, the default value specified in the `defaultDepth` property of the `.../dggs/{dggsId}` DGGRS description is used.",
+        "description": "The DGGS resolution levels beyond the requested DGGS zone’s hierarchy level to include in the response, when retrieving data for that zone. This can be either: • A single positive integer value — representing a specific zone depth to return (e.g., `zone-depth=5`); • A range of positive integer values in the form “{low}-{high}” — representing a\n  continuous range of zone depths to return (e.g., `zone-depth=1-8`); or,\n• A comma separated list of at least two (2) positive integer values — representing a\n  set of specific zone depths to return (e.g., `zone-depth=1,3,7`). Some or all of\n  these forms of the zone-depth parameter may not be supported with particular\n  data packet encodings (the data encoding may support a fixed depth, a range of\n  depths, and/or an arbitrary selection of depths).\nWhen this parameter is omitted, the default value specified in the `defaultDepth` property of the `.../dggs/{dggrsId}` DGGRS description is used.",
         "required": false,
         "schema": {
           "oneOf": [
@@ -2686,7 +2686,7 @@
                 "dggs": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/dggs-item"
+                    "$ref": "#/components/schemas/dggrs-item"
                   }
                 }
               }
@@ -2699,12 +2699,12 @@
           }
         }
       },
-      "DGGS": {
+      "DGGRS": {
         "description": "Description for a specific Discrete Global Grid Reference System.",
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/dggs"
+              "$ref": "#/components/schemas/dggrs"
             }
           },
           "text/html": {

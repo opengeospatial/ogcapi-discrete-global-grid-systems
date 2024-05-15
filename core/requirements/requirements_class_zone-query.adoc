@@ -9,10 +9,10 @@ inherit:: http://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/core
 
 === Requirements
 
-==== Listing zones (`.../dggs/{dggsId}/zones`)
+==== Listing zones (`.../dggs/{dggrsId}/zones`)
 
 The following requirements describe how a client can retrieve the list of zones from
-which data is available at the resource path `.../dggs/{dggsId}/zones`.
+which data is available at the resource path `.../dggs/{dggrsId}/zones`.
 
 [requirement]
 ====
@@ -20,8 +20,8 @@ which data is available at the resource path `.../dggs/{dggsId}/zones`.
 label:: /req/zone-query/zones-list
 description:: For retrieving a list of DGGS zones:
 part:: The Implementation SHALL support an HTTP GET operation at a resource path
-ending with `.../dggs/{dggsId}/zones`.
-part:: The Implementation SHALL include a link to this resource path in the "Core" .../dggs/{dggsId}` resource links
+ending with `.../dggs/{dggrsId}/zones`.
+part:: The Implementation SHALL include a link to this resource path in the "Core" .../dggs/{dggrsId}` resource links
 using the link relation type http://www.opengis.net/def/rel/ogc/1.0/dggs-zone-query.
 part:: The response of the HTTP GET operation SHALL have a status code of 200.
 part:: The content of the response SHALL be a list of zones fully covering where data is available
@@ -48,7 +48,7 @@ to retrieve the list of zones.
 label:: /req/zone-query/zone-level
 description:: For specifying a level at which to return a list of DGGS zones using a `zone-level` query parameter:
 part:: The Implementation SHALL support a `zone-level` query parameter for the zone query
-operation (resource path ending with `.../dggs/{dggsId}/zones`).
+operation (resource path ending with `.../dggs/{dggrsId}/zones`).
 part:: If a compact zones list is used (the default), the zones returned in the response SHALL be of the DGGS hierarchy level specified by the `zone-level` query parameter,
 or of a lower hierarchy level standing in for a compact representation of multiple zones at the requested hierarchy level.
 part:: If a compact zones list is not used, the zones returned in the response SHALL be of the DGGS hierarchy level specified by the `zone-level` query parameter.
@@ -66,7 +66,7 @@ The following requirements describe how a client can disable returning a compact
 label:: /req/zone-query/compact-zones
 description:: For specifying whether to retrieve a list of DGGS zones using a `compact-zones` parameter:
 part:: The Implementation SHALL support a boolean `compact-zones` query parameter for the zone query
-operation (resource path ending with `.../dggs/{dggsId}/zones`), where a value of `true` corresponds to the
+operation (resource path ending with `.../dggs/{dggrsId}/zones`), where a value of `true` corresponds to the
 default behavior when the paramter is not specified, and a value of `false` disables the use of compact-zones in the response.
 part:: When the `compact-zones` parameter is to false, the zones list response SHALL NOT be a compact list, and SHALL explicitly list every individual zone
 at the requested or default DGGS hierarchy level.
@@ -118,7 +118,7 @@ part::
 +
 --
 The Implementation SHALL support a `bbox` query parameter for the zone query
-operation (resource path ending with `.../dggs/{dggsId}/zones`) with the characteristics defined in the OpenAPI Specification 3.0 fragment:
+operation (resource path ending with `.../dggs/{dggrsId}/zones`) with the characteristics defined in the OpenAPI Specification 3.0 fragment:
 
 [source,YAML]
 ----
@@ -184,7 +184,7 @@ description:: For specifying a multi-dimensional subset for which to return a li
 part::
 +
 --
-The Implementation SHALL support a `subset` query parameter for the zone query operation (resource path ending with `.../dggs/{dggsId}/zones`)
+The Implementation SHALL support a `subset` query parameter for the zone query operation (resource path ending with `.../dggs/{dggrsId}/zones`)
 conforming to the following Augmented Backus Naur Form (ABNF) fragment:
 
 [source,ABNF]

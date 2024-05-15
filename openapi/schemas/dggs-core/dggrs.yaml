@@ -1,151 +1,60 @@
-description: Discrete Global Grid System Reference System Structure Definition.
+title: Discrete Global Grid Reference System description
+description: A description of a Discrete Global Grid Reference System provided by the API.
 type: object
 required:
-- gridConstraint
-- zoneGeometry
-- surfaceInterpolation
-- referenceSystemType
-- refinementStrategy
-- refinementRatio
+- id
+- title
+- description
+- defaultDepth
+- links
 properties:
-  basePolyhedron:
-    properties:
-      orientation:
-        properties:
-          latitude:
-            description: Reference Latitude to fix the orientation of the polyhedron.
-            example: 0.0
-            type: number
-          longitude:
-            description: Reference Longitude to fix the orientation of the polyhedron.
-            example: 0.0
-            type: number
-        required:
-        - longitude
-        - latitude
-        type: object
-      polyhedronType:
-        description: The Type/Class of Polyhedron used to construct the Discrete
-          Global Grid System - if it is constructued using a Base Polyhedron.
-        example: icosahedron
-        type: string
-    required:
-    - polyhedronType
-    - orientation
-    type: object
-  gridConstraint:
-    description: Constraints used to define different categories of DGGS. Each constraint
-      is a constraint on the shape, size, or orientation of cells in a DiscreteGlobalGrid.
-    enum:
-    - cellAxisAligned
-    - cellConformal
-    - cellEquiAngular
-    - cellEquiDistant
-    - cellEqualSized
-    example: cellEqualSized
+  id:
+    description: Local DGGRS identifier consistent with the `{dggrsId}` parameter of `/dggs/{dggrsId}` resources.
     type: string
-  referenceSystemType:
-    type: object
-    required:
-    - MDRS
-    - CRS
-    - ZIRS
-    - GLOBE
-    properties:
-      CRS:
-        allOf:
-        - description: Coordinate Reference System (CRS)
-        - $ref: '../common-geodata/crs.yaml'
-        example: EPSG:7789
-      GLOBE:
-        description: Globe Reference System Identifier/Specification
-        example: EPGS:7019
-        type: string
-      MDRS:
-        description: Metadata Reference System Identifier/Specification
-        example: TerraNexus_S_IT9_GRS80_2d10b58e2088c7e2
-        type: string
-      ZIRS:
-        description: Zone Identifier Reference System Identifier/Specification
-        type: object
-        required:
-        - ZoneIdentifiers
-        properties:
-          ZoneIdentifiers:
-            description: array of zone identification schemas defined by the Discrete
-              Global Grid System
-            type: array
-            items:
-              type: string #$ref: '#/components/schemas/ZoneId'
-            example:
-            - topologicalMortonCode:
-                description: Topological Morton Code (Space Filling Curve) Identifier.
-                  With a Level 0 alphabetical identifier from 'A' to 'S' followed
-                  by a numeric reference from 1 to 9 for all subsequent levels representing
-                  the arrangement of child zones following a Morton (Z-code) subdivision
-                  of the parent zone. The length of the identifier represents the
-                  level of refinement.
-                idType: string
-            - universalMortonCode:
-                description: Universal Morton Code (Space Filling Curve) Identifier.
-                  An ellipsoidal bitwise concatination of longitude and latitude
-                  direct position to form a direct Morton code. This can be used
-                  across multiple DGGS infrastructures to provide a common index
-                  structure that is fixed in nature regardless of the topological
-                  zone index used by each DGGS.
-                idType: string
-  refinementRatio:
-    description: The ratio of child zones to parent zones
-    example: 9
-    type: integer
-  refinementStrategy:
-    description: The refinement strategy used by the Discrete Global Grid System
-    enum:
-    - centredChildCell
-    - nestedChildCell
-    - nodeCentredChildCell
-    - edgeCentredChildCell
-    - faceCentredChildCell
-    - solidCentredChildCell
-    example: nestedChildCell
+  title:
+    description: Title of this Discrete Global Grid Rfeference System, intended for displaying to a human
     type: string
-  surfaceInterpolation:
-    description: The Surface Interpolation type used to define zone geometries of
-      the Discrete Global Grid System
-    enum:
-    - spherical
-    - elliptical
-    example: elliptical
+  description:
+    description: Brief narrative description of this Discrete Global Grid System, normally available for display to a human
     type: string
-  zoneGeometry:
-    description: Zone Geometry Specification
-    properties:
-      spatialDimension:
-        description: Number of Spatial Dimensions defined by the Discrete Global
-          Grid System.
-        example: 2
-        type: integer
-      temporalDimension:
-        description: Number of Temporal Dimensions defined by the Discrete Global
-          Grid System.
-        example: 0
-        type: integer
-      topologicalDimension:
-        description: Number of Topological Dimensions (Spatial + Temporal Dimensions)
-          defined by the Discrete Global Grid System.
-        example: 2
-        type: integer
-      zoneType:
-        enum:
-        - triangle
-        - square
-        - hexagon
-        - pentagon
-        - diamond
-        example: triangle
-        type: string
-    required:
-    - spatialDimension
-    - temporalDimension
-    - topologicalDimension
-    type: object
+  keywords:
+    description: Unordered list of one or more commonly used or formalized word(s)
+      or phrase(s) used to describe this Discrete Global Grid Reference System
+    type: array
+    items:
+      type: string
+  uri:
+    description: Identifier for this Discrete Global Grid Reference System registered with an authority.
+    type: string
+    format: uri
+  crs:
+    allOf:
+      - description: Coordinate Reference System (CRS) used by this DGGS  (mandatory if applicable), specified as a URI if one exists.
+      - $ref: '../common-geodata/crs.yaml'
+  defaultDepth:
+    description: >-
+      The default zone depth returned for zone data retrieval when the `zone-depth` parameter is not used.
+      This is the DGGS resolution levels beyond the requested DGGS zone’s hierarchy level included in the
+      response, when retrieving data for a particular zone. This can be either:
+      • A single positive integer value — representing a specific zone depth to return e.g., `5`;
+      • A range of positive integer values in the form “{low}-{high}” — representing a
+        continuous range of zone depths to return e.g., `1-8`; or,
+      • A comma separated list of at least two (2) positive integer values — representing a
+        set of specific zone depths to return e.g., `1,3,7`.
+        A particular data encoding imply a particular zone depth and not support the default zone depth specified here,
+        in which case the default zone depth (or the only possible depth) for that encoding will be used.
+    oneOf:
+    - type: integer
+      minimum: 0
+    - type: string
+      description: A comma separated list of positive integers, or a {min}-{max} range of relative zone depths
+  links:
+    description: Links to related resources. A `self` link to the Discrete Global Grid Reference System description and an `[ogc-rel:dggrs-definition]` link to the DGGRS definition (using the schema defined by https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/schemas/dggs/dggrs.yaml) are required. An `[ogc-rel:dggs-zone-query]` link to query DGGS zones should also be included if _DGGS Zone Query_ is supported.
+    type: array
+    items:
+      $ref: '../../schemas/common-core/link.yaml'
+  linkTemplates:
+    description: Templated Links to related resources. A templated `[ogc-rel:dggs-zone-data]` link to retrieve data should be included if _DGGS Zone Data_ is supported.
+    type: array
+    items:
+      $ref: '../../schemas/common-core/linkTemplate.yaml'

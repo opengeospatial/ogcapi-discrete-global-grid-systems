@@ -18,7 +18,7 @@ label:: /req/data-custom-depths/zone-depth-parameter
 
 description:: Parameter to specify the DGGS resolution levels beyond the specified DGGS zone's hierarchy level to include in the response, when retrieving data for that zone
 
-part:: The implementation SHALL support a `zone-depth` parameter for the HTTP GET operation on a resource path ending with `.../dggs/{dggsId}/zones/{zoneId}/data`.
+part:: The implementation SHALL support a `zone-depth` parameter for the HTTP GET operation on a resource path ending with `.../dggs/{dggrsId}/zones/{zoneId}/data`.
 
 part:: The implementation SHALL accept the following types of values for the `zone-depth` parameter:
 - A single positive integer value - representing a specific zone depth to return (e.g., `zone-depth=5`);

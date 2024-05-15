@@ -4,7 +4,7 @@ get:
    summary: Retrieve data from a list of DGGS Zones for a specific collection, potentially as optimized DGGS zone data packets.
    operationId: retrieveCollectionDGGSData
    parameters:
-     - $ref: '../../parameters/dggs-core/dggsId.yaml'
+     - $ref: '../../parameters/dggs-core/dggrsId.yaml'
      - $ref: '../../parameters/dggs-core/zones.yaml'
      - $ref: '../../parameters/common-geodata/collectionId-all.yaml'
      - $ref: '../../parameters/common-geodata/collections.yaml'

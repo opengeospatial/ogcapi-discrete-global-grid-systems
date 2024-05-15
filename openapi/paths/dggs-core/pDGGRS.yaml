@@ -1,14 +1,14 @@
 get:
    tags:
-     - DGGS Definition
-   summary: (Optional) Retrieve the definition of the specified Discrete Global Grid System
-   operationId: getDGGS
+     - DGGRS Definition
+   summary: (Optional) Retrieve the definition of the specified Discrete Global Grid Reference System
+   operationId: getDGGRS
    parameters:
-     - $ref: '../../parameters/dggs-core/dggsId.yaml'
+     - $ref: '../../parameters/dggs-core/dggrsId.yaml'
      - $ref: '../../parameters/unspecified/f-metadata.yaml'
    responses:
      '200':
-       $ref: '../../responses/dggs-core/rDGGS.yaml'
+       $ref: '../../responses/dggs-core/rDGGRS.yaml'
      '404':
        description: The requested DGGS id was not found
        content:

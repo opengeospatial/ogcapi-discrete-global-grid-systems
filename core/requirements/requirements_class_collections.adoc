@@ -17,5 +17,5 @@ inherit:: http://www.opengis.net/spec/ogcapi-common-2/1.0/req/collections
 label:: /req/collection-dggs/dggs
 description:: For collection DGGS resources:
 part:: The Implementation SHALL support DGGS resources for at least one collection, for the "Core" requirement class, as well as any resources defined in additional supported requirements classes.
-part:: The `/collections/{collectionId}/dggs` and `/collections/{collectionId}/dggs/{dggsId}` resources SHALL include a link to the collection using the link relation type `[ogc-rel:geodata]`.
+part:: The `/collections/{collectionId}/dggs` and `/collections/{collectionId}/dggs/{dggrsId}` resources SHALL include a link to the collection using the link relation type `[ogc-rel:geodata]`.
 ====

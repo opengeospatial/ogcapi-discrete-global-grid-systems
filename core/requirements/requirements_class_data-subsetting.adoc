@@ -19,7 +19,7 @@ description:: For specifying a multi-dimensional subset for the zone data being 
 part::
 +
 --
-The Implementation SHALL support a `subset` query parameter for the zone data retrieval operation (resource path ending with `.../dggs/{dggsId}/zones/{zoneId}/data`)
+The Implementation SHALL support a `subset` query parameter for the zone data retrieval operation (resource path ending with `.../dggs/{dggrsId}/zones/{zoneId}/data`)
 conforming to the following Augmented Backus Naur Form (ABNF) fragment:
 
 [source,ABNF]

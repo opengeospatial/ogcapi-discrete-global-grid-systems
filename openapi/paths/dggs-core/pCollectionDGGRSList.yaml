@@ -1,14 +1,14 @@
-# API DGGS
 get:
    tags:
-     - API
-   operationId: getAPIDGGS
-   summary: Retrieve the list of shared Discrete Global Grid Systems available from this API implementation & deployment.
+     - DGGRS Definition
+   summary: Retrieve the list of available DGGRS for the specified collection
+   operationId: getCollectionDGGRSList
    parameters:
      - $ref: '../../parameters/unspecified/f-metadata.yaml'
+     - $ref: '../../parameters/common-geodata/collectionId-all.yaml'
    responses:
      '200':
-       $ref: '../../responses/dynamic/rEnumeration.yaml'
+       $ref: '../../responses/dggs-core/rDGGRSList.yaml'
      '404':
        $ref: '../../responses/common-core/rNotFound.yaml'
      '406':

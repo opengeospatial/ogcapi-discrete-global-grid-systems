@@ -9,10 +9,10 @@ inherit:: http://www.opengis.net/spec/ogcapi-common-1/1.0/req/core
 
 === Requirements
 
-==== Retrieving data from a zone (`../dggs/{dggsId}/zones/{zoneId}/data`)
+==== Retrieving data from a zone (`../dggs/{dggrsId}/zones/{zoneId}/data`)
 
 The following requirements describe how a client can retrieve data from a single DGGS zone
-at the resource path `.../dggs/{dggsId}/zones/{zoneId}/data`.
+at the resource path `.../dggs/{dggrsId}/zones/{zoneId}/data`.
 
 [[req_data-retrieval_zone-data]]
 
@@ -22,13 +22,13 @@ at the resource path `.../dggs/{dggsId}/zones/{zoneId}/data`.
 label:: /req/data-retrieval/zone-data
 description:: For retrieving data for a single DGGS zone:
 part:: The operation SHALL support an HTTP GET operation at a resource path
-ending with `.../dggs/{dggsId}/zones/{zoneId}/data`.
-part:: The operation SHALL include a templated link to this resource path in the "Core" `.../dggs/{dggsId}` resource link templates, and regular link in the `.../dggs/{dggsId}/zones/{zoneId}` resource links
+ending with `.../dggs/{dggrsId}/zones/{zoneId}/data`.
+part:: The operation SHALL include a templated link to this resource path in the "Core" `.../dggs/{dggrsId}` resource link templates, and regular link in the `.../dggs/{dggrsId}/zones/{zoneId}` resource links
 using the link relation type `[ogc-rel:dggs-zone-data]`.
 part:: The response of the HTTP GET operation SHALL have a status code of 200.
 part:: The content of the response SHALL be a data packet corresponding precisely to the area covered by the DGGS zone.
 part:: The selection of an encoding for the response SHALL be consistent with HTTP content negotiation.
-part:: The `.../dggs/{dggsId}` resource SHALL include a `defaultDepth` property indicating the implementation's default depth for when the `zone-depth` parameter is omitted.
+part:: The `.../dggs/{dggrsId}` resource SHALL include a `defaultDepth` property indicating the implementation's default depth for when the `zone-depth` parameter is omitted.
 This default value could be any valid value and/or form as defined in the `/req/data-custom-depths/zone-depth-parameter` requirement (single depth, range of depths, or list of depths, relative to the `{zoneId}` hierarchy level).
 part:: Unless a `zone-depth` parameter is specified, the response SHALL return a data packet consistent with this `defaultDepth` property, in accordance with the capabilities of the negotiated data packet encoding.
 ====
