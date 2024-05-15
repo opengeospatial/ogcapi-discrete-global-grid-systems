@@ -16,7 +16,7 @@
   "servers": [
     {
       "description": "Example OGC API - DGGS server",
-      "url": "https://maps.ecere.com/ogcapi"
+      "url": "https://maps.gnosis.earth/ogcapi"
     }
   ],
   "paths": {
@@ -2208,7 +2208,7 @@
         "schema": {
           "type": "string"
         },
-        "example": "3-4-F"
+        "example": "B2-1-A"
       },
       "zone-level": {
         "name": "compact-zones",

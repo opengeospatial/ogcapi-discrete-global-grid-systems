@@ -5,4 +5,4 @@ description: |-
 required: true
 schema:
   type: string
-example: '3-4-F'
+example: 'B2-1-A'
