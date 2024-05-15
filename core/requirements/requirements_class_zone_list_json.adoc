@@ -31,7 +31,7 @@ part:: The schema for the JSON document SHALL follow the JSON Schema for DGGS Zo
       "zones" : { "type": "array", "items": { "type": "string" } },
       "links" :
       {
-         "description": "Links to related resources. An `[ogc-rel:dggrs]` link to the Discrete Global Grid Reference System description resource and an `[ogc-rel:dggrs-definition]` link to the DGGRS definition (using the schema defined by https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/schemas/dggs/dggrs.yaml) are required. A `[ogc-rel:dggs-zone-data]` link to retrieve data from each of these DGGS zones should also be included if _DGGS Zone Data Retrieval_ is supported. An `[ogc-rel:geodata]` link should also be included for zone listing pertaining to a particular collection (for _Collection DGGS requirement class_)."
+         "description": "Links to related resources. An `[ogc-rel:dggrs]` link to the Discrete Global Grid Reference System description resource and an `[ogc-rel:dggrs-definition]` link to the DGGRS definition (using the schema defined by https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/schemas/dggs-core/dggrs.yaml) are required. A `[ogc-rel:dggs-zone-data]` link to retrieve data from each of these DGGS zones should also be included if _DGGS Zone Data Retrieval_ is supported. An `[ogc-rel:geodata]` link should also be included for zone listing pertaining to a particular collection (for _Collection DGGS requirement class_)."
          "items": { "$ref" : "https://schemas.opengis.net/ogcapi/dggs/part1/1.0/openapi/schemas/common-core/link.yaml"
       }
    }
