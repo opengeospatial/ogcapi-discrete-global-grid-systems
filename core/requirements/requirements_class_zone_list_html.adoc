@@ -9,3 +9,24 @@ subject:: Web API
 inherit:: https://html.spec.whatwg.org/: HTML Living Standard
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
 ====
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/zone-html/content
+part:: Every 200 response of the server for zone query with the media type `text/html` SHALL be an HTML document listing the textual identifiers for all zones matching the query.
+====
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/zone-html/zone-information
+part:: The implementation SHOULD include additional information for each zone ID, such as the area, bounding box and/or a preview of the data available for this zone.
+====
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/zone-html/zone-data
+part:: If the implementation also supports Zone Data Retrieval, the implementation SHOULD include a link for each zone to download the associated data .
+====

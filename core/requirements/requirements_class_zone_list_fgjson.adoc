@@ -9,3 +9,26 @@ subject:: Web API
 inherit:: <<OGC21-045r1>>
 inherit:: http://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
 ====
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/zone-fgjson/content
+part:: Every 200 response of the server for zone query with the media type `application/fg+json` SHALL be a Features & Geometry JSON document consisting of a FeatureCollection, where every Feature represents a single zone.
+part:: Every feature SHALL have a `zoneID` property corresponding to the textual identifer of the zone.
+part:: The geometry of each feature SHALL be the geometry of the zone.
+====
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/zone-fgjson/id
+part:: The Feature `id` SHOULD have the same value as the `zoneID` property or use the 64-bit integer identifier.
+====
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/zone-fgjson/mid-points
+part:: For DGGRSs not in CRS84, the geometry SHOULD include intermediate points between the vertices of the zone geometry so as to accurately represent the shape of the zones.
+====
