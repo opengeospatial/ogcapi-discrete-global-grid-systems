@@ -1,0 +1,45 @@
+{
+   "title": "ISEA3H",
+   "description": "An ISEA3H Discrete Global Grid Reference System using the standard ISEA orientation and WGS84 authalic sphere, a zone indexing system based on an ISEA9R, and scanline-based ordering",
+   "uri": "https://www.opengis.net/def/dggrs/OGC/1.0/ISEA3H",
+   "links": [ { "href": "https://portal.ogc.org/files/?artifact_id=107432" } ],
+   "dggs": {
+      "definition": {
+         "spatialDimensions": 2,
+         "temporalDimensions": 0,
+         "crs": "https://www.opengis.net/def/crs/OGC/0/ISEA",
+         "links": [
+            { "href": "https://doi.org/10.3138/27H7-8K88-4882-1752" },
+            { "href": "https://proj.org/en/9.3/operations/projections/isea.html" },
+         ],
+         "basePolyhedron": "icosahedron",
+         "refinementRatio": 3,
+         "constraints": {
+            "cellEqualSized": true
+         },
+         "zoneTypes": [ "hexagon", "pentagon" ],
+      },
+      "parameters": {
+         "ellipsoid": "Authalic sphere based on [EPSG:7030] (WGS84) -- NOTE: No identifier defined yet? [ESPG:7048] exists for Authalic sphere based on GRS80 [EPSG:7019]",
+         "orientation":
+         {
+            "description": "Standard ISEA orientation with a single icosahedron vertex falling on land",
+            "latitude": 58.28252559,
+            "longitude": 11.25
+         }
+      }
+   },
+   "zirs": {
+      "textZIRS": {
+         "description": "An identifier comprised of an uppercase hexadecimal letter representing a level (A for level 0, B for level 1...), followed by a number from 0 to 9 representing the root rhombus corresponding to the faces of an icosahedron, in a staircase order from the top-left to the bottom right of an ISEA planar projection after a 60 degrees clockwise rotation, followed by a hyphen, then by an uppercase hexadecimal number identifying a sub-zone starting to count from 0 in row-major order.",
+         "type": "levelRootFaceHexRowMajorSubZone"
+      },
+      "uint64ZIRS": {
+         "description": "A 64-bit integer with the 3 least significant bits corresponding to a hexagonal or pentagonzal zone intersecting a sub-rhombus: 0: even level regular zone 1: even level North pole zone 2: even level South pole zone 3: odd level zone centered on rhombus vertex 4: odd level zone top-right of rhombus vertex 5: odd level zone bottom-right of rhombus vertex 6: odd level North pole zone 7: odd level South pole zone, the next 51 bits corresponding to a sub-rhombus index, the next 4 bits corresponding to a root rhombus, the next 5 bits corresponding to an associated ISEA9R level, and the last most significant bit always 0 for a valid zone identifier."
+      }
+   },
+   "subZoneOrder": {
+      "description": "The zones are ordered in tightly packed scanlines. Considering the ISEA planar projection, for odd level parent, zones are ordered left to right along a scanline and scanlines are ordered from top to bottom. For an even level parent, zones are ordered top bottom right along a scanline and scanlines are ordered from left to right. For an odd depth, scanlines start along a hexagon edge, whereas for even depths, scanlines start on a hexagon vertex.",
+      "type": "scanline"
+   }
+}
