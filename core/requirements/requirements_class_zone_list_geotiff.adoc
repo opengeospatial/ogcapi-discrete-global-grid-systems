@@ -23,7 +23,7 @@ part:: The GeoTIFF SHALL be encoded as `Pixel-Is-Area`.
 [recommendation]
 ====
 [%metadata]
-identifier:: /rec/data-geotiff/crs
+identifier:: /rec/zone-geotiff/crs
 part:: The CRS of the response SHOULD be consistent with either the DGGRS or the underlying geographic CRS (e.g., CRS84).
 ====
 
