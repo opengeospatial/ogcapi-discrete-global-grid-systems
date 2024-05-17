@@ -2,15 +2,15 @@
    "title": "ISEA3H",
    "description": "An ISEA3H Discrete Global Grid Reference System using the standard ISEA orientation and WGS84 authalic sphere, a zone indexing system based on an ISEA9R, and scanline-based ordering",
    "uri": "https://www.opengis.net/def/dggrs/OGC/1.0/ISEA3H",
-   "links": [ { "href": "https://portal.ogc.org/files/?artifact_id=107432" } ],
+   "links": [ { "rel": "describedby", "href": "https://portal.ogc.org/files/?artifact_id=107432" } ],
    "dggs": {
       "definition": {
          "spatialDimensions": 2,
          "temporalDimensions": 0,
          "crs": "https://www.opengis.net/def/crs/OGC/0/ISEA",
          "links": [
-            { "href": "https://doi.org/10.3138/27H7-8K88-4882-1752" },
-            { "href": "https://proj.org/en/9.3/operations/projections/isea.html" },
+            { "rel": "describedby", "href": "https://doi.org/10.3138/27H7-8K88-4882-1752" },
+            { "rel": "related", "href": "https://proj.org/en/9.3/operations/projections/isea.html" },
          ],
          "basePolyhedron": "icosahedron",
          "refinementRatio": 3,
