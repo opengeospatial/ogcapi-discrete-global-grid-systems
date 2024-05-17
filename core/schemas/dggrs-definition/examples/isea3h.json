@@ -9,7 +9,7 @@
          "temporalDimensions": 0,
          "crs": "https://www.opengis.net/def/crs/OGC/0/ISEA",
          "links": [
-            { "rel": "describedby", "href": "https://doi.org/10.3138/27H7-8K88-4882-1752" },
+            { "rel": "related", "href": "https://doi.org/10.3138/27H7-8K88-4882-1752" },
             { "rel": "related", "href": "https://proj.org/en/9.3/operations/projections/isea.html" },
          ],
          "basePolyhedron": "icosahedron",
