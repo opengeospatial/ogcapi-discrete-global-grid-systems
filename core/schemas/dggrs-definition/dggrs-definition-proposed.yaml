@@ -82,15 +82,17 @@ properties:
                   example: [ hexagon, pentagon ]
                refinementStrategy:
                   description: The refinement strategy used by the Discrete Global Grid System
-                  type: string
-                  enum:
-                  - centredChildCell
-                  - nestedChildCell
-                  - nodeCentredChildCell
-                  - edgeCentredChildCell
-                  - faceCentredChildCell
-                  - solidCentredChildCell
-                  example: nestedChildCell
+                  type: array
+                  items:
+                     type: string
+                     enum:
+                     - centredChildCell
+                     - nestedChildCell
+                     - nodeCentredChildCell
+                     - edgeCentredChildCell
+                     - faceCentredChildCell
+                     - solidCentredChildCell
+                  example: [ nestedChildCell, nodeCentredChildCell ]
          parameters:
             description: The optional parameters establishing a very specific Discrete Global Grid System, where each zone has a well-defined geometry.
             type: object

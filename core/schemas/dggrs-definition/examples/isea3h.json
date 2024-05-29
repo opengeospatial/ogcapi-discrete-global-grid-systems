@@ -14,8 +14,11 @@
          ],
          "basePolyhedron": "icosahedron",
          "refinementRatio": 3,
+         "refinementStrategy": [ "nestedChildCell", "nodeCentredChildCell" ],
          "constraints": {
-            "cellEqualSized": true
+            "cellEqualSized": true,
+            "cellEquiAngular": true,
+            "cellEquiDistant": true
          },
          "zoneTypes": [ "hexagon", "pentagon" ],
       },

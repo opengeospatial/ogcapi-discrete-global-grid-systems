@@ -116,16 +116,19 @@
             },
             "refinementStrategy": {
               "description": "The refinement strategy used by the Discrete Global Grid System",
-              "type": "string",
-              "enum": [
-                "centredChildCell",
-                "nestedChildCell",
-                "nodeCentredChildCell",
-                "edgeCentredChildCell",
-                "faceCentredChildCell",
-                "solidCentredChildCell"
-              ],
-              "example": "nestedChildCell"
+              "type": "array",
+              "items": {
+                 "type": "string",
+                 "enum": [
+                    "centredChildCell",
+                    "nestedChildCell",
+                    "nodeCentredChildCell",
+                    "edgeCentredChildCell",
+                    "faceCentredChildCell",
+                    "solidCentredChildCell"
+                 ]
+              },
+              "example": [ "nestedChildCell" ]
             }
           }
         },
