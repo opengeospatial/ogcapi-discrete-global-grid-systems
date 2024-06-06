@@ -1,0 +1,30 @@
+[appendix,obligation="informative"]
+== Discrete Global Grid Reference System Definition
+
+The following informative schema describes the expected response linked to by using the `[ogc-rel:dggrs-definition]` link relation
+from the DGGRS description, as specified by the Core requirement class.
+
+Note that this schema is preliminary, and a normative version may be defined by a later version of this standard
+or by a future part of OGC Abstract Specification Topic 21.
+Note that this schema may change to allow for better description of existing and new classes of DGGS.
+
+The DGGRS definition consists of three main components:
+
+* the definition of the hierarchy of discrete global grids (`dggs`), including any parameterization such as the spheroid or orientation, establishing both the topology as well as the geometry of every zone,
+* the Zone Indexing Reference System (`zirs`), with textual identifiers being mandatory while 64-bit integer identifiers (which support the 64-bit integer zone list encoding requirement class) are optional,
+* the sub-zone ordering (`subZoneOrder`), which allows for retrieving zone data using e.g., DGGS JSON at a `zone-depth` other than 0 (the values of sub-zones can be provided as a 1D array of values with a pre-established association to sub-zones).
+
+.JSON Schema for the DGGRS Definition
+[source,json]
+----
+include::../schemas/dggrs-definition/dggrs-definition-proposed.json[]
+----
+
+The following example JSON DGGRS definition conforms to this schema.
+This DGGRS is for an ISEA3H using a zone reference system based in part on its dual relationship with ISEA9R.
+
+.DGGRS Definition for ISEA3H using indexing based on ISEA9R
+[source,json]
+----
+include::../schemas/dggrs-definition/examples/isea3h.json[]
+----

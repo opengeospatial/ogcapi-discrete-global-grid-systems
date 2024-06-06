@@ -1,0 +1,25 @@
+[[rc_cql2-query]]
+[requirements_class]
+====
+[%metadata]
+label:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/cql2-query
+subject:: Web API
+inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
+inherit:: https://www.opengis.net/spec/cql2/1.0/req/cql2-text
+====
+
+=== Requirements
+
+==== Parameter `filter`
+
+The following requirements describe how a client can specify a filtering CQL2 expression querying a list of zones.
+
+[requirement]
+====
+[%metadata]
+label:: /req/cql2-query/filter
+description:: For specifying a CQL2 expression filtering the zones returned from a zone query:
+part:: The Implementation SHALL support a `filter` query parameter specified using the CQL2-Text encoding of the OGC Common Query Language for the zone query
+operation (resource path ending with `.../dggs/{dggrsId}/zones`).
+part:: The list of returned zones SHALL only be those for which the CQL2 expression evaluates to true when considering the geometry and the data of the DGGS zones resource being queried.
+====

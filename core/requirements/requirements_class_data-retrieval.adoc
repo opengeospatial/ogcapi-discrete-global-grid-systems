@@ -2,9 +2,9 @@
 [requirements_class]
 ====
 [%metadata]
-label:: http://www.opengis.net/spec/ogcapi-dggs-1/0.0/req/data-retrieval
+label:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
 subject:: Web API
-inherit:: http://www.opengis.net/spec/ogcapi-common-1/1.0/req/core
+inherit:: https://www.opengis.net/spec/ogcapi-common-1/1.0/req/core
 ====
 
 === Requirements
@@ -24,7 +24,7 @@ description:: For retrieving data for a single DGGS zone:
 part:: The operation SHALL support an HTTP GET operation at a resource path
 ending with `.../dggs/{dggrsId}/zones/{zoneId}/data`.
 part:: The operation SHALL include a templated link to this resource path in the "Core" `.../dggs/{dggrsId}` resource link templates, and regular link in the `.../dggs/{dggrsId}/zones/{zoneId}` resource links
-using the link relation type `[ogc-rel:dggs-zone-data]`.
+using the link relation type `[ogc-rel:dggrs-zone-data]`.
 part:: The response of the HTTP GET operation SHALL have a status code of 200.
 part:: The content of the response SHALL be a data packet corresponding precisely to the area covered by the DGGS zone.
 part:: The selection of an encoding for the response SHALL be consistent with HTTP content negotiation.

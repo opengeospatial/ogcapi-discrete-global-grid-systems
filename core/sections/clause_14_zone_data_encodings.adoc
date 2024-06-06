@@ -1,0 +1,153 @@
+[[zone-data-encodings-section]]
+== Requirements Classes for Encodings of Zone data
+
+This standard does not mandate any particular encoding or format in which to return the `../dggs/{dggrsId}/zones/{zoneId}/data` resources.
+DGGS Zone Data can be encoded in any suitable data format.
+However, it does define requirements class for zone data encodings which are expected to be commonly supported in implementations of this standard.
+These requirements classes include:
+
+* <<rc_data-geojson,GeoJSON Data>>
+* <<rc_data-fgjson,FG-JSON Data>>
+* <<rc_data-geotiff,GeoTIFF Data>>
+* <<rc_data-netcdf,netCDF Data>>
+* <<rc_data-coveragejson,CoverageJSON Data>>
+* <<rc_data-jpegxl,JPEG XL Data>>
+* <<rc_data-png,PNG Data>>
+
+[[zone_data_media_types]]
+=== Media Types (for zone data)
+
+A table of the media types used in the encoding of the Zone Data requirements class defined in this standard follows.
+
+[#api-dggs-zone-data-media-types,reftext='{table-caption} {counter:table-num}']
+.Media Types used for zone data encoding requirements classes
+[width="90%",cols="2,4"]
+|====
+^|*Encoding*              ^|*media type*
+|JSON zone data           |application/json
+|UB-JSON zone data        |application/ubjson
+|GeoJSON data             |application/geo+json
+|JSON-FG data             |application/fg+json
+|GeoTIFF data             |image/tiff; application=geotiff
+|netCDF zone data         |application/x-netcdf
+|CoverageJSON zone data   |application/prs.coverage+json
+|PNG zone data            |image/png
+|JPEG XL zone data        |image/jxl
+|====
+
+[[rc_data-json]]
+=== Requirements Class "JSON Zone data encoding"
+
+==== Overview
+
+The JSON Zone Data encoding requirements class defines support for encoding a DGGS Zone data response in JSON, using a schema defined below named "DGGS-JSON".
+
+This encoding is intended to support one-to-one mapping of sub-zones values, for one or more zone depths, regardless of zone geometry type, in a human-readable format.
+
+Values are encoded as a one-dimensional array following a sub-zone order defined by the DGGRS.
+
+Example encodings follow:
+
+.Example encoding for DGGS-JSON
+[source,json]
+----
+include::../examples/1-temperature.json[]
+----
+
+.A more complex example encoding for DGGS-JSON with more variables and additional dimensions beyond those of the DGGRS
+[source,json]
+----
+include::../examples/2-multidimensions-variables.json[]
+----
+
+include::../requirements/requirements_class_zone_data_json.adoc[]
+
+[[rc_data-ubjson]]
+=== Requirements Class "UB-JSON Zone data encoding"
+
+==== Overview
+
+The UB-JSON Zone Data encoding requirements class defines support for encoding a DGGS Zone data response using the same JSON structure as the above JSON data requirement class, but using the binary UB-JSON encoding.
+
+include::../requirements/requirements_class_zone_data_ubjson.adoc[]
+
+[[rc_data-geotiff]]
+=== Requirements Class "GeoTIFF Zone data encoding"
+
+==== Overview
+
+The GeoTIFF Zone Data encoding requirements class defines support for encoding a DGGS Zone data response according to the https://docs.ogc.org/is/19-008r4/19-008r4.html[OGC GeoTIFF standard].
+
+GeoTIFF is a commonly used format for representing 2-dimensional gridded coverages.
+
+For a DGGS with non-rectangular zones (e.g., hexagonal zones), a GeoTIFF representation can be the minimal bounding rectangle of the zone shape, with NODATA values used outside the bounds of the zone.
+
+include::../requirements/requirements_class_zone_data_geotiff.adoc[]
+
+[[rc_data-geojson]]
+=== Requirements Class "GeoJSON Zone data encoding"
+
+==== Overview
+
+The GeoJSON Zone Data encoding requirements class defines support for encoding a DGGS Zone data response according to the https://datatracker.ietf.org/doc/html/rfc7946[GeoJSON specification].
+
+GeoJSON is a commonly used format for representing features with simple geometries and related properties.
+GeoJSON is simple to understand and well supported by tools and software libraries.
+Since most Web developers are comfortable with using JSON-based formats, supporting GeoJSON is recommended for a vector representation of DGGS Zone data.
+
+include::../requirements/requirements_class_zone_data_geojson.adoc[]
+
+[[rc_data-fgjson]]
+=== Requirements Class "FG-JSON Zone data encoding"
+
+==== Overview
+
+The FG-JSON Zone Data encoding requirements class defines support for encoding a DGGS Zone data response according to the https://docs.ogc.org/DRAFTS/21-045.html[FG JSON candidate Standard].
+
+FG JSON is an OGC format for representing features with simple geometries and related properties, with extending GeoJSON with greater flexibility.
+FG JSON is simple to understand and well supported by tools and software libraries.
+Since most Web developers are comfortable with using JSON-based formats, supporting FG JSON is recommended for a vector representation of DGGS Zone data.
+
+include::../requirements/requirements_class_zone_data_fgjson.adoc[]
+
+[[rc_data-netcdf]]
+=== Requirements Class "netCDF zone data encoding"
+
+==== Overview
+
+The netCDF Zone Data encoding requirements class defines support for encoding a DGGS Zone data response according to the https://portal.ogc.org/files/?artifact_id=43732[OGC netCDF standard].
+
+include::../requirements/requirements_class_zone_data_netcdf.adoc[]
+
+[[rc_data-coveragejson]]
+=== Requirements Class "CoverageJSON zone data encoding"
+
+==== Overview
+
+The CoverageJSON requirements class defines support for encoding a DGGS Zone data response according to the https://docs.ogc.org/cs/21-069r2/21-069r2.html[OGC CoverageJSON Community Standard].
+
+include::../requirements/requirements_class_zone_data_coveragejson.adoc[]
+
+[[rc_data-jpegxl]]
+=== Requirements Class "JPEG-XL Zone data encoding"
+
+==== Overview
+
+The JPEG XL Zone Data encoding requirements class defines support for encoding a DGGS Zone data response according to the https://jpeg.org/jpegxl/[JPEG XL] https://www.iso.org/standard/77977.html[ISO/IEC 18181 Standard].
+
+JPEG XL supports a large number of bands, image dimensions, and floating point values.
+
+include::../requirements/requirements_class_zone_data_jpegxl.adoc[]
+
+[[rc_data-png]]
+=== Requirements Class "PNG Zone data encoding"
+
+==== Overview
+
+The PNG Zone Data encoding requirements class defines support for encoding a DGGS Zone data response according to the https://www.w3.org/TR/2003/REC-PNG-20031110/[W3C Portable Network Graphics (PNG) Specification] (https://www.iso.org/standard/29581.html[ISO/IEC 15948:2003]).
+
+Because PNG encoding is limited to an integer data values, this requirements class defines additional parameters and response headers allowing a client to request
+a specific scale factor and offset to be used to quantize data values, and allowing the implementation to inform the client of the scale factor and offset
+used for that quantization.
+
+include::../requirements/requirements_class_zone_data_png.adoc[]

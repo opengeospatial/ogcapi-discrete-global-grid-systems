@@ -1,0 +1,279 @@
+[appendix,obligation="normative"]
+
+== Conformance Class Abstract Test Suite (Normative)
+
+=== Conformance Class "Core"
+
+[[conf_core,/conf/core]]
+[conformance_class]
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs/1.0/conf/core
+target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/core
+classification:: Target Type:Web API
+abstract-test:: /req/core/dggrs-list
+abstract-test:: /req/core/dggrs-info
+abstract-test:: /req/core/zone-info
+====
+
+==== Abstract Test for Requirement Listing available DGGRS
+
+[[conf_core_dggrs-list,/conf/core/dggrs-list]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/dggrs-list
+target:: /req/core/dggrs-list
+test-purpose:: Verify that the implementation supports listing the available DGGRS
+test-method::
++
+--
+*Given:*
+*When:*
+*Then:* +
+- assert that +
+- assert that ... .
+--
+====
+
+=== Conformance Class "Data Retrieval"
+
+[[conf_data-retrieval,/conf/data-retrieval]]
+[conformance_class]
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs/1.0/conf/data-retrieval
+target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
+classification:: Target Type:Web API
+====
+
+=== Conformance Class "Zone Query"
+
+[[conf_zone-query,/conf/zone-query]]
+[conformance_class]
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs/1.0/conf/zone-query
+target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
+classification:: Target Type:Web API
+====
+
+=== Conformance Class "Filtering Zone Queries with CQL2"
+
+[[conf_cql2-query,/conf/cql2-query]]
+[conformance_class]
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs/1.0/conf/cql2-query
+target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/cql2-query
+classification:: Target Type:Web API
+====
+
+=== Conformance Class "Root DGGS"
+
+[[conf_root-dggs,/conf/root-dggs]]
+[conformance_class]
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs/1.0/conf/root-dggs
+target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/root-dggs
+classification:: Target Type:Web API
+====
+
+=== Conformance Class "Collection DGGS"
+
+[[conf_collection-dggs,/conf/collection-dggs]]
+[conformance_class]
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs/1.0/conf/collection-dggs
+target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/collection-dggs
+classification:: Target Type:Web API
+====
+
+=== Conformance Class "Data Subsetting"
+
+[[conf_data-subsetting,/conf/data-subsetting]]
+[conformance_class]
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs/1.0/conf/data-subsetting
+target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-subsetting
+classification:: Target Type:Web API
+====
+
+=== Conformance Class "Data Custom Depths"
+
+[[conf_data-custom-depths,/conf/data-custom-depths]]
+[conformance_class]
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs/1.0/conf/data-custom-depths
+target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-custom-depths
+classification:: Target Type:Web API
+====
+
+=== Conformance Class "DGGS-JSON encoding for Zone Data"
+
+[[conf_data-json,/conf/data-json]]
+[conformance_class]
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs/1.0/conf/data-json
+target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-json
+classification:: Target Type:Web API
+====
+
+=== Conformance Class "GeoJSON encoding for Zone Data"
+
+[[conf_data-geojson,/conf/data-geojson]]
+[conformance_class]
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs/1.0/conf/data-geojson
+target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-geojson
+classification:: Target Type:Web API
+====
+
+=== Conformance Class "FG-JSON encoding for Zone Data"
+
+[[conf_data-fgjson,/conf/data-fgjson]]
+[conformance_class]
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs/1.0/conf/data-fgjson
+target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-fgjson
+classification:: Target Type:Web API
+====
+
+=== Conformance Class "GeoTIFF encoding for Zone Data"
+
+[[conf_data-tiff,/conf/data-tiff]]
+[conformance_class]
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs/1.0/conf/data-tiff
+target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-tiff
+classification:: Target Type:Web API
+====
+
+=== Conformance Class "netCDF encoding for Zone Data"
+
+[[conf_data-netcdf,/conf/data-netcdf]]
+[conformance_class]
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs/1.0/conf/data-netcdf
+target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-netcdf
+classification:: Target Type:Web API
+====
+
+=== Conformance Class "CoverageJSON encoding for Zone Data"
+
+[[conf_data-coveragejson,/conf/data-coveragejson]]
+[conformance_class]
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs/1.0/conf/data-coveragejson
+target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-coveragejson
+classification:: Target Type:Web API
+====
+
+=== Conformance Class "JPEG XL Encoding for Zone Data"
+
+[[conf_data-jpegxl,/conf/data-jpegxl]]
+[conformance_class]
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs/1.0/conf/data-jpegxl
+target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-jpegxl
+classification:: Target Type:Web API
+====
+
+=== Conformance Class "PNG encoding for Zone Data"
+
+[[conf_data-png,/conf/data-png]]
+[conformance_class]
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs/1.0/conf/data-png
+target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-png
+classification:: Target Type:Web API
+====
+
+=== Conformance Class "JSON encoding for Zone Data"
+
+[[conf_zone-json,/conf/zone-json]]
+[conformance_class]
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs/1.0/conf/zone-json
+target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-json
+classification:: Target Type:Web API
+====
+
+=== Conformance Class "HTML encoding for Zone Listing"
+
+[[conf_zone-html,/conf/zone-html]]
+[conformance_class]
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs/1.0/conf/zone-html
+target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-html
+classification:: Target Type:Web API
+====
+
+=== Conformance Class "Binary 64-bit integer encoding for Zone Listing"
+
+[[conf_zone-uint64,/conf/zone-uint64]]
+[conformance_class]
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs/1.0/conf/zone-uint64
+target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-uint64
+classification:: Target Type:Web API
+====
+
+=== Conformance Class "GeoJSON encoding for Zone Listing"
+
+[[conf_zone-geojson,/conf/zone-geojson]]
+[conformance_class]
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs/1.0/conf/zone-geojson
+target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-geojson
+classification:: Target Type:Web API
+====
+
+=== Conformance Class "FG-JSON encoding for Zone Listing"
+
+[[conf_zone-fgjson,/conf/zone-fgjson]]
+[conformance_class]
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs/1.0/conf/zone-fgjson
+target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-fgjson
+classification:: Target Type:Web API
+====
+
+=== Conformance Class "GeoTIFF encoding for Zone Listing"
+
+[[conf_zone-tiff,/conf/zone-tiff]]
+[conformance_class]
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs/1.0/conf/zone-tiff
+target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-tiff
+classification:: Target Type:Web API
+====
+
+=== Conformance Class "Operation IDs"
+
+[[conf_operation-ids,/conf/operation-ids]]
+[conformance_class]
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs/1.0/conf/operation-ids
+target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/operation-ids
+classification:: Target Type:Web API
+====

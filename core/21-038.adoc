@@ -50,25 +50,30 @@ include::sections/clause_9_dggs_data_custom_depths.adoc[]
 
 include::sections/clause_10_dggs_zone_query.adoc[]
 
-include::sections/clause_11_root_dggs.adoc[]
+include::sections/clause_11_dggs_cql2_query.adoc[]
 
-include::sections/clause_12_collections_dggs.adoc[]
+include::sections/clause_12_root_dggs.adoc[]
 
-include::sections/clause_13_encodings.adoc[]
+include::sections/clause_13_collections_dggs.adoc[]
 
-include::sections/clause_14_operation_ids.adoc[]
+include::sections/clause_14_zone_data_encodings.adoc[]
+
+include::sections/clause_15_zone_list_encodings.adoc[]
+
+include::sections/clause_16_operation_ids.adoc[]
 
 ////
 add or remove annexes after "A" as necessary
 ////
-include::sections/annex-a.adoc[]
+include::sections/annex-a-ats.adoc[]
 
-include::sections/annex-n.adoc[]
+include::sections/annex-b-dggrs_definition.adoc[]
 
 ////
 Revision History should be the last annex before the Bibliography
 Bibliography should be the last annex
 ////
+
 include::sections/annex-history.adoc[]
 
 include::sections/annex-bibliography.adoc[]

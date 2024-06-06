@@ -2,9 +2,9 @@
 [requirements_class]
 ====
 [%metadata]
-label:: http://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/collection-dggs
+label:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/collection-dggs
 subject:: Web API
-inherit:: http://www.opengis.net/spec/ogcapi-common-2/1.0/req/collections
+inherit:: https://www.opengis.net/spec/ogcapi-common-2/1.0/req/collections
 ====
 
 === Requirements

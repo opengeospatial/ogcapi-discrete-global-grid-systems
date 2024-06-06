@@ -2,9 +2,9 @@
 [requirements_class]
 ====
 [%metadata]
-label:: http://www.opengis.net/spec/ogcapi-dggs-1/0.0/req/data-custom-depths
+label:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-custom-depths
 subject:: Web API
-inherit:: http://www.opengis.net/spec/ogcapi-dggs-1/0.0/req/data-retrieval
+inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
 ====
 
 === Requirements

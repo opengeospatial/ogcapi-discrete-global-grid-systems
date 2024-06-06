@@ -4,11 +4,11 @@
 .Requirements Class GeoTIFF Zone List
 ====
 [%metadata]
-identifier:: http://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-geotiff
+identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-geotiff
 subject:: Web API
 inherit:: <<TIFF_V6>>
 inherit:: <<OGC19-008r4,GeoTIFF>>
-inherit:: http://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
+inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
 ====
 
 [requirement]

@@ -9,7 +9,7 @@ properties:
     description: Zone identifier based on the DGGRS.
     type: string
   links:
-    description: Links to related resources. A `[ogc-rel:dggs-zone-data]` link to retrieve data for this zone and a `[ogc-rel:dggs]` back to the `.../dggs` resource must be included.
+    description: Links to related resources. A `[ogc-rel:dggrs-zone-data]` link to retrieve data for this zone and a `[ogc-rel:dggrs]` back to the `.../dggs` resource must be included.
     type: array
     items:
       $ref: '../../schemas/common-core/link.yaml'

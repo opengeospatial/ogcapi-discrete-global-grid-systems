@@ -49,12 +49,12 @@ properties:
     - type: string
       description: A comma separated list of positive integers, or a {min}-{max} range of relative zone depths
   links:
-    description: Links to related resources. A `self` link to the Discrete Global Grid Reference System description and an `[ogc-rel:dggrs-definition]` link to the DGGRS definition (using the schema defined by https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/schemas/dggs/dggrs-definition.yaml) are required. An `[ogc-rel:dggs-zone-query]` link to query DGGS zones should also be included if _DGGS Zone Query_ is supported.
+    description: Links to related resources. A `self` link to the Discrete Global Grid Reference System description and an `[ogc-rel:dggrs-definition]` link to the DGGRS definition (using the schema defined by https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/schemas/dggs/dggrs-definition.yaml) are required. An `[ogc-rel:dggrs-zone-query]` link to query DGGS zones should also be included if _DGGS Zone Query_ is supported.
     type: array
     items:
       $ref: '../../schemas/common-core/link.yaml'
   linkTemplates:
-    description: Templated Links to related resources. A templated `[ogc-rel:dggs-zone-data]` link to retrieve data should be included if _DGGS Zone Data_ is supported.
+    description: Templated Links to related resources. A templated `[ogc-rel:dggrs-zone-data]` link to retrieve data should be included if _DGGS Zone Data_ is supported.
     type: array
     items:
       $ref: '../../schemas/common-core/linkTemplate.yaml'

@@ -4,9 +4,9 @@
 .Requirements Class 64-bit Binary Zone List
 ====
 [%metadata]
-identifier:: http://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-uint64
+identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-uint64
 subject:: Web API
-inherit:: http://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
+inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
 ====
 
 [requirement]

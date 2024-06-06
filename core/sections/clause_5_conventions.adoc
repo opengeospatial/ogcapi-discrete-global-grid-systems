@@ -1,10 +1,55 @@
 == Conventions
 
-This sections provides details and examples for any conventions used in the document. Examples of conventions are symbols, abbreviations, use of XML schema, or special notes regarding how to read the document.
+This section provides details of conventions used in this document.
 
 === Identifiers
-The normative provisions in this standard are denoted by the URI
 
-`http://www.opengis.net/spec/{standard}/{m.n}`
+The normative provisions in this standard are denoted by the URI `https://www.opengis.net/spec/ogcapi-dggs-1/1.0`.
 
 All requirements and conformance tests that appear in this document are denoted by partial URIs which are relative to this base.
+
+=== Link relations
+
+To express relationships between resources, https://tools.ietf.org/rfc/rfc8288.txt[RFC 8288 (Web Linking)] is used.
+
+Note that the CURIE based on the prefix `[ogc-rel:<relation>]` is also considered equivalent.
+For example, `[ogc-rel:dggrs-definition]` corresponds to `https://www.opengis.net/def/rel/ogc/1.0/definition`.
+
+The following https://www.iana.org/assignments/link-relations/link-relations.xhtml[IANA link relation types] are used in this document:
+
+* **alternate**: Refers to a substitute for this context.
+
+* **self**: Conveys an identifier for the link’s context.
+
+* **service-desc**: Identifies service description for the context that is primarily intended for consumption by machines (Web API definitions are considered service descriptions).
+
+* **service-doc**: Identifies service documentation for the context that is primarily intended for human consumption.
+
+The following link relation types which were previously defined for other OGC API standards are applicable:
+
+* **https://www.opengis.net/def/rel/ogc/1.0/dataset**: The target IRI points to a resource representing the dataset (e.g., the root of an OGC Web API).
+* **https://www.opengis.net/def/rel/ogc/1.0/geodata**: The target IRI points to a resource representing a collection of geospatial data.
+
+In addition, the following link relation type is used for which no applicable registered link relation type could be identified:
+
+* **https://www.opengis.net/def/rel/ogc/1.0/dggrs**: The target IRI points to the desciptive list of the Discrete Global Grid Reference Systems available for the source resource.
+* **https://www.opengis.net/def/rel/ogc/1.0/dggrs-definition**: The target IRI points to the definition of the Discrete Global Grid Reference System, for example as available from an authoritative DGGRS registry.
+* **https://www.opengis.net/def/rel/ogc/1.0/dggrs-zone-info**: The target IRI points to information about a particular zone of a Discrete Global Grid Reference System, such as its geometry, area/volume, and any relevant links (e.g., to retrieve data from the zone).
+* **https://www.opengis.net/def/rel/ogc/1.0/dggrs-zone-data**: The target IRI points to data pertaining to a particular zone of a Discrete Global Grid Reference System. This link relation is typically used with a link template where a zone identifier can be substituted.
+
+Each resource representation includes an array of links. Implementations are free to add additional links for all resources provided by the Web API implementing Maps API requirement(s).
+
+Used in combination OGC API — Common - Part 1: Core, other link relation types will be used, including:
+
+* **https://www.opengis.net/def/rel/ogc/1.0/conformance**: Refers to a resource that identifies the specifications that the link’s context conforms to.
+
+Used in combination with OGC API — Common - Part 2: Geospatial Data, other link relation types will be used, including:
+
+* **https://www.opengis.net/def/rel/ogc/1.0/data**: Refers to the list of collections available for a dataset.
+
+=== Use of HTTPS
+
+For simplicity, the Maps API only refers to the HTTP protocol. This is not meant to exclude the use of HTTPS and simply is a shorthand notation for "HTTP or HTTPS."
+Following the recent push towards enhancing web security, public facing web servers are expected to use https://tools.ietf.org/html/rfc2818[HTTPS] rather than https://www.ietf.org/rfc/rfc2616.txt[HTTP].
+In the context of the OGC API - DGGS Standard, use of HTTPS provides a layer of security to prevent leaking of information related to users requesting dggs data or zones list for a particular geographical area,
+which may be private or sensitive in nature (for example, their own location, or the location of endangered species).

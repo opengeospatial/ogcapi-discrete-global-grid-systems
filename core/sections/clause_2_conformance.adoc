@@ -26,9 +26,11 @@ The Requirements Classes for _OGC API - Discrete Global Grid Systems_ are:
 
 * <<rc_data-subsetting,*Zone data subsetting*>>
 * <<rc_data-custom-depths,*Zone data custom depths*>>
+* <<rc_cql2-query,*Filtering Zone Queries with CQL2*>>
 
 === Requirements classes defining resource representations
 
+* <<rc_data-json,DGGS-JSON Data>>
 * <<rc_data-geojson,GeoJSON Data>>
 * <<rc_data-fgjson,FG-JSON Data>>
 * <<rc_data-geotiff,GeoTIFF Data>>
@@ -65,25 +67,27 @@ All requirements-classes and conformance-classes described in this document are 
 [cols="30,70",options="header"]
 |===
 | Corresponding requirements class               | Conformance class URI
-| <<rc_core,Core>>                               | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/core
-| <<rc_data-retrieval,Zone Data Retrieval>>      | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-retrieval
-| <<rc_zone-query,Zone Query>>                   | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-query
-| <<rc_root-dggs,Root DGGS>>                     | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/root-dggs
-| <<rc_collection-dggs,Collection DGGS>>         | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/collection-dggs
-| <<rc_data-subsetting,Data subsetting>>         | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-subsetting
-| <<rc_data-custom-depths,Data custom depths>>   | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-custom-depths
-| <<rc_data-geojson,GeoJSON Data>>               | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-geojson
-| <<rc_data-fgjson,FG-JSON Data>>                | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-fgjson
-| <<rc_data-geotiff,GeoTIFF Data>>               | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-tiff
-| <<rc_data-netcdf,netCDF Data>>                 | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-netcdf
-| <<rc_data-coveragejson,CoverageJSON Data>>     | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-coveragejson
-| <<rc_data-jpegxl,JPEG XL Data>>                | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-jpegxl
-| <<rc_data-png,PNG Data>>                       | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-png
-| <<rc_zone-geojson,JSON Zone List>>             | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-json
-| <<rc_zone-html,HTML Zone List>>                | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-html
-| <<rc_zone-geotiff,64-bit Binary Zone List>>    | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-uint64
-| <<rc_zone-geojson,GeoJSON Zone List>>          | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-geojson
-| <<rc_zone-fgjson,FG-JSON Zone List>>           | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-fgjson
-| <<rc_zone-geotiff,GeoTIFF Zone List>>          | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-tiff
-| <<rc_operation-ids,Operation IDs>>             | http://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/operation-ids
+| <<rc_core,Core>>                               | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/core
+| <<rc_data-retrieval,Zone Data Retrieval>>      | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-retrieval
+| <<rc_zone-query,Zone Query>>                   | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-query
+| <<rc_cql2-query,Filtering Zone Queries with CQL2>> | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/cql2-query
+| <<rc_root-dggs,Root DGGS>>                     | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/root-dggs
+| <<rc_collection-dggs,Collection DGGS>>         | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/collection-dggs
+| <<rc_data-subsetting,Data subsetting>>         | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-subsetting
+| <<rc_data-custom-depths,Data custom depths>>   | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-custom-depths
+| <<rc_data-geojson,DGGS-JSON Data>>             | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-json
+| <<rc_data-geojson,GeoJSON Data>>               | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-geojson
+| <<rc_data-fgjson,FG-JSON Data>>                | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-fgjson
+| <<rc_data-geotiff,GeoTIFF Data>>               | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-tiff
+| <<rc_data-netcdf,netCDF Data>>                 | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-netcdf
+| <<rc_data-coveragejson,CoverageJSON Data>>     | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-coveragejson
+| <<rc_data-jpegxl,JPEG XL Data>>                | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-jpegxl
+| <<rc_data-png,PNG Data>>                       | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-png
+| <<rc_zone-geojson,JSON Zone List>>             | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-json
+| <<rc_zone-html,HTML Zone List>>                | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-html
+| <<rc_zone-geotiff,64-bit Binary Zone List>>    | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-uint64
+| <<rc_zone-geojson,GeoJSON Zone List>>          | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-geojson
+| <<rc_zone-fgjson,FG-JSON Zone List>>           | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-fgjson
+| <<rc_zone-geotiff,GeoTIFF Zone List>>          | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-tiff
+| <<rc_operation-ids,Operation IDs>>             | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/operation-ids
 |===
