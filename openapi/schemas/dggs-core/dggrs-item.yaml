@@ -17,7 +17,7 @@ properties:
     type: string
     format: uri
   links:
-    description: Links to related resources. A `self` link to the Discrete Global Grid Reference System description and an `[ogc-rel:dggrs-definition]` link to the DGGRS definition (using the schema defined by https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/schemas/dggs/dggrs-definition.yaml) are required.
+    description: Links to related resources. A `self` link to the Discrete Global Grid Reference System description and an `[ogc-rel:dggrs-definition]` link to the DGGRS definition (using the schema defined by https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/core/schemas/dggrs-definition/dggrs-definition-proposed.yaml) are required.
     type: array
     items:
       $ref: '../../schemas/common-core/link.yaml'

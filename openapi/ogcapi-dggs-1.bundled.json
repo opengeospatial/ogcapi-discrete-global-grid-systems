@@ -1275,7 +1275,7 @@
             ]
           },
           "links": {
-            "description": "Links to related resources. A `self` link to the Discrete Global Grid Reference System description and an `[ogc-rel:dggrs-definition]` link to the DGGRS definition (using the schema defined by https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/schemas/dggs/dggrs-definition.yaml) are required. An `[ogc-rel:dggrs-zone-query]` link to query DGGS zones should also be included if _DGGS Zone Query_ is supported.",
+            "description": "Links to related resources. A `self` link to the Discrete Global Grid Reference System description and an `[ogc-rel:dggrs-definition]` link to the DGGRS definition (using the schema defined by https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/core/schemas/dggrs-definition/dggrs-definition-proposed.yaml) are required. An `[ogc-rel:dggrs-zone-query]` link to query DGGS zones should also be included if _DGGS Zone Query_ is supported.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/link"
@@ -1353,7 +1353,7 @@
             "format": "uri"
           },
           "links": {
-            "description": "Links to related resources. A `self` link to the Discrete Global Grid Reference System description and an `[ogc-rel:dggrs-definition]` link to the DGGRS definition (using the schema defined by https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/schemas/dggs/dggrs-definition.yaml) are required.",
+            "description": "Links to related resources. A `self` link to the Discrete Global Grid Reference System description and an `[ogc-rel:dggrs-definition]` link to the DGGRS definition (using the schema defined by https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/core/schemas/dggrs-definition/dggrs-definition-proposed.yaml) are required.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/link"
@@ -1375,7 +1375,7 @@
             "type": "string"
           },
           "links": {
-            "description": "Links to related resources. A `[ogc-rel:dggs-zone-data]` link to retrieve data for this zone and a `[ogc-rel:dggrs]` back to the `.../dggs` resource must be included.",
+            "description": "Links to related resources. A `[ogc-rel:dggrs-zone-data]` link to retrieve data for this zone and a `[ogc-rel:dggrs]` back to the `.../dggs` resource must be included.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/link"
@@ -1509,117 +1509,245 @@
         }
       },
       "dggrs-definition": {
-        "description": "Discrete Global Grid System Reference System Structure Definition.",
+        "$schema": "https://json-schema.org/draft/2019-09/schema",
+        "description": "Discrete Global Grid System Reference System (DGGRS) Definition.",
         "type": "object",
         "required": [
-          "gridConstraint",
-          "zoneGeometry",
-          "surfaceInterpolation",
-          "referenceSystemType",
-          "refinementStrategy",
-          "refinementRatio"
+          "dggs",
+          "zirs",
+          "subZoneOrder"
         ],
         "properties": {
-          "basePolyhedron": {
-            "properties": {
-              "orientation": {
-                "properties": {
-                  "latitude": {
-                    "description": "Reference Latitude to fix the orientation of the polyhedron.",
-                    "example": 0,
-                    "type": "number"
-                  },
-                  "longitude": {
-                    "description": "Reference Longitude to fix the orientation of the polyhedron.",
-                    "example": 0,
-                    "type": "number"
-                  }
-                },
-                "required": [
-                  "longitude",
-                  "latitude"
-                ],
-                "type": "object"
-              },
-              "polyhedronType": {
-                "description": "The Type/Class of Polyhedron used to construct the Discrete Global Grid System - if it is constructued using a Base Polyhedron.",
-                "example": "icosahedron",
-                "type": "string"
-              }
-            },
-            "required": [
-              "polyhedronType",
-              "orientation"
-            ],
-            "type": "object"
-          },
-          "gridConstraint": {
-            "description": "Constraints used to define different categories of DGGS. Each constraint is a constraint on the shape, size, or orientation of cells in a DiscreteGlobalGrid.",
-            "enum": [
-              "cellAxisAligned",
-              "cellConformal",
-              "cellEquiAngular",
-              "cellEquiDistant",
-              "cellEqualSized"
-            ],
-            "example": "cellEqualSized",
+          "title": {
             "type": "string"
           },
-          "referenceSystemType": {
+          "description": {
+            "type": "string"
+          },
+          "uri": {
+            "type": "string",
+            "format": "uri",
+            "description": "The authoritative URI associated with this DGGRS definition"
+          },
+          "dggs": {
             "type": "object",
-            "required": [
-              "MDRS",
-              "CRS",
-              "ZIRS",
-              "GLOBE"
-            ],
+            "description": "The hierarchical series of Discrete Global Grid upon which this DGGRS is based, including any parameters.",
             "properties": {
-              "CRS": {
-                "allOf": [
-                  {
-                    "description": "Coordinate Reference System (CRS)"
-                  },
-                  {
-                    "$ref": "#/components/schemas/crs"
-                  }
-                ],
-                "example": "EPSG:7789"
-              },
-              "GLOBE": {
-                "description": "Globe Reference System Identifier/Specification",
-                "example": "EPGS:7019",
-                "type": "string"
-              },
-              "MDRS": {
-                "description": "Metadata Reference System Identifier/Specification",
-                "example": "TerraNexus_S_IT9_GRS80_2d10b58e2088c7e2",
-                "type": "string"
-              },
-              "ZIRS": {
-                "description": "Zone Identifier Reference System Identifier/Specification",
+              "definition": {
+                "description": "The base definition of the hierarchical series of Discrete Global Grid, which may be parameterized.",
                 "type": "object",
                 "required": [
-                  "ZoneIdentifiers"
+                  "spatialDimensions",
+                  "temporalDimensions"
                 ],
                 "properties": {
-                  "ZoneIdentifiers": {
-                    "description": "array of zone identification schemas defined by the Discrete Global Grid System",
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    },
-                    "example": [
+                  "crs": {
+                    "allOf": [
                       {
-                        "topologicalMortonCode": {
-                          "description": "Topological Morton Code (Space Filling Curve) Identifier. With a Level 0 alphabetical identifier from 'A' to 'S' followed by a numeric reference from 1 to 9 for all subsequent levels representing the arrangement of child zones following a Morton (Z-code) subdivision of the parent zone. The length of the identifier represents the level of refinement.",
-                          "idType": "string"
-                        }
+                        "description": "The native Coordinate Reference System (CRS) in which the geometry of the zones for this DGGS is defined."
                       },
                       {
-                        "universalMortonCode": {
-                          "description": "Universal Morton Code (Space Filling Curve) Identifier. An ellipsoidal bitwise concatination of longitude and latitude direct position to form a direct Morton code. This can be used across multiple DGGS infrastructures to provide a common index structure that is fixed in nature regardless of the topological zone index used by each DGGS.",
-                          "idType": "string"
-                        }
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "format": "uri",
+                            "example": "EPSG:7789"
+                          },
+                          {
+                            "$ref": "#/components/schemas/crs"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "basePolyhedron": {
+                    "type": "string",
+                    "description": "The Type/Class of Polyhedron used to construct the Discrete Global Grid System - if it is constructued using a Base Polyhedron.",
+                    "example": "icosahedron"
+                  },
+                  "refinementRatio": {
+                    "description": "The ratio of the area of zones between two consecutive hierarchy level (the ratio of child zones to parent zones, also called the aperture).",
+                    "example": 9,
+                    "type": "integer"
+                  },
+                  "constraints": {
+                    "type": "object",
+                    "properties": {
+                      "cellAxisAligned": {
+                        "description": "Set to true if all edges of the geometry of all zones are aligned with one of the axis of the `crs`.",
+                        "type": "boolean",
+                        "default": false
+                      },
+                      "cellConformal": {
+                        "type": "boolean",
+                        "default": false
+                      },
+                      "cellEquiAngular": {
+                        "type": "boolean",
+                        "default": false
+                      },
+                      "cellEquiDistant": {
+                        "type": "boolean",
+                        "default": false
+                      },
+                      "cellEqualSized": {
+                        "description": "Set to true if the area of all zones is the same for a particular zone geometry type of any specifc discrete global grid of the DGGS hierarchy.",
+                        "type": "boolean",
+                        "default": false
+                      }
+                    }
+                  },
+                  "spatialDimensions": {
+                    "description": "Number of Spatial Dimensions defined by the Discrete Global Grid System.",
+                    "example": 2,
+                    "type": "integer"
+                  },
+                  "temporalDimensions": {
+                    "description": "Number of Temporal Dimensions defined by the Discrete Global Grid System.",
+                    "example": 0,
+                    "type": "integer"
+                  },
+                  "zoneTypes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "triangle",
+                        "square",
+                        "hexagon",
+                        "pentagon",
+                        "rhombus"
+                      ]
+                    },
+                    "example": [
+                      "hexagon",
+                      "pentagon"
+                    ]
+                  },
+                  "refinementStrategy": {
+                    "description": "The refinement strategy used by the Discrete Global Grid System",
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "centredChildCell",
+                        "nestedChildCell",
+                        "nodeCentredChildCell",
+                        "edgeCentredChildCell",
+                        "faceCentredChildCell",
+                        "solidCentredChildCell"
+                      ]
+                    },
+                    "example": [
+                      "nestedChildCell",
+                      "nodeCentredChildCell"
+                    ]
+                  }
+                }
+              },
+              "parameters": {
+                "description": "The optional parameters establishing a very specific Discrete Global Grid System, where each zone has a well-defined geometry.",
+                "type": "object",
+                "properties": {
+                  "ellipsoid": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Globe Reference System Identifier/Specification",
+                    "example": [
+                      "EPGS:7019"
+                    ]
+                  },
+                  "orientation": {
+                    "type": "object",
+                    "properties": {
+                      "latitude": {
+                        "description": "Reference Latitude in decimal degrees to fix the orientation of the polyhedron.",
+                        "example": 0,
+                        "type": "number"
+                      },
+                      "longitude": {
+                        "description": "Reference Longitude in decimal degrees to fix the orientation of the polyhedron.",
+                        "example": 0,
+                        "type": "number"
+                      },
+                      "description": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "longitude",
+                      "latitude"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "zirs": {
+            "description": "The Zone Identifier Reference System used for this Discrete Global Grid System Reference System.",
+            "type": "object",
+            "required": [
+              "textZIRS"
+            ],
+            "properties": {
+              "textZIRS": {
+                "description": "textual zone identifier indexing scheme",
+                "type": "object",
+                "required": [
+                  "description"
+                ],
+                "properties": {
+                  "description": {
+                    "type": "string",
+                    "examples": [
+                      "Topological Morton Code (Space Filling Curve) Identifier. With a Level 0 alphabetical identifier from 'A' to 'S' followed by a numeric reference from 1 to 9 for all subsequent levels representing the arrangement of child zones following a Morton (Z-code) subdivision of the parent zone. The length of the identifier represents the level of refinement.",
+                      "Universal Morton Code (Space Filling Curve) Identifier. An ellipsoidal bitwise concatenation of longitude and latitude direct position to form a direct Morton code. This can be used across multiple DGGS infrastructures to provide a common index structure that is fixed in nature regardless of the topological zone index used by each DGGS.",
+                      "An identifier comprised of three separate level, row and column components corresponding to an OGC 2D Tile Matrix Set tile identifier, where the individual component are represented by uppercase hexadecimal numbers separated by a hyphen.",
+                      "An identifier comprised of an uppercase hexadecimal letter representing a level (A for level 0, B for level 1...), followed by a number from 0 to 9 representing the root rhombus corresponding to the faces of an icosahedron, in a staircase order from the top-left to the bottom right of an ISEA planar projection after a 60 degrees clockwise rotation, followed by a hyphen, then by an uppercase hexadecimal number identifying a sub-zone starting to count from 0 in row-major order.",
+                      "An identifier comprised of an uppercase hexadecimal letter representing the ISEA9R level corresponding to the current even or immediate lower odd ISEA3H level (A for level 0, B for level 1...), followed by a number from 0 to 9 representing the root rhombus corresponding to the faces of an icosahedron, in a staircase order from the top-left to the bottom right of an ISEA planar projection after a 60 degrees clockwise rotation, followed by a hyphen, then by an uppercase hexadecimal number identifying a sub-zone starting to count from 0 in row-major order, followed by a second hyphen, then by a letter identifying a hexagonal or pentagonzal zone intersecting the sub-rhombus: A: even level regular zone B: even level North pole zone C: even level South pole zone D: odd level zone centered on rhombus vertex E: odd level zone top-right of rhombus vertex F: odd level zone bottom-right of rhombus vertex G: odd level North pole zone H: odd level South pole zone\n"
+                    ]
+                  },
+                  "type": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "hierarchicalConcatenation",
+                          "ogc2DTMSHexLevelRowCol",
+                          "levelRootFaceHexRowMajorSubZone"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              },
+              "uint64ZIRS": {
+                "description": "64-bit unsigned integer zone indexing scheme",
+                "type": "object",
+                "required": [
+                  "description"
+                ],
+                "properties": {
+                  "description": {
+                    "type": "string",
+                    "examples": [
+                      "A 64-bit integer with the 30 least significant bits corresponds to a column, the next 29 bits corresponding to a row, and the 5 most significant bits correspond to a level of an OGC 2D Tile Matrix Set identifier, with individual components using little endian.",
+                      "A 64-bit integer with the 3 least significant bits corresponding to a hexagonal or pentagonzal zone intersecting a sub-rhombus: 0: even level regular zone 1: even level North pole zone 2: even level South pole zone 3: odd level zone centered on rhombus vertex 4: odd level zone top-right of rhombus vertex 5: odd level zone bottom-right of rhombus vertex 6: odd level North pole zone 7: odd level South pole zone, the next 51 bits corresponding to a sub-rhombus index, the next 4 bits corresponding to a root rhombus, the next 5 bits corresponding to an associated ISEA9R level, and the last most significant bit always 0 for a valid zone identifier.\n"
+                    ]
+                  },
+                  "type": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "ogc2DTMSHexLevelRowCol"
+                        ]
                       }
                     ]
                   }
@@ -1627,69 +1755,36 @@
               }
             }
           },
-          "refinementRatio": {
-            "description": "The ratio of child zones to parent zones",
-            "example": 9,
-            "type": "integer"
-          },
-          "refinementStrategy": {
-            "description": "The refinement strategy used by the Discrete Global Grid System",
-            "enum": [
-              "centredChildCell",
-              "nestedChildCell",
-              "nodeCentredChildCell",
-              "edgeCentredChildCell",
-              "faceCentredChildCell",
-              "solidCentredChildCell"
-            ],
-            "example": "nestedChildCell",
-            "type": "string"
-          },
-          "surfaceInterpolation": {
-            "description": "The Surface Interpolation type used to define zone geometries of the Discrete Global Grid System",
-            "enum": [
-              "spherical",
-              "elliptical"
-            ],
-            "example": "elliptical",
-            "type": "string"
-          },
-          "zoneGeometry": {
-            "description": "Zone Geometry Specification",
-            "properties": {
-              "spatialDimension": {
-                "description": "Number of Spatial Dimensions defined by the Discrete Global Grid System.",
-                "example": 2,
-                "type": "integer"
-              },
-              "temporalDimension": {
-                "description": "Number of Temporal Dimensions defined by the Discrete Global Grid System.",
-                "example": 0,
-                "type": "integer"
-              },
-              "topologicalDimension": {
-                "description": "Number of Topological Dimensions (Spatial + Temporal Dimensions) defined by the Discrete Global Grid System.",
-                "example": 2,
-                "type": "integer"
-              },
-              "zoneType": {
-                "enum": [
-                  "triangle",
-                  "square",
-                  "hexagon",
-                  "pentagon",
-                  "diamond"
-                ],
-                "example": "triangle",
-                "type": "string"
-              }
-            },
+          "subZoneOrder": {
+            "description": "The ordering used for this Discrete Global Grid System Reference System when encoding the values associated with sub-zones at any given depth relative to a parent zone.",
+            "type": "object",
             "required": [
-              "spatialDimension",
-              "temporalDimension",
-              "topologicalDimension"
+              "description"
             ],
-            "type": "object"
+            "properties": {
+              "description": {
+                "type": "string",
+                "examples": [
+                  "The zones are ordered in tightly packed scanlines. Considering the ISEA planar projection, for odd level parent, zones are ordered left to right along a scanline and scanlines are ordered from top to bottom. For an even level parent, zones are ordered top bottom right along a scanline and scanlines are ordered from left to right. For an odd depth, scanlines start along a hexagon edge, whereas for even depths, scanlines start on a hexagon vertex."
+                ]
+              },
+              "type": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "string",
+                    "enum": [
+                      "scanline",
+                      "spiralFromCenter",
+                      "mortonCurve",
+                      "hilbertCurve"
+                    ]
+                  }
+                ]
+              }
+            }
           }
         }
       },

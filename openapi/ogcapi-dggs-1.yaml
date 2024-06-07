@@ -150,7 +150,7 @@ components:
       zone-info:
          $ref: 'schemas/dggs-core/zone-info.yaml'
       dggrs-definition:
-         $ref: 'schemas/dggs-core/dggrs-definition.yaml'
+         $ref: '../core/schemas/dggrs-definition/dggrs-definition-proposed.yaml'
 
       # GeoJSON
       FeatureCollection:

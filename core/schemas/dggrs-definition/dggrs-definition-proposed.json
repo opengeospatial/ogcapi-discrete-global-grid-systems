@@ -42,9 +42,6 @@
                       "type": "string",
                       "format": "uri",
                       "example": "EPSG:7789"
-                    },
-                    {
-                      "$ref": "../common-geodata/crs.yaml"
                     }
                   ]
                 }

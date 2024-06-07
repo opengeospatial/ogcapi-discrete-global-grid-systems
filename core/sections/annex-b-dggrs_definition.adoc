@@ -1,4 +1,5 @@
 [appendix,obligation="informative"]
+[[annex-dggrs-def]]
 == Discrete Global Grid Reference System Definition
 
 The following informative schema describes the expected response linked to by using the `[ogc-rel:dggrs-definition]` link relation
