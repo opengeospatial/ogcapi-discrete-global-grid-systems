@@ -77,9 +77,9 @@ the respective properties defined above for the overall zones, but considering o
 ====
 [%metadata]
 label:: /rec/core/robots-txt
-part:: Implementations SHOULD include a https://en.wikipedia.org/wiki/Robots.txt[Robots.txt] file at the root of their Web API discouraging robots from crawling the DGGS zone resources.
-part:: The content of that Robots.txt file SHOULD include `Disallow: */dggs/*/zones/*` to prevent crawling all DGGS resources under the `/zones/` resource path.
+part:: Implementations SHOULD include a https://en.wikipedia.org/wiki/Robots.txt[robots.txt] file at the root of their Web API discouraging robots from crawling the DGGS zone resources.
+part:: The content of that Robots.txt file SHOULD include `Disallow: \*/dggs/*/zones/*` to prevent crawling all DGGS resources under the `/zones/` resource path.
 ====
 
-NOTE: The presence of a Robots.txt is not a security measure and relies on the voluntary compliance of well-intended crawlers to minimize unnecessary requests.
+NOTE: The presence of a `robots.txt` file is not a security measure and relies on the voluntary compliance of well-intended crawlers to minimize unnecessary requests.
 This measure does not prevent malicious clients from overwhelming the server with numerous requests which may result in Denial of Service attacks.
