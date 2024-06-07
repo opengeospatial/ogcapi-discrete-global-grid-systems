@@ -15,6 +15,8 @@ The DGGRS definition consists of three main components:
 * the Zone Indexing Reference System (`zirs`), with textual identifiers being mandatory while 64-bit integer identifiers (which support the 64-bit integer zone list encoding requirement class) are optional,
 * the sub-zone ordering (`subZoneOrder`), which allows for retrieving zone data using e.g., DGGS JSON at a `zone-depth` other than 0 (the values of sub-zones can be provided as a 1D array of values with a pre-established association to sub-zones).
 
+=== JSON Schema
+
 .JSON Schema for the DGGRS Definition
 [source,json]
 ----
@@ -23,6 +25,8 @@ include::../schemas/dggrs-definition/dggrs-definition-proposed.json[]
 
 The following example JSON DGGRS definition conforms to this schema.
 This DGGRS is for an ISEA3H using a zone reference system based in part on its dual relationship with ISEA9R.
+
+=== Example DGGRS definition
 
 .DGGRS Definition for ISEA3H using indexing based on ISEA9R
 [source,json]
