@@ -2,7 +2,7 @@
 
 This GitHub repository contains the draft [OGC API - Discrete Global Grid Systems](https://ogcapi.ogc.org/dggs/) standard, as well as supporting information.
 
-The latest draft candidate standard can be accessed [here in HTML](https://opengeospatial.github.io/ogcna-auto-review/21-038.html) and [here in PDF](https://opengeospatial.github.io/ogcna-auto-review/21-038.pdf).
+The latest draft candidate standard can be accessed [here in HTML](https://docs.ogc.org/DRAFTS/21-038.html) and [here in PDF](https://docs.ogc.org/DRAFTS/21-038.pdf).
 
 The OpenAPI building blocks defined by the specification as well as complete bundled example API definition are [available here](https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/tree/master/openapi), and can also be visualized and experimented with an example implementation [with SwaggerUI here](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/opengeospatial/ogcapi-discrete-global-grid-systems/master/openapi/ogcapi-dggs-1.bundled.json).
 
@@ -21,32 +21,38 @@ The following transportable end-point resources can be attached either to an OGC
 GET .../dggs
 ```
 
-List of DGGS Resource Instances
+https://docs.ogc.org/DRAFTS/21-038.html#_listing_available_dggrs_dggs[List] of Discrete Global Grid Reference Systems (DGGRS)
 
 ```
-GET .../dggs/{dggsID}
+GET .../dggs/{dggrsId}
 ```
 
-Description of the DGGS instance, providing links to the definition of the DGGS and indexing scheme it implements, as well as links to the data retrieval mechanism and zone query end-points. The DGGS definition describes the parameters and structure of the selected DGGS Reference System as specified by [OGC Abstract Specification Topic 21 v2.0 - Part 1 (ISO/19170-1)](https://docs.ogc.org/as/20-040r3/20-040r3.html).
+https://docs.ogc.org/DRAFTS/21-038.html#_discrete_global_grid_reference_system_information_dggsdggrsid[Description] of the DGGRS, providing links to the https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/core/schemas/dggrs-definition/dggrs-definition-proposed.json[definition of the DGGRS it implements], which consists of a specific hierarchy of Discrete Global Grids, a Zone Indexing Reference System (ZIRS) and a deterministic ordering of sub-zones.
+The description also includes links to the data retrieval mechanism and zone query end-points.
+The DGGRS definition describes the parameters and structure of its DGGS and ZIRS as specified by [OGC Abstract Specification Topic 21 v2.0 - Part 1 (ISO/19170-1)](https://docs.ogc.org/as/20-040r3/20-040r3.html),
+as well as a deterministic sub-zone order.
 
 ```
-GET .../dggs/{dggsID}/zones
+GET .../dggs/{dggrsId}/zones
 ```
 
-Query the list of zones where data is available and/or match certain query criteria (e.g., a bounding box, a [CQL2](http://docs.ogc.org/DRAFTS/21-065.html) filter), for a selected DGGS_RS, optionally specifying a particular DGGS hierarchy level. This end-point supports a compact representation based on zone hierarchy, as well as paging in order to handle potentially large responses.
+https://docs.ogc.org/DRAFTS/21-038.html#_requirement_class_zone_query[Query the list of zones] where data is available and/or match certain query criteria (e.g., https://docs.ogc.org/DRAFTS/21-038.html#_parameter_bbox[a bounding box], a [CQL2](http://docs.ogc.org/DRAFTS/21-065.html) https://docs.ogc.org/DRAFTS/21-038.html#_requirement_class_filtering_zone_queries_with_cql2[`filter`]), for a selected DGGRS, optionally specifying a https://docs.ogc.org/DRAFTS/21-038.html#_parameter_zone_level[particular DGGS hierarchy level] (`zone-level`).
+This end-point supports a https://docs.ogc.org/DRAFTS/21-038.html#_parameter_compact_zones[compact representation] based on zone hierarchy (`compact-zones=true`, the default), as well a https://docs.ogc.org/DRAFTS/21-038.html#_parameter_parent_zone_for_hierarchical_exploration[`parent-zone` parameter] allowing to progressively explore the hierarchy to avoid potentially large responses.
+Implementations can support among others a simple https://docs.ogc.org/DRAFTS/21-038.html#rc_zone-json[JSON response] and/or a https://docs.ogc.org/DRAFTS/21-038.html#rc_zone-binary64bit[64-bit integer binary response].
 
 ```
-GET .../dggs/{dggsID}/zones/{ZonalID}
+GET .../dggs/{dggrsId}/zones/{zoneId}
 ```
 
-Information about a specific zone for a specific DGGS instance, such as its geometry and area.
+https://docs.ogc.org/DRAFTS/21-038.html#_retrieving_zone_information_dggsdggrsidzoneszoneid[Information] about a specific zone for a specific DGGRS, such as its geometry and area.
 
 ```
-GET .../dggs/{dggsID}/zones/{ZonalID}/data
+GET .../dggs/{dggrsId}/zones/{zoneId}/data
 ```
 
-Retrieve the data for a specific zone of a particular DGGS instance, at a resolution corresponding to the DGGS hierarchy level of that zone, in one or more available data packet encodings.
-Typically, the data packet would include values for descendent zones at a number of levels deeper than the requested zone's level, as opposed to a single value for the requested zone.
+https://docs.ogc.org/DRAFTS/21-038.html#_requirement_class_data_retrieval[Retrieve the data] for a specific zone of a particular DGGRS, at a resolution corresponding to the DGGS hierarchy level of that zone, in one or more available data packet encodings.
+Typically, the data packet would include values for descendent zones at a number of levels deeper than the requested zone's level (`zone-depth` parameter), as opposed to a single value for the requested zone.
+See the https://docs.ogc.org/DRAFTS/21-038.html#rc_data-json[DGGS-JSON] schema in particular as well as the associated https://docs.ogc.org/DRAFTS/21-038.html#rc_data-ubjson[UB-JSON encoding requirement class].
 
 ## Server and client implementations
 
