@@ -1,4 +1,9 @@
 == Scope
 
-This OGC Standard specifies a Web API that enables the direct retrieval of geospatial data for a specified area, time and resolution of interest, based on a specific DGGS and indexing scheme and/or the query of DGGS resources to return a list of DGGS Zones from which data is available. Queries can be specified in combination with other building blocks defining queries, such as a filter defined using
-the https://docs.ogc.org/DRAFTS/21-065.html[OGC Common Query Language (CQL2)]. 
+This OGC Standard specifies a Web API that enables the direct retrieval of geospatial data for a specified area, time and resolution of interest, based on a specific DGGS and indexing scheme
+and/or the query of DGGS resources to return a list of DGGS Zones from which data is available. Zone queries can include building blocks designed for geospatial queries such as a filter expressed using the
+https://docs.ogc.org/DRAFTS/21-065.html[OGC Common Query Language (CQL2)].
+
+This standard also specifies a number of encodings for retrieving both DGGS data and lists of zones, including JSON and compact binary representations.
+
+An informative annex presents a JSON schema for describing a Discrete Global Grid Reference System (DGGRS), as well as examples of such DGGRS definitions which can be implemented in connection with this standard.
