@@ -33,13 +33,25 @@ The following example JSON DGGRS definitions conform to this schema.
 The following DGGRS is for an axis-aligned and equal-area DGGS based on the https://doi.org/10.3138/27H7-8K88-4882-1752[Icosahedral Snyder Equal-Area (ISEA)] planar projection using rhombuses with a refinement ratio of 9.
 When the ISEA projection is rotated 60 degrees, sheared horizontally by 30 degrees and re-scaled, the zones become square and their edges are aligned with the CRS, while remaining equal-area.
 A https://docs.ogc.org/is/17-083r4/17-083r4.html[2D Tile Matrix Set] can also be defined in this transformed CRS, allowing for compatibility with https://docs.ogc.org/is/20-057/20-057.html[OGC API - Tiles], https://portal.ogc.org/files/?artifact_id=35326[WMTS] and traditional client and visualization software with no built-in DGGS functionality.
-This transformed CRS no longer preserves angles and distances, although the topology, indexing and surface geometry on the Earth model remains the same as in the original ISEA CRS.
+This transformed CRS no longer preserves angles and distances, although the topology, indexing and surface geometry on the Earth model remains the same as in the original ISEA CRS where angles and distances are preserved.
 
 .DGGRS Definition for ISEA9R
 [source,json]
 ----
 include::../schemas/dggrs-definition/examples/isea9r.json[]
 ----
+
+[#img_isea9r_rotated='{figure-caption} {counter:figure-num}']
+.The ISEA9R squared root rhombuses (level 0) in the rotated, sheared and scaled ISEA planar CRS aligned with the zone edges, compatible with a 2DTMS definition (imagery from NASA Earth Observatory's https://earthobservatory.nasa.gov/features/BlueMarble[Blue Marble: Next Generation])
+image::images/ISEA9R-rotated.png[width=900,align="center"]
+
+[#img_isea9r_level0='{figure-caption} {counter:figure-num}']
+.The ISEA9R level 0 zone identifiers, shown in the original ISEA planar CRS (https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry])
+image::images/ISEA9R-Level0.png[width=900,align="center"]
+
+[#img_isea9r_level1='{figure-caption} {counter:figure-num}']
+.The ISEA9R level 1 zone identifiers, shown in the original ISEA planar CRS (https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry])
+image::images/ISEA9R-Level1.png[width=900,align="center"]
 
 ==== ISEA3H DGGRS definition
 
@@ -51,3 +63,15 @@ The DGGS is considered equal-area, although the 12 pentagonal zones at any level
 ----
 include::../schemas/dggrs-definition/examples/isea3h.json[]
 ----
+
+[#img_isea3h_level0='{figure-caption} {counter:figure-num}']
+.The ISEA3H level 0 zones and associated identifiers, shown on an ISEA planar projection (https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry])
+image::images/ISEA3H-Level0.png[width=900,align="center"]
+
+[#img_isea3h_level1='{figure-caption} {counter:figure-num}']
+.The ISEA3H level 1 zones and associated identifiers, shown on an ISEA planar projection (https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry])
+image::images/ISEA3H-Level1.png[width=900,align="center"]
+
+[#img_isea3h_level2='{figure-caption} {counter:figure-num}']
+.The ISEA3H level 2 zones and associated identifiers, shown on an ISEA planar projection (https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry])
+image::images/ISEA3H-Level2.png[width=900,align="center"]
