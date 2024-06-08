@@ -1,17 +1,126 @@
 == Terms and definitions
 
-This document uses the terms defined in Sub-clause 5.3 of <<OGC06-121r9>>, which is based on the ISO/IEC Directives, Part 2, Rules for the structure and drafting of International Standards. In particular, the word "`shall`" (not "`must`") is the verb form used to indicate a requirement to be strictly followed to conform to this standard.
+[[term-child_zone]]
+=== child zone
 
-For the purposes of this document, the following additional terms and definitions apply.
-
-=== example term
-
-term used for exemplary purposes
+immediate descendant of a <<term-parent-zone,parent zone>>
 
 [.source]
-<<ISO19101-1>>
+<<OGC20-040r3>>
 
-NOTE: An example note.
+NOTE: adapted from _child cell_ in OGC Abstract Specification Topic 21
 
-[example]
-Here's an example of an example term.
+[[term-dgg]]
+=== discrete global grid (DGG)
+
+set of <<term-zone,zones>> at the same <<term-refinement-level,refinement level>>, that uniquely and completely cover a <<term-globe,globe>>
+
+[.source]
+<<OGC20-040r3>>
+
+NOTE: Adapted to use `zones` rather than `cell` to avoid potential confusion with the similar concept of cell in a coverage.
+As noted in OGC Abstract Specification Topic 21, _"While the terms cell and zone are often used interchangeably, strictly zone is the preferred term."_.
+
+[[term-dggrs]]
+=== discrete global grid reference system (DGGRS)
+
+integrated system comprised of a specific <<term-dggs,discrete global grid system>> (a parameterized hierarchy of <<term-dgg,discrete global grids>> fully establishing <<term-zone,zone>> geometry), spatio-temporal referencing by <<term-zoneid,zonal identifiers>> and deterministic <<term-sub-zone,sub-zone>> ordering
+
+[.source]
+<<OGC20-040r3>>
+
+NOTE: partially adapted from _discrete global grid system_ in OGC Abstract Specification Topic 21
+
+NOTE: <<annex-dggrs-def,Annex B>> provides an informative schema for defining a DGGRS with accompanying examples
+
+[[term-dggs]]
+=== discrete global grid system (DGGS)
+
+system comprised of a hierarchy of <<term-dgg,discrete global grids>> organized in successive <<term-refinement-level,levels of zone refinement>>, using a specific set of parameters such as its underlying Earth model spheroid and orientation of a base polyhedron, fully establishing the geometry of all <<term-zone,zones>>.
+
+[.source]
+<<OGC20-040r3>>
+
+NOTE: This definition differs from the OGC Abstract Specification Topic 21 definition, following earlier DGGS literature where the term DGGS often refers strictly to a "system of discrete global grids" in the sense of a "set" of grids,
+excluding the concepts of <<term-zoneid,zonal identifiers>> (re-introduced as part of a <<term-dggrs,discrete global grid reference system>>) and excluding notions of functionality or interoperability.
+This definition more closely corresponds to the term https://docs.ogc.org/as/20-040r3/20-040r3.html#hierarchy[DGGS "hierarchy" (4.26)] in OGC Abstract Specification Topic 21.
+
+[[term-globe]]
+=== globe
+
+region of space-time enclosing a celestial body
+
+[.source]
+<<OGC20-040r3>>
+
+[[term-parent-zone]]
+=== parent zone
+
+<<term-zone,zone>> in a lower <<term-refinement-level,refinement level>> of <<term-dgg,discrete global grid>> with immediate descendants
+
+[.source]
+<<OGC20-040r3>>
+
+NOTE: adapted from _parent cell_ in OGC Abstract Specification Topic 21
+
+NOTE: Adapted to say _lower_ rather than _higher_, where _lower_ refers to a zone covering a larger area of space-time which would normally correspond to lower resolution data.
+
+[[term-refinement-level]]
+=== refinement level
+numerical order of a <<term-dgg,discrete global grid>> in the tessellation sequence
+
+NOTE: The discrete global grid with the least number of <<term-zone,zones>> has a refinement level of 0.
+
+[.source]
+<<OGC20-040r3>>
+
+[[term-relative-depth]]
+=== relative depth
+the number of <<term-refinement-level,refinement levels>> separating a finer <<term-dgg,discrete global grid>> from a coarser discrete global grid in a <<term-dggs,discrete global grid system>>
+
+[[term-sub-zone]]
+=== sub-zone
+
+<<term-zone,zone>> at a greater <<term-refinement-level,refinement level>> than a <<term-parent-zone,parent zone>> whose geometry is at least partially contained within the geometry of the <<term-parent-zone,parent zone>>
+
+NOTE: At a <<term-relative-depth,relative depth>> of 1, the sub-zones of the parent zone are its immediate <<term-child-zone,children>>.
+
+NOTE: In some <<term-dggs,DGGSs>>, the children of the children of a parent zone (relative depth of 2) are not all sub-zones of that parent zone.
+
+NOTE: A <<term-dggrs,discrete global grid reference system>> defines a deterministic order for sub-zones
+
+[[term-web-api]]
+=== Web API
+An Application Programming Interface (API) using an architectural style that is founded on the technologies of the Web
+
+[.source]
+<<OGC 17-069r3>>
+
+NOTE: See https://www.w3.org/TR/dwbp/#accessAPIs[Best Practice 24: Use Web Standards as the foundation of APIs] (W3C Data on the Web Best Practices) for more detail.
+
+[[term-zoneid]]
+=== zonal identifier
+
+spatio-temporal reference in the form of a label or code that uniquely identifies a <<term-zone,zone>>
+
+[.source]
+<<OGC20-040r3>>
+
+NOTE: synonym of "zone identifier" and "zone ID".
+
+NOTE: This standard and the DGGRS definitions described in <<annex-dggrs-def,Annex B>> require textual identifiers, while optionally supporting integer identifiers for the purpose of compact transmission and internal representations.
+
+[[term-zirs]]
+=== zonal identifier reference system (ZIRS)
+
+reference system establishing a specific association of <<term-zoneid,zone identifiers>> to <<term-zone,zones>> for one or more <<term-dggs,discrete global grid systems>>
+
+NOTE: synonym of "zone identifier reference system" and "zone indexing scheme"
+
+[[term-zone]]
+=== zone
+
+particular region of space-time
+
+[.source]
+<<OGC20-040r3>>
