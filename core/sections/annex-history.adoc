@@ -15,5 +15,5 @@
 |2022-11-11 |0.9 |Jerome St Louis |7-Data Retrieval | Clarification regarding resolution - https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/commit/c43bfadd160e62e44bce10120630d2e38c0fdd12[github commit - c43bfad]
 |2022-11-11 |0.10 |Jerome St Louis |8-zone query | Clarifications - https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/commit/cee368507c74932cf266f10250a1f48ccfc6706d[github commit - cee3685]
 |2023-02-17 |0.11 |Jerome St Louis |7-Data Retrieval | Added zone-depth parameter  - https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/commit/2b8fa586aaad9a880e6c5eb586ddc24e725fc2e9[github commit - 2b8fa58]
-
+|2024-06-18 |1.0.0rc1 |Jerome St Louis |all | Initial draft ready for OAB review
 |===
