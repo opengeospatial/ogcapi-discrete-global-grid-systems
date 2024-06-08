@@ -30,7 +30,7 @@ The following link relation types which were previously defined for other OGC AP
 * **https://www.opengis.net/def/rel/ogc/1.0/dataset**: The target IRI points to a resource representing the dataset (e.g., the root of an OGC Web API).
 * **https://www.opengis.net/def/rel/ogc/1.0/geodata**: The target IRI points to a resource representing a collection of geospatial data.
 
-In addition, the following link relation type is used for which no applicable registered link relation type could be identified:
+In addition, the following link relation types are used for which no applicable registered link relation type could be identified:
 
 * **https://www.opengis.net/def/rel/ogc/1.0/dggrs**: The target IRI points to the desciptive list of the Discrete Global Grid Reference Systems available for the source resource.
 * **https://www.opengis.net/def/rel/ogc/1.0/dggrs-definition**: The target IRI points to the definition of the Discrete Global Grid Reference System, for example as available from an authoritative DGGRS registry.
