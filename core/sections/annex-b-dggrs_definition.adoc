@@ -4,16 +4,17 @@
 
 The following informative schema describes the expected response of the resource linked to by using the `[ogc-rel:dggrs-definition]` link relation
 from the DGGRS description, as specified by the <<rc_core,Core requirement class>>.
+An important objective for this schema is to support establishing authoritative registries of DGGRSs providing a URI for a DGGRS corresponding to a specific definition.
 
 Note that this schema is preliminary, and a normative version may be defined by a later version of this standard
 or by a future part of OGC Abstract Specification Topic 21.
-Note that this schema may change to allow for better description of existing and new classes of DGGS.
+The schema may change to allow for better description of existing and new classes of DGGS.
 
 The DGGRS definition consists of three main components:
 
 * the definition of the hierarchy of discrete global grids (`dggs`), including any parameterization such as the spheroid or orientation, establishing both the topology as well as the geometry of every zone,
 * the Zone Indexing Reference System (`zirs`), with textual identifiers being mandatory while 64-bit integer identifiers (which support the <<rc_zone-binary64bit,64-bit integer zone list encoding requirement class>>) are optional,
-* the sub-zone ordering (`subZoneOrder`), which allows for <<retrieving zone data,rc_data-retrieval>> using e.g., <<rc_data-json,DGGS-JSON>> at a <<rc_data-custom-depths,`zone-depth`>> other than 0 (the values of sub-zones can be provided as a 1D array of values with a pre-established association to sub-zones).
+* the sub-zone ordering (`subZoneOrder`), which allows for <<rc_data-retrieval,retrieving zone data>> using e.g., <<rc_data-json,DGGS-JSON>> at a <<rc_data-custom-depths,`zone-depth`>> other than 0 (the values of sub-zones can be provided as a 1D array of values with a pre-established association to sub-zones).
 
 === JSON Schema
 
@@ -23,10 +24,27 @@ The DGGRS definition consists of three main components:
 include::../schemas/dggrs-definition/dggrs-definition-proposed.json[]
 ----
 
-The following example JSON DGGRS definition conforms to this schema.
-This DGGRS is for an ISEA3H using a zone reference system based in part on its dual relationship with ISEA9R.
+The following example JSON DGGRS definitions conform to this schema.
 
-=== Example DGGRS definition
+=== Example DGGRS definitions
+
+==== ISEA9R DGGRS definition
+
+The following DGGRS is for an axis-aligned and equal-area DGGS based on the https://doi.org/10.3138/27H7-8K88-4882-1752[Icosahedral Snyder Equal-Area (ISEA)] planar projection using rhombuses with a refinement ratio of 9.
+When the ISEA projection is rotated 60 degrees, sheared horizontally by 30 degrees and re-scaled, the zones become square and their edges are aligned with the CRS, while remaining equal-area.
+A https://docs.ogc.org/is/17-083r4/17-083r4.html[2D Tile Matrix Set] can also be defined in this transformed CRS, allowing for compatibility with https://docs.ogc.org/is/20-057/20-057.html[OGC API - Tiles], https://portal.ogc.org/files/?artifact_id=35326[WMTS] and traditional client and visualization software with no built-in DGGS functionality.
+This transformed CRS no longer preserves angles and distances, although the topology, indexing and surface geometry on the Earth model remains the same as in the original ISEA CRS.
+
+.DGGRS Definition for ISEA9R
+[source,json]
+----
+include::../schemas/dggrs-definition/examples/isea9r.json[]
+----
+
+==== ISEA3H DGGRS definition
+
+The following DGGRS is for an ISEA3H DGGS, also based on the ISEA planar projection, with hexagonal and pentagonal zones, and a refinement ratio of 3, using a zone reference system based in part on its dual relationship with the ISEA9R DGGS.
+The DGGS is considered equal-area, although the 12 pentagonal zones at any level occupy 5/6th of the area of hexagonal zones.
 
 .DGGRS Definition for ISEA3H using indexing based on ISEA9R
 [source,json]
