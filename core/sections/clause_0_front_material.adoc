@@ -42,6 +42,8 @@ All questions regarding this submission should be directed to the editors or the
 | *Name*                                  | *Affiliation*
 | Matthew Brian John Purss (editor)       | Pangaea Innovations Pty. Ltd.
 | Jérôme Jacovella-St-Louis (editor)      | Ecere Corporation
+| Robert Gibb                             | Landcare Research New Zealand
+| Fuhu Ren / 任伏虎                        | Peking University Collaborative Innovation Center for Geospatial Big Data
 |===
 
 [abstract]
