@@ -65,13 +65,13 @@ include::../schemas/dggrs-definition/examples/isea3h.json[]
 ----
 
 [#img_isea3h_level0='{figure-caption} {counter:figure-num}']
-.The ISEA3H level 0 zones and associated identifiers, shown on an ISEA planar projection (https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry])
+.The ISEA3H level 0 zones and associated identifiers (derived from ISEA9R level 0), shown on an ISEA planar projection (https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry])
 image::images/ISEA3H-Level0.png[width=900,align="center"]
 
 [#img_isea3h_level1='{figure-caption} {counter:figure-num}']
-.The ISEA3H level 1 zones and associated identifiers, shown on an ISEA planar projection (https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry])
+.The ISEA3H level 1 zones and associated identifiers (derived from ISEA9R level 0), shown on an ISEA planar projection (https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry])
 image::images/ISEA3H-Level1.png[width=900,align="center"]
 
 [#img_isea3h_level2='{figure-caption} {counter:figure-num}']
-.The ISEA3H level 2 zones and associated identifiers, shown on an ISEA planar projection (https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry])
+.The ISEA3H level 2 zones and associated identifiers (derived from ISEA9R level 1), shown on an ISEA planar projection (https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry])
 image::images/ISEA3H-Level2.png[width=900,align="center"]
