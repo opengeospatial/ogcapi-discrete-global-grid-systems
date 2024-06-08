@@ -16,6 +16,8 @@ inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
 identifier:: /req/zone-json/content
 part:: Every 200 response of the server for zone query with the media type `application/json` SHALL be a JSON document listing the textual identifiers for all zones matching the query.
 part:: The schema for the JSON document SHALL follow the JSON Schema for DGGS Zone Query described below, where the zone identifiers are strings within a `zones` array property.
+part:: The `links` property SHALL include an `[ogc-rel:dggrs]` link to the Discrete Global Grid Reference System description resource.
+part:: The `links` property SHALL include an `[ogc-rel:dggrs-definition]` link to the DGGRS definition, using the schema defined in <<annex-dggrs-def, Annex B - DGGRS Definitions>> or a later version.
 ====
 
 .JSON Schema for a DGGS Zone Query response
@@ -31,7 +33,7 @@ part:: The schema for the JSON document SHALL follow the JSON Schema for DGGS Zo
       "zones" : { "type": "array", "items": { "type": "string" } },
       "links" :
       {
-         "description": "Links to related resources. An `[ogc-rel:dggrs]` link to the Discrete Global Grid Reference System description resource and an `[ogc-rel:dggrs-definition]` link to the DGGRS definition (using the schema defined by https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/schemas/dggs-core/dggrs-definition.yaml) are required. A `[ogc-rel:dggrs-zone-data]` link to retrieve data from each of these DGGS zones should also be included if _DGGS Zone Data Retrieval_ is supported. An `[ogc-rel:geodata]` link should also be included for zone listing pertaining to a particular collection (for _Collection DGGS requirement class_)."
+         "description": "Links to related resources."
          "items": { "$ref" : "https://schemas.opengis.net/ogcapi/dggs/part1/1.0/openapi/schemas/common-core/link.yaml"
       }
    }
@@ -41,6 +43,14 @@ part:: The schema for the JSON document SHALL follow the JSON Schema for DGGS Zo
 [recommendation]
 ====
 [%metadata]
+identifier:: /rec/zone-json/additional-links
+part:: If _DGGS Zone Data Retrieval_ is supported, the `links` property SHOULD include an `[ogc-rel:dggrs-zone-data]` link to retrieve data from each of these DGGS zones.
+part:: The `links` property SHOULD include an `[ogc-rel:geodata]` link for zone listing pertaining to a particular collection (for <<rc_collection-dggs,Collection DGGS requirement class>>).
+====
+
+[recommendation]
+====
+[%metadata]
 identifier:: /rec/zone-json/zone-order
-part:: For responses where zones of multiple hierarchy levels are returned (when `compact-zones` is true, the zones SHOULD be listed with the coarser resolution level first (larger zones).
+part:: For responses where zones of multiple hierarchy levels are returned when `compact-zones` is true, the zones SHOULD be listed with the coarser resolution level first (larger zones).
 ====

@@ -1,6 +1,6 @@
 [appendix,obligation="informative"]
 [[annex-dggrs-def]]
-== Discrete Global Grid Reference System Definition
+== Discrete Global Grid Reference System Definitions
 
 The following informative schema describes the expected response of the resource linked to by using the `[ogc-rel:dggrs-definition]` link relation
 from the DGGRS description, as specified by the <<rc_core,Core requirement class>>.
@@ -16,7 +16,7 @@ The DGGRS definition consists of three main components:
 * the Zone Indexing Reference System (`zirs`), with textual identifiers being mandatory while 64-bit integer identifiers (which support the <<rc_zone-binary64bit,64-bit integer zone list encoding requirement class>>) are optional,
 * the sub-zone ordering (`subZoneOrder`), which allows for <<rc_data-retrieval,retrieving zone data>> using e.g., <<rc_data-json,DGGS-JSON>> at a <<rc_data-custom-depths,`zone-depth`>> other than 0 (the values of sub-zones can be provided as a 1D array of values with a pre-established association to sub-zones).
 
-=== JSON Schema
+=== JSON Schema for defining a DGGRS
 
 .JSON Schema for the DGGRS Definition
 [source,json]
