@@ -6,6 +6,7 @@ DGGS Zone Data can be encoded in any suitable data format.
 However, it does define requirements class for zone data encodings which are expected to be commonly supported in implementations of this standard.
 These requirements classes include:
 
+* <<rc_data-json,JSON Data>>
 * <<rc_data-geojson,GeoJSON Data>>
 * <<rc_data-fgjson,FG-JSON Data>>
 * <<rc_data-geotiff,GeoTIFF Data>>
