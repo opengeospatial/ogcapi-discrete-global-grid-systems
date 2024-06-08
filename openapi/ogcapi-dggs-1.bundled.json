@@ -298,7 +298,7 @@
         ],
         "responses": {
           "200": {
-            "description": "DGGS zone information returned as a response, potentially including id, geometry, links to DGGS (rel: dggs), dataset, (rel: dataset), collection (rel: geodata), data (rel: dggs-zone-data) (if available for this zone)",
+            "description": "DGGRS zone information returned as a response, potentially including id, geometry, links to DGGRS (rel: dggrs), dataset, (rel: dataset), collection (rel: geodata), data (rel: dggrs-zone-data) (if available for this zone)",
             "content": {
               "application/json": {
                 "schema": {
@@ -2757,7 +2757,7 @@
             "schema": {
               "type": "object",
               "required": [
-                "dggs"
+                "dggrs"
               ],
               "properties": {
                 "links": {
@@ -2766,7 +2766,7 @@
                     "$ref": "#/components/schemas/link"
                   }
                 },
-                "dggs": {
+                "dggrs": {
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/dggrs-item"
@@ -2798,7 +2798,7 @@
         }
       },
       "ZoneData": {
-        "description": "DGGS zone data returned as a response.",
+        "description": "DGGRS zone data returned as a response.",
         "content": {
           "image/png": {
             "schema": {
@@ -2830,7 +2830,7 @@
         "description": "No data available for this zone."
       },
       "ZonesList": {
-        "description": "List of DGGS Zones. In addition to a compact JSON response intended for fast DGGS client/server exchange (which should support compression),\nvisual representations such as GeoTIFF and/or GeoJSON may also be supported.",
+        "description": "List of DGGRS Zones. In addition to a compact JSON response intended for fast DGGS client/server exchange (which should support compression),\nvisual representations such as GeoTIFF and/or GeoJSON may also be supported.",
         "content": {
           "application/json": {
             "schema": {

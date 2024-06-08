@@ -1,5 +1,5 @@
 description: |-
-   List of DGGS Zones. In addition to a compact JSON response intended for fast DGGS client/server exchange (which should support compression),
+   List of DGGRS Zones. In addition to a compact JSON response intended for fast DGGS client/server exchange (which should support compression),
    visual representations such as GeoTIFF and/or GeoJSON may also be supported.
 content:
   application/json:

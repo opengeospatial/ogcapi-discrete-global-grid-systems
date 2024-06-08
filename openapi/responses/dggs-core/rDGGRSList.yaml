@@ -4,13 +4,13 @@ content:
     schema:
       type: object
       required:
-        - dggs
+        - dggrs
       properties:
          links:
            type: array
            items:
              $ref: '../../schemas/common-core/link.yaml'
-         dggs:
+         dggrs:
            type: array
            items:
               $ref: '../../schemas/dggs-core/dggrs-item.yaml'

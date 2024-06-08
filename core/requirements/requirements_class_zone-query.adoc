@@ -21,7 +21,7 @@ label:: /req/zone-query/zones-list
 description:: For retrieving a list of DGGS zones:
 part:: The Implementation SHALL support an HTTP GET operation at a resource path
 ending with `.../dggs/{dggrsId}/zones`.
-part:: The Implementation SHALL include a link to this resource path in the "Core" .../dggs/{dggrsId}` resource links
+part:: The Implementation SHALL include a link to this resource path in the "Core" `.../dggs/{dggrsId}` resource links
 using the link relation type https://www.opengis.net/def/rel/ogc/1.0/dggs-zone-query.
 part:: The response of the HTTP GET operation SHALL have a status code of 200.
 part:: The content of the response SHALL be a list of zones fully covering where data is available
@@ -34,7 +34,7 @@ part:: The selection of an encoding for the returned list of zones SHALL be cons
 HTTP content negotiation.
 part:: The implementation SHALL support at minimum a JSON encoding (media type `application/json`)
 where each zone ID is specified as a string within an array of zones assigned to a `zones` property
-within a JSON object (e..g, `{ "zones": [ "1-E-14"s, "1-E-15", "1-F-14", "1-F-15", "1-F-16" ] }`.
+within a JSON object (e..g, `{ "zones": [ "1-E-14", "1-E-15", "1-F-14", "1-F-15", "1-F-16" ] }`.
 ====
 
 ==== Parameter `zone-level`

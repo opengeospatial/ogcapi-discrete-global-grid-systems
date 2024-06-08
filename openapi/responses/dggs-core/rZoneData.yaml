@@ -1,4 +1,4 @@
-description: DGGS zone data returned as a response.
+description: DGGRS zone data returned as a response.
 content:
   image/png:
     schema:

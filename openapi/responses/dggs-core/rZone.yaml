@@ -1,5 +1,5 @@
 description: |-
-  DGGS zone information returned as a response, potentially including id, geometry, links to DGGS (rel: dggs), dataset, (rel: dataset), collection (rel: geodata), data (rel: dggs-zone-data) (if available for this zone)
+  DGGRS zone information returned as a response, potentially including id, geometry, links to DGGRS (rel: dggrs), dataset, (rel: dataset), collection (rel: geodata), data (rel: dggrs-zone-data) (if available for this zone)
 content:
   application/json:
     schema:

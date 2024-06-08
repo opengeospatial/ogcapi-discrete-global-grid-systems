@@ -28,6 +28,7 @@ The following example JSON DGGRS definitions conform to this schema.
 
 === Example DGGRS definitions
 
+[[isea9r-dggrs]]
 ==== ISEA9R DGGRS definition
 
 The following DGGRS is for an axis-aligned and equal-area DGGS based on the https://doi.org/10.3138/27H7-8K88-4882-1752[Icosahedral Snyder Equal-Area (ISEA)] planar projection using rhombuses with a refinement ratio of 9.
@@ -53,6 +54,7 @@ image::images/ISEA9R-Level0.png[width=900,align="center"]
 .The ISEA9R level 1 zone identifiers, shown in the original ISEA planar CRS (https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry])
 image::images/ISEA9R-Level1.png[width=900,align="center"]
 
+[[isea3h-dggrs]]
 ==== ISEA3H DGGRS definition
 
 The following DGGRS is for an ISEA3H DGGS, also based on the ISEA planar projection, with hexagonal and pentagonal zones, and a refinement ratio of 3, using a zone reference system based in part on its dual relationship with the ISEA9R DGGS.

@@ -69,6 +69,8 @@ include::sections/annex-a-ats.adoc[]
 
 include::sections/annex-b-dggrs_definition.adoc[]
 
+include::sections/annex-c-examples.adoc[]
+
 ////
 Revision History should be the last annex before the Bibliography
 Bibliography should be the last annex
