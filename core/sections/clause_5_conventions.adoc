@@ -36,6 +36,9 @@ In addition, the following link relation type is used for which no applicable re
 * **https://www.opengis.net/def/rel/ogc/1.0/dggrs-definition**: The target IRI points to the definition of the Discrete Global Grid Reference System, for example as available from an authoritative DGGRS registry.
 * **https://www.opengis.net/def/rel/ogc/1.0/dggrs-zone-info**: The target IRI points to information about a particular zone of a Discrete Global Grid Reference System, such as its geometry, area/volume, and any relevant links (e.g., to retrieve data from the zone).
 * **https://www.opengis.net/def/rel/ogc/1.0/dggrs-zone-data**: The target IRI points to data pertaining to a particular zone of a Discrete Global Grid Reference System. This link relation is typically used with a link template where a zone identifier can be substituted.
+* **https://www.opengis.net/def/rel/ogc/1.0/dggrs-zone-parent**: The target IRI points to the information resource of a zone which is a parent of the link's context zone.
+* **https://www.opengis.net/def/rel/ogc/1.0/dggrs-zone-child**: The target IRI points to the information resource of a zone which is an immediate child of the link's context zone.
+* **https://www.opengis.net/def/rel/ogc/1.0/dggrs-zone-neighbor**: The target IRI points to the information resource of a zone which is a neighbor of the link's context zone.
 
 Each resource representation includes an array of links. Implementations are free to add additional links for all resources provided by the Web API implementing Maps API requirement(s).
 

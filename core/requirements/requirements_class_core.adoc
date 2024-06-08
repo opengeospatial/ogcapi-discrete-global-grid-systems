@@ -61,6 +61,9 @@ part:: The zone information resource SHALL include a link back to the correspond
 ====
 [%metadata]
 label:: /rec/core/zone-info
+part:: The zone information resource SHOULD include links to its parent(s) zone(s) using link relation `[ogc-rel:dggrs-zone-parent]`.
+part:: The zone information resource SHOULD include links to its immediate children zone using link relation `[ogc-rel:dggrs-zone-child]`.
+part:: The zone information resource SHOULD include links to its neighboring zones using link relation `[ogc-rel:dggrs-zone-neighbor]`.
 part:: The zone information resource SHOULD include an `areaMetersSquare` property indicating the surface area of the zone in square meters.
 part:: For a DGGS with three spatial dimension, the zone information resource SHOULD include a `volumeMetersCube` property indicating the volume of the zone in cubic meters.
 part:: For a temporal DGGS, the zone information resource SHOULD include a `temporalDurationSeconds` property indicating the amount of time covered by the zone in seconds.
