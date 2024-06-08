@@ -2,5 +2,16 @@
 [[Bibliography]]
 == Bibliography
 
-* [[[OGC2015,OGCTB12]]], _OGC: OGC Testbed 12 Annex B: Architecture_ (2015).
-* [[[OGC06-121r9,OGC06-121r9]]], _OGC: 	OGC Web Service Common Implementation Specification_, 	https://portal.ogc.org/files/?artifact_id=38867[OGC 06-121r9]
+* [[[UBJSON,UBJSON]]], Universal Binary JSON Specification. https://ubjson.org/
+
+* [[[Snyder1992,Snyder1992]]], Snyder, J. P., An Equal-Area Map Projection for Polyhedral Globes, Cartographica, 29(1),10-21. urn:doi:10.3138/27H7-8K88-4882-1752, 1992. https://doi.org/10.3138/27H7-8K88-4882-1752
+
+* [[[OGC23-010,OGC 23-010]]], Robert Thomas, et al., Towards a Federated Marine SDI: Connecting Land and Sea to Protect the Arctic, 2023. https://docs.ogc.org/per/23-010.html
+
+* [[[Sahr2003,Sahr2003]]], Kevin Sahr, Denis White, A. Jon Kimerling, Geodesic Discrete Global Grid Systems, Cartography and Geographic Information Science, Vol. 30, No. 2, pp. 121-134, 2003. http://cs.sou.edu/~sahrk/dgg/pubs/gdggs03.pdf
+
+* [[[Gibb2016,Gibb2016]]], Robert Gibb, The rHEALPix Discrete Global Grid System. IOP Conference Series: Earth and Environmental Science. 34. 012012. 10.1088/1755-1315/34/1/012012, 2016. http://dx.doi.org/10.1088/1755-1315/34/1/012012
+
+* [[[OGC20-039r2,OGC 20-039r2]]], Robert Gibb, Byron Cochrane, Matthew Purss, 2021. https://docs.ogc.org/per/20-039r2.html
+
+* [[[OGC21-033,OGC 21-033]]], Jérôme Jacovella-St-Louis, Flexible real-time data processing and visualization workflows emerging from OGC API modules (Draft), 2021. https://maps.ecere.com/moaw/DiscussionPaper-Draft3.pdf

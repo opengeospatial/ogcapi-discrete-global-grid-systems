@@ -56,7 +56,7 @@ region of space-time enclosing a celestial body
 [[term-parent-zone]]
 === parent zone
 
-<<term-zone,zone>> in a lower <<term-refinement-level,refinement level>> of <<term-dgg,discrete global grid>> with immediate descendants
+<<term-zone,zone>> in a lower <<term-refinement-level,refinement level>> of a <<term-dgg,discrete global grid>> with immediate descendants
 
 [.source]
 <<OGC20-040r3>>
