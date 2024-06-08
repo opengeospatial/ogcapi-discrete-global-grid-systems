@@ -1,6 +1,6 @@
 [appendix,obligation="normative"]
 
-== Conformance Class Abstract Test Suite (Normative)
+== Conformance Class Abstract Test Suite
 
 === Conformance Class "Core"
 
