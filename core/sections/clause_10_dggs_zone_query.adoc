@@ -2,15 +2,16 @@
 
 === Overview
 
-The Zone Query conformance class allows to request the list of DGGS zones from a specific
-Discrete Global Grid System (DGGS) in a particular indexing scheme for which there is
+The Zone Query requirement class allows to request the list of DGGS zones from a specific
+Discrete Global Grid Reference System (DGGRS), that is a specific hierarchy of Discrete Global Grids
+combined with a particular zone indexing reference system (ZIRS), for which there is
 data available, or matching a particular query (e.g., using a filtering parameter).
 It describes an HTTP GET operation, as well as its response.
-The selected DGGS is listed as available and described in the Core conformance class,
-and conforms to OGC Topic 21.
-The list of zones from a Web API using this conformance class can either be
+The selected DGGRS is listed as available and described in the <<rc_core,Core requirement class>>,
+and conforms to http://www.opengis.net/doc/AS/dggs/2.0[OGC Topic 21].
+The list of zones from a Web API using this requirement class can either be
 for a particular collection of geospatial data, for a dataset as a whole, or
-in connection with _OGC API - Processes - Part 3: Workflows & Chaining_, the output of
+in connection with https://docs.ogc.org/DRAFTS/21-009.html[_OGC API - Processes - Part 3: Workflows & Chaining_], the output of
 a processing workflow.
 
 include::../requirements/requirements_class_zone-query.adoc[]
