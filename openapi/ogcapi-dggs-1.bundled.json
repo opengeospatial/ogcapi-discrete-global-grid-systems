@@ -1509,7 +1509,6 @@
         }
       },
       "dggrs-definition": {
-        "$schema": "https://json-schema.org/draft/2019-09/schema",
         "description": "Discrete Global Grid System Reference System (DGGRS) Definition.",
         "type": "object",
         "required": [
@@ -1699,13 +1698,7 @@
                 "properties": {
                   "description": {
                     "type": "string",
-                    "examples": [
-                      "Topological Morton Code (Space Filling Curve) Identifier. With a Level 0 alphabetical identifier from 'A' to 'S' followed by a numeric reference from 1 to 9 for all subsequent levels representing the arrangement of child zones following a Morton (Z-code) subdivision of the parent zone. The length of the identifier represents the level of refinement.",
-                      "Universal Morton Code (Space Filling Curve) Identifier. An ellipsoidal bitwise concatenation of longitude and latitude direct position to form a direct Morton code. This can be used across multiple DGGS infrastructures to provide a common index structure that is fixed in nature regardless of the topological zone index used by each DGGS.",
-                      "An identifier comprised of three separate level, row and column components corresponding to an OGC 2D Tile Matrix Set tile identifier, where the individual component are represented by uppercase hexadecimal numbers separated by a hyphen.",
-                      "An identifier comprised of an uppercase hexadecimal letter representing a level (A for level 0, B for level 1...), followed by a number from 0 to 9 representing the root rhombus corresponding to the faces of an icosahedron, in a staircase order from the top-left to the bottom right of an ISEA planar projection after a 60 degrees clockwise rotation, followed by a hyphen, then by an uppercase hexadecimal number identifying a sub-zone starting to count from 0 in row-major order.",
-                      "An identifier comprised of an uppercase hexadecimal letter representing the ISEA9R level corresponding to the current even or immediate lower odd ISEA3H level (A for level 0, B for level 1...), followed by a number from 0 to 9 representing the root rhombus corresponding to the faces of an icosahedron, in a staircase order from the top-left to the bottom right of an ISEA planar projection after a 60 degrees clockwise rotation, followed by a hyphen, then by an uppercase hexadecimal number identifying a sub-zone starting to count from 0 in row-major order, followed by a second hyphen, then by a letter identifying a hexagonal or pentagonzal zone intersecting the sub-rhombus: A: even level regular zone B: even level North pole zone C: even level South pole zone D: odd level zone centered on rhombus vertex E: odd level zone top-right of rhombus vertex F: odd level zone bottom-right of rhombus vertex G: odd level North pole zone H: odd level South pole zone\n"
-                    ]
+                    "example": "Topological Morton Code (Space Filling Curve) Identifier. With a Level 0 alphabetical identifier from 'A' to 'S' followed by a numeric reference from 1 to 9 for all subsequent levels representing the arrangement of child zones following a Morton (Z-code) subdivision of the parent zone. The length of the identifier represents the level of refinement.\n"
                   },
                   "type": {
                     "anyOf": [
@@ -1733,10 +1726,7 @@
                 "properties": {
                   "description": {
                     "type": "string",
-                    "examples": [
-                      "A 64-bit integer with the 30 least significant bits corresponds to a column, the next 29 bits corresponding to a row, and the 5 most significant bits correspond to a level of an OGC 2D Tile Matrix Set identifier, with individual components using little endian.",
-                      "A 64-bit integer with the 3 least significant bits corresponding to a hexagonal or pentagonzal zone intersecting a sub-rhombus: 0: even level regular zone 1: even level North pole zone 2: even level South pole zone 3: odd level zone centered on rhombus vertex 4: odd level zone top-right of rhombus vertex 5: odd level zone bottom-right of rhombus vertex 6: odd level North pole zone 7: odd level South pole zone, the next 51 bits corresponding to a sub-rhombus index, the next 4 bits corresponding to a root rhombus, the next 5 bits corresponding to an associated ISEA9R level, and the last most significant bit always 0 for a valid zone identifier.\n"
-                    ]
+                    "example": "A 64-bit integer with the 30 least significant bits corresponds to a column, the next 29 bits corresponding to a row, and the 5 most significant bits correspond to a level of an OGC 2D Tile Matrix Set identifier, with individual components using little endian.\n"
                   },
                   "type": {
                     "anyOf": [
@@ -1764,9 +1754,7 @@
             "properties": {
               "description": {
                 "type": "string",
-                "examples": [
-                  "The zones are ordered in tightly packed scanlines. Considering the ISEA planar projection, for odd level parent, zones are ordered left to right along a scanline and scanlines are ordered from top to bottom. For an even level parent, zones are ordered top bottom right along a scanline and scanlines are ordered from left to right. For an odd depth, scanlines start along a hexagon edge, whereas for even depths, scanlines start on a hexagon vertex."
-                ]
+                "example": "The zones are ordered in tightly packed scanlines. Considering the ISEA planar projection, for odd level parent, zones are ordered left to right along a scanline and scanlines are ordered from top to bottom. For an even level parent, zones are ordered top bottom right along a scanline and scanlines are ordered from left to right. For an odd depth, scanlines start along a hexagon edge, whereas for even depths, scanlines start on a hexagon vertex.\n"
               },
               "type": {
                 "anyOf": [
