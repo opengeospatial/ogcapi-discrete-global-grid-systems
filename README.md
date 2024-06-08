@@ -13,7 +13,7 @@ The OGC API family of standards is organized by resource type. **OGC API - DGGS*
 
 ## Overview
 
-**OGC API - DGGS** provides access to data organised according to one or more DGGS.
+**OGC API - DGGS** provides access to data organised according to one or more Discrete Global Grid Reference System (DGGRS).
 
 The following transportable end-point resources can be attached either to an OGC API dataset (as defined by [OGC API - Common - Part 1: Core](http://docs.ogc.org/DRAFTS/19-072.html)) or to an OGC API collection (as defined by [OGC API - Common - Part 2: Geospatial data](http://docs.ogc.org/DRAFTS/20-024.html)).
 
@@ -27,7 +27,7 @@ GET .../dggs
 GET .../dggs/{dggrsId}
 ```
 
-[Description](https://docs.ogc.org/DRAFTS/21-038.html#_discrete_global_grid_reference_system_information_dggsdggrsid) of the DGGRS, providing links to [definition of the DGGRS it implements](the https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/core/schemas/dggrs-definition/dggrs-definition-proposed.json), which consists of a specific hierarchy of Discrete Global Grids, a Zone Indexing Reference System (ZIRS) and a deterministic ordering of sub-zones.
+[Description](https://docs.ogc.org/DRAFTS/21-038.html#_discrete_global_grid_reference_system_information_dggsdggrsid) of the DGGRS, providing links to the [definition of the DGGRS it implements](https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/core/schemas/dggrs-definition/dggrs-definition-proposed.json), which consists of a specific hierarchy of Discrete Global Grids, a Zone Indexing Reference System (ZIRS) and a deterministic ordering of sub-zones.
 The description also includes links to the data retrieval mechanism and zone query end-points.
 The DGGRS definition describes the parameters and structure of its DGGS and ZIRS as specified by [OGC Abstract Specification Topic 21 v2.0 - Part 1 (ISO/19170-1)](https://docs.ogc.org/as/20-040r3/20-040r3.html),
 as well as a deterministic sub-zone order.
@@ -51,7 +51,7 @@ GET .../dggs/{dggrsId}/zones/{zoneId}/data
 ```
 
 [Retrieve the data](https://docs.ogc.org/DRAFTS/21-038.html#_requirement_class_data_retrieval) for a specific zone of a particular DGGRS, at a resolution corresponding to the DGGS hierarchy level of that zone, in one or more available data packet encodings.
-Typically, the data packet would include values for descendent zones at a number of levels deeper than the requested zone's level (`zone-depth` parameter), as opposed to a single value for the requested zone.
+Typically, the data packet would include values for descendent zones at a number of levels deeper than the [requested zone's level](https://docs.ogc.org/DRAFTS/21-038.html#_requirement_class_data_custom_depths) (`zone-depth` parameter), as opposed to a single value for the requested zone.
 See the [DGGS-JSON](https://docs.ogc.org/DRAFTS/21-038.html#rc_data-json) schema in particular as well as the associated [UB-JSON encoding requirement class](https://docs.ogc.org/DRAFTS/21-038.html#rc_data-ubjson).
 
 ## Server and client implementations
