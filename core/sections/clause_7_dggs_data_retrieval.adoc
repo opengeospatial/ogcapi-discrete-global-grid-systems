@@ -7,7 +7,7 @@ Discrete Global Grid Reference System (DGGRS), that is a specific hierarchy of D
 combined with a particular zone indexing reference system (ZIRS), for an individual zone.
 It describes an HTTP GET operation, as well as its response.
 The selected DGGRS is listed as available and described in the <<rc_core,Core requirement class>>,
-and conforms to http://www.opengis.net/doc/AS/dggs/2.0[OGC Topic 21].
+and conforms to https://www.opengis.net/doc/AS/dggs/2.0[OGC Topic 21].
 
 The data for a particular zone is retrieved based on a URI template including
 a variable representing a Zone ID.

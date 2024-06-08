@@ -5,7 +5,7 @@
 :status: swg-draft
 :committee: technical
 :draft: 1.0
-:external-id: http://www.opengis.net/doc/is/ogcapi-dggs/{m.n}
+:external-id: https://www.opengis.net/doc/is/ogcapi-dggs/{m.n}
 :docnumber: 21-038
 :received-date: 2029-03-30
 :issued-date: 2029-03-30

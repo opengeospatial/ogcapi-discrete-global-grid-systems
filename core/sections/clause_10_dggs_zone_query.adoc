@@ -8,7 +8,7 @@ combined with a particular zone indexing reference system (ZIRS), for which ther
 data available, or matching a particular query (e.g., using a filtering parameter).
 It describes an HTTP GET operation, as well as its response.
 The selected DGGRS is listed as available and described in the <<rc_core,Core requirement class>>,
-and conforms to http://www.opengis.net/doc/AS/dggs/2.0[OGC Topic 21].
+and conforms to https://www.opengis.net/doc/AS/dggs/2.0[OGC Topic 21].
 The list of zones from a Web API using this requirement class can either be
 for a particular collection of geospatial data, for a dataset as a whole, or
 in connection with https://docs.ogc.org/DRAFTS/21-009.html[_OGC API - Processes - Part 3: Workflows & Chaining_], the output of
