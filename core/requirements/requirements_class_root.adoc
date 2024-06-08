@@ -17,5 +17,6 @@ inherit:: https://www.opengis.net/spec/ogcapi-common-1/1.0/req/core
 label:: /req/root-dggs/dggs
 description:: For API/dataset-wide DGGS resources:
 part:: The Implementation SHALL support DGGS resources for the dataset as a whole, for the "Core" requirement class, as well as any resources defined in additional supported requirements classes.
-part:: If the DGGS API allows querying or retrieving data from a dataset, the `/dggs` and `/dggs/{dggrsId}` resources SHALL include a link to the collection using the link relation type `[ogc-rel:dataset]`.
+part:: The Implementation SHALL include a link to the list of available DGGRSs for the API/dataset at `/dggs` in the links of the landing page using the link relation type `[ogc-rel:dggrs-list]`.
+part:: If the DGGS API allows querying or retrieving data from a dataset, the `/dggs` and `/dggs/{dggrsId}` resources SHALL include a link to the landing page using the link relation type `[ogc-rel:dataset]`.
 ====

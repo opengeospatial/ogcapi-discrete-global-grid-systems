@@ -20,6 +20,7 @@ part:: The Implementation SHALL support a JSON representation of this `.../dggs`
 part:: The `.../dggs` resource SHALL include a `dggs` array property listing all discrete global grid reference systems supported by the Implementation.
 part:: Each element of the `dggs` array SHALL include a subset of the information available in the individual DGGS information described below, including at minimum the `id`, `title`, `uri` (if applicable), and `links`.
 part:: The `links` property SHALL include at minimum a link to the discrete global grid reference system using the `self` link relation type, as well as a link to the discrete global grid reference system using the `[ogc-rel:dggrs-definition]` relation type.
+part:: The link relation type to use for linking from the corresponding resource to the list of available DGGRSs for that resource SHALL be `[ogc-rel:dggrs-list]`.
 ====
 
 ==== Discrete global grid reference system information (`.../dggs/{dggrsId}`)
