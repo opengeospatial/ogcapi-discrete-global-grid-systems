@@ -28,19 +28,19 @@ part:: The API definition SHALL identify the supported operations defined in thi
 |DataSet^4^      |DGGRS List^1^               |`.dataset.getDGGRSList`
 |DataSet^4^      |DGGRS Description^1^        |`.dataset.getDGGRS`
 |DataSet^4^      |DGGRS Zones^2^              |`.dataset.getDGGRSZones`
-|DataSet^4^      |DGGRS Zone Information^1^   |`.dataset.getDGGRSZoneInfo
-|DataSet^4^      |DGGRS Zone Data^3^          |`.dataset.getDGGRSZoneData
+|DataSet^4^      |DGGRS Zone Information^1^   |`.dataset.getDGGRSZoneInfo`
+|DataSet^4^      |DGGRS Zone Data^3^          |`.dataset.getDGGRSZoneData`
 |Collection^5^   |DGGRS List^1^               |`.collection.getDGGRSList`
 |Collection^5^   |DGGRS Description^1^        |`.collection.getDGGRS`
 |Collection^5^   |DGGRS Zones^2^              |`.collection.getDGGRSZones`
-|Collection^5^   |DGGRS Zone Information^1^   |`.collection.getDGGRSZoneInfo
-|Collection^5^   |DGGRS Zone Data^3^          |`.collection.getDGGRSZoneData
+|Collection^5^   |DGGRS Zone Information^1^   |`.collection.getDGGRSZoneInfo`
+|Collection^5^   |DGGRS Zone Data^3^          |`.collection.getDGGRSZoneData`
 3+|_With other potential origins_^6^
 |_other_      |DGGRS List^1^               |`#.getDGGRSList`
 |_other_      |DGGRS Description^1^        |`#.getDGGRS`
 |_other_      |DGGRS Zones^2^              |`#.getDGGRSZones`
-|_other_      |DGGRS Zone Information^1^   |`#.getDGGRSZoneInfo
-|_other_      |DGGRS Zone Data^3^          |`#.getDGGRSZoneData
+|_other_      |DGGRS Zone Information^1^   |`#.getDGGRSZoneInfo`
+|_other_      |DGGRS Zone Data^3^          |`#.getDGGRSZoneData`
 
 3+|^1^ The _DGGRS List_ (`.../dggs`), _DGGRS Description_ (`.../dggs/{dggrsId}`) and _DGGRS Zone Information_ (`.../dggs/{dggrsId}/zones/{zoneId}`) resources are defined in requirements class "Core".
 3+|^2^ The _DGGRS Zones_ resource (`.../dggs/{dggrsId}/zones`) is defined in the "Zone Query" requirements class.
