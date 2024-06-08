@@ -8,6 +8,7 @@ as well as within a Web API conforming to additional OGC API Standards.
 This standard identifies twenty one Conformance Classes. Each Conformance Class has an associated Requirements Class.
 The Requirements Classes define the functional requirements which will be tested through the associated Conformance Class.
 Only the Core requirements class is mandatory, all others are optional.
+However, a Web API with practical use needs to implement either the Data Retrieval and/or the Zone Query requirement class.
 
 The Requirements Classes for _OGC API - Discrete Global Grid Systems_ are:
 
@@ -56,7 +57,8 @@ such as the OpenAPI 3.0 requirement class of _OGC API - Common - Part 1: Core_, 
 Conformance with this standard shall be checked using all the relevant tests specified in Annex A (normative) of this document.
 The framework, concepts, and methodology for testing, and the criteria to be achieved to claim conformance are specified in the OGC Compliance Testing Policies and Procedures and the OGC Compliance Testing web site.
 
-In order to conform to this OGC® interface standard, a software implementation shall implement at minimum the "Core" requirements class defined in Annex A (normative).
+In order to conform to this OGC® interface standard, a software implementation shall implement at minimum the "Core" requirements class, as well as either
+the "Data Retrieval" and/or the "Zone Query" requirements class, defined in Annex A (normative).
 
 All requirements-classes and conformance-classes described in this document are owned by the standard(s) identified.
 
