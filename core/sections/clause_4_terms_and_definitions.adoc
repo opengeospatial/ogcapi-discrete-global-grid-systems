@@ -1,6 +1,6 @@
 == Terms and definitions
 
-[[term-child_zone]]
+[[term-child-zone]]
 === child zone
 
 immediate descendant of a <<term-parent-zone,parent zone>>
@@ -109,7 +109,7 @@ spatio-temporal reference in the form of a label or code that uniquely identifie
 
 NOTE: synonym of "zone identifier" and "zone ID".
 
-NOTE: This standard and the DGGRS definitions described in <<annex-dggrs-def,Annex B>> require textual identifiers, while optionally supporting integer identifiers for the purpose of compact transmission and internal representations.
+NOTE: This standard and the DGGRS definitions described in <<annex-dggrs-def,Annex B>> require textual identifiers (which may or may not be comprised of only digit characters), while optionally supporting 64-bit integer identifiers for the purpose of compact transmission and internal representations.
 
 [[term-zirs]]
 === zonal identifier reference system (ZIRS)

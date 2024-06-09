@@ -110,8 +110,8 @@ See <<annex-dggrs-def,annex B>> for examples of DGGRS definition responses (incl
 === Retrieving the description of a specific DGGRS
 A client would then select a particular DGGRS of which it already has built-in knowledge, possibly using a software library implementing support for one or more DGGRS available from the server.
 
-NOTE: This DGGS API is intended primarily for client / server exchanges where both parties are familiar and can efficiently deal with the same DGGRS.
-Use cases where the client itself also acts as a server as part of a data integration workflows are particularly relevant, where the combination of
+IMPORTANT: This DGGS API is intended primarily for client / server exchanges where both parties are familiar and can efficiently deal with the same DGGRS.
+Use cases where the client itself also acts as a server as part of data integration workflows are particularly relevant, where the combination of
 advanced spatial queries with the ability to request data for specific zones of interest can potentially greatly accelerate analytic processing
 through parallel distributed processing and lazy evaluation.
 
@@ -168,7 +168,10 @@ a default (relative) depth as well as additional links and link templates.
 
 === Simple zone queries
 Having selected a particular DGGRS, one use case for the API is for a client to perform spatial queries by requesting a list of zones.
-The simplest case is to simply request a list of all available zones, which in the case of a particular collection implies zones for which the collection has data.
+The simplest case is to simply request a list of all available zones for a discrete global grid of a given refinement level (`zone-level`), which in the case of a particular collection implies zones
+for which the collection has data.
+
+==== Querying a particular refinement level
 
 If no `zone-level` parameter is provided, the server is free to pick a default zone level for such queries, which would result in a reasonable number of zones returned,
 based on the area and resolution of the data collection. In this example, the client will explicitly request a list of zones at refinement level 1.
@@ -177,7 +180,7 @@ By default, if `compact-zones=false` is not specified by the client, zone querie
 if all sub-zones of a parent zone would be included in the response, they get replaced by that parent zone so that fewer zones need to be enumerated.
 This can result in zones of a lower refinement level being returned than the requested `zone-level`, and therefore a mix of zones of different levels.
 A full globe response would thereore always result in the list of all zones of refinement level 0.
-In this example, the client will explicitly set `compact-zones=false`.
+In these examples, the client will explicitly set `compact-zones=false`.
 
 Following the `[ogc-rel:dggrs-zone-query]` link, specifying these parameters, and negotiating a <<rc_table-zone_json,JSON zone list>> response using an `Accept: application/json` header, the client requests from the end-point:
 
@@ -201,7 +204,7 @@ An example JSON response for this Zone Query JSON, as defined by the <<rc_zone-q
       { "rel" : "[ogc-rel:dggrs]", "title" : "ISEA3H DGGS for GEBCO",
         "href" : "/ogcapi/collections/gebco/dggs/ISEA3H"
       },
-      { "rel" : "[ogc-rel:dggrs-definition]", "title" : "ISEA3H DGGS definition",
+      { "rel" : "[ogc-rel:dggrs-definition]", "title" : "ISEA3H DGGRS definition",
          "href" : "/ogcapi/dggrs/ISEA3H"
       },
       { "rel" : "[ogc-rel:geodata]", "href" : "/ogcapi/collections/gebco" }
@@ -214,7 +217,25 @@ An example JSON response for this Zone Query JSON, as defined by the <<rc_zone-q
 }
 ----
 
-The server returned all 32 zones of ISEA3H level 1 (which corresponds to the traditional soccer ball pattern), because the collection has global coverage.
+The server returned all 32 zones of ISEA3H level 1 (which corresponds to a truncated icosahedron -- the traditional soccer ball pattern), because the collection has global coverage.
+
+Servers may support additional representations of zone lists beyond JSON, such as a more compact <<rc_zone-binary64bit,binary 64-bit integers>> encoding, a <<rc_zone-geojson,GeoJSON representation>> including zone geometry
+or an <<rc_zone-html,HTML representation>> for exploring datasets in a browser through the DGGS API.
+Note that regardless of encoding, zone query responses can also be compressed for additional banwidth efficiency if the client and server negotiate a content encoding e.g., using `Content-Encoding: gzip`.
+
+CAUTION: The transfer of zone geometry in zone queries is not an efficient use of the DGGS API for practical analytics purposes, since clients should already have built-in knowledge of the selected DGGRS in their local software libraries.
+
+The ability to retrieve zone lists in a geospatial data format such as GeoJSON or <<rc_zone-geotiff,GeoTIFF>> which can readily be visualized in GIS tools is useful for **educational**, **demonstration** and **debugging** purposes.
+For example, this functionality can be used to generate grids, such as those seen in <<annex-dggrs-def,annex B>> (a `crs` parameter to request an ISEA planar projection was used in that case to override the default GeoJSON CRS84),
+as well the zone visualizations seen in the examples below.
+
+A visualization of the response from negotiating `application/geo+json` for the above request is seen below.
+
+[#img_zones_globe='{figure-caption} {counter:figure-num}']
+.GeoJSON response for zone query for ISEA3H DGGRS at level 1 visualized in QGIS
+image::images/zones-globe-isea3h-level1.png[width=700,align="center"]
+
+==== Querying for a spatio-temporal subset
 
 To request a list of zones for an area of interest, the `bbox` or `subset` query parameter can be used.
 For a temporal DGGS, `datetime` can be used as well as `subset=time(...)` to constrain the query to a time of interest.
@@ -222,18 +243,20 @@ For restricting the same zone query to a bounding box area from (40°N, 30°E) t
 
 https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones?f=json&bbox=30,40,50,60&zone-level=1&compact-zones=false["\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones?bbox=30,40,50,60&zone-level=1&compact-zones=false"]
 
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones?f=json&subset=Lat(40:60),Lon(30:50)&zone-level=1&compact-zones=false["\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones?subset=Lat(40:60),Lon(30:50)&zone-level=1&compact-zones=false"]
+
 and obtain the following response (negotiating a JSON zone list again):
 
 [%unnumbered%]
 [source,json]
 ----
 {
-   "zones" : [ "A0-0-E", "A0-0-G", "A4-0-E", "A6-0-E", "A6-0-F", "A8-0-D", "A8-0-E" ],
+   "zones" : [ "A0-0-G", "A6-0-E" ],
    "links" : [
       { "rel" : "[ogc-rel:dggrs]", "title" : "ISEA3H DGGS for GEBCO",
         "href" : "/ogcapi/collections/gebco/dggs/ISEA3H"
       },
-      { "rel" : "[ogc-rel:dggrs-definition]", "title" : "ISEA3H DGGS definition",
+      { "rel" : "[ogc-rel:dggrs-definition]", "title" : "ISEA3H DGGRS definition",
          "href" : "/ogcapi/dggrs/ISEA3H"
       },
       { "rel" : "[ogc-rel:geodata]", "href" : "/ogcapi/collections/gebco" }
@@ -246,4 +269,149 @@ and obtain the following response (negotiating a JSON zone list again):
 }
 ----
 
-This time, the server returned 7 zones of ISEA3H level 1.
+This time, the server returned only two zones of ISEA3H level 1.
+
+A visualization of the response from negotiating `application/geo+json` for the above request, together with the bounding box used, is seen below.
+
+[#img_zones_globe='{figure-caption} {counter:figure-num}']
+.GeoJSON response for zone query for ISEA3H DGGRS at level 1 for a (40°N, 30°E) to (60°N,50°E) bounding box visualized in QGIS
+image::images/zones-globe-isea3h-level1-bbox.png[width=300,align="center"]
+
+As seen below, an HTML representation could include rendered previews of the data for the zone area, summary information, as well as links to retrieve the data and access the zone information resource for each zone.
+Note that the significant variance in area (-11.31% and +6.66% from the reference mean zone (whose area is calculated by dividing the Earth surface by the tota number of zones) is due to the the fact that `A0-0-G` is a pentagon (in the ISEA projection -- on the Earth surface it looks more like a decagon) which occupies 5/6th the
+area of hexagons such as `A6-0-E` (which on the Earth surface is one of the hexagons appearing as a nonagon), as well as the fact that at level 1, the number of pentagons (12) is significant compared to the total number of zones (32).
+
+[#img_zones_html='{figure-caption} {counter:figure-num}']
+.Sample HTML response for a zone query for ISEA3H DGGRS at level 1 for a (40°N, 30°E) to (60°N,50°E) bounding box
+image::images/zones-bbox-html.png[width=700,align="center"]
+
+Of course with a higher zone level, many more zones can be returned:
+
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones?f=json&bbox=30,40,50,60&zone-level=8&compact-zones=false["\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones?bbox=30,40,50,60&zone-level=8&compact-zones=false"]
+
+[#img_zones_bbox_isea3h='{figure-caption} {counter:figure-num}']
+.Sample HTML response for a zone query for ISEA3H DGGRS at level 8 for a (40°N, 30°E) to (60°N,50°E) bounding box
+image::images/zones-bbox-isea3h.png[width=500,align="center"]
+
+==== Zones representing data availability
+
+The following example illustrates the case of a collection (elevation data from https://viewfinderpanoramas.org/[Viewfinder Panoramas]) which does not have data for everywhere on the globe (only over land), using a higher zone level of 6 for the query.
+
+https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones?f=json&zone-level=6&compact-zones=false[\https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones?zone-level=6&compact-zones=false]
+
+[#img_zones_srtm_l6='{figure-caption} {counter:figure-num}']
+.GeoJSON response for zone query for ISEA3H DGGRS at level 6 for a https://viewfinderpanoramas.org/[Viewfinder Panoramas] land elevation collection, visualized in QGIS
+image::images/zones-srtm-isea3h-level6.png[width=700,align="center"]
+
+Using a bounding box to restrict the query to an area of interest, a higher zone level of 10 could be used:
+
+https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones?f=json&zone-level=10&bbox=30,40,50,50&compact-zones=false["\https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones?zone-level=10&bbox=30,40,50,50&compact-zones=false"]
+
+[#img_zones_srtm_l10_bbox='{figure-caption} {counter:figure-num}']
+.GeoJSON response for zone query for ISEA3H DGGRS at level 10, using a (40°N, 30°E) to (40°N,50°E) bounding box, for a https://viewfinderpanoramas.org/[Viewfinder Panoramas] land elevation collection, visualized in QGIS
+image::images/zones-srtm-isea3h-level10-bbox.png[width=500,align="center"]
+
+The DGGS API works independently of the nature of the data, whether dealing with gridded coverage or vector features, allowing to easily perform complex analytics involving heterogeneous data sources.
+The previous examples all used gridded coverage data sources. The following example illustrates the same capabilities using the Natural Earth states and provinces collection:
+
+https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:cultural:ne_10m_admin_1_states_provinces/dggs/ISEA3H/zones?f=json&zone-level=6&compact-zones=false[\https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:cultural:ne_10m_admin_1_states_provinces/dggs/ISEA3H/zones?zone-level=6&compact-zones=false]
+
+[#img_zones_nestates='{figure-caption} {counter:figure-num}']
+.GeoJSON response for zone query for ISEA3H DGGRS at level 6, for a https://naturalearthdata.com/[Natural Earth] states and provinces collection, visualized in QGIS
+image::images/zones-states-isea3h.png[width=700,align="center"]
+
+The similarity between the response for this collection of states and provinces features compared to the same request earlier for a gridded elevation coverages showcases the potential for DGGS zone queries to facilitate data integration.
+
+==== Querying sub-zones of a parent zone
+
+The Zone Query requirement class defines the `parent-zone` query parameter as one more way how to restrict the query spatially (and temporally in the case of a temporal DGGRS), which is particularly useful for hierarchical exploration.
+For example, to restrict the query to sub-zones of `A6-0-E` rather than using a bounding box, the client could perform the following request (at level 8):
+
+https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones?f=json&zone-level=8&parent-zone=A6-0-E&compact-zones=false[\https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones?zone-level=8&parent-zone=A6-0-E&compact-zones=false]
+
+[#img_zones_srtm_l8_parent_zone='{figure-caption} {counter:figure-num}']
+.GeoJSON response for zone query for ISEA3H DGGRS at level 8, for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones/A6-0-E[A6-0-E], for a https://viewfinderpanoramas.org/[Viewfinder Panoramas] land elevation collection, visualized in QGIS
+image::images/zones-srtm-isea3h-level8-parent-zone.png[width=500,align="center"]
+
+The client could then pick one of the returned zones, say `E6-317-A`, for deeper exploration at level 16:
+
+https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones?f=json&zone-level=16&parent-zone=E6-317-A&compact-zones=false[\https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones?zone-level=16&parent-zone=E6-317-A&compact-zones=false]
+
+[#img_zones_srtm_l16_parent_zone='{figure-caption} {counter:figure-num}']
+.GeoJSON response for zone query for ISEA3H DGGRS at level 16, for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones/E6-317-A[E6-317-A], for a https://viewfinderpanoramas.org/[Viewfinder Panoramas] land elevation collection, visualized in QGIS
+image::images/zones-srtm-isea3h-level16-parent-zone.png[width=500,align="center"]
+
+Going back to A6-0-E (a level 1 zone), this could also be used to retrieve the immediate children by requesting the next level (2), to step down the hierarchy a single refinement level at a time:
+
+https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones?f=json&zone-level=2&parent-zone=A6-0-E&compact-zones=false[\https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones?zone-level=2&parent-zone=A6-0-E&compact-zones=false]
+
+The 7 children zones (1 centroid child and 6 vertex children) are returned, since they all contain data.
+
+[#img_zones_srtm_l10_parent_zone='{figure-caption} {counter:figure-num}']
+.GeoJSON response for zone query for ISEA3H DGGRS at level 2, for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones/A6-0-E[A6-0-E] (outline shown), for a https://viewfinderpanoramas.org/[Viewfinder Panoramas] land elevation collection, visualized in QGIS
+image::images/zones-srtm-isea3h-next-level.png[width=400,align="center"]
+
+
+==== ISEA9R (rhombus) Zone Queries
+
+Although all examples so far used the ISEA3H DGGRS, this DGGS API is completely agnostic of the DGGRS.
+Future planned parts for OGC Abstract Topic 21 will standardize new categories of DGGS, including volumetric (Part 2), temporal (Part 3) and axis-aligned (Part 4).
+The DGGS API functionality, as demonstrated in this examples section, is ready to handle all any DGGRS, including DGGRS based on these new DGGS types.
+
+The following examples demonstrates equivalent zone queries using the <<isea9r-dggrs,ISEA9R DGGS>>, a dual DGGS of ISEA3H even refinement levels, which can be considered axis-aligned in a CRS derived from rotating and shearing the ISEA planar projection.
+In the ISEA planar projection, the ISEA9R zones are shaped as rhombuses.
+
+https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones?f=json&zone-level=3&compact-zones=false[\https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones?zone-level=3&compact-zones=false]
+
+[#img_zones_isea9r_l3='{figure-caption} {counter:figure-num}']
+.GeoJSON response for zone query for ISEA9R DGGRS at level 3 for a https://viewfinderpanoramas.org/[Viewfinder Panoramas] land elevation collection visualized in QGIS
+image::images/zones-srtm-isea9r-level3.png[width=700,align="center"]
+
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA9R/zones?bbox=30,40,50,60&zone-level=4&compact-zones=false["\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA9R/zones?bbox=30,40,50,60&zone-level=4&compact-zones=false"]
+
+[#img_zones_isea9r_l4_bbox='{figure-caption} {counter:figure-num}']
+.GeoJSON response for zone query for ISEA9R DGGRS at level 4 for a (40°N, 30°E) to (60°N,50°E) bounding box visualized in QGIS
+image::images/ISEA9R-bboxL4.png[width=500,align="center"]
+
+https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones?f=json&zone-level=4&parent-zone=B6-2&compact-zones=false[\https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones?zone-level=4&parent-zone=B6-2&compact-zones=false]
+
+[#img_zones_isea9r_l4_parent_zone_bbox='{figure-caption} {counter:figure-num}']
+.GeoJSON response for zone query for ISEA9R DGGRS at level 4 for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones/B6-2[B6-2], for a https://viewfinderpanoramas.org/[Viewfinder Panoramas], visualized in QGIS
+image::images/zones-srtm-isea9r-level4-parent-zone.png[width=500,align="center"]
+
+https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones?f=json&zone-level=8&parent-zone=E6-317&compact-zones=false[\https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones?zone-level=8&parent-zone=E6-317&compact-zones=false]
+
+[#img_zones_isea9r_l8_parent_zone_bbox='{figure-caption} {counter:figure-num}']
+.GeoJSON response for zone query for ISEA9R DGGRS at level 8 for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones/E6-317[E6-317], for a https://viewfinderpanoramas.org/[Viewfinder Panoramas], visualized in QGIS
+image::images/zones-srtm-isea9r-level8-parent-zone.png[width=500,align="center"]
+
+Although ISEA9R is axis-aligned, like ISEA3H, it is equal area, with an error budget below 1%.
+
+==== GNOSIS Global Grid (WGS84 rectangles) Zone Queries
+
+The next zone query examples use the <<ggg-dggrs,GNOSIS Global Grid DGGRS>>. The GNOSIS Global Grid is also axis-aligned, with the axes being the geographic latitude and longitude.
+On a plate carée projection, the zones are shaped as rectangles, which conveniently correspond to typical EPSG:4326 / CRS84 bounding boxes.
+
+https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSISGlobalGrid/zones?f=json&zone-level=5&compact-zones=false[\https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones?zone-level=5&compact-zones=false]
+
+[#img_zones_ggg_l5='{figure-caption} {counter:figure-num}']
+.GeoJSON response for zone query for GNOSIS Global Grid DGGRS at level 5 for a https://viewfinderpanoramas.org/[Viewfinder Panoramas] land elevation collection visualized in QGIS
+image::images/zones-srtm-ggg-level5.png[width=700,align="center"]
+
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/GNOSISGlobalGrid/zones?bbox=30,40,50,60&zone-level=7&compact-zones=false["\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/GNOSISGlobalGrid/zones?bbox=30,40,50,60&zone-level=7&compact-zones=false"]
+
+[#img_zones_ggg_l7_bbox='{figure-caption} {counter:figure-num}']
+.GeoJSON response for zone query for GNOSIS Global Grid DGGRS at level 7 for a (40°N, 30°E) to (60°N,50°E) bounding box visualized in QGIS
+image::images/ggg-bboxL7.png[width=500,align="center"]
+
+https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSISGlobalGrid/zones?f=json&zone-level=8&parent-zone=2-2-9&compact-zones=false[\https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSISGlobalGrid/zones?zone-level=8&parent-zone=2-2-9&compact-zones=false]
+
+[#img_zones_ggg_l8_parent_zone_bbox='{figure-caption} {counter:figure-num}']
+.GeoJSON response for zone query for GNOSIS Global Grid DGGRS at level 8 for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSISGlobalGrid/zones/2-2-9[2-2-9], for a https://viewfinderpanoramas.org/[Viewfinder Panoramas], visualized in QGIS
+image::images/zones-srtm-ggg-level8-parent-zone.png[width=500,align="center"]
+
+https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSISGlobalGrid/zones?f=json&zone-level=13&parent-zone=6-1F-98&compact-zones=false[\https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSISGlobalGrid/zones?zone-level=13&parent-zone=6-1F-98&compact-zones=false]
+
+[#img_zones_ggg_l13_parent_zone_bbox='{figure-caption} {counter:figure-num}']
+.GeoJSON response for zone query for GNOSIS Global Grid DGGRS at level 13 for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSISGlobalGrid/zones/6-1F-98[6-1F-98], for a https://viewfinderpanoramas.org/[Viewfinder Panoramas], visualized in QGIS
+image::images/zones-srtm-ggg-level13-parent-zone.png[width=500,align="center"]

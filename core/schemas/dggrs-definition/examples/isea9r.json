@@ -33,7 +33,7 @@
    },
    "zirs": {
       "textZIRS": {
-         "description": "An identifier comprised of an uppercase hexadecimal letter representing a level (A for level 0, B for level 1...), followed by a number from 0 to 9 representing the root rhombus corresponding to the faces of an icosahedron, in a staircase order from the top-left to the bottom right of an ISEA planar projection after a 60 degrees clockwise rotation, followed by a hyphen, then by an uppercase hexadecimal number identifying a sub-zone starting to count from 0 in row-major order.",
+         "description": "An identifier comprised of an uppercase letter representing a level (A for level 0, B for level 1...), followed by a number from 0 to 9 representing the root rhombus corresponding to the faces of an icosahedron, in a staircase order from the top-left to the bottom right of an ISEA planar projection after a 60 degrees clockwise rotation, followed by a hyphen, then by an uppercase hexadecimal number identifying a sub-zone starting to count from 0 in row-major order.",
          "type": "levelRootFaceHexRowMajorSubZone"
       },
       "uint64ZIRS": {
