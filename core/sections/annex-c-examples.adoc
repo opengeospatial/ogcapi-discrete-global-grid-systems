@@ -174,7 +174,7 @@ based on the area and resolution of the data collection. In this example, the cl
 
 By default, if `compact-zones=false` is not specified by the client, zone queries are compacted, meaning that
 if all sub-zones of a parent zone would be included in the response, they get replaced by that parent zone so that fewer zones need to be enumerated.
-This can result in zones of a lower refinement level being returned than the requested `zone-level.
+This can result in zones of a lower refinement level being returned than the requested `zone-level`.
 A full globe response would thereore always result in the list of all zones of refinement level 0.
 In this example, the client will expplicitly set `compact-zones=false`.
 
