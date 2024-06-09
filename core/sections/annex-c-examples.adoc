@@ -168,11 +168,19 @@ a default (relative) depth as well as additional links and link templates.
 === Simple zone queries
 Having selected a particular DGGRS, one use case for the API is for a client to perform spatial queries by requesting a list of zones.
 The simplest case is to simply request a list of all available zones, which in the case of a particular collection implies zones for which the collection has data.
-The server is free to pick a default zone level for such queries, which would result in a reasonable number of zones returned, based on the area and resolution of the data collection.
 
-Following the `[ogc-rel:dggrs-zone-query]` link, and negotiating a <<rc_table-zone_json,JSON zone list>> response using an `Accept: application/json` header, the client requests from the end-point:
+If no `zone-level` parameter is provided, the server is free to pick a default zone level for such queries, which would result in a reasonable number of zones returned,
+based on the area and resolution of the data collection. In this example, the client will explicitly request a list of zones at refinement level 1.
 
-https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones?f=json[\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones]
+By default, if `compact-zones=false` is not specified by the client, zone queries are compacted, meaning that
+if all sub-zones of a parent zone would be included in the response, they get replaced by that parent zone so that fewer zones need to be enumerated.
+This can result in zones of a lower refinement level being returned than the requested `zone-level.
+A full globe response would thereore always result in the list of all zones of refinement level 0.
+In this example, the client will expplicitly set `compact-zones=false`.
+
+Following the `[ogc-rel:dggrs-zone-query]` link, specifying these parameters, and negotiating a <<rc_table-zone_json,JSON zone list>> response using an `Accept: application/json` header, the client requests from the end-point:
+
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones?f=json&zone-level=1&compact-zones=false[\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones?zone-level=1&compact-zones=false]
 
 An example JSON response for this Zone Query JSON, as defined by the <<rc_zone-query,Zone Query requirement class>>, is presented below:
 
@@ -205,19 +213,12 @@ An example JSON response for this Zone Query JSON, as defined by the <<rc_zone-q
 }
 ----
 
-In this example, the server returned all 32 zones of ISEA3H level 0,
-because the collection has global coverage.
-Even if the server may have picked a default zone level greater than 0,
-zone queries by default are compact unless `compact-zones=false` is specified by the client.
-In a compact zones response, when all sub-zones of a parent would be included in the response,
-they get replaced by that parent zone so that fewer zones need to be enumerated.
-A full globe response would therefore always result in the list of all zones of refinement level 0.
+The server returned all 32 zones of ISEA3H level 1 (which corresponds to the traditional soccer ball pattern), because the collection has global coverage.
 
 To request a list of zones for an area of interest, the `bbox` or `subset` query parameter can be used.
-To specify a particular refinement level at which to query zones, the `zone-level` query parameter can be used.
-Combining these parameters with `compact-zones=false`, the client could make the following request:
+For restricting the same zone query to a bounding box area from (40°N, 30°E) to (60°N,50°E), the client could make either of the following requests:
 
-https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones?f=json&bbox=30,40,50,60&zone-level=2&compact-zones=false["\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones?bbox=30,40,50,60&zone-level=2&compact-zones=false"]
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones?f=json&bbox=30,40,50,60&zone-level=1&compact-zones=false["\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones?bbox=30,40,50,60&zone-level=1&compact-zones=false"]
 
 and obtain the following response (negotiating a JSON zone list again):
 
@@ -225,10 +226,7 @@ and obtain the following response (negotiating a JSON zone list again):
 [source,json]
 ----
 {
-   "zones" : [
-      "B0-2-B", "B4-2-A", "B4-5-A", "B6-1-A", "B6-2-A", "B6-4-A",
-      "B6-5-A", "B6-8-A", "B8-1-A", "B8-2-A", "B8-5-A"
-   ],
+   "zones" : [ "A0-0-E", "A0-0-G", "A4-0-E", "A6-0-E", "A6-0-F", "A8-0-D", "A8-0-E" ],
    "links" : [
       { "rel" : "[ogc-rel:dggrs]", "title" : "ISEA3H DGGS for GEBCO",
         "href" : "/ogcapi/collections/gebco/dggs/ISEA3H"
@@ -246,4 +244,4 @@ and obtain the following response (negotiating a JSON zone list again):
 }
 ----
 
-This time, the server returned 11 zones of ISEA3H level 2.
+This time, the server returned 7 zones of ISEA3H level 1.
