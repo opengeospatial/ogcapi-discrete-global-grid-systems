@@ -41,8 +41,9 @@ system comprised of a hierarchy of <<term-dgg,discrete global grids>> organized 
 [.source]
 <<OGC20-040r3>>
 
-NOTE: This definition differs from the OGC Abstract Specification Topic 21 definition, following earlier DGGS literature where the term DGGS often refers strictly to a "system of discrete global grids" in the sense of a "set" of grids,
-excluding the concepts of <<term-zoneid,zonal identifiers>> (re-introduced as part of a <<term-dggrs,discrete global grid reference system>>) and excluding notions of functionality or interoperability.
+NOTE: This definition differs from the OGC Abstract Specification Topic 21 definition, following earlier DGGS literature where the term DGGS often refers strictly to a "system of discrete global grids" in the sense
+of a "set" of grids (e.g., _"A Discrete Global Grid System (DGGS) is a series of discrete global grids"_ [<<Sahr2003>>]), excluding the concepts of <<term-zoneid,zonal identifiers>>
+(which is re-introduced as part of a <<term-dggrs,discrete global grid reference system>>) and excluding notions of software functionality or interoperability so as to remain purely a data structure.
 This definition more closely corresponds to the term https://docs.ogc.org/as/20-040r3/20-040r3.html#hierarchy[DGGS "hierarchy" (4.26)] in OGC Abstract Specification Topic 21.
 
 [[term-globe]]
