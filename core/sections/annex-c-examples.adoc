@@ -1,0 +1,249 @@
+[appendix,obligation="informative"]
+:appendix-caption: Annex
+[[annex_examples]]
+== Examples
+This annex provides a set of examples illustrating requests and responses for retrieving DGGS zone data and performing zone queries using capabilities defined by this DGGS API.
+
+=== Collection description
+DGGS resources can be attached to an https://docs.ogc.org/DRAFTS/20-024.html[_OGC API - Common - Part 2_] collection origin.
+The following global GEBCO 2014 bathymetry collection will be used as an example:
+
+https://maps.gnosis.earth/ogcapi/collections/gebco?f=json[\https://maps.gnosis.earth/ogcapi/collections/gebco]
+
+An example JSON response for this collection description resource, as defined by Common - Part 2 and the <<rc_collection-dggs, Collection DGGS Requirement Class>>, is presented below, including a link to the list of available DGGRSs:
+
+[%unnumbered%]
+[source,json]
+----
+{
+   "id" : "gebco",
+   "title" : "GEBCO 2014",
+   "description" : "General Bathymetric Chart of the Oceans (2014)",
+   "attribution" : "General Bathymetric Chart of the Oceans (<a href='https://www.gebco.net/news_and_media/gebco_2014_grid.html'>GEBCO_2014</a>)",
+   "extent" : {
+      "spatial" : {
+         "bbox" : [ [ -180, -90, 180, 90 ] ],
+         "grid" : [
+            { "cellsCount" : 65537, "resolution" : 0.0054931640625 },
+            { "cellsCount" : 32769, "resolution" : 0.0054931640625 }
+         ]
+   } },
+   "minScaleDenominator" : 2183915.0938621787354,
+   "minCellSize" : 0.0054931640625,
+   "links" : [
+      { "rel" : "self", "title" : "Information about this GEBCO data collection",
+        "href" : "/ogcapi/collections/gebco"
+      },
+      { "rel" : "[ogc-rel:schema]",  "title" : "Schema",
+         "href" : "/ogcapi/collections/gebco/schema"
+      },
+      { "rel" : "[ogc-rel:queryables]",  "title" : "Queryables",
+         "href" : "/ogcapi/collections/gebco/queryables"
+      },
+      { "rel" : "[ogc-rel:dggrs-list]", "title" : "Available DGGRSs for this GEBCO data collection",
+        "href" : "/ogcapi/collections/gebco/dggs"
+      }
+   ]
+}
+----
+
+=== Listing available DGGRSs
+Whether accessing DGGS resources for the root of an API/dataset or for a particular collection, the first DGGS-specific request made by a client would be to list the available DGGRSs.
+Following the link obtained from the previous example response, a client can determine which DGGRSs are supported by the API at that end-point:
+
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs?f=json[\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs]
+
+An example JSON response for this DGGRS list, as defined by the <<rc_core,Core requirement class>>, is presented below:
+
+[%unnumbered%]
+[source,json]
+----
+{
+   "links" : [
+      { "rel" : "[ogc-rel:geodata]", "href" : "/ogcapi/collections/gebco" }
+   ],
+   "dggrs" : [
+      {
+         "id" : "GNOSISGlobalGrid",
+         "title" : "GNOSIS Global Grid",
+         "uri" : "[ogc-dggrs:GNOSISGlobalGrid]",
+         "links" : [
+            { "rel" : "self", "title" : "GNOSISGlobalGrid DGGRS for GEBCO",
+              "href" : "/ogcapi/collections/gebco/dggs/GNOSISGlobalGrid" },
+            { "rel" : "[ogc-rel:dggrs-definition]", "title" : "GNOSISGlobalGrid DGGRS definition",
+              "href" : "/ogcapi/dggrs/GNOSISGlobalGrid"
+            }
+         ]
+      },
+      {
+         "id" : "ISEA9R",
+         "title" : "ISEA Aperture 9 Rhombic",
+         "uri" : "[ogc-dggrs:ISEA9R]",
+         "links" : [
+            { "rel" : "self", "title" : "ISEA9R DGGRS for GEBCO",
+              "href" : "/ogcapi/collections/gebco/dggs/ISEA9R"
+            },
+            { "rel" : "[ogc-rel:dggrs-definition]", "title" : "ISEA9R DGGRS definition",
+              "href" : "/ogcapi/dggrs/ISEA9R"
+            }
+         ]
+      },
+      {
+         "id" : "ISEA3H",
+         "title" : "ISEA Aperture 3 Hexagonal",
+         "uri" : "[ogc-dggrs:ISEA3H]"
+         "links" : [
+            { "rel" : "self", "title" : "ISEA3H DGGRS for GEBCO",
+              "href" : "/ogcapi/collections/gebco/dggs/ISEA3H"
+            },
+            { "rel" : "[ogc-rel:dggrs-definition]", "title" : "ISEA3H DGGRS definition",
+              "href" : "/ogcapi/dggrs/ISEA3H"
+            }
+         ]
+      }
+   ]
+}
+----
+
+See <<annex-dggrs-def,annex B>> for examples of DGGRS definition responses which the client could obtain by following the `[ogc-rel:dggrs-definition]` links.
+
+=== Retrieving the description of a specific DGGRS
+A client would then select a particular DGGRS of which it already has built-in knowledge, possibly using a software library implementing support for one or more DGGRS available from the server.
+
+NOTE: This DGGS API is intended primarily for client / server exchanges where both parties are familiar and can efficiently deal with the same DGGRS.
+Use cases where the client itself also acts as a server as part of a data integration workflows are particularly relevant, where the combination of
+advanced spatial queries with the ability to request data for specific zones of interest can potentially greatly accelerate analytic processing
+through parallel distributed processing and lazy evaluation.
+
+As a fallback, a client without native support for a particular DGGRS can still retrieve and interpret data from a server implementing support for both
+zone queries and data retrieval by performing a two-steps operation. First, the client can perform a zone query for an area of interest using the `bbox` query parameter.
+Then, the client can request data for the zones returned by this query in a georeferenced encoding which it understands and which is not tightly coupled with the DGGS (excluding e.g.,the <<rc_data-json,DGGS-JSON>> encoding), such as GeoJSON or GeoTIFF.
+However, for such use cases, OGC API - DGGS does not present significant advantages over other OGC API data access mechanisms such as
+https://docs.ogc.org/DRAFTS/19-087.html[OGC API - Coverages], https://docs.ogc.org/is/17-069r4/17-069r4.html[OGC API - Features] or https://docs.ogc.org/is/20-057/20-057.html[OGC API - Tiles].
+
+In this example, the client selects the <<isea3h-dggrs,ISEA3H DGGRS>> (because it has built-in support for it) and follows the link to obtain a complete description of the DGGRS:
+
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H?f=json[\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H]
+
+An example JSON response for this DGGRS description, as defined by the <<rc_core,Core requirement class>>, is presented below.
+Note how the description is more comprehensive than the summary description included for each item in the previous DGGRS list response, including a description,
+a default (relative) depth as well as additional links and link templates.
+
+[%unnumbered%]
+[source,json]
+----
+{
+   "id" : "ISEA3H",
+   "title" : "ISEA Aperture 3 Hexagonal",
+   "description" : "A Discrete Global Grid Reference System based on the Icosahedral Snyder Equal Area projection, with aperture 3 hexagonal zones, using an indexing scheme based on ISEA9R.",
+   "uri" : "[ogc-dggrs:ISEA3H]",
+   "defaultDepth": 10,
+   "links" : [
+      { "rel" : "self", "title" : "ISEA3H DGGRS for GEBCO",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H"
+      },
+      { "rel" : "[ogc-rel:dggrs-definition]", "title" : "ISEA3H DGGRS definition",
+        "href" : "/ogcapi/dggrs/ISEA3H"
+      },
+      { "rel" : "[ogc-rel:dggrs-zone-query]", "title" : "ISEA3H DGGRS Zone Query",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones"
+      },
+      { "rel" : "[ogc-rel:geodata]", "href" : "/ogcapi/collections/gebco" }
+   ],
+   "linkTemplates" : [
+      {
+         "rel" : "[ogc-rel:dggrs-zone-info]",
+         "title" : "DGGRS zone information for a particular ISEA3H zone",
+         "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/{zoneId}"
+      },
+      {
+         "rel" : "[ogc-rel:dggrs-zone-data]",
+         "title" : "Data retrieval for a particular ISEA3H zone",
+         "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/{zoneId}/data"
+      }
+   ]
+}
+----
+
+=== Simple zone queries
+Having selected a particular DGGRS, one use case for the API is for a client to perform spatial queries by requesting a list of zones.
+The simplest case is to simply request a list of all available zones, which in the case of a particular collection implies zones for which the collection has data.
+The server is free to pick a default zone level for such queries, which would result in a reasonable number of zones returned, based on the area and resolution of the data collection.
+
+Following the `[ogc-rel:dggrs-zone-query]` link, and negotiating a <<rc_table-zone_json,JSON zone list>> response using an `Accept: application/json` header, the client requests from the end-point:
+
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones?f=json[\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones]
+
+An example JSON response for this Zone Query JSON, as defined by the <<rc_zone-query,Zone Query requirement class>>, is presented below:
+
+[%unnumbered%]
+[source,json]
+----
+{
+   "zones" : [
+      "A0-0-D", "A0-0-E", "A0-0-F", "A0-0-G", "A1-0-D", "A1-0-E",
+      "A1-0-F", "A2-0-D", "A2-0-E", "A2-0-F", "A3-0-D", "A3-0-E",
+      "A3-0-F", "A4-0-D", "A4-0-E", "A4-0-F", "A5-0-D", "A5-0-E",
+      "A5-0-F", "A6-0-D", "A6-0-E", "A6-0-F", "A7-0-D", "A7-0-E",
+      "A7-0-F", "A8-0-D", "A8-0-E", "A8-0-F", "A9-0-D", "A9-0-E",
+      "A9-0-F", "A9-0-H"
+   ],
+   "links" : [
+      { "rel" : "[ogc-rel:dggrs]", "title" : "ISEA3H DGGS for GEBCO",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H"
+      },
+      { "rel" : "[ogc-rel:dggrs-definition]", "title" : "ISEA3H DGGS definition",
+         "href" : "/ogcapi/dggrs/ISEA3H"
+      },
+      { "rel" : "[ogc-rel:geodata]", "href" : "/ogcapi/collections/gebco" }
+   ],
+   "linkTemplates" : [
+      { "rel" : "[ogc-rel:dggrs-zone-data]", "title" : "ISEA3H data for GEBCO",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/{zoneId}/data",
+      }
+   ]
+}
+----
+
+In this example, the server returned all 32 zones of ISEA3H level 0,
+because the collection has global coverage.
+Even if the server may have picked a default zone level greater than 0,
+zone queries by default are compact unless `compact-zones=false` is specified by the client.
+In a compact zones response, when all sub-zones of a parent would be included in the response,
+they get replaced by that parent zone so that fewer zones need to be enumerated.
+A full globe response would therefore always result in the list of all zones of refinement level 0.
+
+To request a list of zones for an area of interest, the `bbox` or `subset` query parameter can be used.
+To specify a particular refinement level at which to query zones, the `zone-level` query parameter can be used.
+Combining these parameters with `compact-zones=false`, the client could make the following request:
+
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones?f=json&bbox=30,40,50,60&zone-level=2&compact-zones=false["\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones?bbox=30,40,50,60&zone-level=2&compact-zones=false"]
+
+and obtain the following response (negotiating a JSON zone list again):
+
+[%unnumbered%]
+[source,json]
+----
+{
+   "zones" : [
+      "B0-2-B", "B4-2-A", "B4-5-A", "B6-1-A", "B6-2-A", "B6-4-A",
+      "B6-5-A", "B6-8-A", "B8-1-A", "B8-2-A", "B8-5-A"
+   ],
+   "links" : [
+      { "rel" : "[ogc-rel:dggrs]", "title" : "ISEA3H DGGS for GEBCO",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H"
+      },
+      { "rel" : "[ogc-rel:dggrs-definition]", "title" : "ISEA3H DGGS definition",
+         "href" : "/ogcapi/dggrs/ISEA3H"
+      },
+      { "rel" : "[ogc-rel:geodata]", "href" : "/ogcapi/collections/gebco" }
+   ],
+   "linkTemplates" : [
+      { "rel" : "[ogc-rel:dggrs-zone-data]", "title" : "ISEA3H data for GEBCO",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/{zoneId}/data",
+      }
+   ]
+}
+----
+
+This time, the server returned 11 zones of ISEA3H level 2.
