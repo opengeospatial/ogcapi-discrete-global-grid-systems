@@ -1754,7 +1754,7 @@
             "properties": {
               "description": {
                 "type": "string",
-                "example": "The zones are ordered in tightly packed scanlines. Considering the ISEA planar projection, for odd level parent, zones are ordered left to right along a scanline and scanlines are ordered from top to bottom. For an even level parent, zones are ordered top bottom right along a scanline and scanlines are ordered from left to right. For an odd depth, scanlines start along a hexagon edge, whereas for even depths, scanlines start on a hexagon vertex.\n"
+                "example": "The zones are ordered in tightly packed scanlines. Considering the ISEA planar projection, for odd level parent, zones are ordered left to right along a scanline and scanlines are ordered from top to bottom. For an even level parent, zones are ordered top to bottom along a scanline and scanlines are ordered from left to right. For an odd depth, scanlines start along a hexagon edge, whereas for even depths, scanlines start on a hexagon vertex.\n"
               },
               "type": {
                 "anyOf": [
