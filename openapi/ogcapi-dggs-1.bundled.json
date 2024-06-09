@@ -1274,6 +1274,11 @@
               }
             ]
           },
+          "maxRefinementLevel": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "For DGGS resources associated with a data source, the Implementation SHOULD include a `maxRefinementLevel` integer property in the `.../dggs/{dggrsId}` resource specifying the maximum refinement level at which the full resolution of the data can be retrieved (using a `zone-depth` relative depth of 0) and/or used for performing the most accurate zone queries (using that value for `zone-level`)."
+          },
           "links": {
             "description": "Links to related resources. A `self` link to the Discrete Global Grid Reference System description and an `[ogc-rel:dggrs-definition]` link to the DGGRS definition (using the schema defined by https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/core/schemas/dggrs-definition/dggrs-definition-proposed.yaml) are required. An `[ogc-rel:dggrs-zone-query]` link to query DGGS zones should also be included if _DGGS Zone Query_ is supported.",
             "type": "array",

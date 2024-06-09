@@ -138,6 +138,7 @@ a default (relative) depth as well as additional links and link templates.
    "description" : "A Discrete Global Grid Reference System based on the Icosahedral Snyder Equal Area projection, with aperture 3 hexagonal zones, using an indexing scheme based on ISEA9R.",
    "uri" : "[ogc-dggrs:ISEA3H]",
    "defaultDepth": 10,
+   "maxRefinementLevel": 18,
    "links" : [
       { "rel" : "self", "title" : "ISEA3H DGGRS for GEBCO",
         "href" : "/ogcapi/collections/gebco/dggs/ISEA3H"

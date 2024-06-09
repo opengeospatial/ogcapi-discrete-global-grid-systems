@@ -45,6 +45,23 @@ part:: The Implementation SHALL include a short `title` property identifying the
 part:: The Implementation SHALL include a `description` property providing a summary description of the discrete global grid reference system.
 ====
 
+[recommendation]
+====
+[%metadata]
+label:: /rec/core/max-refinement
+description:: For specifying a maximum refinement level for a discrete global grid reference system associated with a particular geospatial data resource:
+part:: For DGGS resources associated with a data source, the Implementation SHOULD include a `maxRefinementLevel` integer property in the `.../dggs/{dggrsId}` resource specifying the maximum refinement level at which the full resolution of the data can be retrieved (using a `zone-depth` relative depth of 0) and/or used for performing the most accurate zone queries (using that value for `zone-level`).
+====
+
+[permission]
+====
+[%metadata]
+label:: /per/core/beyond-max-refinement
+description:: For handling requests beyond `maxRefinementLevel`:
+part:: The Implementation MAY return a 4xx error for data retrieval and/or zone query requests beyond a `maxRefinementLevel` specified in the DGGRS description associated with the request.
+part:: Alternatively, the Implementation MAY process the request by properly oversampling the data values for handling refinement levels beyond the `maxRefinementLevel`.
+====
+
 ==== Retrieving zone information (`.../dggs/{dggrsId}/zones/{zoneId}`)
 
 [requirement]
