@@ -105,7 +105,7 @@ An example JSON response for this DGGRS list, as defined by the <<rc_core,Core r
 }
 ----
 
-See <<annex-dggrs-def,annex B>> for examples of DGGRS definition responses which the client could obtain by following the `[ogc-rel:dggrs-definition]` links.
+See <<annex-dggrs-def,annex B>> for examples of DGGRS definition responses (including for the <<isea3h-dggrs,ISEA3H DGGRS>> used in these examples) which the client could obtain by following the `[ogc-rel:dggrs-definition]` links.
 
 === Retrieving the description of a specific DGGRS
 A client would then select a particular DGGRS of which it already has built-in knowledge, possibly using a software library implementing support for one or more DGGRS available from the server.
@@ -175,9 +175,9 @@ based on the area and resolution of the data collection. In this example, the cl
 
 By default, if `compact-zones=false` is not specified by the client, zone queries are compacted, meaning that
 if all sub-zones of a parent zone would be included in the response, they get replaced by that parent zone so that fewer zones need to be enumerated.
-This can result in zones of a lower refinement level being returned than the requested `zone-level`.
+This can result in zones of a lower refinement level being returned than the requested `zone-level`, and therefore a mix of zones of different levels.
 A full globe response would thereore always result in the list of all zones of refinement level 0.
-In this example, the client will expplicitly set `compact-zones=false`.
+In this example, the client will explicitly set `compact-zones=false`.
 
 Following the `[ogc-rel:dggrs-zone-query]` link, specifying these parameters, and negotiating a <<rc_table-zone_json,JSON zone list>> response using an `Accept: application/json` header, the client requests from the end-point:
 
@@ -217,6 +217,7 @@ An example JSON response for this Zone Query JSON, as defined by the <<rc_zone-q
 The server returned all 32 zones of ISEA3H level 1 (which corresponds to the traditional soccer ball pattern), because the collection has global coverage.
 
 To request a list of zones for an area of interest, the `bbox` or `subset` query parameter can be used.
+For a temporal DGGS, `datetime` can be used as well as `subset=time(...)` to constrain the query to a time of interest.
 For restricting the same zone query to a bounding box area from (40°N, 30°E) to (60°N,50°E), the client could make either of the following requests:
 
 https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones?f=json&bbox=30,40,50,60&zone-level=1&compact-zones=false["\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones?bbox=30,40,50,60&zone-level=1&compact-zones=false"]

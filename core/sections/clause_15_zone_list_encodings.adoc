@@ -7,8 +7,8 @@ However, it does define requirements class for zone list encodings which are exp
 These requirements classes include:
 
 * <<rc_zone-json,JSON Zone List>>
-* <<rc_zone-binary64bit,64-bit Binary Zone List>>
 * <<rc_zone-html,HTML Zone List>>
+* <<rc_zone-binary64bit,64-bit Binary Zone List>>
 * <<rc_zone-geojson,GeoJSON Zone List>>
 * <<rc_zone-fgjson,FG-JSON Zone List>>
 * <<rc_zone-geotiff,GeoTIFF Zone List>>
@@ -23,12 +23,12 @@ A table of the media types used in the zone list encoding requirements classes d
 [width="90%",cols="2,4"]
 |====
 ^|*Encoding*              ^|*media type*
-|GeoTIFF zone list         |image/tiff; application=geotiff
-|GeoJSON zone list         |application/geo+json
-|JSON-FG zone list         |application/fg+json
 |JSON zone list            |application/json
 |HTML zone list            |text/html
 |Binary 64-bit zone list   |application/x-binary
+|GeoJSON zone list         |application/geo+json
+|JSON-FG zone list         |application/fg+json
+|GeoTIFF zone list         |image/tiff; application=geotiff
 |====
 
 [[rc_zone-json]]
