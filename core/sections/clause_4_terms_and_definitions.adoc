@@ -95,7 +95,7 @@ NOTE: A <<term-dggrs,discrete global grid reference system>> defines a determini
 An Application Programming Interface (API) using an architectural style that is founded on the technologies of the Web
 
 [.source]
-<<OGC 17-069r3>>
+<<OGC19-072>>
 
 NOTE: See https://www.w3.org/TR/dwbp/#accessAPIs[Best Practice 24: Use Web Standards as the foundation of APIs] (W3C Data on the Web Best Practices) for more detail.
 
