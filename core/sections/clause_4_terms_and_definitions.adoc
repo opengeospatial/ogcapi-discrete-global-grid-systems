@@ -18,7 +18,7 @@ set of <<term-zone,zones>> at the same <<term-refinement-level,refinement level>
 [.source]
 <<OGC20-040r3>>
 
-NOTE: Adapted to use `zones` rather than `cell` to avoid potential confusion with the similar concept of cell in a coverage.
+NOTE: Adapted to use `zones` rather than `cells` to avoid potential confusion with the similar concept of grid cells in a https://portal.ogc.org/files/?artifact_id=19820[_coverage_].
 As noted in OGC Abstract Specification Topic 21, _"While the terms cell and zone are often used interchangeably, strictly zone is the preferred term."_.
 
 [[term-dggrs]]
