@@ -6,7 +6,8 @@ DGGS Zone Data can be encoded in any suitable data format.
 However, it does define requirements class for zone data encodings which are expected to be commonly supported in implementations of this standard.
 These requirements classes include:
 
-* <<rc_data-json,JSON Data>>
+* <<rc_data-json,DGGS-JSON Data>>
+* <<rc_data-ubjson,DGGS-UB-JSON Data>>
 * <<rc_data-geojson,GeoJSON Data>>
 * <<rc_data-fgjson,FG-JSON Data>>
 * <<rc_data-geotiff,GeoTIFF Data>>
@@ -25,8 +26,8 @@ A table of the media types used in the encoding of the Zone Data requirements cl
 [width="90%",cols="2,4"]
 |====
 ^|*Encoding*              ^|*media type*
-|JSON zone data           |application/json
-|UB-JSON zone data        |application/ubjson
+|DGGS-JSON zone data      |application/json
+|DGGS-UB-JSON zone data   |application/ubjson
 |GeoJSON data             |application/geo+json
 |JSON-FG data             |application/fg+json
 |GeoTIFF data             |image/tiff; application=geotiff
@@ -37,7 +38,7 @@ A table of the media types used in the encoding of the Zone Data requirements cl
 |====
 
 [[rc_data-json]]
-=== Requirements Class "JSON Zone data encoding"
+=== Requirements Class "DGGS-JSON Zone data encoding"
 
 ==== Overview
 
@@ -64,7 +65,7 @@ include::../examples/2-multidimensions-variables.json[]
 include::../requirements/requirements_class_zone_data_json.adoc[]
 
 [[rc_data-ubjson]]
-=== Requirements Class "UB-JSON Zone data encoding"
+=== Requirements Class "DGGS-UB-JSON Zone data encoding"
 
 ==== Overview
 

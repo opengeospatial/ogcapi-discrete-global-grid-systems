@@ -14,4 +14,4 @@
 
 * [[[OGC20-039r2,OGC 20-039r2]]], Robert Gibb, Byron Cochrane, Matthew Purss, OGC Testbed-16: DGGS and DGGS API Engineering Report (2021). https://docs.ogc.org/per/20-039r2.html
 
-* [[[OGC21-033,OGC 21-033]]], Jérôme Jacovella-St-Louis, Flexible real-time data processing and visualization workflows emerging from OGC API modules (Draft), 2021. https://maps.ecere.com/moaw/DiscussionPaper-Draft3.pdf
+* [[[OGC21-033,OGC 21-033]]], Jérôme Jacovella-St-Louis, Flexible real-time data processing and visualization workflows emerging from OGC API modules (Draft), OGC 21-033 (2021). https://maps.ecere.com/moaw/DiscussionPaper-Draft3.pdf
