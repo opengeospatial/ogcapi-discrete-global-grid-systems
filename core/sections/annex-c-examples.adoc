@@ -367,7 +367,7 @@ https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R
 .GeoJSON response for zone query for ISEA9R DGGRS at level 3 for a https://viewfinderpanoramas.org/[Viewfinder Panoramas] land elevation collection visualized in QGIS
 image::images/zones-srtm-isea9r-level3.png[width=700,align="center"]
 
-https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA9R/zones?bbox=30,40,50,60&zone-level=4&compact-zones=false["\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA9R/zones?bbox=30,40,50,60&zone-level=4&compact-zones=false"]
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA9R/zones?f=json&bbox=30,40,50,60&zone-level=4&compact-zones=false["\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA9R/zones?bbox=30,40,50,60&zone-level=4&compact-zones=false"]
 
 [#img_zones_isea9r_l4_bbox='{figure-caption} {counter:figure-num}']
 .GeoJSON response for zone query for ISEA9R DGGRS at level 4 for a (40°N, 30°E) to (60°N,50°E) bounding box visualized in QGIS
@@ -448,3 +448,30 @@ https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H
 [#img_compact_srtm_l16_parent_zone='{figure-caption} {counter:figure-num}']
 .GeoJSON compact zones response for querying ISEA3H DGGRS at level 16, for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones/E6-317-A[E6-317-A], for a https://viewfinderpanoramas.org/[Viewfinder Panoramas] land elevation collection, visualized in QGIS
 image::images/compact-srtm-isea3h-level16-parent-zone.png[width=500,align="center"]
+
+==== ISEA9R compact zone queries
+Compacting ISEA9R zones can be achieved quite simply given that all sub-zones are fully congruent.
+
+https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones?f=json&zone-level=3[\https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones?zone-level=3]
+
+[#img_compact_isea9r_l3='{figure-caption} {counter:figure-num}']
+.GeoJSON compact zones response for querying ISEA9R DGGRS at level 3 for a https://viewfinderpanoramas.org/[Viewfinder Panoramas] land elevation collection visualized in QGIS
+image::images/compact-srtm-isea9r-level3.png[width=700,align="center"]
+
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA9R/zones?f=json&bbox=30,40,50,60&zone-level=4["\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA9R/zones?bbox=30,40,50,60&zone-level=4"]
+
+[#img_compact_isea9r_l4_bbox='{figure-caption} {counter:figure-num}']
+.GeoJSON compact zones response for querying ISEA9R DGGRS at level 4 for a (40°N, 30°E) to (60°N,50°E) bounding box visualized in QGIS
+image::images/compact-isea9r-bboxL4.png[width=500,align="center"]
+
+https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones?f=json&zone-level=4&parent-zone=B6-2[\https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones?zone-level=4&parent-zone=B6-2]
+
+[#img_compact_isea9r_l4_parent_zone_bbox='{figure-caption} {counter:figure-num}']
+.GeoJSON compact zones response for querying ISEA9R DGGRS at level 4 for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones/B6-2[B6-2], for a https://viewfinderpanoramas.org/[Viewfinder Panoramas], visualized in QGIS
+image::images/compact-srtm-isea9r-level4-parent-zone.png[width=500,align="center"]
+
+https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones?f=json&zone-level=8&parent-zone=E6-317[\https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones?zone-level=8&parent-zone=E6-317]
+
+[#img_compact_isea9r_l8_parent_zone_bbox='{figure-caption} {counter:figure-num}']
+.GeoJSON compact zones response for querying ISEA9R DGGRS at level 8 for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones/E6-317[E6-317], for a https://viewfinderpanoramas.org/[Viewfinder Panoramas], visualized in QGIS
+image::images/compact-srtm-isea9r-level8-parent-zone.png[width=500,align="center"]
