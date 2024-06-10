@@ -13,6 +13,32 @@ properties:
     type: array
     items:
       $ref: '../../schemas/common-core/link.yaml'
+  shapeType:
+    description: The type of shape for the zone geometry (e.g., hexagon or pentagon)
+    type: string
+  level:
+    description: The refinement level of this zone
+    type: integer
+    minimum: 0
+  crs:
+    description: The Coordinate Reference System in which the geometry, centroid and bbox properties are specified
+    type: string
+    format: uri
+    default: [OGC:CRS84]
+  centroid:
+    description: The centroid of the zone, in the CRS specified in crs property
+    type: array
+    items:
+      type: number
+      minItems: 2
+      maxItems: 3
+  bbox:
+    description: The spatial envelope of the zone (bounding box), in the CRS specified in crs property
+    type: array
+    items:
+      type: number
+      minItems: 4
+      maxItems: 6
   areaMetersSquare:
     description: Surface area of the zone in meters square.
     type: number
@@ -25,7 +51,7 @@ properties:
   geometry:
     description: Spatial geometry of the zone.
     allOf:
-      - format: geojson-feature
+      - format: geometry-polygon
       # JSON Schema not supported in OpenAPI 3.0
       - $ref: '../../schemas/geojson/PolygonFeature.yaml'
   temporalInterval:

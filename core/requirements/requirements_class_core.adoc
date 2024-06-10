@@ -71,7 +71,7 @@ description:: For retrieving information for a particular DGGRS zone:
 part:: The Implementation SHALL support an HTTP GET operation at a resource path ending with `.../dggs/{dggrsId}/zones/{zoneId}` providing information for a valid individual zones of the discrete global grid reference system.
 part:: The zone information resource SHALL support a JSON representation.
 part:: The zone information resource SHALL include an `id` property corresponding to the `{zoneId}` resource path parameter.
-part:: The zone information resource SHALL include a link back to the corresponding DGGRS resource (`.../dggs`) using the `[ogc-rel:dggrs]` link relation type.
+part:: The zone information resource SHALL include a link back to the corresponding DGGRS resource (`.../dggs/{dggrsId}`) using the `[ogc-rel:dggrs]` link relation type.
 ====
 
 [recommendation]
@@ -79,6 +79,11 @@ part:: The zone information resource SHALL include a link back to the correspond
 [%metadata]
 label:: /rec/core/zone-info
 description:: For recommending additional things that should be included in zone information resources:
+part:: The zone information resource SHOULD include a `shapeType` property indicating the shape type of the zone's geometry (e.g., hexagon or pentagon).
+part:: The zone information resource SHOULD include a `level` property indicating the refinement level of the zone.
+part:: The zone information resource SHOULD include a `crs` property indicating the Coordinate Reference System (CRS) in which the `geometry`, `centroid` and `bbox` property are specified.
+part:: The zone information resource SHOULD include a `centroid` property indicating the centroid of the zone. In the JSON representation, this should be an array of two numbers in the CRS specified in `crs`.
+part:: The zone information resource SHOULD include a `bbox` property indicating the extent (envelope / bounding box) of the zone. In the JSON representation, this should be an array of 4 coordinates for a DGGRS with two spatial dimensions or 6 coordinates for a DGGRS with three spatial dimensions, in the CRS specified in `crs`.
 part:: The zone information resource SHOULD include links to its parent(s) zone(s) using link relation `[ogc-rel:dggrs-zone-parent]`.
 part:: The zone information resource SHOULD include links to its immediate children zone using link relation `[ogc-rel:dggrs-zone-child]`.
 part:: The zone information resource SHOULD include links to its neighboring zones using link relation `[ogc-rel:dggrs-zone-neighbor]`.
@@ -91,7 +96,7 @@ part:: For a temporal DGGS, the zone information resource SHOULD include a `temp
 part:: The implementation SHOULD support a GeoJSON and/or OGC Features & Geometry JSON representation of the zone information resource where the top-level object is a feature representing the zone geometry,
 a `zoneID` property of that feature corresponds to the textual identifier (the `{zoneId}`), the `id` of the feature corresponds to either the textural identifier or the 64-bit unsigned integer identifier of the zone,
 and the other properties described in this recommendation are properties of that feature.
-part:: For a zone associated with a particular collection, the implementation SHOULD provide summary statistics (`minimum`, `maximum`, `average`, `stdDev`) pertaining to this zone for each field (fields of the range of a coverage, or relevant numeric properties of a feature collection) of the data. In the JSON encoding, this SHOULD be implemented as a JSON dictionary mapping field names to an object with each statistic.
+part:: For a zone associated with a particular collection, the implementation SHOULD provide summary statistics in a statistics (`minimum`, `maximum`, `average`, `stdDev`) pertaining to this zone for each field (fields of the range of a coverage, or relevant numeric properties of a feature collection) of the data. In the JSON encoding, this SHOULD be implemented as a `statistics` JSON dictionary property mapping field names to an object containing with each statistic.
 part:: For a zone associated with a particular collection, the implementation SHOULD provide `areaMetersSquareWithData`, `volumeMetersCubeWithData`, `temporalDurationSecondsWithData` properties corresponding to
 the respective properties defined above for the overall zones, but considering only the portions of the zone where there is data (e.g., regions of the zone excluding NODATA values for a gridded coverage, or within geometry for a feature collection).
 ====

@@ -17,31 +17,7 @@ properties:
     type: object
     nullable: true
   geometry:
-    title: GeoJSON Polygon
-    type: object
-    required:
-    - type
-    - coordinates
-    properties:
-      type:
-        type: string
-        enum:
-        - Polygon
-      coordinates:
-        type: array
-        items:
-          type: array
-          minItems: 4
-          items:
-            type: array
-            minItems: 2
-            items:
-              type: number
-      bbox:
-        type: array
-        minItems: 4
-        items:
-          type: number
+    $ref: 'PolygonGeometry.yaml'
   bbox:
     type: array
     minItems: 4

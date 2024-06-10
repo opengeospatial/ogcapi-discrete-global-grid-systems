@@ -168,6 +168,152 @@ See the informative <<annex-dggrs-def,annex B>> for examples of DGGRS definition
 The annex includes provisionary definitions for the <<isea3h-dggrs,ISEA3H>>, <<isea9r-dggrs,ISEA9R>> and <<ggg-dggrs,GNOSIS Global Grid>> used in these examples
 which will likely be used to initially populate an authoritative registry, Additional DGGRS entries would be submitted, reviewed and registered based on the needs of the community.
 
+=== Retrieving information for a specific DGGRS zone
+
+Later examples will demonstrate how to list available zones by performing zone queries, but for now these examples will skip directly to <<zone-info,retrieving information about a particular zone>>.
+This capability, also defined in the Core requirement class, exists primarily for completeness of the API resource tree, for allowing to explore datasets using a browser interface,
+as well as for educational, demonstration and debugging purposes.
+An actual DGGS API client for visualization or performing analytics would normally not access this resource at all, since URL templates allow to directly access the data for a particular zone.
+While the Core requirement class makes a number of recommendations about statistical information and topological relationships that should be included in the zone information resource,
+clients may not rely on any of this information being present. Clients can instead rely on their own local software libraries to establish topological relationships, can use zone queries
+to pose questions that can be answered by a list of zone IDs, or can retrieve zone data packets containing values from multiple sub-zones to perform their own analytics.
+A future extension could also introduce mandatory requirements making some of the recommended content such as summary statistics or additional useful information mandatory, which clients could then rely on
+for conforming implementations.
+
+This example assumes a client does for some reason request information in a JSON representation about a particular ISEA3H DGGRS zone, say `E6-317-A`, based on its built-in support for that DGGRS
+(perhaps this client is an Executable Test Suite, since implementing this resource is still required to conform to the Core conformance class,
+including at minimum an `id` and links to the DGGRS and data retrieval, if applicable).
+The GET request URL and response for this zone information resource associated with the GEBCO collection would then look like the following:
+
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-317-A?f=json[\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-317-A]
+
+[%unnumbered%]
+[source,json]
+----
+{
+   "id" : "E6-317-A",
+   "links" : [
+      { "rel" : "[ogc-rel:geodata]", "href" : "/ogcapi/collections/gebco" },
+      { "rel" : "[ogc-rel:dggrs]", "title" : "ISEA3H DGGRS for GEBCO",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H"
+      },
+      { "rel" : "[ogc-rel:dggrs-definition]", "title" : "ISEA3H DGGRS definition",
+        "href" : "/ogcapi/dggrs/ISEA3H"
+      },
+      { "rel" : "[ogc-rel:dggrs-zone-data]", "title" : "ISEA3H Zone E6-317-A data for GEBCO",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-317-A/data"
+      },
+
+      { "rel" : "[ogc-rel:dggrs-zone-parent]", "title": "Parent zone D6-65-E",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/D6-65-E" },
+      { "rel" : "[ogc-rel:dggrs-zone-parent]", "title": "Parent zone D6-4A-F",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/D6-4A-F" },
+      { "rel" : "[ogc-rel:dggrs-zone-parent]", "title": "Parent zone D6-66-D (centroid child)",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/D6-66-D" },
+
+      { "rel" : "[ogc-rel:dggrs-zone-child]", "title": "Child zone E6-317-D (centroid child)",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-317-D" },
+      { "rel" : "[ogc-rel:dggrs-zone-child]", "title": "Child zone E6-317-E (vertex child)",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-317-E" },
+      { "rel" : "[ogc-rel:dggrs-zone-child]", "title": "Child zone E6-317-F (vertex child)",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-317-F" },
+      { "rel" : "[ogc-rel:dggrs-zone-child]", "title": "Child zone E6-316-E (vertex child)",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-316-E" },
+      { "rel" : "[ogc-rel:dggrs-zone-child]", "title": "Child zone E6-2C5-F (vertex child)",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-2C5-F" },
+      { "rel" : "[ogc-rel:dggrs-zone-child]", "title": "Child zone E6-2C5-E (vertex child)",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-2C5-E" },
+      { "rel" : "[ogc-rel:dggrs-zone-child]", "title": "Child zone E6-2C6-F (vertex child)",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-2C6-F" },
+
+      { "rel" : "[ogc-rel:dggrs-zone-neighbor]", "title": "Neighboring zone E6-2C5-A (left)",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-2C5-A" },
+      { "rel" : "[ogc-rel:dggrs-zone-neighbor]", "title": "Neighboring zone E6-369-A (right)",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-369-A" },
+      { "rel" : "[ogc-rel:dggrs-zone-neighbor]", "title": "Neighboring zone E6-2C6-A (top-left)",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-2C6-A" },
+      { "rel" : "[ogc-rel:dggrs-zone-neighbor]", "title": "Neighboring zone E6-318-A (top-right)",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-318-A" },
+      { "rel" : "[ogc-rel:dggrs-zone-neighbor]", "title": "Neighboring zone E6-316-A (bottom-left)",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-316-A" },
+      { "rel" : "[ogc-rel:dggrs-zone-neighbor]", "title": "Neighboring zone E6-368-A (bottom-right)",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-368-A" }
+   ],
+   "shapeType" : "hexagon",
+   "areaMetersSquare" : 7765218521.3124237060547,
+   "level": 8,
+   "crs": "[OGC:CRS84]",
+   "centroid": [ 34.8301691522937, 45.493496839407 ],
+   "bbox": [ 34.1122890215028, 45.0307065899164, 35.5548602543606, 45.9545736562164 ],
+   "statistics" : {
+      "Elevation" : {
+         "minimum": -56.415161132812,
+         "maximum": 499.67742919922,
+         "average": 34.243211554643,
+         "stdDev": 58.802922870029
+      }
+   },
+   "geometry" : {
+      "type" : "Polygon",
+      "coordinates" : [
+         [ [35.0325792437483, 45.9545736562164], [35.0675730384768, 45.9355692576877],
+         [35.1025417108968, 45.9165538942826], [35.1374852871664, 45.8975275789752],
+         [35.1724037934654, 45.8784903247104], [35.2072972559966, 45.859442144404],
+         [35.2421657009844, 45.8403830509428], [35.2770091546753, 45.8213130571846],
+         [35.3118276433383, 45.8022321759581], [35.3466211932639, 45.7831404200626],
+         [35.3813898307646, 45.7640378022689], [35.4161335821748, 45.7449243353179],
+         [35.4508524738509, 45.725800031922], [35.4855465321706, 45.7066649047642],
+         [35.5202157835335, 45.6875189664983], [35.5548602543606, 45.6683622297491],
+         [35.5409621444686, 45.6377043376462], [35.527097993237, 45.6070377035762],
+         [35.5132676379054, 45.576362404245], [35.4994709165275, 45.5456785157748],
+         [35.4857076679667, 45.5149861137079], [35.4719777318922, 45.4842852730117],
+         [35.4582809487756, 45.4535760680823], [35.4446171598862, 45.4228585727495],
+         [35.4309862072879, 45.3921328602809], [35.4173879338344, 45.3613990033857],
+         [35.4038221831664, 45.3306570742198], [35.390288799707, 45.2999071443891],
+         [35.376787628658, 45.2691492849539], [35.3633185159963, 45.2383835664335],
+         [35.3498813084697, 45.2076100588098], [35.3020092883842, 45.1959626800988],
+         [35.2541667920171, 45.1842941045825], [35.2063537245807, 45.1726044068217],
+         [35.1585699921521, 45.1608936605836], [35.1108155016624, 45.1491619388553],
+         [35.0630901608873, 45.1374093138529], [35.0153938784362, 45.1256358570339],
+         [34.9677265637424, 45.1138416391074], [34.9200881270535, 45.1020267300452],
+         [34.8724784794212, 45.0901911990919], [34.8248975326921, 45.0783351147756],
+         [34.7773451994982, 45.0664585449175], [34.7298213932474, 45.0545615566424],
+         [34.6823260281141, 45.0426442163884], [34.6348590190306, 45.0307065899164],
+         [34.6001893100315, 45.0496582358553], [34.565495668238, 45.0685988693406],
+         [34.5307780684752, 45.0875284779916], [34.4960364855943, 45.1064470494011],
+         [34.4612708944723, 45.1253545711343], [34.4264812700118, 45.1442510307293],
+         [34.3916675871419, 45.163136415697], [34.3568298208172, 45.1820107135215],
+         [34.3219679460187, 45.2008739116594], [34.2870819377534, 45.2197259975403],
+         [34.2521717710543, 45.2385669585668], [34.2172374209808, 45.2573967821143],
+         [34.1822788626187, 45.2762154555309], [34.1472960710798, 45.2950229661379],
+         [34.1122890215028, 45.3138193012292], [34.1249230545728, 45.34474018811],
+         [34.1375863824436, 45.3756544566371], [34.1502791448219, 45.4065620478253],
+         [34.1630014821059, 45.4374629022505], [34.1757535353903, 45.4683569600458],
+         [34.1885354464684, 45.4992441608991], [34.2013473578361, 45.5301244440496],
+         [34.2141894126955, 45.5609977482844], [34.2270617549581, 45.5918640119347],
+         [34.2399645292484, 45.6227231728739], [34.2528978809076, 45.6535751685123],
+         [34.2658619559968, 45.6844199357953], [34.2788569013007, 45.7152574111995],
+         [34.2918828643314, 45.7460875307289], [34.3049399933312, 45.7769102299116],
+         [34.3532293127776, 45.7889076311011], [34.4015496229923, 45.8008834941054],
+         [34.4499010211884, 45.8128377421031], [34.4982836054328, 45.8247702974718],
+         [34.5466974746559, 45.8366810817765], [34.5951427286622, 45.8485700157587],
+         [34.64361946814, 45.8604370193242], [34.6921277946726, 45.8722820115316],
+         [34.7406678107482, 45.8841049105797], [34.7892396197712, 45.8959056337956],
+         [34.8378433260726, 45.9076840976223], [34.8864790349218, 45.919440217605],
+         [34.9351468525365, 45.9311739083794], [34.9838468860951, 45.9428850836581],
+         [35.0325792437483, 45.9545736562164] ]
+      ]
+   }
+}
+----
+
+An HTML representation of that zone information resource, allowing a user to browse through parent, children and neighboring zones,
+could look like the following:
+
+[#img_zone_info_html='{figure-caption} {counter:figure-num}']
+.Sample HTML response of an ISEA3H DGGRS zone information resource for GEBCO data
+image::images/zone-info-html.png[width=700,align="center"]
+
 === Simple zone queries
 Having selected a particular DGGRS, one use case for the API is for a client to perform spatial queries by <<rc_zone-query,requesting a list of zones>>.
 The simplest case is to simply request a list of all available zones for a discrete global grid of a given refinement level (`zone-level`), which in the case of a particular collection implies zones
