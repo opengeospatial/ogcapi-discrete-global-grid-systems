@@ -45,6 +45,7 @@ All questions regarding this submission should be directed to the editors or the
 | Robert Gibb                             | Landcare Research New Zealand
 | Fuhu Ren / 任伏虎                        | Peking University Collaborative Innovation Center for Geospatial Big Data
 | Peter Strobl                            | European Commission Joint Research Centre
+| Ryan Ahola                              | Natural Resources Canada
 |===
 
 [abstract]
