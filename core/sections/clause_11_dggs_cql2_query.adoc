@@ -1,3 +1,4 @@
+[[rc_cql2-query]]
 == Requirement Class "Filtering Zone Queries with CQL2"
 
 === Overview

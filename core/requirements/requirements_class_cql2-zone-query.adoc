@@ -1,4 +1,4 @@
-[[rc_cql2-query]]
+[[rc-table_cql2-query]]
 [requirements_class]
 ====
 [%metadata]

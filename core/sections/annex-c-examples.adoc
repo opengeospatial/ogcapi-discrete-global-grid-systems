@@ -668,3 +668,83 @@ https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSIS
 [#img_zones_ggg_l13_parent_zone_bbox='{figure-caption} {counter:figure-num}']
 .GeoJSON compact zones response for querying GNOSIS Global Grid DGGRS at level 13 for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSISGlobalGrid/zones/6-1F-98[6-1F-98], for a https://viewfinderpanoramas.org/[Viewfinder Panoramas], visualized in QGIS
 image::images/compact-srtm-ggg-level13-parent-zone.png[width=700,align="center"]
+
+=== Filtering zone queries using CQL2 expression
+The Zone Query capabilities is most useful for use cases where the retrieves zone list is the result of some operation,
+whether as a result of a processing workflow or by evaluating a query expressed by the client.
+The <<rc_cql2-query,CQL2 filter>> capability allows to express such queries using the https://docs.ogc.org/DRAFTS/21-065r1.html[OGC Common Query Language (CQL2)].
+Note that the processing workflow could also itself include CQL2 expressions using https://docs.ogc.org/DRAFTS/21-009.html#section_fields_modifiers[input/output field modifiers].
+
+The CQL2 requirement class in this standard specifically calls for the https://docs.ogc.org/DRAFTS/21-065r1.html#cql2-text[CQL2-Text encoding], which is an intuitive representation with many similarities to SQL.
+CQL2 defines minimum capabilities (https://docs.ogc.org/DRAFTS/21-065r1.html#cql2-core[Basic CQL2]) as well as additional optional capabilities, such as
+https://docs.ogc.org/DRAFTS/21-065r1.html#arithmetic[arithmetic operations] and spatial https://docs.ogc.org/DRAFTS/21-065r1.html#spatial-functions[relation functions].
+The API implementation's conformance resource (`/conformance` as defined in https://docs.ogc.org/is/19-072/19-072.html[OGC API - Common - Part 1: Core] "Landing Page" requirement class) would allow the client
+to know which capabilities are supported.
+
+Basic CQL2 includes support for logical operators as well as to compare the value of queryables against literals using relational operators.
+The following examples will use the GEBCO collection from earlier ones to illustrate these capabilities.
+The previous simple zone queries using this collection were not particuarly interesting since it covers the entire globe,
+but the use of CQL2 will enable the use of its data values.
+First, the client would retrieve the queryables by following the `[ogc-rel:queryables]` link from the collection description:
+
+https://maps.gnosis.earth/ogcapi/collections/gebco/queryables?f=json[https://maps.gnosis.earth/ogcapi/collections/gebco/queryables]
+
+The `application/schema+json` response would look like so:
+
+[%unnumbered%]
+[source,json]
+----
+{
+   "$schema" : "https://json-schema.org/draft/2020-12/schema",
+   "$id" : "https://maps.gnosis.earth/ogcapi/collections/gebco/queryables",
+   "title" : "General Bathymetric Chart of the Oceans",
+   "type" : "object",
+   "properties" : {
+      "Elevation" :
+      {
+         "type" : "number",
+         "x-ogc-property-seq" : 1,
+         "x-ogc-definition": "https://qudt.org/vocab/quantitykind/Altitude",
+         "x-ogc-unit": "m"
+      }
+   }
+}
+----
+
+This informs the client that a single `Elevation` queryable is available for use in CQL2 expressions.
+
+The client could then submit the following zone query to return only zones where elevation is below sea level (`Elevation < 0`), at refinement level 6:
+
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?filter=Elevation<0&zone-level=6&f=json[https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?filter=Elevation<0&zone-level=6]
+
+The following image is a visualization of the list of zones returned.
+
+[#img_cql2_gebco_Elevation='{figure-caption} {counter:figure-num}']
+.GeoJSON compact zones response for querying ISEA3H DGGRS for https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] with CQL2 expression `Elevation < 0` visualized in QGIS
+image::images/cql2-gebco-elevation.png[width=700,align="center"]
+
+The client could request instead for deeper elevations e.g., `Elevation < -4000`:
+
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?filter=Elevation<-4000&zone-level=6&f=json[https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?filter=Elevation<-4000&zone-level=6]
+
+[#img_cql2_gebco_Elevation_4000='{figure-caption} {counter:figure-num}']
+.GeoJSON compact zones response for querying ISEA3H DGGRS for https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] with CQL2 expression `Elevation < -4000` visualized in QGIS
+image::images/cql2-gebco-elevation4000.png[width=700,align="center"]
+
+or for high elevations e.g., `Elevation > 3000`:
+
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?filter=Elevation>3000&zone-level=6&f=json[https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?filter=Elevation>3000&zone-level=6]
+
+[#img_cql2_gebco_Elevation_high='{figure-caption} {counter:figure-num}']
+.GeoJSON compact zones response for querying ISEA3H DGGRS for https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] with CQL2 expression `Elevation > 3000` visualized in QGIS
+image::images/cql2-gebco-elevation-high.png[width=700,align="center"]
+
+or for either deep or high elevations e.g., `Elevation < -4000 or Elevation > 3000`:
+
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?filter=Elevation<-4000%20or%20Elevation>3000&zone-level=6&f=json[https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?filter=Elevation<-4000 or Elevation>3000&zone-level=6]
+
+[#img_cql2_gebco_Elevation_high_or_deep='{figure-caption} {counter:figure-num}']
+.GeoJSON compact zones response for querying ISEA3H DGGRS for https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] with CQL2 expression `Elevation < -4000 or Elevation > 3000` visualized in QGIS
+image::images/cql2-gebco-elevation-high-or-deep.png[width=700,align="center"]
+
+This last visualization higlights the fact that the Andes and Antarctica mountains are actually very close to very deep sea.
