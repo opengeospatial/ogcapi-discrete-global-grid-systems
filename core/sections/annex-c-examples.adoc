@@ -105,8 +105,6 @@ An example JSON response for this DGGRS list, as defined by the <<rc_core,Core r
 }
 ----
 
-See <<annex-dggrs-def,annex B>> for examples of DGGRS definition responses (including for the <<isea3h-dggrs,ISEA3H DGGRS>> used in these examples) which the client could obtain by following the `[ogc-rel:dggrs-definition]` links.
-
 === Retrieving the description of a specific DGGRS
 A client would then select a particular DGGRS of which it already has built-in knowledge, possibly using a software library implementing support for one or more DGGRS available from the server.
 
@@ -165,6 +163,10 @@ a default (relative) depth as well as additional links and link templates.
    ]
 }
 ----
+
+See the informative <<annex-dggrs-def,annex B>> for examples of DGGRS definition responses which the client could obtain by following the `[ogc-rel:dggrs-definition]` links.
+The annex includes provisionary definitions for the <<isea3h-dggrs,ISEA3H>>, <<isea9r-dggrs,ISEA9R>> and <<ggg-dggrs,GNOSIS Global Grid>> used in these examples
+which will likely be used to initially populate an authoritative registry, Additional DGGRS entries would be submitted, reviewed and registered based on the needs of the community.
 
 === Simple zone queries
 Having selected a particular DGGRS, one use case for the API is for a client to perform spatial queries by <<rc_zone-query,requesting a list of zones>>.
