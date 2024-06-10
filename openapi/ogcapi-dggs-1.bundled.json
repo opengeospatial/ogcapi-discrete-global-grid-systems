@@ -215,9 +215,9 @@
     "/dggs": {
       "get": {
         "tags": [
-          "DGGRS Definition"
+          "DGGRS Description"
         ],
-        "summary": "Retrieve the list of available DGGRS",
+        "summary": "Retrieve the list of available DGGRSs",
         "operationId": "getDGGRSList",
         "parameters": [
           {
@@ -240,9 +240,9 @@
     "/dggs/{dggrsId}": {
       "get": {
         "tags": [
-          "DGGRS Definition"
+          "DGGRS Description"
         ],
-        "summary": "(Optional) Retrieve the definition of the specified Discrete Global Grid Reference System",
+        "summary": "Retrieve the description of the specified Discrete Global Grid Reference System",
         "operationId": "getDGGRS",
         "parameters": [
           {
@@ -278,9 +278,9 @@
     "/dggs/{dggrsId}/zones/{zoneId}": {
       "get": {
         "tags": [
-          "DGGRS Definition"
+          "DGGRS Description"
         ],
-        "summary": "(Optional) Retrieve information about a DGGRS Zone, such as geometry and data availability.",
+        "summary": "Retrieve information about a DGGRS Zone, such as geometry and data availability.",
         "operationId": "getDGGRSZone",
         "parameters": [
           {
@@ -334,7 +334,7 @@
     "/collections/{collectionId}/dggs": {
       "get": {
         "tags": [
-          "DGGRS Definition"
+          "DGGRS Description"
         ],
         "summary": "Retrieve the list of available DGGRS for the specified collection",
         "operationId": "getCollectionDGGRSList",
@@ -365,9 +365,9 @@
     "/collections/{collectionId}/dggs/{dggrsId}": {
       "get": {
         "tags": [
-          "DGGRS Definition"
+          "DGGRS Description"
         ],
-        "summary": "(Optional) Retrieve the definition of the specified Discrete Global Grid Reference System in the context of a specified collection",
+        "summary": "Retrieve the description of the specified Discrete Global Grid Reference System in the context of a specified collection",
         "operationId": "getCollectionDGGRS",
         "parameters": [
           {
@@ -399,9 +399,9 @@
     "/collections/{collectionId}/dggs/{dggrsId}/zones/{zoneId}": {
       "get": {
         "tags": [
-          "DGGRS Definition"
+          "DGGRS Description"
         ],
-        "summary": "(Optional) Retrieve information about a DGGRS Zone, such as geometry and data availability, in the context of a specific collection.",
+        "summary": "Retrieve information about a DGGRS Zone, such as geometry and data availability, in the context of a specific collection.",
         "operationId": "getCollectionDGGRSZone",
         "parameters": [
           {
@@ -441,7 +441,7 @@
         "tags": [
           "DGGS Data Retrieval"
         ],
-        "summary": "Retrieve data from a DGGS Zone, potentially as optimized DGGS zone data packet",
+        "summary": "Retrieve data from a DGGRS Zone, potentially as optimized DGGRS zone data packet",
         "operationId": "retrieveDGGSZoneData",
         "parameters": [
           {
@@ -502,7 +502,7 @@
         "tags": [
           "DGGS Data Retrieval"
         ],
-        "summary": "Retrieve data from a DGGS Zone for a specific collection, potentially as optimized DGGS zone data packet.",
+        "summary": "Retrieve data from a DGGRS Zone for a specific collection, potentially as optimized DGGS zone data packet.",
         "operationId": "retrieveCollectionDGGSZoneData",
         "parameters": [
           {

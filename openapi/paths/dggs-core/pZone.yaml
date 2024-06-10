@@ -1,7 +1,7 @@
 get:
    tags:
-     - DGGRS Definition
-   summary: (Optional) Retrieve information about a DGGRS Zone, such as geometry and data availability.
+     - DGGRS Description
+   summary: Retrieve information about a DGGRS Zone, such as geometry and data availability.
    operationId: getDGGRSZone
    parameters:
      - $ref: '../../parameters/dggs-core/dggrsId.yaml'

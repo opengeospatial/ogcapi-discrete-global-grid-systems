@@ -1,6 +1,6 @@
 get:
    tags:
-     - DGGRS Definition
+     - DGGRS Description
    summary: Retrieve the list of available DGGRS for the specified collection
    operationId: getCollectionDGGRSList
    parameters:

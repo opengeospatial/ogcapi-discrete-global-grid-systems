@@ -1,7 +1,7 @@
 get:
    tags:
-     - DGGRS Definition
-   summary: (Optional) Retrieve the definition of the specified Discrete Global Grid Reference System
+     - DGGRS Description
+   summary: Retrieve the description of the specified Discrete Global Grid Reference System
    operationId: getDGGRS
    parameters:
      - $ref: '../../parameters/dggs-core/dggrsId.yaml'

@@ -1,7 +1,7 @@
 get:
    tags:
      - DGGS Data Retrieval
-   summary: Retrieve data from a list of DGGS Zones for a specific collection, potentially as optimized DGGS zone data packets.
+   summary: Retrieve data from a list of DGGRS Zones for a specific collection, potentially as optimized DGGRS zone data packets.
    operationId: retrieveCollectionDGGSData
    parameters:
      - $ref: '../../parameters/dggs-core/dggrsId.yaml'

@@ -1,7 +1,7 @@
 get:
    tags:
-     - DGGRS Definition
-   summary: Retrieve the list of available DGGRS
+     - DGGRS Description
+   summary: Retrieve the list of available DGGRSs
    operationId: getDGGRSList
    parameters:
      - $ref: '../../parameters/unspecified/f-metadata.yaml'
