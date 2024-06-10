@@ -20,4 +20,7 @@ description:: For specifying a CQL2 expression filtering the zones returned from
 part:: The Implementation SHALL support a `filter` query parameter specified using the CQL2-Text encoding of the OGC Common Query Language for the zone query
 operation (resource path ending with `.../dggs/{dggrsId}/zones`).
 part:: The list of returned zones SHALL only be those for which the CQL2 expression evaluates to true when considering the geometry and the data of the DGGS zones resource being queried.
+part:: The CQL2 expression evaluator SHALL support the queryables declared in the JSON Schema resource linked to from the origin of the DGGRS resources using the `[ogc-rel:queryables]` link relation type.
 ====
+
+NOTE: The queryables would typically include the fields of the data source, which may also be retrieved using the <<rc_data-retrieval, Data Retrieval>> requirement class.
