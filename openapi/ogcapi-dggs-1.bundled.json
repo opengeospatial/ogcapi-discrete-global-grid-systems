@@ -1399,9 +1399,7 @@
             "description": "The Coordinate Reference System in which the geometry, centroid and bbox properties are specified",
             "type": "string",
             "format": "uri",
-            "default": [
-              "OGC:CRS84"
-            ]
+            "default": "[OGC:CRS84]"
           },
           "centroid": {
             "description": "The centroid of the zone, in the CRS specified in crs property",
