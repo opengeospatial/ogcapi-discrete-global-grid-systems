@@ -1,4 +1,4 @@
-[[rc_data-retrieval]]
+[[rc-table_data-retrieval]]
 [requirements_class]
 ====
 [%metadata]
@@ -7,9 +7,7 @@ subject:: Web API
 inherit:: https://www.opengis.net/spec/ogcapi-common-1/1.0/req/core
 ====
 
-=== Requirements
-
-==== Retrieving data from a zone (`../dggs/{dggrsId}/zones/{zoneId}/data`)
+=== Retrieving data from a zone (`../dggs/{dggrsId}/zones/{zoneId}/data`)
 
 The following requirements describe how a client can retrieve data from a single DGGS zone
 at the resource path `.../dggs/{dggrsId}/zones/{zoneId}/data`.

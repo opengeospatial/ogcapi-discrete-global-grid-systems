@@ -1,4 +1,5 @@
 [obligation=normative]
+[[rc_core]]
 == Requirement Class "Core"
 
 === Overview
@@ -7,6 +8,7 @@ The "Core" Requirement Class allows a client to list available DGGRSs for a give
 retrieve additional information about a particular DGGRS, and retrieve information about a particular DGGRS zone.
 
 The "Core" Requirement Class is the only mandatory Requirements Class, but an implementation with practical use
-is expected to additionally implement either the "Zone Data Retrieval" Requirement Class, the "Zone Query" Requirement Class, or both.
+is expected to additionally implement either the <<rc_data-retrieval,"Zone Data Retrieval">> Requirement Class, so that a client can ask a question of the type _**"What is here?"**_
+and/or the <<rc_zone-query,"Zone Query">> Requirement Class, so that a client can ask a question of the type _**"Where is it?"_**.
 
 include::../requirements/requirements_class_core.adoc[]

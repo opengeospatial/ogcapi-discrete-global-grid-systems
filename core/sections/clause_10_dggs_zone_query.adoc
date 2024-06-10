@@ -1,3 +1,4 @@
+[[rc_zone-query]]
 == Requirement Class "Zone Query"
 
 === Overview
@@ -13,5 +14,11 @@ The list of zones from a Web API using this requirement class can either be
 for a particular collection of geospatial data, for a dataset as a whole, or
 in connection with https://docs.ogc.org/DRAFTS/21-009.html[_OGC API - Processes - Part 3: Workflows & Chaining_], the output of
 a processing workflow.
+
+This requirement class enables a client to ask a question of the type _**"Where is it?"**_, where the _where_
+refers to the spatio-temporal response encoded as a list of Zone IDs, and the _it_ refers to either
+the availability of data associated with a particular collection, dataset, or processing workflow
+(where the result itself could simply be this spatio-temporal region),
+as well as the evaluation of any additional filtering query expressed as per the <<rc_cql2-query, CQL2 filtering requirement class>>.
 
 include::../requirements/requirements_class_zone-query.adoc[]

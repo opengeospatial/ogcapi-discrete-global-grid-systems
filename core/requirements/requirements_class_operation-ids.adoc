@@ -7,9 +7,7 @@ subject:: Web API
 inherit:: https://www.opengis.net/spec/ogcapi-common-1/1.0/req/landing-page
 ====
 
-=== Requirements
-
-==== Operation IDs
+=== Operation IDs
 
 [requirement]
 ====

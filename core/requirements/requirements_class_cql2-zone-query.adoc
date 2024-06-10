@@ -8,9 +8,7 @@ inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
 inherit:: https://www.opengis.net/spec/cql2/1.0/req/cql2-text
 ====
 
-=== Requirements
-
-==== Parameter `filter`
+=== Parameter `filter`
 
 The following requirements describe how a client can specify a filtering CQL2 expression querying a list of zones.
 

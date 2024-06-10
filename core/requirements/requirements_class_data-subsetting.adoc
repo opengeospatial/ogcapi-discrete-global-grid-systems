@@ -7,9 +7,7 @@ subject:: Web API
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
 ====
 
-=== Requirements
-
-==== Parameter `subset`
+=== Parameter `subset`
 
 [requirement]
 ====
@@ -49,7 +47,7 @@ Example: `subset=time("2018-02-12T16:00:0Z":"2018-02-12T20:00:00Z")&subset=atm_p
 
 NOTE: When the _interval_ values fall partially outside of the range of valid values defined by the CRS for the identified axis, the service is expected to return the non-empty portion of the data resulting from the subset.
 
-==== Parameter `datetime`
+=== Parameter `datetime`
 
 [requirement]
 ====

@@ -223,11 +223,12 @@ Servers may support additional representations of zone lists beyond JSON, such a
 or an <<rc_zone-html,HTML representation>> for exploring datasets in a browser through the DGGS API.
 Note that regardless of encoding, zone query responses can also be compressed for additional banwidth efficiency if the client and server negotiate a content encoding e.g., using `Content-Encoding: gzip`.
 
-CAUTION: The transfer of zone geometry in zone queries is not an efficient use of the DGGS API for practical analytics purposes, since clients should already have built-in knowledge of the selected DGGRS in their local software libraries.
+CAUTION: The transfer of zone geometry in zone queries is not an efficient use of the DGGS API for practical analytics purposes, since clients should already have built-in knowledge of the selected DGGRS
+in their local software libraries and can efficiently infer the geometry of a zone from its zone ID alone as needed. In many use cases, the geometry may not be needed at all.
 
 The ability to retrieve zone lists in a geospatial data format such as GeoJSON or <<rc_zone-geotiff,GeoTIFF>> which can readily be visualized in GIS tools is useful for **educational**, **demonstration** and **debugging** purposes.
 For example, this functionality can be used to generate grids, such as those seen in <<annex-dggrs-def,annex B>> (a `crs` parameter to request an ISEA planar projection was used in that case to override the default GeoJSON CRS84),
-as well the zone visualizations seen in the examples below.
+as well as the zone visualizations seen in the examples in this section.
 
 A visualization of the response from negotiating `application/geo+json` for the above request is seen below.
 

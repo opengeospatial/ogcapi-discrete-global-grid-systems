@@ -7,9 +7,7 @@ subject:: Web API
 inherit:: https://www.opengis.net/spec/ogcapi-common-2/1.0/req/collections
 ====
 
-=== Requirements
-
-==== Collection DGGS (`/collections/{collectionId}/dggs`)
+=== Collection DGGS (`/collections/{collectionId}/dggs`)
 
 [requirement]
 ====
