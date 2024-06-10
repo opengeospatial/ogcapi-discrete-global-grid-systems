@@ -485,7 +485,9 @@ Compacting GNOSIS Global Grid zones is also simple to achieve since sub-zones ar
 
 To illustrate how the width of the zones attempts to remain equal to the height, the following examples are visualized using the world Mercator projection.
 As with the previous examples for ISEA3H and ISEA9R, the zones of a given refinement level are filled with the same color.
-Note that the zones closer to the poles appear larger than zones of the same level closer to the equator, as the Mercator projection enlarges features away from the equator.
+Note that the zones closer to the poles are wider in longitude than zones closer to the equator, and can be seen in a 2-to-1 configuration at jumps in the variable widths coalescence factor such as at the 45° parallel,
+but these zones still occupy a similar area within the error budget.
+However, in these illustrations, the polar zones appear much larger than zones of the same level closer to the equator because the Mercator projection enlarges features away from the equator.
 
 <<<
 https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSISGlobalGrid/zones?f=json&zone-level=5[\https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones?zone-level=5]
