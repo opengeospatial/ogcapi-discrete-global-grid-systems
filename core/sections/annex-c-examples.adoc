@@ -387,7 +387,7 @@ image::images/zones-globe-isea3h-level1.png[width=700,align="center"]
 ==== Querying for a spatio-temporal subset
 
 To request a list of zones for an area of interest, the `bbox` or `subset` query parameter can be used.
-For a temporal DGGS, `datetime` can be used as well as `subset=time(...)` to constrain the query to a time of interest.
+For temporal datasets, the `datetime` can be used as well as `subset=time(...)` to constrain the query to a time of interest.
 For restricting the same zone query to a bounding box area from (40°N, 30°E) to (60°N,50°E), the client could make either of the following requests:
 
 https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones?f=json&bbox=30,40,50,60&zone-level=1&compact-zones=false["\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones?bbox=30,40,50,60&zone-level=1&compact-zones=false"]
@@ -670,14 +670,14 @@ https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSIS
 image::images/compact-srtm-ggg-level13-parent-zone.png[width=700,align="center"]
 
 === Filtering zone queries using CQL2 expressions
-The Zone Query capabilities is most useful for use cases where the retrieves zone list is the result of some operation,
-whether as a result of a processing workflow or by evaluating a query expressed by the client.
+The Zone Query capabilities is most useful for use cases where the retrieved zone list is the result of some operation,
+whether a processing workflow or the evaluation of a query expressed by the client.
 The <<rc_cql2-query,CQL2 filter>> capability allows to express such queries using the https://docs.ogc.org/DRAFTS/21-065r1.html[OGC Common Query Language (CQL2)].
 Note that the processing workflow could also itself include CQL2 expressions using https://docs.ogc.org/DRAFTS/21-009.html#section_fields_modifiers[input/output field modifiers].
 
 The CQL2 requirement class in this standard specifically calls for the https://docs.ogc.org/DRAFTS/21-065r1.html#cql2-text[CQL2-Text encoding], which is an intuitive representation with many similarities to SQL.
 CQL2 defines minimum capabilities (https://docs.ogc.org/DRAFTS/21-065r1.html#cql2-core[Basic CQL2]) as well as additional optional capabilities, such as
-https://docs.ogc.org/DRAFTS/21-065r1.html#arithmetic[arithmetic operations] and spatial https://docs.ogc.org/DRAFTS/21-065r1.html#spatial-functions[relation functions].
+https://docs.ogc.org/DRAFTS/21-065r1.html#arithmetic[arithmetic operations] and https://docs.ogc.org/DRAFTS/21-065r1.html#spatial-functions[spatial relation functions].
 The API implementation's conformance resource (`/conformance` as defined in https://docs.ogc.org/is/19-072/19-072.html[OGC API - Common - Part 1: Core] "Landing Page" requirement class) would allow the client
 to know which capabilities are supported.
 
@@ -706,12 +706,18 @@ The `application/schema+json` response would look like so:
          "x-ogc-property-seq" : 1,
          "x-ogc-definition": "https://qudt.org/vocab/quantitykind/Altitude",
          "x-ogc-unit": "m"
+      },
+      "rec.geom" : {
+         "x-ogc-role" : "primary-geometry",
+         "format" : "geometry-point"
       }
    }
 }
 ----
 
-This informs the client that a single `Elevation` queryable is available for use in CQL2 expressions.
+This informs the client that an `Elevation` queryable is available for use in CQL2 expressions.
+Although this collection is a gridded coverage, a `rec.geom` queryable is still included in the schema which represents the geometry of each individual grid cell.
+Since the value associated with these cells represent a point in this collection, the format indicates `geometry-point`. Later examples will make use of this `rec.geom` property.
 
 The client could then submit the following zone query to return only zones where elevation is below sea level (`Elevation < 0`), at refinement level 6:
 
@@ -748,3 +754,30 @@ https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?filter=Elev
 image::images/cql2-gebco-elevation-high-or-deep.png[width=700,align="center"]
 
 This last visualization higlights the fact that the Andes and Antarctica mountains are actually very close to very deep sea.
+
+If the implementation support spatial relation functions, a query could test intersection with a geometry, which can be expressed using a WKT literal in CQL2-Text.
+The following example returns zones intersecting the Bermuda Triangle, making use of the `rec.geom` queryable, which represents the geometry of the individual coverage grid cells, mentioned earlier, at refinement level 9.
+
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?zone-level=9&filter=S_INTERSECTS(rec.geom,POLYGON((-64.8%2032.3,-65.5%2018.3,-80.3%2025.2,-64.8%2032.3)))&f=json["\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?zone-level=9&filter=S_INTERSECTS(rec.geom,POLYGON((-64.8 32.3,-65.5 18.3,-80.3 25.2,-64.8 32.3)))"]
+
+[#img_cql2_gebco_polygon='{figure-caption} {counter:figure-num}']
+.GeoJSON compact zones response for querying ISEA3H DGGRS for https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] with a CQL2 expression using S_INTERSECTS() for a WKT triangular polygon visualized in QGIS
+image::images/cql2-polygon-l9.png[width=700,align="center"]
+
+This spatial filter could also be combined together with a relational operator as in the following query for `Elevation < -5500` within the Bermuda Triangle:
+
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?zone-level=11&filter=Elevation%20<%20-5500%20and%20S_INTERSECTS(rec.geom,POLYGON((-64.8%2032.3,-65.5%2018.3,-80.3%2025.2,-64.8%2032.3)))&f=json["\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?zone-level=11&filter=Elevation < -5500 and S_INTERSECTS(rec.geom,POLYGON((-64.8 32.3,-65.5 18.3,-80.3 25.2,-64.8 32.3)))"]
+
+[#img_cql2_gebco_Elevation_polygon='{figure-caption} {counter:figure-num}']
+.GeoJSON compact zones response for querying ISEA3H DGGRS for https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] with a CQL2 expression using both `Elevation < -5500` as well as S_INTERSECTS() for a WKT polygon visualized in QGIS
+image::images/cql2-5500-depth-bermuda-l11.png[width=500,align="center"]
+
+To illustrate the use of CQL2 arithmetic operators, the following example will use a collection of daily climate CMIP5 data from the https://cds.climate.copernicus.eu/cdsapp#!/dataset/projections-cmip5-daily-single-levels[Copernicus Climate Data Store].
+The request will be for zones where the difference between two different fields of the coverage, the maximum (`tasmax`) and minimum (`tasmin`) daily near-surface air temperature, is greater than 10 degrees Kelvin.
+In addition, this request will use the `datetime` parameter to subset the temporal dimension for June 1, 2023.
+
+https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/isea3h/zones?zone-level=7&filter=(tasmax-tasmin)%3E10&datetime=2023-06-01&f=json["\https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/isea3h/zones?zone-level=7&filter=(tasmax-tasmin)>10&datetime=2023-06-01"]
+
+[#img_cql2_tas_delta='{figure-caption} {counter:figure-num}']
+.GeoJSON compact zones response for querying ISEA3H DGGRS for CMIP5 daily surface temperature from https://cds.climate.copernicus.eu/cdsapp#!/dataset/projections-cmip5-daily-single-levels[Copernicus Climate Data Store] comparing delta with CQL2 expression `(tasmax - tasmin) > 10` visualized in QGIS
+image::images/cql2-tas-delta.png[width=700,align="center"]
