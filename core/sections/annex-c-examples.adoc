@@ -762,7 +762,7 @@ https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?zone-level=
 
 [#img_cql2_gebco_polygon='{figure-caption} {counter:figure-num}']
 .GeoJSON compact zones response for querying ISEA3H DGGRS for https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] with a CQL2 expression using S_INTERSECTS() for a WKT triangular polygon visualized in QGIS
-image::images/cql2-polygon-l9.png[width=700,align="center"]
+image::images/cql2-polygon-l9.png[width=600,align="center"]
 
 This spatial filter could also be combined together with a relational operator as in the following query for `Elevation < -5500` within the Bermuda Triangle:
 
@@ -791,7 +791,7 @@ https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:buildings/dggs/ISEA3H/zo
 
 [#img_cql2_isea3h_nac='{figure-caption} {counter:figure-num}']
 .GeoJSON compact zones response for querying ISEA3H DGGRS for Ottawa buildings (© https://openstreetmap.org/[OpenStreetMap] contributors) with CQL2 expression `name='National Arts Centre'` at level 30, visualized in QGIS
-image::images/cql2-isea3h-building.png[width=700,align="center"]
+image::images/cql2-isea3h-building.png[width=500,align="center"]
 
 This second example illustrates querying for the East Block at ISEA9R level 15 (corresponding to ISEA3H level 30):
 
