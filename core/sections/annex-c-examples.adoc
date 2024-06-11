@@ -669,7 +669,7 @@ https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSIS
 .GeoJSON compact zones response for querying GNOSIS Global Grid DGGRS at level 13 for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSISGlobalGrid/zones/6-1F-98[6-1F-98], for a https://viewfinderpanoramas.org/[Viewfinder Panoramas], visualized in QGIS
 image::images/compact-srtm-ggg-level13-parent-zone.png[width=700,align="center"]
 
-=== Filtering zone queries using CQL2 expression
+=== Filtering zone queries using CQL2 expressions
 The Zone Query capabilities is most useful for use cases where the retrieves zone list is the result of some operation,
 whether as a result of a processing workflow or by evaluating a query expressed by the client.
 The <<rc_cql2-query,CQL2 filter>> capability allows to express such queries using the https://docs.ogc.org/DRAFTS/21-065r1.html[OGC Common Query Language (CQL2)].
@@ -715,7 +715,7 @@ This informs the client that a single `Elevation` queryable is available for use
 
 The client could then submit the following zone query to return only zones where elevation is below sea level (`Elevation < 0`), at refinement level 6:
 
-https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?filter=Elevation<0&zone-level=6&f=json[https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?filter=Elevation<0&zone-level=6]
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?filter=Elevation<0&zone-level=6&f=json["\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?filter=Elevation < 0&zone-level=6"]
 
 The following image is a visualization of the list of zones returned.
 
@@ -725,7 +725,7 @@ image::images/cql2-gebco-elevation.png[width=700,align="center"]
 
 The client could request instead for deeper elevations e.g., `Elevation < -4000`:
 
-https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?filter=Elevation<-4000&zone-level=6&f=json[https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?filter=Elevation<-4000&zone-level=6]
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?filter=Elevation%20<%20-4000&zone-level=6&f=json["\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?filter=Elevation < -4000&zone-level=6"]
 
 [#img_cql2_gebco_Elevation_4000='{figure-caption} {counter:figure-num}']
 .GeoJSON compact zones response for querying ISEA3H DGGRS for https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] with CQL2 expression `Elevation < -4000` visualized in QGIS
@@ -733,7 +733,7 @@ image::images/cql2-gebco-elevation4000.png[width=700,align="center"]
 
 or for high elevations e.g., `Elevation > 3000`:
 
-https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?filter=Elevation>3000&zone-level=6&f=json[https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?filter=Elevation>3000&zone-level=6]
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?filter=Elevation>3000&zone-level=6&f=json["\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?filter=Elevation > 3000&zone-level=6"]
 
 [#img_cql2_gebco_Elevation_high='{figure-caption} {counter:figure-num}']
 .GeoJSON compact zones response for querying ISEA3H DGGRS for https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] with CQL2 expression `Elevation > 3000` visualized in QGIS
@@ -741,7 +741,7 @@ image::images/cql2-gebco-elevation-high.png[width=700,align="center"]
 
 or for either deep or high elevations e.g., `Elevation < -4000 or Elevation > 3000`:
 
-https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?filter=Elevation<-4000%20or%20Elevation>3000&zone-level=6&f=json[https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?filter=Elevation<-4000 or Elevation>3000&zone-level=6]
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?filter=Elevation<%20-%204000%20or%20Elevation>3000&zone-level=6&f=json["\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?filter=Elevation < -4000 or Elevation > 3000&zone-level=6"]
 
 [#img_cql2_gebco_Elevation_high_or_deep='{figure-caption} {counter:figure-num}']
 .GeoJSON compact zones response for querying ISEA3H DGGRS for https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] with CQL2 expression `Elevation < -4000 or Elevation > 3000` visualized in QGIS
