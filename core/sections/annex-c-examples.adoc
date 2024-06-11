@@ -781,3 +781,32 @@ https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/i
 [#img_cql2_tas_delta='{figure-caption} {counter:figure-num}']
 .GeoJSON compact zones response for querying ISEA3H DGGRS for CMIP5 daily surface temperature from https://cds.climate.copernicus.eu/cdsapp#!/dataset/projections-cmip5-daily-single-levels[Copernicus Climate Data Store] comparing delta with CQL2 expression `(tasmax - tasmin) > 10` visualized in QGIS
 image::images/cql2-tas-delta.png[width=700,align="center"]
+
+CQL2 expressions can also be used for queries using attributes of vector features.
+The following examples use a collection of building polygon features in Ottawa extracted from the OpenStreetMap dataset, filtering buildings using both a spatial subset and the `name` attribute of the features.
+
+This first example illustrates querying for the National Art Centre at ISEA3H level 30:
+
+https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:buildings/dggs/ISEA3H/zones?subset=Lat(45.4198:45.4264),Lon(-75.704:-75.6935)&filter=name='National%20Arts%20Centre'&zone-level=30&f=json["\https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:buildings/dggs/ISEA3H/zones?subset=Lat(45.4198:45.4264),Lon(-75.704:-75.6935)&filter=name='National Arts Centre'&zone-level=30"]
+
+[#img_cql2_isea3h_nac='{figure-caption} {counter:figure-num}']
+.GeoJSON compact zones response for querying ISEA3H DGGRS for Ottawa buildings (© https://openstreetmap.org/[OpenStreetMap] contributors) with CQL2 expression `name='National Arts Centre'` at level 30, visualized in QGIS
+image::images/cql2-isea3h-building.png[width=700,align="center"]
+
+This second example illustrates querying for the East Block at ISEA9R level 15 (corresponding to ISEA3H level 30):
+
+https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:buildings/dggs/ISEA9R/zones?subset=Lat(45.4198:45.4264),Lon(-75.704:-75.6935)&filter=name='East%20Block'&zone-level=15&f=json["\https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:buildings/dggs/ISEA9R/zones?subset=Lat(45.4198:45.4264),Lon(-75.704:-75.6935)&filter=name='East Block'&zone-level=15"]
+
+[#img_cql2_isea9r_east='{figure-caption} {counter:figure-num}']
+.GeoJSON compact zones response for querying ISEA9R DGGRS for Ottawa buildings (© https://openstreetmap.org/[OpenStreetMap] contributors) with CQL2 expression `name='East Block'` at level 15, visualized in QGIS
+image::images/cql2-isea9r-building.png[width=700,align="center"]
+
+This third example illustrates querying for the Centre Block at GNOSIS Global Grid level 24 (corresponding approximately to same resolution):
+
+https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:buildings/dggs/GNOSISGlobalGrid/zones?subset=Lat(45.4198:45.4264),Lon(-75.704:-75.6935)&filter=name=%27Centre%20Block%27&zone-level=24&f=json["\https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:buildings/dggs/GNOSISGlobalGrid/zones?subset=Lat(45.4198:45.4264),Lon(-75.704:-75.6935)&filter=name='Centre Block'&zone-level=24"]
+
+[#img_cql2_ggg_centre='{figure-caption} {counter:figure-num}']
+.GeoJSON compact zones response for querying GNOSIS Global Grid DGGRS for Ottawa buildings (© https://openstreetmap.org/[OpenStreetMap] contributors) with CQL2 expression `name='Centre Block'` at level 24, visualized in QGIS
+image::images/cql2-ggg-building.png[width=700,align="center"]
+
+A future extension could also enable cross-collection queries, possibly using a `joinCollections` parameter which would make queryables from different collections available.
