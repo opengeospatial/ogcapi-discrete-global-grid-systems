@@ -4,7 +4,7 @@
 
 * [[[UBJSON,UBJSON]]], Universal Binary JSON Specification. https://ubjson.org/
 
-* [[[Snyder1992,Snyder1992]]], Snyder, J. P., An Equal-Area Map Projection for Polyhedral Globes, Cartographica, 29(1),10-21. urn:doi:10.3138/27H7-8K88-4882-1752 (1992). https://doi.org/10.3138/27H7-8K88-4882-1752
+* [[[Snyder1992,Snyder1992]]], John P. Snyder, An Equal-Area Map Projection for Polyhedral Globes, Cartographica, 29(1),10-21. urn:doi:10.3138/27H7-8K88-4882-1752 (1992). https://doi.org/10.3138/27H7-8K88-4882-1752
 
 * [[[OGC23-010,OGC 23-010]]], Robert Thomas, et al., Towards a Federated Marine SDI: Connecting Land and Sea to Protect the Arctic (2023). https://docs.ogc.org/per/23-010.html
 
@@ -15,3 +15,5 @@
 * [[[OGC20-039r2,OGC 20-039r2]]], Robert Gibb, Byron Cochrane, Matthew Purss, OGC Testbed-16: DGGS and DGGS API Engineering Report (2021). https://docs.ogc.org/per/20-039r2.html
 
 * [[[OGC21-033,OGC 21-033]]], Jérôme Jacovella-St-Louis, Flexible real-time data processing and visualization workflows emerging from OGC API modules (Draft), OGC 21-033 (2021). https://maps.ecere.com/moaw/DiscussionPaper-Draft3.pdf
+
+* [[[Goodchild1992,Goodchild1992]]] Michael F. Goodchild, Yang Shiren, A hierarchical spatial data structure for global geographic information systems, CVGIP: Graphical Models and Image Processing, Volume 54, Issue 1, Pages 31-44, ISSN 1049-9652 (1992). https://doi.org/10.1016/1049-9652(92)90032-S
