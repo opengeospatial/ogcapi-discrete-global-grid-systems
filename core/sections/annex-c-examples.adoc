@@ -785,7 +785,7 @@ image::images/cql2-tas-delta.png[width=700,align="center"]
 CQL2 expressions can also be used for queries using attributes of vector features.
 The following examples use a collection of building polygon features in Ottawa extracted from the OpenStreetMap dataset, filtering buildings using both a spatial subset and the `name` attribute of the features.
 
-This first example illustrates querying for the National Art Centre at ISEA3H level 30:
+This first example illustrates querying for the National Arts Centre at ISEA3H level 30:
 
 https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:buildings/dggs/ISEA3H/zones?subset=Lat(45.4198:45.4264),Lon(-75.704:-75.6935)&filter=name='National%20Arts%20Centre'&zone-level=30&f=json["\https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:buildings/dggs/ISEA3H/zones?subset=Lat(45.4198:45.4264),Lon(-75.704:-75.6935)&filter=name='National Arts Centre'&zone-level=30"]
 
@@ -810,3 +810,13 @@ https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:buildings/dggs/GNOSISGlo
 image::images/cql2-ggg-building.png[width=700,align="center"]
 
 A future extension could also enable cross-collection queries, possibly using a `joinCollections` parameter which would make queryables from different collections available.
+
+=== Retrieving data for a DGGRS Zone
+
+The following example retrieves elevation data for the GEBCO collection for ISEA3H zone `A2-0-A` at a relative depth of 8:
+
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A/data?zone-depth=8
+
+[#img_zone_data='{figure-caption} {counter:figure-num}']
+.Visualization of a DGGS JSON response for querying ISEA3H DGGRS for zone `A2-0-A` of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 8
+image::images/isea3h-elevation.png[width=700,align="center"]
