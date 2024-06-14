@@ -14,7 +14,7 @@
 :fullname_2: Jérôme Jacovella-St-Louis
 :docsubtype: implementation
 :keywords: ogcdoc, OGC document, API, openapi, html, ogcapi, DGGS, discrete global grid, ISEA, hexagonal grids
-:submitting-organizations: Pangaea Innovations Pty. Ltd.; Ecere Corporation; Landcare Research New Zealand; Peking University Collaborative Innovation Center for Geospatial Big Data; European Commission Joint Research Centre; Natural Resources Canada; University of Tartu
+:submitting-organizations: Pangaea Innovations Pty. Ltd.; Ecere Corporation; Landcare Research New Zealand; Peking University Collaborative Innovation Center for Geospatial Big Data; European Commission Joint Research Centre; Natural Resources Canada; University of Tartu; European Space Agency
 :docfile: document.adoc
 :mn-document-class: ogc
 :mn-output-extensions: xml,html,doc,pdf

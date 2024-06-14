@@ -47,6 +47,7 @@ All questions regarding this submission should be directed to the editors or the
 | Peter Strobl                            | European Commission Joint Research Centre
 | Ryan Ahola                              | Natural Resources Canada
 | Alexander Kmoch                         | University of Tartu
+| Ferran Gascon                           | European Space Agency
 |===
 
 [abstract]
