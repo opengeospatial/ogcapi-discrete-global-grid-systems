@@ -39,7 +39,7 @@ These requirement classes define DGGS resources for the API (`/dggs`) and collec
 
 === Requirements classes defining parameters
 
-Two requirement classes adds support for the `subset` and `zone-depth` parameters to zone data resources:
+Two requirement classes adds support for the `subset`, `properties` and `zone-depth` parameters to zone data resources:
 
 * <<rc_data-subsetting,*Zone data subsetting*>>
 * <<rc_data-custom-depths,*Zone data custom depths*>>

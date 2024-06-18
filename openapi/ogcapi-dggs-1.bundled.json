@@ -463,15 +463,6 @@
             "$ref": "#/components/parameters/subset"
           },
           {
-            "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/filter-lang"
-          },
-          {
-            "$ref": "#/components/parameters/sortby"
-          },
-          {
             "$ref": "#/components/parameters/datetime"
           },
           {
@@ -525,15 +516,6 @@
           },
           {
             "$ref": "#/components/parameters/subset"
-          },
-          {
-            "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/filter-lang"
-          },
-          {
-            "$ref": "#/components/parameters/sortby"
           },
           {
             "$ref": "#/components/parameters/datetime"
@@ -2228,89 +2210,6 @@
         "style": "form",
         "explode": false
       },
-      "bbox-crs": {
-        "name": "bbox-crs",
-        "in": "query",
-        "description": "crs for the specified bbox",
-        "required": false,
-        "style": "form",
-        "explode": true,
-        "schema": {
-          "type": "string"
-        }
-      },
-      "subset": {
-        "name": "subset",
-        "in": "query",
-        "description": "Retrieve only part of the data by slicing or trimming along one or more axis\nFor trimming: {axisAbbrev}({low}:{high}) (preserves dimensionality)\n   An asterisk (`*`) can be used instead of {low} or {high} to indicate the minimum/maximum value.\nFor slicing:  {axisAbbrev}({value})      (reduces dimensionality)\n",
-        "style": "form",
-        "explode": false,
-        "required": false,
-        "schema": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "subset-crs": {
-        "name": "subset-crs",
-        "in": "query",
-        "description": "crs for the specified subset",
-        "required": false,
-        "style": "form",
-        "explode": true,
-        "schema": {
-          "type": "string"
-        }
-      },
-      "properties": {
-        "name": "properties",
-        "in": "query",
-        "description": "Select specific data record fields (measured/observed properties) to be returned.\n\n```\nPropertiesSpec:     \"properties\"=field[,fieldName]*\nfield:              {fieldName}|{fieldIndex}\nfieldName:          {text}\nfieldIndex:         {number}\n\nWhere:\n   {number} is an integer number, and\n   {text} is some general ASCII text.\n```\n\nThe field name must be one of the id defined in the RangeType DataRecord fields or feature properties schema.\n\nComplex expressions may also be supported instead of fields to define derived fields, potentially also\nincluding the possibility to use aggregation functons.",
-        "required": false,
-        "schema": {
-          "type": "string"
-        }
-      },
-      "sortby": {
-        "name": "sortby",
-        "in": "query",
-        "description": "Specifies a comma-separated list of property names by which the response shall\nbe sorted.  If the property name is preceded by a plus (+) sign it indicates\nan ascending sort for that property.  If the property name is preceded by a\nminus (-) sign it indicates a descending sort for that property.  If the\nproperty is not preceded by a plus or minus, then the default sort order\nimplied is ascending (+).",
-        "required": false,
-        "schema": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "type": "string",
-            "pattern": "[+|-]?[A-Za-z_].*"
-          }
-        },
-        "explode": false,
-        "style": "form"
-      },
-      "filter": {
-        "name": "filter",
-        "in": "query",
-        "description": "The filter parameter specifies an expression in a query language (e.g. CQL2) for which an entire feature will be returned if the filter predicate is matched. The language of the filter is specified by the `filter-lang` query parameter.",
-        "required": false,
-        "schema": {
-          "type": "string"
-        },
-        "style": "form",
-        "explode": false
-      },
-      "filter-lang": {
-        "name": "filter-lang",
-        "in": "query",
-        "description": "The `filter-lang` parameter specifies the query language for the `filter` query parameter.",
-        "required": false,
-        "schema": {
-          "type": "string"
-        },
-        "style": "form",
-        "explode": false
-      },
       "dggrsId": {
         "name": "dggrsId",
         "in": "path",
@@ -2384,6 +2283,73 @@
         "name": "parent-zone",
         "in": "query",
         "description": "The optional parent zone parameter restricts a zone query to only return zones within that parent zone. Used together with `zone-level`, it allows to explore the response for a large zone query in a hierarchical manner.",
+        "required": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form",
+        "explode": false
+      },
+      "subset": {
+        "name": "subset",
+        "in": "query",
+        "description": "Retrieve only part of the data by slicing or trimming along one or more axis\nFor trimming: {axisAbbrev}({low}:{high}) (preserves dimensionality)\n   An asterisk (`*`) can be used instead of {low} or {high} to indicate the minimum/maximum value.\nFor slicing:  {axisAbbrev}({value})      (reduces dimensionality)\n",
+        "style": "form",
+        "explode": false,
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "subset-crs": {
+        "name": "subset-crs",
+        "in": "query",
+        "description": "crs for the specified subset",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "bbox-crs": {
+        "name": "bbox-crs",
+        "in": "query",
+        "description": "crs for the specified bbox",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "properties": {
+        "name": "properties",
+        "in": "query",
+        "description": "Select specific data record fields (measured/observed properties) to be returned using a comma-separated list of field names.\nThe field name must be one of the fields defined in the associated data resource's logical schema.\n\nExtensions may enable the use of complex expressions to support defining derived fields, potentially also\nincluding the possibility to use aggregation functons.",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter": {
+        "name": "filter",
+        "in": "query",
+        "description": "The filter parameter specifies an expression in a query language (e.g. CQL2) for which an entire feature will be returned if the filter predicate is matched. The language of the filter is specified by the `filter-lang` query parameter.",
+        "required": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form",
+        "explode": false
+      },
+      "filter-lang": {
+        "name": "filter-lang",
+        "in": "query",
+        "description": "The `filter-lang` parameter specifies the query language for the `filter` query parameter.",
         "required": false,
         "schema": {
           "type": "string"

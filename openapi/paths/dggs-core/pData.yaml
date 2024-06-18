@@ -8,11 +8,11 @@ get:
      - $ref: '../../parameters/dggs-core/zones.yaml'
      - $ref: '../../parameters/common-geodata/collections.yaml'
      - $ref: '../../parameters/unspecified/f-zoneData.yaml'
-     - $ref: '../../parameters/common-fields/properties.yaml'
-     - $ref: '../../parameters/common-geodata/subset.yaml'
-     - $ref: '../../parameters/common-filter/filter.yaml'
-     - $ref: '../../parameters/common-filter/filter-lang.yaml'
-     - $ref: '../../parameters/common-fields/sortby.yaml'
+     - $ref: '../../parameters/dggs-core/properties.yaml'
+     - $ref: '../../parameters/dggs-core/subset.yaml'
+     # - $ref: '../../parameters/dggs-core/filter.yaml'
+     # - $ref: '../../parameters/dggs-core/filter-lang.yaml'
+     # - $ref: '../../parameters/dggs-core/sortby.yaml'
      - $ref: '../../parameters/common-geodata/datetime.yaml'
    responses:
      '200':

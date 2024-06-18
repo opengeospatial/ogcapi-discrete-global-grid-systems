@@ -1,0 +1,12 @@
+name: properties
+in: query
+description: |-
+  Select specific data record fields (measured/observed properties) to be returned using a comma-separated list of field names.
+  The field name must be one of the fields defined in the associated data resource's logical schema.
+
+  Extensions may enable the use of complex expressions to support defining derived fields, potentially also
+  including the possibility to use aggregation functons.
+
+required: false
+schema:
+  type: string

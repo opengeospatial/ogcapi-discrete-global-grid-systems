@@ -181,22 +181,6 @@ components:
          $ref: 'parameters/common-geodata/datetime.yaml'
       bbox:
          $ref: 'parameters/common-geodata/bbox.yaml'
-      bbox-crs:
-         $ref: 'parameters/common-crs/bbox-crs.yaml'
-      subset:
-         $ref: 'parameters/common-geodata/subset.yaml'
-      subset-crs:
-         $ref: 'parameters/common-crs/subset-crs.yaml'
-      properties:
-         $ref: 'parameters/common-fields/properties.yaml'
-      sortby:
-         $ref: 'parameters/common-fields/sortby.yaml'
-
-      # Common - Filter
-      filter:
-         $ref: 'parameters/common-filter/filter.yaml'
-      filter-lang:
-         $ref: 'parameters/common-filter/filter-lang.yaml'
 
       # DGGS - Core
       dggrsId:
@@ -213,6 +197,21 @@ components:
          $ref: 'parameters/dggs-core/limit-zones.yaml'
       parent-zone:
          $ref: 'parameters/dggs-core/parent-zone.yaml'
+      subset:
+         $ref: 'parameters/dggs-core/subset.yaml'
+      subset-crs:
+         $ref: 'parameters/dggs-core/subset-crs.yaml'
+      bbox-crs:
+         $ref: 'parameters/dggs-core/bbox-crs.yaml'
+      properties:
+         $ref: 'parameters/dggs-core/properties.yaml'
+      #sortby:
+      #   $ref: 'parameters/dggs-core/sortby.yaml'
+      filter:
+         $ref: 'parameters/dggs-core/filter.yaml'
+      filter-lang:
+         $ref: 'parameters/dggs-core/filter-lang.yaml'
+
       #zones: # this was for multi-zones data retrieval
       #   $ref: 'parameters/dggs-core/zones.yaml'
 
