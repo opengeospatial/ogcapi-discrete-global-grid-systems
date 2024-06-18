@@ -3,6 +3,7 @@
    "dggrs": "https://www.opengis.net/def/dggrs/OGC/1.0/ISEA3H",
    "zoneId": "C0-2B-A",
    "depths": [ 0, 1 ],
+   "representedValue": "area",
    "schema":
    {
       "$schema" : "https://json-schema.org/draft/2020-12/schema",

@@ -7,6 +7,7 @@
       "dggrs" : { "type": "string", "format": "uri" },
       "zoneId" : { "type": "string" },
       "depths" : { "type": "array", "items": { "type": "integer", "minimum": 0 } },
+      "representedValue" : { "type": "string", "enum": [ "area", "centroid", "vertex" ] },
       "schema" : { "$ref": "https://json-schema.org/draft/2020-12/schema" },
       "dimensions" :
       {
@@ -71,5 +72,5 @@
          }
       }
    },
-   "required": [ "dggrs", "zoneId", "depths", "values" ]
+   "required": [ "dggrs", "zoneId", "depths", "values", "representedValue" ]
 }

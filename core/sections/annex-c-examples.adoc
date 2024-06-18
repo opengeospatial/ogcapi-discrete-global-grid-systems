@@ -818,5 +818,5 @@ The following example retrieves elevation data for the GEBCO collection for ISEA
 https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A/data?zone-depth=8
 
 [#img_zone_data='{figure-caption} {counter:figure-num}']
-.Visualization of a DGGS JSON response for querying ISEA3H DGGRS for zone `A2-0-A` of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 8
+.Visualization of a DGGS-JSON response for querying ISEA3H DGGRS for zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A[A2-0-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 8
 image::images/isea3h-elevation.png[width=700,align="center"]
