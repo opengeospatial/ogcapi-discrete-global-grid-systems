@@ -62,6 +62,7 @@ including optional support for multiple fields (properties) and additional dimen
 * <<rc_data-fgjson,FG-JSON Data>>
 * <<rc_data-geotiff,GeoTIFF Data>>
 * <<rc_data-netcdf,netCDF Data>>
+* <<rc_data-zarr,Zarr Data>>
 * <<rc_data-coveragejson,CoverageJSON Data>>
 * <<rc_data-jpegxl,JPEG XL Data>>
 * <<rc_data-png,PNG Data>>
@@ -106,6 +107,7 @@ such as the OpenAPI 3.0 requirement class of _OGC API - Common - Part 1: Core_, 
 | <<rc_data-geotiff,GeoTIFF Data>>               | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-tiff
 | <<rc_data-netcdf,netCDF Data>>                 | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-netcdf
 | <<rc_data-coveragejson,CoverageJSON Data>>     | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-coveragejson
+| <<rc_data-zarr,Zarr Data>>                     | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-zarr
 | <<rc_data-jpegxl,JPEG XL Data>>                | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-jpegxl
 | <<rc_data-png,PNG Data>>                       | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-png
 | <<rc_zone-geojson,JSON Zone List>>             | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-json

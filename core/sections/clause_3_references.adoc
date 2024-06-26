@@ -27,3 +27,4 @@ References are to follow the Springer LNCS style, with the exception that option
 * [[[JPEG_XL2,ISO/IEC 18181-2]]],
 * [[[PNG_ISO_IEC_15948,ISO/IEC 15948]]], ISO/IEC 15948:2004, Information technology — Computer graphics and image processing — Portable Network Graphics (PNG): Functional specification
 * [[[OGC21-069r2,OGC 21-069r2]]], OGC CoverageJSON Community Standard (2023), https://docs.ogc.org/cs/21-069r2/21-069r2.html[https://docs.ogc.org/cs/21-069r2/21-069r2.html]
+* [[[ZIPISO,ISO/IEC 21320-1]]], ISO/IEC 21320-1:2015

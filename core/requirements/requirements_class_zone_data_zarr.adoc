@@ -1,0 +1,28 @@
+[[rc_table-data_zarr]]
+
+[requirements_class]
+.Requirements Class Zarr
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-zarr
+subject:: Web API
+inherit:: <<Zarr2, Zarr Storage Specification Version 2>>
+inherit:: <<ZIPISO, ISO/IEC 21320-1:2015 Information technology - Document Container File (Zip)>>
+inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
+====
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/data-zarr/content
+part:: Every 200 response of the server for zone data with the media type `application/zarr+zip` SHALL be a Zip file containing the data values for all selected fields for a single zone data encoded following the Zarr Storage Specification Version 2 file.
+part:: A dimension of the Zarr data SHALL correspond to the sub-zones for which values are being returned following the DGGRS deterministic sub-zone ordering.
+part:: If multiple relative zone depths are being returned, each depth SHALL be encoded as a separate Zarr dataset within the data packet.
+====
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/data-zarr/no-extra-chunking
+part:: Since the zone data packet are for a limited set of sub-zones within a single parent zone, the zone data response SHOULD be encoded as a single chunk.
+====

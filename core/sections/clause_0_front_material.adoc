@@ -14,9 +14,11 @@ Additional parts for _OGC API - Discrete Global Grid Systems_ may be defined in 
 *OGC Declaration*
 ////
 
+////
 Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. The Open Geospatial Consortium shall not be held responsible for identifying any or all such patent rights.
 
 Recipients of this document are requested to submit, with their comments, notification of any relevant patent claims or other intellectual property rights of which they may be aware that might be infringed by any implementation of the standard set forth in this document, and to provide supporting documentation.
+////
 
 ////
 NOTE: Uncomment ISO section if necessary
@@ -31,6 +33,35 @@ The main task of technical committees is to prepare International Standards. Dra
 
 Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. ISO shall not be held responsible for identifying any or all such patent rights.
 ////
+
+== Preface
+
+This document defines the _OGC API - Discrete Global Grid Systems - Part 1: Core_ Standard. Suggested additions, changes and comments on this standard are welcome and encouraged.
+Such suggestions may be submitted as an issue on the https://github.com/opengeospatial/ogcapi-dggs/issues[_OGC API - DGGS_ GitHub repository].
+
+== Security considerations
+
+OGC API — DGGS — Part 1 only defines HTTP GET operations. As such the security considerations are limited to those applicable to a "read only" service.
+However, implementations of OGC API - DGGS have to process resource paths and query parameters in a way that cannot be used by a client to inject malicious queries that makes available unforeseen data or
+even force the server to perform unwanted or dangerous actions. The following paragraphs enumerate some security considerations.
+
+Due to the flexibility in querying DGGS zones, implementations of the _OGC API - DGGS_ that are not optimized can easily encounter requests that take some time to resolve.
+If several of these requests are processed simultaneously, the server can become slow or unresponsive.
+Servers should take advantage of the space partitioning structures of the implemented DGGRSs that guarantee a deterministic maximum amount of data to process,
+ensuring that maximum refinement level is used for regions covering a larger area, and refusing requests which would otherwise be problematic for the server.
+Servers should also set and apply reasonable limits (e.g., maximum number of zones to return, etc.) to prevent Denial of Service attacks.
+
+Some OGC API - DGGS deployments may assign different roles to different users that may result in accessing different collections or geographical areas for which data can be retrieved or zones can be queried.
+The access control can be described in the OpenAPI definition as discussed in OGC API - Common (https://docs.ogc.org/is/19-072/19-072.html#rc_oas30-security).
+Servers should take care that all resources in all representations and ways they can be requested (e.g., adding query parameters) are managed consistently.
+
+Another security consideration is that DGGS data or DGGS zone lists returned by a DGGS API endpoint may be positionally incorrect and potentially guide users to wrong locations.
+One possible way this situation could happen is the manipulation by a malicious actor of a projection library installed on a server deployment.
+
+Using HTTPS queries is preferred to using HTTP. The obvious reason is the DGGS response returned by the DGGS API endpoint should be only accessible to the requesting user.
+Another reason is related to the public accessibility of the request itself.
+Request to a DGGS API endpoint reveal geographical extents that might be associated with private or sensitive information. For instance, users commonly visit "home" or "work" or "target places"
+(such as holiday destinations or churches). These requests can be used to predict personal or private activities.
 
 == Submitters
 

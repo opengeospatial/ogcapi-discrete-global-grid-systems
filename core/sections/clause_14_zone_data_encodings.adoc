@@ -12,6 +12,7 @@ These requirements classes include:
 * <<rc_data-fgjson,FG-JSON Data>>
 * <<rc_data-geotiff,GeoTIFF Data>>
 * <<rc_data-netcdf,netCDF Data>>
+* <<rc_data-zarr,Zarr Data>>
 * <<rc_data-coveragejson,CoverageJSON Data>>
 * <<rc_data-jpegxl,JPEG XL Data>>
 * <<rc_data-png,PNG Data>>
@@ -32,6 +33,7 @@ A table of the media types used in the encoding of the Zone Data requirements cl
 |JSON-FG data             |application/fg+json
 |GeoTIFF data             |image/tiff; application=geotiff
 |netCDF zone data         |application/x-netcdf
+|Zarr zone data           |application/zarr+zip
 |CoverageJSON zone data   |application/prs.coverage+json
 |PNG zone data            |image/png
 |JPEG XL zone data        |image/jxl
@@ -120,6 +122,15 @@ include::../requirements/requirements_class_zone_data_fgjson.adoc[]
 The netCDF Zone Data encoding requirements class defines support for encoding a DGGS Zone data response according to the https://portal.ogc.org/files/?artifact_id=43732[OGC netCDF standard].
 
 include::../requirements/requirements_class_zone_data_netcdf.adoc[]
+
+[[rc_data-zarr]]
+=== Requirements Class "Zarr zone data encoding"
+
+==== Overview
+
+The Zarr Zone Data encoding requirements class defines support for encoding a DGGS Zone data response according to the https://zarr.readthedocs.io/en/stable/spec/v2.html[Zarr Storage Specification Version 2], packed into a <<ZIPISO,Zip archive>>.
+
+include::../requirements/requirements_class_zone_data_zarr.adoc[]
 
 [[rc_data-coveragejson]]
 === Requirements Class "CoverageJSON zone data encoding"
