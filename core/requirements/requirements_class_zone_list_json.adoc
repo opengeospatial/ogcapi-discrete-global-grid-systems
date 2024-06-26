@@ -54,3 +54,12 @@ part:: The `links` property SHOULD include an `[ogc-rel:geodata]` link for zone 
 identifier:: /rec/zone-json/zone-order
 part:: For responses where zones of multiple hierarchy levels are returned when `compact-zones` is true, the zones SHOULD be listed with the coarser resolution level first (larger zones).
 ====
+
+[recommendation]
+====
+[%metadata]
+label:: /rec/zone-json/zone-total-area
+description:: For returning the total area (or volumes) occupied by zones returned by the query
+part:: The Implementation SHOULD include in the response a `returnedArea` property (in the case of a 2D DGGS) or `returnedVolume` property (in the case of a 3D or 4D DGGS) indicating the total surface area (or total volume) occupied by the zones being returned,
+adding the overlaps which may occur for compact zone responses where zones are non-congruent only once.
+====

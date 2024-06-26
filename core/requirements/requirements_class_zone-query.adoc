@@ -35,6 +35,18 @@ where each zone ID is specified as a string within an array of zones assigned to
 within a JSON object (e..g, `{ "zones": [ "1-E-14", "1-E-15", "1-F-14", "1-F-15", "1-F-16" ] }`.
 ====
 
+The following recommendation describes how the response should include the total surface area of the zones returned from the query (or volume in the case of spatiotemporal and/or 3D DGGS),
+excluding overlapping regions when returning compact zones.
+
+[recommendation]
+====
+[%metadata]
+label:: /rec/zone-query/zone-total-area
+description:: For returning the total area (or volumes) occupied by zones returned by the query
+part:: The Implementation SHOULD indicate the total surface area (in the case of a 2D DGGS) or total volume occupied (in the case of a 3D or 4D DGGS) occupied by the zones being returned,
+adding only once any overlaps which may occur for compact zone responses where zones are non-congruent.
+====
+
 === Parameter `zone-level`
 
 The following requirements describe how a client can specify the DGGS hierarchy level at which
@@ -74,7 +86,7 @@ the area of a parent zone SHALL be replaced by that parent zone, in a recursive 
 
 === Parameter `parent-zone` for hierarchical exploration
 
-The following requirement describe how a client can specify a parent zone to only return zones within this parent zone,
+The following requirement describes how a client can specify a parent zone to only return zones within this parent zone,
 allowing to explore a large list in a hierarchical manner (in combination with `zone-level`) as multiple requests and responses.
 
 [requirement]
@@ -88,7 +100,7 @@ part:: When specified, the response SHALL NOT contain zones which are not this p
 
 === Parameter `limit` for paging
 
-The following recommendation describe how a client can specify a limit to the number of zones to be returned
+The following recommendation describes how a client can specify a limit to the number of zones to be returned
 and page through large list of zones as multiple requests and responses.
 
 [recommendation]
