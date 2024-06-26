@@ -35,7 +35,7 @@ where each zone ID is specified as a string within an array of zones assigned to
 within a JSON object (e..g, `{ "zones": [ "1-E-14", "1-E-15", "1-F-14", "1-F-15", "1-F-16" ] }`.
 ====
 
-The following recommendation describes how the response should include the total surface area of the zones returned from the query (or volume in the case of spatiotemporal and/or 3D DGGS),
+The following recommendation describes how the response should include the total surface area of the zones returned from the query (or volume / hypervolume in the case of spatiotemporal and/or 3D DGGS),
 excluding overlapping regions when returning compact zones.
 
 [recommendation]
@@ -43,7 +43,7 @@ excluding overlapping regions when returning compact zones.
 [%metadata]
 label:: /rec/zone-query/zone-total-area
 description:: For returning the total area (or volumes) occupied by zones returned by the query
-part:: The Implementation SHOULD indicate the total surface area (in the case of a 2D DGGS) or total volume occupied (in the case of a 3D or 4D DGGS) occupied by the zones being returned,
+part:: The Implementation SHOULD indicate the total surface area (in the case of a 2D DGGS) or total (hyper)volume occupied (in the case of a 3D or 4D DGGS) occupied by the zones being returned,
 adding only once any overlaps which may occur for compact zone responses where zones are non-congruent.
 ====
 

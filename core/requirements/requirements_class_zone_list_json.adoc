@@ -31,6 +31,10 @@ part:: The `links` property SHALL include an `[ogc-rel:dggrs-definition]` link t
    "properties":
    {
       "zones" : { "type": "array", "items": { "type": "string" } },
+      "returnedAreaMetersSquare" : { "type": "number" },
+      "returnedVolumeMetersCube" : { "type": "number" },
+      "returnedVolumeMetersSquareSeconds" : { "type": "number" },
+      "returnedHyperVolumeMetersCubeSeconds" : { "type": "number" },
       "links" :
       {
          "description": "Links to related resources."
@@ -60,6 +64,9 @@ part:: For responses where zones of multiple hierarchy levels are returned when 
 [%metadata]
 label:: /rec/zone-json/zone-total-area
 description:: For returning the total area (or volumes) occupied by zones returned by the query
-part:: The Implementation SHOULD include in the response a `returnedArea` property (in the case of a 2D DGGS) or `returnedVolume` property (in the case of a 3D or 4D DGGS) indicating the total surface area (or total volume) occupied by the zones being returned,
+part:: For a 2D DGGS, the Implementation SHOULD include in the response a `returnedAreaMetersSquare` property indicating the total surface area occupied by the zones being returned,
 adding the overlaps which may occur for compact zone responses where zones are non-congruent only once.
+part:: For a 3D DGGS, the Implementation SHOULD include in the response a `returnedVolumeMetersCube` property indicating the total volume occupied by the zones being returned, still counting overlapping regions only once.
+part:: For a 2D + Time DGGS, the Implementation SHOULD include in the response a `returnedVolumeMetersSquareSeconds` property indicating the total volume occupied by the zones being returned, still counting overlapping regions only once.
+part:: For a 3D + Time DGGS, the Implementation SHOULD include in the response a `returnedHyperVolumeMetersCubeSeconds` property indicating the total hypervolume occupied by the zones being returned, still counting overlapping regions only once.
 ====

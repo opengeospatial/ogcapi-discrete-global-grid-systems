@@ -348,6 +348,7 @@ An example JSON response for this Zone Query JSON, as defined by the <<rc_zone-q
       "A7-0-F", "A8-0-D", "A8-0-E", "A8-0-F", "A9-0-D", "A9-0-E",
       "A9-0-F", "A9-0-H"
    ],
+   "returnedAreaMetersSquare" : 4080524973792710,
    "links" : [
       { "rel" : "[ogc-rel:dggrs]", "title" : "ISEA3H DGGS for GEBCO",
         "href" : "/ogcapi/collections/gebco/dggs/ISEA3H"
@@ -401,6 +402,7 @@ and obtain the following response (negotiating a JSON zone list again):
 ----
 {
    "zones" : [ "A0-0-G", "A6-0-E" ],
+   "returnedAreaMetersSquare" : 31137344609299.56640625,
    "links" : [
       { "rel" : "[ogc-rel:dggrs]", "title" : "ISEA3H DGGS for GEBCO",
         "href" : "/ogcapi/collections/gebco/dggs/ISEA3H"

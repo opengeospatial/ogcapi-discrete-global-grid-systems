@@ -3070,6 +3070,18 @@
                     "type": "string"
                   }
                 },
+                "returnedAreaMetersSquare": {
+                  "type": "number"
+                },
+                "returnedVolumeMetersCube": {
+                  "type": "number"
+                },
+                "returnedVolumeMetersSquareSeconds": {
+                  "type": "number"
+                },
+                "returnedHyperVolumeMetersCubeSeconds": {
+                  "type": "number"
+                },
                 "links": {
                   "type": "array",
                   "items": {
