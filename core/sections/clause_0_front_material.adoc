@@ -1,14 +1,13 @@
 .Preface
 
-[NOTE]
-====
+This document defines the _OGC API - Discrete Global Grid Systems - Part 1: Core_ Standard. Suggested additions, changes and comments on this standard are welcome and encouraged.
+Such suggestions may be submitted as an issue on the https://github.com/opengeospatial/ogcapi-dggs/issues[_OGC API - DGGS_ GitHub repository].
+
 OGC API Standards define modular API building blocks to spatially enable Web APIs in a consistent way. OGC API Standards use the OpenAPI specification for describing the API building blocks.
 
 _OGC API - Discrete Global Grid Systems_ provides API building blocks to retrieve data and query zones based on Discrete Global Grid Systems (DGGS) concepts defined in
 https://docs.ogc.org/as/20-040r3/20-040r3.html[OGC Abstract Topic 21].
 Additional parts for _OGC API - Discrete Global Grid Systems_ may be defined in the future to provide additional capabilities.
-
-====
 
 ////
 *OGC Declaration*
@@ -33,11 +32,6 @@ The main task of technical committees is to prepare International Standards. Dra
 
 Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. ISO shall not be held responsible for identifying any or all such patent rights.
 ////
-
-== Preface
-
-This document defines the _OGC API - Discrete Global Grid Systems - Part 1: Core_ Standard. Suggested additions, changes and comments on this standard are welcome and encouraged.
-Such suggestions may be submitted as an issue on the https://github.com/opengeospatial/ogcapi-dggs/issues[_OGC API - DGGS_ GitHub repository].
 
 == Security considerations
 
