@@ -467,6 +467,12 @@
           },
           {
             "$ref": "#/components/parameters/zone-depth"
+          },
+          {
+            "$ref": "#/components/parameters/values-offset"
+          },
+          {
+            "$ref": "#/components/parameters/values-scale"
           }
         ],
         "responses": {
@@ -522,6 +528,12 @@
           },
           {
             "$ref": "#/components/parameters/zone-depth"
+          },
+          {
+            "$ref": "#/components/parameters/values-offset"
+          },
+          {
+            "$ref": "#/components/parameters/values-scale"
           }
         ],
         "responses": {
@@ -2542,6 +2554,28 @@
         },
         "style": "form",
         "explode": false
+      },
+      "values-scale": {
+        "name": "values-scale",
+        "in": "query",
+        "description": "Specify the scale factor for a zone data output format such as PNG not supporting floating-point, to be applied before adding an offset and resulting in the encoded integer values (e.g., 8-bit or 16-bit unsigned for PNG).\n",
+        "style": "form",
+        "explode": false,
+        "required": false,
+        "schema": {
+          "type": "number"
+        }
+      },
+      "values-offset": {
+        "name": "values-offset",
+        "in": "query",
+        "description": "Specify the offset for a zone data output format such as PNG not supporting floating-point, to be applied after multiplying by the scale factor and resulting in the encoded integer values (e.g., 8-bit or 16-bit unsigned for PNG).\n",
+        "style": "form",
+        "explode": false,
+        "required": false,
+        "schema": {
+          "type": "number"
+        }
       },
       "f-zoneData": {
         "name": "f",

@@ -211,6 +211,10 @@ components:
          $ref: 'parameters/dggs-core/filter.yaml'
       filter-lang:
          $ref: 'parameters/dggs-core/filter-lang.yaml'
+      values-scale:
+         $ref: 'parameters/dggs-core/values-scale.yaml'
+      values-offset:
+         $ref: 'parameters/dggs-core/values-offset.yaml'
 
       #zones: # this was for multi-zones data retrieval
       #   $ref: 'parameters/dggs-core/zones.yaml'

@@ -15,6 +15,8 @@ get:
      # - $ref: '../../parameters/dggs-core/sortby.yaml'
      - $ref: '../../parameters/common-geodata/datetime.yaml'
      - $ref: '../../parameters/dggs-core/zone-depth.yaml'
+     - $ref: '../../parameters/dggs-core/values-offset.yaml'
+     - $ref: '../../parameters/dggs-core/values-scale.yaml'
    responses:
      '200':
        $ref: '../../responses/dggs-core/rZoneData.yaml'

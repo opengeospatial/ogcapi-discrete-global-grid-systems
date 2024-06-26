@@ -18,6 +18,8 @@ part:: Every 200 response of the server for zone data with the media type `image
 part:: If the zone geometry is not rectangular, the closest bounding rectangle SHALL be used for referencing the image.
 part:: A distinct value for each sub-zone implied from the requested `zone-depth` SHALL correspond to at least one distinct cell value in the response.
 part:: For implementations supporting Data Custom Depths, each depth of the requested zone depth pyramid SHALL be a separate image (overview) in the response.
+part:: A `Values-Scale:` response header with a numeric real value SHALL be returned indicating the factor by which values were multiplied before an offset was added to result in the encoded 8-bit or 16-bit PNG unsigned integer values.
+part:: A `Values-Offset:` response header with a numeric real value SHALL be returned indicating the offset which was added after multiplying values by the scale factor to result in the encoded 8-bit or 16-bit PNG unsigned integer values.
 ====
 
 [recommendation]
@@ -32,4 +34,12 @@ part:: Null values SHOULD be used for cells lying outside the zone geometry.
 [%metadata]
 identifier:: /rec/data-png/crs
 part:: The CRS of the response SHOULD be consistent with either the DGGRS or the underlying geographic CRS (e.g., CRS84).
+====
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/data-png/scale-offset
+part:: The Implementation SHOULD support a `values-scale` query parameter on Zone data resources when requesting a PNG output to indicate the value scale factor, as described in the `Values-Scale` response header part of the content requirement.
+part:: The Implementation SHOULD support a `values-offset` query parameter on Zone data resources when requesting a PNG output to indicate the value offset, as described in the `Values-Offset` response header part of the content requirement.
 ====
