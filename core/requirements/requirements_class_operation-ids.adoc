@@ -12,7 +12,7 @@ inherit:: https://www.opengis.net/spec/ogcapi-common-1/1.0/req/landing-page
 [requirement]
 ====
 [%metadata]
-label:: /req/operation-ids/
+label:: /req/operation-ids/operation-ids
 description:: For specifying the operation identifiers associated with the capabilities defined in OGC API - DGGS
 part:: The API definition SHALL identify the supported operations defined in this Standard using the identifier suffixes defined in table <<api-operation-id-suffixes>>.
 ====
