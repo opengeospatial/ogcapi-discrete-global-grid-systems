@@ -727,10 +727,6 @@
             "description": "A hint indicating what the media type of the result of dereferencing the link should be.",
             "example": "application/geo+json"
           },
-          "templated": {
-            "type": "boolean",
-            "description": "This flag set to true if the link is a URL template."
-          },
           "hreflang": {
             "type": "string",
             "description": "A hint indicating what the language of the result of dereferencing the link should be.",
@@ -830,12 +826,12 @@
           "collections": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/collectionInfo"
+              "$ref": "#/components/schemas/collectionDesc"
             }
           }
         }
       },
-      "collectionInfo": {
+      "collectionDesc": {
         "type": "object",
         "required": [
           "id",
@@ -856,6 +852,10 @@
             "type": "string",
             "description": "a description of the data in the collection",
             "example": "A Digital Elevation Model."
+          },
+          "attribution": {
+            "type": "string",
+            "title": "attribution for the collection"
           },
           "links": {
             "type": "array",
@@ -923,6 +923,12 @@
               "http://www.opengis.net/def/crs/EPSG/0/4326"
             ]
           },
+          "storageCrs": {
+            "description": "the native coordinate reference system (i.e., the most efficient CRS in which to request the data, possibly how the data is stored on the server); this is the default output coordinate reference system for Maps and Coverages",
+            "type": "string",
+            "default": "http://www.opengis.net/def/crs/OGC/1.3/CRS84",
+            "example": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+          },
           "dataType": {
             "allOf": [
               {
@@ -966,11 +972,39 @@
             "type": "object",
             "properties": {
               "bbox": {
-                "description": "One or more bounding boxes that describe the spatial extent of the dataset.\nIn the Core only a single bounding box is supported.\n\nExtensions may support additional areas.\nThe first bounding box describes the overall spatial\nextent of the data. All subsequent bounding boxes describe\nmore precise bounding boxes, e.g., to identify clusters of data.\nClients only interested in the overall spatial extent will\nonly need to access the first item in each array.",
+                "description": "One or more bounding boxes that describe the spatial extent of the dataset.\n\nThe first bounding box describes the overall spatial\nextent of the data. All subsequent bounding boxes describe\nmore precise bounding boxes, e.g., to identify clusters of data.\nClients only interested in the overall spatial extent will\nonly need to access the first item in each array.",
                 "type": "array",
                 "minItems": 1,
                 "items": {
-                  "description": "Each bounding box is provided as four or six numbers, depending on\nwhether the coordinate reference system includes a vertical axis\n(height or depth):\n\n* Lower left corner, coordinate axis 1\n* Lower left corner, coordinate axis 2\n* Minimum value, coordinate axis 3 (optional)\n* Upper right corner, coordinate axis 1\n* Upper right corner, coordinate axis 2\n* Maximum value, coordinate axis 3 (optional)\n\nIf the value consists of four numbers, the coordinate reference system is\nWGS 84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84)\nunless a different coordinate reference system is specified in a parameter `bbox-crs`.\n\nIf the value consists of six numbers, the coordinate reference system is WGS 84\nlongitude/latitude/ellipsoidal height (http://www.opengis.net/def/crs/OGC/0/CRS84h)\nunless a different coordinate reference system is specified in a parameter `bbox-crs`.\n\nFor WGS 84 longitude/latitude the values are in most cases the sequence of\nminimum longitude, minimum latitude, maximum longitude and maximum latitude.\nHowever, in cases where the box spans the antimeridian the first value\n(west-most box edge) is larger than the third value (east-most box edge).\n\nIf the vertical axis is included, the third and the sixth number are\nthe bottom and the top of the 3-dimensional bounding box.\n\nIf a feature has multiple spatial geometry properties, it is the decision of the\nserver whether only a single spatial geometry property is used to determine\nthe extent or all relevant geometries.",
+                  "description": "Each bounding box is provided as four or six numbers, depending on\nwhether the coordinate reference system includes a vertical axis\n(height or depth):\n\n* Lower left corner, coordinate axis 1\n* Lower left corner, coordinate axis 2\n* Minimum value, coordinate axis 3 (optional)\n* Upper right corner, coordinate axis 1\n* Upper right corner, coordinate axis 2\n* Maximum value, coordinate axis 3 (optional)\n\nIf the value consists of four numbers, the coordinate reference system is\nWGS 84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84)\nunless a different coordinate reference system is specified in `crs` property.\n\nIf the value consists of six numbers, the coordinate reference system is WGS 84\nlongitude/latitude/ellipsoidal height (http://www.opengis.net/def/crs/OGC/0/CRS84h)\nunless a different coordinate reference system is specified in `crs` property.\n\nFor WGS 84 longitude/latitude the values are in most cases the sequence of\nminimum longitude, minimum latitude, maximum longitude and maximum latitude.\nHowever, in cases where the box spans the antimeridian the first value\n(west-most box edge) is larger than the third value (east-most box edge).\n\nIf the vertical axis is included, the third and the sixth number are\nthe bottom and the top of the 3-dimensional bounding box.\n\nIf a feature has multiple spatial geometry properties, it is the decision of the\nserver whether only a single spatial geometry property is used to determine\nthe extent or all relevant geometries.",
+                  "type": "array",
+                  "oneOf": [
+                    {
+                      "minItems": 4,
+                      "maxItems": 4
+                    },
+                    {
+                      "minItems": 6,
+                      "maxItems": 6
+                    }
+                  ],
+                  "items": {
+                    "type": "number"
+                  },
+                  "example": [
+                    -180,
+                    -90,
+                    180,
+                    90
+                  ]
+                }
+              },
+              "storageCrsBbox": {
+                "description": "One or more bounding boxes that describe the spatial extent of the dataset in the storage (native) CRS (`storageCrs` property).\n\nThe first bounding box describes the overall spatial\nextent of the data. All subsequent bounding boxes describe\nmore precise bounding boxes, e.g., to identify clusters of data.\nClients only interested in the overall spatial extent will\nonly need to access the first item in each array.",
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "description": "Each bounding box is provided as four or six numbers, depending on\nwhether the coordinate reference system includes a vertical axis\n(height or depth):\n\n* Lower left corner, coordinate axis 1\n* Lower left corner, coordinate axis 2\n* Minimum value, coordinate axis 3 (optional)\n* Upper right corner, coordinate axis 1\n* Upper right corner, coordinate axis 2\n* Maximum value, coordinate axis 3 (optional)",
                   "type": "array",
                   "oneOf": [
                     {
@@ -994,13 +1028,64 @@
                 }
               },
               "crs": {
-                "description": "Coordinate reference system of the coordinates in the spatial extent\n(property `bbox`). The default reference system is WGS 84 longitude/latitude.\nIn the Core the only other supported coordinate reference system is\nWGS 84 longitude/latitude/ellipsoidal height for coordinates with height.\nExtensions may support additional coordinate reference systems and add\nadditional enum values.",
+                "description": "Coordinate reference system of the coordinates of the `bbox` property.\nThe default reference system is WGS 84 longitude/latitude.\nWGS 84 longitude/latitude/ellipsoidal height for coordinates with height.\nFor non-terrestrial coordinate reference system, another CRS may be specified.",
                 "type": "string",
                 "enum": [
                   "http://www.opengis.net/def/crs/OGC/1.3/CRS84",
                   "http://www.opengis.net/def/crs/OGC/0/CRS84h"
                 ],
                 "default": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+              },
+              "grid": {
+                "description": "Provides information about the limited availability of data within the collection organized\nas a grid (regular or irregular) along each spatial dimension.",
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 3,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "coordinates": {
+                      "description": "List of coordinates along the dimension for which data organized as an irregular grid in the collection is available\n(e.g., 2, 10, 80, 100).",
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "oneOf": [
+                          {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          {
+                            "type": "number"
+                          }
+                        ]
+                      },
+                      "example": [
+                        2,
+                        10,
+                        80,
+                        100
+                      ]
+                    },
+                    "cellsCount": {
+                      "description": "Number of samples available along the dimension for data organized as a regular grid.\nFor values representing the whole area of contiguous cells spanning _resolution_ units along the dimension, this will be (_upperBound_ - _lowerBound_) / _resolution_.\nFor values representing infinitely small point cells spaced by _resolution_ units along the dimension, this will be (_upperBound_ - _lowerBound_) / _resolution_ + 1.",
+                      "type": "integer",
+                      "example": 50
+                    },
+                    "resolution": {
+                      "description": "Resolution of regularly gridded data along the dimension in the collection",
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ],
+                      "example": 0.0006866455078
+                    }
+                  }
+                }
               }
             }
           },
@@ -1013,7 +1098,7 @@
                 "type": "array",
                 "minItems": 1,
                 "items": {
-                  "description": "Begin and end times of the time interval. The timestamps are in the\ntemporal coordinate reference system specified in `trs`. By default\nthis is the Gregorian calendar.\n\nThe value `null` for start or end time is supported and indicates a half-bounded time interval.",
+                  "description": "Begin and end times of the time interval. The timestamps are in the\ntemporal coordinate reference system specified in `trs`. By default\nthis is the Gregorian calendar, expressed using RFC 3339 section 5.6.\nNote that these times may be specified using time zone offsets to UTC time other than zero.\n\nThe value `null` for start or end time is supported and indicates a half-bounded time interval.",
                   "type": "array",
                   "minItems": 2,
                   "maxItems": 2,
@@ -1024,6 +1109,7 @@
                   },
                   "example": [
                     "2011-11-11T12:22:11Z",
+                    "2011-11-11T08:22:11-04:00",
                     null
                   ]
                 }
@@ -1035,6 +1121,46 @@
                   "http://www.opengis.net/def/uom/ISO-8601/0/Gregorian"
                 ],
                 "default": "http://www.opengis.net/def/uom/ISO-8601/0/Gregorian"
+              },
+              "grid": {
+                "type": "object",
+                "description": "Provides information about the limited availability of data within the collection organized as a grid (regular or irregular) along the temporal dimension.",
+                "properties": {
+                  "coordinates": {
+                    "description": "List of coordinates along the temporal dimension for which data organized as an irregular grid in the collection is available\n(e.g., \"2017-11-14T09:00Z\",\"2017-11-14T12:00Z\",\"2017-11-14T15:00Z\",\"2017-11-14T18:00Z\",\"2017-11-14T21:00Z\").",
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "example": [
+                      [
+                        "2020-11-12T12:15Z",
+                        "2020-11-12T12:30Z",
+                        "2020-11-12T12:45Z"
+                      ]
+                    ]
+                  },
+                  "cellsCount": {
+                    "description": "Number of samples available along the temporal dimension for data organized as a regular grid.\nFor values representing the whole area of contiguous cells spanning _resolution_ units along the dimension, this will be (_upperBound_ - _lowerBound_) / _resolution_.\nFor values representing infinitely small point cells spaced by _resolution_ units along the dimension, this will be (_upperBound_ - _lowerBound_) / _resolution_ + 1.",
+                    "type": "integer",
+                    "example": 50
+                  },
+                  "resolution": {
+                    "description": "Resolution of regularly gridded data along the temporal dimension in the collection",
+                    "oneOf": [
+                      {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ],
+                    "example": "PT1H"
+                  }
+                }
               }
             }
           }
@@ -1056,7 +1182,7 @@
                 {
                   "required": [
                     "interval",
-                    "crs"
+                    "definition"
                   ]
                 },
                 {
@@ -1095,14 +1221,11 @@
                     },
                     "example": [
                       "2011-11-11T12:22:11Z",
+                      "2011-11-11T08:22:11-04:00",
                       32.5,
                       null
                     ]
                   }
-                },
-                "crs": {
-                  "type": "string",
-                  "description": "generic coordinate reference system suitable for any type of dimensions"
                 },
                 "trs": {
                   "type": "string",
@@ -1111,6 +1234,69 @@
                 "vrs": {
                   "type": "string",
                   "description": "vertical coordinate reference system (e.g. as defined in EDR for 'vertical')"
+                },
+                "grid": {
+                  "type": "object",
+                  "description": "Provides information about the limited availability of data within the collection organized as a grid (regular or irregular) along the dimension.",
+                  "properties": {
+                    "coordinates": {
+                      "description": "List of coordinates along the temporal dimension for which data organized as an irregular grid in the collection is available\n(e.g., 2, 10, 80, 100).",
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "oneOf": [
+                          {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          {
+                            "type": "number"
+                          }
+                        ]
+                      },
+                      "example": [
+                        2,
+                        10,
+                        80,
+                        100
+                      ]
+                    },
+                    "cellsCount": {
+                      "description": "Number of samples available along the dimension for data organized as a regular grid.\nFor values representing the whole area of contiguous cells spanning _resolution_ units along the dimension, this will be (_upperBound_ - _lowerBound_) / _resolution_.\nFor values representing infinitely small point cells spaced by _resolution_ units along the dimension, this will be (_upperBound_ - _lowerBound_) / _resolution_ + 1.",
+                      "type": "integer",
+                      "example": 50
+                    },
+                    "resolution": {
+                      "description": "Resolution of regularly gridded data along the dimension in the collection",
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ],
+                      "example": [
+                        "PT1H",
+                        0.0006866455078
+                      ]
+                    }
+                  }
+                },
+                "definition": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "A URI to the definition of the measured or observed property corresponding to this dimension."
+                },
+                "unit": {
+                  "type": "string",
+                  "description": "The unit of measure in which the interval and/or grid values are expressed."
+                },
+                "unitLang": {
+                  "type": "string",
+                  "default": "UCUM",
+                  "description": "The language (or vocabulary) in which the unit is expressed (defaults to \"UCUM\" if not specified)."
                 }
               }
             }
@@ -1166,7 +1352,7 @@
         ]
       },
       "dataType": {
-        "oneOf": [
+        "anyOf": [
           {
             "type": "string"
           },
@@ -1181,12 +1367,13 @@
         ]
       },
       "timeStamp": {
-        "description": "This property indicates the time and date when the response was generated",
+        "description": "This property indicates the time and date when the response was generated using RFC 3339 notation.",
         "type": "string",
-        "format": "date-time"
+        "format": "date-time",
+        "example": "2017-08-17T08:05:32Z"
       },
       "numberReturned": {
-        "description": "The number of features in the feature collection.\nA server may omit this information in a response, if the information\nabout the number of features is not known or difficult to compute.\nIf the value is provided, the value shall be identical to the number\nof items in the \"features\" array.",
+        "description": "The number of items in the response.\nA server may omit this information, if the information about the \nnumber of items is not known or difficult to compute.\nIf the value is provided, the value shall be identical to the number\nof items in the response.",
         "type": "integer",
         "minimum": 0,
         "example": 10
@@ -2177,7 +2364,7 @@
       "datetime": {
         "name": "datetime",
         "in": "query",
-        "description": "Either a date-time or an interval, half-bounded or bounded. Date and time expressions\nadhere to RFC 3339. Half-bounded intervals are expressed using double-dots.\n\nExamples:\n\n* A date-time: \"2018-02-12T23:20:50Z\"\n* A bounded interval: \"2018-02-12T00:00:00Z/2018-03-18T12:31:12Z\"\n* Half-bounded intervals: \"2018-02-12T00:00:00Z/..\" or \"../2018-03-18T12:31:12Z\"\n\nOnly features that have a temporal property that intersects the value of\n`datetime` are selected.\n\nIf a feature has multiple temporal properties, it is the decision of the\nserver whether only a single temporal property is used to determine\nthe extent or all relevant temporal properties.",
+        "description": "Either a date-time or an interval. Date and time expressions adhere to RFC 3339, section 5.6. Intervals may be bounded or half-bounded (double-dots at start or end). Server implementations may or may not support times expressed using time offsets from UTC, but need to support UTC time with the notation ending with a Z.\nExamples:\n* A date-time: \"2018-02-12T23:20:50Z\" * A bounded interval: \"2018-02-12T00:00:00Z/2018-03-18T12:31:12Z\" * Half-bounded intervals: \"2018-02-12T00:00:00Z/..\" or \"../2018-03-18T12:31:12Z\"\nOnly resources that have a temporal property that intersects the value of `datetime` are selected.\nIf a feature has multiple temporal properties, it is the decision of the server whether only a single temporal property is used to determine the extent or all relevant temporal properties.",
         "required": false,
         "schema": {
           "type": "string"
@@ -2188,7 +2375,7 @@
       "bbox": {
         "name": "bbox",
         "in": "query",
-        "description": "Only features that have a geometry that intersects the bounding box are selected. The bounding box is provided as four or six numbers, depending on whether the coordinate reference system includes a vertical axis (height or depth):\n* Lower left corner, coordinate axis 1 * Lower left corner, coordinate axis 2 * Minimum value, coordinate axis 3 (optional) * Upper right corner, coordinate axis 1 * Upper right corner, coordinate axis 2 * Maximum value, coordinate axis 3 (optional)\nThe coordinate reference system of the values is WGS 84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84) unless a different coordinate reference system is specified in the parameter `bbox-crs`.\nFor WGS 84 longitude/latitude the values are in most cases the sequence of minimum longitude, minimum latitude, maximum longitude and maximum latitude. However, in cases where the box spans the antimeridian the first value (west-most box edge) is larger than the third value (east-most box edge).\nIf the vertical axis is included, the third and the sixth number are the bottom and the top of the 3-dimensional bounding box.\nIf a feature has multiple spatial geometry properties, it is the decision of the server whether only a single spatial geometry property is used to determine the extent or all relevant geometries.",
+        "description": "Only resources that have a geometry that intersects the bounding box are selected. The bounding box is provided as four or six numbers, depending on whether the coordinate reference system includes a vertical axis (elevation or depth):\n* Lower left corner, coordinate axis 1 * Lower left corner, coordinate axis 2 * Minimum value, coordinate axis 3 (optional) * Upper right corner, coordinate axis 1 * Upper right corner, coordinate axis 2 * Maximum value, coordinate axis 3 (optional)\nIf the value consists of four numbers, the coordinate reference system is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84)  unless a different coordinate reference system is specified in the parameter `bbox-crs`.\nIf the value consists of six numbers, the coordinate reference system is WGS 84  longitude/latitude/ellipsoidal height (http://www.opengis.net/def/crs/OGC/0/CRS84h) unless a different coordinate reference system is specified in a parameter `bbox-crs`.\nFor WGS84 longitude/latitude the values are in most cases the sequence of minimum longitude, minimum latitude, maximum longitude and maximum latitude. However, in cases where the box spans the antimeridian the first value (west-most box edge) is larger than the third value (east-most box edge).\nIf the vertical axis is included, the third and the sixth number are the bottom and the top of the 3-dimensional bounding box.\nIf a resource has multiple spatial geometry properties, it is the decision of the server  whether only a single spatial geometry property is used to determine the extent or all relevant geometries.",
         "required": false,
         "schema": {
           "type": "array",
@@ -2203,8 +2390,7 @@
             }
           ],
           "items": {
-            "type": "number",
-            "format": "double"
+            "type": "number"
           }
         },
         "style": "form",
@@ -2455,7 +2641,7 @@
         }
       },
       "Exception": {
-        "description": "An error occured.",
+        "description": "An error occurred.",
         "content": {
           "application/json": {
             "schema": {
@@ -2539,6 +2725,7 @@
               "example": {
                 "conformsTo": [
                   "http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/core",
+                  "http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/landing-page",
                   "http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/json",
                   "http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/html",
                   "http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/oas30",
@@ -2693,7 +2880,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/collectionInfo"
+              "$ref": "#/components/schemas/collectionDesc"
             },
             "example": {
               "id": "buildings",

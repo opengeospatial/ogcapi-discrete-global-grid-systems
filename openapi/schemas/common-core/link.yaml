@@ -15,9 +15,6 @@ properties:
     type: string
     description: A hint indicating what the media type of the result of dereferencing the link should be.
     example: application/geo+json
-  templated:
-    type: boolean
-    description: This flag set to true if the link is a URL template.
   hreflang:
     type: string
     description: A hint indicating what the language of the result of dereferencing the link should be.
