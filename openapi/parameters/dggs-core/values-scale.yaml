@@ -1,0 +1,9 @@
+name: values-scale
+in: query
+description: |
+   Specify the scale factor for a zone data output format such as PNG not supporting floating-point, to be applied before adding an offset and resulting in the encoded integer values (e.g., 8-bit or 16-bit unsigned for PNG).
+style: form
+explode: false
+required: false
+schema:
+  type: number
