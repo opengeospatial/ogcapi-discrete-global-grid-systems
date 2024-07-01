@@ -128,7 +128,7 @@ include::../requirements/requirements_class_zone_data_netcdf.adoc[]
 
 ==== Overview
 
-The Zarr Zone Data encoding requirements class defines support for encoding a DGGS Zone data response according to the https://zarr.readthedocs.io/en/stable/spec/v2.html[Zarr Storage Specification Version 2], packed into a <<ZIPISO,Zip archive>>.
+The Zarr Zone Data encoding requirements class defines support for encoding a DGGS Zone data response according to the https://zarr-specs.readthedocs.io/en/latest/v2/v2.0.html[Zarr Storage Specification Version 2], packed into a <<ZIPISO,Zip archive>>.
 
 include::../requirements/requirements_class_zone_data_zarr.adoc[]
 
