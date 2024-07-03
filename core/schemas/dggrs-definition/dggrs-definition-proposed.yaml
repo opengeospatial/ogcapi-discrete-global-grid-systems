@@ -176,9 +176,10 @@ properties:
             type: string
             example: >
               The zones are ordered in tightly packed scanlines.
-              Considering the ISEA planar projection, for odd level parent, zones are ordered left to right along a scanline and scanlines are ordered from top to bottom.
-              For an even level parent, zones are ordered top to bottom along a scanline and scanlines are ordered from left to right.
-              For an odd depth, scanlines start along a hexagon edge, whereas for even depths, scanlines start on a hexagon vertex.
+              For an odd relative depth, scanlines start along a hexagon edge, whereas for even relative depths, scanlines start on a hexagon vertex.
+              When the parity (even/odd) of the parent zone level corresponds to the parity of the relative depth, zones are ordered left to right along a scanline and scanlines are ordered from top to bottom
+              (considering the ISEA planar projection).
+              When the parity of the parent zone level and relative depth do not match, zones are ordered top to bottom along a scanline and scanlines are ordered from left to right.
          type:
             anyOf:
             - type: string
