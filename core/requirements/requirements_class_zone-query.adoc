@@ -95,7 +95,7 @@ allowing to explore a large list in a hierarchical manner (in combination with `
 label:: /rec/zone-query/parent-zone
 description:: For specifying a parent zone within which to restrict zone listing using a `parent-zone` query parameter:
 part:: The Implementation SHALL support a parameter `parent-zone` zone identifier query parameter.
-part:: When specified, the response SHALL NOT contain zones which are not this parent zone itself or a descendant of that zone.
+part:: When specified, the response SHALL NOT contain zones which are not this parent zone itself or a sub-zone of that zone.
 ====
 
 === Parameter `limit` for paging
