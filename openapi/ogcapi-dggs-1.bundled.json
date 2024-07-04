@@ -1979,7 +1979,7 @@
             "properties": {
               "description": {
                 "type": "string",
-                "example": "The zones are ordered in tightly packed scanlines. Considering the ISEA planar projection, for odd level parent, zones are ordered left to right along a scanline and scanlines are ordered from top to bottom. For an even level parent, zones are ordered top to bottom along a scanline and scanlines are ordered from left to right. For an odd depth, scanlines start along a hexagon edge, whereas for even depths, scanlines start on a hexagon vertex.\n"
+                "example": "The zones are ordered in tightly packed scanlines. For an odd relative depth, scanlines start along a hexagon edge, whereas for even relative depths, scanlines start on a hexagon vertex. When the parity (even/odd) of the parent zone level corresponds to the parity of the relative depth, zones are ordered left to right along a scanline and scanlines are ordered from top to bottom (considering the ISEA planar projection). When the parity of the parent zone level and relative depth do not match, zones are ordered top to bottom along a scanline and scanlines are ordered from left to right.\n"
               },
               "type": {
                 "anyOf": [
@@ -2497,7 +2497,7 @@
       "subset": {
         "name": "subset",
         "in": "query",
-        "description": "Retrieve only part of the data by slicing or trimming along one or more axis\nFor trimming: {axisAbbrev}({low}:{high}) (preserves dimensionality)\n   An asterisk (`*`) can be used instead of {low} or {high} to indicate the minimum/maximum value.\nFor slicing:  {axisAbbrev}({value})      (reduces dimensionality)\n",
+        "description": "Retrieve only part of the data by slicing or trimming along one or more axis\nFor trimming: {axisAbbrev}({low}:{high}) (preserves dimensionality)\nFor slicing:  {axisAbbrev}({value})      (reduces dimensionality)\nAn asterisk (`*`) can be used instead of {low} or {high} to indicate the minimum/maximum value.\nFor a temporal dimension, a single asterisk can be used to indicate the high value.\nSupport for `*` is required for time, but optional for spatial and other dimensions.\n",
         "style": "form",
         "explode": false,
         "required": false,
