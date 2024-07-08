@@ -23,7 +23,7 @@ part:: The geometry of each feature SHALL be the geometry of the zone.
 ====
 [%metadata]
 identifier:: /rec/zone-geojson/id
-part:: The Feature `id` SHOULD have the same value as the `zoneID` property or use the 64-bit integer identifier.
+part:: The Feature `id` SHOULD be a sequential identifier starting at 1, have the same text value as the `zoneID` property, or correspond to the 64-bit integer identifier for the zone.
 ====
 
 [recommendation]

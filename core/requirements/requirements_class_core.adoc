@@ -68,7 +68,7 @@ part:: Alternatively, the Implementation MAY process the request by properly ove
 [%metadata]
 label:: /req/core/zone-info
 description:: For retrieving information for a particular DGGRS zone:
-part:: The Implementation SHALL support an HTTP GET operation at a resource path ending with `.../dggs/{dggrsId}/zones/{zoneId}` providing information for a valid individual zones of the discrete global grid reference system.
+part:: The Implementation SHALL support an HTTP GET operation at a resource path ending with `.../dggs/{dggrsId}/zones/{zoneId}` providing information for valid individual zones of the discrete global grid reference system.
 part:: The zone information resource SHALL support a JSON representation.
 part:: The zone information resource SHALL include an `id` property corresponding to the `{zoneId}` resource path parameter.
 part:: The zone information resource SHALL include a link back to the corresponding DGGRS resource (`.../dggs/{dggrsId}`) using the `[ogc-rel:dggrs]` link relation type.
@@ -94,7 +94,7 @@ part:: The zone information resource SHOULD include a `geometry` property indica
 and including intermediate points between the vertices of the geometry so as to accurately represent the shape of the zones for DGGRSs not in CRS84. The coordinates should be in the CRS specified in the `crs` property.
 part:: For a temporal DGGS, the zone information resource SHOULD include a `temporalInterval` property indicating the start and end time of the zone.
 part:: The implementation SHOULD support a GeoJSON and/or OGC Features & Geometry JSON representation of the zone information resource where the top-level object is a feature representing the zone geometry,
-a `zoneID` property of that feature corresponds to the textual identifier (the `{zoneId}`), the `id` of the feature corresponds to either the textural identifier or the 64-bit unsigned integer identifier of the zone,
+a `zoneID` property of that feature corresponds to the textual identifier (the `{zoneId}`), the `id` of the feature corresponds to either a sequential feature identifier starting at 1, the textural identifier of the zone, or the 64-bit unsigned integer identifier of the zone,
 and the other properties described in this recommendation are properties of that feature.
 part:: For a zone associated with a particular collection, the implementation SHOULD provide summary statistics in a statistics (`minimum`, `maximum`, `average`, `stdDev`) pertaining to this zone for each field (fields of the range of a coverage, or relevant numeric properties of a feature collection) of the data. In the JSON encoding, this SHOULD be implemented as a `statistics` JSON dictionary property mapping field names to an object containing with each statistic.
 part:: For a zone associated with a particular collection, the implementation SHOULD provide `areaMetersSquareWithData`, `volumeMetersCubeWithData`, `temporalDurationSecondsWithData` properties corresponding to
