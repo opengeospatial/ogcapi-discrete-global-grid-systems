@@ -5,6 +5,7 @@ required: false
 schema:
   type: string
   enum:
+    - json
     - geotiff
     - geojson
     - png
