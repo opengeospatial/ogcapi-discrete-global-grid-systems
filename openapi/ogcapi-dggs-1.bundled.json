@@ -1979,7 +1979,7 @@
             "properties": {
               "description": {
                 "type": "string",
-                "example": "The zones are ordered in tightly packed scanlines. For an odd relative depth, scanlines start along a hexagon edge, whereas for even relative depths, scanlines start on a hexagon vertex. When the parity (even/odd) of the parent zone level corresponds to the parity of the relative depth, zones are ordered left to right along a scanline and scanlines are ordered from top to bottom (considering the ISEA planar projection). When the parity of the parent zone level and relative depth do not match, zones are ordered top to bottom along a scanline and scanlines are ordered from left to right.\n"
+                "example": "The zones are ordered in tightly packed scanlines. For an odd relative depth, scanlines start along a hexagon edge, whereas for even relative depths, scanlines start on a hexagon vertex. For sub-zones at an even refinement level, zones are ordered left to right along a scanline and scanlines are ordered from top to bottom (considering the ISEA planar projection). For sub-zones at an odd refinement level, zones are ordered top to bottom along a scanline and scanlines are ordered from left to right. Sub-zones are at an even refinement level when the parity (even/odd) of the parent zone level corresponds to the parity of the relative depth, and at an odd refinement level when the parity of the parent zone level and relative depth do not match. For polar pentagons, the scanlines direction is clockwise when looking down at the pole from above, with the first sub-zone in root rhombus 0 for the north pole and in root rhombus 9 for the south pole. There is one exception to that rule allowing the majority of the sub-zones for the first scanline to be in root rhombus 0 (north) and 9 (south) for odd level parents, odd relative depths (even sub-zone levels).\n"
               },
               "type": {
                 "anyOf": [
@@ -2000,6 +2000,209 @@
             }
           }
         }
+      },
+      "dggs-json": {
+        "type": "object",
+        "properties": {
+          "dggrs": {
+            "type": "string",
+            "format": "uri"
+          },
+          "zoneId": {
+            "type": "string"
+          },
+          "depths": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "schema": {
+            "description": "Attributes of the features or fields of a coverage range. Defined by a subset of the JSON Schema for the properties of a feature",
+            "type": "object",
+            "required": [
+              "type",
+              "properties"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "object"
+                ]
+              },
+              "required": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string"
+                }
+              },
+              "properties": {
+                "type": "object",
+                "default": {},
+                "additionalProperties": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "null",
+                        "number",
+                        "object",
+                        "string"
+                      ]
+                    },
+                    "enum": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {},
+                      "uniqueItems": true
+                    },
+                    "format": {
+                      "type": "string"
+                    },
+                    "contentMediaType": {
+                      "type": "string"
+                    },
+                    "maximum": {
+                      "type": "number"
+                    },
+                    "exclusiveMaximum": {
+                      "type": "number"
+                    },
+                    "minimum": {
+                      "type": "number"
+                    },
+                    "exclusiveMinimum": {
+                      "type": "number"
+                    },
+                    "pattern": {
+                      "type": "string",
+                      "format": "regex"
+                    },
+                    "maxItems": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "minItems": {
+                      "type": "integer",
+                      "default": 0,
+                      "minimum": 0
+                    },
+                    "x-ogc-definition": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "x-ogc-unit": {
+                      "type": "string"
+                    },
+                    "x-ogc-unitLang": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "dimensions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "definition": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "unit": {
+                  "type": "string"
+                },
+                "unitLang": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "grid": {
+                  "type": "object",
+                  "properties": {
+                    "cellsCount": {
+                      "type": "integer"
+                    },
+                    "resolution": {},
+                    "coordinates": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "interval": {
+                  "type": "array"
+                }
+              },
+              "required": [
+                "name",
+                "interval"
+              ]
+            }
+          },
+          "values": {
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "depth": {
+                    "type": "integer"
+                  },
+                  "shape": {
+                    "type": "object",
+                    "properties": {
+                      "count": {
+                        "type": "integer"
+                      },
+                      "subZones": {
+                        "type": "integer"
+                      },
+                      "dimensions": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "required": [
+                      "count",
+                      "subZones"
+                    ]
+                  },
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "dggrs",
+          "zoneId",
+          "depths",
+          "values"
+        ]
       },
       "FeatureCollection": {
         "title": "GeoJSON FeatureCollection",
@@ -3031,6 +3234,11 @@
       "ZoneData": {
         "description": "DGGRS zone data returned as a response.",
         "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/dggs-json"
+            }
+          },
           "image/png": {
             "schema": {
               "type": "string",

@@ -1,0 +1,76 @@
+# $schema: 'https://json-schema.org/draft/2020-12/schema'
+# $id: 'https://schemas.opengis.net/ogcapi/dggs/part1/1.0/openapi/schemas/dggs-json/schema'
+type: object
+properties:
+  dggrs:
+    type: string
+    format: uri
+  zoneId:
+    type: string
+  depths:
+    type: array
+    items:
+      type: integer
+      minimum: 0
+  schema:
+      # $ref: 'https://json-schema.org/draft/2020-12/schema'
+      $ref: 'schema.yaml'
+  dimensions:
+    type: array
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+        definition:
+          type: string
+          format: uri
+        unit:
+          type: string
+        unitLang:
+          type: string
+          format: uri
+        grid:
+          type: object
+          properties:
+            cellsCount:
+              type: integer
+            resolution: {}
+            coordinates:
+              type: array
+        interval:
+          type: array
+      required:
+        - name
+        - interval
+  values:
+    additionalProperties:
+      type: array
+      items:
+        type: object
+        properties:
+          depth:
+            type: integer
+          shape:
+            type: object
+            properties:
+              count:
+                type: integer
+              subZones:
+                type: integer
+              dimensions:
+                type: object
+                additionalProperties:
+                  type: integer
+            required:
+              - count
+              - subZones
+          data:
+            type: array
+            items:
+               type: number
+required:
+  - dggrs
+  - zoneId
+  - depths
+  - values

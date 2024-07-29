@@ -1,5 +1,8 @@
 description: DGGRS zone data returned as a response.
 content:
+  application/json:
+    schema:
+       $ref: '../../../core/schemas/dggs-json/dggs-json.yaml'
   image/png:
     schema:
       type: string
