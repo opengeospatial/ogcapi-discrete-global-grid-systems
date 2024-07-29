@@ -2142,17 +2142,42 @@
                     },
                     "resolution": {},
                     "coordinates": {
-                      "type": "array"
+                      "type": "array",
+                      "items": {
+                        "oneOf": [
+                          {
+                            "type": "number",
+                            "nullable": true
+                          },
+                          {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        ]
+                      }
                     }
                   }
                 },
                 "interval": {
-                  "type": "array"
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "type": "number",
+                        "nullable": true
+                      },
+                      {
+                        "type": "string",
+                        "nullable": true
+                      }
+                    ]
+                  }
                 }
               },
               "required": [
                 "name",
-                "interval"
+                "interval",
+                "grid"
               ]
             }
           },
@@ -2189,7 +2214,8 @@
                   "data": {
                     "type": "array",
                     "items": {
-                      "type": "number"
+                      "type": "number",
+                      "nullable": true
                     }
                   }
                 }

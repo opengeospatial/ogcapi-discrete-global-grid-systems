@@ -27,12 +27,28 @@
                   {
                      "cellsCount" : { "type": "integer" },
                      "resolution" : { },
-                     "coordinates": { "type": "array" }
+                     "coordinates": {
+                        "type": "array",
+                        "items": {
+                           "oneOf": [
+                              { "type": "number", "nullable": true },
+                              { "type": "string", "nullable": true },
+                           ]
+                        }
+                     }
                   }
                },
-               "interval": { "type": "array" }
+               "interval": {
+                  "type": "array",
+                  "items": {
+                     "oneOf": [
+                        { "type": "number", "nullable": true },
+                        { "type": "string", "nullable": true },
+                     ]
+                  }
+               }
             },
-            "required": [ "name", "interval" ]
+            "required": [ "name", "interval", "grid" ]
          }
       },
       "values" :
@@ -66,7 +82,8 @@
                      "type": "array",
                      "items":
                      {
-                        "type": "number"
+                        "type": "number",
+                        "nullable": true
                      }
                   }
                }

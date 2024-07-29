@@ -38,11 +38,24 @@ properties:
             resolution: {}
             coordinates:
               type: array
+              items:
+                oneOf:
+                 - type: number
+                   nullable: true
+                 - type: string
+                   nullable: true
         interval:
           type: array
+          items:
+            oneOf:
+             - type: number
+               nullable: true
+             - type: string
+               nullable: true
       required:
         - name
         - interval
+        - grid
   values:
     additionalProperties:
       type: array
@@ -69,6 +82,7 @@ properties:
             type: array
             items:
                type: number
+               nullable: true
 required:
   - dggrs
   - zoneId
