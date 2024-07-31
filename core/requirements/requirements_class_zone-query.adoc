@@ -20,7 +20,7 @@ description:: For retrieving a list of DGGS zones:
 part:: The Implementation SHALL support an HTTP GET operation at a resource path
 ending with `.../dggs/{dggrsId}/zones`.
 part:: The Implementation SHALL include a link to this resource path in the "Core" `.../dggs/{dggrsId}` resource links
-using the link relation type https://www.opengis.net/def/rel/ogc/1.0/dggs-zone-query.
+using the link relation type https://www.opengis.net/def/rel/ogc/1.0/dggrs-zone-query.
 part:: The response of the HTTP GET operation SHALL have a status code of 200.
 part:: The content of the response SHALL be a list of zones fully covering where data is available
 (in the case where the resource is associated with a particular dataset), and

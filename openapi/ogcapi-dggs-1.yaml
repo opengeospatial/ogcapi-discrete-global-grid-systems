@@ -39,19 +39,19 @@ paths:
    # ### CORE ### (Conformance Class)
 
    # DataSet DGGRS definitions (If shared for all collections, or supported for Data Set)
-   /dggs: # List of DGGRS including URI, link to definition ('self'), links for retrieval ('dggs-zone'data') and/or search ('dggs-zone-query') for each DGGS -- 'dggs-list' link relation type from Landing Page
+   /dggs: # List of DGGRS including URI, link to description ('self'), definition ('dggrs-definition') for each DGGRS -- 'dggrs-list' link relation type from Landing Page
       $ref: 'paths/dggs-core/pDGGRSList.yaml'
-   /dggs/{dggrsId}: # DGGRS information (Recommendation/Optional)
+   /dggs/{dggrsId}: # DGGRS information including links for retrieval ('dggrs-zone-data') and/or search ('dggrs-zone-query'), link for zone info ('dggrs-zone-info')
       $ref: 'paths/dggs-core/pDGGRS.yaml'
-   /dggs/{dggrsId}/zones/{zoneId}: # (Recommendation/Optional) Zone information and/or geometry; Include link for retrieval if data is available for this zone?
+   /dggs/{dggrsId}/zones/{zoneId}: # Zone information and/or geometry; Including link for retrieval if data is available for this zone
       $ref: 'paths/dggs-core/pZone.yaml'
 
    # Collection DGGRS definitions: Collection Zone Data (If available for a specific collection)
-   /collections/{collectionId}/dggs: # List of DGGRS including URI, link to definition ('self'), links for retrieval ('dggs-zone-data') and/or search ('dggs-zone-query') for each DGGS -- 'dggs-list' link relation type from Collection
+   /collections/{collectionId}/dggs: # List of DGGRS including URI, link to description ('self'), definition ('dggrs-definition') for each DGGRS -- 'dggrs-list' link relation type from Collection
       $ref: 'paths/dggs-core/pCollectionDGGRSList.yaml'
-   /collections/{collectionId}/dggs/{dggrsId}: # (Recommendation/Optional)
+   /collections/{collectionId}/dggs/{dggrsId}: # DGGRS information including links for retrieval ('dggrs-zone-data') and/or search ('dggrs-zone-query'), link for zone info ('dggrs-zone-info')
       $ref: 'paths/dggs-core/pCollectionDGGRS.yaml'
-   /collections/{collectionId}/dggs/{dggrsId}/zones/{zoneId}: # (Recommendation/Optional) Zone information and/or geometry; Include link for retrieval if data is available for this zone?
+   /collections/{collectionId}/dggs/{dggrsId}/zones/{zoneId}: # Zone information and/or geometry; Including link for retrieval if data is available for this zone
       $ref: 'paths/dggs-core/pCollectionZone.yaml'
 
    # ### DATA RETRIEVAL (What is here?) ### (Conformance Class)
