@@ -19,10 +19,8 @@ part:: Every 200 response of the server for zone data with the media type `appli
 part:: A dimension of the Zarr data SHALL correspond to the sub-zones for which values are being returned following the DGGRS deterministic sub-zone ordering.
 part:: If multiple relative zone depths are being returned, each depth SHALL be encoded as a separate Zarr dataset within the data packet.
 part:: Every zone depth requested using the `zone-depth` parameter SHALL be included in the response.
-part:: At every depth, each individual value SHALL correspond exactly to the data sampled representative of that sub-zone for either the overall area of the sub-zone, the sub-zone centroid or the primary vertex of the sub-zone.
+part:: At every depth, each individual value SHALL correspond exactly to the data sampled representative of that sub-zone.
 part:: The list of data values SHALL follow the default zone order as specified by the Discrete Global Grid Reference System (for example based on a scanline or space-filling curved defined therein) for which the request is made.
-part:: For the purpose of identifying the primary vertex, assuming the following approach results in uniquely mapping a single vertex for every zone of each discrete global grid, for the first sub-zone, the primary vertex SHALL correspond to the vertex furthest away from the next sub-zone in the DGGRS sub-zone order which is at different coordinates for both spatial axes. For example, for square zones using a quad-tree refinement with a top to bottom row by row sub-zone order starting with the top-left zone (whether jumping back to the start of the next row, or alternating between left to right and right to left), the primary vertex will be the top-left corner.
-part:: For a DGGRS where this primary vertex identification approach does not result in uniquely mapping a single vertex for every zone of a DGG, the primary vertex SHALL be identified as specified in the DGGRS definition.
 ====
 
 [recommendation]
