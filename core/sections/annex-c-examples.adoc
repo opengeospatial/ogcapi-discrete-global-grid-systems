@@ -153,12 +153,12 @@ a default (relative) depth as well as additional links and link templates.
       {
          "rel" : "[ogc-rel:dggrs-zone-info]",
          "title" : "DGGRS zone information for a particular ISEA3H zone",
-         "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/{zoneId}"
+         "uriTemplate" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/{zoneId}"
       },
       {
          "rel" : "[ogc-rel:dggrs-zone-data]",
          "title" : "Data retrieval for a particular ISEA3H zone",
-         "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/{zoneId}/data"
+         "uriTemplate" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/{zoneId}/data"
       }
    ]
 }
@@ -360,7 +360,7 @@ An example JSON response for this Zone Query JSON, as defined by the <<rc_zone-q
    ],
    "linkTemplates" : [
       { "rel" : "[ogc-rel:dggrs-zone-data]", "title" : "ISEA3H data for GEBCO",
-        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/{zoneId}/data",
+        "uriTemplate" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/{zoneId}/data",
       }
    ]
 }
@@ -414,7 +414,7 @@ and obtain the following response (negotiating a JSON zone list again):
    ],
    "linkTemplates" : [
       { "rel" : "[ogc-rel:dggrs-zone-data]", "title" : "ISEA3H data for GEBCO",
-        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/{zoneId}/data",
+        "uriTemplate" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/{zoneId}/data",
       }
    ]
 }

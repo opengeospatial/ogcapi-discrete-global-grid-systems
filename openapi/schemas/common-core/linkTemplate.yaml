@@ -1,9 +1,9 @@
 type: object
 required:
-  - tref
+  - uriTemplate
   - rel
 properties:
-  tref:
+  uriTemplate:
     type: string
     description: Supplies the URL template to a remote resource (or resource fragment), with template variables surrounded by curly brackets (`{` `}`).
     example: http://data.example.com/buildings/{featureId}
