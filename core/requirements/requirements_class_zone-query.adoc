@@ -98,6 +98,15 @@ part:: The Implementation SHALL support a parameter `parent-zone` zone identifie
 part:: When specified, the response SHALL NOT contain zones which are not this parent zone itself or a sub-zone of that zone.
 ====
 
+[recommendation]
+====
+[%metadata]
+label:: /rec/zone-query/zone-order
+description:: For recommending to follow the DGGRS sub-zone ordering
+part:: When the `parent-zone` parameter is used, the Implementation SHOULD return a list of zones ordered according to the canonical sub-zone ordering defined by the DGGRS
+(the same order used for encoding values for data retrieval in formats such as <<rc_data-json, DGGS-JSON>> relying on a shared understanding of this order by the server/producer and client/consumer).
+====
+
 === Parameter `limit` for paging
 
 The following recommendation describes how a client can specify a limit to the number of zones to be returned
@@ -106,7 +115,7 @@ and page through large list of zones as multiple requests and responses.
 [recommendation]
 ====
 [%metadata]
-label:: /req/zone-query/limit
+label:: /rec/zone-query/limit
 description:: For specifying a paging limit for the list of zones using a `limit` query parameter:
 part:: The Implementation SHOULD support a parameter `limit` integer query parameter, with a minimum value of 1.
 part:: The response SHOULD not contain more zones than specified by the optional `limit` parameter (if specified).
