@@ -76,6 +76,19 @@ image::images/ISEA3H-Level1.png[width=700,align="center"]
 .The ISEA3H level 2 zones and associated identifiers (derived from ISEA9R level 1), shown on an ISEA planar projection (https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry])
 image::images/ISEA3H-Level2.png[width=700,align="center"]
 
+The sub-zone ordering for this DGGRS is based on scanlines of tightly packed hexagons, sharing whole edges
+with the previous and next zone within a scanline, while each zone shares two edges with the
+scanline above, and another two edges with the scanline below. The scanlines start on a vertex of the parent zone
+for an even relative depth, while they start on an edge for an odd relative depth.
+
+[#img_isea3h_order_vertex='{figure-caption} {counter:figure-num}']
+.Sub-zone order for even relative depth starting on a vertex (hexagonal parent, depth 2)
+image::images/isea3h-order-vertex.png[width=300,align="center"]
+
+[#img_isea3h_order_edge='{figure-caption} {counter:figure-num}']
+.Sub-zone order for odd relative depth starting on an edge (hexagonal parent, depth 3)
+image::images/isea3h-order-edge.png[width=400,align="center"]
+
 [[ggg-dggrs]]
 === GNOSIS Global Grid DGGRS definition
 
