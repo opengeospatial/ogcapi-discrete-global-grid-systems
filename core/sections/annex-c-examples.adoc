@@ -115,7 +115,7 @@ through parallel distributed processing and lazy evaluation.
 
 As a fallback, a client without native support for a particular DGGRS can still retrieve and interpret data from a server implementing support for both
 zone queries and data retrieval by performing a two-steps operation. First, the client can perform a zone query for an area of interest using the `bbox` query parameter.
-Then, the client can request data for the zones returned by this query in a georeferenced encoding which it understands and which is not tightly coupled with the DGGS (excluding e.g.,the <<rc_data-json,DGGS-JSON>> encoding), such as GeoJSON or GeoTIFF.
+Then, the client can request data for the zones returned by this query in a georeferenced encoding which it understands and which is not tightly coupled with the DGGRS (excluding e.g.,the <<rc_data-json,DGGS-JSON>> encoding), such as GeoJSON or GeoTIFF.
 However, for such use cases, OGC API - DGGS does not present significant advantages over other OGC API data access mechanisms such as
 https://docs.ogc.org/DRAFTS/19-087.html[OGC API - Coverages], https://docs.ogc.org/is/17-069r4/17-069r4.html[OGC API - Features] or https://docs.ogc.org/is/20-057/20-057.html[OGC API - Tiles].
 

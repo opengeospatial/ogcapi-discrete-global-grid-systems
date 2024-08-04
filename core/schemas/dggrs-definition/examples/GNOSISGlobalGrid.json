@@ -3,7 +3,7 @@
    "description": "A Discrete Global Grid Reference System based on the GNOSIS Global Grid 2D Tile Matrix Set, a {hexLevel}-{hexRow}-{hexCol} indexing system, and scanline-based sub-zone ordering. Making use of variable matrix widths, zones are divided by 4, unless they touch the pole, in which case the half touching the pole is not split longitude-wise. The error budget is ~-25.8/+66.0% from mean zone size (+/- 45.9% from median) up to level 25 (~849 cm² mean zones).",
    "uri": "https://www.opengis.net/def/dggrs/OGC/1.0/GNOSISGlobalGrid",
    "links": [ { "rel": "describedby", "href": "https://docs.ogc.org/is/17-083r4/17-083r4.html#toc58" } ],
-   "dggs": {
+   "dggh": {
       "definition": {
          "spatialDimensions": 2,
          "temporalDimensions": 0,

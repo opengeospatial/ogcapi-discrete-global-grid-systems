@@ -1,13 +1,14 @@
 {
    "title": "ISEA3H",
-   "description": "An ISEA3H Discrete Global Grid Reference System using the standard ISEA orientation and WGS84 authalic sphere, a zone indexing system based on an ISEA9R, and scanline-based ordering",
+   "description": "An ISEA3H Discrete Global Grid Reference System using the standard ISEA orientation and WGS84 authalic sphere, a zone indexing system based on an ISEA9R, and a scanline-based sub-zone ordering",
    "uri": "https://www.opengis.net/def/dggrs/OGC/1.0/ISEA3H",
    "links": [ { "rel": "describedby", "href": "https://portal.ogc.org/files/?artifact_id=107432" } ],
-   "dggs": {
+   "dggh": {
       "definition": {
          "spatialDimensions": 2,
          "temporalDimensions": 0,
-         "crs": "https://www.opengis.net/def/crs/OGC/0/ISEA",
+         "crs": "https://www.opengis.net/def/crs/OGC/0/1534",
+         "projString": "+proj=pipeline +step +proj=geoc +step +proj=isea +R=6371007.18091875 +x_0=19186144.8709401525557041 +y_0=-3323137.77178453654050",
          "links": [
             { "rel": "related", "href": "https://doi.org/10.3138/27H7-8K88-4882-1752" },
             { "rel": "related", "href": "https://proj.org/en/9.3/operations/projections/isea.html" },
@@ -42,7 +43,7 @@
       }
    },
    "subZoneOrder": {
-      "description": "The zones are ordered in tightly packed scanlines. For an odd relative depth, scanlines start along a hexagon edge, whereas for even relative depths, scanlines start on a hexagon vertex. For sub-zones at an even refinement level, zones are ordered left to right along a scanline and scanlines are ordered from top to bottom (considering the ISEA planar projection). For sub-zones at an odd refinement level, zones are ordered top to bottom along a scanline and scanlines are ordered from left to right. Sub-zones are at an even refinement level when the parity (even/odd) of the parent zone level corresponds to the parity of the relative depth, and at an odd refinement level when the parity of the parent zone level and relative depth do not match. For polar pentagons, the scanlines direction is clockwise when looking down at the pole from above, with the first sub-zone in root rhombus 0 for the north pole and in root rhombus 9 for the south pole. There is one exception to that rule allowing the majority of the sub-zones for the first scanline to be in root rhombus 0 (north) and 9 (south) for odd level parents, odd relative depths (even sub-zone levels).
+      "description": "The zones are ordered in tightly packed scanlines. For an odd relative depth, scanlines start along a hexagon edge, whereas for even relative depths, scanlines start on a hexagon vertex. Scanlines run in a clockwise direction. For sub-zones at an even refinement level, zones are ordered left to right along a scanline and scanlines are ordered from top to bottom (considering the ISEA planar projection). For sub-zones at an odd refinement level, zones are ordered top to bottom along a scanline and scanlines are ordered from left to right. Sub-zones are at an even refinement level when the parity (even/odd) of the parent zone level corresponds to the parity of the relative depth, and at an odd refinement level when the parity of the parent zone level and relative depth do not match. For polar pentagons, the orientation of the scanlines varies in the ISEA planar projection but is always clockwise, the vertex/edge of the first sub-zone is on the left side of the planar ISEA projection for the north pole (in root rhombus 0), and on the right side for the south pole (in root rhombus 9).",
       "type": "scanline"
    }
 }

@@ -84,7 +84,7 @@ The GeoTIFF Zone Data encoding requirements class defines support for encoding a
 
 GeoTIFF is a commonly used format for representing 2-dimensional gridded coverages.
 
-For a DGGS with non-rectangular zones (e.g., hexagonal zones), a GeoTIFF representation can be the minimal bounding rectangle of the zone shape, with NODATA values used outside the bounds of the zone.
+For a DGGRS with non-rectangular zones (e.g., hexagonal zones), a GeoTIFF representation can be the minimal bounding rectangle of the zone shape, with NODATA values used outside the bounds of the zone.
 
 include::../requirements/requirements_class_zone_data_geotiff.adoc[]
 

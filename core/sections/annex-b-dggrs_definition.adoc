@@ -37,7 +37,7 @@ This transformed CRS no longer preserves angles and distances, although the topo
 .DGGRS Definition for ISEA9R
 [source,json]
 ----
-include::../schemas/dggrs-definition/examples/isea9r.json[]
+include::../schemas/dggrs-definition/examples/ISEA9R.json[]
 ----
 
 [#img_isea9r_rotated='{figure-caption} {counter:figure-num}']
@@ -61,7 +61,7 @@ The DGGS is considered equal-area, although the 12 pentagonal zones at any level
 .DGGRS Definition for ISEA3H using indexing based on ISEA9R
 [source,json]
 ----
-include::../schemas/dggrs-definition/examples/isea3h.json[]
+include::../schemas/dggrs-definition/examples/ISEA3H.json[]
 ----
 
 [#img_isea3h_level0='{figure-caption} {counter:figure-num}']
@@ -90,7 +90,7 @@ Since its native axes are latitude and longitude, no additional reprojection is 
 .DGGRS Definition for the GNOSIS Global Grid
 [source,json]
 ----
-include::../schemas/dggrs-definition/examples/gnosisGlobalGrid.json[]
+include::../schemas/dggrs-definition/examples/GNOSISGlobalGrid.json[]
 ----
 
 [#img_ggg_level0='{figure-caption} {counter:figure-num}']

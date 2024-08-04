@@ -2,7 +2,7 @@
 description: Discrete Global Grid System Reference System (DGGRS) Definition.
 type: object
 required:
-- dggs
+- dggh
 - zirs
 - subZoneOrder
 properties:
@@ -14,7 +14,7 @@ properties:
       type: string
       format: uri
       description: The authoritative URI associated with this DGGRS definition
-   dggs:
+   dggh:
       type: object
       description: The hierarchical series of Discrete Global Grid upon which this DGGRS is based, including any parameters.
       properties:
@@ -27,7 +27,7 @@ properties:
             properties:
                crs:
                   allOf:
-                  - description: The native Coordinate Reference System (CRS) in which the geometry of the zones for this DGGS is defined.
+                  - description: The native Coordinate Reference System (CRS) in which the geometry of the zones for this DGG hierarchy is defined.
                   - anyOf:
                      - type: string
                        format: uri
@@ -58,7 +58,7 @@ properties:
                         type: boolean
                         default: false
                      cellEqualSized:
-                        description: Set to true if the area of all zones is the same for a particular zone geometry type of any specifc discrete global grid of the DGGS hierarchy.
+                        description: Set to true if the area of all zones is the same for a particular zone geometry type of any specifc discrete global grid of the DGG hierarchy.
                         type: boolean
                         default: false
                spatialDimensions:
@@ -177,15 +177,15 @@ properties:
             example: >
               The zones are ordered in tightly packed scanlines.
               For an odd relative depth, scanlines start along a hexagon edge, whereas for even relative depths, scanlines start on a hexagon vertex.
+              Scanlines run in a clockwise direction.
               For sub-zones at an even refinement level, zones are ordered left to right along a scanline and scanlines are ordered from top to bottom
               (considering the ISEA planar projection).
               For sub-zones at an odd refinement level, zones are ordered top to bottom along a scanline and scanlines are ordered from left to right.
               Sub-zones are at an even refinement level when the parity (even/odd) of the parent zone level corresponds to the parity of the relative depth, and
               at an odd refinement level when the parity of the parent zone level and relative depth do not match.
-              For polar pentagons, the scanlines direction is clockwise when looking down at the pole from above, with the first sub-zone in
-              root rhombus 0 for the north pole and in root rhombus 9 for the south pole.
-              There is one exception to that rule allowing the majority of the sub-zones for the first scanline to be
-              in root rhombus 0 (north) and 9 (south) for odd level parents, odd relative depths (even sub-zone levels).
+              For polar pentagons, the orientation of the scanlines varies in the ISEA planar projection but is always clockwise,
+              the vertex/edge of the first sub-zone is on the left side of the planar ISEA projection for the north pole (in root rhombus 0),
+              and on the right side for the south pole (in root rhombus 9).
          type:
             anyOf:
             - type: string
