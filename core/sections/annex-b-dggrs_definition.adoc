@@ -8,7 +8,7 @@ An important objective for this schema is to support establishing authoritative 
 
 Note that this schema is preliminary, and a normative version may be defined by a later version of this standard
 or by a future part of OGC Abstract Specification Topic 21.
-The schema may change to allow for better description of existing and new classes of DGGS.
+The schema may change to allow for better description of existing and new classes of DGGH.
 
 The DGGRS definition consists of three main components:
 
@@ -29,7 +29,7 @@ The following example JSON DGGRS definitions conform to this schema.
 [[isea9r-dggrs]]
 === ISEA9R DGGRS definition
 
-The following DGGRS is for an axis-aligned and equal-area DGGS based on the https://doi.org/10.3138/27H7-8K88-4882-1752[Icosahedral Snyder Equal-Area (ISEA)] planar projection (see https://proj.org/en/9.4/operations/projections/isea.html[PROJ] and https://github.com/mocnik-science/geogrid/blob/master/src/main/java/org/giscience/utils/geogrid/projections/ISEAProjection.java[geogrid] for open-source implementations) using rhombuses with a refinement ratio of 9.
+The following DGGRS is for an axis-aligned and equal-area DGGH based on the https://doi.org/10.3138/27H7-8K88-4882-1752[Icosahedral Snyder Equal-Area (ISEA)] planar projection (see https://proj.org/en/9.4/operations/projections/isea.html[PROJ] and https://github.com/mocnik-science/geogrid/blob/master/src/main/java/org/giscience/utils/geogrid/projections/ISEAProjection.java[geogrid] for open-source implementations) using rhombuses with a refinement ratio of 9.
 When the ISEA projection is rotated 60 degrees, sheared horizontally by 30 degrees and units are mapped to a 5x6 space, the zones become square and their edges are aligned with the CRS axes, while remaining equal-area.
 A https://docs.ogc.org/is/17-083r4/17-083r4.html[2D Tile Matrix Set] can also be defined in this transformed CRS, allowing for compatibility with https://docs.ogc.org/is/20-057/20-057.html[OGC API - Tiles], https://portal.ogc.org/files/?artifact_id=35326[WMTS] and traditional client and visualization software with no built-in DGGS functionality.
 This transformed CRS no longer preserves angles and distances, although the topology, indexing and surface geometry on the Earth model remains the same as in the original ISEA CRS where angles and distances are preserved.
@@ -55,8 +55,8 @@ image::images/ISEA9R-Level1.png[width=700,align="center"]
 [[isea3h-dggrs]]
 === ISEA3H DGGRS definition
 
-The following DGGRS is for an ISEA3H DGGS, also based on the ISEA planar projection, with hexagonal and pentagonal zones, and a refinement ratio of 3, using a zone reference system based in part on its dual relationship with the ISEA9R DGGS.
-The DGGS is considered equal-area, although the 12 pentagonal zones at any level occupy 5/6th of the area of hexagonal zones.
+The following DGGRS is for an ISEA3H DGGH, also based on the ISEA planar projection, with hexagonal and pentagonal zones, and a refinement ratio of 3, using a zone reference system based in part on its dual relationship with the ISEA9R DGGH.
+The DGGH is considered equal-area, although the 12 pentagonal zones at any level occupy 5/6th of the area of hexagonal zones.
 
 .DGGRS Definition for ISEA3H using indexing based on ISEA9R
 [source,json]
@@ -94,11 +94,11 @@ image::images/isea3h-order-edge.png[width=400,align="center"]
 
 The following DGGRS is based on the https://docs.ogc.org/is/17-083r4/17-083r4.html#toc58[variable width 2D Tile Matrix Set of the same name].
 The GNOSIS Global Grid is also axis-aligned, with the axes being the geographic latitude and longitude, and already corresponds to a registered 2DTMS.
-Through the variable width capability of the tile matrices, this DGGS approximates equal area.
+Through the variable width capability of the tile matrices, this DGGH approximates equal area.
 For example, at any refinement level, only 4 zones touch each pole.
 Since the error budget still exceeds the 1%, it cannot be considered equal area.
 However, the error is the same along a particular row of zones following latitude lines, and can easily be calculated.
-Since its native axes are latitude and longitude, no additional reprojection is required to import data to or export data from this DGGS.
+Since its native axes are latitude and longitude, no additional reprojection is required to import data to or export data from this DGGH.
 
 .DGGRS Definition for the GNOSIS Global Grid
 [source,json]
