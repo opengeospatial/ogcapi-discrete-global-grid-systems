@@ -1881,14 +1881,20 @@
                     "type": "object",
                     "properties": {
                       "latitude": {
-                        "description": "Reference Latitude in decimal degrees to fix the orientation of the polyhedron.",
-                        "example": 0,
+                        "description": "Reference latitude in decimal degrees on reference globe of first vertex to fix the orientation of the polyhedron.",
+                        "example": 58.28252559,
                         "type": "number"
                       },
                       "longitude": {
-                        "description": "Reference Longitude in decimal degrees to fix the orientation of the polyhedron.",
-                        "example": 0,
+                        "description": "Reference longitude in decimal degrees on reference globe of first vertex to fix the orientation of the polyhedron.",
+                        "example": 11.25,
                         "type": "number"
+                      },
+                      "azimuth": {
+                        "description": "Azimuth in decimal degrees of second vertex relative to the first vertex.",
+                        "example": 0,
+                        "type": "number",
+                        "default": 0
                       },
                       "description": {
                         "type": "string"

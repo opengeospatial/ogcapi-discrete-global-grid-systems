@@ -154,6 +154,12 @@
                   "example": 0,
                   "type": "number"
                 },
+                "azimuth": {
+                  "description": "Azimuth in decimal degrees of second vertex relative to the first vertex.",
+                  "example": 0.0,
+                  "type": "number",
+                  "default": 0.0
+                },
                 "description": {
                   "type": "string"
                 }

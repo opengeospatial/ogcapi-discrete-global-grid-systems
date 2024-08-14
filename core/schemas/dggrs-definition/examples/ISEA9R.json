@@ -1,6 +1,6 @@
 {
    "title": "ISEA9R",
-   "description": "An ISEA9R Discrete Global Grid Reference System using the standard ISEA orientation and WGS84 authalic sphere, a {level}{rootRhombus}-{hexSubZone} indexing system, and scanline-based sub-zone ordering. The ten root rhombuses are formed by combining two icosahedron triangles at their base. Depending on whether the ISEA planar CRS is rotated, sheared and scaled or not, the geometry of the zones are either squares or rhombuses, and the zone edges are either axis-aligned, or the angles and distances are preserved. In either case, the topology, indexing and surface geometry on the Earth model remains the same. The ISEA9R DGGH is a dual of the ISEA3H DGGH even levels (a vertex/node in ISEA9R is the centroid of an ISEA3H zone).",
+   "description": "An ISEA9R Discrete Global Grid Reference System using the standard ISEA orientation and WGS84 authalic sphere (a WGS84 geodetic latitude is mapped to the sphere by converting it to an authalic latitude), a {level}{rootRhombus}-{hexSubZone} indexing system, and scanline-based sub-zone ordering. The ten root rhombuses are formed by combining two icosahedron triangles at their base. Depending on whether the ISEA planar CRS is rotated, sheared and scaled or not, the geometry of the zones are either squares or rhombuses, and the zone edges are either axis-aligned, or the angles and distances are preserved. In either case, the topology, indexing and surface geometry on the Earth model remains the same. The ISEA9R DGGH is a dual of the ISEA3H DGGH even levels (a vertex/node in ISEA9R is the centroid of an ISEA3H zone).",
    "uri": "https://www.opengis.net/def/dggrs/OGC/1.0/ISEA9R",
    "links": [ { "rel": "describedby", "href": "https://portal.ogc.org/files/?artifact_id=107432" } ],
    "dggh": {
@@ -8,7 +8,7 @@
          "spatialDimensions": 2,
          "temporalDimensions": 0,
          "crs": "https://www.opengis.net/def/crs/OGC/0/153456",
-         "projString": "+proj=pipeline +step +proj=geoc +step +proj=isea +R=6371007.18091875 +x_0=19186144.8709401525557041 +y_0=-3323137.7717845365405083 +step +proj=affine +inv +s11=3837228.9741880306974053 +s12=3837228.9741880302317441 +s21=6646275.5435690730810165 +s22=-6646275.543569073081016",
+         "projString": "+proj=pipeline +step +proj=isea +R=6371007.18091875 +x_0=19186144.8709 +y_0=-3323137.7718 +step +proj=affine +inv +s11=3837228.97419 +s12=3837228.97419 +s21=6646275.54357 +s22=-6646275.54357",
          "links": [
             { "rel": "related", "href": "https://doi.org/10.3138/27H7-8K88-4882-1752" },
             { "rel": "related", "href": "https://proj.org/en/9.3/operations/projections/isea.html" },
