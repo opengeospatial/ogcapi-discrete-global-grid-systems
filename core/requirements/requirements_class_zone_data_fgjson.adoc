@@ -15,7 +15,7 @@ inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
 [%metadata]
 identifier:: /req/data-fgjson/content
 part:: Every 200 response of the server for zone data with the media type `application/fg+json` SHALL be a https://docs.ogc.org/DRAFTS/21-045r1.html[Feature & Geometries JSON] document representing the features, including their geometry and associated properties, for a single zone.
-part:: Features whose geometry lie wholly outside of the zone geometry SHALL not be included in the response.
+part:: Features whose geometry lie wholly outside of the zone geometry SHALL NOT be included in the response.
 ====
 
 [recommendation]

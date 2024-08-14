@@ -100,7 +100,7 @@ March 18, 2018, 12:31:12 UTC or earlier:
 `datetime=../2018-03-18T12:31:12Z`
 =================
 
-==== Parameter `properties`
+=== Parameter `properties`
 
 [[req_fieldselection-properties]]
 [width="90%",cols="2,6a"]

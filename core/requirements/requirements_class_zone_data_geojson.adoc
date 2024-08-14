@@ -16,7 +16,7 @@ inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
 identifier:: /req/data-geojson/content
 part:: Every 200 response of the server for zone data with the media type `application/geo+json` SHALL be a https://datatracker.ietf.org/doc/html/rfc7946[GeoJSON] document representing the features, including their geometry and associated properties, for a single zone.
 part:: Unless otherwise specified by a prior arrangement (for example, a `crs` output parameter), the coordinate reference system SHALL be CRS84(h) in longitude and latitude (and optional height above the WGS84 ellipsoid).
-part:: Features whose geometry lie wholly outside of the zone geometry SHALL not be included in the response.
+part:: Features whose geometry lie wholly outside of the zone geometry SHALL NOT be included in the response.
 ====
 
 [recommendation]
