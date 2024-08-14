@@ -127,6 +127,7 @@ An example JSON response for this DGGRS description, as defined by the <<rc_core
 Note how the description is more comprehensive than the summary description included for each item in the previous DGGRS list response, including a description,
 a default (relative) depth as well as additional links and link templates.
 
+[[isea3h-dggs-description-response]]
 [%unnumbered%]
 [source,json]
 ----
@@ -815,10 +816,103 @@ A future extension could also enable cross-collection queries, possibly using a 
 
 === Retrieving data for a DGGRS Zone
 
-The following example retrieves elevation data for the GEBCO collection for ISEA3H zone `A2-0-A` at a relative depth of 8:
+Data can be retrieved for a parent zone of interest, including values for all sub-zones within it, at the `.../dggs/{dggrsId}/zones/{zoneId}/data` resource path.
 
-https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A/data?zone-depth=8
+The following examples illustrate this capability for different DGGRSs, representation encodings, CRSs, and other parameters.
+
+==== Retrieving data from an ISEA3H DGGRS
+
+This first example retrieves elevation data for the GEBCO collection for ISEA3H zone `A2-0-A` at a relative depth of 8 (specified using the `zone-depth` parameter -- the default zone depth is 10, as specified in the
+`defaultDepth` property of the <<isea3h-dggs-description-response,ISEA3H DGGRS description response>>).
+
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A/data?zone-depth=8&f=json[\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A/data?zone-depth=8]
+
+A snippet of the DGGS-JSON response follows, including an array of elevation values ordered as per the <<img_isea3h_order_vertex,deterministic zone order defined by this ISEA3H DGGRS>>.
+
+[source,json]
+----
+{
+   "dggrs" : "https://www.opengis.net/def/dggrs/OGC/1.0/ISEA3H",
+   "zoneId" : "A2-0-A",
+   "depths" : [ 8 ],
+   "values" : {
+      "Elevation" : [
+         {
+            "depth" : 8,
+            "shape" : { "count" : 5536, "subZones" : 5536 },
+            "data" : [ 24.9531681265927, 21.6738144635267, ...,  3400.2192758791743 ]
+         }
+      ]
+   }
+}
+----
 
 [#img_zone_data='{figure-caption} {counter:figure-num}']
-.Visualization of a DGGS-JSON response for querying ISEA3H DGGRS for zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A[A2-0-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 8
+.Visualization of a DGGS-JSON response for retrieving data for ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A[A2-0-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 8
 image::images/isea3h-elevation.png[width=700,align="center"]
+
+In a https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A/data?zone-depth=8&f=geotiff[GeoTIFF representation], rather than being quantized to sub-zones, the Elevation would be quantized to the closest rectilinear gridded coverage cells, at a resolution high enough to include at least
+one value per corresponding sub-zones. The data may still be clipped to the shape of the zone geometry.
+By default, this implementation returns the data in an OGC:CRS84 CRS.
+
+[#img_zone_data_tiff_wgs84='{figure-caption} {counter:figure-num}']
+.Visualization of a CRS84 GeoTIFF response for retrieving data for zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A[A2-0-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 8
+image::images/tiff-zoneDataWGS84.png[width=700,align="center"]
+
+Visualizing this data on 3D globe would look like the following image.
+
+[#img_zone_data_tiff_reprojected='{figure-caption} {counter:figure-num}']
+.Visualization on a 3D Globe of a GeoTIFF response for retrieving data for zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A[A2-0-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 8
+image::images/tiff-zoneDataReprojected.png[width=700,align="center"]
+
+Alternatively, the implementation also supports the `crs` parameter to select the https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A/data?zone-depth=8&f=geotiff&crs=%5BOGC:1534%5D[ISEA planar projection as an alternate CRS].
+In this CRS, this pentagonal zone spans the interruption between two triangles of the base icosahedron.
+
+[#img_zone_data_tiff_isea='{figure-caption} {counter:figure-num}']
+.Visualization of an ISEA planar projection GeoTIFF response for retrieving data for zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A[A2-0-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 8
+image::images/tiff-zoneDataISEA.png[width=600,align="center"]
+
+A major inconvenience of the ISEA planar projection is that hexagonal zones further along the interruptions will be split on each side on the interruption,
+resulting in a large separation between the two half of the data, as illustrated for example with zone C2-4-A.
+
+[#img_zone_data_tiff_split_hex='{figure-caption} {counter:figure-num}']
+.Visualization of an ISEA planar projection GeoTIFF response for retrieving data for zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/C2-4-A[C2-4-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
+image::images/tiff-ISEA-splitHex.png[width=750,align="center"]
+
+On the other hand, a hexagon not spanning an interruption will appear in the ISEA planar projection as typical hexagons with two edges aligned with either the horizontal (for odd parent zone levels) or vertical axis (for even levels).
+
+[#img_zone_data_tiff_vertical_hex='{figure-caption} {counter:figure-num}']
+.Visualization of an ISEA planar projection GeoTIFF response for retrieving data for zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A0-0-F[A0-0-F] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
+image::images/tiff-zoneDataISEA-HorizontalHex.png[width=700,align="center"]
+
+[#img_zone_data_tiff_horizontal_hex='{figure-caption} {counter:figure-num}']
+.Visualization of an ISEA planar projection GeoTIFF response for retrieving data for zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/B0-5-A[B0-5-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
+image::images/tiff-zoneDataISEA-VerticalHex.png[width=700,align="center"]
+
+whereas the same zones in OGC:CRS84 will have various shapes not easily recognizable as hexagons:
+
+[#img_zone_data_tiff_wgs84_vertical_hex='{figure-caption} {counter:figure-num}']
+.Visualization of a GeoTIFF response in OGC:CRS84 for retrieving data for zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A0-0-F[A0-0-F] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
+image::images/tiff-zoneDataWGS84-HorizontalHex.png[width=700,align="center"]
+
+[#img_zone_data_tiff_wgs84_horizontal_hex='{figure-caption} {counter:figure-num}']
+.Visualization of a GeoTIFF response in OGC:CRS84 for retrieving data for zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/B0-5-A[B0-5-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
+image::images/tiff-zoneDataWGS84-VerticalHex.png[width=700,align="center"]
+
+Whereas DGGS-JSON and GeoTIFF are encodings appropriate for raster data, with DGGS-JSON better suited for representing values quantized to the hierarchical discrete global grids, using these formats
+for encoding vector data essentially implies rasterizing the vector features, using either a selection of the feature properties as values, or using numerical feature identifier for which associated properties
+may be queryable elsewhere (e.g., in an http://www.opengis.net/doc/IS/ogcapi-features-1/1.0.1[OGC API - Features] deployment). This approach will normally result in a larger
+
+==== Retrieving data from an ISEA9R DGGRS
+
+* ISEA9R
+
+==== Retrieving data from a GNOSIS Global Grid DGGRS
+
+* GGG
+
+==== Subsetting zone data
+
+* temporal subsetting -- `datetime=`, `subset=time(...)`
+* pressure subsetting -- `subset=pressure(...)`
+* field selection -- `properties=`
