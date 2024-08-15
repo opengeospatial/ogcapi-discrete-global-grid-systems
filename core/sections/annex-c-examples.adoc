@@ -825,6 +825,8 @@ The following examples illustrate this capability for different DGGRSs, represen
 This first example retrieves elevation data for the GEBCO collection for ISEA3H zone `A2-0-A` at a relative depth of 8 (specified using the `zone-depth` parameter -- the default zone depth is 10, as specified in the
 `defaultDepth` property of the <<isea3h-dggs-description-response,ISEA3H DGGRS description response>>).
 
+===== DGGS-JSON Examples
+
 https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A/data?zone-depth=8&f=json[\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A/data?zone-depth=8]
 
 A snippet of the DGGS-JSON response follows, including an array of elevation values ordered as per the <<img_isea3h_order_vertex,deterministic zone order defined by this ISEA3H DGGRS>>.
@@ -847,9 +849,12 @@ A snippet of the DGGS-JSON response follows, including an array of elevation val
 }
 ----
 
+[[img_zone_data]]
 [#img_zone_data='{figure-caption} {counter:figure-num}']
 .Visualization of a DGGS-JSON response for retrieving data for ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A[A2-0-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 8
 image::images/isea3h-elevation.png[width=700,align="center"]
+
+===== GeoTIFF Examples
 
 In a https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A/data?zone-depth=8&f=geotiff[GeoTIFF representation], rather than being quantized to sub-zones, the Elevation would be quantized to the closest rectilinear gridded coverage cells, at a resolution high enough to include at least
 one value per corresponding sub-zones. The data may still be clipped to the shape of the zone geometry.
@@ -869,14 +874,14 @@ Alternatively, the implementation also supports the `crs` parameter to select th
 In this CRS, this pentagonal zone spans the interruption between two triangles of the base icosahedron.
 
 [#img_zone_data_tiff_isea='{figure-caption} {counter:figure-num}']
-.Visualization of an ISEA planar projection GeoTIFF response for retrieving data for zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A[A2-0-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 8
+.Visualization of an ISEA planar projection GeoTIFF response for retrieving data for pentagonal zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A[A2-0-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 8
 image::images/tiff-zoneDataISEA.png[width=600,align="center"]
 
 A major inconvenience of the ISEA planar projection is that hexagonal zones further along the interruptions will be split on each side on the interruption,
 resulting in a large separation between the two half of the data, as illustrated for example with zone C2-4-A.
 
 [#img_zone_data_tiff_split_hex='{figure-caption} {counter:figure-num}']
-.Visualization of an ISEA planar projection GeoTIFF response for retrieving data for zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/C2-4-A[C2-4-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
+.Visualization of an ISEA planar projection GeoTIFF response for retrieving data for zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/C2-4-A[C2-4-A] (a hexagon split across an ISEA interruption) of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
 image::images/tiff-ISEA-splitHex.png[width=750,align="center"]
 
 On the other hand, a hexagon not spanning an interruption will appear in the ISEA planar projection as typical hexagons with two edges aligned with either the horizontal (for odd parent zone levels) or vertical axis (for even levels).
@@ -892,16 +897,112 @@ image::images/tiff-zoneDataISEA-VerticalHex.png[width=700,align="center"]
 whereas the same zones in OGC:CRS84 will have various shapes not easily recognizable as hexagons:
 
 [#img_zone_data_tiff_wgs84_vertical_hex='{figure-caption} {counter:figure-num}']
-.Visualization of a GeoTIFF response in OGC:CRS84 for retrieving data for zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A0-0-F[A0-0-F] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
+.Visualization of a GeoTIFF response in OGC:CRS84 for retrieving data for zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A0-0-F[A0-0-F] (odd level 1) of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
 image::images/tiff-zoneDataWGS84-HorizontalHex.png[width=700,align="center"]
 
 [#img_zone_data_tiff_wgs84_horizontal_hex='{figure-caption} {counter:figure-num}']
-.Visualization of a GeoTIFF response in OGC:CRS84 for retrieving data for zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/B0-5-A[B0-5-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
+.Visualization of a GeoTIFF response in OGC:CRS84 for retrieving data for zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/B0-5-A[B0-5-A] (even level 2) of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
 image::images/tiff-zoneDataWGS84-VerticalHex.png[width=700,align="center"]
 
-Whereas DGGS-JSON and GeoTIFF are encodings appropriate for raster data, with DGGS-JSON better suited for representing values quantized to the hierarchical discrete global grids, using these formats
-for encoding vector data essentially implies rasterizing the vector features, using either a selection of the feature properties as values, or using numerical feature identifier for which associated properties
-may be queryable elsewhere (e.g., in an http://www.opengis.net/doc/IS/ogcapi-features-1/1.0.1[OGC API - Features] deployment). This approach will normally result in a larger
+Whereas DGGS-JSON and GeoTIFF are encodings appropriate for raster data, with DGGS-JSON better suited for representing values quantized to the hierarchical discrete global grids,
+using these formats for encoding vector data essentially implies rasterizing the vector features, using either a selection of the feature properties as values, or using numerical feature identifier
+for which associated properties may be queryable elsewhere (e.g., in an http://www.opengis.net/doc/IS/ogcapi-features-1/1.0.1[OGC API - Features] deployment).
+
+===== GeoJSON Examples
+
+Although gridded elevation and bathymetry data is better suited to these previous formats for raster data, a GeoJSON and/or Features & Geometry JSON representation
+could also be offered where each zone is represented as a feature, with the associated property providing the data values such as the elevation.
+This would be equivalent to the <<rc_zone-geojson,GeoJSON representation for a zone list>> where `compact-zones` is set to `false`, the `parent-zone` is the zone for which data is requested,
+and the `zone-level` is the sum of the parent zone plus the relative zone depth at which data is requested (the default depth or `zone-depth` parameter), with the addition of these
+properties associating data values with each zone.
+
+If the geometry for these zone features is provided as polygons, visualizing this vector data would produce an output like the following partial response,
+which would result in a visualization identical to <<img_zone_data>>.
+
+[%unnumbered%]
+[source,json]
+----
+{
+   "type" : "FeatureCollection",
+   "features" : [ {
+      "type" : "Feature",
+      "id" : 1,
+      "geometry" : {
+         "type" : "Polygon",
+         "coordinates" : [
+            [ [-77.5187447017182, 68.9629862554185], [-77.5984120016498, 68.9486332726482],
+            [-77.6783293369494, 68.9343296358184], [-77.7585214360646, 68.9200930413547],
+            [-77.8390143278808, 68.9059451691114], [-77.9198350529017, 68.8919126963785],
+            ...
+            [-77.5204817666374, 68.9950086109469], [-77.5187447017182, 68.9629862554185] ]
+         ]
+      },
+      "properties" : {
+         "feature::id" : 1,
+         "Elevation" : 18.5148094925609,
+         "zoneID" : "E0-8C1-A"
+      }
+   }, {
+      "type" : "Feature",
+      "id" : 2,
+      ...
+----
+
+Alternatively, the geometry of each zone could also be provided as a single point for its centroid, in which case the response and associated visualization would look like the following:
+
+[%unnumbered%]
+[source,json]
+----
+{
+   "type" : "FeatureCollection",
+   "features" : [ {
+      "type" : "Feature",
+      "id" : 1,
+      "geometry" : {
+         "type" : "Point",
+         "coordinates" : [-78.7500000030306, 69.2228046463321]
+      },
+      "properties" : {
+         "Elevation" : 18.5148094925609,
+         "zoneID" : "E0-8C1-A"
+      }
+   }, {
+      "type" : "Feature",
+      "id" : 2,
+      "geometry" : {
+         "type" : "Point",
+         "coordinates" : [-82.3566944995815, 68.4176458502864]
+      },
+      "properties" : {
+         "Elevation" : -0.9899277518551,
+         "zoneID" : "E0-911-A"
+      }
+   },
+   ...
+----
+
+[#img_zone_data_geojson_pointsfigure-caption} {counter:figure-num}']
+.Visualization of a GeoJSON point features response for retrieving data for zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A[A2-0-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
+image::images/geoJSON-points-elevation.png[width=700,align="center"]
+
+For data of a vector nature, a vector format such as GeoJSON allows to encode zone data resposne in a more compact manner without having to rasterize the data.
+Ideally, especially for features spanning a large spatial extent, the features would be clipped to the geometry of the zone for which data is being requested.
+Unfortunately, GeoJSON and FG-JSON do not yet have a standard mechanism to identify artificial edges which may result from such clipping.
+This complicates re-joining features spread across multiple zones, and may result in rendering artifacts for polygonal features when rendered with a stroke,
+as the stroke would also be drawn on those artificial segments at the bound edges.
+
+===== DGGS-FG-JSON Examples
+
+The DGGS-FG-JSON format is the vector counterpart to DGGS-JSON, leveraging the same concepts of DGGRS, parent zone, sub-zones at a given relative depth, and deterministic sub-zone order,
+while also building on top of the familiar Features & Geometry JSON and GeoJSON formats, which are themselves built on OGC Simple Features.
+
+In DGGS-FG-JSON, spatial coordinates of the feature geometries croresponding to the spatial dimensions of the DGGRS are encoded as integer sub-zone order indices ranging from 1 to the
+number of sub-zones at the selected relative depth. This relative depth corresponds to the precision of the coordinates at which geometry is being defined, analogous to the number of decimals
+that would be used in GeoJSON or FG-JSON. Because this essentially corresponds to a coordinate system local to the zone for which data is being retrieved, high precision can be achieved
+with much fewer information than is required to address the entire globe.
+
+This representation also addresses the issue of artificial segments, by using a special zone order index value of _0_ to representing coordinates outside of the zone,
+which facilitates merging geometry across adjacent zones and easily identifying artificial segments of polygon contours.
 
 ==== Retrieving data from an ISEA9R DGGRS
 
