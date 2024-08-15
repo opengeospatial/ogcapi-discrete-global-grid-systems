@@ -861,47 +861,47 @@ one value per corresponding sub-zones. The data may still be clipped to the shap
 By default, this implementation returns the data in an OGC:CRS84 CRS.
 
 [#img_zone_data_tiff_wgs84='{figure-caption} {counter:figure-num}']
-.Visualization of a CRS84 GeoTIFF response for retrieving data for zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A[A2-0-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 8
+.Visualization of a CRS84 GeoTIFF response for retrieving data for ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A[A2-0-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 8
 image::images/tiff-zoneDataWGS84.png[width=700,align="center"]
 
 Visualizing this data on 3D globe would look like the following image.
 
 [#img_zone_data_tiff_reprojected='{figure-caption} {counter:figure-num}']
-.Visualization on a 3D Globe of a GeoTIFF response for retrieving data for zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A[A2-0-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 8
+.Visualization on a 3D Globe of a GeoTIFF response for retrieving data for ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A[A2-0-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 8
 image::images/tiff-zoneDataReprojected.png[width=700,align="center"]
 
 Alternatively, the implementation also supports the `crs` parameter to select the https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A/data?zone-depth=8&f=geotiff&crs=%5BOGC:1534%5D[ISEA planar projection as an alternate CRS].
 In this CRS, this pentagonal zone spans the interruption between two triangles of the base icosahedron.
 
 [#img_zone_data_tiff_isea='{figure-caption} {counter:figure-num}']
-.Visualization of an ISEA planar projection GeoTIFF response for retrieving data for pentagonal zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A[A2-0-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 8
+.Visualization of an ISEA planar projection GeoTIFF response for retrieving data for pentagonal ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A[A2-0-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 8
 image::images/tiff-zoneDataISEA.png[width=600,align="center"]
 
 A major inconvenience of the ISEA planar projection is that hexagonal zones further along the interruptions will be split on each side on the interruption,
 resulting in a large separation between the two half of the data, as illustrated for example with zone C2-4-A.
 
 [#img_zone_data_tiff_split_hex='{figure-caption} {counter:figure-num}']
-.Visualization of an ISEA planar projection GeoTIFF response for retrieving data for zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/C2-4-A[C2-4-A] (a hexagon split across an ISEA interruption) of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
+.Visualization of an ISEA planar projection GeoTIFF response for retrieving data for ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/C2-4-A[C2-4-A] (a hexagon split across an ISEA interruption) of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
 image::images/tiff-ISEA-splitHex.png[width=750,align="center"]
 
 On the other hand, a hexagon not spanning an interruption will appear in the ISEA planar projection as typical hexagons with two edges aligned with either the horizontal (for odd parent zone levels) or vertical axis (for even levels).
 
 [#img_zone_data_tiff_vertical_hex='{figure-caption} {counter:figure-num}']
-.Visualization of an ISEA planar projection GeoTIFF response for retrieving data for zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A0-0-F[A0-0-F] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
+.Visualization of an ISEA planar projection GeoTIFF response for retrieving data for ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A0-0-F[A0-0-F] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
 image::images/tiff-zoneDataISEA-HorizontalHex.png[width=700,align="center"]
 
 [#img_zone_data_tiff_horizontal_hex='{figure-caption} {counter:figure-num}']
-.Visualization of an ISEA planar projection GeoTIFF response for retrieving data for zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/B0-5-A[B0-5-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
+.Visualization of an ISEA planar projection GeoTIFF response for retrieving data for ISEA3H DGGRS zonehttps://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/B0-5-A[B0-5-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
 image::images/tiff-zoneDataISEA-VerticalHex.png[width=700,align="center"]
 
 whereas the same zones in OGC:CRS84 will have various shapes not easily recognizable as hexagons:
 
 [#img_zone_data_tiff_wgs84_vertical_hex='{figure-caption} {counter:figure-num}']
-.Visualization of a GeoTIFF response in OGC:CRS84 for retrieving data for zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A0-0-F[A0-0-F] (odd level 1) of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
+.Visualization of a GeoTIFF response in OGC:CRS84 for retrieving data for ISEA3H DGGRS zonehttps://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A0-0-F[A0-0-F] (odd level 1) of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
 image::images/tiff-zoneDataWGS84-HorizontalHex.png[width=700,align="center"]
 
 [#img_zone_data_tiff_wgs84_horizontal_hex='{figure-caption} {counter:figure-num}']
-.Visualization of a GeoTIFF response in OGC:CRS84 for retrieving data for zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/B0-5-A[B0-5-A] (even level 2) of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
+.Visualization of a GeoTIFF response in OGC:CRS84 for retrieving data for ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/B0-5-A[B0-5-A] (even level 2) of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
 image::images/tiff-zoneDataWGS84-VerticalHex.png[width=700,align="center"]
 
 Whereas DGGS-JSON and GeoTIFF are encodings appropriate for raster data, with DGGS-JSON better suited for representing values quantized to the hierarchical discrete global grids,
@@ -981,7 +981,7 @@ Alternatively, the geometry of each zone could also be provided as a single poin
 ----
 
 [#img_zone_data_geojson_points='{figure-caption} {counter:figure-num}']
-.Visualization of a GeoJSON point features response for retrieving data for zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A[A2-0-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
+.Visualization of a GeoJSON point features response for data retrieved from ISEA3H zone DGGRS https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A[A2-0-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
 image::images/geoJSON-points-elevation.png[width=700,align="center"]
 
 For data of a vector nature, a vector format such as GeoJSON allows to encode zone data resposne in a more compact manner without having to rasterize the data.
@@ -991,7 +991,7 @@ Unfortunately, GeoJSON and FG-JSON do not yet have a standard mechanism to ident
 This complicates re-joining features spread across multiple zones, and may result in rendering artifacts for polygonal features when rendered with a stroke,
 as the stroke would also be drawn on those artificial segments at the bound edges.
 
-The following zone data request response and visualization illustrates vector features in Ottawa from OpenStreetMap returned as GeoJSON.
+The following response for a zone data request and its visualization illustrates vector features in Ottawa from OpenStreetMap returned as GeoJSON.
 The features and geometry coordinates in this case have no relation to sub-zones, and are only clipped to the zone for which data is being requested.
 The zone depth (default zone depth of 10 in this case) can however control cartographic generalization of the geometry.
 This could potentially include filtering point features, based on rules associated with the dataset, as decided by the implementation, as well as the precision of the coordinates.
@@ -1014,7 +1014,6 @@ https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:roads/dggs/ISEA3H/zones/
             [-75.7025514751798, 45.4225714864628] ]
       },
       "properties" : {
-         "feature::id" : 2305843009218664049,
          "highway" : "service",
          "name" : "Parliament Road",
          "name:fr" : "chemin Parliament",
@@ -1030,14 +1029,45 @@ https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:roads/dggs/ISEA3H/zones/
 ----
 
 [#img_zone_data_geojson_osmOttawa='{figure-caption} {counter:figure-num}']
-.Visualization in a world Mercator projection of a GeoJSON feature collection with mixed geometry types for retrieving data for zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/osm:ottawa/dggs/ISEA3H/zones/I0-1EFA652-D[I0-1EFA652-D] of https://openstreetmap.org/[OpenStreetMap] (c) OpenStreetMap contributors
+.Visualization in a world Mercator projection of a GeoJSON feature collection with mixed geometry types for data retrieved from ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/osm:ottawa/dggs/ISEA3H/zones/I0-1EFA652-D[I0-1EFA652-D] of https://openstreetmap.org/[OpenStreetMap] (c) OpenStreetMap contributors
 image::images/geojson-osmOttawa.png[width=700,align="center"]
 
 In an ISEA planar projection, the same data could be visualized as follows.
 
 [#img_zone_data_geojson_osmOttawaISEA='{figure-caption} {counter:figure-num}']
-.Visualization in an ISEA planar projection of a GeoJSON feature collection with mixed geometry types for retrieving data for zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/osm:ottawa/dggs/ISEA3H/zones/I0-1EFA652-D[I0-1EFA652-D] of https://openstreetmap.org/[OpenStreetMap] (c) OpenStreetMap contributors
+.Visualization in an ISEA planar projection of a GeoJSON feature collection with mixed geometry types for data retrieved from ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/osm:ottawa/dggs/ISEA3H/zones/I0-1EFA652-D[I0-1EFA652-D] of https://openstreetmap.org/[OpenStreetMap] (c) OpenStreetMap contributors
 image::images/geojson-osmOttawaISEA.png[width=700,align="center"]
+
+The following zone data request is for https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:physical:bathymetry[bathymetry polygons] from the https://naturalearthdata.com/[Natural Earth] physical features.
+
+https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:physical:bathymetry:ne_10m_bathymetry_L_0/dggs/ISEA3H/zones/B0-5-A/data?f=geojson[\https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:physical:bathymetry:ne_10m_bathymetry_L_0/dggs/ISEA3H/zones/B0-5-A/data]
+
+[%unnumbered%]
+[source,json]
+----
+{
+   "type": "FeatureCollection",
+   "features": [
+      {
+         "type": "Feature",
+         "id": 1,
+         "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+               [
+                  [ [ -55.637449543389302, 59.870069440756403 ], [ -56.915951548165701, 59.792432298258397 ],
+                    [ -58.190262951737999, 59.703354691152001 ], [ -59.459708339296299, 59.603118105290299 ],
+                    [ -60.723657456581002, 59.4920474071372 ], [ -61.981528514094002, 59.3705164869166 ],
+                    ...
+----
+
+[#img_zone_data_geojson_bathymetry='{figure-caption} {counter:figure-num}']
+.Visualization in an ographic North polar projection of GeoJSON  polygon contours for data retrieved from ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:physical:bathymetry/dggs/ISEA3H/zones/B0-5-A[B0-5-A] of https://naturalearthdata.com/[Natural Earth] bathymetry contours.
+image::images/geojson-bathymetry.png[width=700,align="center"]
+
+[#img_zone_data_geojson_bathymetryISEA='{figure-caption} {counter:figure-num}']
+.Visualization in an ISEA planar projection of GeoJSON feature polygon contours for data retrieved from ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:physical:bathymetry/dggs/ISEA3H/zones/B0-5-A[B0-5-A] of https://naturalearthdata.com/[Natural Earth] bathymetry contours.
+image::images/geojson-bathymetryISEA.png[width=700,align="center"]
 
 ===== DGGS-FG-JSON Examples
 
@@ -1049,7 +1079,7 @@ number of sub-zones at the selected relative depth. This relative depth correspo
 that would be used in GeoJSON or FG-JSON. Because this essentially corresponds to a coordinate system local to the zone for which data is being retrieved, high precision can be achieved
 with much fewer information than is required to address the entire globe.
 
-This representation also addresses the issue of artificial segments, by using a special zone order index value of _0_ to representing coordinates outside of the zone,
+This representation also addresses the issue of artificial segments, by using a special zone order index value of _0_ for representing coordinates outside of the zone,
 which facilitates merging geometry across adjacent zones and easily identifying artificial segments of polygon contours.
 
 ==== Retrieving data from an ISEA9R DGGRS
