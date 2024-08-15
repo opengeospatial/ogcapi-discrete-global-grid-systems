@@ -1051,6 +1051,10 @@ https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:physical:bathymetry:ne
       {
          "type": "Feature",
          "id": 1,
+         "properties": {
+            "scalerank": 0,
+            "featurecla": "Bathymetry"
+         },
          "geometry": {
             "type": "MultiPolygon",
             "coordinates": [
@@ -1062,7 +1066,7 @@ https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:physical:bathymetry:ne
 ----
 
 [#img_zone_data_geojson_bathymetry='{figure-caption} {counter:figure-num}']
-.Visualization in an ographic North polar projection of GeoJSON  polygon contours for data retrieved from ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:physical:bathymetry/dggs/ISEA3H/zones/B0-5-A[B0-5-A] of https://naturalearthdata.com/[Natural Earth] bathymetry contours.
+.Visualization in a North polar projection of GeoJSON polygon contours for data retrieved from ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:physical:bathymetry/dggs/ISEA3H/zones/B0-5-A[B0-5-A] of https://naturalearthdata.com/[Natural Earth] bathymetry contours.
 image::images/geojson-bathymetry.png[width=700,align="center"]
 
 [#img_zone_data_geojson_bathymetryISEA='{figure-caption} {counter:figure-num}']
@@ -1081,6 +1085,8 @@ with much fewer information than is required to address the entire globe.
 
 This representation also addresses the issue of artificial segments, by using a special zone order index value of _0_ for representing coordinates outside of the zone,
 which facilitates merging geometry across adjacent zones and easily identifying artificial segments of polygon contours.
+Whereas for LineStrings a single _0_ value is sufficient to represent all outside points between where the line exits and re-enters the zone, for polygon contours a _0_ must be inserted between
+each vertex pair of artificial segments following the zone boundary overlapped by the contour.
 
 ==== Retrieving data from an ISEA9R DGGRS
 
