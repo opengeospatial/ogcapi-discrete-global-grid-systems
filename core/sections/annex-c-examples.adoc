@@ -938,7 +938,6 @@ which would result in a visualization identical to <<img_zone_data>>.
          ]
       },
       "properties" : {
-         "feature::id" : 1,
          "Elevation" : 18.5148094925609,
          "zoneID" : "E0-8C1-A"
       }
@@ -981,15 +980,64 @@ Alternatively, the geometry of each zone could also be provided as a single poin
    ...
 ----
 
-[#img_zone_data_geojson_pointsfigure-caption} {counter:figure-num}']
+[#img_zone_data_geojson_points='{figure-caption} {counter:figure-num}']
 .Visualization of a GeoJSON point features response for retrieving data for zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A[A2-0-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
 image::images/geoJSON-points-elevation.png[width=700,align="center"]
 
 For data of a vector nature, a vector format such as GeoJSON allows to encode zone data resposne in a more compact manner without having to rasterize the data.
-Ideally, especially for features spanning a large spatial extent, the features would be clipped to the geometry of the zone for which data is being requested.
+Ideally, especially for features spanning a large spatial extent (such as country boundaries, or the coastline of a large landmass), the features would be clipped to the geometry of the zone for which data
+is being requested, or as least to limited extent around the zone.
 Unfortunately, GeoJSON and FG-JSON do not yet have a standard mechanism to identify artificial edges which may result from such clipping.
 This complicates re-joining features spread across multiple zones, and may result in rendering artifacts for polygonal features when rendered with a stroke,
 as the stroke would also be drawn on those artificial segments at the bound edges.
+
+The following zone data request response and visualization illustrates vector features in Ottawa from OpenStreetMap returned as GeoJSON.
+The features and geometry coordinates in this case have no relation to sub-zones, and are only clipped to the zone for which data is being requested.
+The zone depth (default zone depth of 10 in this case) can however control cartographic generalization of the geometry.
+This could potentially include filtering point features, based on rules associated with the dataset, as decided by the implementation, as well as the precision of the coordinates.
+
+https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:roads/dggs/ISEA3H/zones/I0-1EFA652-D/data?f=geojson[\https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:roads/dggs/ISEA3H/zones/I0-1EFA652-D/data]
+
+[%unnumbered%]
+[source,json]
+----
+{
+   "type" : "FeatureCollection",
+   "features" : [ {
+      "type" : "Feature",
+      "id" : 2305843009218664049,
+      "geometry" : {
+         "type" : "LineString",
+         "coordinates" :
+            [ [-75.7019034306921, 45.4218036153556],
+            [-75.7021478619075, 45.4220907968864],
+            [-75.7025514751798, 45.4225714864628] ]
+      },
+      "properties" : {
+         "feature::id" : 2305843009218664049,
+         "highway" : "service",
+         "name" : "Parliament Road",
+         "name:fr" : "chemin Parliament",
+         "access" : "no"
+      }
+   }, {
+      "type" : "Feature",
+      "id" : 2305843009218664071,
+      "geometry" : {
+         "type" : "LineString",
+         "coordinates" :
+   ...
+----
+
+[#img_zone_data_geojson_osmOttawa='{figure-caption} {counter:figure-num}']
+.Visualization in a world Mercator projection of a GeoJSON feature collection with mixed geometry types for retrieving data for zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/osm:ottawa/dggs/ISEA3H/zones/I0-1EFA652-D[I0-1EFA652-D] of https://openstreetmap.org/[OpenStreetMap] (c) OpenStreetMap contributors
+image::images/geojson-osmOttawa.png[width=700,align="center"]
+
+In an ISEA planar projection, the same data could be visualized as follows.
+
+[#img_zone_data_geojson_osmOttawaISEA='{figure-caption} {counter:figure-num}']
+.Visualization in an ISEA planar projection of a GeoJSON feature collection with mixed geometry types for retrieving data for zone ISEA3H DGGRS https://maps.gnosis.earth/ogcapi/collections/osm:ottawa/dggs/ISEA3H/zones/I0-1EFA652-D[I0-1EFA652-D] of https://openstreetmap.org/[OpenStreetMap] (c) OpenStreetMap contributors
+image::images/geojson-osmOttawaISEA.png[width=700,align="center"]
 
 ===== DGGS-FG-JSON Examples
 
