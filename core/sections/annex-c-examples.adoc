@@ -929,12 +929,12 @@ which would result in a visualization identical to <<img_zone_data>>.
       "id" : 1,
       "geometry" : {
          "type" : "Polygon",
-         "coordinates" : [
-            [ [-77.5187447017182, 68.9629862554185], [-77.5984120016498, 68.9486332726482],
-            [-77.6783293369494, 68.9343296358184], [-77.7585214360646, 68.9200930413547],
-            [-77.8390143278808, 68.9059451691114], [-77.9198350529017, 68.8919126963785],
+         "coordinates" : [ [
+            [-77.51874470, 68.96298626], [-77.598412, 68.94863327],
+            [-77.67832934, 68.93432964], [-77.75852144, 68.92009304],
+            [-77.83901433, 68.90594517], [-77.91983505, 68.8919127],
             ...
-            [-77.5204817666374, 68.9950086109469], [-77.5187447017182, 68.9629862554185] ]
+            [-77.52048177, 68.99500861], [-77.51874470, 68.96298626]
          ]
       },
       "properties" : {
@@ -959,10 +959,10 @@ Alternatively, the geometry of each zone could also be provided as a single poin
       "id" : 1,
       "geometry" : {
          "type" : "Point",
-         "coordinates" : [-78.7500000030306, 69.2228046463321]
+         "coordinates" : [-78.75, 69.22280465]
       },
       "properties" : {
-         "Elevation" : 18.5148094925609,
+         "Elevation" : 18.51480949,
          "zoneID" : "E0-8C1-A"
       }
    }, {
@@ -970,10 +970,10 @@ Alternatively, the geometry of each zone could also be provided as a single poin
       "id" : 2,
       "geometry" : {
          "type" : "Point",
-         "coordinates" : [-82.3566944995815, 68.4176458502864]
+         "coordinates" : [-82.3566945, 68.41764585]
       },
       "properties" : {
-         "Elevation" : -0.9899277518551,
+         "Elevation" : -0.98992775,
          "zoneID" : "E0-911-A"
       }
    },
@@ -1008,10 +1008,11 @@ https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:roads/dggs/ISEA3H/zones/
       "id" : 2305843009218664049,
       "geometry" : {
          "type" : "LineString",
-         "coordinates" :
-            [ [-75.7019034306921, 45.4218036153556],
-            [-75.7021478619075, 45.4220907968864],
-            [-75.7025514751798, 45.4225714864628] ]
+         "coordinates" : [
+            [-75.70190343, 45.42180362],
+            [-75.70214786, 45.4220908],
+            [-75.70255148, 45.42257149]
+         ]
       },
       "properties" : {
          "highway" : "service",
@@ -1059,9 +1060,9 @@ https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:physical:bathymetry:ne
             "type": "MultiPolygon",
             "coordinates": [
                [
-                  [ [ -55.637449543389302, 59.870069440756403 ], [ -56.915951548165701, 59.792432298258397 ],
-                    [ -58.190262951737999, 59.703354691152001 ], [ -59.459708339296299, 59.603118105290299 ],
-                    [ -60.723657456581002, 59.4920474071372 ], [ -61.981528514094002, 59.3705164869166 ],
+                  [ [ -55.63744954, 59.87006944 ], [ -56.91595155, 59.7924323 ],
+                    [ -58.19026295, 59.70335469 ], [ -59.45970834, 59.60311811 ],
+                    [ -60.72365746, 59.49204741 ], [ -61.98152851, 59.37051649 ],
                     ...
 ----
 
@@ -1087,6 +1088,75 @@ This representation also addresses the issue of artificial segments, by using a 
 which facilitates merging geometry across adjacent zones and easily identifying artificial segments of polygon contours.
 Whereas for LineStrings a single _0_ value is sufficient to represent all outside points between where the line exits and re-enters the zone, for polygon contours a _0_ must be inserted between
 each vertex pair of artificial segments following the zone boundary overlapped by the contour.
+
+The DGGS-FG-JSON representation for the previous OpenStreetMap example extract follows, at a relative depth precision of 15,
+resulting in coordinates within a ~275 cm² region, ~16 cm precision, with sub-zone indices between 1 and 14,355,469 (roughly equivalent to latitude and longitude with six decimal places).
+
+[%unnumbered%]
+[source,json]
+----
+{
+   "conformsTo": [ "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-fgjson" ],
+   "dggrs": "[ogc-dggrs:ISEA3H]",
+   "zoneId": "I0-1EFA652-D",
+   "depth": "15",
+   "type" : "FeatureCollection",
+   "features" : [ {
+      "type" : "Feature",
+      "id" : 2305843009218664049,
+      "geometry" : null,
+      "time" : null,
+      "place" : {
+         "type" : "LineString",
+         "coordinates" : [ 13866054, 13899376, 13953688 ]
+      },
+      "properties" : {
+         "highway" : "service",
+         "name" : "Parliament Road",
+         "name:fr" : "chemin Parliament",
+         "access" : "no"
+      }
+   }, {
+      "type" : "Feature",
+      "id" : 2305843009218664071,
+      "geometry" : null,
+      "time" : null,
+      "place" : {
+         "type" : "LineString",
+         "coordinates" :
+   ...
+----
+
+The DGGS-FG-JSON representation for the previous arctic bathymetry polygons example extract follows, at a relative depth precision of 15,
+resulting in coordinates within a ~0.39 km² region (the size of the previous OpenStreetMap example level 17 zone),
+~627 m precision, with sub-zone indices between 1 and 14,355,469 (equivalent to decimal latitude and longitude between two and three decimal places).
+
+[%unnumbered%]
+[source,json]
+----
+{
+   "conformsTo": [ "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-fgjson" ],
+   "dggrs": "[ogc-dggrs:ISEA3H]",
+   "zoneId": "B0-5-A",
+   "depth": "15",
+   "geometryDimension": 2,
+   "type": "FeatureCollection",
+   "features": [
+      {
+         "type": "Feature",
+         "id": 1,
+         "properties": {
+            "scalerank": 0,
+            "featurecla": "Bathymetry"
+         },
+         "geometry" : null,
+         "time" : null,
+         "place": {
+            "type": "MultiPolygon",
+            "coordinates": [
+               [
+                  [ 14355360, 14355250, 14355141, 14355032, 14354922, 14354813, ...
+----
 
 ==== Retrieving data from an ISEA9R DGGRS
 
