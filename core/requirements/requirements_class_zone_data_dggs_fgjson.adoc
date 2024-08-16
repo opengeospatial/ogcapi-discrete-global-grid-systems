@@ -20,9 +20,10 @@ part:: The JSON document SHALL follow the JSON Schema for Features & Geometry JS
 part:: The JSON document SHALL additionally contain a `dggrs` property set to the URI or CURIEs of the DGGRS of the response, which replaces the `coordRefSys` property and concept.
 part:: The JSON document SHALL additionally contain a `zoneId` property indicating the requested reference zone.
 part:: The JSON document SHALL additionally contain a `depth` property corresponding to the relative zone depth (as specified in the single depth format of the OGC API - DGGS `zone-depth` parameter for zone data retrieval), determining how coordinates are resolved from sub-zone indices, and as a result, their precision.
-part:: The JSON document SHALL contain a `place` property specifying geometry using sub-zone indices ranging from 1 to the number of sub-zones within the reference parent zone.
+part:: The JSON document SHALL contain a `place` property specifying geometry using sub-zone indices ranging from 1 to the number of sub-zones within the reference parent zone at the declared depth.
 part:: When all spatial coordinates are dimensions of the DGGRS, the array of coordinates including the square brackets SHALL be replaced by the corresponding sub-zone index within which the coordinates are located, as defined by the deterministic sub-zone order of the DGGRS.
 part:: When additional spatial coordinates not part of the DGGRS, such as elevation above ground for a 2D DGGRS, are needed to define the geometry coordinates, only the coordinates corresponding to DGGRS dimension SHALL be replaced by the sub-zone index.
+part:: Only features fully or partly located within the reference zone SHALL be included.
 part:: For feature geometry intersecting the boundaries of the reference zone, the sub-zone within which the intersection is located SHALL be included, with a separate single `0` special sub-zone index representing all outside points before a point inside, after a point inside, or in between two inside points.
 part:: For geometry in two or more dimensions with an outside point identified by a `0` sub-zone index (necessarily between two contour points), the portion of the zone edge(s) between the exit and entry point SHALL be considered inside of that contour.
 ====
