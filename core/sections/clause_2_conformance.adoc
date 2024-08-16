@@ -53,11 +53,14 @@ A requirement classes adds support for the `filter` parameter for zone query res
 ==== Zone data encodings
 
 The Data Encoding Requirements Classes address support for formats commonly used for encoding geospatial data, as well as encodings
-based on JSON and UB-JSON using a schema scpecifically designed for the purpose of encoding one or more depths of zone data referenced to a DGGS,
-including optional support for multiple fields (properties) and additional dimensions beyond those of the DGGS.
+based on JSON and UBJSON using a schema specifically designed for zone data referenced to a particular DGGRS.
+DGGS-(UB)JSON allows encoding one or more depths of DGGS-quantized raster data, including optional support for multiple fields (properties) and additional dimensions beyond those of the DGGS,
+whereas DGGS-FG-(UB)JSON encode vector features and geometry based on OGC Features & Geometry JSON using sub-zone order indices as coordinates at an arbitrary relative depth / precision.
 
 * <<rc_data-json,DGGS-JSON Data>>
-* <<rc_data-ubjson,DGGS-UB-JSON Data>>
+* <<rc_data-ubjson,DGGS-UBJSON Data>>
+* <<rc_data-dggs-fgjson,DGGS-FG-JSON Data>>
+* <<rc_data-dggs-fgubjson,DGGS-FG-UBJSON Data>>
 * <<rc_data-geojson,GeoJSON Data>>
 * <<rc_data-fgjson,FG-JSON Data>>
 * <<rc_data-geotiff,GeoTIFF Data>>
@@ -92,16 +95,23 @@ such as the OpenAPI 3.0 requirement class of _OGC API - Common - Part 1: Core_, 
 [cols="30,70",options="header"]
 |===
 | Corresponding requirements class               | Conformance class URI
-| <<rc_core,Core>>                               | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/core
+| <<rc_core,*Core*>>                             | *https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/core*
+2+| *_For Data Retrieval_*
 | <<rc_data-retrieval,Zone Data Retrieval>>      | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-retrieval
-| <<rc_zone-query,Zone Query>>                   | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-query
-| <<rc_cql2-query,Filtering Zone Queries with CQL2>> | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/cql2-query
-| <<rc_root-dggs,Root DGGS>>                     | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/root-dggs
-| <<rc_collection-dggs,Collection DGGS>>         | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/collection-dggs
 | <<rc_data-subsetting,Data subsetting>>         | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-subsetting
 | <<rc_data-custom-depths,Data custom depths>>   | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-custom-depths
+2+| *_For Zone Queries_*
+| <<rc_zone-query,Zone Query>>                   | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-query
+| <<rc_cql2-query,Filtering Zone Queries with CQL2>> | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/cql2-query
+2+| *_OGC API integration_*
+| <<rc_root-dggs,Root DGGS>>                     | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/root-dggs
+| <<rc_collection-dggs,Collection DGGS>>         | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/collection-dggs
+| <<rc_operation-ids,Operation IDs>>             | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/operation-ids
+2+| *_Zone Data Encodings_*
 | <<rc_data-geojson,DGGS-JSON Data>>             | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-json
-| <<rc_data-ubjson,DGGS-UB-JSON Data>>           | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-ubjson
+| <<rc_data-ubjson,DGGS-UBJSON Data>>           | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-ubjson
+| <<rc_data-dggs-fgjson,DGGS-FG-JSON Data>>      | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-fgjson
+| <<rc_data-dggs-fgubjson,DGGS-FG-UBJSON Data>>  | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-fgubjson
 | <<rc_data-geojson,GeoJSON Data>>               | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-geojson
 | <<rc_data-fgjson,FG-JSON Data>>                | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-fgjson
 | <<rc_data-geotiff,GeoTIFF Data>>               | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-tiff
@@ -110,11 +120,11 @@ such as the OpenAPI 3.0 requirement class of _OGC API - Common - Part 1: Core_, 
 | <<rc_data-zarr,Zarr Data>>                     | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-zarr
 | <<rc_data-jpegxl,JPEG XL Data>>                | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-jpegxl
 | <<rc_data-png,PNG Data>>                       | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-png
+2+| *_Zone List Encodings_*
 | <<rc_zone-geojson,JSON Zone List>>             | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-json
 | <<rc_zone-html,HTML Zone List>>                | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-html
 | <<rc_zone-geotiff,64-bit Binary Zone List>>    | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-uint64
 | <<rc_zone-geojson,GeoJSON Zone List>>          | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-geojson
 | <<rc_zone-fgjson,FG-JSON Zone List>>           | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-fgjson
 | <<rc_zone-geotiff,GeoTIFF Zone List>>          | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-tiff
-| <<rc_operation-ids,Operation IDs>>             | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/operation-ids
 |===

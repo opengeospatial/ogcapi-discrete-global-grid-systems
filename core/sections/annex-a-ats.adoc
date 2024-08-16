@@ -200,6 +200,28 @@ target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-ubjson
 classification:: Target Type:Web API
 ====
 
+=== Conformance Class "DGGS-FG-JSON encoding for Zone Data"
+
+[[conf_data-dggs-fgjson,/conf/data-dggs-fgjson]]
+[conformance_class]
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs/1.0/conf/data-dggs-fgjson
+target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-dggs-fgjson
+classification:: Target Type:Web API
+====
+
+=== Conformance Class "DGGS-UBJSON encoding for Zone Data"
+
+[[conf_data-dggs-fgubjson,/conf/data-dggs-fgubjson]]
+[conformance_class]
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs/1.0/conf/data-dggs-fgubjson
+target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-dggs-fgubjson
+classification:: Target Type:Web API
+====
+
 === Conformance Class "GeoTIFF encoding for Zone Data"
 
 [[conf_data-tiff,/conf/data-tiff]]

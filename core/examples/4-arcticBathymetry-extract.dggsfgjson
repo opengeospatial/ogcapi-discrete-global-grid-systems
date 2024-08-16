@@ -1,0 +1,22 @@
+{
+   "conformsTo": [ "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-fgjson" ],
+   "dggrs": "[ogc-dggrs:ISEA3H]",
+   "zoneId": "B0-5-A",
+   "depth": "15",
+   "geometryDimension": 2,
+   "type": "FeatureCollection",
+   "features": [
+      {
+         "type": "Feature",
+         "id": 1,
+         "properties": {
+            "scalerank": 0,
+            "featurecla": "Bathymetry"
+         },
+         "geometry" : null,
+         "time" : null,
+         "place": {
+            "type": "MultiPolygon",
+            "coordinates": [
+               [
+                  [ 14355360, 14355250, 14355141, 14355032, 14354922, 14354813, ...

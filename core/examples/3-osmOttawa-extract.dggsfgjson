@@ -1,0 +1,30 @@
+{
+   "conformsTo": [ "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-fgjson" ],
+   "dggrs": "[ogc-dggrs:ISEA3H]",
+   "zoneId": "I0-1EFA652-D",
+   "depth": "15",
+   "type" : "FeatureCollection",
+   "features" : [ {
+      "type" : "Feature",
+      "id" : 2305843009218664049,
+      "geometry" : null,
+      "time" : null,
+      "place" : {
+         "type" : "LineString",
+         "coordinates" : [ 13866054, 13899376, 13953688 ]
+      },
+      "properties" : {
+         "highway" : "service",
+         "name" : "Parliament Road",
+         "name:fr" : "chemin Parliament",
+         "access" : "no"
+      }
+   }, {
+      "type" : "Feature",
+      "id" : 2305843009218664071,
+      "geometry" : null,
+      "time" : null,
+      "place" : {
+         "type" : "LineString",
+         "coordinates" :
+   ...

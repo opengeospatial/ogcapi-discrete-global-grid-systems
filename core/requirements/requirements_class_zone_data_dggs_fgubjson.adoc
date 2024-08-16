@@ -1,0 +1,20 @@
+[[rc_table-data_dggs_fbubjson]]
+
+[requirements_class]
+.Requirements Class DGGS-FG-UB-JSON
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-dggs-fbubjson
+subject:: Web API
+inherit:: https://ubjson.org/[https://ubjson.org/]
+inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
+inherit:: https://www.opengis.net/spec/json-fg-1/0.3/req/core
+====
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/data-dggs_fbubjson/content
+part:: Every 200 response of the server for zone data with the media type `application/dggs+fg+ubjson` SHALL be a https://ubjson.org/[Universal Binary JSON] document representing the vector features within the requested zone.
+part:: The content of the UB-JSON document SHALL follow all the of same rquirements as for DGGS-FG-JSON described above.
+====

@@ -7,7 +7,9 @@ However, it does define requirements class for zone data encodings which are exp
 These requirements classes include:
 
 * <<rc_data-json,DGGS-JSON Data>>
-* <<rc_data-ubjson,DGGS-UB-JSON Data>>
+* <<rc_data-ubjson,DGGS-UBJSON Data>>
+* <<rc_data-dggs-fgjson,DGGS-FG-JSON Data>>
+* <<rc_data-dggs-fgubjson,DGGS-FG-UBJSON Data>>
 * <<rc_data-geojson,GeoJSON Data>>
 * <<rc_data-fgjson,FG-JSON Data>>
 * <<rc_data-geotiff,GeoTIFF Data>>
@@ -28,7 +30,9 @@ A table of the media types used in the encoding of the Zone Data requirements cl
 |====
 ^|*Encoding*              ^|*media type*
 |DGGS-JSON zone data      |application/json
-|DGGS-UB-JSON zone data   |application/ubjson
+|DGGS-UBJSON zone data    |application/ubjson
+|DGGS-FG-JSON zone data   |application/dggs+fg+json
+|DGGS-FG-UBJSON zone data |application/dggs+fg+ubjson
 |GeoJSON data             |application/geo+json
 |JSON-FG data             |application/fg+json
 |GeoTIFF data             |image/tiff; application=geotiff
@@ -44,7 +48,7 @@ A table of the media types used in the encoding of the Zone Data requirements cl
 
 ==== Overview
 
-The JSON Zone Data encoding requirements class defines support for encoding a DGGS Zone data response in JSON, using a schema defined below named "DGGS-JSON".
+The DGGS-JSON Zone Data encoding requirements class defines support for encoding a DGGS Zone data response in JSON, using a schema defined below named "DGGS-JSON".
 
 This encoding is intended to support one-to-one mapping of sub-zones values, for one or more zone depths, regardless of zone geometry type, in a human-readable format.
 
@@ -67,13 +71,52 @@ include::../examples/2-multidimensions-variables.json[]
 include::../requirements/requirements_class_zone_data_json.adoc[]
 
 [[rc_data-ubjson]]
-=== Requirements Class "DGGS-UB-JSON Zone data encoding"
+=== Requirements Class "DGGS-UBJSON Zone data encoding"
 
 ==== Overview
 
-The UB-JSON Zone Data encoding requirements class defines support for encoding a DGGS Zone data response using the same JSON structure as the above JSON data requirement class, but using the binary UB-JSON encoding.
+The DGGS-UBJSON Zone Data encoding requirements class defines support for encoding a DGGS Zone data response using the same JSON structure as the above JSON data requirement class, but using the binary UBJSON encoding.
 
 include::../requirements/requirements_class_zone_data_ubjson.adoc[]
+
+[[rc_data-dggs-fgjson]]
+=== Requirements Class "DGGS-FG-JSON Zone data encoding"
+
+==== Overview
+
+The DGGS-FG-JSON Zone Data encoding requirements class defines support for encoding a DGGS Zone data response for vector features in JSON, by extending https://docs.ogc.org/DRAFTS/21-045r1.html[OGC Features & Geometry JSON]
+with the concepts of DGGRS, reference parent zone, relative depth and deterministic sub-zone order, allowing to encode coordinates pairs as local sub-zone indices.
+
+This encoding is intended to support efficient encoding of vector geometry at arbitrary precision using finer grids to locally address the inside of the reference parent zones,
+in a manner agnostic of the DGGRS (as long as the DGGRS can define a deterministic sub-zone order), in a human-readable format sharing as much as possible with existing practice for exchanging
+geospatial vector data in JSON.
+
+Example encodings follow:
+
+.Example encoding of DGGS-FG-JSON for OpenStreetMap data
+[source,json]
+----
+include::../examples/3-osmOttawa-extract.dggsfgjson[]
+----
+
+.Example encoding of DGGS-FG-JSON for Natural Earth bathymetry in the arctic
+[source,json]
+----
+include::../examples/4-arcticBathymetry-extract.dggsfgjson[]
+----
+
+include::../requirements/requirements_class_zone_data_dggs_fgjson.adoc[]
+
+[[rc_data-dggs-fgubjson]]
+=== Requirements Class "DGGS-FG-UBJSON Zone data encoding"
+
+==== Overview
+
+The DGGS-UB-FGJSON Zone Data encoding requirements class defines support for encoding a DGGS Zone data response for vector features using the same JSON structure as the above DGGS-FG-JSON data requirement class,
+but using the binary UBJSON encoding.
+
+include::../requirements/requirements_class_zone_data_dggs_fgubjson.adoc[]
+
 
 [[rc_data-geotiff]]
 === Requirements Class "GeoTIFF Zone data encoding"

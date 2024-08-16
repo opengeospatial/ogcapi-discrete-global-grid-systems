@@ -822,6 +822,8 @@ The following examples illustrate this capability for different DGGRSs, represen
 
 ==== Retrieving data from an ISEA3H DGGRS
 
+Examples in this section retrieve data for pentagonal and hexagonal zones of an <<isea3h-dggrs, ISEA3H DGGRS>>, based on the ISEA projection.
+
 This first example retrieves elevation data for the GEBCO collection for ISEA3H zone `A2-0-A` at a relative depth of 8 (specified using the `zone-depth` parameter -- the default zone depth is 10, as specified in the
 `defaultDepth` property of the <<isea3h-dggs-description-response,ISEA3H DGGRS description response>>).
 
@@ -1086,8 +1088,8 @@ with much fewer information than is required to address the entire globe.
 
 This representation also addresses the issue of artificial segments, by using a special zone order index value of _0_ for representing coordinates outside of the zone,
 which facilitates merging geometry across adjacent zones and easily identifying artificial segments of polygon contours.
-Whereas for LineStrings a single _0_ value is sufficient to represent all outside points between where the line exits and re-enters the zone, for polygon contours a _0_ must be inserted between
-each vertex pair of artificial segments following the zone boundary overlapped by the contour.
+For polygons, rather than tracing points along the clipping zone edge(s), only the exit and entry points will exist with a single _0_ coordinate value in between, indicating that the portion of the zone
+edge(s) between those two points is within the contour.
 
 The DGGS-FG-JSON representation for the previous OpenStreetMap example extract follows, at a relative depth precision of 15,
 resulting in coordinates within a ~275 cm² region, ~16 cm precision, with sub-zone indices between 1 and 14,355,469 (roughly equivalent to latitude and longitude with six decimal places).
@@ -1095,36 +1097,7 @@ resulting in coordinates within a ~275 cm² region, ~16 cm precision, with sub-z
 [%unnumbered%]
 [source,json]
 ----
-{
-   "conformsTo": [ "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-fgjson" ],
-   "dggrs": "[ogc-dggrs:ISEA3H]",
-   "zoneId": "I0-1EFA652-D",
-   "depth": "15",
-   "type" : "FeatureCollection",
-   "features" : [ {
-      "type" : "Feature",
-      "id" : 2305843009218664049,
-      "geometry" : null,
-      "time" : null,
-      "place" : {
-         "type" : "LineString",
-         "coordinates" : [ 13866054, 13899376, 13953688 ]
-      },
-      "properties" : {
-         "highway" : "service",
-         "name" : "Parliament Road",
-         "name:fr" : "chemin Parliament",
-         "access" : "no"
-      }
-   }, {
-      "type" : "Feature",
-      "id" : 2305843009218664071,
-      "geometry" : null,
-      "time" : null,
-      "place" : {
-         "type" : "LineString",
-         "coordinates" :
-   ...
+include::../examples/3-osmOttawa-extract.dggsfgjson[]
 ----
 
 The DGGS-FG-JSON representation for the previous arctic bathymetry polygons example extract follows, at a relative depth precision of 15,
@@ -1134,37 +1107,17 @@ resulting in coordinates within a ~0.39 km² region (the size of the previous Op
 [%unnumbered%]
 [source,json]
 ----
-{
-   "conformsTo": [ "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-fgjson" ],
-   "dggrs": "[ogc-dggrs:ISEA3H]",
-   "zoneId": "B0-5-A",
-   "depth": "15",
-   "geometryDimension": 2,
-   "type": "FeatureCollection",
-   "features": [
-      {
-         "type": "Feature",
-         "id": 1,
-         "properties": {
-            "scalerank": 0,
-            "featurecla": "Bathymetry"
-         },
-         "geometry" : null,
-         "time" : null,
-         "place": {
-            "type": "MultiPolygon",
-            "coordinates": [
-               [
-                  [ 14355360, 14355250, 14355141, 14355032, 14354922, 14354813, ...
+include::../examples/4-arcticBathymetry-extract.dggsfgjson[]
 ----
 
 ==== Retrieving data from an ISEA9R DGGRS
 
-* ISEA9R
+Examples in this section retrieve data for rhombic zones of an <<isea9r-dggrs, ISEA9R DGGRS>>, based on the ISEA projection.
+
 
 ==== Retrieving data from a GNOSIS Global Grid DGGRS
 
-* GGG
+Examples in this section retrieve data for rectangular zones of a <<ggg-dggrs, GNOSIS Global Grid DGGRS>>, based on geographic latitude and longitude.
 
 ==== Subsetting zone data
 
