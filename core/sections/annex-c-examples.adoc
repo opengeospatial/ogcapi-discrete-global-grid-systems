@@ -983,7 +983,7 @@ Alternatively, the geometry of each zone could also be provided as a single poin
 ----
 
 [#img_zone_data_geojson_points='{figure-caption} {counter:figure-num}']
-.Visualization of a GeoJSON point features response for data retrieved from ISEA3H zone DGGRS https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A[A2-0-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
+.Visualization of a GeoJSON point features response for data retrieved from ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A[A2-0-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
 image::images/geoJSON-points-elevation.png[width=700,align="center"]
 
 For data of a vector nature, a vector format such as GeoJSON allows to encode zone data resposne in a more compact manner without having to rasterize the data.
@@ -1069,11 +1069,11 @@ https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:physical:bathymetry:ne
 ----
 
 [#img_zone_data_geojson_bathymetry='{figure-caption} {counter:figure-num}']
-.Visualization in a North polar projection of GeoJSON polygon contours for data retrieved from ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:physical:bathymetry/dggs/ISEA3H/zones/B0-5-A[B0-5-A] of https://naturalearthdata.com/[Natural Earth] bathymetry contours.
+.Visualization in a North polar projection of GeoJSON polygon contour features for data retrieved from ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:physical:bathymetry/dggs/ISEA3H/zones/B0-5-A[B0-5-A] of https://naturalearthdata.com/[Natural Earth] bathymetry contours.
 image::images/geojson-bathymetry.png[width=700,align="center"]
 
 [#img_zone_data_geojson_bathymetryISEA='{figure-caption} {counter:figure-num}']
-.Visualization in an ISEA planar projection of GeoJSON feature polygon contours for data retrieved from ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:physical:bathymetry/dggs/ISEA3H/zones/B0-5-A[B0-5-A] of https://naturalearthdata.com/[Natural Earth] bathymetry contours.
+.Visualization in an ISEA planar projection of GeoJSON polygon contour features for data retrieved from ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:physical:bathymetry/dggs/ISEA3H/zones/B0-5-A[B0-5-A] of https://naturalearthdata.com/[Natural Earth] bathymetry contours.
 image::images/geojson-bathymetryISEA.png[width=700,align="center"]
 
 ===== DGGS-FG-JSON Examples
@@ -1114,10 +1114,56 @@ include::../examples/4-arcticBathymetry-extract.dggsfgjson[]
 
 Examples in this section retrieve data for rhombic zones of an <<isea9r-dggrs, ISEA9R DGGRS>>, based on the ISEA projection.
 
+===== DGGS-JSON Examples
+
+[[img_zone_data_isea9r]]
+[#img_zone_data='{figure-caption} {counter:figure-num}']
+.Visualization in the ISEA 5x6 rotated and sheared space of a DGGS-JSON response for retrieving data for ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA9R/zones/A2-0[A2-0] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 4
+image::images/isea9r-gebco-5x6.png[width=700,align="center"]
+
+[#img_zone_data='{figure-caption} {counter:figure-num}']
+.Visualization in an ISEA planar projection of a DGGS-JSON response for retrieving data for ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA9R/zones/A2-0[A2-0] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 4
+image::images/isea9r-gebco-isea.png[width=700,align="center"]
+
+[#img_zone_data_tiff_reprojected='{figure-caption} {counter:figure-num}']
+.Visualization in an orthographic projection of a DGGS-JSON response for retrieving data for ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA9R/zones/A2-0[A2-0] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 4
+image::images/isea9r-gebco-orthographic.png[width=700,align="center"]
+
+===== GeoTIFF Examples
+
+[#img_zone_data_tiff_5x6='{figure-caption} {counter:figure-num}']
+.Visualization in the ISEA 5x6 rotated and shared space of a GeoTIFF response for retrieving data for pentagonal ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA9R/zones/A2-0[A2-0] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 4
+image::images/isea9r-gebco-tiff-5x6.png[width=600,align="center"]
+
+[#img_zone_data_tiff_isea='{figure-caption} {counter:figure-num}']
+.Visualization of an ISEA planar projection GeoTIFF response for retrieving data for pentagonal ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA9R/zones/A2-0[A2-0] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 4
+image::images/isea9r-gebco-tiff-isea.png[width=600,align="center"]
+
+[#img_zone_data_tiff_wgs84='{figure-caption} {counter:figure-num}']
+.Visualization of a CRS84 GeoTIFF response for retrieving data for ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA9R/zones/A2-0[A2-0] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 4
+image::images/isea9r-gebco-tiff-crs84.png[width=700,align="center"]
+
+===== GeoJSON Examples
+
+[#img_zone_data_isea9r_geojson_points='{figure-caption} {counter:figure-num}']
+.Visualization of a GeoJSON point features response for data retrieved from ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA9R/zones/A2-0[A2-0] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
+image::images/isea9r-gebco-geojson-points.png[width=700,align="center"]
+
+[#img_zone_data_isea9r_geojson_osmOttawa_Mercator='{figure-caption} {counter:figure-num}']
+.Visualization in a world Mercator projection of a GeoJSON feature collection with mixed geometry types for data retrieved from ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/osm:ottawa/dggs/ISEA9R/zones/J0-116C0097[J0-116C0097] of https://openstreetmap.org/[OpenStreetMap] (c) OpenStreetMap contributors
+image::images/isea9r-osmOttawa-Mercator.png[width=700,align="center"]
+
+[#img_zone_data_isea9r_geojson_osmOttawa_ISEA='{figure-caption} {counter:figure-num}']
+.Visualization in an ISEA planar projection of a GeoJSON feature collection with mixed geometry types for data retrieved from ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/osm:ottawa/dggs/ISEA9R/zones/J0-116C0097[J0-116C0097] of https://openstreetmap.org/[OpenStreetMap] (c) OpenStreetMap contributors
+image::images/isea9r-osmOttawa-isea.png[width=700,align="center"]
+
+[#img_zone_data_isea9r_geojson_osmOttawa_ISEA5x6='{figure-caption} {counter:figure-num}']
+.Visualization in ISEA 5x6 rotated and sheared space of a GeoJSON feature collection with mixed geometry types for data retrieved from ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/osm:ottawa/dggs/ISEA9R/zones/J0-116C0097[J0-116C0097] of https://openstreetmap.org/[OpenStreetMap] (c) OpenStreetMap contributors
+image::images/isea9r-osmOttawa-5x6.png[width=700,align="center"]
 
 ==== Retrieving data from a GNOSIS Global Grid DGGRS
 
-Examples in this section retrieve data for rectangular zones of a <<ggg-dggrs, GNOSIS Global Grid DGGRS>>, based on geographic latitude and longitude.
+Examples in this section retrieve data for rectangular zones of a <<ggg-dggrs, GNOSIS Global Grid DGGRS>>, with edges aligned to the geographic latitude and longitude axes.
 
 ==== Subsetting zone data
 
