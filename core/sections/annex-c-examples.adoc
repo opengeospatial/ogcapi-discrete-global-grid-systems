@@ -1116,6 +1116,25 @@ Examples in this section retrieve data for rhombic zones of an <<isea9r-dggrs, I
 
 ===== DGGS-JSON Examples
 
+[%unnumbered%]
+[source,json]
+----
+{
+   "dggrs" : "https://www.opengis.net/def/dggrs/OGC/1.0/ISEA9R",
+   "zoneId" : "A2-0",
+   "depths" : [ 4 ],
+   "values" : {
+      "Elevation" : [
+         {
+            "depth" : 4,
+            "shape" : { "count" : 6561, "subZones" : 6561 },
+            "data" : [ -497.5576171875, -330.1863299490135, ..., -4571.5036366491877 ]
+         }
+      ]
+   }
+}
+----
+
 [[img_zone_data_isea9r]]
 [#img_zone_data='{figure-caption} {counter:figure-num}']
 .Visualization in the ISEA 5x6 rotated and sheared space of a DGGS-JSON response for retrieving data for ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA9R/zones/A2-0[A2-0] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 4
@@ -1145,9 +1164,67 @@ image::images/isea9r-gebco-tiff-crs84.png[width=700,align="center"]
 
 ===== GeoJSON Examples
 
+Using centroid points for the geometry of each zone, the response and associated visualization would look like the following:
+
+[%unnumbered%]
+[source,json]
+----
+{
+   "type" : "FeatureCollection",
+   "features" : [ {
+      "type" : "Feature",
+      "id" : 1,
+      "geometry" : {
+         "type" : "Point",
+         "coordinates" : [-77.9427488, 31.8199796]
+      },
+      "properties" : {
+         "Elevation" : -669.8315984701154,
+         "zoneID" : "E2-0"
+      }
+   }, {
+      "type" : "Feature",
+      "id" : 2,
+   ...
+----
+
 [#img_zone_data_isea9r_geojson_points='{figure-caption} {counter:figure-num}']
 .Visualization of a GeoJSON point features response for data retrieved from ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA9R/zones/A2-0[A2-0] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
 image::images/isea9r-gebco-geojson-points.png[width=700,align="center"]
+
+[%unnumbered%]
+[source,json]
+----
+{
+   "type": "FeatureCollection",
+   "features": [ {
+      "type": "Feature",
+      "id": 2305843009253710926,
+      "geometry": {
+         "type": "LineString",
+         "coordinates": [
+            [ -75.69465583, 45.42431289 ],
+            [ -75.69500353, 45.42453159 ],
+            [ -75.69543003, 45.4247375 ]
+         ]
+      },
+      "properties": {
+         "highway": "path",
+         "name": "Rideau Canal Western Pathway",
+         "surface": "asphalt",
+         "bicycle": "yes",
+         "foot": "yes",
+         "tunnel": "yes",
+         "width": "6"
+      }
+   }, {
+      "type": "Feature",
+      "id": 2305843009253711182,
+      "geometry": {
+         "type": "LineString",
+         "coordinates":
+   ...
+----
 
 [#img_zone_data_isea9r_geojson_osmOttawa_Mercator='{figure-caption} {counter:figure-num}']
 .Visualization in a world Mercator projection of a GeoJSON feature collection with mixed geometry types for data retrieved from ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/osm:ottawa/dggs/ISEA9R/zones/J0-116C0097[J0-116C0097] of https://openstreetmap.org/[OpenStreetMap] (c) OpenStreetMap contributors
@@ -1160,6 +1237,42 @@ image::images/isea9r-osmOttawa-isea.png[width=700,align="center"]
 [#img_zone_data_isea9r_geojson_osmOttawa_ISEA5x6='{figure-caption} {counter:figure-num}']
 .Visualization in ISEA 5x6 rotated and sheared space of a GeoJSON feature collection with mixed geometry types for data retrieved from ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/osm:ottawa/dggs/ISEA9R/zones/J0-116C0097[J0-116C0097] of https://openstreetmap.org/[OpenStreetMap] (c) OpenStreetMap contributors
 image::images/isea9r-osmOttawa-5x6.png[width=700,align="center"]
+
+[%unnumbered%]
+[source,json]
+----
+{
+   "type": "FeatureCollection",
+   "features": [ {
+      "type": "Feature",
+      "id": 1,
+      "properties": {
+         "scalerank": 0,
+         "featurecla": "Bathymetry"
+      },
+      "geometry": {
+         "type": "MultiPolygon",
+         "coordinates": [
+            [
+               [ [ -176.462294193695101, 51.573747730189602 ],
+                 [ -176.299702455578142, 51.743306963471383 ],
+                 [ -176.29463468229261, 51.738291979490903 ],
+                 [ -176.292808119410552, 51.75049674056649 ],
+                 [ -176.271367699388492, 51.77285594050052 ],
+                 ...
+----
+
+[#img_zone_data_isea9r_geojson_bathymetry5x6='{figure-caption} {counter:figure-num}']
+.Visualization in the ISEA 5x6 rotated and sheared space of GeoJSON polygon contour features for data retrieved from ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:physical:bathymetry/dggs/ISEA9R/zones/A9-0[A9-0] of https://naturalearthdata.com/[Natural Earth] bathymetry contours.
+image::images/isea9r-neBathymetry-5x6.png[width=700,align="center"]
+
+[#img_zone_data_isea9r_geojson_bathymetryISEA='{figure-caption} {counter:figure-num}']
+.Visualization in an ISEA planar projection of GeoJSON polygon contour features for data retrieved from ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:physical:bathymetry/dggs/ISEA9R/zones/A9-0[A9-0] of https://naturalearthdata.com/[Natural Earth] bathymetry contours.
+image::images/isea9r-neBathymetry-ISEA.png[width=700,align="center"]
+
+[#img_zone_data_isea9r_geojson_bathymetry='{figure-caption} {counter:figure-num}']
+.Visualization in a Mollweide projection of GeoJSON polygon contour features for data retrieved from ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:physical:bathymetry/dggs/ISEA9R/zones/A9-0[A9-0] of https://naturalearthdata.com/[Natural Earth] bathymetry contours.
+image::images/isea9r-neBathymetry-Mollweide.png[width=700,align="center"]
 
 ==== Retrieving data from a GNOSIS Global Grid DGGRS
 
