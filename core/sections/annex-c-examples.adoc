@@ -824,7 +824,8 @@ The following examples illustrate this capability for different DGGRSs, represen
 
 Examples in this section retrieve data for pentagonal and hexagonal zones of an <<isea3h-dggrs, ISEA3H DGGRS>>, based on the ISEA projection.
 
-This first example retrieves elevation data for the GEBCO collection for ISEA3H zone `A2-0-A` at a relative depth of 8 (specified using the `zone-depth` parameter -- the default zone depth is 10, as specified in the
+This first example retrieves elevation data for the GEBCO collection for ISEA3H zone `A2-0-A` at a relative depth of 8 (specified using the `zone-depth` parameter -- the
+default zone depth is 10 for this DGGRS in this particular deployment of the API, as specified in the
 `defaultDepth` property of the <<isea3h-dggs-description-response,ISEA3H DGGRS description response>>).
 
 ===== DGGS-JSON Examples
@@ -986,7 +987,7 @@ Alternatively, the geometry of each zone could also be provided as a single poin
 .Visualization of a GeoJSON point features response for data retrieved from ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A[A2-0-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 8
 image::images/geoJSON-points-elevation.png[width=700,align="center"]
 
-For data of a vector nature, a vector format such as GeoJSON allows to encode zone data resposne in a more compact manner without having to rasterize the data.
+For data of a vector nature, a vector format such as GeoJSON allows to encode zone data response in a more compact manner without having to rasterize the data.
 Ideally, especially for features spanning a large spatial extent (such as country boundaries, or the coastline of a large landmass), the features would be clipped to the geometry of the zone for which data
 is being requested, or as least to limited extent around the zone.
 Unfortunately, GeoJSON and FG-JSON do not yet have a standard mechanism to identify artificial edges which may result from such clipping.
@@ -1116,6 +1117,10 @@ Examples in this section retrieve data for rhombic zones of an <<isea9r-dggrs, I
 
 ===== DGGS-JSON Examples
 
+The following request is for data from the A2-0 level 0 rhombic ISEA9R zone at a relative depth of 4 in DGGS-JSON:
+
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA9R/zones/A2-0/data?zone-depth=4&f=json[\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA9R/zones/A2-0/data?zone-depth=4]
+
 [%unnumbered%]
 [source,json]
 ----
@@ -1150,9 +1155,19 @@ image::images/isea9r-gebco-orthographic.png[width=700,align="center"]
 
 ===== GeoTIFF Examples
 
+The following illustrates the GeoTIFF response for requesting data from the same A2-0 ISEA9R zone at same relative depth of 4 in three different CRSs:
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA9R/zones/A2-0/data?zone-depth=4&f=tiff&crs=%5BOGC:153456%5D[5x6 ISEA rotated and sheared space],
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA9R/zones/A2-0/data?zone-depth=4&f=tiff&crs=%5BOGC:1534%5D[ISEA planar projection], and
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA9R/zones/A2-0/data?zone-depth=4&f=tiff&crs=%5BOGC:CRS84%5D[CRS84].
+
 [#img_zone_data_isea9r_tiff_5x6='{figure-caption} {counter:figure-num}']
 .Visualization in the ISEA 5x6 rotated and shared space of a GeoTIFF response for retrieving data for ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA9R/zones/A2-0[A2-0] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 4
 image::images/isea9r-gebco-tiff-5x6.png[width=600,align="center"]
+
+TIP: Because ISEA9R zone edges are fully aligned with the axes of the ISEA 5x6 rotated and sheared space and the rhombic zones are square in this space,
+a GeoTIFF representation provides a one-to-one mapping of zones to rectilinear gridded coverage cells, as can be seen by comparing this previous visualization the GeoTIFF response with the visualization of the DGGS-JSON responses.
+For the same reason, a https://docs.ogc.org/is/17-083r4/17-083r4.html[2D Tile Matrix Set] can be defined in this 5x6 space, which supports using
+https://docs.ogc.org/is/20-057/20-057.html[OGC API - Tiles] as an alternative or complementary access mechanism to the Zone Data Retrieval requirements class of this DGGS API.
 
 [#img_zone_data_isea9r_tiff_isea='{figure-caption} {counter:figure-num}']
 .Visualization of an ISEA planar projection GeoTIFF response for retrieving data for ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA9R/zones/A2-0[A2-0] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 4
@@ -1162,9 +1177,13 @@ image::images/isea9r-gebco-tiff-isea.png[height=800,align="center"]
 .Visualization of a CRS84 GeoTIFF response for retrieving data for ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA9R/zones/A2-0[A2-0] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 4
 image::images/isea9r-gebco-tiff-crs84.png[width=700,align="center"]
 
+TIP: In these two previous visualizations, the server returned a response in the ISEA planar projection and CRS84, respectively.
+If the affine transformation from the ISEA 5x6 rotated and sheared space is done on the client side instead, the rhombic shape of the individual sub-zones would be preserved, as in the corresponding visualizations
+of the DGGS-JSON representation.
+
 ===== GeoJSON Examples
 
-Using centroid points for the geometry of each zone, the response and associated visualization would look like the following:
+Using centroid points for the geometry of each zone, the GeoJSON response and associated visualization would look like the following:
 
 [%unnumbered%]
 [source,json]
@@ -1191,6 +1210,10 @@ Using centroid points for the geometry of each zone, the response and associated
 [#img_zone_data_isea9r_geojson_points='{figure-caption} {counter:figure-num}']
 .Visualization of a GeoJSON point features response for data retrieved from ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA9R/zones/A2-0[A2-0] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 4
 image::images/isea9r-gebco-geojson-points.png[height=800,align="center"]
+
+The following GeoJSON feature collection is requested from an OpenStreetMap dataset of Ottawa for ISEA9R zone J0-116C0097, and illustrated as visualized in different projections.
+
+https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:roads/dggs/ISEA9R/zones/J0-116C0097/data[\https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:roads/dggs/ISEA9R/zones/J0-116C0097/data]
 
 [%unnumbered%]
 [source,json]
@@ -1262,6 +1285,10 @@ image::images/isea9r-osmOttawa-5x6.png[width=700,align="center"]
                  ...
 ----
 
+The following GeoJSON polygon contours are requested from Natural Earth bathymetry for ISEA9R zone A9-0.
+
+https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:physical:bathymetry:ne_10m_bathymetry_L_0/dggs/ISEA9R/zones/A9-0/data[\https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:physical:bathymetry:ne_10m_bathymetry_L_0/dggs/ISEA9R/zones/A9-0/data]
+
 [#img_zone_data_isea9r_geojson_bathymetry5x6='{figure-caption} {counter:figure-num}']
 .Visualization in the ISEA 5x6 rotated and sheared space of GeoJSON polygon contour features for data retrieved from ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:physical:bathymetry/dggs/ISEA9R/zones/A9-0[A9-0] of https://naturalearthdata.com/[Natural Earth] bathymetry contours.
 image::images/isea9r-neBathymetry-5x6.png[width=700,align="center"]
@@ -1279,6 +1306,10 @@ image::images/isea9r-neBathymetry-Mollweide.png[height=800,align="center"]
 Examples in this section retrieve data for rectangular zones of a <<ggg-dggrs, GNOSIS Global Grid DGGRS>>, with edges aligned to the geographic latitude and longitude axes.
 
 ===== DGGS-JSON Examples
+
+The following request is for data from the 0-1-3 level 0 GNOSIS Global Grid zone in DGGS-JSON at a relative depth of 7:
+
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/GNOSISGlobalGrid/zones/0-1-3/data?zone-depth=7&f=json[\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/GNOSISGlobalGrid/zones/0-1-3/data?zone-depth=7]
 
 [%unnumbered%]
 [source,json]
@@ -1304,15 +1335,30 @@ Examples in this section retrieve data for rectangular zones of a <<ggg-dggrs, G
 .Visualization of CRS84 DGGS-JSON response for retrieving data for GNOSIS Global Grid DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/GNOSISGlobalGrid/zones/0-1-3[0-1-3] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 7
 image::images/ggg-gebco-crs84.png[width=700,align="center"]
 
+TIP: Notice how there are fewer zones per rows approaching the poles, until there is a single zone at the final polar row.
+While not achieving the 1% error budget allowed for a DGGH to qualify as being equal area, the use of the https://docs.ogc.org/is/17-083r4/17-083r4.html#toc16[Variable Width 2D Tile Matrix Set] concept allows
+the GNOSIS Global Grid to maintain a divergence in area from mean zone surface area below 50% up to a high refinement level, with zones aligned to the geodetic latitude and longitude axes.
+This in turn greatly facilitates data integration from other discrete global grid hierarchies as well as arbitrary data sources, as no re-projection is needed for WGS84 coordinates.
+
 [#img_zone_data_ggg_ortho='{figure-caption} {counter:figure-num}']
 .Visualization in an orthographic projection of a DGGS-JSON response for retrieving data for GNOSIS Global Grid DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/GNOSISGlobalGrid/zones/0-1-3[0-1-3] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 7
 image::images/ggg-gebco-orthographic.png[width=700,align="center"]
 
 ===== GeoTIFF Examples
 
+The following illustrates the https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/GNOSISGlobalGrid/zones/0-1-3/data?zone-depth=7&f=tiff[GeoTIFF response] for requesting data from the
+same 0-1-3 GNOSIS Global Grid zone at same relative depth of 7, visualized below in both its native CRS84 and an orthographic projection.
+
 [#img_zone_data_ggg_tiff='{figure-caption} {counter:figure-num}']
 .Visualization of CRS84 GeoTIFF response for retrieving data for GNOSIS Global Grid DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/GNOSISGlobalGrid/zones/0-1-3[0-1-3] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 7
 image::images/ggg-gebco-tiff-crs84.png[width=600,align="center"]
+
+TIP: As can be seen by comparing this previous visualization the GeoTIFF response with the visualization of the DGGS-JSON responses,
+because the GNOSIS Global Grid zone edges are fully aligned with geographic latitude and longitude, a GeoTIFF representation provides a one-to-one mapping of zones to rectilinear gridded coverage cells,
+with the exception of the GeoTIFF representation having a fixed width, requiring to duplicate the values of zones approaching the pole.
+
+TIP: A registered https://docs.ogc.org/is/17-083r4/17-083r4.html#toc58[GNOSIS Global Grid 2D Tile Matrix Set] is defined which supports using
+https://docs.ogc.org/is/20-057/20-057.html[OGC API - Tiles] as an alternative or complementary access mechanism to the Zone Data Retrieval requirements class of this DGGS API.
 
 [#img_zone_data_ggg_tiff_ortho='{figure-caption} {counter:figure-num}']
 .Visualization in an ortographic projection of GeoTIFF response for retrieving data for GNOSIS Global Grid DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/GNOSISGlobalGrid/zones/0-1-3[0-1-3] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 7
@@ -1320,7 +1366,7 @@ image::images/ggg-gebco-tiff-orthographic.png[width=600,align="center"]
 
 ===== GeoJSON Examples
 
-Using centroid points for the geometry of each zone, the response and associated visualization would look like the following:
+Using centroid points for the geometry of each zone, the GeoJSON response and associated visualization would look like the following:
 
 [%unnumbered%]
 [source,json]
@@ -1348,9 +1394,20 @@ Using centroid points for the geometry of each zone, the response and associated
 .Visualization of a GeoJSON point features response for data retrieved from GNOSIS Global Grid DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/GNOSISGlobalGrid/zones/0-1-3[0-1-3] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 7
 image::images/ggg-gebco-geojson-points.png[width=700,align="center"]
 
+TIP: The fewer zones approaching the poles based on the https://docs.ogc.org/is/17-083r4/17-083r4.html#toc16[Variable Width 2D Tile Matrix Set] concept are especially noticeable in these visualizations
+of the sub-zone centroids as points, illustrating how the GNOSIS Global Grid achieves a rough approximation of equal area despite zone edges being aligned to geographic latitude and longitude.
+
 [#img_zone_data_ggg_geojson_points_ortho='{figure-caption} {counter:figure-num}']
 .Visualization in an orthographic projection of a GeoJSON point features response for data retrieved from GNOSIS Global Grid DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/GNOSISGlobalGrid/zones/0-1-3[0-1-3] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 7
 image::images/ggg-gebco-geojson-points-orthographic.png[width=700,align="center"]
+
+The following GeoJSON feature collection is requested from an OpenStreetMap dataset of Singapore for GNOSIS Global Grid level 12 zone C-FC5-3276:
+
+https://maps.gnosis.earth/ogcapi/collections/osm:singapore:roads/dggs/GNOSISGlobalGrid/zones/C-FC5-3276/data[\https://maps.gnosis.earth/ogcapi/collections/osm:singapore:roads/dggs/GNOSISGlobalGrid/zones/C-FC5-3276/data]
+
+The map below visualizes that zone together with the zone immediately East of it, C-FC5-3277:
+
+https://maps.gnosis.earth/ogcapi/collections/osm:singapore:roads/dggs/GNOSISGlobalGrid/zones/C-FC5-3277/data[\https://maps.gnosis.earth/ogcapi/collections/osm:singapore:roads/dggs/GNOSISGlobalGrid/zones/C-FC5-3277/data]
 
 [%unnumbered%]
 [source,json]
@@ -1381,9 +1438,16 @@ image::images/ggg-gebco-geojson-points-orthographic.png[width=700,align="center"
       ...
 ----
 
+TIP: Notice the artificial edge drawn with a grey stroke splitting the _Flower Dome_ in two, around the middle of the map.
+With the artificial edge information of DGGS-FG-JSON, a client could avoid such visualization artifacts, and could more easily recombine geometry split across separate tiles.
+
 [#img_zone_data_ggg_geojson_osmSingapore='{figure-caption} {counter:figure-num}']
 .Visualization of a GeoJSON feature collection with mixed geometry types for data retrieved from GNOSIS Global Grid DGGRS zones https://maps.gnosis.earth/ogcapi/collections/osm:singapore/dggs/GNOSISGlobalGrid/zones/C-FC5-3276[C-FC5-3276] and https://maps.gnosis.earth/ogcapi/collections/osm:singapore/dggs/GNOSISGlobalGrid/zones/C-FC5-3277[C-FC5-3277] of https://openstreetmap.org/[OpenStreetMap] (c) OpenStreetMap contributors
 image::images/ggg-osmSingapore-crs84.png[width=700,align="center"]
+
+The following GeoJSON polygon contours are requested from Natural Earth bathymetry for GNOSIS Global Grid level 0 zone 1-1-7.
+
+https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:physical:bathymetry:ne_10m_bathymetry_L_0/dggs/GNOSISGlobalGrid/zones/1-1-7/data[\https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:physical:bathymetry:ne_10m_bathymetry_L_0/dggs/GNOSISGlobalGrid/zones/1-1-7/data]
 
 [%unnumbered%]
 [source,json]
