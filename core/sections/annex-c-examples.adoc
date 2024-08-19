@@ -844,7 +844,7 @@ A snippet of the DGGS-JSON response follows, including an array of elevation val
          {
             "depth" : 8,
             "shape" : { "count" : 5536, "subZones" : 5536 },
-            "data" : [ 24.9531681265927, 21.6738144635267, ...,  3400.2192758791743 ]
+            "data" : [ -14.209265189621, 57.2747655762701, ..., 2075.7176486103044 ]
          }
       ]
    }
@@ -893,13 +893,13 @@ On the other hand, a hexagon not spanning an interruption will appear in the ISE
 image::images/tiff-zoneDataISEA-HorizontalHex.png[width=700,align="center"]
 
 [#img_zone_data_tiff_horizontal_hex='{figure-caption} {counter:figure-num}']
-.Visualization of an ISEA planar projection GeoTIFF response for retrieving data for ISEA3H DGGRS zonehttps://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/B0-5-A[B0-5-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
+.Visualization of an ISEA planar projection GeoTIFF response for retrieving data for ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/B0-5-A[B0-5-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
 image::images/tiff-zoneDataISEA-VerticalHex.png[width=700,align="center"]
 
 whereas the same zones in OGC:CRS84 will have various shapes not easily recognizable as hexagons:
 
 [#img_zone_data_tiff_wgs84_vertical_hex='{figure-caption} {counter:figure-num}']
-.Visualization of a GeoTIFF response in OGC:CRS84 for retrieving data for ISEA3H DGGRS zonehttps://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A0-0-F[A0-0-F] (odd level 1) of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
+.Visualization of a GeoTIFF response in OGC:CRS84 for retrieving data for ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A0-0-F[A0-0-F] (odd level 1) of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
 image::images/tiff-zoneDataWGS84-HorizontalHex.png[width=700,align="center"]
 
 [#img_zone_data_tiff_wgs84_horizontal_hex='{figure-caption} {counter:figure-num}']
@@ -940,7 +940,7 @@ which would result in a visualization identical to <<img_zone_data>>.
          ]
       },
       "properties" : {
-         "Elevation" : 18.5148094925609,
+         "Elevation" : -14.209265189621,
          "zoneID" : "E0-8C1-A"
       }
    }, {
@@ -961,10 +961,10 @@ Alternatively, the geometry of each zone could also be provided as a single poin
       "id" : 1,
       "geometry" : {
          "type" : "Point",
-         "coordinates" : [-78.75, 69.22280465]
+         "coordinates" : [-78.7500000030306, 69.2228046463321]
       },
       "properties" : {
-         "Elevation" : 18.51480949,
+         "Elevation" : -14.209265189621,
          "zoneID" : "E0-8C1-A"
       }
    }, {
@@ -972,10 +972,10 @@ Alternatively, the geometry of each zone could also be provided as a single poin
       "id" : 2,
       "geometry" : {
          "type" : "Point",
-         "coordinates" : [-82.3566945, 68.41764585]
+         "coordinates" : [-82.3566944995815, 68.4176458502864]
       },
       "properties" : {
-         "Elevation" : -0.98992775,
+         "Elevation" : 57.2747655762701,
          "zoneID" : "E0-911-A"
       }
    },
@@ -1128,7 +1128,7 @@ Examples in this section retrieve data for rhombic zones of an <<isea9r-dggrs, I
          {
             "depth" : 4,
             "shape" : { "count" : 6561, "subZones" : 6561 },
-            "data" : [ -497.5576171875, -330.1863299490135, ..., -4571.5036366491877 ]
+            "data" : [ -684.1801215563401, -725.808053553661, ..., -4279.7074446855995 ]
          }
       ]
    }
@@ -1176,10 +1176,10 @@ Using centroid points for the geometry of each zone, the response and associated
       "id" : 1,
       "geometry" : {
          "type" : "Point",
-         "coordinates" : [-77.9427488, 31.8199796]
+         "coordinates" : [-78.3336155911744, 31.7735879687561]
       },
       "properties" : {
-         "Elevation" : -669.8315984701154,
+         "Elevation" : -684.1801215563401,
          "zoneID" : "E2-0"
       }
    }, {
@@ -1292,7 +1292,7 @@ Examples in this section retrieve data for rectangular zones of a <<ggg-dggrs, G
          {
             "depth" : 7,
             "shape" : { "count" : 10923, "subZones" : 10923 },
-            "data" : [ 2878.8939861844092, 2967.7348470230909, ..., -5391.1075094134885 ]
+            "data" : [ -4062.7933481641721, -4645.8313990445513, ..., 2878.8939861844092 ]
          }
       ]
    }
@@ -1332,11 +1332,11 @@ Using centroid points for the geometry of each zone, the response and associated
       "id" : 1,
       "geometry" : {
          "type" : "Point",
-         "coordinates" : [111.09375, -75.5859375]
+         "coordinates" : [90.3515625, -0.3515625]
       },
       "properties" : {
-         "Elevation" : 3254.236657341547,
-         "zoneID" : "7-EB-19C"
+         "Elevation" : -4062.7933481641721,
+         "zoneID" : "7-80-180"
       }
    }, {
       "type" : "Feature",
@@ -1366,7 +1366,6 @@ image::images/ggg-gebco-geojson-points-orthographic.png[width=700,align="center"
             [ [103.842845400531, 1.2916332189689], [103.8427734375, 1.2916700596819] ]
       },
       "properties" : {
-         "feature::id" : 2305843009223282082,
          "highway" : "residential",
          "name" : "Unity Street",
          "surface" : "asphalt",
