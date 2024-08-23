@@ -1504,7 +1504,7 @@ https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-
 .Visualization of different temporal slices for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F[G7-66F79-F] (K'gari, Australia) from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
 image::images/datetime-sentinel2-kgari.png[width=700,align="center"]
 
-https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones/A1-0-E/data?zone-depth=8&datetime=2022-10-06/2022-10-10
+https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones/A1-0-E/data?zone-depth=8&datetime=2022-10-06/2022-10-10&f=json[\https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones/A1-0-E/data?zone-depth=8&datetime=2022-10-06/2022-10-10]
 
 [%unnumbered%]
 [source,json]
@@ -1617,7 +1617,7 @@ to feature collections with vector geometry with a primary temporal property.
 
 ==== Subsetting arbitrary dimensions
 
-https://maps.gnosis.earth/ogcapi/collections/climate:era5:relativeHumidity/dggs/ISEA3H/zones/A4-0-A/data?zone-depth=8&datetime=2023-04-06T23:00:00&subset=pressure(750:900)
+https://maps.gnosis.earth/ogcapi/collections/climate:era5:relativeHumidity/dggs/ISEA3H/zones/A4-0-A/data?zone-depth=8&datetime=2023-04-06T23:00:00&subset=pressure(750:900)&f=json[\https://maps.gnosis.earth/ogcapi/collections/climate:era5:relativeHumidity/dggs/ISEA3H/zones/A4-0-A/data?zone-depth=8&datetime=2023-04-06T23:00:00&subset=pressure(750:900)]
 
 [%unnumbered%]
 [source,json]
@@ -1667,7 +1667,7 @@ https://maps.gnosis.earth/ogcapi/collections/climate:era5:relativeHumidity/dggs/
 }
 ----
 
-https://maps.gnosis.earth/ogcapi/collections/climate:era5:relativeHumidity/dggs/ISEA3H/zones/A4-0-A/data?zone-depth=8&datetime=2023-04-06T23:00:00&subset=pressure(900)
+https://maps.gnosis.earth/ogcapi/collections/climate:era5:relativeHumidity/dggs/ISEA3H/zones/A4-0-A/data?zone-depth=8&datetime=2023-04-06T23:00:00&subset=pressure(900)&f=json[\https://maps.gnosis.earth/ogcapi/collections/climate:era5:relativeHumidity/dggs/ISEA3H/zones/A4-0-A/data?zone-depth=8&datetime=2023-04-06T23:00:00&subset=pressure(900)]
 
 [%unnumbered%]
 [source,json]
