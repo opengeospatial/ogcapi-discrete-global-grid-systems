@@ -94,9 +94,9 @@ image::images/isea3h-order-edge.png[width=400,align="center"]
 
 The following DGGRS is based on the https://docs.ogc.org/is/17-083r4/17-083r4.html#toc58[variable width 2D Tile Matrix Set of the same name].
 The GNOSIS Global Grid is also axis-aligned, with the axes being the geographic latitude and longitude, and already corresponds to a registered 2DTMS.
-Through the variable width capability of the tile matrices, this DGGH approximates equal area.
+Through the https://docs.ogc.org/is/17-083r4/17-083r4.html#variable-matrixwidth-tile-matrix[variable width capability] of the tile matrices, this DGGH approximates equal area.
 For example, at any refinement level, only 4 zones touch each pole.
-Since the error budget still exceeds the 1%, it cannot be considered equal area.
+Since the error budget still exceeds the 1%, it cannot be considered equal area per the https://docs.ogc.org/as/20-040r3/20-040r3.html#toc28[OGC Topic 21 DGGS Equal Area Earth Reference System Package].
 However, the error is the same along a particular row of zones following latitude lines, and can easily be calculated.
 Since its native axes are latitude and longitude, no additional reprojection is required to import data to or export data from this DGGH.
 
