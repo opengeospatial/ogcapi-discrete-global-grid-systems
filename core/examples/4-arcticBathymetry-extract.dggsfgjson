@@ -1,5 +1,8 @@
 {
-   "conformsTo": [ "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-fgjson" ],
+   "conformsTo": [
+      "https://www.opengis.net/spec/json-fg-1/0.2/conf/core",
+      "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-fgjson"
+   ],
    "dggrs": "[ogc-dggrs:ISEA3H]",
    "zoneId": "B0-5-A",
    "depth": "15",
@@ -14,8 +17,9 @@
             "featurecla": "Bathymetry"
          },
          "geometry" : null,
+         "place": null,
          "time" : null,
-         "place": {
+         "dggsPlace": {
             "type": "MultiPolygon",
             "coordinates": [
                [

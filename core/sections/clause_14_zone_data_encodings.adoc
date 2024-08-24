@@ -31,8 +31,8 @@ A table of the media types used in the encoding of the Zone Data requirements cl
 ^|*Encoding*              ^|*media type*
 |DGGS-JSON zone data      |application/json
 |DGGS-UBJSON zone data    |application/ubjson
-|DGGS-FG-JSON zone data   |application/dggs+fg+json
-|DGGS-FG-UBJSON zone data |application/dggs+fg+ubjson
+|DGGS-FG-JSON zone data   |application/fg+json (`geometry=quantized`)
+|DGGS-FG-UBJSON zone data |application/fg+ubjson (`geometry=quantized`)
 |GeoJSON data             |application/geo+json
 |JSON-FG data             |application/fg+json
 |GeoTIFF data             |image/tiff; application=geotiff
@@ -79,6 +79,10 @@ The DGGS-UBJSON Zone Data encoding requirements class defines support for encodi
 
 include::../requirements/requirements_class_zone_data_ubjson.adoc[]
 
+TIP: The https://pypi.org/project/py-ubjson/[py-ubjson] tool can be used to easily convert between JSON and UBJSON.
+After installing with `pip3 install py-ubjson`, a DGGS-JSON file can be converted to DGGS-(UB)JSON with
+`ubjson fromjson zoneData.dggs.json`, and a DGGS-(UB)JSON file can be converted to DGGS-JSON with `ubjson tojson zoneData.dggs.ubj`.
+
 [[rc_data-dggs-fgjson]]
 === Requirements Class "DGGS-FG-JSON Zone data encoding"
 
@@ -117,6 +121,9 @@ but using the binary UBJSON encoding.
 
 include::../requirements/requirements_class_zone_data_dggs_fgubjson.adoc[]
 
+TIP: The https://pypi.org/project/py-ubjson/[py-ubjson] tool can be used to easily convert between JSON and UBJSON.
+After installing with `pip3 install py-ubjson`, a DGGS-FG-JSON file can be converted to DGGS-FG-UBJSON with
+`ubjson fromjson zoneData.dggsfg.json`, and a DGGS-FG-UBJSON file can be converted to DGGS-FG-JSON with `ubjson tojson zoneData.dggsfg.ubj`.
 
 [[rc_data-geotiff]]
 === Requirements Class "GeoTIFF Zone data encoding"

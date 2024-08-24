@@ -40,3 +40,15 @@ identifier:: /rec/data-geojson/omission
 part:: For datasets whose features have either a size (such as areal or linear feature) or other properties making some features irrelevant at lower hierarchy levels, such irrelevant features SHOULD
 be omitted from the response based on the hierarchy level implied from the `zone-depth` relative to the requested zone.
 ====
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/data-geojson/geometry
+part:: The implementation SHOULD support a `geometry` query parameter allowing a client to choose how to return feature geometry.
+part:: The implementation SHOULD support a value of `geometry=zone-centroid` to request a representation where each feature is a zone intersecting the data, with the feature geometry of each feature being a Point geometry for the centroid of that zone.
+part:: The implementation SHOULD support a value of `geometry=zone-region` to request a representation where each feature is a zone intersecting the data, with the feature geometry of each feature being a (Multi)Polygon or Polyhedron geometry.
+part:: The implementation SHOULD support a value of `geometry=vectorized` to request a representation where each feature corresponds to the a feature of the data sharing the same property values.
+part:: If a `geometry` value is not specified, the implementation SHOULD return the representation closest to the native data.
+part:: If a requested geometry representation is not supported, the implementation SHOULD return a 4xx or 501 "Not Implemented" HTTP error.
+====

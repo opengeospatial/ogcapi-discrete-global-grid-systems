@@ -1,5 +1,8 @@
 {
-   "conformsTo": [ "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-fgjson" ],
+   "conformsTo": [
+      "https://www.opengis.net/spec/json-fg-1/0.2/conf/core",
+      "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-fgjson"
+   ],
    "dggrs": "[ogc-dggrs:ISEA3H]",
    "zoneId": "I0-1EFA652-D",
    "depth": "15",
@@ -8,8 +11,9 @@
       "type" : "Feature",
       "id" : 2305843009218664049,
       "geometry" : null,
+      "place" : null,
       "time" : null,
-      "place" : {
+      "dggsPlace" : {
          "type" : "LineString",
          "coordinates" : [ 13866054, 13899376, 13953688 ]
       },
@@ -23,8 +27,9 @@
       "type" : "Feature",
       "id" : 2305843009218664071,
       "geometry" : null,
+      "place" : null,
       "time" : null,
-      "place" : {
+      "dggsPlace" : {
          "type" : "LineString",
          "coordinates" :
    ...

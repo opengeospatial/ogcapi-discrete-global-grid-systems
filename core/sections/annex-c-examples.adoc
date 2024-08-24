@@ -919,7 +919,7 @@ This would be equivalent to the <<rc_zone-geojson,GeoJSON representation for a z
 and the `zone-level` is the sum of the parent zone plus the relative zone depth at which data is requested (the default depth or `zone-depth` parameter), with the addition of these
 properties associating data values with each zone.
 
-If the geometry for these zone features is provided as polygons, visualizing this vector data would produce an output like the following partial response,
+If the geometry for these zone features is provided as polygons (`geometry=zone-region`), visualizing this vector data would produce an output like the following partial response,
 which would result in a visualization identical to <<img_zone_data>>.
 
 [%unnumbered%]
@@ -950,7 +950,7 @@ which would result in a visualization identical to <<img_zone_data>>.
       ...
 ----
 
-Alternatively, the geometry of each zone could also be provided as a single point for its centroid, in which case the response and associated visualization would look like the following:
+Alternatively, the geometry of each zone could also be provided as a single point for its centroid (`geometry=zone-centroid`), in which case the response and associated visualization would look like the following:
 
 [%unnumbered%]
 [source,json]
@@ -1082,7 +1082,7 @@ image::images/geojson-bathymetryISEA.png[width=700,align="center"]
 The DGGS-FG-JSON format is the vector counterpart to DGGS-JSON, leveraging the same concepts of DGGRS, parent zone, sub-zones at a given relative depth, and deterministic sub-zone order,
 while also building on top of the familiar Features & Geometry JSON and GeoJSON formats, which are themselves built on OGC Simple Features.
 
-In DGGS-FG-JSON, spatial coordinates of the feature geometries croresponding to the spatial dimensions of the DGGRS are encoded as integer sub-zone order indices ranging from 1 to the
+In DGGS-FG-JSON, spatial coordinates of the feature geometries corresponding to the spatial dimensions of the DGGRS are encoded as integer sub-zone order indices ranging from 1 to the
 number of sub-zones at the selected relative depth. This relative depth corresponds to the precision of the coordinates at which geometry is being defined, analogous to the number of decimals
 that would be used in GeoJSON or FG-JSON. Because this essentially corresponds to a coordinate system local to the zone for which data is being retrieved, high precision can be achieved
 with much fewer information than is required to address the entire globe.
@@ -1090,7 +1090,7 @@ with much fewer information than is required to address the entire globe.
 This representation also addresses the issue of artificial segments, by using a special zone order index value of _0_ for representing coordinates outside of the zone,
 which facilitates merging geometry across adjacent zones and easily identifying artificial segments of polygon contours.
 For polygons, rather than tracing points along the clipping zone edge(s), only the exit and entry points will exist with a single _0_ coordinate value in between, indicating that the portion of the zone
-edge(s) between those two points is within the contour.
+edge(s) between those two points is within the contour. A DGGS-FG-JSON representation is requested using the `application/fg+json` media type together with the `geometry=quantized` query parameter.
 
 The DGGS-FG-JSON representation for the previous OpenStreetMap example extract follows, at a relative depth precision of 15,
 resulting in coordinates within a ~275 cm² region, ~16 cm precision, with sub-zone indices between 1 and 14,355,469 (roughly equivalent to latitude and longitude with six decimal places).
@@ -1183,7 +1183,7 @@ of the DGGS-JSON representation.
 
 ===== GeoJSON Examples
 
-Using centroid points for the geometry of each zone, the GeoJSON response and associated visualization would look like the following:
+Using centroid points for the geometry of each zone (`geometry=zone-centroid`), the GeoJSON response and associated visualization would look like the following:
 
 [%unnumbered%]
 [source,json]
@@ -1366,7 +1366,7 @@ image::images/ggg-gebco-tiff-orthographic.png[width=600,align="center"]
 
 ===== GeoJSON Examples
 
-Using centroid points for the geometry of each zone, the GeoJSON response and associated visualization would look like the following:
+Using centroid points for the geometry of each zone (`geometry=zone-centroid`), the GeoJSON response and associated visualization would look like the following:
 
 [%unnumbered%]
 [source,json]

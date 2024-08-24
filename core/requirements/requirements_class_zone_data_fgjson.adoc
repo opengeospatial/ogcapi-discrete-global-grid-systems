@@ -46,3 +46,15 @@ be omitted from the response based on the hierarchy level implied from the `zone
 identifier:: /rec/data-fgjson/crs
 part:: The CRS of the response SHOULD be consistent with either the DGGRS or the underlying geographic CRS (e.g., CRS84).
 ====
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/data-fgjson/geometry
+part:: The implementation SHOULD support a `geometry` query parameter allowing a client to choose how to return feature geometry.
+part:: The implementation SHOULD support a value of `geometry=zone-centroid` to request a representation where each feature is a zone intersecting the data, with the feature geometry of each feature being a Point geometry for the centroid of that zone.
+part:: The implementation SHOULD support a value of `geometry=zone-region` to request a representation where each feature is a zone intersecting the data, with the feature geometry of each feature being a (Multi)Polygon or Polyhedron geometry.
+part:: The implementation SHOULD support a value of `geometry=vectorized` to request a representation where each feature corresponds to the a feature of the data sharing the same property values.
+part:: If a `geometry` value is not specified, the implementation SHOULD return the representation closest to the native data.
+part:: If a requested geometry representation is not supported, the implementation SHOULD return a 4xx or 501 "Not Implemented" HTTP error.
+====
