@@ -213,6 +213,10 @@ components:
          $ref: 'parameters/dggs-core/filter.yaml'
       filter-lang:
          $ref: 'parameters/dggs-core/filter-lang.yaml'
+      crs:
+         $ref: 'parameters/dggs-core/crs.yaml'
+      geometry:
+         $ref: 'parameters/dggs-core/geometry.yaml'
       values-scale:
          $ref: 'parameters/dggs-core/values-scale.yaml'
       values-offset:

@@ -441,7 +441,7 @@
         "tags": [
           "DGGS Data Retrieval"
         ],
-        "summary": "Retrieve data from a DGGRS Zone, potentially as optimized DGGRS zone data packet",
+        "summary": "Retrieve data from a DGGRS Zone. For a DGGRS defining a sub-zone order, optimized zone data packets such as DGGS-(UB)JSON for raster data, or DGGS-FG-(UB)JSON for vector data can be used.",
         "operationId": "retrieveDGGSZoneData",
         "parameters": [
           {
@@ -461,6 +461,15 @@
           },
           {
             "$ref": "#/components/parameters/subset"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/crs"
+          },
+          {
+            "$ref": "#/components/parameters/geometry"
           },
           {
             "$ref": "#/components/parameters/datetime"
@@ -499,7 +508,7 @@
         "tags": [
           "DGGS Data Retrieval"
         ],
-        "summary": "Retrieve data from a DGGRS Zone for a specific collection, potentially as optimized DGGS zone data packet.",
+        "summary": "Retrieve data from a DGGRS Zone for a specific collection. For a DGGRS defining a sub-zone order, optimized zone data packets such as DGGS-(UB)JSON for raster data, or DGGS-FG-(UB)JSON for vector data can be used.",
         "operationId": "retrieveCollectionDGGSZoneData",
         "parameters": [
           {
@@ -512,9 +521,6 @@
             "$ref": "#/components/parameters/collectionId-all"
           },
           {
-            "$ref": "#/components/parameters/collections"
-          },
-          {
             "$ref": "#/components/parameters/f-zoneData"
           },
           {
@@ -522,6 +528,15 @@
           },
           {
             "$ref": "#/components/parameters/subset"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/crs"
+          },
+          {
+            "$ref": "#/components/parameters/geometry"
           },
           {
             "$ref": "#/components/parameters/datetime"
@@ -608,6 +623,12 @@
             "$ref": "#/components/parameters/subset-crs"
           },
           {
+            "$ref": "#/components/parameters/crs"
+          },
+          {
+            "$ref": "#/components/parameters/geometry"
+          },
+          {
             "$ref": "#/components/parameters/filter"
           },
           {
@@ -676,6 +697,12 @@
           },
           {
             "$ref": "#/components/parameters/subset-crs"
+          },
+          {
+            "$ref": "#/components/parameters/crs"
+          },
+          {
+            "$ref": "#/components/parameters/geometry"
           },
           {
             "$ref": "#/components/parameters/filter"
@@ -2600,7 +2627,7 @@
         "name": "collections",
         "in": "query",
         "style": "form",
-        "description": "The collections that should be included in the response. The parameter value is a comma-separated list of collection identifiers. If the parameters is missing, some or all collections will be included. The collection will be rendered in the order specified, with the last one showing on top, unless the priority is overridden by styling rules.",
+        "description": "The collections that should be included in the response. The parameter value is a comma-separated list of collection identifiers. If the parameters is missing, some or all collections will be included. This parameter may be useful for dataset-wide DGGS resources, but it is not defined by OGC API - DGGS - Part 1.",
         "required": false,
         "explode": false,
         "schema": {
@@ -2791,6 +2818,35 @@
         },
         "style": "form",
         "explode": false
+      },
+      "crs": {
+        "name": "crs",
+        "in": "query",
+        "description": "reproject the output to the given crs",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "geometry": {
+        "name": "geometry",
+        "in": "query",
+        "description": "For vector output formats, specify how to return the geometry and/or what the features of the response should represent.\n`vectorized`: return features with regular non-rasterized, non-quantized geometry\n`zone-centroid`: rasterize to zone features and use a Point geometry reperesenting that zone centroid\n`zone-region`: rasterize to zone features and use a (Multi)Polygon/Polyhedron geometry reperesenting that zone's region\n`quantized`: (DGGS-FG-JSON) return vector geometry with coordinates quantized to sub-zones\n`none`: (for zone listing) omit zone geometry",
+        "style": "form",
+        "explode": false,
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "vectorized",
+            "zone-region",
+            "zone-centroid",
+            "quantized",
+            "none"
+          ]
+        }
       },
       "values-scale": {
         "name": "values-scale",
@@ -2996,24 +3052,40 @@
               ],
               "example": {
                 "conformsTo": [
-                  "http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/core",
-                  "http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/landing-page",
-                  "http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/json",
-                  "http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/html",
-                  "http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/oas30",
-                  "http://www.opengis.net/spec/ogcapi-common-2/1.0/conf/collections",
-                  "http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/core",
-                  "http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/tileset",
-                  "http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/tilesets-list",
-                  "http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/geodata-tilesets",
-                  "http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/dataset-tilesets",
-                  "http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/geodata-selection",
-                  "http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/jpeg",
-                  "http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/png",
-                  "http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/mvt",
-                  "http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/geojson",
-                  "http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/tiff",
-                  "http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/netcdf"
+                  "https://www.opengis.net/spec/ogcapi-common-1/1.0/conf/core",
+                  "https://www.opengis.net/spec/ogcapi-common-1/1.0/conf/landing-page",
+                  "https://www.opengis.net/spec/ogcapi-common-1/1.0/conf/json",
+                  "https://www.opengis.net/spec/ogcapi-common-1/1.0/conf/html",
+                  "https://www.opengis.net/spec/ogcapi-common-1/1.0/conf/oas30",
+                  "https://www.opengis.net/spec/ogcapi-common-2/1.0/conf/collections",
+                  "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/core",
+                  "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-retrieval",
+                  "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-query",
+                  "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-subsetting",
+                  "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-custom-depths",
+                  "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-cql2-filter",
+                  "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-query-cql2-filter",
+                  "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/root-dggs",
+                  "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/collection-dggs",
+                  "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/operation-ids",
+                  "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-json",
+                  "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-ubjson",
+                  "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-fgjson",
+                  "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-fgubjson",
+                  "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-geojson",
+                  "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-fgjson",
+                  "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-tiff",
+                  "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-netcdf",
+                  "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-coveragejson",
+                  "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-zarr",
+                  "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-jpegxl",
+                  "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-png",
+                  "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-json",
+                  "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-html",
+                  "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-uint64",
+                  "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-geojson",
+                  "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-fgjson",
+                  "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-tiff"
                 ]
               }
             }

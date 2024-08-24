@@ -1,7 +1,7 @@
 get:
    tags:
      - DGGS Data Retrieval
-   summary: Retrieve data from a DGGRS Zone, potentially as optimized DGGRS zone data packet
+   summary: Retrieve data from a DGGRS Zone. For a DGGRS defining a sub-zone order, optimized zone data packets such as DGGS-(UB)JSON for raster data, or DGGS-FG-(UB)JSON for vector data can be used.
    operationId: retrieveDGGSZoneData
    parameters:
      - $ref: '../../parameters/dggs-core/dggrsId.yaml'
@@ -10,9 +10,11 @@ get:
      - $ref: '../../parameters/unspecified/f-zoneData.yaml'
      - $ref: '../../parameters/dggs-core/properties.yaml'
      - $ref: '../../parameters/dggs-core/subset.yaml'
-     # - $ref: '../../parameters/dggs-core/filter.yaml'
+     - $ref: '../../parameters/dggs-core/filter.yaml'
      # - $ref: '../../parameters/dggs-core/filter-lang.yaml'
      # - $ref: '../../parameters/dggs-core/sortby.yaml'
+     - $ref: '../../parameters/dggs-core/crs.yaml'
+     - $ref: '../../parameters/dggs-core/geometry.yaml'
      - $ref: '../../parameters/common-geodata/datetime.yaml'
      - $ref: '../../parameters/dggs-core/zone-depth.yaml'
      - $ref: '../../parameters/dggs-core/values-offset.yaml'
