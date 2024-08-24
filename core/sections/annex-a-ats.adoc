@@ -117,6 +117,17 @@ target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-custom-depths
 classification:: Target Type:Web API
 ====
 
+=== Conformance Class "Filtering Zone Data with CQL2"
+
+[[conf_data-cql2-filter,/conf/data-cql2-filter]]
+[conformance_class]
+====
+[%metadata]
+identifier:: https://www.opengis.net/spec/ogcapi-dggs/1.0/conf/data-cql2-filter
+target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-cql2-filter
+classification:: Target Type:Web API
+====
+
 === Conformance Class "Zone Query"
 
 [[conf_zone-query,/conf/zone-query]]
@@ -147,12 +158,12 @@ test-method::
 
 === Conformance Class "Filtering Zone Queries with CQL2"
 
-[[conf_cql2-query,/conf/cql2-query]]
+[[conf_zone-query-cql2-filter,/conf/zone-query-cql2-filter]]
 [conformance_class]
 ====
 [%metadata]
-identifier:: https://www.opengis.net/spec/ogcapi-dggs/1.0/conf/cql2-query
-target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/cql2-query
+identifier:: https://www.opengis.net/spec/ogcapi-dggs/1.0/conf/zone-query-cql2-filter
+target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query-cql2-filter
 classification:: Target Type:Web API
 ====
 

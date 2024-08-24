@@ -1166,7 +1166,7 @@ image::images/isea9r-gebco-tiff-5x6.png[width=600,align="center"]
 
 TIP: Because ISEA9R zone edges are fully aligned with the axes of the ISEA 5x6 rotated and sheared space and the rhombic zones are square in this space,
 a GeoTIFF representation provides a one-to-one mapping of zones to rectilinear gridded coverage cells, as can be seen by comparing this previous visualization the GeoTIFF response with the visualization of the DGGS-JSON responses.
-For the same reason, a https://docs.ogc.org/is/17-083r4/17-083r4.html[2D Tile Matrix Set] can be defined in this 5x6 space, which supports using
+For the same reason, https://maps.gnosis.earth/ogcapi/tileMatrixSets/ISEA9R[an ISEA9R] https://docs.ogc.org/is/17-083r4/17-083r4.html[2D Tile Matrix Set] can be defined in this 5x6 space, which supports using
 https://docs.ogc.org/is/20-057/20-057.html[OGC API - Tiles] as an alternative or complementary access mechanism to the Zone Data Retrieval requirements class of this DGGS API.
 
 [#img_zone_data_isea9r_tiff_isea='{figure-caption} {counter:figure-num}']
