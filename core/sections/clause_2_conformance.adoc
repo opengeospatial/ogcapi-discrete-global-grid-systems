@@ -5,7 +5,7 @@ _OGC API - Common_ provides a common foundation for OGC API Standards.
 Some conformance classes of this standard have a dependency on, or are designed to be easily integrated with, conformance classes defined in https://docs.ogc.org/is/19-072/19-072.html[OGC API - Common - Part 1] and/or https://docs.ogc.org/DRAFTS/20-024.html[_Part 2_],
 as well as within a Web API conforming to additional OGC API Standards.
 
-This standard identifies twenty one Conformance Classes. Each Conformance Class has an associated Requirements Class.
+This standard identifies twenty-eight Conformance Classes. Each Conformance Class has an associated Requirements Class.
 The Requirements Classes define the functional requirements which will be tested through the associated Conformance Class.
 Only the Core requirements class is mandatory, all others are optional.
 However, a Web API with practical use needs to implement either the Data Retrieval and/or the Zone Query requirement class.
