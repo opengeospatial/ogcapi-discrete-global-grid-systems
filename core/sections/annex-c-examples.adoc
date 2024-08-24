@@ -1439,7 +1439,7 @@ https://maps.gnosis.earth/ogcapi/collections/osm:singapore:roads/dggs/GNOSISGlob
 ----
 
 TIP: Notice the artificial edge drawn with a grey stroke splitting the _Flower Dome_ in two, around the middle of the map.
-With the artificial edge information of DGGS-FG-JSON, a client could avoid such visualization artifacts, and could more easily recombine geometry split across separate tiles.
+With the artificial edge information of DGGS-FG-JSON, a client could avoid such visualization artifacts, and could more easily recombine geometry split across separate zones.
 
 [#img_zone_data_ggg_geojson_osmSingapore='{figure-caption} {counter:figure-num}']
 .Visualization of a GeoJSON feature collection with mixed geometry types for data retrieved from GNOSIS Global Grid DGGRS zones https://maps.gnosis.earth/ogcapi/collections/osm:singapore/dggs/GNOSISGlobalGrid/zones/C-FC5-3276[C-FC5-3276] and https://maps.gnosis.earth/ogcapi/collections/osm:singapore/dggs/GNOSISGlobalGrid/zones/C-FC5-3277[C-FC5-3277] of https://openstreetmap.org/[OpenStreetMap] (c) OpenStreetMap contributors

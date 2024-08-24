@@ -70,6 +70,9 @@ include::../examples/2-multidimensions-variables.json[]
 
 include::../requirements/requirements_class_zone_data_json.adoc[]
 
+IMPORTANT: For DGGS-JSON containing additional dimensions, the one-dimensional array of `values` is ordered in a _sub-zone order major_ manner, so that all values of a particular field for a given sub-zone are
+regrouped together. Values for the first dimensions listed in the `dimensions` array are then regrouped together, followed by additional dimensions as they appear in order in the dimensions array.
+
 [[rc_data-ubjson]]
 === Requirements Class "DGGS-UBJSON Zone data encoding"
 
