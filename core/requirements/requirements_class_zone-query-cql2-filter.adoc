@@ -1,8 +1,9 @@
 [[rc-table_zone-query-cql2-filter]]
 [requirements_class]
+.Requirements Class Filtering Zone Queries with CQL2
 ====
 [%metadata]
-label:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query-cql2-filter
+identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query-cql2-filter
 subject:: Web API
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
 inherit:: https://www.opengis.net/spec/cql2/1.0/req/cql2-text

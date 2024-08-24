@@ -1,8 +1,9 @@
 [[rc-table_data-custom-depths]]
 [requirements_class]
+.Requirements Class Data Custom Depths
 ====
 [%metadata]
-label:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-custom-depths
+identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-custom-depths
 subject:: Web API
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
 ====

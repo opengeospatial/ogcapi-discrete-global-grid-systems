@@ -1,8 +1,9 @@
 [[rc-table_core]]
 [requirements_class]
+.Requirements Class Core
 ====
 [%metadata]
-label:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/core
+identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/core
 subject:: Web API
 ====
 

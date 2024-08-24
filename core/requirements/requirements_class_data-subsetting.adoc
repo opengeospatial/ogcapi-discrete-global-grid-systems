@@ -1,8 +1,9 @@
 [[rc-table_data-subsetting]]
 [requirements_class]
+.Requirements Class Data Subsetting
 ====
 [%metadata]
-label:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-subsetting
+identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-subsetting
 subject:: Web API
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
 ====
@@ -102,13 +103,14 @@ March 18, 2018, 12:31:12 UTC or earlier:
 
 === Parameter `properties`
 
-[[req_fieldselection-properties]]
-[width="90%",cols="2,6a"]
-|===
-^|*Requirement {counter:req-id}* |*/req/data-subsetting/properties*
-^|A |The zone data retrieval operation SHALL support a parameter `properties` where the value is a comma-separated list of fields to be returned.
-^|B |The implementation SHALL support selecting a field using the identifier corresponding to the top-level property keys of the logical schema of the resource associated with the DGGRS zone data request, and return 400 status code for an unrecognized selected field.
-^|C |Only the selected fields SHALL be returned from the zone data request.
-^|D |If the zone data encodings response can self-describe its list of fields (as with the `shema` property of the DGGS-JSON encoding), the field description SHALL correspond to the requested list of fields.
-^|E |If the negotiated format of the response has a concept of field order, then the fields SHALL be in the same order as the requested list of selected fields.
-|===
+[requirement]
+====
+[%metadata]
+label:: /req/data-subsetting/properties
+description:: For specifying fields to include when retrieving zone data
+part:: The zone data retrieval operation SHALL support a parameter `properties` where the value is a comma-separated list of fields to be returned.
+part:: The implementation SHALL support selecting a field using the identifier corresponding to the top-level property keys of the logical schema of the resource associated with the DGGRS zone data request, and return 400 status code for an unrecognized selected field.
+part:: Only the selected fields SHALL be returned from the zone data request.
+part:: If the zone data encodings response can self-describe its list of fields (as with the `shema` property of the DGGS-JSON encoding), the field description SHALL correspond to the requested list of fields.
+part:: If the negotiated format of the response has a concept of field order, then the fields SHALL be in the same order as the requested list of selected fields.
+====

@@ -1,8 +1,9 @@
 [[rc-table_data-retrieval]]
 [requirements_class]
+.Requirements Class Data Retrieval
 ====
 [%metadata]
-label:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
+identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
 subject:: Web API
 inherit:: https://www.opengis.net/spec/ogcapi-common-1/1.0/req/core
 ====

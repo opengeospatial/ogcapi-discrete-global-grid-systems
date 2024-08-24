@@ -1,8 +1,9 @@
 [[rc_root-dggs]]
 [requirements_class]
+.Requirements Class Root DGGS
 ====
 [%metadata]
-label:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/root-dggs
+identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/root-dggs
 subject:: Web API
 inherit:: https://www.opengis.net/spec/ogcapi-common-1/1.0/req/core
 ====

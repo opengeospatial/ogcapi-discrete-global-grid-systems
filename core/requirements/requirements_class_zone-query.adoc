@@ -1,8 +1,9 @@
 [[rc-table_zone-query]]
 [requirements_class]
+.Requirements Class Zone Query
 ====
 [%metadata]
-label:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
+identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
 subject:: Web API
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/core
 ====

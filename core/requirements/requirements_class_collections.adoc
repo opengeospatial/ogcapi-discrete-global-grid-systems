@@ -1,8 +1,9 @@
 [[rc_collection-dggs]]
 [requirements_class]
+.Requirements Class Collection DGGS
 ====
 [%metadata]
-label:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/collection-dggs
+identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/collection-dggs
 subject:: Web API
 inherit:: https://www.opengis.net/spec/ogcapi-common-2/1.0/req/collections
 ====

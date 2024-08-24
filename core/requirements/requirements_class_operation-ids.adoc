@@ -1,8 +1,9 @@
 [[rc_operation-ids]]
 [requirements_class]
+.Requirements Class API Definition Operation IDs
 ====
 [%metadata]
-label:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/operation-ids
+identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/operation-ids
 subject:: Web API
 inherit:: https://www.opengis.net/spec/ogcapi-common-1/1.0/req/landing-page
 ====
