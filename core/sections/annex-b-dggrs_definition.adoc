@@ -81,6 +81,7 @@ with the previous and next zone within a scanline, while each zone shares two ed
 scanline above, and another two edges with the scanline below. The scanlines start on a vertex of the parent zone
 for an even relative depth, while they start on an edge for an odd relative depth.
 
+[[isea3h_order_vertex]]
 [#img_isea3h_order_vertex='{figure-caption} {counter:figure-num}']
 .Sub-zone order for even relative depth starting on a vertex (hexagonal parent, depth 2)
 image::images/isea3h-order-vertex.png[width=300,align="center"]

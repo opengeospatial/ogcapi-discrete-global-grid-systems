@@ -832,8 +832,9 @@ These requests override this default by using the `zone-depth` parameter defined
 
 https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A/data?zone-depth=8&f=json[\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A/data?zone-depth=8]
 
-A snippet of the DGGS-JSON response follows, including an array of elevation values ordered as per the <<img_isea3h_order_vertex,deterministic zone order defined by this ISEA3H DGGRS>>.
+A snippet of the DGGS-JSON response follows, including an array of elevation values ordered as per the <<isea3h_order_vertex,deterministic zone order defined by this ISEA3H DGGRS>>.
 
+[%unnumbered%]
 [source,json]
 ----
 {
