@@ -39,11 +39,11 @@ A table of the media types used in the encoding of the Zone Data requirements cl
 .Media Types used for zone data encoding requirements classes
 [width="90%",cols="2,4"]
 |====
-^|*Encoding*              ^|*media type*
+^|*Encoding*              ^|*Media type*
 |DGGS-JSON zone data      |application/json
 |DGGS-UBJSON zone data    |application/ubjson
-|DGGS-FG-JSON zone data   |application/fg+json (`geometry=quantized`)
-|DGGS-FG-UBJSON zone data |application/fg+ubjson (`geometry=quantized`)
+|DGGS-FG-JSON zone data   |application/fg+json (with `geometry=quantized` query parameter)
+|DGGS-FG-UBJSON zone data |application/fg+ubjson (with `geometry=quantized` query parameter)
 |GeoJSON data             |application/geo+json
 |JSON-FG data             |application/fg+json
 |GeoTIFF data             |image/tiff; application=geotiff

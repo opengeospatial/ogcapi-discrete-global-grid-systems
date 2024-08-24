@@ -22,7 +22,7 @@ A table of the media types used in the zone list encoding requirements classes d
 .Media Types used for zone list encoding requirements classes
 [width="90%",cols="2,4"]
 |====
-^|*Encoding*              ^|*media type*
+^|*Encoding*              ^|*Media type*
 |JSON zone list            |application/json
 |HTML zone list            |text/html
 |Binary 64-bit zone list   |application/x-binary
