@@ -1776,17 +1776,17 @@ The following request retrieves only the Scene Classification Layer (`SCL`) for 
 https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=8&datetime=2022-10-28&properties=SCL&f=json[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=8&datetime=2022-10-28&properties=SCL]
 
 [#img_field-selection-scl='{figure-caption} {counter:figure-num}']
-.Visualization of different SCL (Scene Classification Layer) for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F[G7-66F79-F] (K'gari, Australia) from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
+.Visualization of SCL (Scene Classification Layer) field for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F[G7-66F79-F] (K'gari, Australia) from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
 image::images/field-selection-scl.png[width=700,align="center"]
 
 [keep-with-next=true]
-The following request retrieves only the near-infrared (`B08`) for the same zone.
+The following request retrieves only the near-infrared (`B08`) band for the same zone.
 
 [keep-with-next=true]
 https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=8&datetime=2022-10-28&properties=B08&f=json[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=8&datetime=2022-10-28&properties=B08]
 
 [#img_field-selection-b08='{figure-caption} {counter:figure-num}']
-.Visualization of different B08 (near-infrared) band for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F[G7-66F79-F] (K'gari, Australia) from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
+.Visualization of B08 (near-infrared) band for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F[G7-66F79-F] (K'gari, Australia) from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
 image::images/field-selection-b08.png[width=700,align="center"]
 
 TIP: Although the examples illustrated here are all for rasterized data, field selection can also be applied to feature collection outputs so select which properties to include.

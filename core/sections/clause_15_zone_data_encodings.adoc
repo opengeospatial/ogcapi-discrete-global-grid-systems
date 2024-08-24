@@ -3,7 +3,7 @@
 
 This standard does not mandate any particular encoding or format in which to return the `.../dggs/{dggrsId}/zones/{zoneId}/data` resources.
 DGGS Zone Data can be encoded in any suitable data format.
-However, it does define requirements class for zone data encodings which are expected to be commonly supported in implementations of this standard.
+However, it does define requirements classes for zone data encodings which are expected to be commonly supported in implementations of this standard.
 These requirements classes include,
 
 for data rasterized to DGGRS sub-zones:
@@ -33,7 +33,7 @@ for vector features output readily usable in non-DGGS systems or to facilitate i
 [[zone_data_media_types]]
 === Media Types (for zone data)
 
-A table of the media types used in the encoding of the Zone Data requirements class defined in this standard follows.
+A table of the media types used in the encoding of the Zone Data requirements classes defined in this standard follows.
 
 [#api-dggs-zone-data-media-types,reftext='{table-caption} {counter:table-num}']
 .Media Types used for zone data encoding requirements classes

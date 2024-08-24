@@ -108,7 +108,7 @@ part:: When the `parent-zone` parameter is used, the Implementation SHOULD retur
 (the same order used for encoding values for data retrieval in formats such as <<rc_data-json, DGGS-JSON>> relying on a shared understanding of this order by the server/producer and client/consumer).
 ====
 
-=== Parameter `limit` for paging
+=== Parameter `limit` for paging (recommendation)
 
 The following recommendation describes how a client can specify a limit to the number of zones to be returned
 and page through large list of zones as multiple requests and responses.
