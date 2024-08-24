@@ -1,4 +1,4 @@
-[[rc_data-subsetting]]
+[[rc-table_data-subsetting]]
 [requirements_class]
 ====
 [%metadata]

@@ -1,4 +1,4 @@
-[[rc_data-custom-depths]]
+[[rc-table_data-custom-depths]]
 [requirements_class]
 ====
 [%metadata]

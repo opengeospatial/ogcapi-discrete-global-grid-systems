@@ -824,9 +824,9 @@ The following examples illustrate this capability for different DGGRSs, represen
 
 Examples in this section retrieve data for pentagonal and hexagonal zones of an <<isea3h-dggrs, ISEA3H DGGRS>>, based on the ISEA projection.
 
-This first example retrieves elevation data for the GEBCO collection for ISEA3H zone `A2-0-A` at a relative depth of 8 (specified using the `zone-depth` parameter -- the
-default zone depth is 10 for this DGGRS in this particular deployment of the API, as specified in the
-`defaultDepth` property of the <<isea3h-dggs-description-response,ISEA3H DGGRS description response>>).
+This first example retrieves elevation data for the GEBCO collection for ISEA3H zone `A2-0-A` at a relative depth of 8.
+The default zone depth is 10 for this DGGRS in this particular deployment of the API, as specified in the `defaultDepth` property of the <<isea3h-dggs-description-response,ISEA3H DGGRS description response>>).
+These requests override this default by using the `zone-depth` parameter defined in the <<rc_data-custom-depths,"Data Custom Depths">> requirement class.
 
 ===== DGGS-JSON Examples
 
@@ -1478,7 +1478,18 @@ image::images/ggg-neBathymetry-orthographic.png[width=700,align="center"]
 
 === Subsetting and filtering zone data
 
+In addition to the basic retrieval of zone data, implementations can support additional parameters for the `.../zones/{zoneId}/data` resources to return only a portion of the data associated with the zone.
+The `subset`, `datetime` and `properties` query parameters are defined in the <<rc_data-subsetting,Data Subsetting>> requirement class, while the `filter` query parameter is defined in the <<rc_data-cql2-filter, Filtering Zone Data with CQL2>> requirement class.
+
 ==== Temporal subsetting
+
+It is possible to retrieve only a portion of a temporal datasets using one of two query parameters: `datetime`, or `subset` with the `time` dimension.
+The temporal subset can be either a slice specified using a single time instant, or a trim using a lower and upper bound.
+
+<<<
+
+The following examples retrieve data from a sentinel-2 collection for the 28th of April, May and June 2022, at relative depth of 12, for ISEA3H zone E7-17D1-A in New Zealand.
+Since the sentinel-2 dataset does not have imagery for the whole globe at every instant, the server will return the latest imagery available before the specified time instant.
 
 https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/E7-17D1-A/data?zone-depth=12&crs=OGC:1534&datetime=2022-04-28[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/E7-17D1-A/data?zone-depth=12&datetime=2022-04-28]
 
@@ -1489,6 +1500,13 @@ https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/E7-
 [#img_datetime-sentinel2-nz='{figure-caption} {counter:figure-num}']
 .Visualization of different temporal slices for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/E7-17D1-A[E7-17D1-A] (New Zealand) from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
 image::images/datetime-sentinel2-nz.png[width=700,align="center"]
+
+TIP: Although the examples illustrated here are all for rasterized data, temporal subsetting (whether using the `datetime` or `subset=time(...)` syntax) can also be applied
+to feature collections with vector geometry with a primary temporal property.
+
+<<<
+
+The following examples retrieve data from a sentinel-2 collection for the 15th of February and May 2021, and for the 28th of October 2022, at relative depth of 12, for ISEA3H zone G7-66F79-F in K'gari, Australia.
 
 // Fraser Island
 
@@ -1504,7 +1522,12 @@ https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-
 .Visualization of different temporal slices for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F[G7-66F79-F] (K'gari, Australia) from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
 image::images/datetime-sentinel2-kgari.png[width=700,align="center"]
 
+The following examples retrieve data from a daily CMIP5 climate dataset for the time interval between October 6th to October 10th, 2022 for ISEA3H zone A1-0-E, at a relative depth of 8.
+
 https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones/A1-0-E/data?zone-depth=8&datetime=2022-10-06/2022-10-10&f=json[\https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones/A1-0-E/data?zone-depth=8&datetime=2022-10-06/2022-10-10]
+
+The following JSON illustrates an extract of a DGGS-JSON response for this request for the precipitation and wind speed variables.
+In addition to the sub-zones, this DGGS-JSON sample has temporal dimension for the 7 days of the response.
 
 [%unnumbered%]
 [source,json]
@@ -1571,7 +1594,11 @@ https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/I
       ...
 ----
 
+The following example requests a single day, October 9, 2022, from the same dataset.
+
 https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones/A1-0-E/data?zone-depth=8&datetime=2022-10-09&f=json[\https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones/A1-0-E/data?zone-depth=8&datetime=2022-10-09]
+
+The DGGS-JSON extract from the response for this single slice of time does not include an additional time dimension.
 
 [%unnumbered%]
 [source,json]
@@ -1594,8 +1621,6 @@ https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/I
       ...
 ----
 
-TIP: Temporal subsetting for a slice can also be achieved using the equivalent `subset=time("2022-10-06":"2022-10-10")` syntax for trimming, and `subset=time("2022-10-06")` for slicing.
-
 [#img_pr-time='{figure-caption} {counter:figure-num}']
 .Visualization of precipitations from 2022-10-06 to 2022-10-10 for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones/A1-0-E[A1-0-E] from https://cds.climate.copernicus.eu/cdsapp#!/dataset/projections-cmip5-daily-single-levels[Copernicus Climate Data Store CMIP5 daily data on single levels]
 image::images/pr-time.png[width=700,align="center"]
@@ -1612,12 +1637,18 @@ https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/I
 https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones?parent-zone=A1-0-E&zone-level=9&f=geojson&compact-zones=false&&crs=[OGC:1534]&datetime=2022-10-10
 ////
 
-TIP: Although the examples illustrated here are all for rasterized data, temporal subsetting (whether using the `datetime` or `subset=time(...)` syntax) can also be applied
-to feature collections with vector geometry with a primary temporal property.
+TIP: Temporal subsetting for a slice can also be achieved using the equivalent `subset=time("2022-10-06":"2022-10-10")` syntax for trimming, and `subset=time("2022-10-06")` for slicing.
 
 ==== Subsetting arbitrary dimensions
 
+In addition to spatial and temporal dimensions, datasets may be comprised of additional dimensions, such as atmospheric pressure.
+These dimensions can also be subset in a similar manner using the `subset` parameter.
+
+The following request is for relative humidity from an ERA5 dataset at 11:00 PM on April 6th, 2023 at pressure levels between 750 hPa and 900 hPa (inclusively).
+
 https://maps.gnosis.earth/ogcapi/collections/climate:era5:relativeHumidity/dggs/ISEA3H/zones/A4-0-A/data?zone-depth=8&datetime=2023-04-06T23:00:00&subset=pressure(750:900)&f=json[\https://maps.gnosis.earth/ogcapi/collections/climate:era5:relativeHumidity/dggs/ISEA3H/zones/A4-0-A/data?zone-depth=8&datetime=2023-04-06T23:00:00&subset=pressure(750:900)]
+
+The partial DGGS-JSON response below contains an additional `pressure` dimension, with 7 of the 37 pressure levels available from the collection.
 
 [%unnumbered%]
 [source,json]
@@ -1667,6 +1698,8 @@ https://maps.gnosis.earth/ogcapi/collections/climate:era5:relativeHumidity/dggs/
 }
 ----
 
+The following request is for the 900 hPa slice only. The corresponding DGGS-JSON response below does not include a pressure dimension.
+
 https://maps.gnosis.earth/ogcapi/collections/climate:era5:relativeHumidity/dggs/ISEA3H/zones/A4-0-A/data?zone-depth=8&datetime=2023-04-06T23:00:00&subset=pressure(900)&f=json[\https://maps.gnosis.earth/ogcapi/collections/climate:era5:relativeHumidity/dggs/ISEA3H/zones/A4-0-A/data?zone-depth=8&datetime=2023-04-06T23:00:00&subset=pressure(900)]
 
 [%unnumbered%]
@@ -1689,10 +1722,18 @@ https://maps.gnosis.earth/ogcapi/collections/climate:era5:relativeHumidity/dggs/
 [#img_rh-pressure='{figure-caption} {counter:figure-num}']
 .Visualization of relative humidity for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/climate:era5:relativeHumidity/dggs/ISEA3H/zones/A4-0-A[A4-0-A] from https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-pressure-levels[ERA5 hourly data on pressure levels from 1940 to present from Copernicus Climate Data Store]
 image::images/rh-pressure.png[width=700,align="center"]
+<<<
 
 ==== Field selection
 
+Some data has multiple properties for a feature, or fields for a given cell or position, such as the precipitation and windspeed variables in the CMIP5 dataset illustrated above.
+It is possible to retrieve only some of these available fields using the `properties` query parameter.
+The following request retrieves only the red (`B04`), green (`B03`) and blue (`B02`) bands from a sentinel-2 dataset for ISEA3H zone G7-66F79-F at a relative depth of 8.
+
 https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=8&datetime=2022-10-28&properties=B04,B03,B02&f=json["https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=8&datetime=2022-10-28&properties=B04,B03,B02"]
+
+The following is a partial DGGS-JSON response for this previous request.
+This collection has twelve other fields available (which are not returned by default, in this case).
 
 [%unnumbered%]
 [source,json]
@@ -1725,12 +1766,22 @@ https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-
 .Visualization of different B04 (red), B03 (green) and B02 (blue) bands for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F[G7-66F79-F] (K'gari, Australia) from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
 image::images/field-selection-rgb.png[width=700,align="center"]
 
+<<<
+
+[keep-with-next=true]
+The following request retrieves only the Scene Classification Layer (`SCL`) for the same zone. This field has a lower resolution than the other bands, and could be returned at a lower depth than the other fields if requesting multiple fields at a `zone-depth` beyond the resolution of the SCL field.
+
+[keep-with-next=true]
 https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=8&datetime=2022-10-28&properties=SCL&f=json[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=8&datetime=2022-10-28&properties=SCL]
 
 [#img_field-selection-scl='{figure-caption} {counter:figure-num}']
 .Visualization of different SCL (Scene Classification Layer) for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F[G7-66F79-F] (K'gari, Australia) from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
 image::images/field-selection-scl.png[width=700,align="center"]
 
+[keep-with-next=true]
+The following request retrieves only the near-infrared (`B08`) for the same zone.
+
+[keep-with-next=true]
 https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=8&datetime=2022-10-28&properties=B08&f=json[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=8&datetime=2022-10-28&properties=B08]
 
 [#img_field-selection-b08='{figure-caption} {counter:figure-num}']
@@ -1747,23 +1798,44 @@ In a DGGS-JSON output, sub-zones which are not a match get replaced by a `null` 
 
 Although the examples illustrated here are all for rasterized data, a CQL2 expression filter can also be applied to feature collections to select which feature to include in the output.
 
+[keep-with-next=true]
+The following request retrieves bathymetry data for ISEA3H zone A8-0-F at a relative depth of 8 without a filter.
+
+[keep-with-next=true]
 https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A8-0-F/data?zone-depth=8&f=json[\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A8-0-F/data?zone-depth=8]
 
 [#img_filter-bathymetry-nofilter='{figure-caption} {counter:figure-num}']
 .Visualization of ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A8-0-F[A8-0-F] from https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] without a filter
 image::images/filter-bathymetry-nofilter.png[width=700,align="center"]
 
+[keep-with-next=true]
+The following request retrieves bathymetry data for the same zone with a filter for sea depths greater than 4000 meters.
+
+[keep-with-next=true]
 https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A8-0-F/data?zone-depth=8&filter=Elevation<-4000&f=json["https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A8-0-F/data?zone-depth=8&filter=Elevation < -4000"]
 
 [#img_filter-bathymetry-4000='{figure-caption} {counter:figure-num}']
 .Filtering of ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A8-0-F[A8-0-F] from https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] for depths 4000 meters below sea level
 image::images/filter-bathymetry-4000.png[width=700,align="center"]
 
+<<<
+
+[keep-with-next=true]
+The following requests retrieve sentinel-2 data for zone G7-66F79-F on April 15, 2021 at a relative depth of 12 with:
+
+_no filter:_
+
 https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=12&crs=OGC:1534&datetime=2021-04-15[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=12&datetime=2021-04-15]
+
+_filtering only high probability clouds (SCL = 8):_
 
 https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=12&crs=OGC:1534&datetime=2021-04-15&filter=SCL<>9[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=12&datetime=2021-04-15&filter=SCL <> 9]
 
+_also filtering out medium probability clouds (SCL = 9):_
+
 https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=12&crs=OGC:1534&datetime=2021-04-15&filter=SCL<>8%20and%20SCL<>9[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=12&datetime=2021-04-15&filter=SCL <> 8 and SCL <> 9]
+
+_also filtering out cirrus clouds (SCL = 10):_
 
 https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=12&crs=OGC:1534&datetime=2021-04-15&filter=SCL%20not%20in%20(8,9,10)["https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=12&datetime=2021-04-15&filter=SCL not in (8, 9, 10)"]
 
@@ -1771,8 +1843,12 @@ https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-
 .Filtering out high probability clouds, medium probability clouds, and cirrus clouds for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F[G7-66F79-F] (K'gari, Australia) from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
 image::images/filter-sentinel2-kgari.png[width=700,align="center"]
 
+[keep-with-next=true]
+The following request specifies a more complex filter using CQL2 arithmetic expressions to filter for a normalized difference vegetation index (NDVI) greater than 0.3, computed using the near-infrared (`B08`) and red bands (`B04`) using the expression `(B08-B04)/(B08+B04)`:
+
 // NDVI filter
 
+[keep-with-next=true]
 https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G6-E046-D/data?zone-depth=9&filter=(B08-B04)/(B08+B04)%20%3E%200.3&f=json[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G6-E046-D/data?zone-depth=9&filter=(B08-B04)/(B08+B04)>0.3]
 
 [#img_filter-sentinel2-ndvi='{figure-caption} {counter:figure-num}']

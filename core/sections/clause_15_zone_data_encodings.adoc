@@ -1,23 +1,34 @@
 [[zone-data-encodings-section]]
 == Requirements Classes for Encodings of Zone data
 
-This standard does not mandate any particular encoding or format in which to return the `../dggs/{dggrsId}/zones/{zoneId}/data` resources.
+This standard does not mandate any particular encoding or format in which to return the `.../dggs/{dggrsId}/zones/{zoneId}/data` resources.
 DGGS Zone Data can be encoded in any suitable data format.
 However, it does define requirements class for zone data encodings which are expected to be commonly supported in implementations of this standard.
-These requirements classes include:
+These requirements classes include,
+
+for data rasterized to DGGRS sub-zones:
 
 * <<rc_data-json,DGGS-JSON Data>>
 * <<rc_data-ubjson,DGGS-UBJSON Data>>
+* <<rc_data-zarr,Zarr Data>>
+
+for vector features whose geometry coordinates are quantized to DGGRS sub-zones:
+
 * <<rc_data-dggs-fgjson,DGGS-FG-JSON Data>>
 * <<rc_data-dggs-fgubjson,DGGS-FG-UBJSON Data>>
-* <<rc_data-geojson,GeoJSON Data>>
-* <<rc_data-fgjson,FG-JSON Data>>
+
+for rasterized data output readily usable in non-DGGS systems or to facilitate interoperability with other DGGHs:
+
 * <<rc_data-geotiff,GeoTIFF Data>>
 * <<rc_data-netcdf,netCDF Data>>
-* <<rc_data-zarr,Zarr Data>>
 * <<rc_data-coveragejson,CoverageJSON Data>>
 * <<rc_data-jpegxl,JPEG XL Data>>
 * <<rc_data-png,PNG Data>>
+
+for vector features output readily usable in non-DGGS systems or to facilitate interoperability with other DGGHs:
+
+* <<rc_data-geojson,GeoJSON Data>>
+* <<rc_data-fgjson,FG-JSON Data>>
 
 [[zone_data_media_types]]
 === Media Types (for zone data)
@@ -44,7 +55,7 @@ A table of the media types used in the encoding of the Zone Data requirements cl
 |====
 
 [[rc_data-json]]
-=== Requirements Class "DGGS-JSON Zone data encoding"
+=== Requirements Class "DGGS-JSON Zone data encoding" (for data rasterized to sub-zones)
 
 ==== Overview
 
@@ -74,7 +85,7 @@ IMPORTANT: For DGGS-JSON containing additional dimensions, the one-dimensional a
 regrouped together. Values for the first dimensions listed in the `dimensions` array are then regrouped together, followed by additional dimensions as they appear in order in the dimensions array.
 
 [[rc_data-ubjson]]
-=== Requirements Class "DGGS-UBJSON Zone data encoding"
+=== Requirements Class "DGGS-UBJSON Zone data encoding" (for data rasterized to sub-zones)
 
 ==== Overview
 
@@ -87,7 +98,7 @@ After installing with `pip3 install py-ubjson`, a DGGS-JSON file can be converte
 `ubjson fromjson zoneData.dggs.json`, and a DGGS-(UB)JSON file can be converted to DGGS-JSON with `ubjson tojson zoneData.dggs.ubj`.
 
 [[rc_data-dggs-fgjson]]
-=== Requirements Class "DGGS-FG-JSON Zone data encoding"
+=== Requirements Class "DGGS-FG-JSON Zone data encoding" (for geometry coordinates quantized to sub-zones)
 
 ==== Overview
 
@@ -115,7 +126,7 @@ include::../examples/4-arcticBathymetry-extract.dggsfgjson[]
 include::../requirements/requirements_class_zone_data_dggs_fgjson.adoc[]
 
 [[rc_data-dggs-fgubjson]]
-=== Requirements Class "DGGS-FG-UBJSON Zone data encoding"
+=== Requirements Class "DGGS-FG-UBJSON Zone data encoding" (for geometry coordinates quantized to sub-zones)
 
 ==== Overview
 
