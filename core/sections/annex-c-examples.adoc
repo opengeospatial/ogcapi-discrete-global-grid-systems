@@ -1166,7 +1166,7 @@ https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA9R/zones/A2-0/data?z
 image::images/isea9r-gebco-tiff-5x6.png[width=600,align="center"]
 
 TIP: Because ISEA9R zone edges are fully aligned with the axes of the ISEA 5x6 rotated and sheared space and the rhombic zones are square in this space,
-a GeoTIFF representation provides a one-to-one mapping of zones to rectilinear gridded coverage cells, as can be seen by comparing this previous visualization the GeoTIFF response with the visualization of the DGGS-JSON responses.
+a GeoTIFF representation provides a one-to-one mapping of zones to rectilinear gridded coverage cells, as can be seen by comparing this previous visualization of the GeoTIFF response with the visualization of the DGGS-JSON responses.
 For the same reason, https://maps.gnosis.earth/ogcapi/tileMatrixSets/ISEA9R[an ISEA9R] https://docs.ogc.org/is/17-083r4/17-083r4.html[2D Tile Matrix Set] can be defined in this 5x6 space, which supports using
 https://docs.ogc.org/is/20-057/20-057.html[OGC API - Tiles] as an alternative or complementary access mechanism to the Zone Data Retrieval requirements class of this DGGS API.
 
@@ -1354,7 +1354,7 @@ same 0-1-3 GNOSIS Global Grid zone at same relative depth of 7, visualized below
 .Visualization of CRS84 GeoTIFF response for retrieving data for GNOSIS Global Grid DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/GNOSISGlobalGrid/zones/0-1-3[0-1-3] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 7
 image::images/ggg-gebco-tiff-crs84.png[width=600,align="center"]
 
-TIP: As can be seen by comparing this previous visualization the GeoTIFF response with the visualization of the DGGS-JSON responses,
+TIP: As can be seen by comparing this previous visualization of the GeoTIFF response with the visualization of the DGGS-JSON responses,
 because the GNOSIS Global Grid zone edges are fully aligned with geographic latitude and longitude, a GeoTIFF representation provides a one-to-one mapping of zones to rectilinear gridded coverage cells,
 with the exception of the GeoTIFF representation having a fixed width, requiring to duplicate the values of zones approaching the pole.
 
