@@ -1822,6 +1822,8 @@ image::images/filter-bathymetry-4000.png[width=700,align="center"]
 <<<
 
 [keep-with-next=true]
+When retrieving a temporal slice with a filter, the server may fill in the filtered out sub-zones with earlier imagery not matching the filter.
+This can be used for example to replace cloudy sub-zones with the closest earlier cloud-free imagery.
 The following requests retrieve sentinel-2 data for zone G7-66F79-F on April 15, 2021 at a relative depth of 12 with:
 
 _no filter:_
