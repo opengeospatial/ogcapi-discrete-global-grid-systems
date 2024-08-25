@@ -12,7 +12,7 @@ The schema may change to allow for better description of existing and new classe
 
 The DGGRS definition consists of three main components:
 
-* the definition of the hierarchy of discrete global grids (`dggs`), including any parameterization such as the spheroid or orientation, establishing both the topology as well as the geometry of every zone,
+* the definition of the hierarchy of discrete global grids (`dggh`), including any parameterization such as the spheroid or orientation, establishing both the topology as well as the geometry of every zone,
 * the Zonal Identifier Reference System (`zirs`), with textual identifiers being mandatory while 64-bit integer identifiers (which support the <<rc_zone-binary64bit,64-bit integer zone list encoding requirement class>>) are optional,
 * the sub-zone ordering (`subZoneOrder`), which allows for <<rc_data-retrieval,retrieving zone data>> using e.g., <<rc_data-json,DGGS-JSON>> at a <<rc_data-custom-depths,`zone-depth`>> other than 0 (the values of sub-zones can be provided as a 1D array of values with a pre-established association to sub-zones).
 
