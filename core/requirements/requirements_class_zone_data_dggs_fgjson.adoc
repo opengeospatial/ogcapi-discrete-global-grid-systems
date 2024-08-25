@@ -17,7 +17,7 @@ inherit:: https://www.opengis.net/spec/json-fg-1/0.3/req/core
 identifier:: /req/data-dggs-fgjson/content
 part:: The implementation SHALL support a `geometry` query parameter with a value of `quantized` allowing a client to request a DGGS-FG-JSON response.
 part:: Every 200 response of the server for zone data with the media type `application/fg+json` and a `geometry=quantized` query parameter SHALL be an extended https://docs.ogc.org/DRAFTS/21-045r1.html[Features & Geometry JSON] (FG-JSON) document representing the vector features within the requested zone.
-part:: The JSON document SHALL follow the JSON Schema for FG-JSN, with geometry stored in a `dggsPlace` property mirroring the FG-JSON `place` schema and supporting all of the same feature types, but where `coordinates` use sub-zone indices as described in later parts of this requirement.
+part:: The JSON document SHALL follow the JSON Schema for FG-JSON, with geometry stored in a `dggsPlace` property mirroring the FG-JSON `place` schema and supporting all of the same feature types, but where `coordinates` use sub-zone indices as described in later parts of this requirement.
 part:: The JSON document SHALL additionally contain a `dggrs` property set to the URI or CURIEs of the DGGRS of the response, which replaces the `coordRefSys` property and concept.
 part:: The JSON document SHALL additionally contain a `zoneId` property indicating the requested reference zone.
 part:: The JSON document SHALL additionally contain a `depth` property corresponding to the relative zone depth (as specified in the single depth format of the OGC API - DGGS `zone-depth` parameter for zone data retrieval), determining how coordinates are resolved from sub-zone indices, and as a result, their precision.
