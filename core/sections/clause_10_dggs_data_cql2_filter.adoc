@@ -7,4 +7,4 @@ The Filtering Zone Data with CQL2 conformance class defines a `filter` query par
 where an OGC Common Query Language (CQL2) expression can be used to filter the data returned for a zone,
 for example based on the properties / fields of the data, or for performing spatial and/or temporal intersections.
 
-include::../requirements/requirements_class_zone-query-cql2-filter.adoc[]
+include::../requirements/requirements_class_zone-data-cql2-filter.adoc[]
