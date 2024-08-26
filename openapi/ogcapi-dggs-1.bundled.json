@@ -2833,7 +2833,7 @@
       "geometry": {
         "name": "geometry",
         "in": "query",
-        "description": "For vector output formats, specify how to return the geometry and/or what the features of the response should represent.\n`vectorized`: return features with regular non-rasterized, non-quantized geometry\n`zone-centroid`: rasterize to zone features and use a Point geometry reperesenting that zone centroid\n`zone-region`: rasterize to zone features and use a (Multi)Polygon/Polyhedron geometry reperesenting that zone's region\n`quantized`: (DGGS-FG-JSON) return vector geometry with coordinates quantized to sub-zones\n`none`: (for zone listing) omit zone geometry",
+        "description": "For vector output formats, specify how to return the geometry and/or what the features of the response should represent.\n`vectorized`: return features with regular non-rasterized, non-quantized geometry\n`zone-centroid`: rasterize to zone features and use a Point geometry representing that zone centroid\n`zone-region`: rasterize to zone features and use a (Multi)Polygon/Polyhedron geometry representing that zone's region\n`quantized`: (DGGS-FG-JSON) return vector geometry with coordinates quantized to sub-zones\n`none`: (for zone listing) omit zone geometry",
         "style": "form",
         "explode": false,
         "required": false,

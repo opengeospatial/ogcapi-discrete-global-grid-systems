@@ -3,8 +3,8 @@ in: query
 description: |-
    For vector output formats, specify how to return the geometry and/or what the features of the response should represent.
    `vectorized`: return features with regular non-rasterized, non-quantized geometry
-   `zone-centroid`: rasterize to zone features and use a Point geometry reperesenting that zone centroid
-   `zone-region`: rasterize to zone features and use a (Multi)Polygon/Polyhedron geometry reperesenting that zone's region
+   `zone-centroid`: rasterize to zone features and use a Point geometry representing that zone centroid
+   `zone-region`: rasterize to zone features and use a (Multi)Polygon/Polyhedron geometry representing that zone's region
    `quantized`: (DGGS-FG-JSON) return vector geometry with coordinates quantized to sub-zones
    `none`: (for zone listing) omit zone geometry
 style: form
