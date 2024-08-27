@@ -1,12 +1,13 @@
 [[rc-table_data-cql2-filter]]
 [requirements_class]
-.Requirements Class Filtering Zone Data with CQL2 
+.Requirements Class Filtering Zone Data with CQL2
 ====
 [%metadata]
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-cql2-filter
 subject:: Web API
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
 inherit:: https://www.opengis.net/spec/cql2/1.0/req/cql2-text
+requirement:: /req/data-cql2-filter/filter
 ====
 
 === Parameter `filter`
@@ -16,7 +17,7 @@ The following requirements describe how a client can specify a filtering CQL2 ex
 [requirement]
 ====
 [%metadata]
-label:: /req/data-cql2-filter/filter
+identifier:: /req/data-cql2-filter/filter
 description:: For specifying a CQL2 expression filtering the data returned from a zone data request:
 part:: The Implementation SHALL support a `filter` query parameter specified using the CQL2-Text encoding of the OGC Common Query Language for the zone data retrieval
 operation (resource path ending with `.../dggs/{dggrsId}/zones/data`).

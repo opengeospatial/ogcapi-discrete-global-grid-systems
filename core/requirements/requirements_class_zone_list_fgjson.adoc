@@ -8,6 +8,7 @@ identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-fgjson
 subject:: Web API
 inherit:: <<OGC21-045r1>>
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
+requirement:: /req/zone-fgjson/content
 ====
 
 [requirement]

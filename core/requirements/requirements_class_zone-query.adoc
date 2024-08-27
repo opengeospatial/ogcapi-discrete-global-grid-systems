@@ -6,6 +6,15 @@
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
 subject:: Web API
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/core
+requirement:: /req/zone-query/zones-list
+requirement:: /req/zone-query/zone-level
+requirement:: /req/zone-query/compact-zones
+requirement:: /rec/zone-query/parent-zone
+requirement:: /req/zone-query/bbox
+requirement:: /req/zone-query/bbox-crs
+requirement:: /req/zone-query/subset
+requirement:: /req/zone-query/subset-crs
+requirement:: /req/zone-query/datetime
 ====
 
 === Listing zones (`.../dggs/{dggrsId}/zones`)
@@ -16,7 +25,7 @@ which data is available at the resource path `.../dggs/{dggrsId}/zones`.
 [requirement]
 ====
 [%metadata]
-label:: /req/zone-query/zones-list
+identifier:: /req/zone-query/zones-list
 description:: For retrieving a list of DGGS zones:
 part:: The Implementation SHALL support an HTTP GET operation at a resource path
 ending with `.../dggs/{dggrsId}/zones`.
@@ -42,7 +51,7 @@ excluding overlapping regions when returning compact zones.
 [recommendation]
 ====
 [%metadata]
-label:: /rec/zone-query/zone-total-area
+identifier:: /rec/zone-query/zone-total-area
 description:: For returning the total area (or volumes) occupied by zones returned by the query
 part:: The Implementation SHOULD indicate the total surface area (in the case of a 2D DGGS) or total (hyper)volume occupied (in the case of a 3D or 4D DGGS) occupied by the zones being returned,
 adding only once any overlaps which may occur for compact zone responses where zones are non-congruent.
@@ -56,7 +65,7 @@ to retrieve the list of zones.
 [requirement]
 ====
 [%metadata]
-label:: /req/zone-query/zone-level
+identifier:: /req/zone-query/zone-level
 description:: For specifying a level at which to return a list of DGGS zones using a `zone-level` query parameter:
 part:: The Implementation SHALL support a `zone-level` query parameter for the zone query
 operation (resource path ending with `.../dggs/{dggrsId}/zones`).
@@ -74,7 +83,7 @@ The following requirements describe how a client can disable returning a compact
 [requirement]
 ====
 [%metadata]
-label:: /req/zone-query/compact-zones
+identifier:: /req/zone-query/compact-zones
 description:: For specifying whether to retrieve a list of DGGS zones using a `compact-zones` parameter:
 part:: The Implementation SHALL support a boolean `compact-zones` query parameter for the zone query
 operation (resource path ending with `.../dggs/{dggrsId}/zones`), where a value of `true` corresponds to the
@@ -93,7 +102,7 @@ allowing to explore a large list in a hierarchical manner (in combination with `
 [requirement]
 ====
 [%metadata]
-label:: /rec/zone-query/parent-zone
+identifier:: /rec/zone-query/parent-zone
 description:: For specifying a parent zone within which to restrict zone listing using a `parent-zone` query parameter:
 part:: The Implementation SHALL support a parameter `parent-zone` zone identifier query parameter.
 part:: When specified, the response SHALL NOT contain zones which are not this parent zone itself or a sub-zone of that zone.
@@ -102,7 +111,7 @@ part:: When specified, the response SHALL NOT contain zones which are not this p
 [recommendation]
 ====
 [%metadata]
-label:: /rec/zone-query/zone-order
+identifier:: /rec/zone-query/zone-order
 description:: For recommending to follow the DGGRS sub-zone ordering
 part:: When the `parent-zone` parameter is used, the Implementation SHOULD return a list of zones ordered according to the canonical sub-zone ordering defined by the DGGRS
 (the same order used for encoding values for data retrieval in formats such as <<rc_data-json, DGGS-JSON>> relying on a shared understanding of this order by the server/producer and client/consumer).
@@ -116,7 +125,7 @@ and page through large list of zones as multiple requests and responses.
 [recommendation]
 ====
 [%metadata]
-label:: /rec/zone-query/limit
+identifier:: /rec/zone-query/limit
 description:: For specifying a paging limit for the list of zones using a `limit` query parameter:
 part:: The Implementation SHOULD support a parameter `limit` integer query parameter, with a minimum value of 1.
 part:: The response SHOULD not contain more zones than specified by the optional `limit` parameter (if specified).
@@ -132,7 +141,7 @@ which a client can request to resume listing the zones.
 [requirement]
 ====
 [%metadata]
-label:: /req/zone-query/bbox
+identifier:: /req/zone-query/bbox
 description:: For specifying a spatial bounding box for which to return a list of DGGS zones:
 part::
 +
@@ -184,7 +193,7 @@ part:: The returned list of zone IDs SHALL only contain zones inside or intersec
 [requirement]
 ====
 [%metadata]
-label:: /req/zone-query/bbox-crs
+identifier:: /req/zone-query/bbox-crs
 description:: For specifying the CRS in used for the `bbox` parameter using the `bbox-crs` parameter
 part:: The list of zones resource SHALL support a `bbox-crs` parameter specifying the CRS used for the `bbox` parameter.
 part:: For Earth centric data, the implementation SHALL support https://www.opengis.net/def/crs/OGC/1.3/CRS84 as a value.
@@ -199,7 +208,7 @@ part:: If the bbox parameter is not used, the `bbox-crs` SHALL be ignored.
 [requirement]
 ====
 [%metadata]
-label:: /req/zone-query/subset
+identifier:: /req/zone-query/subset
 description:: For specifying a multi-dimensional subset for which to return a list of DGGS zones:
 part::
 +
@@ -248,7 +257,7 @@ a _trimming_ operation (using the _interval_ notation) when the low and high bou
 [requirement]
 ====
 [%metadata]
-label:: /req/zone-query/subset-crs
+identifier:: /req/zone-query/subset-crs
 description:: For specifying the CRS in used for the `subset` parameter using the `subset-crs` parameter
 part:: The zone listing operation SHALL support a parameter `subset-crs` with the characteristics identifying the CRS in which the `subset` parameter is specified with a URI or safe CURIE.
 part:: For Earth centric data, https://www.opengis.net/def/crs/OGC/1.3/CRS84 as a value SHALL be supported.
@@ -263,7 +272,7 @@ part:: If no `subset` parameter referring to an axis of the CRS is used, the `su
 [requirement]
 ====
 [%metadata]
-label:: /req/zone-query/datetime
+identifier:: /req/zone-query/datetime
 description:: For specifying a multi-dimensional subset for which to return a list of DGGS zones:
 part::
 +

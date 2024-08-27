@@ -9,6 +9,7 @@ subject:: Web API
 inherit:: <<JPEG_XL1>>
 inherit:: <<JPEG_XL2>>
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
+requirement:: /req/data-jpegxl/content
 ====
 
 [requirement]

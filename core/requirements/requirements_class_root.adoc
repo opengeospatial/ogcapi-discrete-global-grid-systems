@@ -6,6 +6,7 @@
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/root-dggs
 subject:: Web API
 inherit:: https://www.opengis.net/spec/ogcapi-common-1/1.0/req/core
+requirement:: /req/root-dggs/dggs
 ====
 
 === Root DGGS (`/dggs`)
@@ -13,7 +14,7 @@ inherit:: https://www.opengis.net/spec/ogcapi-common-1/1.0/req/core
 [requirement]
 ====
 [%metadata]
-label:: /req/root-dggs/dggs
+identifier:: /req/root-dggs/dggs
 description:: For API/dataset-wide DGGS resources:
 part:: The Implementation SHALL support DGGS resources for the dataset as a whole, for the "Core" requirement class, as well as any resources defined in additional supported requirements classes.
 part:: The Implementation SHALL include a link to the list of available DGGRSs for the API/dataset at `/dggs` in the links of the landing page using the link relation type `[ogc-rel:dggrs-list]`.

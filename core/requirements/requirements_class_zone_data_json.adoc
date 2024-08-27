@@ -8,6 +8,7 @@ identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-json
 subject:: Web API
 inherit:: <<rfc8259, JSON>>
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
+requirement:: /req/data-json/content
 ====
 
 [requirement]

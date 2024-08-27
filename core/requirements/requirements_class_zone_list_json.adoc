@@ -8,6 +8,7 @@ identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-json
 subject:: Web API
 inherit:: <<rfc8259, JSON>>
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
+requirement:: /req/zone-json/content
 ====
 
 [requirement]
@@ -62,7 +63,7 @@ part:: For responses where zones of multiple hierarchy levels are returned when 
 [recommendation]
 ====
 [%metadata]
-label:: /rec/zone-json/zone-total-area
+identifier:: /rec/zone-json/zone-total-area
 description:: For returning the total area (or volumes) occupied by zones returned by the query
 part:: For a 2D DGGS, the Implementation SHOULD include in the response a `returnedAreaMetersSquare` property indicating the total surface area occupied by the zones being returned,
 adding the overlaps which may occur for compact zone responses where zones are non-congruent only once.

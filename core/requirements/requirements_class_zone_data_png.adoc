@@ -8,6 +8,7 @@ identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-png
 subject:: Web API
 inherit:: <<PNG_ISO_IEC_15948>>
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
+requirement:: /req/data-png/content
 ====
 
 [requirement]

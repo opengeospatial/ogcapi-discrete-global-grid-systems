@@ -7,6 +7,7 @@ identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query-cql2-
 subject:: Web API
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
 inherit:: https://www.opengis.net/spec/cql2/1.0/req/cql2-text
+requirement:: /req/zone-query-cql2-filter/filter
 ====
 
 === Parameter `filter`
@@ -16,7 +17,7 @@ The following requirements describe how a client can specify a filtering CQL2 ex
 [requirement]
 ====
 [%metadata]
-label:: /req/zone-query-cql2-filter/filter
+identifier:: /req/zone-query-cql2-filter/filter
 description:: For specifying a CQL2 expression filtering the zones returned from a zone query:
 part:: The Implementation SHALL support a `filter` query parameter specified using the CQL2-Text encoding of the OGC Common Query Language for the zone query
 operation (resource path ending with `.../dggs/{dggrsId}/zones`).

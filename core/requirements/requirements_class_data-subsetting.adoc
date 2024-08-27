@@ -6,6 +6,9 @@
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-subsetting
 subject:: Web API
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
+requirement:: /req/data-subsetting/subset
+requirement:: /req/data-subsetting/datetime
+requirement:: /req/data-subsetting/properties
 ====
 
 === Parameter `subset`
@@ -13,7 +16,7 @@ inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
 [requirement]
 ====
 [%metadata]
-label:: /req/data-subsetting/subset
+identifier:: /req/data-subsetting/subset
 description:: For specifying a multi-dimensional subset for the zone data being retrieved (excluding dimensions of the discrete global grid reference system):
 part::
 +
@@ -53,7 +56,7 @@ NOTE: When the _interval_ values fall partially outside of the range of valid va
 [requirement]
 ====
 [%metadata]
-label:: /req/data-subsetting/datetime
+identifier:: /req/data-subsetting/datetime
 description:: For specifying a time instant or interval for which to retrieve data from a zone for a non-temporal DGGS:
 part::
 +
@@ -106,7 +109,7 @@ March 18, 2018, 12:31:12 UTC or earlier:
 [requirement]
 ====
 [%metadata]
-label:: /req/data-subsetting/properties
+identifier:: /req/data-subsetting/properties
 description:: For specifying fields to include when retrieving zone data
 part:: The zone data retrieval operation SHALL support a parameter `properties` where the value is a comma-separated list of fields to be returned.
 part:: The implementation SHALL support selecting a field using the identifier corresponding to the top-level property keys of the logical schema of the resource associated with the DGGRS zone data request, and return 400 status code for an unrecognized selected field.

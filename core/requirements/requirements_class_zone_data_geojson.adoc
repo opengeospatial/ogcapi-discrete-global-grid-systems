@@ -8,6 +8,7 @@ identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-geojson
 subject:: Web API
 inherit:: <<rfc7946, GeoJSON>>
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
+requirement:: /req/data-geojson/content
 ====
 
 [requirement]

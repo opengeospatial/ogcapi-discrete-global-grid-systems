@@ -9,6 +9,7 @@ subject:: Web API
 inherit:: <<Zarr2, Zarr Storage Specification Version 2>>
 inherit:: <<ZIPISO, ISO/IEC 21320-1:2015 Information technology - Document Container File (Zip)>>
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
+requirement:: /req/data-zarr/content
 ====
 
 [requirement]

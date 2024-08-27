@@ -6,6 +6,7 @@
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-custom-depths
 subject:: Web API
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
+requirement:: /req/data-custom-depths/zone-depth-parameter
 ====
 
 === Parameter `zone-depth`
@@ -13,7 +14,7 @@ inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
 [requirement]
 ====
 [%metadata]
-label:: /req/data-custom-depths/zone-depth-parameter
+identifier:: /req/data-custom-depths/zone-depth-parameter
 
 description:: Parameter to specify the DGGS resolution levels beyond the specified DGGS zone's hierarchy level to include in the response, when retrieving data for that zone
 
@@ -36,7 +37,6 @@ part:: The association of zones of deeper hierarchy levels with the requested zo
 which takes into consideration both the grid definition as well as the indexing system in use for the DGGS resource.
 
 part:: If a `zone-depth` is specified, the operation SHALL return the data at the resolution(s) / scale(s) specified.
-
 ====
 
 NOTE: A use case for a `zone-depth` of 0 would be to query the single set of values for a specific DGGS zone.

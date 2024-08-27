@@ -8,6 +8,7 @@ identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-coveragejso
 subject:: Web API
 inherit:: <<OGC21-069r2>>
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
+requirement:: /req/data-coveragejson/content
 ====
 
 [requirement]

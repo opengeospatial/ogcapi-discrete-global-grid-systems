@@ -7,6 +7,7 @@
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-uint64
 subject:: Web API
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
+requirement:: /req/zone-uint64/content
 ====
 
 [requirement]

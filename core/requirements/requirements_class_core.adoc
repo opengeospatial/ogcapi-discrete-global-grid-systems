@@ -5,6 +5,9 @@
 [%metadata]
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/core
 subject:: Web API
+requirement:: /req/core/dggrs-list
+requirement:: /req/core/dggrs-info
+requirement:: /req/core/zone-info
 ====
 
 === Listing available DGGRS (`.../dggs`)
@@ -12,7 +15,7 @@ subject:: Web API
 [requirement]
 ====
 [%metadata]
-label:: /req/core/dggrs-list
+identifier:: /req/core/dggrs-list
 description:: For retrieving the list of available discrete global grid reference systems:
 part:: The Implementation SHALL support an HTTP GET operation at a resource path ending with `.../dggs`.
 part:: The Implementation SHALL support a JSON representation of this `.../dggs` resource.
@@ -27,7 +30,7 @@ part:: The link relation type to use for linking from the corresponding resource
 [requirement]
 ====
 [%metadata]
-label:: /req/core/dggrs-info
+identifier:: /req/core/dggrs-info
 description:: For retrieving information for a particular available discrete global grid reference system:
 part:: The Implementation SHALL support an HTTP GET operation at a resource path ending with `.../dggs/{dggrsId}`.
 part:: The Implementation SHALL support a JSON representation of this `.../dggs/{dggrsId}` resource.
@@ -47,7 +50,7 @@ part:: The Implementation SHALL include a `description` property providing a sum
 [recommendation]
 ====
 [%metadata]
-label:: /rec/core/max-refinement
+identifier:: /rec/core/max-refinement
 description:: For specifying a maximum refinement level for a discrete global grid reference system associated with a particular geospatial data resource:
 part:: For DGGS resources associated with a data source, the Implementation SHOULD include a `maxRefinementLevel` integer property in the `.../dggs/{dggrsId}` resource specifying the maximum refinement level at which the full resolution of the data can be retrieved (using a `zone-depth` relative depth of 0) and/or used for performing the most accurate zone queries (using that value for `zone-level`).
 ====
@@ -55,7 +58,7 @@ part:: For DGGS resources associated with a data source, the Implementation SHOU
 [permission]
 ====
 [%metadata]
-label:: /per/core/beyond-max-refinement
+identifier:: /per/core/beyond-max-refinement
 description:: For handling requests beyond `maxRefinementLevel`:
 part:: The Implementation MAY return a 4xx error for data retrieval and/or zone query requests beyond a `maxRefinementLevel` specified in the DGGRS description associated with the request.
 part:: Alternatively, the Implementation MAY process the request by properly oversampling the data values for handling refinement levels beyond the `maxRefinementLevel`.
@@ -67,7 +70,7 @@ part:: Alternatively, the Implementation MAY process the request by properly ove
 [requirement]
 ====
 [%metadata]
-label:: /req/core/zone-info
+identifier:: /req/core/zone-info
 description:: For retrieving information for a particular DGGRS zone:
 part:: The Implementation SHALL support an HTTP GET operation at a resource path ending with `.../dggs/{dggrsId}/zones/{zoneId}` providing information for valid individual zones of the discrete global grid reference system.
 part:: The zone information resource SHALL support a JSON representation.
@@ -78,7 +81,7 @@ part:: The zone information resource SHALL include a link back to the correspond
 [recommendation]
 ====
 [%metadata]
-label:: /rec/core/zone-info
+identifier:: /rec/core/zone-info
 description:: For recommending additional things that should be included in zone information resources:
 part:: The zone information resource SHOULD include a `shapeType` property indicating the shape type of the zone's geometry (e.g., hexagon or pentagon).
 part:: The zone information resource SHOULD include a `level` property indicating the refinement level of the zone.
@@ -105,7 +108,7 @@ the respective properties defined above for the overall zones, but considering o
 [recommendation]
 ====
 [%metadata]
-label:: /rec/core/robots-txt
+identifier:: /rec/core/robots-txt
 description:: For discouraging automated crawling of zone information resources:
 part:: Implementations SHOULD include a https://en.wikipedia.org/wiki/Robots.txt[robots.txt] file at the root of their Web API discouraging robots from crawling the DGGS zone resources.
 part:: The content of that Robots.txt file SHOULD include `Disallow: \*/dggs/*/zones/*` to prevent crawling all DGGS resources under the `/zones/` resource path.

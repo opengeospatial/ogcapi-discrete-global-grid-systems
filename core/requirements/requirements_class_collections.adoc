@@ -6,6 +6,7 @@
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/collection-dggs
 subject:: Web API
 inherit:: https://www.opengis.net/spec/ogcapi-common-2/1.0/req/collections
+requirement:: /req/collection-dggs/dggs
 ====
 
 === Collection DGGS (`/collections/{collectionId}/dggs`)
@@ -13,7 +14,7 @@ inherit:: https://www.opengis.net/spec/ogcapi-common-2/1.0/req/collections
 [requirement]
 ====
 [%metadata]
-label:: /req/collection-dggs/dggs
+identifier:: /req/collection-dggs/dggs
 description:: For collection DGGS resources:
 part:: The Implementation SHALL support DGGS resources for at least one collection, for the "Core" requirement class, as well as any resources defined in additional supported requirements classes.
 part:: The Implementation SHALL include a link to the list of available DGGRSs for the collection at `/collections/{collectionId}/dggs` in the links of the collection using the link relation type `[ogc-rel:dggrs-list]`.
