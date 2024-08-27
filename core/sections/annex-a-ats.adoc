@@ -105,7 +105,6 @@ test-method::
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-subsetting
 target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-subsetting
 classification:: Target Type:Web API
-abstract-test:: /conf/data-retrieval/zone-data
 ====
 
 === Conformance Class "Data Custom Depths"
