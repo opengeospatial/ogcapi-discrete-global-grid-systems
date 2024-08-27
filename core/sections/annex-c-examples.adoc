@@ -675,7 +675,7 @@ image::images/compact-srtm-ggg-level13-parent-zone.png[width=700,align="center"]
 === Filtering zone queries using CQL2 expressions
 The Zone Query capabilities is most useful for use cases where the retrieved zone list is the result of some operation,
 whether a processing workflow or the evaluation of a query expressed by the client.
-The <<rc_cql2-query,CQL2 filter>> capability allows to express such queries using the https://docs.ogc.org/DRAFTS/21-065r1.html[OGC Common Query Language (CQL2)].
+The <<rc_zone-query-cql2-filter,CQL2 filter>> capability allows to express such queries using the https://docs.ogc.org/DRAFTS/21-065r1.html[OGC Common Query Language (CQL2)].
 Note that the processing workflow could also itself include CQL2 expressions using https://docs.ogc.org/DRAFTS/21-009.html#section_fields_modifiers[input/output field modifiers].
 
 The CQL2 requirement class in this standard specifically calls for the https://docs.ogc.org/DRAFTS/21-065r1.html#cql2-text[CQL2-Text encoding], which is an intuitive representation with many similarities to SQL.
