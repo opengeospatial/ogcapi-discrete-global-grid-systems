@@ -1152,7 +1152,7 @@ image::images/isea9r-gebco-isea.png[height=800,align="center"]
 
 [#img_zone_data_isea9r_ortho='{figure-caption} {counter:figure-num}']
 .Visualization in an orthographic projection of a DGGS-JSON response for retrieving data for ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA9R/zones/A2-0[A2-0] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 4
-image::images/isea9r-gebco-orthographic.png[width=700,align="center"]
+image::images/isea9r-gebco-orthographic.png[height=800,align="center"]
 
 ===== GeoTIFF Examples
 
