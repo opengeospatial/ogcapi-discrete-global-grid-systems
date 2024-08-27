@@ -49,7 +49,7 @@ integrated system comprised of a specific <<term-dggh,discrete global grid hiera
 [.source]
 <<OGC20-040r3>>
 
-NOTE: the term DGGRS did not appear in the terms of definitions of version 2.0.0 of OGC Abstract Specification Topic 21, but is defined in Section 8 as the `DGG_ReferenceSystem` interface.
+NOTE: the term DGGRS did not appear in the terms and definitions of version 2.0.0 of OGC Abstract Specification Topic 21, but is defined in Section 8 as the `DGG_ReferenceSystem` interface.
 
 NOTE: <<annex-dggrs-def,Annex B>> provides an informative schema for defining a DGGRS with accompanying examples of specific DGGRSs.
 
