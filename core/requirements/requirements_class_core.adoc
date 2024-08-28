@@ -38,10 +38,10 @@ part:: The `.../dggs/{dggrsId}` resource SHALL include an `id` property consiste
 part:: The `.../dggs/{dggrsId}` resource SHALL include a link to the resource itself using the `self` link relation type.
 part:: The `.../dggs/{dggrsId}` resource SHALL include a link to a definition of the discrete global grid reference system (describing both the discrete global grid as well as the particular indexing scheme to identify zones by identifiers),
 using the link relation type `[ogc-rel:dggrs-definition]`.
-The schema for that definition is likely to evolve in order to support describing a growing number of classes of DGGS.
+The schema for that definition is likely to evolve in order to support describing a growing number of classes of DGGHs.
 A first draft of this schema is available in <<annex-dggrs-def, Annex B - Discrete Global Grid Reference System Definitions>>.
 part:: The `.../dggs/{dggrsId}` resource SHALL include a templated link in the `linkTemplates` array to request information for a particular zone using the link relation type `[ogc-rel:dggrs-zone-info]` and the template variable `{zoneId}`.
-part:: If the discrete global grid reference system (the combination of the discrete global grid and indexing system) is registered with an authority, the resource SHALL include `uri` property corresponding to that registered discrete global grid reference system.
+part:: If the discrete global grid reference system (the combination of the discrete global grid and indexing system) is registered with an authority, the resource SHALL include a `uri` property corresponding to that registered discrete global grid reference system.
 part:: If the discrete global grid reference system is based on a particular coordinate reference system, the resource shall specify that CRS in a `crs` property, preferably as a URI (if one is available).
 part:: The Implementation SHALL include a short `title` property identifying the discrete global grid reference system intended for display to a human.
 part:: The Implementation SHALL include a `description` property providing a summary description of the discrete global grid reference system.
@@ -95,12 +95,12 @@ part:: The zone information resource SHOULD include an `areaMetersSquare` proper
 part:: For a DGGS with three spatial dimension, the zone information resource SHOULD include a `volumeMetersCube` property indicating the volume of the zone in cubic meters.
 part:: For a temporal DGGS, the zone information resource SHOULD include a `temporalDurationSeconds` property indicating the amount of time covered by the zone in seconds.
 part:: The zone information resource SHOULD include a `geometry` property indicating the 2D and/or 3D spatial geometry of the zone using GeoJSON or OGC Features & Geometry JSON for the JSON encoding,
-and including intermediate points between the vertices of the geometry so as to accurately represent the shape of the zones for DGGRSs not in CRS84. The coordinates should be in the CRS specified in the `crs` property.
+and including intermediate points between the vertices of the geometry so as to accurately represent the shape of the zones for DGGRSs defined in a CRS other than the CRS used to express the coordinates of the vertices. The coordinates should be in the CRS specified in the `crs` property.
 part:: For a temporal DGGS, the zone information resource SHOULD include a `temporalInterval` property indicating the start and end time of the zone.
 part:: The implementation SHOULD support a GeoJSON and/or OGC Features & Geometry JSON representation of the zone information resource where the top-level object is a feature representing the zone geometry,
-a `zoneID` property of that feature corresponds to the textual identifier (the `{zoneId}`), the `id` of the feature corresponds to either a sequential feature identifier starting at 1, the textural identifier of the zone, or the 64-bit unsigned integer identifier of the zone,
+a `zoneID` property of that feature corresponds to the textual identifier (the `{zoneId}`), the `id` of the feature corresponds to either a sequential feature identifier starting at 1, the textual identifier of the zone, or the 64-bit unsigned integer identifier of the zone,
 and the other properties described in this recommendation are properties of that feature.
-part:: For a zone associated with a particular collection, the implementation SHOULD provide summary statistics in a statistics (`minimum`, `maximum`, `average`, `stdDev`) pertaining to this zone for each field (fields of the range of a coverage, or relevant numeric properties of a feature collection) of the data. In the JSON encoding, this SHOULD be implemented as a `statistics` JSON dictionary property mapping field names to an object containing with each statistic.
+part:: For a zone associated with a particular collection, the implementation SHOULD provide summary statistics in a statistics (`minimum`, `maximum`, `average`, `stdDev`) pertaining to this zone for each field (fields of the range of a coverage, or relevant numeric properties of a feature collection) of the data. In the JSON encoding, this SHOULD be implemented as a `statistics` JSON dictionary property mapping field names to an object containing each statistic.
 part:: For a zone associated with a particular collection, the implementation SHOULD provide `areaMetersSquareWithData`, `volumeMetersCubeWithData`, `temporalDurationSecondsWithData` properties corresponding to
 the respective properties defined above for the overall zones, but considering only the portions of the zone where there is data (e.g., regions of the zone excluding NODATA values for a gridded coverage, or within geometry for a feature collection).
 ====

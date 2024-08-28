@@ -532,13 +532,13 @@ image::images/ISEA9R-bboxL4.png[width=500,align="center"]
 https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones?f=json&zone-level=4&parent-zone=B6-2&compact-zones=false[\https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones?zone-level=4&parent-zone=B6-2&compact-zones=false]
 
 [#img_zones_isea9r_l4_parent_zone_bbox='{figure-caption} {counter:figure-num}']
-.GeoJSON response for zone query for ISEA9R DGGRS at level 4 for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones/B6-2[B6-2], for a https://viewfinderpanoramas.org/[Viewfinder Panoramas], visualized in QGIS
+.GeoJSON response for zone query for ISEA9R DGGRS at level 4 for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones/B6-2[B6-2], for https://viewfinderpanoramas.org/[Viewfinder Panoramas], visualized in QGIS
 image::images/zones-srtm-isea9r-level4-parent-zone.png[width=500,align="center"]
 
 https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones?f=json&zone-level=8&parent-zone=E6-317&compact-zones=false[\https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones?zone-level=8&parent-zone=E6-317&compact-zones=false]
 
 [#img_zones_isea9r_l8_parent_zone_bbox='{figure-caption} {counter:figure-num}']
-.GeoJSON response for zone query for ISEA9R DGGRS at level 8 for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones/E6-317[E6-317], for a https://viewfinderpanoramas.org/[Viewfinder Panoramas], visualized in QGIS
+.GeoJSON response for zone query for ISEA9R DGGRS at level 8 for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones/E6-317[E6-317], for https://viewfinderpanoramas.org/[Viewfinder Panoramas], visualized in QGIS
 image::images/zones-srtm-isea9r-level8-parent-zone.png[width=500,align="center"]
 
 Although ISEA9R is axis-aligned, like ISEA3H, it is equal area, with an error budget below 1%.
@@ -563,13 +563,13 @@ image::images/ggg-bboxL7.png[width=500,align="center"]
 https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSISGlobalGrid/zones?f=json&zone-level=8&parent-zone=2-2-9&compact-zones=false[\https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSISGlobalGrid/zones?zone-level=8&parent-zone=2-2-9&compact-zones=false]
 
 [#img_zones_ggg_l8_parent_zone_bbox='{figure-caption} {counter:figure-num}']
-.GeoJSON response for zone query for GNOSIS Global Grid DGGRS at level 8 for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSISGlobalGrid/zones/2-2-9[2-2-9], for a https://viewfinderpanoramas.org/[Viewfinder Panoramas], visualized in QGIS
+.GeoJSON response for zone query for GNOSIS Global Grid DGGRS at level 8 for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSISGlobalGrid/zones/2-2-9[2-2-9], for https://viewfinderpanoramas.org/[Viewfinder Panoramas], visualized in QGIS
 image::images/zones-srtm-ggg-level8-parent-zone.png[width=500,align="center"]
 
 https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSISGlobalGrid/zones?f=json&zone-level=13&parent-zone=6-1F-98&compact-zones=false[\https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSISGlobalGrid/zones?zone-level=13&parent-zone=6-1F-98&compact-zones=false]
 
 [#img_zones_ggg_l13_parent_zone_bbox='{figure-caption} {counter:figure-num}']
-.GeoJSON response for zone query for GNOSIS Global Grid DGGRS at level 13 for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSISGlobalGrid/zones/6-1F-98[6-1F-98], for a https://viewfinderpanoramas.org/[Viewfinder Panoramas], visualized in QGIS
+.GeoJSON response for zone query for GNOSIS Global Grid DGGRS at level 13 for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSISGlobalGrid/zones/6-1F-98[6-1F-98], for https://viewfinderpanoramas.org/[Viewfinder Panoramas], visualized in QGIS
 image::images/zones-srtm-ggg-level13-parent-zone.png[width=500,align="center"]
 
 === Compact zone queries
@@ -623,13 +623,13 @@ image::images/compact-isea9r-bboxL4.png[width=500,align="center"]
 https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones?f=json&zone-level=4&parent-zone=B6-2[\https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones?zone-level=4&parent-zone=B6-2]
 
 [#img_compact_isea9r_l4_parent_zone_bbox='{figure-caption} {counter:figure-num}']
-.GeoJSON compact zones response for querying ISEA9R DGGRS at level 4 for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones/B6-2[B6-2], for a https://viewfinderpanoramas.org/[Viewfinder Panoramas], visualized in QGIS
+.GeoJSON compact zones response for querying ISEA9R DGGRS at level 4 for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones/B6-2[B6-2], for https://viewfinderpanoramas.org/[Viewfinder Panoramas], visualized in QGIS
 image::images/compact-srtm-isea9r-level4-parent-zone.png[width=500,align="center"]
 
 https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones?f=json&zone-level=8&parent-zone=E6-317[\https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones?zone-level=8&parent-zone=E6-317]
 
 [#img_compact_isea9r_l8_parent_zone_bbox='{figure-caption} {counter:figure-num}']
-.GeoJSON compact zones response for querying ISEA9R DGGRS at level 8 for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones/E6-317[E6-317], for a https://viewfinderpanoramas.org/[Viewfinder Panoramas], visualized in QGIS
+.GeoJSON compact zones response for querying ISEA9R DGGRS at level 8 for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones/E6-317[E6-317], for https://viewfinderpanoramas.org/[Viewfinder Panoramas], visualized in QGIS
 image::images/compact-srtm-isea9r-level8-parent-zone.png[width=600,align="center"]
 
 ==== GNOSIS Global Grid compact zone queries
@@ -661,7 +661,7 @@ image::images/compact-ggg-bboxL7.png[width=300,align="center"]
 https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSISGlobalGrid/zones?f=json&zone-level=8&parent-zone=2-2-9[\https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSISGlobalGrid/zones?zone-level=8&parent-zone=2-2-9]
 
 [#img_zones_ggg_l8_parent_zone_bbox='{figure-caption} {counter:figure-num}']
-.GeoJSON compact zones response for querying GNOSIS Global Grid DGGRS at level 8 for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSISGlobalGrid/zones/2-2-9[2-2-9], for a https://viewfinderpanoramas.org/[Viewfinder Panoramas], visualized in QGIS
+.GeoJSON compact zones response for querying GNOSIS Global Grid DGGRS at level 8 for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSISGlobalGrid/zones/2-2-9[2-2-9], for https://viewfinderpanoramas.org/[Viewfinder Panoramas], visualized in QGIS
 image::images/compact-srtm-ggg-level8-parent-zone.png[width=500,align="center"]
 
 <<<
@@ -669,7 +669,7 @@ image::images/compact-srtm-ggg-level8-parent-zone.png[width=500,align="center"]
 https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSISGlobalGrid/zones?f=json&zone-level=13&parent-zone=6-1F-98[\https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSISGlobalGrid/zones?zone-level=13&parent-zone=6-1F-98]
 
 [#img_zones_ggg_l13_parent_zone_bbox='{figure-caption} {counter:figure-num}']
-.GeoJSON compact zones response for querying GNOSIS Global Grid DGGRS at level 13 for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSISGlobalGrid/zones/6-1F-98[6-1F-98], for a https://viewfinderpanoramas.org/[Viewfinder Panoramas], visualized in QGIS
+.GeoJSON compact zones response for querying GNOSIS Global Grid DGGRS at level 13 for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSISGlobalGrid/zones/6-1F-98[6-1F-98], for https://viewfinderpanoramas.org/[Viewfinder Panoramas], visualized in QGIS
 image::images/compact-srtm-ggg-level13-parent-zone.png[width=700,align="center"]
 
 === Filtering zone queries using CQL2 expressions
@@ -882,7 +882,7 @@ In this CRS, this pentagonal zone spans the interruption between two triangles o
 image::images/tiff-zoneDataISEA.png[width=600,align="center"]
 
 A major inconvenience of the ISEA planar projection is that hexagonal zones further along the interruptions will be split on each side on the interruption,
-resulting in a large separation between the two half of the data, as illustrated for example with zone C2-4-A.
+resulting in a large separation between the two halves of the data, as illustrated for example with zone C2-4-A.
 
 [#img_zone_data_tiff_split_hex='{figure-caption} {counter:figure-num}']
 .Visualization of an ISEA planar projection GeoTIFF response for retrieving data for ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/C2-4-A[C2-4-A] (a hexagon split across an ISEA interruption) of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
