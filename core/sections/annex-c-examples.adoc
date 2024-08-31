@@ -512,7 +512,7 @@ image::images/zones-srtm-isea3h-next-level.png[width=400,align="center"]
 
 Although all examples so far used the ISEA3H DGGRS, this DGGS API is completely agnostic of the DGGRS.
 Future planned parts for OGC Abstract Topic 21 will standardize new categories of DGGS, including volumetric (Part 2), temporal (Part 3) and axis-aligned (Part 4).
-The DGGS API functionality, as demonstrated in this examples section, is ready to handle all any DGGRS, including DGGRS based on these new DGGS types.
+The DGGS API functionality, as demonstrated in this examples section, is ready to handle any DGGRS, including DGGRS based on these new DGGS types.
 
 The following examples demonstrates equivalent zone queries using the <<isea9r-dggrs,ISEA9R DGGS>>, a dual DGGS of ISEA3H even refinement levels, which can be considered axis-aligned in a CRS derived from rotating and shearing the ISEA planar projection.
 In the ISEA planar projection, the ISEA9R zones are shaped as rhombuses.
