@@ -25,7 +25,7 @@ The columns for each part list the conformance classes of the standard that are 
 |===
 | Product | Contact email or GitHub handle
 
-| https://pangaeainnovations.com/services/products/pangaeagrid/[TerraNexus OGC API Server]
+| https://terranexus.pangaeainnovations.com/ogcapi/[TerraNexus OGC API Server]
 | https://www.ogc.org/resource/products/details/?pid=1675[Link]
 
 | https://tb16.geo-solutions.it/geoserver/ogc/dggs[GeoServer]
