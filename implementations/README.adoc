@@ -28,11 +28,14 @@ The columns for each part list the conformance classes of the standard that are 
 | https://terranexus.pangaeainnovations.com/ogcapi/[TerraNexus OGC API Server]
 | https://www.ogc.org/resource/products/details/?pid=1675[Link]
 
-| https://tb16.geo-solutions.it/geoserver/ogc/dggs[GeoServer]
+| https://docs.geoserver.org/latest/en/user/community/ogc-api/testbed.html#dggs[GeoServer]
 | https://github.com/aaime[@aaime]
 
 | https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/[GNOSIS Map Server]
 | https://github.com/jerstlouis[Jerome St-Louis]
+
+| https://dggs-api-bozea3cspa-ew.a.run.app/dggs-api[Prototype by the University of Tartu]
+| https://github.com/allixender[@allixender]
 
 | TBA
 | TBA
