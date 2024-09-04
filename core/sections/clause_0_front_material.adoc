@@ -79,7 +79,7 @@ All questions regarding this submission should be directed to the editors or the
 == Abstract
 
 This specification defines building blocks which can be used as part of a Web API to retrieve geospatial data for a specific
-area, time and resolution of interest, based on a specific Discrete Global Grid System (DGGS) and indexing scheme,
-as defined in https://docs.ogc.org/as/20-040r3/20-040r3.html[OGC Abstract Topic 21], as well to query the list of DGGS zones from which data is available and/or
+area, time and resolution of interest, based on a specific Discrete Global Grid Reference System (DGGRS),
+as defined in https://docs.ogc.org/as/20-040r3/20-040r3.html[OGC Abstract Topic 21], as well to query the list of DGGRS zones from which data is available and/or
 matching a specified query, in combination with other building blocks defining queries, such as a filter defined using
 the https://docs.ogc.org/DRAFTS/21-065.html[OGC Common Query Language (CQL2)].
