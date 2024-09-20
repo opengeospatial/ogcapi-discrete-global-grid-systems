@@ -105,6 +105,7 @@ After installing with `pip3 install py-ubjson`, a DGGS-JSON file can be converte
 The DGGS-FG-JSON Zone Data encoding requirements class defines support for encoding a DGGS Zone data response for vector features in JSON.
 This is accomplished by extending https://docs.ogc.org/DRAFTS/21-045r1.html[OGC Features & Geometry JSON]
 with the concepts of DGGRS, reference parent zone, relative depth and deterministic sub-zone order, allowing to encode coordinates pairs as local sub-zone indices.
+Alternatively, coordinates can be encoded using global zone IDs.
 
 DGGS-FG-JSON Zone Data is intended to support efficient encoding of vector geometry at arbitrary precision using finer grids to locally address the inside of the reference parent zones.
 This is done in a manner agnostic of the DGGRS (which needs to define a deterministic sub-zone order), in a human-readable format sharing as much as possible with existing practice for exchanging

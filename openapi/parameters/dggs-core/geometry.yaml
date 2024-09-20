@@ -5,7 +5,8 @@ description: |-
    `vectorized`: return features with regular non-rasterized, non-quantized geometry
    `zone-centroid`: rasterize to zone features and use a Point geometry representing that zone centroid
    `zone-region`: rasterize to zone features and use a (Multi)Polygon/Polyhedron geometry representing that zone's region
-   `quantized`: (DGGS-FG-JSON) return vector geometry with coordinates quantized to sub-zones
+   `quantized`: (DGGS-FG-JSON) return vector geometry with coordinates quantized to sub-zones, represented as local indices from 1 to the number of sub-zones corresponding to the DGGRS deterministic sub-zone order, with a special value of 0 representing an artificial node
+   `quantized-zoneids`: (DGGS-FG-JSON) return vector geometry with coordinates quantized to sub-zones, represented as global textual zone identifiers, with a special value of _null_ representing an artificial node
    `none`: (for zone listing) omit zone geometry
 style: form
 explode: false
@@ -17,4 +18,5 @@ schema:
   - zone-region
   - zone-centroid
   - quantized
+  - quantized-zoneids
   - none

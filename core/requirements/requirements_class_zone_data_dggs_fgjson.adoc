@@ -16,16 +16,21 @@ requirement:: /req/data-dggs-fgjson/content
 ====
 [%metadata]
 identifier:: /req/data-dggs-fgjson/content
-part:: The Implementation SHALL support a `geometry` query parameter with a value of `quantized` allowing a client to request a DGGS-FG-JSON response.
-part:: Every 200 response of the server for zone data with the media type `application/fg+json` and a `geometry=quantized` query parameter SHALL be an extended https://docs.ogc.org/DRAFTS/21-045r1.html[Features & Geometry JSON] (FG-JSON) document representing the vector features within the requested zone.
-part:: The JSON document SHALL follow the JSON Schema for FG-JSON, with geometry stored in a `dggsPlace` property mirroring the FG-JSON `place` schema and supporting all of the same feature types, but where `coordinates` use sub-zone indices as described in later parts of this requirement.
+part:: The Implementation SHALL support a `geometry` query parameter with a value of either `quantized` or `quantized-zoneids` allowing a client to request a DGGS-FG-JSON response.
+part:: Every 200 response of the server for zone data with the media type `application/fg+json` and a `geometry=quantized` (or `geometry=quantized-zoneids`) query parameter SHALL be an extended https://docs.ogc.org/DRAFTS/21-045r1.html[Features & Geometry JSON] (FG-JSON) document representing the vector features within the requested zone.
+part:: The JSON document SHALL follow the JSON Schema for FG-JSON, with geometry stored in a `dggsPlace` property mirroring the FG-JSON `place` schema and supporting all of the same feature types, but where `coordinates` use sub-zone indices (for `geometry=quantized`) or global textual zone identifiers (for `geometry=quantized-zoneids`) as described in later parts of this requirement.
 part:: The JSON document SHALL additionally contain a `dggrs` property set to the URI or CURIEs of the DGGRS of the response, which replaces the `coordRefSys` property and concept.
 part:: The JSON document SHALL additionally contain a `zoneId` property indicating the requested reference zone.
-part:: The JSON document SHALL additionally contain a `depth` property corresponding to the relative zone depth (as specified in the single depth format of the OGC API - DGGS `zone-depth` parameter for zone data retrieval), determining how coordinates are resolved from sub-zone indices, and as a result, their precision.
-part:: The JSON document SHALL contain a `dggsPlace` property specifying geometry using sub-zone indices ranging from 1 to the number of sub-zones within the reference parent zone at the declared depth.
-part:: When all spatial coordinates are dimensions of the DGGRS, the array of coordinates including the square brackets SHALL be replaced by the corresponding sub-zone index within which the coordinates are located, as defined by the deterministic sub-zone order of the DGGRS.
-part:: When additional spatial coordinates that are not part of the DGGRS, such as elevation above ground for a 2D DGGRS, are needed to define the geometry coordinates, only the coordinates corresponding to DGGRS dimension SHALL be replaced by the sub-zone index.
+part:: The JSON document SHALL additionally contain a `depth` property corresponding to the relative zone depth (as specified in the single depth format of the OGC API - DGGS `zone-depth` parameter for zone data retrieval), determining how coordinates are resolved from sub-zone indices (in the case of `geometry=quantized`), and as a result, their precision.
+part:: For `geometry=quantized`, the JSON document SHALL contain a `dggsPlace` property specifying geometry using local sub-zone indices ranging from 1 to the number of sub-zones within the reference parent zone at the declared depth, based on the deterministic sub-zone order of the DGGRS.
+part:: For `geometry=quantized-zoneids`, the JSON document SHALL contain a `dggsPlace` property specifying geometry using global textual zone identifiers (as defined in the DGGRS zone indexing reference system) at the declared depth.
+part:: When all spatial coordinates are dimensions of the DGGRS, the array of coordinates including the square brackets SHALL be replaced by the local index or global identifier of the sub-zone within which the coordinates are located.
+part:: When additional spatial coordinates that are not part of the DGGRS, such as elevation above ground for a 2D DGGRS, are needed to define the geometry coordinates,
+only the coordinates corresponding to DGGRS dimensions SHALL be replaced by the local index or global identifier of the sub-zone.
 part:: Only features fully or partly located within the reference zone SHALL be included.
-part:: For feature geometry intersecting the boundaries of the reference zone, the sub-zone within which the intersection is located SHALL be included, with a separate single `0` special sub-zone index representing all outside points before a point inside, after a point inside, or in between two inside points.
-part:: For geometry in two or more dimensions with an outside point identified by a `0` sub-zone index (necessarily between two contour points), the portion of the zone edge(s) between the exit and entry point SHALL be considered inside of that contour.
+part:: For feature geometry intersecting the boundaries of the reference zone, the sub-zone within which the intersection is located SHALL be included,
+with a separate single `0` special sub-zone index (in the case of `geometry=quantized`) or a `null` value (in the case of `geometry=quantized-zoneids`)
+representing all outside points before a point inside, after a point inside, or in between two inside points.
+part:: For geometry in two or more dimensions with an outside point (identified by a `0` sub-zone index for `geometry=quantized` or `null` for `geometry=quantized-zoneids`)
+and which is necessarily between two contour points, the portion of the zone edge(s) between the exit and entry point SHALL be considered inside of that contour.
 ====
