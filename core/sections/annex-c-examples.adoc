@@ -371,7 +371,7 @@ An example JSON response for this Zone Query JSON, as defined by the <<rc_zone-q
 
 The server returned all 32 zones of ISEA3H level 1 (which corresponds to a truncated icosahedron -- the traditional soccer ball pattern), because the collection has global coverage.
 
-Servers may support additional representations of zone lists beyond JSON, such as a more compact <<rc_zone-binary64bit,binary 64-bit integers>> encoding, a <<rc_zone-geojson,GeoJSON representation>> including zone geometry
+Servers may support additional representations of zone lists beyond JSON, such as a more compact <<rc_zone-uint64,binary 64-bit integers>> encoding, a <<rc_zone-geojson,GeoJSON representation>> including zone geometry
 or an <<rc_zone-html,HTML representation>> for exploring datasets in a browser through the DGGS API.
 Note that regardless of encoding, zone query responses can also be compressed for additional bandwidth efficiency if the client and server negotiate a content encoding e.g., using `Content-Encoding: gzip`.
 

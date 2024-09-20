@@ -8,7 +8,7 @@ These requirements classes include:
 
 * <<rc_zone-json,JSON Zone List>>
 * <<rc_zone-html,HTML Zone List>>
-* <<rc_zone-binary64bit,64-bit Binary Zone List>>
+* <<rc_zone-uint64,64-bit Binary Zone List>>
 * <<rc_zone-geojson,GeoJSON Zone List>>
 * <<rc_zone-fgjson,FG-JSON Zone List>>
 * <<rc_zone-geotiff,GeoTIFF Zone List>>
@@ -58,7 +58,7 @@ HTML is the core language of the World Wide Web. An API that supports HTML will 
 
 include::../requirements/requirements_class_zone_list_html.adoc[]
 
-[[rc_zone-binary64bit]]
+[[rc_zone-uint64]]
 === Requirements Class "Binary 64-bit integer zone list encoding"
 
 ==== Overview
