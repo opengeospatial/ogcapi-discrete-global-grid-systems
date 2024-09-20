@@ -1,6 +1,6 @@
 This folder contains the requirements classes.
 
-Each file contains all requirements for a given requirement class.
+Each file contains all requirements for a given requirements class.
 
 NOTE: for each requirement, there should be a corresponding Abstract Test in the "abstract_tests" folder.
 

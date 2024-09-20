@@ -1,7 +1,7 @@
 [[rc_table-data_ubjson]]
 
 [requirements_class]
-.Requirements Class UB-JSON
+.Requirements Class UBJSON
 ====
 [%metadata]
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-ubjson
@@ -16,7 +16,7 @@ requirement:: /req/data-ubjson/content
 [%metadata]
 identifier:: /req/data-ubjson/content
 part:: Every 200 response of the server for zone data with the media type `application/ubjson` SHALL be a https://ubjson.org/[Universal Binary JSON] document representing the data values for all selected fields for a single zone.
-part:: The schema for the UB-JSON document SHALL follow the same JSON Schema as for DGGS-JSON described above.
+part:: The schema for the UBJSON document SHALL follow the same JSON Schema as for DGGS-JSON described above.
 part:: Every zone depth requested using the `zone-depth` parameter SHALL be included in the response.
 part:: At every depth, each individual value SHALL correspond exactly to the data sampled representative of that zone geometry.
 part:: The list of data values SHALL follow the default zone order as specified by the Discrete Global Grid Reference System (for example based on a scanline or space-filling curved defined therein) for which the request is made.

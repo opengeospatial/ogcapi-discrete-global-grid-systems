@@ -29,5 +29,5 @@ part:: The implementation SHOULD include additional information for each zone ID
 ====
 [%metadata]
 identifier:: /rec/zone-html/zone-data
-part:: If the implementation also supports Zone Data Retrieval, the implementation SHOULD include a link for each zone to download the associated data .
+part:: If the Implementation also supports Zone Data Retrieval, the Implementation SHOULD include a link for each zone to download the associated data .
 ====

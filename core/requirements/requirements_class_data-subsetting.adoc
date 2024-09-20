@@ -40,12 +40,12 @@ conforming to the following Augmented Backus Naur Form (ABNF) fragment:
      {text} is some general ASCII text (such as a time and date notation in ISO 8601).
 ----
 --
-part:: The implementation SHALL support as axis names `time` for a temporal dataset, unless this temporal axis is an axis of the discrete global grid reference system.
-part:: If a third vertical spatial dimension is supported (if the resource's spatial extent bounding box is three dimensional) and that dimension is not part of the discrete global grid system definition, the implementation SHALL also support a `h` dimension (elevation above the ellipsoid in EPSG:4979 or CRS84h) for geographic CRS and `z` for projected CRS, which are to be interpreted as the vertical axis in the CRS definition.
-part:: The implementation SHALL support as axis names any additional dimension (beyond spatial and temporal) as described in the `extent` property of the collection or dataset description.
-part:: The implementation SHALL return a 400 error status code if an axis name does not correspond to one of the axes of the Coordinate Reference System (CRS) of the data or an axis defined in the relevant `extent` property.
+part:: The Implementation SHALL support as an axis names`time` for a temporal dataset, unless this temporal axis is an axis of the discrete global grid reference system.
+part:: If a third vertical spatial dimension is supported (if the resource's spatial extent bounding box is three dimensional) and that dimension is not part of the discrete global grid system definition, the Implementation SHALL also support a `h` dimension (elevation above the ellipsoid in EPSG:4979 or CRS84h) for geographic CRS and `z` for projected CRS, which are to be interpreted as the vertical axis in the CRS definition.
+part:: The Implementation SHALL support as axis names any additional dimension (beyond spatial and temporal) as described in the `extent` property of the collection or dataset description.
+part:: The Implementation SHALL return a 400 error status code if an axis name does not correspond to one of the axes of the Coordinate Reference System (CRS) of the data or an axis defined in the relevant `extent` property.
 part:: If a `subset` parameter including any of the dimensions corresponding to the axes of the discrete global grid reference system is used, the server SHALL return a 400 client error.
-part:: The implementation SHALL interpret multiple `subset` parameters, as if all dimension subsetting values were provided in a single `subset` parameter (comma separated).
+part:: The Implementation SHALL interpret multiple `subset` parameters, as if all dimension subsetting values were provided in a single `subset` parameter (comma separated).
 Example: `subset=time("2018-02-12T16:00:0Z":"2018-02-12T20:00:00Z")&subset=atm_pressure_hpa(500:750)` is equivalent to `subset=time("2018-02-12T16:00:0Z":"2018-02-12T20:00:00Z"),atm_pressure_hpa(500:750)`
 ====
 
@@ -61,21 +61,23 @@ description:: For specifying a time instant or interval for which to retrieve da
 part::
 +
 --
-The implementation SHALL support a `datetime` parameter expressed corresponding to either a date-time instant or a time interval, conforming to the following syntax (using link:https://tools.ietf.org/html/rfc5234[ABNF]):
+The Implementation SHALL support a `datetime` parameter expressed corresponding to either a date-time instant or a time interval, conforming to the following syntax (using link:https://tools.ietf.org/html/rfc5234[ABNF]):
 
 [source]
 ----
-interval-closed     = date-time "/" date-time
-interval-open-start = [".."] "/" date-time
-interval-open-end   = date-time "/" [".."]
-interval            = interval-closed / interval-open-start / interval-open-end
-datetime            = date-time / interval
+interval-bounded       = instant "/" instant
+interval-bounded-start = [".."] "/" instant
+interval-bounded-end   = instant "/" [".."]
+interval-unbounded     = [".."] "/" [".."]
+interval               = interval-bounded / interval-bounded-start / interval-bounded-end / interval-unbounded
+datetime               = instant / interval
 ----
 --
-part:: The syntax of `date-time` is specified by link:https://tools.ietf.org/html/rfc3339#section-5.6[RFC 3339, 5.6].
+part:: The implementation SHALL support an `instant` defined as specified by link:https://tools.ietf.org/html/rfc3339#section-5.6[RFC 3339, 5.6], with the exception that the server is
+only required to support the `Z` UTC time notation, and not required to support local time offsets.
 part:: Only the portions of the data within the specified interval SHALL be part of the zone data response, performing a trim operation for an interval or a slicing operation for an instant (in the case of a gridded coverage), or a filtering operation for feature data.
-part:: The implementation SHALL support a double-dot (`..`) or an empty string for the start/end as indicating an unbounded or half-bounded interval (only having a start or end).
-part:: If a `datetime` parameter is specified requesting zone data where no temporal dimension applies, the implementation SHALL either ignore the parameter or return a 4xx client error.
+part:: Time intervals unbounded at the start or at the end SHALL be supported using a double-dot (`..`) or an empty string for the start/end.
+part:: If a `datetime` parameter is specified requesting zone data where no temporal dimension applies, the Implementation SHALL either ignore the parameter or return a 4xx client error.
 ====
 
 Note: ISO 8601-2 distinguishes unbounded start/end timestamps (double-dot) and unknown start/end timestamps (empty string). For queries, an unspecified start/end has the same effect as an unbounded start/end.
@@ -112,8 +114,8 @@ March 18, 2018, 12:31:12 UTC or earlier:
 identifier:: /req/data-subsetting/properties
 description:: For specifying fields to include when retrieving zone data
 part:: The zone data retrieval operation SHALL support a parameter `properties` where the value is a comma-separated list of fields to be returned.
-part:: The implementation SHALL support selecting a field using the identifier corresponding to the top-level property keys of the logical schema of the resource associated with the DGGRS zone data request, and return 400 status code for an unrecognized selected field.
+part:: The Implementation SHALL support selecting a field using the identifier corresponding to the top-level property keys of the logical schema of the resource associated with the DGGRS zone data request, and return 400 status code for an unrecognized selected field.
 part:: Only the selected fields SHALL be returned from the zone data request.
-part:: If the zone data encodings response can self-describe its list of fields (as with the `shema` property of the DGGS-JSON encoding), the field description SHALL correspond to the requested list of fields.
+part:: If the zone data encodings response can self-describe its list of fields (as with the `schema` property of the DGGS-JSON encoding), the field description SHALL correspond to the requested list of fields.
 part:: If the negotiated format of the response has a concept of field order, then the fields SHALL be in the same order as the requested list of selected fields.
 ====

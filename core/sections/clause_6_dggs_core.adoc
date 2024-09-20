@@ -1,17 +1,18 @@
 [obligation=normative]
 [[rc_core]]
-== Requirement Class "Core"
+== Requirements Class "Core"
 
 === Overview
 
-The "Core" Requirement Class allows a client to list available DGGRSs for a given resource,
+An implementation of the DGGS API "Core" Requirements Class enables a client to list available DGGRSs for a given resource,
 retrieve additional information about a particular DGGRS, and retrieve information about a particular DGGRS zone.
 
-The "Core" Requirement Class is the only mandatory Requirements Class, but an implementation with practical use
-is expected to additionally implement either the <<rc_data-retrieval,"Zone Data Retrieval">> Requirement Class, so that a client can ask a question of the type _**"What is here?"**_
-and/or the <<rc_zone-query,"Zone Query">> Requirement Class, so that a client can ask a question of the type _**"Where is it?"_**.
+The "Core" Requirements Class is the only mandatory Requirements Class. However, an implementation with practical use
+is expected to additionally implement either the <<rc_data-retrieval,"Zone Data Retrieval">> Requirements Class, so that a client can ask a question of the type _**"What is here?"**_
+and/or the <<rc_zone-query,"Zone Query">> Requirements Class, so that a client can ask a question of the type _**"Where is it?"_**.
+To conform to this standard, either or both of these additional requirements classes also needs to be implemented.
 
-An https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/tree/master/openapi[example OpenAPI 3.0 definition for OGC API - DGGS] is provided, defined as individual building blocks
+An https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/tree/master/openapi[example OpenAPI 3.0 definition for OGC API - DGGS] is provided, defined as individual components
 which can be assembled with the https://apitools.dev/swagger-cli/[swagger-cli tool] after customizing the API definition for a particular implementation or deployment.
 The example API definition can be visualized with https://petstore.swagger.io/?url=https://raw.githubusercontent.com/opengeospatial/ogcapi-discrete-global-grid-systems/master/openapi/ogcapi-dggs-1.bundled.json[SwaggerUI].
 

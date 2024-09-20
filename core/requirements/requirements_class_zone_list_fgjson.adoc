@@ -16,7 +16,7 @@ requirement:: /req/zone-fgjson/content
 [%metadata]
 identifier:: /req/zone-fgjson/content
 part:: Every 200 response of the server for zone query with the media type `application/fg+json` SHALL be a Features & Geometry JSON document consisting of a FeatureCollection, where every Feature represents a single zone.
-part:: Every feature SHALL have a `zoneID` property corresponding to the textual identifer of the zone.
+part:: Every feature SHALL have a `zoneID` property corresponding to the textual identifier of the zone.
 part:: The geometry of each feature SHALL be the geometry of the zone.
 ====
 
@@ -42,5 +42,5 @@ part:: The implementation SHOULD support a `geometry` query parameter allowing a
 part:: The implementation SHOULD support a value of `geometry=zone-centroid` to request a representation where the geometry of each a zone is a Point geometry for the centroid of that zone.
 part:: The implementation SHOULD support a value of `geometry=zone-region` to request a representation where the geometry of each zone is a (Multi)Polygon or Polyhedron geometry.
 part:: The implementation SHOULD support a value of `geometry=none` to request a representation with a null geometry.
-part:: If a requested geometry representation is not supported, the implementation SHOULD return a 4xx or 501 "Not Implemented" HTTP error.
+part:: If a requested geometry representation is not supported, the Implementation SHOULD return a 4xx or 501 "Not Implemented" HTTP error.
 ====

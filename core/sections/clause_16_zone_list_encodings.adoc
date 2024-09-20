@@ -1,9 +1,9 @@
 [[zone-list-encodings-section]]
 == Requirements Classes for Encodings of Zone list
 
-This standard does not mandate any particular encoding or format in which to return the `../dggs/{dggrsId}/zones` resources.
+The OGC API - DGGS Standard does not mandate any particular encoding or format in which to return the `../dggs/{dggrsId}/zones` resources.
 DGGRS Zone Lists can be encoded in any suitable data format.
-However, it does define requirements class for zone list encodings which are expected to be commonly supported in implementations of this standard.
+However, it does define requirements classes for zone list encodings which are expected to be commonly supported in implementations of this Standard.
 These requirements classes include:
 
 * <<rc_zone-json,JSON Zone List>>
@@ -41,7 +41,7 @@ The JSON zone list encoding requirements class defines the ability to retrieve a
 The response consists of a simple JSON object with a `"zones"` array property listing the zone identifiers as strings.
 The object can also include a `"links"` objects linking back to other resources of the DGGRS.
 
-This requirement class provides an easy to implement, reasonably efficient and interoperable mechanism to exchange lists of zone identifiers.
+This requirements class provides an easy to implement, reasonably efficient and interoperable mechanism to exchange lists of zone identifiers.
 
 include::../requirements/requirements_class_zone_list_json.adoc[]
 
@@ -83,7 +83,7 @@ The geometry of the zone should be polygons or multipolygons (e.g., in the case 
 The zone identifier is represented in the `id` field of each feature.
 
 While not intended to efficiently exchange zone list, as the response carries the geometry of the zones which could easily be computed client-side which takes considerable bandwidth and is
-not necessary for a 3 client working natively with the same DGGRS, this requirement class provides an easy way to readily visualize the response in a variety of tools.
+not necessary for a 3 client working natively with the same DGGRS, this requirements class provides an easy way to readily visualize the response in a variety of tools.
 This requirements class is therefore intended for convenience, demonstration and educational purposes.
 
 include::../requirements/requirements_class_zone_list_geojson.adoc[]
@@ -100,7 +100,7 @@ The geometry of the zone should be polygons or multipolygons (e.g., in the case 
 The zone identifier is represented in the `id` field of each feature.
 
 While not intended to efficiently exchange zone list, as the response carries the geometry of the zones which could easily be computed client-side which takes considerable bandwidth and is
-not necessary for a DGGS client working natively with the same DGGRS, this requirement class provides an easy way to readily visualize the response in a variety of tools.
+not necessary for a DGGS client working natively with the same DGGRS, this requirements class provides an easy way to readily visualize the response in a variety of tools.
 This requirements class is therefore intended for convenience, demonstration and educational purposes.
 
 include::../requirements/requirements_class_zone_list_fgjson.adoc[]
@@ -118,7 +118,7 @@ The response is a 2D gridded coverage where each cell is a zone in the list, in 
 For DGGRSs with non-rectangular zones, the resolution would need to be higher than a single pixel per the most detailed zone to be returned in order to be able to recognize the zone geometry,
 and would therefore be very sub-optimal. While for rectangular zones it would be easy to identify zones with a one-to-one correspondence, recognizing non-rectangular zones would be significantly more difficult.
 
-While not intended to efficiently exchange zone list, this requirement class provides an easy way to readily visualize the response in a variety of tools.
+While not intended to efficiently exchange zone list, this requirements class provides an easy way to readily visualize the response in a variety of tools.
 This requirements class is therefore intended for convenience, demonstration and educational purposes.
 
 include::../requirements/requirements_class_zone_list_geotiff.adoc[]

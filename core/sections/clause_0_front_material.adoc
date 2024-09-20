@@ -3,11 +3,11 @@
 This document defines the _OGC API - Discrete Global Grid Systems - Part 1: Core_ Standard. Suggested additions, changes and comments on this standard are welcome and encouraged.
 Such suggestions may be submitted as an issue on the https://github.com/opengeospatial/ogcapi-dggs/issues[_OGC API - DGGS_ GitHub repository].
 
-OGC API Standards define modular API building blocks to spatially enable Web APIs in a consistent way. OGC API Standards use the OpenAPI specification for describing the API building blocks.
+OGC API Standards define modular API components to spatially enable Web APIs in a consistent way. OGC API Standards use the OpenAPI specification for describing the API components.
 
-_OGC API - Discrete Global Grid Systems_ provides API building blocks to retrieve data and query zones based on Discrete Global Grid Systems (DGGS) concepts defined in
-https://docs.ogc.org/as/20-040r3/20-040r3.html[OGC Abstract Topic 21].
-Additional parts for _OGC API - Discrete Global Grid Systems_ may be defined in the future to provide additional capabilities.
+The _OGC API - Discrete Global Grid Systems_ defines API components to retrieve data and query zones based on Discrete Global Grid Systems (DGGS) concepts defined in
+https://docs.ogc.org/as/20-040r3/20-040r3.html[OGC Abstract Specification Topic 21].
+Additional parts for the _OGC API - Discrete Global Grid Systems_ Standard may be defined in the future to provide additional capabilities.
 
 ////
 *OGC Declaration*
@@ -36,17 +36,18 @@ Attention is drawn to the possibility that some of the elements of this document
 == Security considerations
 
 OGC API — DGGS — Part 1 only defines HTTP GET operations. As such the security considerations are limited to those applicable to a "read only" service.
-However, implementations of OGC API - DGGS have to process resource paths and query parameters in a way that cannot be used by a client to inject malicious queries that makes available unforeseen data or
-even force the server to perform unwanted or dangerous actions. The following paragraphs enumerate some security considerations.
+However, implementations of the OGC API - DGGS Standard will have to process resource paths and query parameters in a way that cannot be used by a client
+to inject malicious queries that makes available unforeseen data or even force the server to perform unwanted or dangerous actions.
+The following paragraphs enumerate some security considerations.
 
-Due to the flexibility in querying DGGS zones, implementations of the _OGC API - DGGS_ that are not optimized can easily encounter requests that take some time to resolve.
+Due to the flexibility in querying DGGS zones, implementations of the _OGC API - DGGS_ Standard that are not optimized can easily encounter requests that take some time to resolve.
 If several of these requests are processed simultaneously, the server can become slow or unresponsive.
 Servers should take advantage of the space partitioning structures of the implemented DGGRSs that guarantee a deterministic maximum amount of data to process,
 ensuring that maximum refinement level is used for regions covering a larger area, and refusing requests which would otherwise be problematic for the server.
 Servers should also set and apply reasonable limits (e.g., maximum number of zones to return, etc.) to prevent Denial of Service attacks.
 
-Some OGC API - DGGS deployments may assign different roles to different users that may result in accessing different collections or geographical areas for which data can be retrieved or zones can be queried.
-The access control can be described in the OpenAPI definition as discussed in OGC API - Common (https://docs.ogc.org/is/19-072/19-072.html#rc_oas30-security).
+Some deployments of the OGC API - DGGS Standard may assign different roles to different users that may result in accessing different collections or geographical areas for which data can be retrieved or zones can be queried.
+The access control can be described in the OpenAPI definition as discussed in the OGC API - Common Standard (https://docs.ogc.org/is/19-072/19-072.html#rc_oas30-security).
 Servers should take care that all resources in all representations and ways they can be requested (e.g., adding query parameters) are managed consistently.
 
 Another security consideration is that DGGS data or DGGS zone lists returned by a DGGS API endpoint may be positionally incorrect and potentially guide users to wrong locations.
@@ -78,8 +79,13 @@ All questions regarding this submission should be directed to the editors or the
 [abstract]
 == Abstract
 
-This specification defines building blocks which can be used as part of a Web API to retrieve geospatial data for a specific
-area, time and resolution of interest, based on a specific Discrete Global Grid Reference System (DGGRS),
-as defined in https://docs.ogc.org/as/20-040r3/20-040r3.html[OGC Abstract Topic 21], as well to query the list of DGGRS zones from which data is available and/or
-matching a specified query, in combination with other building blocks defining queries, such as a filter defined using
-the https://docs.ogc.org/DRAFTS/21-065.html[OGC Common Query Language (CQL2)].
+The OGC API - Discrete Global Grid Systems - Part 1: Core Standard defines requirements that can be implemented and integrated into a deployed Web API.
+The DGGS API allows to retrieve geospatial data for a specific area, time and resolution of interest, based on a specific Discrete Global Grid Reference System (DGGRS).
+Additionally, the DGGS API defines operations to query the list of DGGRS zones from which data is available and/or matching a specified query.
+Such queries are expressed by combining HTTP query parameters, including the possibility to express more complex filtering queries using the
+http://www.opengis.net/doc/IS/cql2/1.0[OGC Common Query Language (CQL2)].
+
+Readers are strongly encouraged to first familiarize themselves with the Discrete Global Grid Systems (DGGS) concepts defined in
+https://docs.ogc.org/as/20-040r3/20-040r3.html[OGC Abstract Specification Topic 21] laying the foundation for this Standard.
+
+Please note that in the remainder of this document, the Standard will be referred to as the "OGC API – DGGS Standard", "the DGGS API" or "this Standard".

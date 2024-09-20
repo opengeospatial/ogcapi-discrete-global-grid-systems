@@ -18,7 +18,7 @@ identifier:: /req/data-png/content
 part:: Every 200 response of the server for zone data with the media type `image/png` SHALL be a PNG image representing the data values for all selected fields for a single zone.
 part:: If the zone geometry is not rectangular, the closest bounding rectangle SHALL be used for referencing the image.
 part:: A distinct value for each sub-zone implied from the requested `zone-depth` SHALL correspond to at least one distinct cell value in the response.
-part:: For implementations supporting Data Custom Depths, each depth of the requested zone depth pyramid SHALL be a separate image (overview) in the response.
+part:: For Implementations supporting Data Custom Depths, each depth of the requested zone depth pyramid SHALL be a separate image (overview) in the response.
 part:: A `Values-Scale:` response header with a numeric real value SHALL be returned indicating the factor by which values were multiplied before an offset was added to result in the encoded 8-bit or 16-bit PNG unsigned integer values.
 part:: A `Values-Offset:` response header with a numeric real value SHALL be returned indicating the offset which was added after multiplying values by the scale factor to result in the encoded 8-bit or 16-bit PNG unsigned integer values.
 ====

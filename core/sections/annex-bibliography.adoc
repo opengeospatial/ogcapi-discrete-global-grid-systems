@@ -18,4 +18,3 @@
 
 * [[[Goodchild1992,Goodchild1992]]] Michael F. Goodchild, Yang Shiren, A hierarchical spatial data structure for global geographic information systems, CVGIP: Graphical Models and Image Processing, Volume 54, Issue 1, Pages 31-44, ISSN 1049-9652 (1992). https://doi.org/10.1016/1049-9652(92)90032-S
 
-* [[[Zarr2,Zarr2]]], Zarr Storage Specification Version 2. https://zarr-specs.readthedocs.io/en/latest/v2/v2.0.html

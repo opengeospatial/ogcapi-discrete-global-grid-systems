@@ -17,5 +17,6 @@ Clarification regarding resolution (https://github.com/opengeospatial/ogcapi-dis
 Clarifications (https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/commit/cee368507c74932cf266f10250a1f48ccfc6706d[cee3685])
 |2023-02-17 |0.11 |Jerome St Louis |7-Data Retrieval | Added `zone-depth` parameter (https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/commit/2b8fa586aaad9a880e6c5eb586ddc24e725fc2e9[2b8fa58])
 |2024-06-18 |0.12 |Jerome St Louis |all | Draft ready for presentation at Montréal Members Meeting
-|2024-08-24 |1.0.0rc1 |Jerome St Louis |all | Complete Zone Data examples. New Zarr requirement class. Clarify DGGS/DGGH terminology and related DGGRS schema adjustments. New DGGS-FG-(UB)JSON encoding for efficient vector format with coordinates quantized to sub-zones. `filter` parameter for zone data. Initial draft ready for OAB review.
+|2024-08-24 |1.0.0rc1 |Jerome St Louis |all | Complete Zone Data examples. New Zarr requirements class. Clarify DGGS/DGGH terminology and related DGGRS schema adjustments. New DGGS-FG-(UB)JSON encoding for efficient vector format with coordinates quantized to sub-zones. `filter` parameter for zone data. Initial draft ready for OAB review.
+|2024-09-20 |1.0.0rc2 |Carl Reed, Jerome St Louis |all | Applied suggested edits from Carl Reed's review. Draft ready for public comment period.
 |===

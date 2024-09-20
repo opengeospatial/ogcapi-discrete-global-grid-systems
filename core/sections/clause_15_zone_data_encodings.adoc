@@ -1,23 +1,23 @@
 [[zone-data-encodings-section]]
 == Requirements Classes for Encodings of Zone data
 
-This standard does not mandate any particular encoding or format in which to return the `.../dggs/{dggrsId}/zones/{zoneId}/data` resources.
+The OGC API - DGGS Standard does not mandate any particular encoding or format in which to return the `.../dggs/{dggrsId}/zones/{zoneId}/data` resources.
 DGGS Zone Data can be encoded in any suitable data format.
-However, it does define requirements classes for zone data encodings which are expected to be commonly supported in implementations of this standard.
-These requirements classes include,
+However, the Standard does define requirements classes for zone data encodings which are expected to be commonly supported in implementations of this standard.
+These requirements classes include:
 
-for data rasterized to DGGRS sub-zones:
+For data rasterized to DGGRS sub-zones:
 
 * <<rc_data-json,DGGS-JSON Data>>
 * <<rc_data-ubjson,DGGS-UBJSON Data>>
 * <<rc_data-zarr,Zarr Data>>
 
-for vector features whose geometry coordinates are quantized to DGGRS sub-zones:
+For vector features whose geometry coordinates are quantized to DGGRS sub-zones:
 
 * <<rc_data-dggs-fgjson,DGGS-FG-JSON Data>>
 * <<rc_data-dggs-fgubjson,DGGS-FG-UBJSON Data>>
 
-for rasterized data output readily usable in non-DGGS systems or to facilitate interoperability with other DGGHs:
+For rasterized data output readily usable in non-DGGS systems or to facilitate interoperability with other DGGHs:
 
 * <<rc_data-geotiff,GeoTIFF Data>>
 * <<rc_data-netcdf,netCDF Data>>
@@ -25,7 +25,7 @@ for rasterized data output readily usable in non-DGGS systems or to facilitate i
 * <<rc_data-jpegxl,JPEG XL Data>>
 * <<rc_data-png,PNG Data>>
 
-for vector features output readily usable in non-DGGS systems or to facilitate interoperability with other DGGHs:
+For vector features output readily usable in non-DGGS systems or to facilitate interoperability with other DGGHs:
 
 * <<rc_data-geojson,GeoJSON Data>>
 * <<rc_data-fgjson,FG-JSON Data>>
@@ -33,7 +33,7 @@ for vector features output readily usable in non-DGGS systems or to facilitate i
 [[zone_data_media_types]]
 === Media Types (for zone data)
 
-A table of the media types used in the encoding of the Zone Data requirements classes defined in this standard follows.
+A table of the media types used in the encoding of the Zone Data requirements classes defined in this Standard follows.
 
 [#api-dggs-zone-data-media-types,reftext='{table-caption} {counter:table-num}']
 .Media Types used for zone data encoding requirements classes
@@ -81,7 +81,7 @@ include::../examples/2-multidimensions-variables.json[]
 
 include::../requirements/requirements_class_zone_data_json.adoc[]
 
-IMPORTANT: For DGGS-JSON containing additional dimensions, the one-dimensional array of `values` is ordered in a _sub-zone order major_ manner, so that all values of a particular field for a given sub-zone are
+IMPORTANT: For DGGS-JSON containing additional dimensions, the one-dimensional array of `values` is ordered in a _sub-zone order major_ manner. This is so all values of a particular field for a given sub-zone are
 regrouped together. Values for the first dimensions listed in the `dimensions` array are then regrouped together, followed by additional dimensions as they appear in order in the dimensions array.
 
 [[rc_data-ubjson]]
@@ -89,7 +89,7 @@ regrouped together. Values for the first dimensions listed in the `dimensions` a
 
 ==== Overview
 
-The DGGS-UBJSON Zone Data encoding requirements class defines support for encoding a DGGS Zone data response using the same JSON structure as the above JSON data requirement class, but using the binary UBJSON encoding.
+The DGGS-UBJSON Zone Data encoding requirements class defines support for encoding a DGGS Zone data response using the same JSON structure as the above JSON data requirements class but using the binary https://ubjson.org[UBJSON] encoding.
 
 include::../requirements/requirements_class_zone_data_ubjson.adoc[]
 
@@ -102,11 +102,12 @@ After installing with `pip3 install py-ubjson`, a DGGS-JSON file can be converte
 
 ==== Overview
 
-The DGGS-FG-JSON Zone Data encoding requirements class defines support for encoding a DGGS Zone data response for vector features in JSON, by extending https://docs.ogc.org/DRAFTS/21-045r1.html[OGC Features & Geometry JSON]
+The DGGS-FG-JSON Zone Data encoding requirements class defines support for encoding a DGGS Zone data response for vector features in JSON.
+This is accomplished by extending https://docs.ogc.org/DRAFTS/21-045r1.html[OGC Features & Geometry JSON]
 with the concepts of DGGRS, reference parent zone, relative depth and deterministic sub-zone order, allowing to encode coordinates pairs as local sub-zone indices.
 
-This encoding is intended to support efficient encoding of vector geometry at arbitrary precision using finer grids to locally address the inside of the reference parent zones,
-in a manner agnostic of the DGGRS (as long as the DGGRS can define a deterministic sub-zone order), in a human-readable format sharing as much as possible with existing practice for exchanging
+DGGS-FG-JSON Zone Data is intended to support efficient encoding of vector geometry at arbitrary precision using finer grids to locally address the inside of the reference parent zones.
+This is done in a manner agnostic of the DGGRS (which needs to define a deterministic sub-zone order), in a human-readable format sharing as much as possible with existing practice for exchanging
 geospatial vector data in JSON.
 
 Example encodings follow:
@@ -130,7 +131,7 @@ include::../requirements/requirements_class_zone_data_dggs_fgjson.adoc[]
 
 ==== Overview
 
-The DGGS-UB-FGJSON Zone Data encoding requirements class defines support for encoding a DGGS Zone data response for vector features using the same JSON structure as the above DGGS-FG-JSON data requirement class,
+The DGGS-UB-FGJSON Zone Data encoding requirements class defines support for encoding a DGGS Zone data response for vector features using the same JSON structure as the above DGGS-FG-JSON data requirements class,
 but using the binary UBJSON encoding.
 
 include::../requirements/requirements_class_zone_data_dggs_fgubjson.adoc[]
@@ -160,7 +161,7 @@ include::../requirements/requirements_class_zone_data_geotiff.adoc[]
 The GeoJSON Zone Data encoding requirements class defines support for encoding a DGGS Zone data response according to the https://datatracker.ietf.org/doc/html/rfc7946[GeoJSON specification].
 
 GeoJSON is a commonly used format for representing features with simple geometries and related properties.
-GeoJSON is simple to understand and well supported by tools and software libraries.
+GeoJSON is simple to understand and is well supported by tools and software libraries.
 Since most Web developers are comfortable with using JSON-based formats, supporting GeoJSON is recommended for a vector representation of DGGS Zone data.
 
 include::../requirements/requirements_class_zone_data_geojson.adoc[]
@@ -170,9 +171,9 @@ include::../requirements/requirements_class_zone_data_geojson.adoc[]
 
 ==== Overview
 
-The FG-JSON Zone Data encoding requirements class defines support for encoding a DGGS Zone data response according to the https://docs.ogc.org/DRAFTS/21-045.html[FG JSON candidate Standard].
+The FG-JSON Zone Data encoding requirements class defines support for encoding a DGGS Zone data response according to the https://docs.ogc.org/DRAFTS/21-045.html[OGC FG JSON candidate Standard].
 
-FG JSON is an OGC format for representing features with simple geometries and related properties, with extending GeoJSON with greater flexibility.
+FG JSON is an OGC format for representing features with simple geometries and related properties extending GeoJSON for greater flexibility.
 FG JSON is simple to understand and well supported by tools and software libraries.
 Since most Web developers are comfortable with using JSON-based formats, supporting FG JSON is recommended for a vector representation of DGGS Zone data.
 
@@ -183,7 +184,10 @@ include::../requirements/requirements_class_zone_data_fgjson.adoc[]
 
 ==== Overview
 
-The netCDF Zone Data encoding requirements class defines support for encoding a DGGS Zone data response according to the https://portal.ogc.org/files/?artifact_id=43732[OGC netCDF standard].
+The netCDF Zone Data encoding requirements class defines support for encoding a DGGS Zone data response according to the https://portal.ogc.org/files/?artifact_id=43732[OGC netCDF standard] and
+to any encoding extension such as the https://portal.ogc.org/files/?artifact_id=43734[NetCDF classic and 64-bit offset format], or netCDF version 4 based on https://docs.ogc.org/is/18-043r3/18-043r3.html[OGC HDF5].
+NetCDF (network Common Data Form) is a data model for array-oriented scientific data, a freely distributed collection of access libraries implementing support for that data model, and
+machine-independent formats.
 
 include::../requirements/requirements_class_zone_data_netcdf.adoc[]
 
@@ -192,7 +196,7 @@ include::../requirements/requirements_class_zone_data_netcdf.adoc[]
 
 ==== Overview
 
-The Zarr Zone Data encoding requirements class defines support for encoding a DGGS Zone data response according to the https://zarr-specs.readthedocs.io/en/latest/v2/v2.0.html[Zarr Storage Specification Version 2], packed into a <<ZIPISO,Zip archive>>.
+The Zarr Zone Data encoding requirements class defines support for encoding a DGGS Zone data response according to the https://www.opengis.net/doc/CS/zarr/2.0[OGC Zarr Storage Specification 2.0 Community Standard], packed into a <<ZIPISO,Zip archive>>.
 
 include::../requirements/requirements_class_zone_data_zarr.adoc[]
 

@@ -5,12 +5,12 @@
 This annex provides a set of examples illustrating requests and responses for retrieving DGGS <<rc_data-retrieval,zone data>> and performing <<rc_zone-query,zone queries>> using capabilities defined by this DGGS API.
 
 === Collection description
-DGGS resources can be attached to an https://docs.ogc.org/DRAFTS/20-024.html[_OGC API - Common - Part 2_] collection origin.
+DGGS resources can be attached to an https://docs.ogc.org/DRAFTS/20-024.html[_OGC API - Common - Part 2_] collection origin resource path.
 The following global GEBCO 2014 bathymetry collection will be used as an example:
 
 https://maps.gnosis.earth/ogcapi/collections/gebco?f=json[\https://maps.gnosis.earth/ogcapi/collections/gebco]
 
-An example JSON response for this collection description resource, as defined by Common - Part 2 and the <<rc_collection-dggs, Collection DGGS Requirement Class>>, is presented below, including a link to the list of available DGGRSs:
+An example JSON response for this collection description resource, as defined by Common - Part 2 and the <<rc_collection-dggs, Collection DGGS Requirements Class>>, is presented below, including a link to the list of available DGGRSs:
 
 [%unnumbered%]
 [source,json]
@@ -48,12 +48,13 @@ An example JSON response for this collection description resource, as defined by
 ----
 
 === Listing available DGGRSs
-Whether accessing DGGS resources for the root of an API/dataset or for a particular collection, the first DGGS-specific request made by a client would be to list the available DGGRSs.
-Following the link obtained from the previous example response, a client can determine which DGGRSs are supported by the API at that end-point:
+Whether accessing DGGS resources for the root of the API (which may correspond to a dataset, as stated in https://docs.ogc.org/is/17-069r3/17-069r3.html#_scope[OGC API - Features]) or for a particular collection,
+the first DGGS-specific request made by a client would be to list the available DGGRSs.
+Following the link obtained from the previous example response, a client can determine which DGGRSs are supported by the API at that endpoint:
 
 https://maps.gnosis.earth/ogcapi/collections/gebco/dggs?f=json[\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs]
 
-An example JSON response for this DGGRS list, as defined by the <<rc_core,Core requirement class>>, is presented below:
+An example JSON response for this DGGRS list, as defined by the <<rc_core,Core requirements class>>, is presented below:
 
 [%unnumbered%]
 [source,json]
@@ -123,7 +124,7 @@ In this example, the client selects the <<isea3h-dggrs,ISEA3H DGGRS>> (because i
 
 https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H?f=json[\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H]
 
-An example JSON response for this DGGRS description, as defined by the <<rc_core,Core requirement class>>, is presented below.
+An example JSON response for this DGGRS description, as defined by the <<rc_core,Core requirements class>>, is presented below.
 Note how the description is more comprehensive than the summary description included for each item in the previous DGGRS list response, including a description,
 a default (relative) depth as well as additional links and link templates.
 
@@ -172,18 +173,19 @@ which will likely be used to initially populate an authoritative registry, Addit
 === Retrieving information for a specific DGGRS zone
 
 Later examples will demonstrate how to list available zones by performing zone queries, but for now these examples will skip directly to <<zone-info,retrieving information about a particular zone>>.
-This capability, also defined in the Core requirement class, exists primarily for completeness of the API resource tree, for allowing to explore datasets using a browser interface,
-as well as for educational, demonstration and debugging purposes.
+This capability is also defined in the Core requirements class and exists primarily for completeness of the API resource tree, making the `../dggs/zones/{zoneId}` resource between
+`../dggs/zones` and `../dggs/zones/{zoneId}/data` also retrievable.
+The zone information is useful for enabling exploration of datasets using a browser interface, as well as for educational, demonstration and debugging purposes.
 An actual DGGS API client for visualization or performing analytics would normally not access this resource at all, since URL templates allow to directly access the data for a particular zone.
-While the Core requirement class makes a number of recommendations about statistical information and topological relationships that should be included in the zone information resource,
+While the Core requirements class makes several recommendations about statistical information and topological relationships that should be included in the zone information resource,
 clients may not rely on any of this information being present. Clients can instead rely on their own local software libraries to establish topological relationships, can use zone queries
 to pose questions that can be answered by a list of zone IDs, or can retrieve zone data packets containing values from multiple sub-zones to perform their own analytics.
 A future extension could also introduce mandatory requirements making some of the recommended content such as summary statistics or additional useful information mandatory, which clients could then rely on
 for conforming implementations.
 
-This example assumes a client does for some reason request information in a JSON representation about a particular ISEA3H DGGRS zone, say `E6-317-A`, based on its built-in support for that DGGRS
-(perhaps this client is an Executable Test Suite, since implementing this resource is still required to conform to the Core conformance class,
-including at minimum an `id` and links to the DGGRS and data retrieval, if applicable).
+This example assumes a client does for some reason request information in a JSON representation about a particular ISEA3H DGGRS zone, say `E6-317-A`, based on its built-in support for that DGGRS.
+Perhaps this client is an Executable Test Suite -- a set of code providing runtime tests for the assertions defined by the Abstract Test Suite. Implementing this resource is still required
+to conform to the Core conformance class, including at minimum an `id` and links to the DGGRS and data retrieval, if applicable.
 The GET request URL and response for this zone information resource associated with the GEBCO collection would then look like the following:
 
 https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-317-A?f=json[\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-317-A]
@@ -322,20 +324,20 @@ for which the collection has data.
 
 ==== Querying a particular refinement level
 
-If no `zone-level` parameter is provided, the server is free to pick a default zone level for such queries, which would result in a reasonable number of zones returned,
+If no `zone-level` parameter is provided, the server is free to pick a default zone level for such queries. This would result in a reasonable number of zones returned,
 based on the area and resolution of the data collection. In this example, the client will explicitly request a list of zones at refinement level 1.
 
-By default, if `compact-zones=false` is not specified by the client, zone queries are compacted, meaning that
+By default, if `compact-zones=false` is not specified by the client, zone queries are compacted. This means that
 if all sub-zones of a parent zone would be included in the response, they get replaced by that parent zone so that fewer zones need to be enumerated.
-This can result in zones of a lower refinement level being returned than the requested `zone-level`, and therefore a mix of zones of different levels.
-A full globe response would thereore always result in the list of all zones of refinement level 0.
+This can result in zones being returned of a lower refinement level than the requested `zone-level`, and therefore a mix of zones of different levels.
+A full globe response would therefore always result in the list of all zones of refinement level 0.
 In these examples, the client will explicitly set `compact-zones=false`.
 
-Following the `[ogc-rel:dggrs-zone-query]` link, specifying these parameters, and negotiating a <<rc_table-zone_json,JSON zone list>> response using an `Accept: application/json` header, the client requests from the end-point:
+Following the `[ogc-rel:dggrs-zone-query]` link, specifying these parameters, and negotiating a <<rc_table-zone_json,JSON zone list>> response using an `Accept: application/json` header, the client requests from the endpoint:
 
 https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones?f=json&zone-level=1&compact-zones=false[\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones?zone-level=1&compact-zones=false]
 
-An example JSON response for this Zone Query JSON, as defined by the <<rc_zone-query,Zone Query requirement class>>, is presented below:
+An example JSON response for this Zone Query JSON, as defined by the <<rc_zone-query,Zone Query requirements class>>, is presented below:
 
 [%unnumbered%]
 [source,json]
@@ -371,9 +373,9 @@ The server returned all 32 zones of ISEA3H level 1 (which corresponds to a trunc
 
 Servers may support additional representations of zone lists beyond JSON, such as a more compact <<rc_zone-binary64bit,binary 64-bit integers>> encoding, a <<rc_zone-geojson,GeoJSON representation>> including zone geometry
 or an <<rc_zone-html,HTML representation>> for exploring datasets in a browser through the DGGS API.
-Note that regardless of encoding, zone query responses can also be compressed for additional banwidth efficiency if the client and server negotiate a content encoding e.g., using `Content-Encoding: gzip`.
+Note that regardless of encoding, zone query responses can also be compressed for additional bandwidth efficiency if the client and server negotiate a content encoding e.g., using `Content-Encoding: gzip`.
 
-CAUTION: The transfer of zone geometry in zone queries is not an efficient use of the DGGS API for practical analytics purposes, since clients should already have built-in knowledge of the selected DGGRS
+CAUTION: The transfer of zone geometry in zone queries is not an efficient implementation use of the DGGS API for practical analytics purposes. This is because clients should already have built-in knowledge of the selected DGGRS
 in their local software libraries and can efficiently infer the geometry of a zone from its zone ID alone as needed. In many use cases, the geometry may not be needed at all.
 
 The ability to retrieve zone lists in a geospatial data format such as GeoJSON or <<rc_zone-geotiff,GeoTIFF>> which can readily be visualized in GIS tools is useful for **educational**, **demonstration** and **debugging** purposes.
@@ -430,7 +432,7 @@ A visualization of the response from negotiating `application/geo+json` for the 
 image::images/zones-globe-isea3h-level1-bbox.png[width=300,align="center"]
 
 As seen below, an HTML representation could include rendered previews of the data for the zone area, summary information, as well as links to retrieve the data and access the zone information resource for each zone.
-Note that the significant variance in area (-11.31% and +6.66% from the reference mean zone (whose area is calculated by dividing the Earth surface area by the total number of zones) is due to the the fact that `A0-0-G` is a pentagon (in the ISEA projection -- on the Earth surface it looks more like a decagon) which occupies 5/6th the
+Note that the significant variance in area (-11.31% and +6.66% from the reference mean zone (whose area is calculated by dividing the Earth surface area by the total number of zones) is due to the fact that `A0-0-G` is a pentagon (in the ISEA projection -- on the Earth surface it looks more like a decagon) which occupies 5/6th the
 area of hexagons such as `A6-0-E` (which on the Earth surface is one of the hexagons appearing as a nonagon), as well as the fact that at level 1, the number of pentagons (12) is significant compared to the total number of zones (32).
 
 [#img_zones_html='{figure-caption} {counter:figure-num}']
@@ -447,9 +449,10 @@ image::images/zones-bbox-isea3h.png[width=500,align="center"]
 
 ==== Zones representing data availability
 
-The primary purpose of the <<rc_zone-query,Zone Query requirement class>> is to ask questions of the type _"Where is it?"_.
-The answer is a region of space-time represented by a list of zones. This region might correspond to where data is available for a particular collection, may be the result of a processing workflow, or the
-result of evaluating a CQL2 query expression as demonstrated in later examples. This result could otherwise have been communicated as a multi-polygon vector mask or as a rasterized 1-bit image or opacity channel.
+The primary purpose of the <<rc_zone-query,Zone Query requirements class>> is to ask questions of the type _"Where is it?"_.
+The answer is a region of spacetime represented by a list of zones. This region might correspond to where data is available for a particular collection of data, whether that data is static or the result
+of a processing workflow. Later examples will demonstrate more complex queries using CQL2 expressions.
+These resulting spatiotemporal regions could otherwise have been communicated as a multi-polygon vector mask or as a rasterized 1-bit image or opacity channel.
 
 The following example illustrates the case of a collection (elevation data from https://viewfinderpanoramas.org/[Viewfinder Panoramas]) which does not have data for everywhere on the globe (only over land), using a higher zone level of 6 for the query.
 
@@ -467,7 +470,7 @@ https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H
 .GeoJSON response for zone query for ISEA3H DGGRS at level 10, using a (40°N, 30°E) to (40°N,50°E) bounding box, for a https://viewfinderpanoramas.org/[Viewfinder Panoramas] land elevation collection, visualized in QGIS
 image::images/zones-srtm-isea3h-level10-bbox.png[width=500,align="center"]
 
-The DGGS API works independently of the nature of the data, whether dealing with gridded coverage or vector features, allowing to easily perform complex analytics involving heterogeneous data sources.
+An implementation of the DGGS API works independently of the nature of the data, whether dealing with gridded coverage or vector features. This allows easily performing complex analytics involving heterogeneous data sources.
 The previous examples all used gridded coverage data sources. The following example illustrates the same capabilities using the Natural Earth states and provinces collection:
 
 https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:cultural:ne_10m_admin_1_states_provinces/dggs/ISEA3H/zones?f=json&zone-level=6&compact-zones=false[\https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:cultural:ne_10m_admin_1_states_provinces/dggs/ISEA3H/zones?zone-level=6&compact-zones=false]
@@ -480,7 +483,7 @@ The similarity between the response for this collection of states and provinces 
 
 ==== Querying sub-zones of a parent zone
 
-The Zone Query requirement class defines the `parent-zone` query parameter as one more way how to restrict the query spatially (and temporally in the case of a temporal DGGRS), which is particularly useful for hierarchical exploration.
+The Zone Query requirements class defines the `parent-zone` query parameter as one more way to restrict the query spatially (and temporally in the case of a temporal DGGRS), which is particularly useful for hierarchical exploration.
 For example, to restrict the query to sub-zones of `A6-0-E` rather than using a bounding box, the client could perform the following request (at level 8):
 
 https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones?f=json&zone-level=8&parent-zone=A6-0-E&compact-zones=false[\https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones?zone-level=8&parent-zone=A6-0-E&compact-zones=false]
@@ -501,7 +504,7 @@ Going back to A6-0-E (a level 1 zone), this could also be used to retrieve the i
 
 https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones?f=json&zone-level=2&parent-zone=A6-0-E&compact-zones=false[\https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones?zone-level=2&parent-zone=A6-0-E&compact-zones=false]
 
-The 7 children zones (1 centroid child and 6 vertex children) are returned, since they all contain data.
+Since they all contain data, the seven children zones (one centroid child and six vertex children) are returned.
 
 [#img_zones_srtm_l10_parent_zone='{figure-caption} {counter:figure-num}']
 .GeoJSON response for zone query for ISEA3H DGGRS at level 2, for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones/A6-0-E[A6-0-E] (outline shown), for a https://viewfinderpanoramas.org/[Viewfinder Panoramas] land elevation collection, visualized in QGIS
@@ -510,9 +513,9 @@ image::images/zones-srtm-isea3h-next-level.png[width=400,align="center"]
 
 ==== ISEA9R (rhombus) Zone Queries
 
-Although all examples so far used the ISEA3H DGGRS, this DGGS API is completely agnostic of the DGGRS.
-Future planned parts for OGC Abstract Topic 21 will standardize new categories of DGGS, including volumetric (Part 2), temporal (Part 3) and axis-aligned (Part 4).
-The DGGS API functionality, as demonstrated in this examples section, is ready to handle any DGGRS, including DGGRS based on these new DGGS types.
+Although the examples so far have used the ISEA3H DGGRS, the DGGS API Standard is completely agnostic of the DGGRS.
+Future planned parts for OGC Abstract Topic 21 will standardize new categories of DGGH, including volumetric (Part 2), temporal (Part 3) and axis-aligned (Part 4).
+The DGGS API Standard, as demonstrated in this examples section, is ready to handle any DGGRS, including DGGRSs based on these new DGGH types.
 
 The following examples demonstrates equivalent zone queries using the <<isea9r-dggrs,ISEA9R DGGS>>, a dual DGGS of ISEA3H even refinement levels, which can be considered axis-aligned in a CRS derived from rotating and shearing the ISEA planar projection.
 In the ISEA planar projection, the ISEA9R zones are shaped as rhombuses.
@@ -573,13 +576,14 @@ https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSIS
 image::images/zones-srtm-ggg-level13-parent-zone.png[width=500,align="center"]
 
 === Compact zone queries
-The following examples are reprises of some of the earlier ones leaving compact zones enabled, showcasing the fewer zones being returned to communicate an identical spatial area.
+The following examples are reprises of some of the earlier examples leaving compact zones enabled.
+These examples showcase how the zone compacting mechanism allows to communicate the same spatial area using fewer zones.
 
 ==== ISEA3H compact zone queries
-Compacting ISEA3H zones is complicated by the fact that sub-zones are not fully congruent.
-The approach demonstrated here skips a refinement level, taking advantage of the fact that 7 of the grand-children of a zone are congruent. Overlaps are seen, as 6 holes
-are left at the vertices of the grand-parent, each occupying 1/3rd the size of a congruent grand-child. Note how 7 + 6 x 1/3 = 9 (3 x 3), which corresponds to the two subsequent refinements at the refinement ratio of 3.
-If the neighboring grand-parent of the same refinement level cannot be used, then the non-congruent vertex children must be included, resulting in these overlaps.
+Compacting ISEA3H zones is complicated by sub-zones not being fully congruent.
+The approach demonstrated here skips a refinement level, taking advantage of the fact that seven of the grandchildren of a zone are congruent. Overlaps are seen, as six holes
+are left at the vertices of the grandparent, each occupying 1/3rd the size of a congruent grandchild. Note how 7 + 6 x 1/3 = 9 (3 x 3), which corresponds to the two subsequent refinements at the refinement ratio of 3.
+If the neighboring grandparent of the same refinement level cannot be used, then the non-congruent vertex children must be included, resulting in these overlaps.
 
 https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones?f=json&bbox=30,40,50,60&zone-level=8["\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones?bbox=30,40,50,60&zone-level=8"]
 
@@ -673,20 +677,20 @@ https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSIS
 image::images/compact-srtm-ggg-level13-parent-zone.png[width=700,align="center"]
 
 === Filtering zone queries using CQL2 expressions
-The Zone Query capabilities is most useful for use cases where the retrieved zone list is the result of some operation,
+The Zone Query capabilities are most useful for use cases where the retrieved zone list is the result of some operation,
 whether a processing workflow or the evaluation of a query expressed by the client.
-The <<rc_zone-query-cql2-filter,CQL2 filter>> capability allows to express such queries using the https://docs.ogc.org/DRAFTS/21-065r1.html[OGC Common Query Language (CQL2)].
+The <<rc_zone-query-cql2-filter,CQL2 filter>> capability supports expressing such queries using the https://docs.ogc.org/DRAFTS/21-065r1.html[OGC Common Query Language (CQL2)].
 Note that the processing workflow could also itself include CQL2 expressions using https://docs.ogc.org/DRAFTS/21-009.html#section_fields_modifiers[input/output field modifiers].
 
-The CQL2 requirement class in this standard specifically calls for the https://docs.ogc.org/DRAFTS/21-065r1.html#cql2-text[CQL2-Text encoding], which is an intuitive representation with many similarities to SQL.
+The CQL2 requirements class in the OGC API - DGGS Standard specifically calls for the https://docs.ogc.org/DRAFTS/21-065r1.html#cql2-text[CQL2-Text encoding], which is an intuitive representation with many similarities to SQL.
 CQL2 defines minimum capabilities (https://docs.ogc.org/DRAFTS/21-065r1.html#cql2-core[Basic CQL2]) as well as additional optional capabilities, such as
 https://docs.ogc.org/DRAFTS/21-065r1.html#arithmetic[arithmetic operations] and https://docs.ogc.org/DRAFTS/21-065r1.html#spatial-functions[spatial relation functions].
-The API implementation's conformance resource (`/conformance` as defined in https://docs.ogc.org/is/19-072/19-072.html[OGC API - Common - Part 1: Core] "Landing Page" requirement class) would allow the client
+A DGGS API implementation's conformance resource (`/conformance` as defined in https://docs.ogc.org/is/19-072/19-072.html[OGC API - Common - Part 1: Core] "Landing Page" requirements class) enables the client
 to know which capabilities are supported.
 
 Basic CQL2 includes support for logical operators as well as to compare the value of queryables against literals using relational operators.
-The following examples will use the GEBCO collection from earlier ones to illustrate these capabilities.
-The previous simple zone queries using this collection were not particuarly interesting since it covers the entire globe,
+The following examples will use the same GEBCO collection as earlier examples to illustrate these capabilities.
+The previous simple zone queries using this collection were not particularly interesting since the collection covers the entire globe,
 but the use of CQL2 will enable the use of its data values.
 First, the client would retrieve the queryables by following the `[ogc-rel:queryables]` link from the collection description:
 
@@ -732,7 +736,7 @@ The following image is a visualization of the list of zones returned.
 .GeoJSON compact zones response for querying ISEA3H DGGRS for https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] with CQL2 expression `Elevation < 0` visualized in QGIS
 image::images/cql2-gebco-elevation.png[width=700,align="center"]
 
-The client could request instead for deeper elevations e.g., `Elevation < -4000`:
+The client could also request deeper elevations e.g., `Elevation < -4000`:
 
 https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?filter=Elevation%20<%20-4000&zone-level=6&f=json["\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?filter=Elevation < -4000&zone-level=6"]
 
@@ -756,9 +760,10 @@ https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?filter=Elev
 .GeoJSON compact zones response for querying ISEA3H DGGRS for https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] with CQL2 expression `Elevation < -4000 or Elevation > 3000` visualized in QGIS
 image::images/cql2-gebco-elevation-high-or-deep.png[width=700,align="center"]
 
-This last visualization higlights the fact that the Andes and Antarctica mountains are actually very close to very deep sea.
+This last visualization highlights the fact that the Andes and Antarctica mountains are actually very close to a very deep sea.
 
-If the implementation support spatial relation functions, a query could test intersection with a geometry, which can be expressed using a WKT literal in CQL2-Text.
+If the implementation supports spatial relation functions, a query could test intersection with a geometry.
+In CQL2-Text, spatial geometries are expressed using Well-Known Text (WKT) literals.
 The following example returns zones intersecting the Bermuda Triangle, making use of the `rec.geom` queryable, which represents the geometry of the individual coverage grid cells, mentioned earlier, at refinement level 9.
 
 https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?zone-level=9&filter=S_INTERSECTS(rec.geom,POLYGON((-64.8%2032.3,-65.5%2018.3,-80.3%2025.2,-64.8%2032.3)))&f=json["\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?zone-level=9&filter=S_INTERSECTS(rec.geom,POLYGON((-64.8 32.3,-65.5 18.3,-80.3 25.2,-64.8 32.3)))"]
@@ -767,7 +772,7 @@ https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?zone-level=
 .GeoJSON compact zones response for querying ISEA3H DGGRS for https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] with a CQL2 expression using S_INTERSECTS() for a WKT triangular polygon visualized in QGIS
 image::images/cql2-polygon-l9.png[width=600,align="center"]
 
-This spatial filter could also be combined together with a relational operator as in the following query for `Elevation < -5500` within the Bermuda Triangle:
+This spatial filter could also be combined with a relational operator as in the following query for `Elevation < -5500` within the Bermuda Triangle:
 
 https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?zone-level=11&filter=Elevation%20<%20-5500%20and%20S_INTERSECTS(rec.geom,POLYGON((-64.8%2032.3,-65.5%2018.3,-80.3%2025.2,-64.8%2032.3)))&f=json["\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?zone-level=11&filter=Elevation < -5500 and S_INTERSECTS(rec.geom,POLYGON((-64.8 32.3,-65.5 18.3,-80.3 25.2,-64.8 32.3)))"]
 
@@ -775,9 +780,9 @@ https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/isea3h/zones?zone-level=
 .GeoJSON compact zones response for querying ISEA3H DGGRS for https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] with a CQL2 expression using both `Elevation < -5500` as well as S_INTERSECTS() for a WKT polygon visualized in QGIS
 image::images/cql2-5500-depth-bermuda-l11.png[width=500,align="center"]
 
-To illustrate the use of CQL2 arithmetic operators, the following example will use a collection of daily climate CMIP5 data from the https://cds.climate.copernicus.eu/cdsapp#!/dataset/projections-cmip5-daily-single-levels[Copernicus Climate Data Store].
-The request will be for zones where the difference between two different fields of the coverage, the maximum (`tasmax`) and minimum (`tasmin`) daily near-surface air temperature, is greater than 10 degrees Kelvin.
-In addition, this request will use the `datetime` parameter to subset the temporal dimension for June 1, 2023.
+To illustrate the use of CQL2 arithmetic operators, the following example uses a collection of daily climate CMIP5 data from the https://cds.climate.copernicus.eu/cdsapp#!/dataset/projections-cmip5-daily-single-levels[Copernicus Climate Data Store].
+The request is for zones where the difference between two different fields of the coverage, the maximum (`tasmax`) and minimum (`tasmin`) daily near-surface air temperature, is greater than 10 degrees Kelvin.
+In addition, this request uses the `datetime` parameter to subset the temporal dimension for June 1, 2023.
 
 https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/isea3h/zones?zone-level=7&filter=(tasmax-tasmin)%3E10&datetime=2023-06-01&f=json["\https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/isea3h/zones?zone-level=7&filter=(tasmax-tasmin)>10&datetime=2023-06-01"]
 
@@ -825,8 +830,8 @@ The following examples illustrate this capability for different DGGRSs, represen
 Examples in this section retrieve data for pentagonal and hexagonal zones of an <<isea3h-dggrs, ISEA3H DGGRS>>, based on the ISEA projection.
 
 This first example retrieves elevation data for the GEBCO collection for ISEA3H zone `A2-0-A` at a relative depth of 8.
-The default zone depth is 10 for this DGGRS in this particular deployment of the API, as specified in the `defaultDepth` property of the <<isea3h-dggs-description-response,ISEA3H DGGRS description response>>).
-These requests override this default by using the `zone-depth` parameter defined in the <<rc_data-custom-depths,"Data Custom Depths">> requirement class.
+The default zone depth is 10 for this DGGRS in this particular deployment of a DGGS API, as specified in the `defaultDepth` property of the <<isea3h-dggs-description-response,ISEA3H DGGRS description response>>).
+These requests override this default by using the `zone-depth` parameter defined in the <<rc_data-custom-depths,"Data Custom Depths">> requirements class.
 
 ===== DGGS-JSON Examples
 
@@ -862,7 +867,7 @@ image::images/isea3h-elevation.png[width=700,align="center"]
 
 In a https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A/data?zone-depth=8&f=geotiff[GeoTIFF representation], rather than being quantized to sub-zones, the Elevation would be quantized to the closest rectilinear gridded coverage cells, at a resolution high enough to include at least
 one value per corresponding sub-zones. The data may still be clipped to the shape of the zone geometry.
-By default, this implementation returns the data in an OGC:CRS84 CRS.
+By default, this implementation of the DGGS API Standard returns the data in an OGC:CRS84 CRS.
 
 [#img_zone_data_tiff_wgs84='{figure-caption} {counter:figure-num}']
 .Visualization of a CRS84 GeoTIFF response for retrieving data for ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A[A2-0-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 8
@@ -874,7 +879,7 @@ Visualizing this data on 3D globe would look like the following image.
 .Visualization on a 3D Globe of a GeoTIFF response for retrieving data for ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A[A2-0-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 8
 image::images/tiff-zoneDataReprojected.png[width=700,align="center"]
 
-Alternatively, the implementation also supports the `crs` parameter to select the https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A/data?zone-depth=8&f=geotiff&crs=%5BOGC:1534%5D[ISEA planar projection as an alternate CRS].
+Alternatively, the DGGS API implementation also supports the `crs` parameter to select the https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A/data?zone-depth=8&f=geotiff&crs=%5BOGC:1534%5D[ISEA planar projection as an alternate CRS].
 In this CRS, this pentagonal zone spans the interruption between two triangles of the base icosahedron.
 
 [#img_zone_data_tiff_isea='{figure-caption} {counter:figure-num}']
@@ -908,13 +913,13 @@ image::images/tiff-zoneDataWGS84-HorizontalHex.png[width=700,align="center"]
 .Visualization of a GeoTIFF response in OGC:CRS84 for retrieving data for ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/B0-5-A[B0-5-A] (even level 2) of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
 image::images/tiff-zoneDataWGS84-VerticalHex.png[width=700,align="center"]
 
-Whereas DGGS-JSON and GeoTIFF are encodings appropriate for raster data, with DGGS-JSON better suited for representing values quantized to the hierarchical discrete global grids,
-using these formats for encoding vector data essentially implies rasterizing the vector features, using either a selection of the feature properties as values, or using numerical feature identifier
+While both DGGS-JSON and GeoTIFF are encodings appropriate for raster data, DGGS-JSON is better suited for representing values quantized to the hierarchical discrete global grids.
+Encoding vector data in these formats essentially implies rasterizing the vector features, using either a selection of the feature properties as values, or numerical feature identifiers
 for which associated properties may be queryable elsewhere (e.g., in an http://www.opengis.net/doc/IS/ogcapi-features-1/1.0.1[OGC API - Features] deployment).
 
 ===== GeoJSON Examples
 
-Although gridded elevation and bathymetry data is better suited to these previous formats for raster data, a GeoJSON and/or Features & Geometry JSON representation
+Although gridded elevation and bathymetry data is better suited to raster formats such as DGGS-JSON and GeoTIFF, a GeoJSON and/or Features & Geometry JSON representation
 could also be offered where each zone is represented as a feature, with the associated property providing the data values such as the elevation.
 This would be equivalent to the <<rc_zone-geojson,GeoJSON representation for a zone list>> where `compact-zones` is set to `false`, the `parent-zone` is the zone for which data is requested,
 and the `zone-level` is the sum of the parent zone plus the relative zone depth at which data is requested (the default depth or `zone-depth` parameter), with the addition of these
@@ -1088,7 +1093,7 @@ number of sub-zones at the selected relative depth. This relative depth correspo
 that would be used in GeoJSON or FG-JSON. Because this essentially corresponds to a coordinate system local to the zone for which data is being retrieved, high precision can be achieved
 with much fewer information than is required to address the entire globe.
 
-This representation also addresses the issue of artificial segments, by using a special zone order index value of _0_ for representing coordinates outside of the zone,
+This representation also addresses the issue of artificial segments. This is done by using a special zone order index value of _0_ for representing coordinates outside of the zone,
 which facilitates merging geometry across adjacent zones and easily identifying artificial segments of polygon contours.
 For polygons, rather than tracing points along the clipping zone edge(s), only the exit and entry points will exist with a single _0_ coordinate value in between, indicating that the portion of the zone
 edge(s) between those two points is within the contour. A DGGS-FG-JSON representation is requested using the `application/fg+json` media type together with the `geometry=quantized` query parameter.
@@ -1167,8 +1172,8 @@ image::images/isea9r-gebco-tiff-5x6.png[width=600,align="center"]
 
 TIP: Because ISEA9R zone edges are fully aligned with the axes of the ISEA 5x6 rotated and sheared space and the rhombic zones are square in this space,
 a GeoTIFF representation provides a one-to-one mapping of zones to rectilinear gridded coverage cells, as can be seen by comparing this previous visualization of the GeoTIFF response with the visualization of the DGGS-JSON responses.
-For the same reason, https://maps.gnosis.earth/ogcapi/tileMatrixSets/ISEA9R[an ISEA9R] https://docs.ogc.org/is/17-083r4/17-083r4.html[2D Tile Matrix Set] can be defined in this 5x6 space, which supports using
-https://docs.ogc.org/is/20-057/20-057.html[OGC API - Tiles] as an alternative or complementary access mechanism to the Zone Data Retrieval requirements class of this DGGS API.
+For the same reason, https://maps.gnosis.earth/ogcapi/tileMatrixSets/ISEA9R[an ISEA9R] https://docs.ogc.org/is/17-083r4/17-083r4.html[2D Tile Matrix Set] can be defined in this 5x6 space, which supports
+implementing the https://docs.ogc.org/is/20-057/20-057.html[OGC API - Tiles] Standard as an alternative or complementary access mechanism to implementing the Zone Data Retrieval requirements class of this DGGS API.
 
 [#img_zone_data_isea9r_tiff_isea='{figure-caption} {counter:figure-num}']
 .Visualization of an ISEA planar projection GeoTIFF response for retrieving data for ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA9R/zones/A2-0[A2-0] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 4
@@ -1358,11 +1363,11 @@ TIP: As can be seen by comparing this previous visualization of the GeoTIFF resp
 because the GNOSIS Global Grid zone edges are fully aligned with geographic latitude and longitude, a GeoTIFF representation provides a one-to-one mapping of zones to rectilinear gridded coverage cells,
 with the exception of the GeoTIFF representation having a fixed width, requiring to duplicate the values of zones approaching the pole.
 
-TIP: A registered https://docs.ogc.org/is/17-083r4/17-083r4.html#toc58[GNOSIS Global Grid 2D Tile Matrix Set] is defined which supports using
-https://docs.ogc.org/is/20-057/20-057.html[OGC API - Tiles] as an alternative or complementary access mechanism to the Zone Data Retrieval requirements class of this DGGS API.
+TIP: A registered https://docs.ogc.org/is/17-083r4/17-083r4.html#toc58[GNOSIS Global Grid 2D Tile Matrix Set] is defined which supports implementing
+the https://docs.ogc.org/is/20-057/20-057.html[OGC API - Tiles] Standard as an alternative or complementary access mechanism to implementing the Zone Data Retrieval requirements class of this DGGS API.
 
 [#img_zone_data_ggg_tiff_ortho='{figure-caption} {counter:figure-num}']
-.Visualization in an ortographic projection of GeoTIFF response for retrieving data for GNOSIS Global Grid DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/GNOSISGlobalGrid/zones/0-1-3[0-1-3] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 7
+.Visualization in an orthographic projection of GeoTIFF response for retrieving data for GNOSIS Global Grid DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/GNOSISGlobalGrid/zones/0-1-3[0-1-3] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 7
 image::images/ggg-gebco-tiff-orthographic.png[width=600,align="center"]
 
 ===== GeoJSON Examples
@@ -1480,7 +1485,7 @@ image::images/ggg-neBathymetry-orthographic.png[width=700,align="center"]
 === Subsetting and filtering zone data
 
 In addition to the basic retrieval of zone data, implementations can support additional parameters for the `.../zones/{zoneId}/data` resources to return only a portion of the data associated with the zone.
-The `subset`, `datetime` and `properties` query parameters are defined in the <<rc_data-subsetting,Data Subsetting>> requirement class, while the `filter` query parameter is defined in the <<rc_data-cql2-filter, Filtering Zone Data with CQL2>> requirement class.
+The `subset`, `datetime` and `properties` query parameters are defined in the <<rc_data-subsetting,Data Subsetting>> requirements class, while the `filter` query parameter is defined in the <<rc_data-cql2-filter, Filtering Zone Data with CQL2>> requirements class.
 
 ==== Temporal subsetting
 
@@ -1527,7 +1532,7 @@ The following examples retrieve data from a daily CMIP5 climate dataset for the 
 
 https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones/A1-0-E/data?zone-depth=8&datetime=2022-10-06/2022-10-10&f=json[\https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones/A1-0-E/data?zone-depth=8&datetime=2022-10-06/2022-10-10]
 
-The following JSON illustrates an extract of a DGGS-JSON response for this request for the precipitation and wind speed variables.
+The following JSON data illustrates an extract of a DGGS-JSON response for this request for the precipitation and wind speed variables.
 In addition to the sub-zones, this DGGS-JSON sample has temporal dimension for the 7 days of the response.
 
 [%unnumbered%]

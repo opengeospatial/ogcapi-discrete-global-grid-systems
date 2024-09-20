@@ -1,7 +1,7 @@
 [[rc_table-data_dggs_fgubjson]]
 
 [requirements_class]
-.Requirements Class DGGS-FG-UB-JSON
+.Requirements Class DGGS-FG-UBJSON
 ====
 [%metadata]
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-dggs-fgubjson
@@ -16,7 +16,7 @@ requirement:: /req/data-dggs-fgubjson/content
 ====
 [%metadata]
 identifier:: /req/data-dggs-fgubjson/content
-part:: The implementation SHALL support a `geometry` query parameter with a value of `quantized` allowing a client to request a DGGS-FG-UBJSON response.
+part:: The Implementation SHALL support a `geometry` query parameter with a value of `quantized` allowing a client to request a DGGS-FG-UBJSON response.
 part:: Every 200 response of the server for zone data with the media type `application/fg+ubjson` and a `geometry=quantized` query parameter SHALL be a https://ubjson.org/[Universal Binary JSON] document representing the vector features within the requested zone.
-part:: The content of the UB-JSON document SHALL follow all the of same requirements as for DGGS-FG-JSON described above.
+part:: The content of the UBJSON document SHALL follow all the of same requirements as for DGGS-FG-JSON described above.
 ====

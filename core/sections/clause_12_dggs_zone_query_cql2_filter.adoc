@@ -1,10 +1,10 @@
 [[rc_zone-query-cql2-filter]]
-== Requirement Class "Filtering Zone Queries with CQL2"
+== Requirements Class "Filtering Zone Queries with CQL2"
 
 === Overview
 
-The Filtering Zone Queries with CQL2 conformance class defines a `filter` query parameter
-where an OGC Common Query Language (CQL2) expression can be used to filter the list of returned zones,
-for example based on the properties / fields of the data, or for performing spatial and/or temporal intersections.
+The OGC API - DGGS "Filtering Zone Queries with CQL2" requirements class defines a `filter` query parameter
+where an OGC Common Query Language (CQL2) expression can be used to filter the list of returned zones.
+Such CQL2 queries enable filtering based on the properties / fields of the data, or on spatiotemporal intersections.
 
 include::../requirements/requirements_class_zone-query-cql2-filter.adoc[]

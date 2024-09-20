@@ -1,9 +1,9 @@
 [[rc_data-custom-depths]]
-== Requirement Class "Data Custom Depths"
+== Requirements Class "Data Custom Depths"
 
 === Overview
 
-The Data Custom Depths requirements class extends the zone data retrieval requirements class allowing a client
+The OGC API - DGGS "Data Custom Depths" requirements class extends the zone data retrieval requirements class allowing a client
 to customize which depths to include as part of a zone data response relative to the requested hierarchy level for which data is being requested.
 This can be either a single depth, a range of depths, or a list of depths.
 The depths to include in the response are specified using the `zone-depth` query parameter.

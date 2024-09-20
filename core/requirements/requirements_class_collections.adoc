@@ -16,7 +16,8 @@ requirement:: /req/collection-dggs/dggs
 [%metadata]
 identifier:: /req/collection-dggs/dggs
 description:: For collection DGGS resources:
-part:: The Implementation SHALL support DGGS resources for at least one collection, for the "Core" requirement class, as well as any resources defined in additional supported requirements classes.
+part:: The Implementation SHALL support the resource paths and associated HTTP methods defined in the "Core" requirements class, as well as any additional resources defined in other requirements classes to which the
+Implementation declares conformance, for at least one collection of the dataset offered by the API deployment.
 part:: The Implementation SHALL include a link to the list of available DGGRSs for the collection at `/collections/{collectionId}/dggs` in the links of the collection using the link relation type `[ogc-rel:dggrs-list]`.
 part:: The `/collections/{collectionId}/dggs` and `/collections/{collectionId}/dggs/{dggrsId}` resources SHALL include a link to the collection using the link relation type `[ogc-rel:geodata]`.
 ====

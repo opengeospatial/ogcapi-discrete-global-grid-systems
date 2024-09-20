@@ -1,25 +1,26 @@
 [[rc_data-retrieval]]
-== Requirement Class "Data Retrieval"
+== Requirements Class "Data Retrieval"
 
 === Overview
 
-The Data Retrieval requirement class allows to retrieve data from a specific
+The OGC API - DGGS "Data Retrieval" requirements class allows retrieving data from a specific
 Discrete Global Grid Reference System (DGGRS), that is a specific hierarchy of Discrete Global Grids
 combined with a particular zone indexing reference system (ZIRS), for an individual zone.
 It describes an HTTP GET operation, as well as its response.
-The selected DGGRS is listed as available and described in the <<rc_core,Core requirement class>>,
+The selected DGGRS is listed as available and described in the <<rc_core,Core requirements class>>,
 and conforms to https://www.opengis.net/doc/AS/dggs/2.0[OGC Topic 21].
 
 The data for a particular zone is retrieved based on a URI template including
 a variable representing a Zone ID.
 
-The resource from which data is retrieved can either be
-for a particular collection of geospatial data, for a dataset as a whole, or
-in connection with https://docs.ogc.org/DRAFTS/21-009.html[_OGC API - Processes - Part 3: Workflows & Chaining_], the output of
-a processing workflow.
+The resource from which data is retrieved could be for a particular collection of geospatial data (<<rc_collection-dggs, Collection DGGS>> Requirements Class) or
+for a dataset as a whole (<<rc_root-dggs, Root DGGS>> Requirements Class).
 
-This requirement class enables a client to ask a question of the type _**"What is here?"**_, where the _what_
-refers to data values associated with a particular dataset, collection, or processing workflow, and the _here_ refers to a particular spatio-temporal
+The collection could also be virtual in nature, as described in the https://docs.ogc.org/DRAFTS/21-009.html[_OGC API - Processes - Part 3: Workflows_] candidate Standard
+"Collection Output" requirements class, allowing to perform on-demand processing for a spatiotemporal region of interest associated with the zone for which data is being requested.
+
+An implementation of this requirements class enables a client to ask a question of the type _**"What is here?"**_, where the _"what"_
+refers to data values associated with a particular dataset, collection, or processing workflow, and the _here_ refers to a particular spatiotemporal
 region identified by the Zone ID.
 
 include::../requirements/requirements_class_data-retrieval.adoc[]

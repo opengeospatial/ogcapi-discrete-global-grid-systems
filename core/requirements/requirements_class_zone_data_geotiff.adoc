@@ -20,7 +20,7 @@ part:: Every 200 response of the server for zone data with the media type `image
 part:: If the TIFF encoding incorporates a GeoTIFF georeference, this information SHALL be consistent with the DGGRS Zone ID.
 part:: If the zone geometry is not rectangular, the closest bounding rectangle SHALL be used for referencing the image.
 part:: A distinct value for each sub-zone implied from the requested `zone-depth` SHALL correspond to at least one distinct cell value in the response.
-part:: For implementations supporting Data Custom Depths, each depth of the requested zone depth pyramid SHALL be a separate image (overview) in the response.
+part:: For Implementations supporting Data Custom Depths, each depth of the requested zone depth pyramid SHALL be a separate image (overview) in the response.
 ====
 
 [recommendation]

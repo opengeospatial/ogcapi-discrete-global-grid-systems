@@ -1,9 +1,9 @@
 [[operation-ids]]
 == Requirements Class "API definition Operation IDs"
 
-This standard does not mandate any particular API definition language, but if the API is described using a definition language supporting
-operation identifiers, such as OpenAPI 3.0, allowing to associate the functionality described in these requirements with an operation defined in the language,
-this requirement class defines how this is achieved.
+The OGC API - DGGS Standard does not mandate any particular API definition language. However, if the API is described using a definition language supporting
+operation identifiers, such as OpenAPI 3.0, being able to associate the functionality described in these requirements with an operation defined in the language is useful.
+This requirements class defines how this is achieved.
 
 ===== Overview
 

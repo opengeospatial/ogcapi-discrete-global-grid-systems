@@ -3,18 +3,24 @@
 == Discrete Global Grid Reference System Definitions
 
 The following informative schema describes the expected response of the resource linked to by using the `[ogc-rel:dggrs-definition]` link relation
-from the DGGRS description, as specified by the <<rc_core,Core requirement class>>.
+from the DGGRS description. This behavior is specified by the <<rc_core,Core requirements class>>.
 An important objective for this schema is to support establishing authoritative registries of DGGRSs providing a URI for a DGGRS corresponding to a specific definition.
 
-Note that this schema is preliminary, and a normative version may be defined by a later version of this standard
+Note that this schema is preliminary, and a normative version may be defined in a later version of the OGC API - DGGS Standard
 or by a future part of OGC Abstract Specification Topic 21.
-The schema may change to allow for better description of existing and new classes of DGGH.
+The schema may change to support a better description of existing and new classes of DGGH.
 
 The DGGRS definition consists of three main components:
 
-* the definition of the hierarchy of discrete global grids (`dggh`), including any parameterization such as the spheroid or orientation, establishing both the topology as well as the geometry of every zone,
-* the Zonal Identifier Reference System (`zirs`), with textual identifiers being mandatory while 64-bit integer identifiers (which support the <<rc_zone-binary64bit,64-bit integer zone list encoding requirement class>>) are optional,
-* the sub-zone ordering (`subZoneOrder`), which allows for <<rc_data-retrieval,retrieving zone data>> using e.g., <<rc_data-json,DGGS-JSON>> at a <<rc_data-custom-depths,`zone-depth`>> other than 0 (the values of sub-zones can be provided as a 1D array of values with a pre-established association to sub-zones).
+* The definition of the hierarchy of discrete global grids (`dggh`), including any parameterization such as the spheroid or orientation, establishing both the topology as well as the geometry of every zone,
+* The Zonal Identifier Reference System (`zirs`), with textual identifiers being mandatory while 64-bit integer identifiers (which support the <<rc_zone-binary64bit,64-bit integer zone list encoding requirements class>>) are optional,
+* The sub-zone ordering (`subZoneOrder`), which allows for <<rc_data-retrieval,retrieving zone data>> using e.g., <<rc_data-json,DGGS-JSON>> at a <<rc_data-custom-depths,`zone-depth`>> other than 0 (the values of sub-zones can be provided as a 1D array of values with a pre-established association to sub-zones).
+
+Whereas the ZIRS provides a mechanism to globally identify a single zone using a textual identifier (and alternatively using a 64-bit integer), the deterministic sub-zone order provides
+a local indexing mechanism to address smaller regions within a particular zone. This local indexing mechanism enables the DGGS-optimized data encodings defined by the DGGS-JSON and DGGS-FG-JSON requirements classes.
+The two mechanisms may potentially be related to each other, for example using the same space filling curve such as a https://en.wikipedia.org/wiki/Z-order_curve[Morton code (Z-order curve)], but do not need to be.
+If defining a more optimal sub-zone order for a particular DGGRS is not practical, the ascending sort order of the sub-zone identifiers can be specified as a fallback,
+based on either the ASCII character strings of the textural identifiers, or the 64-bit integer identifiers.
 
 === JSON Schema for defining a DGGRS
 
@@ -30,9 +36,14 @@ The following example JSON DGGRS definitions conform to this schema.
 === ISEA9R DGGRS definition
 
 The following DGGRS is for an axis-aligned and equal-area DGGH based on the https://doi.org/10.3138/27H7-8K88-4882-1752[Icosahedral Snyder Equal-Area (ISEA)] planar projection (see https://proj.org/en/9.4/operations/projections/isea.html[PROJ] and https://github.com/mocnik-science/geogrid/blob/master/src/main/java/org/giscience/utils/geogrid/projections/ISEAProjection.java[geogrid] for open-source implementations) using rhombuses with a refinement ratio of 9.
-When the ISEA projection is rotated 60 degrees, sheared horizontally by 30 degrees and units are mapped to a 5x6 space, the zones become square and their edges are aligned with the CRS axes, while remaining equal-area.
+When the ISEA projection is rotated 60 degrees, sheared horizontally by 30 degrees and units are mapped to a 5x6 space, the zones become square and their edges are aligned with the CRS axes, while remaining equal area.
 A https://docs.ogc.org/is/17-083r4/17-083r4.html[2D Tile Matrix Set] can also be defined in this transformed CRS, allowing for compatibility with https://docs.ogc.org/is/20-057/20-057.html[OGC API - Tiles], https://portal.ogc.org/files/?artifact_id=35326[WMTS] and traditional client and visualization software with no built-in DGGS functionality.
-This transformed CRS no longer preserves angles and distances, although the topology, indexing and surface geometry on the Earth model remains the same as in the original ISEA CRS where angles and distances are preserved.
+This transformed CRS no longer preserves angles and distances, although the topology, indexing, and surface geometry on the Earth model remains the same as in the original ISEA CRS where angles and distances are preserved.
+
+While the ISEA projection is defined for an authalic sphere, this DGGRS assumes that when importing or exporting data referenced to the WGS84 ellipsoid a conversion between geodetic and authalic latitude is performed.
+This guarantees that all zones are exactly the same area on the surface of the ellipsoid.
+
+NOTE: The authalic (meaning "area preserving") sphere is a sphere that has the same surface area as the oblate ellipsoid being used.
 
 .DGGRS Definition for ISEA9R
 [source,json]
@@ -56,7 +67,7 @@ image::images/ISEA9R-Level1.png[width=700,align="center"]
 === ISEA3H DGGRS definition
 
 The following DGGRS is for an ISEA3H DGGH, also based on the ISEA planar projection, with hexagonal and pentagonal zones, and a refinement ratio of 3, using a zone reference system based in part on its dual relationship with the ISEA9R DGGH.
-The DGGH is considered equal-area, although the 12 pentagonal zones at any level occupy 5/6th of the area of hexagonal zones.
+The DGGH is considered equal area, although each of the 12 pentagonal zones at any level occupies 5/6th of the area of a hexagonal zone at the same level.
 
 .DGGRS Definition for ISEA3H using indexing based on ISEA9R
 [source,json]

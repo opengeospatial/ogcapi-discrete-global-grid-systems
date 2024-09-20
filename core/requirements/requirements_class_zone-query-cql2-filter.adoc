@@ -25,4 +25,4 @@ part:: The list of returned zones SHALL only be those for which the CQL2 express
 part:: The CQL2 expression evaluator SHALL support the queryables declared in the JSON Schema resource linked to from the origin of the DGGRS resources using the `[ogc-rel:queryables]` link relation type.
 ====
 
-NOTE: The available queryables would typically include the fields of the data source, which may also be retrieved using the <<rc_data-retrieval, Data Retrieval>> requirement class.
+NOTE: The available queryables would typically include the fields of the data source, which may also be retrieved using the <<rc_data-retrieval, Data Retrieval>> requirements class.

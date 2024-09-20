@@ -1,24 +1,27 @@
 [[rc_zone-query]]
-== Requirement Class "Zone Query"
+== Requirements Class "Zone Query"
 
 === Overview
 
-The Zone Query requirement class allows to request the list of DGGS zones from a specific
+The OGC API - DGGS "Zone Query" requirements class supports requesting the list of zones from a specific
 Discrete Global Grid Reference System (DGGRS), that is a specific hierarchy of Discrete Global Grids
 combined with a particular zone indexing reference system (ZIRS), for which there is
 data available, or matching a particular query (e.g., using a filtering parameter).
-It describes an HTTP GET operation, as well as its response.
-The selected DGGRS is listed as available and described in the <<rc_core,Core requirement class>>,
+This requirements class describes an HTTP GET operation, as well as its response.
+The selected DGGRS is listed as available and described in the <<rc_core,Core requirements class>>,
 and conforms to https://www.opengis.net/doc/AS/dggs/2.0[OGC Topic 21].
-The list of zones from a Web API using this requirement class can either be
+The list of zones from a Web API using this requirements class can either be
 for a particular collection of geospatial data, for a dataset as a whole, or
 in connection with https://docs.ogc.org/DRAFTS/21-009.html[_OGC API - Processes - Part 3: Workflows & Chaining_], the output of
 a processing workflow.
 
-This requirement class enables a client to ask a question of the type _**"Where is it?"**_, where the _where_
-refers to the spatio-temporal response encoded as a list of Zone IDs, and the _it_ refers to either
+This requirements class enables a client to ask a question of the type _**"Where is it?"**_. The _"where"_
+refers to the spatiotemporal response encoded as a list of Zone IDs. The _it_ refers to either
 the availability of data associated with a particular collection, dataset, or processing workflow
-(where the result itself could simply be this spatio-temporal region),
-as well as the evaluation of any additional filtering query expressed as per the <<rc_zone-query-cql2-filter, CQL2 filtering requirement class>>.
+(where the result itself could simply be this spatiotemporal region),
+as well as the evaluation of any additional filtering query expressed as per the <<rc_zone-query-cql2-filter, CQL2 filtering requirements class>>.
+
+Implementations of this requirements class are required to support at minimum the JSON encoding of zones list, and therefore also need to implement the
+<<rc_zone-json, JSON Zone List encoding>> requirements class.
 
 include::../requirements/requirements_class_zone-query.adoc[]

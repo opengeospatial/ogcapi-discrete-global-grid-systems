@@ -26,7 +26,7 @@ which data is available at the resource path `.../dggs/{dggrsId}/zones`.
 ====
 [%metadata]
 identifier:: /req/zone-query/zones-list
-description:: For retrieving a list of DGGS zones:
+description:: For retrieving a list of DGGS zones.
 part:: The Implementation SHALL support an HTTP GET operation at a resource path
 ending with `.../dggs/{dggrsId}/zones`.
 part:: The Implementation SHALL include a link to this resource path in the "Core" `.../dggs/{dggrsId}` resource links
@@ -36,11 +36,11 @@ part:: The content of the response SHALL be a list of zones fully covering where
 (in the case where the resource is associated with a particular dataset), and
 matching any additional query parameters specified by the client (e.g., a filtering query parameter),
 without any redundancy.
-part:: Unless the zones is a compact list of zones (see `compact-zones` parameter), the zones returned
+part:: Unless the zones are a compact list of zones (see `compact-zones` parameter), the zones returned
 SHALL all be of the same DGGS hierarchy level.
 part:: The selection of an encoding for the returned list of zones SHALL be consistent with
 HTTP content negotiation.
-part:: The implementation SHALL support at minimum a JSON encoding (media type `application/json`)
+part:: The Implementation SHALL support at minimum a JSON encoding (media type `application/json`)
 where each zone ID is specified as a string within an array of zones assigned to a `zones` property
 within a JSON object (e..g, `{ "zones": [ "1-E-14", "1-E-15", "1-F-14", "1-F-15", "1-F-16" ] }`.
 ====
@@ -52,7 +52,7 @@ excluding overlapping regions when returning compact zones.
 ====
 [%metadata]
 identifier:: /rec/zone-query/zone-total-area
-description:: For returning the total area (or volumes) occupied by zones returned by the query
+description:: For returning the total area (or volumes) occupied by zones returned by the query.
 part:: The Implementation SHOULD indicate the total surface area (in the case of a 2D DGGS) or total (hyper)volume occupied (in the case of a 3D or 4D DGGS) occupied by the zones being returned,
 adding only once any overlaps which may occur for compact zone responses where zones are non-congruent.
 ====
@@ -66,7 +66,7 @@ to retrieve the list of zones.
 ====
 [%metadata]
 identifier:: /req/zone-query/zone-level
-description:: For specifying a level at which to return a list of DGGS zones using a `zone-level` query parameter:
+description:: For specifying a level at which to return a list of DGGS zones using a `zone-level` query parameter.
 part:: The Implementation SHALL support a `zone-level` query parameter for the zone query
 operation (resource path ending with `.../dggs/{dggrsId}/zones`).
 part:: If a compact zones list is used (the default), the zones returned in the response SHALL be of the DGGS hierarchy level specified by the `zone-level` query parameter,
@@ -84,11 +84,11 @@ The following requirements describe how a client can disable returning a compact
 ====
 [%metadata]
 identifier:: /req/zone-query/compact-zones
-description:: For specifying whether to retrieve a list of DGGS zones using a `compact-zones` parameter:
-part:: The Implementation SHALL support a boolean `compact-zones` query parameter for the zone query
+description:: For specifying whether to retrieve a list of DGGS zones using a `compact-zones` parameter.
+part:: The Implementation SHALL support a Boolean `compact-zones` query parameter for the zone query
 operation (resource path ending with `.../dggs/{dggrsId}/zones`), where a value of `true` corresponds to the
-default behavior when the paramter is not specified, and a value of `false` disables the use of compact-zones in the response.
-part:: When the `compact-zones` parameter is to false, the zones list response SHALL NOT be a compact list, and SHALL explicitly list every individual zone
+default behavior when the parameter is not specified, and a value of `false` disables the use of compact-zones in the response.
+part:: When the `compact-zones` parameter is set to false, the zones list response SHALL NOT be a compact list, and SHALL explicitly list every individual zone
 at the requested or default DGGS hierarchy level.
 part:: When the `compact-zones` parameter is set to true (or unspecified), the zones list response SHALL be a compact list, where children zones completely covering
 the area of a parent zone SHALL be replaced by that parent zone, in a recursive manner all the way to the lowest DGGS hierarchy level.
@@ -97,13 +97,13 @@ the area of a parent zone SHALL be replaced by that parent zone, in a recursive 
 === Parameter `parent-zone` for hierarchical exploration
 
 The following requirement describes how a client can specify a parent zone to only return zones within this parent zone,
-allowing to explore a large list in a hierarchical manner (in combination with `zone-level`) as multiple requests and responses.
+enabling the exploration of a large list in a hierarchical manner (in combination with `zone-level`) as multiple requests and responses.
 
 [requirement]
 ====
 [%metadata]
 identifier:: /rec/zone-query/parent-zone
-description:: For specifying a parent zone within which to restrict zone listing using a `parent-zone` query parameter:
+description:: For specifying a parent zone within which to restrict zone listing using a `parent-zone` query parameter.
 part:: The Implementation SHALL support a parameter `parent-zone` zone identifier query parameter.
 part:: When specified, the response SHALL NOT contain zones which are not this parent zone itself or a sub-zone of that zone.
 ====
@@ -112,7 +112,7 @@ part:: When specified, the response SHALL NOT contain zones which are not this p
 ====
 [%metadata]
 identifier:: /rec/zone-query/zone-order
-description:: For recommending to follow the DGGRS sub-zone ordering
+description:: Recommendation to follow the DGGRS sub-zone ordering
 part:: When the `parent-zone` parameter is used, the Implementation SHOULD return a list of zones ordered according to the canonical sub-zone ordering defined by the DGGRS
 (the same order used for encoding values for data retrieval in formats such as <<rc_data-json, DGGS-JSON>> relying on a shared understanding of this order by the server/producer and client/consumer).
 ====
@@ -126,7 +126,7 @@ and page through large list of zones as multiple requests and responses.
 ====
 [%metadata]
 identifier:: /rec/zone-query/limit
-description:: For specifying a paging limit for the list of zones using a `limit` query parameter:
+description:: For specifying a paging limit for the list of zones using a `limit` query parameter.
 part:: The Implementation SHOULD support a parameter `limit` integer query parameter, with a minimum value of 1.
 part:: The response SHOULD not contain more zones than specified by the optional `limit` parameter (if specified).
 part:: If the API definition specifies a maximum value for the `limit` parameter, the response SHOULD not contain more zones than this maximum value.
@@ -142,7 +142,7 @@ which a client can request to resume listing the zones.
 ====
 [%metadata]
 identifier:: /req/zone-query/bbox
-description:: For specifying a spatial bounding box for which to return a list of DGGS zones:
+description:: For specifying a spatial bounding box for which to return a list of DGGS zones.
 part::
 +
 --
@@ -185,7 +185,7 @@ If the bounding box consists of six numbers, the first three numbers are the coo
 The axis order is determined by the `bbox-crs` parameter value or longitude and latitude if the parameter is missing (https://www.opengis.net/def/crs/OGC/1.3/CRS84 axis order for a 2D bounding box,
 https://www.opengis.net/def/crs/OGC/1.3/CRS84h for a 3D bounding box).
 For example in https://www.opengis.net/def/crs/OGC/1.3/CRS84 the order is left_lon, lower_lat, right_lon, upper_lat.
-part:: The returned list of zone IDs SHALL only contain zones inside or intersecting with the spatial extent of the geographical area of bounding box.
+part:: The returned list of zone IDs SHALL only contain zones inside or intersecting with the spatial extent of the geographical area of the bounding box.
 ====
 
 === Parameter `bbox-crs`
@@ -194,9 +194,9 @@ part:: The returned list of zone IDs SHALL only contain zones inside or intersec
 ====
 [%metadata]
 identifier:: /req/zone-query/bbox-crs
-description:: For specifying the CRS in used for the `bbox` parameter using the `bbox-crs` parameter
+description:: For specifying the CRS used for the `bbox` parameter using the `bbox-crs` parameter.
 part:: The list of zones resource SHALL support a `bbox-crs` parameter specifying the CRS used for the `bbox` parameter.
-part:: For Earth centric data, the implementation SHALL support https://www.opengis.net/def/crs/OGC/1.3/CRS84 as a value.
+part:: For Earth centric data, the Implementation SHALL support https://www.opengis.net/def/crs/OGC/1.3/CRS84 as a value.
 part:: If the `bbox-crs` is not indicated https://www.opengis.net/def/crs/OGC/1.3/CRS84 SHALL be assumed.
 part:: The native CRS (`storageCRS`) SHALL be supported as a value. Other conformance classes may allow additional values (see `crs` parameter definition).
 part:: The CRS expressed as URIs or as safe CURIEs SHALL be supported.
@@ -209,7 +209,7 @@ part:: If the bbox parameter is not used, the `bbox-crs` SHALL be ignored.
 ====
 [%metadata]
 identifier:: /req/zone-query/subset
-description:: For specifying a multi-dimensional subset for which to return a list of DGGS zones:
+description:: For specifying a multi-dimensional subset for which to return a list of DGGS zones.
 part::
 +
 --
@@ -232,16 +232,16 @@ conforming to the following Augmented Backus Naur Form (ABNF) fragment:
      {text} is some general ASCII text (such as a time and date notation in ISO 8601).
 ----
 --
-part:: The implementation SHALL support as axis names `Lat` and `Lon` for geographic CRS and `x` and `y` for projected CRS, which are to be interpreted as the best matching spatial axis in the CRS definition.
-part:: If a third spatial dimension is supported (if the resource's spatial extent bounding box is three dimensional), the implementation SHALL also support a `h` dimension (elevation above the ellipsoid in EPSG:4979 or CRS84h) for geographic CRS and `z` for projected CRS, which are to be interpreted as the vertical axis in the CRS definition.
-part:: The implementation SHALL support as axis names `time` for a temporal dataset.
-part:: The implementation SHALL support as axis names any additional dimension (beyond spatial and temporal) as described in the `extent` property of the collection or dataset description.
-part:: The implementation SHALL return a 400 error status code if an axis name does not correspond to one of the axes of the Coordinate Reference System (CRS) of the data or an axis defined in the relevant `extent` property.
+part:: The Implementation SHALL support as axis names `Lat` and `Lon` for geographic CRS and `x` and `y` for projected CRS, which are to be interpreted as the best matching spatial axis in the CRS definition.
+part:: If a third spatial dimension is supported (if the resource's spatial extent bounding box is three dimensional), the Implementation SHALL also support a `h` dimension (elevation above the ellipsoid in EPSG:4979 or CRS84h) for geographic CRS and `z` for projected CRS, which are to be interpreted as the vertical axis in the CRS definition.
+part:: The Implementation SHALL support as axis names `time` for a temporal dataset.
+part:: The Implementation SHALL support as axis names any additional dimension (beyond spatial and temporal) as described in the `extent` property of the collection or dataset description.
+part:: The Implementation SHALL return a 400 error status code if an axis name does not correspond to one of the axes of the Coordinate Reference System (CRS) of the data or an axis defined in the relevant `extent` property.
 part:: For a CRS where an axis can wrap around, such as subsetting across the dateline (anti-meridian) in a geographic CRS, a _low_ value greater than _high_ SHALL
 be supported to indicate an extent crossing that wrapping point.
-part:: The implementation SHALL interpret the coordinates as values for the named axis of the CRS specified in the `subset-crs` parameter value or in https://www.opengis.net/def/crs/OGC/1.3/CRS84 (https://www.opengis.net/def/crs/OGC/1.3/CRS84h for vertical dimension) if the `subset-crs` parameter is missing.
+part:: The Implementation SHALL interpret the coordinates as values for the named axis of the CRS specified in the `subset-crs` parameter value or in https://www.opengis.net/def/crs/OGC/1.3/CRS84 (https://www.opengis.net/def/crs/OGC/1.3/CRS84h for vertical dimension) if the `subset-crs` parameter is missing.
 part:: If the `subset` parameter including any of the dimensions corresponding to those of the map bounding box is used with a `bbox`, the server SHALL return a 400 client error.
-part:: The implementation SHALL interpret multiple `subset` parameters, as if all dimension subsetting values were provided in a single `subset` parameter (comma separated).
+part:: The Implementation SHALL interpret multiple `subset` parameters, as if all dimension subsetting values were provided in a single `subset` parameter (comma separated).
 Example: `subset=Lat(-90:90)&subset=Lon(-180:180)` is equivalent to `subset=Lat(-90:90),Lon(-180:180)`
 ====
 
@@ -258,7 +258,7 @@ a _trimming_ operation (using the _interval_ notation) when the low and high bou
 ====
 [%metadata]
 identifier:: /req/zone-query/subset-crs
-description:: For specifying the CRS in used for the `subset` parameter using the `subset-crs` parameter
+description:: For specifying the CRS used for the `subset` parameter using the `subset-crs` parameter.
 part:: The zone listing operation SHALL support a parameter `subset-crs` with the characteristics identifying the CRS in which the `subset` parameter is specified with a URI or safe CURIE.
 part:: For Earth centric data, https://www.opengis.net/def/crs/OGC/1.3/CRS84 as a value SHALL be supported.
 part:: If the `subset-crs` is not indicated, https://www.opengis.net/def/crs/OGC/1.3/CRS84 SHALL be assumed.
@@ -273,23 +273,25 @@ part:: If no `subset` parameter referring to an axis of the CRS is used, the `su
 ====
 [%metadata]
 identifier:: /req/zone-query/datetime
-description:: For specifying a multi-dimensional subset for which to return a list of DGGS zones:
+description:: For specifying a multi-dimensional subset for which to return a list of DGGS zones.
 part::
 +
 --
-The implementation SHALL support a `datetime` parameter expressed corresponding to either a date-time instant or a time interval, conforming to the following syntax (using link:https://tools.ietf.org/html/rfc5234[ABNF]):
+The Implementation SHALL support a `datetime` parameter expressed corresponding to either a date-time instant or a time interval, conforming to the following syntax (using link:https://tools.ietf.org/html/rfc5234[ABNF]):
 
 [source]
 ----
-interval-closed     = date-time "/" date-time
-interval-open-start = [".."] "/" date-time
-interval-open-end   = date-time "/" [".."]
-interval            = interval-closed / interval-open-start / interval-open-end
-datetime            = date-time / interval
+interval-bounded       = instant "/" instant
+interval-bounded-start = [".."] "/" instant
+interval-bounded-end   = instant "/" [".."]
+interval-unbounded     = [".."] "/" [".."]
+interval               = interval-bounded / interval-bounded-start / interval-bounded-end / interval-unbounded
+datetime               = instant / interval
 ----
 --
-part:: The syntax of `date-time` is specified by link:https://tools.ietf.org/html/rfc3339#section-5.6[RFC 3339, 5.6].
+part:: The implementation SHALL support an `instant` defined as specified by link:https://tools.ietf.org/html/rfc3339#section-5.6[RFC 3339, 5.6], with the exception that the server is
+only required to support the `Z` UTC time notation, and not required to support local time offsets.
 part:: Only the zones with data whose geometry intersect with the specified temporal interval SHALL be part of the zone list response.
-part:: The implementation SHALL support a double-dot (`..`) or an empty string for the start/end as indicating an unbounded or half-bounded interval (only having a start or end).
-part:: If a `datetime` parameter is specified requesting zone data where no temporal dimension applies, the implementation SHALL either ignore the parameter or return a 4xx client error.
+part:: Time intervals unbounded at the start or at the end SHALL be supported using a double-dot (`..`) or an empty string for the start/end.
+part:: If a `datetime` parameter is specified requesting zone data where no temporal dimension applies, the Implementation SHALL either ignore the parameter or return a 4xx client error.
 ====

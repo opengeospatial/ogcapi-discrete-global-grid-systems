@@ -16,7 +16,10 @@ requirement:: /req/root-dggs/dggs
 [%metadata]
 identifier:: /req/root-dggs/dggs
 description:: For API/dataset-wide DGGS resources:
-part:: The Implementation SHALL support DGGS resources for the dataset as a whole, for the "Core" requirement class, as well as any resources defined in additional supported requirements classes.
+part:: The Implementation SHALL support the resource paths and associated HTTP methods defined in the "Core" requirements class, as well as any additional resources defined in other requirements classes to which the
+Implementation declares conformance, for the root of the API as an origin. If the API allows to retrieve and/or query data, this means that the data returned or queried considers all collections comprising the dataset
+(unless an extension is used to select specific collections e.g., using a `collections` parameter).
+The root DGGRS origin can also be used in API deployment not associated with any dataset, solely for the purpose of exploring and demonstrating the DGGRS.
 part:: The Implementation SHALL include a link to the list of available DGGRSs for the API/dataset at `/dggs` in the links of the landing page using the link relation type `[ogc-rel:dggrs-list]`.
-part:: If the DGGS API allows querying or retrieving data from a dataset, the `/dggs` and `/dggs/{dggrsId}` resources SHALL include a link to the landing page using the link relation type `[ogc-rel:dataset]`.
+part:: If the API deployment supports querying or retrieving data from a dataset, the `/dggs` and `/dggs/{dggrsId}` resources SHALL include a link to the landing page using the link relation type `[ogc-rel:dataset]`.
 ====
