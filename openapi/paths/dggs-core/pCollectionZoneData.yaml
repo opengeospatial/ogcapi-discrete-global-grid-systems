@@ -10,6 +10,7 @@ get:
      # - $ref: '../../parameters/common-geodata/collections.yaml'
      - $ref: '../../parameters/unspecified/f-zoneData.yaml'
      - $ref: '../../parameters/dggs-core/properties.yaml'
+     - $ref: '../../parameters/dggs-core/exclude-properties.yaml'
      - $ref: '../../parameters/dggs-core/subset.yaml'
      - $ref: '../../parameters/dggs-core/filter.yaml'
      # - $ref: '../../parameters/dggs-core/filter-lang.yaml'

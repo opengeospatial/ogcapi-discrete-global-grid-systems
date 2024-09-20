@@ -207,6 +207,8 @@ components:
          $ref: 'parameters/dggs-core/bbox-crs.yaml'
       properties:
          $ref: 'parameters/dggs-core/properties.yaml'
+      exclude-properties:
+         $ref: 'parameters/dggs-core/exclude-properties.yaml'
       #sortby:
       #   $ref: 'parameters/dggs-core/sortby.yaml'
       filter:

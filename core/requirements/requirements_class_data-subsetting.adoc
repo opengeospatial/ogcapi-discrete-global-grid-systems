@@ -119,3 +119,16 @@ part:: Only the selected fields SHALL be returned from the zone data request.
 part:: If the zone data encodings response can self-describe its list of fields (as with the `schema` property of the DGGS-JSON encoding), the field description SHALL correspond to the requested list of fields.
 part:: If the negotiated format of the response has a concept of field order, then the fields SHALL be in the same order as the requested list of selected fields.
 ====
+
+=== Parameter `exclude-properties`
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/data-subsetting/exclude-properties
+description:: For including all but specific fields when retrieving zone data
+part:: The zone data retrieval operation SHALL support a parameter `exclude-properties` where the value is a comma-separated list of fields not to be returned.
+part:: The Implementation SHALL support selecting fields not to return using the identifier corresponding to the top-level property keys of the logical schema of the resource associated with the DGGRS zone data request, and return 400 status code for an unrecognized selected field.
+part:: All but the selected fields SHALL be returned from the zone data request.
+part:: The Implementation SHALL return a 4xx error when using the both the `properties` and `exclude-properties` parameters in the same request.
+====

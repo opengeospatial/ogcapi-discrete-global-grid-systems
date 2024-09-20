@@ -460,6 +460,9 @@
             "$ref": "#/components/parameters/properties"
           },
           {
+            "$ref": "#/components/parameters/exclude-properties"
+          },
+          {
             "$ref": "#/components/parameters/subset"
           },
           {
@@ -525,6 +528,9 @@
           },
           {
             "$ref": "#/components/parameters/properties"
+          },
+          {
+            "$ref": "#/components/parameters/exclude-properties"
           },
           {
             "$ref": "#/components/parameters/subset"
@@ -2792,6 +2798,15 @@
         "name": "properties",
         "in": "query",
         "description": "Select specific data record fields (measured/observed properties) to be returned using a comma-separated list of field names.\nThe field name must be one of the fields defined in the associated data resource's logical schema.\n\nExtensions may enable the use of complex expressions to support defining derived fields, potentially also\nincluding the possibility to use aggregation functons.",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "exclude-properties": {
+        "name": "exclude-properties",
+        "in": "query",
+        "description": "Exclude specific data record fields (measured/observed properties) from being returned using a comma-separated list of field names.\nThe field name must be one of the fields defined in the associated data resource's logical schema.",
         "required": false,
         "schema": {
           "type": "string"
