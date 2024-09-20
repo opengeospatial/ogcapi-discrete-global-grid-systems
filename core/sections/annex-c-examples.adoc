@@ -139,6 +139,7 @@ a default (relative) depth as well as additional links and link templates.
    "uri" : "[ogc-dggrs:ISEA3H]",
    "defaultDepth": 10,
    "maxRefinementLevel": 18,
+   "maxRelativeDepth": 13,
    "links" : [
       { "rel" : "self", "title" : "ISEA3H DGGRS for GEBCO",
         "href" : "/ogcapi/collections/gebco/dggs/ISEA3H"

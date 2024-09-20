@@ -47,3 +47,11 @@ In this case, more than a single value would be returned for each zone request,
 with values returned for descendent zones at `zone-depth` levels deeper than the requested zone's level.
 For example, requesting data for a level 10 zone with a `zone-depth` of 8 would return
 individual values for each level 18 zones contained within that level 10 zone being requested.
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/data-custom-depths/beyond-max-depth
+description:: For handling requests beyond `maxRelativeDepth`:
+part:: The Implementation SHOULD return a 4xx error for data retrieval beyond the `maxRelativeDepth` specified in the DGGRS description associated with the request.
+====
