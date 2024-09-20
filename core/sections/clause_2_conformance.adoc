@@ -39,7 +39,7 @@ These requirements classes define DGGS resources for the API (`/dggs`) and colle
 
 === Requirements classes defining parameters
 
-Three requirements classes add support for the `subset`, `properties`, `zone-depth` and `filter` parameters to zone data resources:
+Three requirements classes add support for the `subset`, `properties`, `exclude-properties`, `zone-depth` and `filter` parameters to zone data resources:
 
 * <<rc_data-subsetting,*Zone data subsetting*>>
 * <<rc_data-custom-depths,*Zone data custom depths*>>
