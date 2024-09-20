@@ -232,7 +232,7 @@ conforming to the following Augmented Backus Naur Form (ABNF) fragment:
      {text} is some general ASCII text (such as a time and date notation in ISO 8601).
 ----
 --
-part:: The Implementation SHALL support as axis names `Lat` and `Lon` for geographic CRS and `x` and `y` for projected CRS, which are to be interpreted as the best matching spatial axis in the CRS definition.
+part:: The Implementation SHALL support as axis names `Lat` and `Lon` for geographic CRS and `E` and `N` for projected CRS, which are to be interpreted as the best matching spatial axis in the CRS definition.
 part:: If a third spatial dimension is supported (if the resource's spatial extent bounding box is three dimensional), the Implementation SHALL also support a `h` dimension (elevation above the ellipsoid in EPSG:4979 or CRS84h) for geographic CRS and `z` for projected CRS, which are to be interpreted as the vertical axis in the CRS definition.
 part:: The Implementation SHALL support as axis names `time` for a temporal dataset.
 part:: The Implementation SHALL support as axis names any additional dimension (beyond spatial and temporal) as described in the `extent` property of the collection or dataset description.
@@ -251,6 +251,17 @@ NOTE: When the _interval_ values fall partially outside of the range of valid va
 
 NOTE: For the operation of returning a list of zone IDs, there normally is no value in preserving dimensionality, therefore a _slicing_ operation (using the _point_ notation) is usually equivalent to
 a _trimming_ operation (using the _interval_ notation) when the low and high bounds of an interval are the same. Therefore, use of the point notation is encouraged in these cases.
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/zone-query/subset-crs-axis-names
+part:: The names of the axis SHOULD be the abbreviated names of the axis in the CRS definition (e.g. the ones defined in the EPSG database).
+part:: 'e' (in lowercase), 'X' (lowercase/uppercase) or 'Easting' (lowercase/uppercase) SHOULD be interpreted as synonymous of 'E'.
+part:: 'n' (in lowercase) or 'Y' (lowercase/uppercase) or 'Northing' (lowercase/uppercase) SHOULD be interpreted as synonymous of 'N'.
+part:: 'Long' (lowercase/uppercase) or 'Longitude' SHOULD be interpreted as synonymous of 'Lon'.
+part:: 'Latitude' SHOULD be interpreted as synonymous of 'Lat'.
+====
 
 === Parameter `subset-crs`
 
