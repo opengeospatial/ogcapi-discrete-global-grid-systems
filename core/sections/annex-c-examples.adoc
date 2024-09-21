@@ -167,6 +167,9 @@ a default (relative) depth as well as additional links and link templates.
 }
 ----
 
+ISEA3H is an equal area discrete global grid hierarchy based on the Icosahedral Snyder Equal Area projection, using hexagonal grids with a refinement ratio (aperture) of 3.
+All hexagonal zones of a given refinement level have exactly the same area, while each of the twelve (12) pentagonal zones occupies 5/6th the area of a hexagonal zone of the same level.
+
 See the informative <<annex-dggrs-def,annex B>> for examples of DGGRS definition responses which the client could obtain by following the `[ogc-rel:dggrs-definition]` links.
 The annex includes provisionary definitions for the <<isea3h-dggrs,ISEA3H>>, <<isea9r-dggrs,ISEA9R>> and <<ggg-dggrs,GNOSIS Global Grid>> used in these examples
 which will likely be used to initially populate an authoritative registry, Additional DGGRS entries would be submitted, reviewed and registered based on the needs of the community.
@@ -545,7 +548,7 @@ https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R
 .GeoJSON response for zone query for ISEA9R DGGRS at level 8 for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA9R/zones/E6-317[E6-317], for https://viewfinderpanoramas.org/[Viewfinder Panoramas], visualized in QGIS
 image::images/zones-srtm-isea9r-level8-parent-zone.png[width=500,align="center"]
 
-Although ISEA9R is axis-aligned, like ISEA3H, it is equal area, with an error budget below 1%.
+Although ISEA9R is axis-aligned, it is also perfectly equal area.
 
 ==== GNOSIS Global Grid (WGS84 rectangles) Zone Queries
 
