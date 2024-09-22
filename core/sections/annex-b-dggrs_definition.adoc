@@ -89,7 +89,7 @@ image::images/ISEA3H-Level2.png[width=700,align="center"]
 
 The sub-zone ordering for this DGGRS is based on scanlines of tightly packed hexagons, sharing whole edges
 with the previous and next zone within a scanline, while each zone shares two edges with the
-scanline above, and another two edges with the scanline below. The scanlines start on a vertex of the parent zone
+previous scanline, and another two edges with the next scanline. The scanlines start on a vertex of the parent zone
 for an even relative depth, while they start on an edge for an odd relative depth.
 
 [[isea3h_order_vertex]]
