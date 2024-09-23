@@ -43,7 +43,7 @@
       }
    },
    "subZoneOrder": {
-      "description": "The zones are ordered as scanlines in row-major order, left to right, then top to bottom, based on a CRS derived from the planar ISEA projection after rotating it 60 degrees clockwise and applying a 30 degrees horizontal shear.",
+      "description": "The zones are ordered as scanlines in row-major order, left to right, then top to bottom, based on a CRS derived from the planar ISEA projection after rotating it 60° clockwise (-60° rotation) and applying a -60° degrees horizontal shear.",
       "type": "scanline"
    }
 }
