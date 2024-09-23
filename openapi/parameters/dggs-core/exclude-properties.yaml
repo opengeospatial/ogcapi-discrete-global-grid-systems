@@ -1,0 +1,9 @@
+name: exclude-properties
+in: query
+description: |-
+  Exclude specific data record fields (measured/observed properties) from being returned using a comma-separated list of field names.
+  The field name must be one of the fields defined in the associated data resource's logical schema.
+
+required: false
+schema:
+  type: string
