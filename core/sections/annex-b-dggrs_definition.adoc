@@ -36,7 +36,7 @@ The following example JSON DGGRS definitions conform to this schema.
 === ISEA9R DGGRS definition
 
 The following DGGRS is for an axis-aligned and equal-area DGGH based on the https://doi.org/10.3138/27H7-8K88-4882-1752[Icosahedral Snyder Equal-Area (ISEA)] planar projection (see https://proj.org/en/9.4/operations/projections/isea.html[PROJ] and https://github.com/mocnik-science/geogrid/blob/master/src/main/java/org/giscience/utils/geogrid/projections/ISEAProjection.java[geogrid] for open-source implementations) using rhombuses with a refinement ratio of 9.
-When the ISEA projection is rotated 60 degrees, sheared horizontally by 30 degrees and units are mapped to a 5x6 space, the zones become square and their edges are aligned with the CRS axes, while remaining equal area.
+When the ISEA projection is rotated clockwise 60 degrees, sheared horizontally by a -60 degrees angle, and units are mapped to a 5x6 space, the zones become square and their edges are aligned with the CRS axes, while remaining equal area.
 A https://docs.ogc.org/is/17-083r4/17-083r4.html[2D Tile Matrix Set] can also be defined in this transformed CRS, allowing for compatibility with https://docs.ogc.org/is/20-057/20-057.html[OGC API - Tiles], https://portal.ogc.org/files/?artifact_id=35326[WMTS] and traditional client and visualization software with no built-in DGGS functionality.
 This transformed CRS distorts angles and distances more than the planar ISEA projection, but the topology, indexing, and surface geometry on the Earth model remains the same as in that planar ISEA projection.
 
@@ -94,12 +94,12 @@ for an even relative depth, while they start on an edge for an odd relative dept
 
 [[isea3h_order_vertex]]
 [#img_isea3h_order_vertex='{figure-caption} {counter:figure-num}']
-.Sub-zone order for even relative depth starting on a vertex (hexagonal parent, depth 2)
-image::images/isea3h-order-vertex.png[width=300,align="center"]
+.Sub-zone order for even relative depth starting on a vertex (hexagonal and pentagonal parents, depth 2)
+image::images/isea3h-order-vertex.png[width=700,align="center"]
 
 [#img_isea3h_order_edge='{figure-caption} {counter:figure-num}']
-.Sub-zone order for odd relative depth starting on an edge (hexagonal parent, depth 3)
-image::images/isea3h-order-edge.png[width=400,align="center"]
+.Sub-zone order for odd relative depth starting on an edge (hexagonal and pentagonal parents, depth 3)
+image::images/isea3h-order-edge.png[width=700,align="center"]
 
 [[ggg-dggrs]]
 === GNOSIS Global Grid DGGRS definition
