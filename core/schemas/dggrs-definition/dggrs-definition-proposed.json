@@ -151,7 +151,7 @@
                 },
                 "longitude": {
                   "description": "Reference Longitude in decimal degrees to fix the orientation of the polyhedron.",
-                  "example": 11.25,
+                  "example": 11.20,
                   "type": "number"
                 },
                 "azimuth": {

@@ -111,7 +111,7 @@ properties:
                         type: number
                      longitude:
                         description: Reference longitude in decimal degrees on reference globe of first vertex to fix the orientation of the polyhedron.
-                        example: 11.25
+                        example: 11.20
                         type: number
                      azimuth:
                         description: Azimuth in decimal degrees of second vertex relative to the first vertex.

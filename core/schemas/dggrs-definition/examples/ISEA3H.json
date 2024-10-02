@@ -1,6 +1,6 @@
 {
    "title": "ISEA3H",
-   "description": "An ISEA3H Discrete Global Grid Reference System using the standard ISEA orientation and WGS84 authalic sphere (a WGS84 geodetic latitude is mapped to the sphere by converting it to an authalic latitude), a zone indexing system based on an ISEA9R, and a scanline-based sub-zone ordering",
+   "description": "An ISEA3H Discrete Global Grid Reference System using an ISEA orientation symmetric about the equator with a single vertex on land, and WGS84 authalic sphere (a WGS84 geodetic latitude is mapped to the sphere by converting it to an authalic latitude), a zone indexing system based on an ISEA9R, and a scanline-based sub-zone ordering",
    "uri": "https://www.opengis.net/def/dggrs/OGC/1.0/ISEA3H",
    "links": [ { "rel": "describedby", "href": "https://portal.ogc.org/files/?artifact_id=107432" } ],
    "dggh": {
@@ -25,9 +25,10 @@
          "ellipsoid": "Authalic sphere based on [EPSG:7030] (WGS84) -- NOTE: No identifier defined yet? [ESPG:7048] exists for Authalic sphere based on GRS80 [EPSG:7019]",
          "orientation":
          {
-            "description": "Standard ISEA orientation with a single icosahedron vertex falling on land",
+            "description": "ISEA orientation symmetric about the equator with a single icosahedron vertex falling on land, with first icosahedron vertex at authalic latitude equal to the arctangent of the golden ratio (58.397145907431° N geodetic latitude), 11.20°E longitude, and second vertex due North from that first vertex.",
             "latitude": 58.28252559,
-            "longitude": 11.25
+            "longitude": 11.20,
+            "azimuth": 0
          }
       }
    },
