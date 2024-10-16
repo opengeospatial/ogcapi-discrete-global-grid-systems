@@ -79,14 +79,14 @@ region of space-time enclosing a celestial body
 [[term-parent-zone]]
 === parent zone
 
-<<term-zone,zone>> in a lower <<term-refinement-level,refinement level>> of a <<term-dgg,discrete global grid>> with immediate descendants
+<<term-zone,zone>> in a coarser <<term-refinement-level,refinement level>> of a <<term-dgg,discrete global grid>> with immediate descendants
 
 [.source]
 <<OGC20-040r3>>
 
 NOTE: adapted from _parent cell_ in OGC Abstract Specification Topic 21
 
-NOTE: Adapted to say _lower_ rather than _higher_, where _lower_ refers to a zone covering a larger area of space-time which would normally correspond to lower resolution data.
+NOTE: Adapted to say _coarser_ rather than _higher_, where _coarser_ refers to a zone covering a larger area of space-time.
 
 [[term-refinement-level]]
 === refinement level

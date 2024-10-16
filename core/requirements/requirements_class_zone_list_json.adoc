@@ -57,7 +57,7 @@ part:: The `links` property SHOULD include an `[ogc-rel:geodata]` link for zone 
 ====
 [%metadata]
 identifier:: /rec/zone-json/zone-order
-part:: For responses where zones of multiple hierarchy levels are returned when `compact-zones` is true, the zones SHOULD be listed with the coarser resolution level first (larger zones).
+part:: For responses where zones of multiple hierarchy levels are returned when `compact-zones` is true, the zones SHOULD be listed with coarser refinement levels first (larger zones).
 ====
 
 [recommendation]
