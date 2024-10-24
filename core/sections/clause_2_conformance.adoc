@@ -24,7 +24,7 @@ The Requirements Classes for _OGC API - Discrete Global Grid Systems_ are:
 
 In addition to the Core requirements class defining the `../dggs`, `../dggs/{dggrsId}` and `../dggs/{dggrsId}/zones/{zoneId}` resources, either
 the Zone Data retrieval (`../dggs/{dggrsId}/zones/{zoneId}/data`) or Zone Query requirements classes (`../dggs/{dggrsId}/zones` with support for parameters such as
-`zone-level=`, `parent-zone=`, `compact-zones=`, `bbox=` and `datetime=`) need to be implemented for a DGGS API implementation to have practical use.
+`zone-level=`, `parent-zone=`, `compact-zones=`, `bbox=`, `bbox-crs`, `datetime=`, `subset=` and `subset-crs=`) need to be implemented for a DGGS API implementation to have practical use.
 
 * <<rc_core,*Core*>>
 * <<rc_data-retrieval,*Zone Data Retrieval*>>
