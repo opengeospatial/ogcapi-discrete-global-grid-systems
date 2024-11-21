@@ -9,8 +9,7 @@ These requirements classes include:
 * <<rc_zone-json,JSON Zone List>>
 * <<rc_zone-html,HTML Zone List>>
 * <<rc_zone-uint64,64-bit Binary Zone List>>
-* <<rc_zone-geojson,GeoJSON Zone List>>
-* <<rc_zone-fgjson,FG-JSON Zone List>>
+* <<rc_zone-geojson,GeoJSON Zone List>> -- including support for Features & Geometry JSON (FG-JSON) output as a recommendation
 * <<rc_zone-geotiff,GeoTIFF Zone List>>
 
 [[zone_list_media_types]]
@@ -22,13 +21,12 @@ A table of the media types used in the zone list encoding requirements classes d
 .Media Types used for zone list encoding requirements classes
 [width="90%",cols="2,4"]
 |====
-^|*Encoding*              ^|*Media type*
-|JSON zone list            |application/json
-|HTML zone list            |text/html
-|Binary 64-bit zone list   |application/x-binary
-|GeoJSON zone list         |application/geo+json
-|JSON-FG zone list         |application/fg+json
-|GeoTIFF zone list         |image/tiff; application=geotiff
+^|*Encoding*                ^|*Media type*
+|JSON zone list              |application/json
+|HTML zone list              |text/html
+|Binary 64-bit zone list     |application/x-binary
+|GeoJSON / FG-JSON zone list |application/geo+json
+|GeoTIFF zone list           |image/tiff; application=geotiff
 |====
 
 [[rc_zone-json]]
@@ -76,34 +74,19 @@ include::../requirements/requirements_class_zone_list_binary_64bit.adoc[]
 
 ==== Overview
 
-The GeoJSON zone list encoding requirements class defines support for encoding a DGGRS Zone list response according to the https://datatracker.ietf.org/doc/html/rfc7946[GeoJSON specification].
+The GeoJSON zone list encoding requirements class defines support for encoding a DGGRS Zone list response according to the https://datatracker.ietf.org/doc/html/rfc7946[GeoJSON specification],
+and optionally according to the https://docs.ogc.org/DRAFTS/21-045.html[OGC Features & Geometry JSON (FG-JSON) Standard].
 
 The response is a feature collection where each feature represents a zone in the list.
-The geometry of the zone should be polygons or multipolygons (e.g., in the case of zone geometry which must be split on the anti-meridian or pole).
-The zone identifier is represented in the `id` field of each feature.
-
-While not intended to efficiently exchange zone list, as the response carries the geometry of the zones which could easily be computed client-side which takes considerable bandwidth and is
-not necessary for a 3 client working natively with the same DGGRS, this requirements class provides an easy way to readily visualize the response in a variety of tools.
-This requirements class is therefore intended for convenience, demonstration and educational purposes.
-
-include::../requirements/requirements_class_zone_list_geojson.adoc[]
-
-[[rc_zone-fgjson]]
-=== Requirements Class "FG-JSON zone list encoding"
-
-==== Overview
-
-The FG-JSON zone list encoding requirements class defines support for encoding a DGGRS Zone list response according to the https://docs.ogc.org/DRAFTS/21-045.html[FG-JSON specification].
-
-The response is a feature collection where each feature represents a zone in the list.
-The geometry of the zone should be polygons or multipolygons (e.g., in the case of zone geometry which must be split on the anti-meridian or pole).
+The geometry of the zone should be polygons or multipolygons (e.g., in the case of zone geometry which must be split on the anti-meridian or pole), or in the case of a 3D DGGRS and an FG-JSON
+response polyhedrons, multipolyhedrons, prisms or multiprisms.
 The zone identifier is represented in the `id` field of each feature.
 
 While not intended to efficiently exchange zone list, as the response carries the geometry of the zones which could easily be computed client-side which takes considerable bandwidth and is
 not necessary for a DGGS client working natively with the same DGGRS, this requirements class provides an easy way to readily visualize the response in a variety of tools.
 This requirements class is therefore intended for convenience, demonstration and educational purposes.
 
-include::../requirements/requirements_class_zone_list_fgjson.adoc[]
+include::../requirements/requirements_class_zone_list_geojson.adoc[]
 
 [[rc_zone-geotiff]]
 === Requirements Class "GeoTIFF zone list encoding"

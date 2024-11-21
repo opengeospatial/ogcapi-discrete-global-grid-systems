@@ -16,7 +16,7 @@ requirement:: /req/data-dggs-fgubjson/content
 ====
 [%metadata]
 identifier:: /req/data-dggs-fgubjson/content
-part:: The Implementation SHALL support a `geometry` query parameter with a value of either `quantized` or `quantized-zoneids` allowing a client to request a DGGS-FG-UBJSON response.
-part:: Every 200 response of the server for zone data with the media type `application/fg+ubjson` and a `geometry=quantized` (or `geometry=quantized-zoneids`) query parameter SHALL be a https://ubjson.org/[Universal Binary JSON] document representing the vector features within the requested zone.
+part:: The Implementation SHALL support zone data requests negotiating an `application/geo+ubjson` media type combined with a `profile` query parameter with a value of `jsonfg-dggs`, `jsonfg-dggs-plus`, `jsonfg-dggs-zoneids` or `jsonfg-dggs-zoneids-plus` allowing a client to request a DGGS-FG-UBJSON response.
+part:: Every 200 response of the server for DGGS-FG-UBJSON zone data requests SHALL be a https://ubjson.org/[Universal Binary JSON] document representing the vector features within the requested zone
 part:: The content of the UBJSON document SHALL follow all the of same requirements as for DGGS-FG-JSON described above.
 ====

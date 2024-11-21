@@ -27,8 +27,7 @@ For rasterized data output readily usable in non-DGGS systems or to facilitate i
 
 For vector features output readily usable in non-DGGS systems or to facilitate interoperability with other DGGHs:
 
-* <<rc_data-geojson,GeoJSON Data>>
-* <<rc_data-fgjson,FG-JSON Data>>
+* <<rc_data-geojson,GeoJSON Data>> -- including support for Features & Geometry JSON (FG-JSON) output as a recommendation
 
 [[zone_data_media_types]]
 === Media Types (for zone data)
@@ -42,10 +41,9 @@ A table of the media types used in the encoding of the Zone Data requirements cl
 ^|*Encoding*              ^|*Media type*
 |DGGS-JSON zone data      |application/json
 |DGGS-UBJSON zone data    |application/ubjson
-|DGGS-FG-JSON zone data   |application/fg+json (with `geometry=quantized` or `geometry=quantized-zoneids` query parameter)
-|DGGS-FG-UBJSON zone data |application/fg+ubjson (with `geometry=quantized` or `geometry=quantized-zoneids` query parameter)
-|GeoJSON data             |application/geo+json
-|JSON-FG data             |application/fg+json
+|DGGS-FG-JSON zone data   |application/geo+json (with `profile` query parameter values of `jsonfg-dggs`, `jsonfg-dggs-plus`, `jsonfg-dggs-zoneids` or `jsonfg-dggs-zoneids-plus`)
+|DGGS-FG-UBJSON zone data |application/geo+ubjson (with `profile` query parameter values of `jsonfg-dggs`, `jsonfg-dggs-plus`, `jsonfg-dggs-zoneids` or `jsonfg-dggs-zoneids-plus`)
+|GeoJSON / JSON-FG data   |application/geo+json (without `profile` query parameter, or with values of `rfc7946` (default), `jsonfg` or `jsonfg-plus`)
 |GeoTIFF data             |image/tiff; application=geotiff
 |netCDF zone data         |application/x-netcdf
 |Zarr zone data           |application/zarr+zip
@@ -159,26 +157,16 @@ include::../requirements/requirements_class_zone_data_geotiff.adoc[]
 
 ==== Overview
 
-The GeoJSON Zone Data encoding requirements class defines support for encoding a DGGS Zone data response according to the https://datatracker.ietf.org/doc/html/rfc7946[GeoJSON specification].
+The GeoJSON Zone Data encoding requirements class defines support for encoding a DGGS Zone data response according to the https://datatracker.ietf.org/doc/html/rfc7946[GeoJSON specification],
+and optionally according to the https://docs.ogc.org/DRAFTS/21-045.html[OGC FG-JSON candidate Standard].
 
 GeoJSON is a commonly used format for representing features with simple geometries and related properties.
 GeoJSON is simple to understand and is well supported by tools and software libraries.
 Since most Web developers are comfortable with using JSON-based formats, supporting GeoJSON is recommended for a vector representation of DGGS Zone data.
 
+FG-JSON is an OGC format for representing features with simple geometries and related properties extending GeoJSON for greater flexibility.
+
 include::../requirements/requirements_class_zone_data_geojson.adoc[]
-
-[[rc_data-fgjson]]
-=== Requirements Class "FG-JSON Zone data encoding"
-
-==== Overview
-
-The FG-JSON Zone Data encoding requirements class defines support for encoding a DGGS Zone data response according to the https://docs.ogc.org/DRAFTS/21-045.html[OGC FG JSON candidate Standard].
-
-FG JSON is an OGC format for representing features with simple geometries and related properties extending GeoJSON for greater flexibility.
-FG JSON is simple to understand and well supported by tools and software libraries.
-Since most Web developers are comfortable with using JSON-based formats, supporting FG JSON is recommended for a vector representation of DGGS Zone data.
-
-include::../requirements/requirements_class_zone_data_fgjson.adoc[]
 
 [[rc_data-netcdf]]
 === Requirements Class "netCDF zone data encoding"

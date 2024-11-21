@@ -1100,7 +1100,7 @@ with much fewer information than is required to address the entire globe.
 This representation also addresses the issue of artificial segments. This is done by using a special zone order index value of _0_ for representing coordinates outside of the zone,
 which facilitates merging geometry across adjacent zones and easily identifying artificial segments of polygon contours.
 For polygons, rather than tracing points along the clipping zone edge(s), only the exit and entry points will exist with a single _0_ coordinate value in between, indicating that the portion of the zone
-edge(s) between those two points is within the contour. A DGGS-FG-JSON representation is requested using the `application/fg+json` media type together with the `geometry=quantized` (or `geometry=quantized-zoneids`) query parameter.
+edge(s) between those two points is within the contour. A DGGS-FG-JSON representation is requested using the `application/geo+json` media type together with the `profile` query parameter set to a value of `jsonfg-dggs`, `jsonfg-dggs-plus`, `jsonfg-dggs-zoneids` or `jsonfg-dggs-zoneids-plus`.
 
 The DGGS-FG-JSON representation for the previous OpenStreetMap example extract follows, at a relative depth precision of 15,
 resulting in coordinates within a ~275 cm² region, ~16 cm precision, with sub-zone indices between 1 and 14,355,469 (roughly equivalent to latitude and longitude with six decimal places).

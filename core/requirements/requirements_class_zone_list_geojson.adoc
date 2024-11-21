@@ -7,6 +7,7 @@
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-geojson
 subject:: Web API
 inherit:: <<rfc7946, GeoJSON>>
+inherit:: <<OGC21-045r1>> (optional FG-JSON dependency)
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
 requirement:: /req/zone-geojson/content
 ====
@@ -16,6 +17,7 @@ requirement:: /req/zone-geojson/content
 [%metadata]
 identifier:: /req/zone-geojson/content
 part:: Every 200 response of the server for zone query with the media type `application/geo+json` SHALL be a GeoJSON document consisting of a FeatureCollection, where every Feature represents a single zone.
+part:: Unless otherwise specified by a prior arrangement (for example, an output `crs` query parameter) or by negotiating an FG-JSON profile, the coordinate reference system SHALL be CRS84(h) in longitude and latitude (and optional height above the WGS84 ellipsoid).
 part:: Every feature SHALL have a `zoneID` property corresponding to the textual identifier of the zone.
 part:: The geometry of each feature SHALL be the geometry of the zone.
 ====
@@ -23,8 +25,26 @@ part:: The geometry of each feature SHALL be the geometry of the zone.
 [recommendation]
 ====
 [%metadata]
+identifier:: /req/zone-geojson/fgjson-profile
+part:: The Implementation SHOULD support a `profile` query parameter for zone query requests allowing to negotiate an https://docs.ogc.org/DRAFTS/21-045r1.html[OGC Feature & Geometry JSON] representation,
+where a value of `rfc7946` corresponds to RFC 7936 GeoJSON, a `jsonfg` value corresponds to a response conforming to FG-JSON, and a `jsonfg-plus` value corresponds to a response conforming to FG-JSON
+fully backward compatible with GeoJSON (e.g., including a GeoJSON geometry in the `geometry` field if geometry is otherwise provided in the FG-JSON-specific `place` property which supports extended
+geometry types and alternate coordinate reference system without prior agreement).
+====
+
+[recommendation]
+====
+[%metadata]
 identifier:: /rec/zone-geojson/id
 part:: The Feature `id` SHOULD be a sequential identifier starting at 1, have the same text value as the `zoneID` property, or correspond to the 64-bit integer identifier for the zone.
+====
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/zone-geojson/crs
+part:: For an FG-JSON response for which a `crs` query parameter is not specified, the CRS of the response SHOULD be consistent with the CRS of the DGGRS or the underlying geographic CRS (e.g., CRS84).
+part:: For an FG-JSON response for which a `crs` query parameter is specified, the `geometry` property SHOULD be used to return coordinates if the geometry does not require an extended FG-JSON type, since this constitutes a prior arrangement regarding the CRS of GeoJSON coordinates.
 ====
 
 [recommendation]
@@ -40,7 +60,7 @@ part:: For DGGRSs not in CRS84, the geometry SHOULD include intermediate points 
 identifier:: /rec/zone-geojson/geometry
 part:: The implementation SHOULD support a `geometry` query parameter allowing a client to choose how to return the geometry of each zone.
 part:: The implementation SHOULD support a value of `geometry=zone-centroid` to request a representation where the geometry of each a zone is a Point geometry for the centroid of that zone.
-part:: The implementation SHOULD support a value of `geometry=zone-region` to request a representation where the geometry of each zone is a (Multi)Polygon geometry.
+part:: The implementation SHOULD support a value of `geometry=zone-region` to request a representation where the geometry of each zone is a (Multi)Polygon, (Multi)Polyhedron, or (Multi)Prism.
 part:: The implementation SHOULD support a value of `geometry=none` to request a representation with a null geometry.
-part:: If a requested geometry representation is not supported, the Implementation SHOULD return a 4xx or 501 "Not Implemented" HTTP error.
+part:: If a requested geometry representation is not supported, the Implementation SHOULD return a 4xx HTTP error.
 ====

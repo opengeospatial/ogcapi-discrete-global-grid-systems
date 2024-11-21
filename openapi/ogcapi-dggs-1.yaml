@@ -219,6 +219,8 @@ components:
          $ref: 'parameters/dggs-core/crs.yaml'
       geometry:
          $ref: 'parameters/dggs-core/geometry.yaml'
+      profile:
+         $ref: 'parameters/dggs-core/profile.yaml'
       values-scale:
          $ref: 'parameters/dggs-core/values-scale.yaml'
       values-offset:

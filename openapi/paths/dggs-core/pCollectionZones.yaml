@@ -19,6 +19,7 @@ get:
      - $ref: '../../parameters/dggs-core/subset-crs.yaml'
      - $ref: '../../parameters/dggs-core/crs.yaml'
      - $ref: '../../parameters/dggs-core/geometry.yaml'
+     - $ref: '../../parameters/dggs-core/profile.yaml'
      - $ref: '../../parameters/dggs-core/filter.yaml'
      - $ref: '../../parameters/dggs-core/filter-lang.yaml'
      - $ref: '../../parameters/unspecified/f-zoneQueries.yaml'

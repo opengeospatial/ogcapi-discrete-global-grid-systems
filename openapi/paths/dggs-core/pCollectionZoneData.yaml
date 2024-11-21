@@ -17,6 +17,7 @@ get:
      # - $ref: '../../parameters/dggs-core/sortby.yaml'
      - $ref: '../../parameters/dggs-core/crs.yaml'
      - $ref: '../../parameters/dggs-core/geometry.yaml'
+     - $ref: '../../parameters/dggs-core/profile.yaml'
      - $ref: '../../parameters/common-geodata/datetime.yaml'
      - $ref: '../../parameters/dggs-core/zone-depth.yaml'
      - $ref: '../../parameters/dggs-core/values-offset.yaml'

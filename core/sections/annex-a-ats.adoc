@@ -257,17 +257,6 @@ target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-geojson
 classification:: Target Type:Web API
 ====
 
-=== Conformance Class "FG-JSON encoding for Zone Data"
-
-[[conf_data-fgjson,https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-fgjson]]
-[conformance_class]
-====
-[%metadata]
-identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-fgjson
-target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-fgjson
-classification:: Target Type:Web API
-====
-
 === Conformance Class "netCDF encoding for Zone Data"
 
 [[conf_data-netcdf,https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-netcdf]]
@@ -364,17 +353,6 @@ classification:: Target Type:Web API
 [%metadata]
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-geojson
 target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-geojson
-classification:: Target Type:Web API
-====
-
-=== Conformance Class "FG-JSON encoding for Zone Listing"
-
-[[conf_zone-fgjson,https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-fgjson]]
-[conformance_class]
-====
-[%metadata]
-identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-fgjson
-target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-fgjson
 classification:: Target Type:Web API
 ====
 
