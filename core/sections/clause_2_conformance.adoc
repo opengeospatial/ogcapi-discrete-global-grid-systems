@@ -62,7 +62,7 @@ whereas DGGS-FG-(UB)JSON encode vector features and geometry based on OGC Featur
 * <<rc_data-ubjson,DGGS-UBJSON Data>>
 * <<rc_data-dggs-fgjson,DGGS-FG-JSON Data>>
 * <<rc_data-dggs-fgubjson,DGGS-FG-UBJSON Data>>
-* <<rc_data-geojson,GeoJSON Data>> -- including support for Features & Geometry JSON (FG-JSON) output as a recommendation
+* <<rc_data-geojson,GeoJSON Data>>
 * <<rc_data-geotiff,GeoTIFF Data>>
 * <<rc_data-netcdf,netCDF Data>>
 * <<rc_data-zarr,Zarr Data>>
@@ -77,8 +77,12 @@ The Zone List Encoding Requirements Classes address support for formats efficien
 * <<rc_zone-json,JSON Zone List>>
 * <<rc_zone-html,HTML Zone List>>
 * <<rc_zone-uint64,64-bit Binary Zone List>>
-* <<rc_zone-geojson,GeoJSON Zone List>> -- including support for Features & Geometry JSON (FG-JSON) output as a recommendation
+* <<rc_zone-geojson,GeoJSON Zone List>>
 * <<rc_zone-geotiff,GeoTIFF Zone List>>
+
+Implementations supporting GeoJSON for either zone data or zone lists are strongly encouraged to also support GeoJSON extensions
+defined by the Features & Geometry JSON (FG-JSON) Standard. Conformance to this Standard can be indicated in the Web API deployment's
+conformance declaration using its associated conformance class URIs, such as `http://www.opengis.net/spec/json-fg-1/0.2/conf/core`.
 
 ==== Operation IDs in API definitions
 
