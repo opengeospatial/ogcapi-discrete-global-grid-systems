@@ -3124,7 +3124,6 @@
                   "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-fgjson",
                   "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-fgubjson",
                   "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-geojson",
-                  "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-fgjson",
                   "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-tiff",
                   "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-netcdf",
                   "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-coveragejson",
@@ -3135,7 +3134,6 @@
                   "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-html",
                   "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-uint64",
                   "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-geojson",
-                  "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-fgjson",
                   "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-tiff"
                 ]
               }
