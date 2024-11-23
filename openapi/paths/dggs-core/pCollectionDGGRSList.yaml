@@ -2,7 +2,7 @@ get:
    tags:
      - DGGRS Description
    summary: Retrieve the list of available DGGRS for the specified collection
-   operationId: getCollectionDGGRSList
+   operationId: .collection.getDGGRSList
    parameters:
      - $ref: '../../parameters/unspecified/f-metadata.yaml'
      - $ref: '../../parameters/common-geodata/collectionId-all.yaml'

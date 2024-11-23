@@ -2,7 +2,7 @@ get:
    tags:
      - DGGS Data Retrieval
    summary: Retrieve data from a DGGRS Zone for a specific collection. For a DGGRS defining a sub-zone order, optimized zone data packets such as DGGS-(UB)JSON for raster data, or DGGS-FG-(UB)JSON for vector data can be used.
-   operationId: retrieveCollectionDGGSZoneData
+   operationId: .collection.getDGGRSZoneData
    parameters:
      - $ref: '../../parameters/dggs-core/dggrsId.yaml'
      - $ref: '../../parameters/dggs-core/zoneId.yaml'

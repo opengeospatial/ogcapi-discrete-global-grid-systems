@@ -2,7 +2,7 @@ get:
    tags:
      - DGGRS Description
    summary: Retrieve the description of the specified Discrete Global Grid Reference System
-   operationId: getDGGRS
+   operationId: .dataset.getDGGRS
    parameters:
      - $ref: '../../parameters/dggs-core/dggrsId.yaml'
      - $ref: '../../parameters/unspecified/f-metadata.yaml'

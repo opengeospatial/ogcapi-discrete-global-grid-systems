@@ -2,7 +2,7 @@ get:
    tags:
      - DGGS Zone Query
    summary: Retrieve the list of zones with data for this dataset, or for a particular query
-   operationId: queryZones
+   operationId: .dataset.getDGGRSZones
    parameters:
      - $ref: '../../parameters/common-geodata/collections.yaml'
      - $ref: '../../parameters/common-geodata/bbox.yaml'

@@ -2,7 +2,7 @@ get:
    tags:
      - DGGRS Description
    summary: Retrieve the list of available DGGRSs
-   operationId: getDGGRSList
+   operationId: .dataset.getDGGRSList
    parameters:
      - $ref: '../../parameters/unspecified/f-metadata.yaml'
    responses:

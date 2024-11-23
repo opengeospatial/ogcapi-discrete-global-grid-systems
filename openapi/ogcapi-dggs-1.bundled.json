@@ -218,7 +218,7 @@
           "DGGRS Description"
         ],
         "summary": "Retrieve the list of available DGGRSs",
-        "operationId": "getDGGRSList",
+        "operationId": ".dataset.getDGGRSList",
         "parameters": [
           {
             "$ref": "#/components/parameters/f-metadata"
@@ -243,7 +243,7 @@
           "DGGRS Description"
         ],
         "summary": "Retrieve the description of the specified Discrete Global Grid Reference System",
-        "operationId": "getDGGRS",
+        "operationId": ".dataset.getDGGRS",
         "parameters": [
           {
             "$ref": "#/components/parameters/dggrsId"
@@ -281,7 +281,7 @@
           "DGGRS Description"
         ],
         "summary": "Retrieve information about a DGGRS Zone, such as geometry and data availability.",
-        "operationId": "getDGGRSZone",
+        "operationId": ".dataset.getDGGRSZoneInfo",
         "parameters": [
           {
             "$ref": "#/components/parameters/dggrsId"
@@ -337,7 +337,7 @@
           "DGGRS Description"
         ],
         "summary": "Retrieve the list of available DGGRS for the specified collection",
-        "operationId": "getCollectionDGGRSList",
+        "operationId": ".collection.getDGGRSList",
         "parameters": [
           {
             "$ref": "#/components/parameters/f-metadata"
@@ -368,7 +368,7 @@
           "DGGRS Description"
         ],
         "summary": "Retrieve the description of the specified Discrete Global Grid Reference System in the context of a specified collection",
-        "operationId": "getCollectionDGGRS",
+        "operationId": ".collection.getDGGRS",
         "parameters": [
           {
             "$ref": "#/components/parameters/dggrsId"
@@ -402,7 +402,7 @@
           "DGGRS Description"
         ],
         "summary": "Retrieve information about a DGGRS Zone, such as geometry and data availability, in the context of a specific collection.",
-        "operationId": "getCollectionDGGRSZone",
+        "operationId": ".collection.getDGGRSZoneInfo",
         "parameters": [
           {
             "$ref": "#/components/parameters/dggrsId"
@@ -442,7 +442,7 @@
           "DGGS Data Retrieval"
         ],
         "summary": "Retrieve data from a DGGRS Zone. For a DGGRS defining a sub-zone order, optimized zone data packets such as DGGS-(UB)JSON for raster data, or DGGS-FG-(UB)JSON for vector data can be used.",
-        "operationId": "retrieveDGGSZoneData",
+        "operationId": ".dataset.getDGGRSZoneData",
         "parameters": [
           {
             "$ref": "#/components/parameters/dggrsId"
@@ -515,7 +515,7 @@
           "DGGS Data Retrieval"
         ],
         "summary": "Retrieve data from a DGGRS Zone for a specific collection. For a DGGRS defining a sub-zone order, optimized zone data packets such as DGGS-(UB)JSON for raster data, or DGGS-FG-(UB)JSON for vector data can be used.",
-        "operationId": "retrieveCollectionDGGSZoneData",
+        "operationId": ".collection.getDGGRSZoneData",
         "parameters": [
           {
             "$ref": "#/components/parameters/dggrsId"
@@ -588,7 +588,7 @@
           "DGGS Zone Query"
         ],
         "summary": "Retrieve the list of zones with data for this dataset, or for a particular query",
-        "operationId": "queryZones",
+        "operationId": ".dataset.getDGGRSZones",
         "parameters": [
           {
             "$ref": "#/components/parameters/collections"
@@ -672,7 +672,7 @@
           "DGGS Zone Query"
         ],
         "summary": "Retrieve the list of zones with data for a specific collection, or for a particular query",
-        "operationId": "queryCollectionZones",
+        "operationId": ".collection.getDGGRSZones",
         "parameters": [
           {
             "$ref": "#/components/parameters/collectionId-all"
