@@ -12,8 +12,4 @@ is expected to additionally implement either the <<rc_data-retrieval,"Zone Data 
 and/or the <<rc_zone-query,"Zone Query">> Requirements Class, so that a client can ask a question of the type _**"Where is it?"_**.
 To conform to this standard, either or both of these additional requirements classes also needs to be implemented.
 
-An https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/tree/master/openapi[example OpenAPI 3.0 definition for OGC API - DGGS] is provided, defined as individual components
-which can be assembled with the https://apitools.dev/swagger-cli/[swagger-cli tool] after customizing the API definition for a particular implementation or deployment.
-The example API definition can be visualized with https://petstore.swagger.io/?url=https://raw.githubusercontent.com/opengeospatial/ogcapi-discrete-global-grid-systems/master/openapi/ogcapi-dggs-1.bundled.json[SwaggerUI].
-
 include::../requirements/requirements_class_core.adoc[]
