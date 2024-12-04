@@ -1,0 +1,26 @@
+name: profile
+in: query
+description: |-
+   Allows negotiating a particular profile of an output format, such as OGC Feature & Geometry JSON (FG-JSON) or DGGS-FG-JSON output when requesting an `application/geo+json` media type for zone data or zone list requests.
+   For both zone data and zone lists:
+   `rfc7946`: return standard GeoJSON without using any extension
+   `jsonfg`: return FG-JSON representation
+   `jsonfg-plus`: return FG-JSON representation with GeoJSON compatibility
+   For zone data only:
+   `jsonfg-dggs`: return DGGS-FG-JSON representation, using `dggsPlace` to encode geometry points quantized to sub-zone, represented as local indices from 1 to the number of sub-zones corresponding to the DGGRS deterministic sub-zone order, with a special value of 0 representing an artificial node
+   `jsonfg-dggs-plus`: return DGGS-FG-JSON representation, with GeoJSON compatibility `geometry`
+   `jsonfg-dggs-zoneids`: return DGGS-FG-JSON representation, using `dggsPlace` to encode geometry points as textual global zone identifiers, with a special value of _null_ representing an artificial node
+   `jsonfg-dggs-zoneids-plus`: return DGGS-FG-JSON representation, encoding geometry points as global zone IDs, with GeoJSON compatibility `geometry`
+style: form
+explode: false
+required: false
+schema:
+  type: string
+  enum:
+  - rfc7946
+  - jsonfg
+  - jsonfg-plus
+  - jsonfg-dggs
+  - jsonfg-dggs-plus
+  - jsonfg-dggs-zoneids
+  - jsonfg-dggs-zoneids-plus
