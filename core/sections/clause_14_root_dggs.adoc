@@ -1,0 +1,9 @@
+[[rc_root-dggs]]
+== Requirements Class "Root DGGS"
+
+=== Overview
+
+The OGC API - DGGS "Root DGGS" Requirements Class defines the availability of DGGS resources applying to a whole dataset or API, as defined by
+https://docs.ogc.org/is/19-072/19-072.html[_OGC API - Common - Part 1: Core_].
+
+include::../requirements/requirements_class_root.adoc[]
