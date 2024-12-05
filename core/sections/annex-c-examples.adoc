@@ -109,17 +109,6 @@ An example JSON response for this DGGRS list, as defined by the <<rc_core,Core r
 === Retrieving the description of a specific DGGRS
 A client would then select a particular DGGRS of which it already has built-in knowledge, possibly using a software library implementing support for one or more DGGRS available from the server.
 
-IMPORTANT: This DGGS API is intended primarily for client / server exchanges where both parties are familiar and can efficiently deal with the same DGGRS.
-Use cases where the client itself also acts as a server as part of data integration workflows are particularly relevant, where the combination of
-advanced spatial queries with the ability to request data for specific zones of interest can potentially greatly accelerate analytic processing
-through parallel distributed processing and lazy evaluation.
-
-As a fallback, a client without native support for a particular DGGRS can still retrieve and interpret data from a server implementing support for both
-zone queries and data retrieval by performing a two-steps operation. First, the client can perform a zone query for an area of interest using the `bbox` query parameter.
-Then, the client can request data for the zones returned by this query in a georeferenced encoding which it understands and which is not tightly coupled with the DGGRS (excluding e.g.,the <<rc_data-json,DGGS-JSON>> encoding), such as GeoJSON or GeoTIFF.
-However, for such use cases, OGC API - DGGS does not present significant advantages over other OGC API data access mechanisms such as
-https://docs.ogc.org/DRAFTS/19-087.html[OGC API - Coverages], https://docs.ogc.org/is/17-069r4/17-069r4.html[OGC API - Features] or https://docs.ogc.org/is/20-057/20-057.html[OGC API - Tiles].
-
 In this example, the client selects the <<isea3h-dggrs,ISEA3H DGGRS>> (because it has built-in support for it) and follows the link to obtain a complete description of the DGGRS:
 
 https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H?f=json[\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H]
@@ -374,17 +363,6 @@ An example JSON response for this Zone Query JSON, as defined by the <<rc_zone-q
 ----
 
 The server returned all 32 zones of ISEA3H level 1 (which corresponds to a truncated icosahedron -- the traditional soccer ball pattern), because the collection has global coverage.
-
-Servers may support additional representations of zone lists beyond JSON, such as a more compact <<rc_zone-uint64,binary 64-bit integers>> encoding, a <<rc_zone-geojson,GeoJSON representation>> including zone geometry
-or an <<rc_zone-html,HTML representation>> for exploring datasets in a browser through the DGGS API.
-Note that regardless of encoding, zone query responses can also be compressed for additional bandwidth efficiency if the client and server negotiate a content encoding e.g., using `Content-Encoding: gzip`.
-
-CAUTION: The transfer of zone geometry in zone queries is not an efficient implementation use of the DGGS API for practical analytics purposes. This is because clients should already have built-in knowledge of the selected DGGRS
-in their local software libraries and can efficiently infer the geometry of a zone from its zone ID alone as needed. In many use cases, the geometry may not be needed at all.
-
-The ability to retrieve zone lists in a geospatial data format such as GeoJSON or <<rc_zone-geotiff,GeoTIFF>> which can readily be visualized in GIS tools is useful for **educational**, **demonstration** and **debugging** purposes.
-For example, this functionality can be used to generate grids, such as those seen in <<annex-dggrs-def,annex B>> (a `crs` parameter to request an ISEA planar projection was used in that case to override the default GeoJSON CRS84),
-as well as the zone visualizations seen in the examples in this section.
 
 A visualization of the response from negotiating `application/geo+json` for the above request is seen below.
 
