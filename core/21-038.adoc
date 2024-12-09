@@ -40,29 +40,31 @@ include::sections/clause_4_terms_and_definitions.adoc[]
 
 include::sections/clause_5_conventions.adoc[]
 
-include::sections/clause_6_dggs_core.adoc[]
+include::sections/clause_6_overview.adoc[]
 
-include::sections/clause_7_dggs_data_retrieval.adoc[]
+include::sections/clause_7_dggs_core.adoc[]
 
-include::sections/clause_8_dggs_data_subsetting.adoc[]
+include::sections/clause_8_dggs_data_retrieval.adoc[]
 
-include::sections/clause_9_dggs_data_custom_depths.adoc[]
+include::sections/clause_9_dggs_data_subsetting.adoc[]
 
-include::sections/clause_10_dggs_data_cql2_filter.adoc[]
+include::sections/clause_10_dggs_data_custom_depths.adoc[]
 
-include::sections/clause_11_dggs_zone_query.adoc[]
+include::sections/clause_11_dggs_data_cql2_filter.adoc[]
 
-include::sections/clause_12_dggs_zone_query_cql2_filter.adoc[]
+include::sections/clause_12_dggs_zone_query.adoc[]
 
-include::sections/clause_13_root_dggs.adoc[]
+include::sections/clause_13_dggs_zone_query_cql2_filter.adoc[]
 
-include::sections/clause_14_collections_dggs.adoc[]
+include::sections/clause_14_root_dggs.adoc[]
 
-include::sections/clause_15_zone_data_encodings.adoc[]
+include::sections/clause_15_collections_dggs.adoc[]
 
-include::sections/clause_16_zone_list_encodings.adoc[]
+include::sections/clause_16_zone_data_encodings.adoc[]
 
-include::sections/clause_17_operation_ids.adoc[]
+include::sections/clause_17_zone_list_encodings.adoc[]
+
+include::sections/clause_18_operation_ids.adoc[]
 
 ////
 add or remove annexes after "A" as necessary
