@@ -9,8 +9,8 @@ The OpenAPI building blocks defined by the specification as well as complete bun
 [OGC API standards](https://ogcapi.ogc.org/) define modular API building blocks to spatially enable Web APIs
 in a consistent way. [OpenAPI](https://openapis.org) can be used to describe and document the reusable API building blocks (resource paths, query parameters, responses supporting different representations such as JSON and HTML, schemas for both request payload and responses).
 
-The OGC API family of standards is organized by resource type. **OGC API - DGGS** specifies an API for accessing data organised according to a Discrete Global Grid Reference System (DGGRS).
-A DGGRS is a spatial reference system combining a discrete global grid hierarchy (DGGH, a hierarchical tessellation of zones to partition) with a zone indexing reference system (ZIRS) to address the globe.
+The OGC API family of standards is organized by resource type. **OGC API - DGGS** specifies an API for accessing data organised according to Discrete Global Grid Reference Systems (DGGRS).
+A DGGRS is a spatial reference system combining a discrete global grid hierarchy (DGGH, a hierarchical tessellation of the globe into zones at successive refinement levels) with a zone identifier reference system (ZIRS) to uniquely address these zones.
 Aditionally, to enable DGGS-optimized data encodings, a DGGRS defines a deterministic for sub-zones whose geometry is at least partially contained within a parent zone of a lower refinement level.
 A Discrete Global Grid System (DGGS) is an integrated system implementing one or more DGGRS together with functionality for quantization, zonal query, and interoperability.
 DGGS are characterized by the properties of the zone structure of their DGGHs, geo-encoding, quantization strategy and associated mathematical functions.
@@ -33,7 +33,7 @@ GET .../dggs/{dggrsId}
 
 [Description](https://docs.ogc.org/DRAFTS/21-038.html#_discrete_global_grid_reference_system_information_dggsdggrsid) of the DGGRS, providing links to the [definition of the DGGRS it implements](https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/core/schemas/dggrs-definition/dggrs-definition-proposed.json), which consists of a specific hierarchy of Discrete Global Grids, a Zone Indexing Reference System (ZIRS) and a deterministic ordering of sub-zones.
 The description also includes links to the data retrieval mechanism and zone query end-points.
-The DGGRS definition describes the parameters and structure of its DGGS and ZIRS as specified by [OGC Abstract Specification Topic 21 v2.0 - Part 1 (ISO/19170-1)](https://docs.ogc.org/as/20-040r3/20-040r3.html),
+The DGGRS definition describes the parameters and structure of its DGGH and ZIRS as specified by [OGC Abstract Specification Topic 21 v2.0 - Part 1 (ISO/19170-1)](https://docs.ogc.org/as/20-040r3/20-040r3.html),
 as well as a deterministic sub-zone order.
 
 ```
