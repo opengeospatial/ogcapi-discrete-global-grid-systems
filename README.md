@@ -11,7 +11,7 @@ in a consistent way. [OpenAPI](https://openapis.org) can be used to describe and
 
 The OGC API family of standards is organized by resource type. **OGC API - DGGS** specifies an API for accessing data organised according to Discrete Global Grid Reference Systems (DGGRS).
 A DGGRS is a spatial reference system combining a discrete global grid hierarchy (DGGH, a hierarchical tessellation of the globe into zones at successive refinement levels) with a zone identifier reference system (ZIRS) to uniquely address these zones.
-Aditionally, to enable DGGS-optimized data encodings, a DGGRS defines a deterministic order for sub-zones whose geometry is at least partially contained within a parent zone of a lower refinement level.
+Additionally, to enable DGGS-optimized data encodings, a DGGRS defines a deterministic order for sub-zones whose geometry is at least partially contained within a parent zone of a lower refinement level.
 A Discrete Global Grid System (DGGS) is an integrated system implementing one or more DGGRS together with functionality for quantization, zonal query, and interoperability.
 DGGS are characterized by the properties of the zone structure of their DGGHs, geo-encoding, quantization strategy and associated mathematical functions.
 
