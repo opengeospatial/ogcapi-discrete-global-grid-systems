@@ -25,8 +25,8 @@
          "ellipsoid": "Authalic sphere based on [EPSG:7030] (WGS84) -- NOTE: No identifier defined yet? [ESPG:7048] exists for Authalic sphere based on GRS80 [EPSG:7019]",
          "orientation":
          {
-            "description": "ISEA orientation symmetric about the equator with a single icosahedron vertex falling on land, with first icosahedron vertex at authalic latitude equal to the arctangent of the golden ratio (58.397145907431° N geodetic latitude), 11.20°E longitude, and second vertex due North from that first vertex.",
-            "latitude": 58.28252559,
+            "description": "ISEA orientation symmetric about the equator with a single icosahedron vertex falling on land, with first icosahedron vertex at authalic latitude equal to the arctangent of the golden ratio (~58.397145907431° N geodetic latitude), 11.20°E longitude, and second vertex due North from that first vertex.",
+            "latitude": 58.397145907431,
             "longitude": 11.20,
             "azimuth": 0
          }
