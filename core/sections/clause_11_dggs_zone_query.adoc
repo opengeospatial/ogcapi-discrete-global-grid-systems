@@ -24,4 +24,7 @@ as well as the evaluation of any additional filtering query expressed as per the
 Implementations of this requirements class are required to support at minimum the JSON encoding of zones list, and therefore also need to implement the
 <<rc_zone-json, JSON Zone List encoding>> requirements class.
 
+By default, zones are returned as a compacted list of zones, which recursively replaces children zones by their parent if all children of the parent are included in the response.
+A client can override this default behavior by setting the `compact-zones` parameter to _false_.
+
 include::../requirements/requirements_class_zone-query.adoc[]
