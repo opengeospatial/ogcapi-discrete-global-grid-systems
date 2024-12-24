@@ -42,7 +42,7 @@ GET .../dggs/{dggrsId}/zones
 
 [Query the list of zones](https://docs.ogc.org/DRAFTS/21-038.html#_requirement_class_zone_query) where data is available and/or match certain query criteria (e.g., [a bounding box](https://docs.ogc.org/DRAFTS/21-038.html#_parameter_bbox), a [CQL2](http://docs.ogc.org/DRAFTS/21-065.html) [`filter`](https://docs.ogc.org/DRAFTS/21-038.html#_requirement_class_filtering_zone_queries_with_cql2)), for a selected DGGRS, optionally specifying a [particular DGGS hierarchy level](https://docs.ogc.org/DRAFTS/21-038.html#_parameter_zone_level) (`zone-level`).
 This end-point supports a [compact representation](https://docs.ogc.org/DRAFTS/21-038.html#_parameter_compact_zones) based on zone hierarchy (`compact-zones=true`, the default), as well a [`parent-zone` parameter](https://docs.ogc.org/DRAFTS/21-038.html#_parameter_parent_zone_for_hierarchical_exploration) allowing to progressively explore the hierarchy to avoid potentially large responses.
-Implementations can support among others a simple [JSON response](https://docs.ogc.org/DRAFTS/21-038.html#rc_zone-json) and/or a [64-bit integer binary response](https://docs.ogc.org/DRAFTS/21-038.html#rc_zone-binary64bit).
+In addition to a simple [JSON response](https://docs.ogc.org/DRAFTS/21-038.html#rc_zone-json), implementations can also support others such as a [64-bit integer binary response](https://docs.ogc.org/DRAFTS/21-038.html#rc_zone-binary64bit).
 
 ```
 GET .../dggs/{dggrsId}/zones/{zoneId}
