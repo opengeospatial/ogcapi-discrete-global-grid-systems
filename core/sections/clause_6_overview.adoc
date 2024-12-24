@@ -163,13 +163,19 @@ Encoding negotiated with HTTP `Accept:` request header, with some possible encod
 <<rc_data-coveragejson,CoverageJSON Data>> (https://covjson.org/[CoverageJSON]) +
 <<rc_data-jpegxl,JPEG XL Data>> (https://jpeg.org/jpegxl/[JPEG XL]) +
 <<rc_data-png,PNG Data>> (https://www.w3.org/TR/png/[PNG]) |
-Query parameters: +
+Query parameters (recommendation, optional for server to support): +
+https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/crs.yaml[`crs`] +
+ +
 *Defined in <<rc_data-custom-depths,Data custom depths>>:* +
 https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/zone-depth.yaml[`zone-depth`] +
  +
 *Defined in <<rc_data-dggs-fgjson,DGGS-FG-JSON Data>>, <<rc_data-dggs-fgubjson,DGGS-FG-UBJSON Data>> and <<rc_data-geojson,GeoJSON Data>>:* (recommendations, optional for server to support) +
 https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/geometry.yaml[`geometry`] (see <<_geojson_examples,Examples C.8.1.3>>) +
 https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/profile.yaml[`profile`] (see <<_dggs_fg_json_examples,Examples C.8.1.4>>) +
+ +
+*Defined in <<rc_data-png,PNG Data>>:* (recommendation, optional for server to support) +
+https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/values-offset.yaml[`values-offset`] +
+https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/values-scale.yaml[`values-scale`] +
  +
 *Defined in <<rc_data-subsetting,Data subsetting>>:* +
 https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/common-geodata/datetime.yaml[`datetime`] (see <<_temporal_subsetting, Examples C.9.1>>) +
