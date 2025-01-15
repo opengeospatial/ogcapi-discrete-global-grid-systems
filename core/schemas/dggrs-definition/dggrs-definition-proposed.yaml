@@ -72,13 +72,16 @@ properties:
                zoneTypes:
                   type: array
                   items:
-                     type: string
-                     enum:
-                     - triangle
-                     - square
-                     - hexagon
-                     - pentagon
-                     - rhombus
+                     type:
+                        anyOf:
+                         - type: string
+                         - type: string
+                           enum:
+                           - triangle
+                           - square
+                           - hexagon
+                           - pentagon
+                           - rhombus
                   example: [ hexagon, pentagon ]
                refinementStrategy:
                   description: The refinement strategy used by the Discrete Global Grid System
