@@ -7,6 +7,7 @@ identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
 subject:: Web API
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/core
 requirement:: /req/zone-query/zones-list
+requirement:: /req/zone-query/json-response
 requirement:: /req/zone-query/zone-level
 requirement:: /req/zone-query/compact-zones
 requirement:: /rec/zone-query/parent-zone
@@ -40,10 +41,44 @@ part:: Unless the zones are a compact list of zones (see `compact-zones` paramet
 SHALL all be of the same DGGRS hierarchy level.
 part:: The selection of an encoding for the returned list of zones SHALL be consistent with
 HTTP content negotiation.
-part:: The Implementation SHALL support at minimum a JSON encoding (media type `application/json`)
-where each zone ID is specified as a string within an array of zones assigned to a `zones` property
-within a JSON object (e..g, `{ "zones": [ "1-E-14", "1-E-15", "1-F-14", "1-F-15", "1-F-16" ] }`.
+part:: The Implementation SHALL support at minimum a JSON encoding (media type `application/json`).
 ====
+
+[requirement]
+====
+[%metadata]
+identifier:: /req/zone-query/json-response
+part:: Every 200 response of the server for zone query with the media type `application/json` SHALL be a JSON document listing the textual identifiers for all zones matching the query.
+part:: The schema for the JSON document SHALL follow the JSON Schema for DGGS Zone Query described below, where the zone identifiers are strings within a `zones` array property within a JSON object.
+For example,  `{ "zones": [ "1-E-14", "1-E-15", "1-F-14", "1-F-15", "1-F-16" ] }`.
+part:: The `links` property SHALL include an `[ogc-rel:dggrs]` link to the Discrete Global Grid Reference System description resource.
+part:: The `links` property SHALL include an `[ogc-rel:dggrs-definition]` link to the DGGRS definition, using the schema defined in <<annex-dggrs-def, Annex B - DGGRS Definitions>> or a later version.
+====
+
+.JSON Schema for a DGGS Zone Query response
+[source,json]
+----
+{
+   "$schema" : "https://json-schema.org/draft/2020-12/schema",
+   "$id" : "https://schemas.opengis.net/ogcapi/dggs/part1/1.0/openapi/schemas/dggs-core/dggs-zones.json",
+   "type": "object",
+   "required": [ "zones" ],
+   "properties":
+   {
+      "zones" : { "type": "array", "items": { "type": "string" } },
+      "returnedAreaMetersSquare" : { "type": "number" },
+      "returnedVolumeMetersCube" : { "type": "number" },
+      "returnedVolumeMetersSquareSeconds" : { "type": "number" },
+      "returnedHyperVolumeMetersCubeSeconds" : { "type": "number" },
+      "links" :
+      {
+         "description": "Links to related resources."
+         "items": { "$ref" : "https://schemas.opengis.net/ogcapi/dggs/part1/1.0/openapi/schemas/common-core/link.yaml"
+      }
+   }
+}
+----
+
 
 The following recommendation describes how the response should include the total surface area of the zones returned from the query (or volume / hypervolume in the case of spatiotemporal and/or 3D DGGS),
 excluding overlapping regions when returning compact zones.
@@ -52,9 +87,30 @@ excluding overlapping regions when returning compact zones.
 ====
 [%metadata]
 identifier:: /rec/zone-query/zone-total-area
-description:: For returning the total area (or volumes) occupied by zones returned by the query.
+description:: For returning the total area (or volumes) occupied by zones returned by the query
 part:: The Implementation SHOULD indicate the total surface area (in the case of a 2D DGGS) or total (hyper)volume occupied (in the case of a 3D or 4D DGGS) occupied by the zones being returned,
-adding only once any overlaps which may occur for compact zone responses where zones are non-congruent.
+adding only once any overlaps which may occur for compact zone responses where zones are non-congruent (the total surface area is the same as what would be returned for the corresponding non-compacted list of zones
+at the refinement level of the zone query).
+part:: In the JSON response, for a 2D DGGS, the Implementation SHOULD include in the response a `returnedAreaMetersSquare` property indicating the total surface area occupied by the zones being returned,
+adding the overlaps which may occur for compact zone responses where zones are non-congruent only once.
+part:: In the JSON response, For a 3D DGGS, the Implementation SHOULD include in the response a `returnedVolumeMetersCube` property indicating the total volume occupied by the zones being returned, still counting overlapping regions only once.
+part:: In the JSON response, For a 2D + Time DGGS, the Implementation SHOULD include in the response a `returnedVolumeMetersSquareSeconds` property indicating the total volume occupied by the zones being returned, still counting overlapping regions only once.
+part:: In the JSON response, For a 3D + Time DGGS, the Implementation SHOULD include in the response a `returnedHyperVolumeMetersCubeSeconds` property indicating the total hypervolume occupied by the zones being returned, still counting overlapping regions only once.
+====
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/zone-json/additional-links
+part:: If _DGGS Zone Data Retrieval_ is supported, the `linkTemplates` property SHOULD include an `[ogc-rel:dggrs-zone-data]` link with a `{zoneId}` variable to retrieve data from each of these DGGRS zones.
+part:: The `links` property SHOULD include an `[ogc-rel:geodata]` link for zone listing pertaining to a particular collection (for <<rc_collection-dggs,Collection DGGS requirements class>>).
+====
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/zone-json/zone-order
+part:: For responses where zones of multiple hierarchy levels are returned when `compact-zones` is true, the zones SHOULD be listed with coarser refinement levels first (larger zones).
 ====
 
 === Parameter `zone-level`

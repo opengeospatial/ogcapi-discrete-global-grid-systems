@@ -21,8 +21,10 @@ the availability of data associated with a particular collection, dataset, or pr
 (where the result itself could simply be this spatiotemporal region),
 as well as the evaluation of any additional filtering query expressed as per the <<rc_zone-query-cql2-filter, CQL2 filtering requirements class>>.
 
-Implementations of this requirements class are required to support at minimum the JSON encoding of zones list, and therefore also need to implement the
-<<rc_zone-json, JSON Zone List encoding>> requirements class.
+Implementations of this requirements class are required to support at minimum the JSON encoding of zones list.
+This encoding provides an easy to implement, reasonably efficient and interoperable mechanism to exchange lists of zone identifiers.
+The JSON response consists of a simple object with a `"zones"` array property listing the zone identifiers as strings.
+The object can also include a `"links"` objects linking back to other resources of the DGGRS.
 
 By default, zones are returned as a compacted list of zones, which recursively replaces children zones by their parent if all children of the parent are included in the response.
 A client can override this default behavior by setting the `compact-zones` parameter to _false_.
