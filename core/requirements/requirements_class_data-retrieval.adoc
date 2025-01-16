@@ -32,6 +32,8 @@ This default value could be any valid value and/or form as defined in the `/req/
 part:: Unless a `zone-depth` parameter is specified, the response SHALL return a data packet consistent with this `defaultDepth` property, in accordance with the capabilities of the negotiated data packet encoding.
 ====
 
+See also <<_retrieving_data_for_a_dggrs_zone, Examples C.8>>.
+
 === Recommendation for a `crs` parameter
 
 The following recommendation describe how a server should support a `crs` query parameter for the `.../zones/{zoneId}/data` resource if the data can be returned in multiple applicable CRSs.
