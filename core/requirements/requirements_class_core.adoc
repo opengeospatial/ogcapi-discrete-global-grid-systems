@@ -10,7 +10,7 @@ requirement:: /req/core/dggrs-info
 requirement:: /req/core/zone-info
 ====
 
-=== Listing available DGGRS (`.../dggs`)
+=== Listing available DGGRSs (`.../dggs`)
 
 [requirement]
 ====
@@ -19,19 +19,22 @@ identifier:: /req/core/dggrs-list
 description:: For retrieving the list of available discrete global grid reference systems:
 part:: The Implementation SHALL support an HTTP GET operation at a resource path ending with `.../dggs`.
 part:: The Implementation SHALL support a JSON representation of this `.../dggs` resource.
-part:: The `.../dggs` resource SHALL include a `dggrs` array property listing all discrete global grid reference systems supported by the Implementation.
-part:: Each element of the `dggrs` array SHALL include a subset of the information available in the individual DGGRS information described below, including at minimum the `id`, `title`, `uri` (if applicable), and `links`.
-part:: The `links` property SHALL include at minimum a link to the discrete global grid reference system using the `self` link relation type, as well as a link to the discrete global grid reference system definition using the `[ogc-rel:dggrs-definition]` relation type.
-part:: The link relation type to use for linking from the corresponding resource to the list of available DGGRSs for that resource SHALL be `[ogc-rel:dggrs-list]`.
+part:: The `.../dggs` resource SHALL include a `dggrs` array property listing all Discrete Global Grid Reference Systems (DGGRSs) supported by the Implementation.
+part:: Each element of the `dggrs` array SHALL include a summary description (a subset of the information available in the individual resources describing each DGGRS as per the next requirement below), including at minimum the `id`, `title`, `uri` (if applicable), and `links`.
+part:: The `links` property within each DGGRS element SHALL include at minimum a link to the discrete global grid reference system using the `self` link relation type, as well as a link to the discrete global grid reference system definition using the `[ogc-rel:dggrs-definition]` relation type.
+part:: The link relation type to use for linking from a particular resource of origin (such as a <<rc_collection-dggs,collection>> at `/collections/{collectionId}`, or <<rc_root-dggs,landing page>>)
+to the list of available DGGRSs for that resource (for example at `/collections/{collectionId}/dggs` or `/dggs`) SHALL be `[ogc-rel:dggrs-list]`.
 ====
 
-=== Discrete global grid reference system information (`.../dggs/{dggrsId}`)
+NOTE: An optional array of links may also be present at the top-level of the DGGRS list resource, for example to link back to the parent resource such as the data collection using the `[ogc-rel:geodata]` link relation.
+
+=== Discrete Global Grid Reference System (DGGRS) description (`.../dggs/{dggrsId}`)
 
 [requirement]
 ====
 [%metadata]
 identifier:: /req/core/dggrs-info
-description:: For retrieving information for a particular available discrete global grid reference system:
+description:: For retrieving the description of a particular available discrete global grid reference system:
 part:: The Implementation SHALL support an HTTP GET operation at a resource path ending with `.../dggs/{dggrsId}`.
 part:: The Implementation SHALL support a JSON representation of this `.../dggs/{dggrsId}` resource.
 part:: The `.../dggs/{dggrsId}` resource SHALL include an `id` property consistent with the `{dggrsId}` resource path parameter.
