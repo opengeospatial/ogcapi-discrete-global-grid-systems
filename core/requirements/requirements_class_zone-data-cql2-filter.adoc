@@ -28,4 +28,4 @@ part:: The CQL2 expression evaluator SHALL support the queryables declared in th
 
 NOTE: The available queryables would typically include the fields of the data source being returned in the response.
 
-See also <<_filtering_zone_data_using_cql2_expressions, Examples C.9.4>>.
+See also <<_filtering_zone_data_using_cql2_expressions, Examples C.10.4>>.

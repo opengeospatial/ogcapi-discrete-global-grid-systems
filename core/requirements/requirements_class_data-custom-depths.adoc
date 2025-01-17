@@ -52,6 +52,9 @@ individual values for each level 18 zones contained within that level 10 zone be
 ====
 [%metadata]
 identifier:: /rec/data-custom-depths/beyond-max-depth
-description:: For handling requests beyond `maxRelativeDepth`:
+description:: For informing clients of a maximum relative depth:
+part:: For DGGS resources associated with a data source, the Implementation SHOULD include a `maxRelativeDepth` integer property in the `.../dggs/{dggrsId}` resource specifying the maximum relative depth at which data can be retrieved.
 part:: The Implementation SHOULD return a 4xx error for data retrieval beyond the `maxRelativeDepth` specified in the DGGRS description associated with the request.
 ====
+
+See also <<_requesting_data_at_a_particular_relative_depth, Examples C.9>>.

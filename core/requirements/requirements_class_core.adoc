@@ -56,9 +56,8 @@ part:: The Implementation SHALL include a `description` property providing a sum
 ====
 [%metadata]
 identifier:: /rec/core/max-refinement
-description:: For specifying a maximum refinement level and a maximum relative depth for a discrete global grid reference system associated with a particular geospatial data resource:
+description:: For specifying a maximum refinement level for a discrete global grid reference system associated with a particular geospatial data resource:
 part:: For DGGS resources associated with a data source, the Implementation SHOULD include a `maxRefinementLevel` integer property in the `.../dggs/{dggrsId}` resource specifying the maximum refinement level at which the full resolution of the data can be retrieved (using a `zone-depth` relative depth of 0) and/or used for performing the most accurate zone queries (using that value for `zone-level`).
-part:: For DGGS resources associated with a data source, the Implementation SHOULD include a `maxRelativeDepth` integer property in the `.../dggs/{dggrsId}` resource specifying the maximum relative depth at which data can be retrieved.
 ====
 
 [permission]

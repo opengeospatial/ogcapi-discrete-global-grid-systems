@@ -51,7 +51,7 @@ Example: `subset=time("2018-02-12T16:00:0Z":"2018-02-12T20:00:00Z")&subset=atm_p
 
 NOTE: When the _interval_ values fall partially outside of the range of valid values defined by the CRS for the identified axis, the service is expected to return the non-empty portion of the data resulting from the subset.
 
-See also <<_subsetting_arbitrary_dimensions, Examples C.9.2>>.
+See also <<_subsetting_arbitrary_dimensions, Examples C.10.2>>.
 
 === Parameter `datetime`
 
@@ -108,7 +108,7 @@ March 18, 2018, 12:31:12 UTC or earlier:
 `datetime=../2018-03-18T12:31:12Z`
 =================
 
-See also <<_temporal_subsetting, Examples C.9.1>>.
+See also <<_temporal_subsetting, Examples C.10.1>>.
 
 === Parameter `properties`
 
@@ -124,7 +124,7 @@ part:: If the zone data encodings response can self-describe its list of fields 
 part:: If the negotiated format of the response has a concept of field order, then the fields SHALL be in the same order as the requested list of selected fields.
 ====
 
-See also <<_field_selection, Examples C.9.3>>.
+See also <<_field_selection, Examples C.10.3>>.
 
 === Parameter `exclude-properties`
 

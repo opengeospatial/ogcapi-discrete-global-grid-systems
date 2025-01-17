@@ -813,7 +813,7 @@ Examples in this section retrieve data for pentagonal and hexagonal zones of an 
 
 This first example retrieves elevation data for the GEBCO collection for ISEA3H zone `A2-0-A` at a relative depth of 8.
 The default zone depth is 10 for this DGGRS in this particular deployment of a DGGS API, as specified in the `defaultDepth` property of the <<isea3h-dggs-description-response,ISEA3H DGGRS description response>>).
-These requests override this default by using the `zone-depth` parameter defined in the <<rc_data-custom-depths,"Data Custom Depths">> requirements class.
+These requests override this default by using the `zone-depth` query parameter defined in the <<rc_data-custom-depths,"Data Custom Depths">> requirements class.
 
 ===== DGGS-JSON Examples
 
@@ -904,7 +904,7 @@ for which associated properties may be queryable elsewhere (e.g., in an http://w
 Although gridded elevation and bathymetry data is better suited to raster formats such as DGGS-JSON and GeoTIFF, a GeoJSON and/or Features & Geometry JSON representation
 could also be offered where each zone is represented as a feature, with the associated property providing the data values such as the elevation.
 This would be equivalent to the <<rc_zone-geojson,GeoJSON representation for a zone list>> where `compact-zones` is set to `false`, the `parent-zone` is the zone for which data is requested,
-and the `zone-level` is the sum of the parent zone plus the relative zone depth at which data is requested (the default depth or `zone-depth` parameter), with the addition of these
+and the `zone-level` is the sum of the parent zone plus the relative zone depth at which data is requested (the default depth or `zone-depth` query parameter), with the addition of these
 properties associating data values with each zone.
 
 If the geometry for these zone features is provided as polygons (`geometry=zone-region`), visualizing this vector data would produce an output like the following partial response,
@@ -1463,6 +1463,25 @@ image::images/ggg-neBathymetry-crs84.png[width=700,align="center"]
 [#img_zone_data_ggg_geojson_bathymetryOrtho='{figure-caption} {counter:figure-num}']
 .Visualization in an orthographic projection of GeoJSON polygon contour features for data retrieved from GNOSIS Global Grid DGGRS zone https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:physical:bathymetry/dggs/GNOSISGlobalGrid/zones/1-1-7[1-1-7] of https://naturalearthdata.com/[Natural Earth] bathymetry contours.
 image::images/ggg-neBathymetry-orthographic.png[width=700,align="center"]
+
+=== Requesting data at a particular relative depth
+
+Implementations supporting the `zone-depth` query parameter defined in the <<rc_data-custom-depths,"Data Custom Depths">> requirements class allows clients to request data at a particular depth.
+
+For example, the two following requests and visualized responses illustrate retrieving zones at relative depths of 4 (91 sub-zone values) and 9 (19,927 sub-zone values), respectively, for ISEA3H zone
+https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/H4-A825C-A[_H4-A825C-A_]:
+
+https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/H4-A825C-A/data?zone-depth=4&datetime=2020-07-31&properties=B08&f=json["\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/H4-A825C-A/data?zone-depth=4&datetime=2020-07-31&properties=B08"]
+
+[#img_isea3h_depth_4='{figure-caption} {counter:figure-num}']
+.Visualization of near-infrared band (`B08`) of ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/H4-A825C-A[H4-A825C-A] at relative depth of 4 from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
+image::images/sentinel2-isea3h-depth-4.png[width=400,align="center"]
+
+https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/H4-A825C-A/data?zone-depth=9&datetime=2020-07-31&properties=B08&f=json["\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/H4-A825C-A/data?zone-depth=9&datetime=2020-07-31&properties=B08"]
+
+[#img_isea3h_depth_4='{figure-caption} {counter:figure-num}']
+.Visualization of near-infrared band (`B08`) of ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/H4-A825C-A[H4-A825C-A] at relative depth of 9 from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
+image::images/sentinel2-isea3h-depth-9.png[width=700,align="center"]
 
 === Subsetting and filtering zone data
 
