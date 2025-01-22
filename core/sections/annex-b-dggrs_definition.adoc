@@ -17,7 +17,7 @@ The DGGRS definition consists of three main components:
 * The sub-zone ordering (`subZoneOrder`), which allows for <<rc_data-retrieval,retrieving zone data>> using e.g., <<rc_data-json,DGGS-JSON>> at a <<rc_data-custom-depths,`zone-depth`>> other than 0 (the values of sub-zones can be provided as a 1D array of values with a pre-established association to sub-zones).
 
 Whereas the ZIRS provides a mechanism to globally identify a single zone using a textual identifier (and alternatively using a 64-bit integer), the deterministic sub-zone order provides
-a local indexing mechanism to address smaller regions within a particular zone. This local indexing mechanism enables the DGGS-optimized data encodings defined by the DGGS-JSON and DGGS-FG-JSON requirements classes.
+a local indexing mechanism to address smaller regions within a particular zone. This local indexing mechanism enables the DGGS-optimized data encodings defined by the DGGS-JSON and DGGS-JSON-FG requirements classes.
 The two mechanisms may potentially be related to each other, for example using the same space filling curve such as a https://en.wikipedia.org/wiki/Z-order_curve[Morton code (Z-order curve)], but do not need to be.
 If defining a more optimal sub-zone order for a particular DGGRS is not practical, the ascending sort order of the sub-zone identifiers can be specified as a fallback,
 based on either the ASCII character strings of the textual identifiers, or the 64-bit integer identifiers.

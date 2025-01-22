@@ -14,8 +14,8 @@ For data rasterized to DGGRS sub-zones:
 
 For vector features whose geometry coordinates are quantized to DGGRS sub-zones:
 
-* <<rc_data-dggs-fgjson,DGGS-FG-JSON Data>>
-* <<rc_data-dggs-fgubjson,DGGS-FG-UBJSON Data>>
+* <<rc_data-dggs-jsonfg,DGGS-JSON-FG Data>>
+* <<rc_data-dggs-ubjsonfg,DGGS-UBJSON-FG Data>>
 
 For rasterized data output readily usable in non-DGGS systems or to facilitate interoperability with other DGGHs:
 
@@ -27,7 +27,7 @@ For rasterized data output readily usable in non-DGGS systems or to facilitate i
 
 For vector features output readily usable in non-DGGS systems or to facilitate interoperability with other DGGHs:
 
-* <<rc_data-geojson,GeoJSON Data>> -- including support for Features & Geometry JSON (FG-JSON) output as a recommendation
+* <<rc_data-geojson,GeoJSON Data>> -- including support for Features & Geometry JSON (JSON-FG) output as a recommendation
 
 [[zone_data_media_types]]
 === Media Types (for zone data)
@@ -41,8 +41,8 @@ A table of the media types used in the encoding of the Zone Data requirements cl
 ^|*Encoding*              ^|*Media type*
 |DGGS-JSON zone data      |application/json
 |DGGS-UBJSON zone data    |application/ubjson
-|DGGS-FG-JSON zone data   |application/geo+json (with `profile` query parameter values of `jsonfg-dggs`, `jsonfg-dggs-plus`, `jsonfg-dggs-zoneids` or `jsonfg-dggs-zoneids-plus`)
-|DGGS-FG-UBJSON zone data |application/geo+ubjson (with `profile` query parameter values of `jsonfg-dggs`, `jsonfg-dggs-plus`, `jsonfg-dggs-zoneids` or `jsonfg-dggs-zoneids-plus`)
+|DGGS-JSON-FG zone data   |application/geo+json (with `profile` query parameter values of `jsonfg-dggs`, `jsonfg-dggs-plus`, `jsonfg-dggs-zoneids` or `jsonfg-dggs-zoneids-plus`)
+|DGGS-UBJSON-FG zone data |application/geo+ubjson (with `profile` query parameter values of `jsonfg-dggs`, `jsonfg-dggs-plus`, `jsonfg-dggs-zoneids` or `jsonfg-dggs-zoneids-plus`)
 |GeoJSON / JSON-FG data   |application/geo+json (without `profile` query parameter, or with values of `rfc7946` (default), `jsonfg` or `jsonfg-plus`)
 |GeoTIFF data             |image/tiff; application=geotiff
 |netCDF zone data         |application/x-netcdf
@@ -95,49 +95,49 @@ TIP: The https://pypi.org/project/py-ubjson/[py-ubjson] tool can be used to easi
 After installing with `pip3 install py-ubjson`, a DGGS-JSON file can be converted to DGGS-(UB)JSON with
 `ubjson fromjson zoneData.dggs.json`, and a DGGS-(UB)JSON file can be converted to DGGS-JSON with `ubjson tojson zoneData.dggs.ubj`.
 
-[[rc_data-dggs-fgjson]]
-=== Requirements Class "DGGS-FG-JSON Zone data encoding" (for geometry coordinates quantized to sub-zones)
+[[rc_data-dggs-jsonfg]]
+=== Requirements Class "DGGS-JSON-FG Zone data encoding" (for geometry coordinates quantized to sub-zones)
 
 ==== Overview
 
-The DGGS-FG-JSON Zone Data encoding requirements class defines support for encoding a DGGS Zone data response for vector features in JSON.
+The DGGS-JSON-FG Zone Data encoding requirements class defines support for encoding a DGGS Zone data response for vector features in JSON.
 This is accomplished by extending https://docs.ogc.org/DRAFTS/21-045r1.html[OGC Features & Geometry JSON]
 with the concepts of DGGRS, reference parent zone, relative depth and deterministic sub-zone order, allowing to encode coordinates pairs as local sub-zone indices.
 Alternatively, coordinates can be encoded using global zone IDs.
 
-DGGS-FG-JSON Zone Data is intended to support efficient encoding of vector geometry at arbitrary precision using finer grids to locally address the inside of the reference parent zones.
+DGGS-JSON-FG Zone Data is intended to support efficient encoding of vector geometry at arbitrary precision using finer grids to locally address the inside of the reference parent zones.
 This is done in a manner agnostic of the DGGRS (which needs to define a deterministic sub-zone order), in a human-readable format sharing as much as possible with existing practice for exchanging
 geospatial vector data in JSON.
 
 Example encodings follow:
 
-.Example encoding of DGGS-FG-JSON for OpenStreetMap data
+.Example encoding of DGGS-JSON-FG for OpenStreetMap data
 [source,json]
 ----
-include::../examples/3-osmOttawa-extract.dggsfgjson[]
+include::../examples/3-osmOttawa-extract.dggsjsonfg[]
 ----
 
-.Example encoding of DGGS-FG-JSON for Natural Earth bathymetry in the arctic
+.Example encoding of DGGS-JSON-FG for Natural Earth bathymetry in the arctic
 [source,json]
 ----
-include::../examples/4-arcticBathymetry-extract.dggsfgjson[]
+include::../examples/4-arcticBathymetry-extract.dggsjsonfg[]
 ----
 
-include::../requirements/requirements_class_zone_data_dggs_fgjson.adoc[]
+include::../requirements/requirements_class_zone_data_dggs_jsonfg.adoc[]
 
-[[rc_data-dggs-fgubjson]]
-=== Requirements Class "DGGS-FG-UBJSON Zone data encoding" (for geometry coordinates quantized to sub-zones)
+[[rc_data-dggs-ubjsonfg]]
+=== Requirements Class "DGGS-UBJSON-FG Zone data encoding" (for geometry coordinates quantized to sub-zones)
 
 ==== Overview
 
-The DGGS-UB-FGJSON Zone Data encoding requirements class defines support for encoding a DGGS Zone data response for vector features using the same JSON structure as the above DGGS-FG-JSON data requirements class,
+The DGGS-UBJSON-FG Zone Data encoding requirements class defines support for encoding a DGGS Zone data response for vector features using the same JSON structure as the above DGGS-JSON-FG data requirements class,
 but using the binary UBJSON encoding.
 
-include::../requirements/requirements_class_zone_data_dggs_fgubjson.adoc[]
+include::../requirements/requirements_class_zone_data_dggs_ubjsonfg.adoc[]
 
 TIP: The https://pypi.org/project/py-ubjson/[py-ubjson] tool can be used to easily convert between JSON and UBJSON.
-After installing with `pip3 install py-ubjson`, a DGGS-FG-JSON file can be converted to DGGS-FG-UBJSON with
-`ubjson fromjson zoneData.dggsfg.json`, and a DGGS-FG-UBJSON file can be converted to DGGS-FG-JSON with `ubjson tojson zoneData.dggsfg.ubj`.
+After installing with `pip3 install py-ubjson`, a DGGS-JSON-FG file can be converted to DGGS-UBJSON-FG with
+`ubjson fromjson zoneData.dggsjsonfg`, and a DGGS-UBJSON-FG file can be converted to DGGS-JSON-FG with `ubjson tojson zoneData.dggsfg.ubj`.
 
 [[rc_data-geotiff]]
 === Requirements Class "GeoTIFF Zone data encoding"
@@ -158,13 +158,13 @@ include::../requirements/requirements_class_zone_data_geotiff.adoc[]
 ==== Overview
 
 The GeoJSON Zone Data encoding requirements class defines support for encoding a DGGS Zone data response according to the https://datatracker.ietf.org/doc/html/rfc7946[GeoJSON specification],
-and optionally according to the https://docs.ogc.org/DRAFTS/21-045.html[OGC FG-JSON candidate Standard].
+and optionally according to the https://docs.ogc.org/DRAFTS/21-045.html[OGC JSON-FG candidate Standard].
 
 GeoJSON is a commonly used format for representing features with simple geometries and related properties.
 GeoJSON is simple to understand and is well supported by tools and software libraries.
 Since most Web developers are comfortable with using JSON-based formats, supporting GeoJSON is recommended for a vector representation of DGGS Zone data.
 
-FG-JSON is an OGC format for representing features with simple geometries and related properties extending GeoJSON for greater flexibility.
+JSON-FG is an OGC format for representing features with simple geometries and related properties extending GeoJSON for greater flexibility.
 
 include::../requirements/requirements_class_zone_data_geojson.adoc[]
 

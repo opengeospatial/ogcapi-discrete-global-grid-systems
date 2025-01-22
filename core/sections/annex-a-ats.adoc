@@ -213,25 +213,25 @@ target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-ubjson
 classification:: Target Type:Web API
 ====
 
-=== Conformance Class "DGGS-FG-JSON encoding for Zone Data"
+=== Conformance Class "DGGS-JSON-FG encoding for Zone Data"
 
-[[conf_data-dggs-fgjson,https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-fgjson]]
+[[conf_data-dggs-jsonfg,https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-jsonfg]]
 [conformance_class]
 ====
 [%metadata]
-identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-fgjson
-target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-dggs-fgjson
+identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-jsonfg
+target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-dggs-jsonfg
 classification:: Target Type:Web API
 ====
 
-=== Conformance Class "DGGS-FG-UBJSON encoding for Zone Data"
+=== Conformance Class "DGGS-UBJSON-FG encoding for Zone Data"
 
-[[conf_data-dggs-fgubjson,https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-fgubjson]]
+[[conf_data-dggs-ubjsonfg,https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-ubjsonfg]]
 [conformance_class]
 ====
 [%metadata]
-identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-fgubjson
-target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-dggs-fgubjson
+identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-ubjsonfg
+target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-dggs-ubjsonfg
 classification:: Target Type:Web API
 ====
 

@@ -978,7 +978,7 @@ image::images/geoJSON-points-elevation.png[width=700,align="center"]
 For data of a vector nature, a vector format such as GeoJSON allows to encode zone data response in a more compact manner without having to rasterize the data.
 Ideally, especially for features spanning a large spatial extent (such as country boundaries, or the coastline of a large landmass), the features would be clipped to the geometry of the zone for which data
 is being requested, or as least to limited extent around the zone.
-Unfortunately, GeoJSON and FG-JSON do not yet have a standard mechanism to identify artificial edges which may result from such clipping.
+Unfortunately, GeoJSON and JSON-FG do not yet have a standard mechanism to identify artificial edges which may result from such clipping.
 This complicates re-joining features spread across multiple zones, and may result in rendering artifacts for polygonal features when rendered with a stroke,
 as the stroke would also be drawn on those artificial segments at the bound edges.
 
@@ -1065,38 +1065,38 @@ image::images/geojson-bathymetry.png[width=700,align="center"]
 .Visualization in an ISEA planar projection of GeoJSON polygon contour features for data retrieved from ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:physical:bathymetry/dggs/ISEA3H/zones/B0-5-A[B0-5-A] of https://naturalearthdata.com/[Natural Earth] bathymetry contours.
 image::images/geojson-bathymetryISEA.png[width=700,align="center"]
 
-===== DGGS-FG-JSON Examples
+===== DGGS-JSON-FG Examples
 
-The DGGS-FG-JSON format is the vector counterpart to DGGS-JSON, leveraging the same concepts of DGGRS, parent zone, sub-zones at a given relative depth, and deterministic sub-zone order,
+The DGGS-JSON-FG format is the vector counterpart to DGGS-JSON, leveraging the same concepts of DGGRS, parent zone, sub-zones at a given relative depth, and deterministic sub-zone order,
 while also building on top of the familiar Features & Geometry JSON and GeoJSON formats, which are themselves built on OGC Simple Features.
 
-In DGGS-FG-JSON, spatial coordinates of the feature geometries corresponding to the spatial dimensions of the DGGRS are encoded as integer sub-zone order indices ranging from 1 to the
+In DGGS-JSON-FG, spatial coordinates of the feature geometries corresponding to the spatial dimensions of the DGGRS are encoded as integer sub-zone order indices ranging from 1 to the
 number of sub-zones at the selected relative depth. This relative depth corresponds to the precision of the coordinates at which geometry is being defined, analogous to the number of decimals
-that would be used in GeoJSON or FG-JSON. Because this essentially corresponds to a coordinate system local to the zone for which data is being retrieved, high precision can be achieved
+that would be used in GeoJSON or JSON-FG. Because this essentially corresponds to a coordinate system local to the zone for which data is being retrieved, high precision can be achieved
 with much fewer information than is required to address the entire globe.
 
 This representation also addresses the issue of artificial segments. This is done by using a special zone order index value of _0_ for representing coordinates outside of the zone,
 which facilitates merging geometry across adjacent zones and easily identifying artificial segments of polygon contours.
 For polygons, rather than tracing points along the clipping zone edge(s), only the exit and entry points will exist with a single _0_ coordinate value in between, indicating that the portion of the zone
-edge(s) between those two points is within the contour. A DGGS-FG-JSON representation is requested using the `application/geo+json` media type together with the `profile` query parameter set to a value of `jsonfg-dggs`, `jsonfg-dggs-plus`, `jsonfg-dggs-zoneids` or `jsonfg-dggs-zoneids-plus`.
+edge(s) between those two points is within the contour. A DGGS-JSON-FG representation is requested using the `application/geo+json` media type together with the `profile` query parameter set to a value of `jsonfg-dggs`, `jsonfg-dggs-plus`, `jsonfg-dggs-zoneids` or `jsonfg-dggs-zoneids-plus`.
 
-The DGGS-FG-JSON representation for the previous OpenStreetMap example extract follows, at a relative depth precision of 15,
+The DGGS-JSON-FG representation for the previous OpenStreetMap example extract follows, at a relative depth precision of 15,
 resulting in coordinates within a ~275 cm² region, ~16 cm precision, with sub-zone indices between 1 and 14,355,469 (roughly equivalent to latitude and longitude with six decimal places).
 
 [%unnumbered%]
 [source,json]
 ----
-include::../examples/3-osmOttawa-extract.dggsfgjson[]
+include::../examples/3-osmOttawa-extract.dggsjsonfg[]
 ----
 
-The DGGS-FG-JSON representation for the previous arctic bathymetry polygons example extract follows, at a relative depth precision of 15,
+The DGGS-JSON-FG representation for the previous arctic bathymetry polygons example extract follows, at a relative depth precision of 15,
 resulting in coordinates within a ~0.39 km² region (the size of the previous OpenStreetMap example level 17 zone),
 ~627 m precision, with sub-zone indices between 1 and 14,355,469 (equivalent to decimal latitude and longitude between two and three decimal places).
 
 [%unnumbered%]
 [source,json]
 ----
-include::../examples/4-arcticBathymetry-extract.dggsfgjson[]
+include::../examples/4-arcticBathymetry-extract.dggsjsonfg[]
 ----
 
 ==== Retrieving data from an ISEA9R DGGRS
@@ -1427,7 +1427,7 @@ https://maps.gnosis.earth/ogcapi/collections/osm:singapore:roads/dggs/GNOSISGlob
 ----
 
 TIP: Notice the artificial edge drawn with a grey stroke splitting the _Flower Dome_ in two, around the middle of the map.
-With the artificial edge information of DGGS-FG-JSON, a client could avoid such visualization artifacts, and could more easily recombine geometry split across separate zones.
+With the artificial edge information of DGGS-JSON-FG, a client could avoid such visualization artifacts, and could more easily recombine geometry split across separate zones.
 
 [#img_zone_data_ggg_geojson_osmSingapore='{figure-caption} {counter:figure-num}']
 .Visualization of a GeoJSON feature collection with mixed geometry types for data retrieved from GNOSIS Global Grid DGGRS zones https://maps.gnosis.earth/ogcapi/collections/osm:singapore/dggs/GNOSISGlobalGrid/zones/C-FC5-3276[C-FC5-3276] and https://maps.gnosis.earth/ogcapi/collections/osm:singapore/dggs/GNOSISGlobalGrid/zones/C-FC5-3277[C-FC5-3277] of https://openstreetmap.org/[OpenStreetMap] (c) OpenStreetMap contributors

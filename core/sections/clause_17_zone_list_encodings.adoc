@@ -8,7 +8,7 @@ These requirements classes include:
 
 * <<rc_zone-html,HTML Zone List>>
 * <<rc_zone-uint64,64-bit Binary Zone List>>
-* <<rc_zone-geojson,GeoJSON Zone List>> -- including support for Features & Geometry JSON (FG-JSON) output as a recommendation
+* <<rc_zone-geojson,GeoJSON Zone List>> -- including support for Features & Geometry JSON (JSON-FG) output as a recommendation
 * <<rc_zone-geotiff,GeoTIFF Zone List>>
 
 [[zone_list_media_types]]
@@ -24,7 +24,7 @@ A table of the media types used in the zone list encoding requirements classes d
 |JSON zone list              |application/json
 |HTML zone list              |text/html
 |Binary 64-bit zone list     |application/x-binary
-|GeoJSON / FG-JSON zone list |application/geo+json
+|GeoJSON / JSON-FG zone list |application/geo+json
 |GeoTIFF zone list           |image/tiff; application=geotiff
 |====
 
@@ -60,10 +60,10 @@ include::../requirements/requirements_class_zone_list_binary_64bit.adoc[]
 ==== Overview
 
 The GeoJSON zone list encoding requirements class defines support for encoding a DGGRS Zone list response according to the https://datatracker.ietf.org/doc/html/rfc7946[GeoJSON specification],
-and optionally according to the https://docs.ogc.org/DRAFTS/21-045.html[OGC Features & Geometry JSON (FG-JSON) Standard].
+and optionally according to the https://docs.ogc.org/DRAFTS/21-045.html[OGC Features & Geometry JSON (JSON-FG) Standard].
 
 The response is a feature collection where each feature represents a zone in the list.
-The geometry of the zone should be polygons or multipolygons (e.g., in the case of zone geometry which must be split on the anti-meridian or pole), or in the case of a 3D DGGRS and an FG-JSON
+The geometry of the zone should be polygons or multipolygons (e.g., in the case of zone geometry which must be split on the anti-meridian or pole), or in the case of a 3D DGGRS and an JSON-FG
 response polyhedrons, multipolyhedrons, prisms or multiprisms.
 The zone identifier is represented in the `id` field of each feature.
 

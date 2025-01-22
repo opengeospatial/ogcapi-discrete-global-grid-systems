@@ -56,12 +56,12 @@ A requirements class adds support for the `filter` parameter for zone query reso
 The Data Encoding Requirements Classes address support for formats commonly used for encoding geospatial data, as well as encodings
 based on JSON and https://ubjson.org/[UBJSON] using a schema specifically designed for zone data referenced to a particular DGGRS.
 DGGS-(UB)JSON allows encoding one or more depths of DGGS-quantized raster data, including optional support for multiple fields (properties) and additional dimensions beyond those of the DGGS,
-whereas DGGS-FG-(UB)JSON encode vector features and geometry based on OGC Features & Geometry JSON using sub-zone order indices as coordinates at an arbitrary relative depth / precision.
+whereas DGGS-(UB)JSON-FG encode vector features and geometry based on OGC Features & Geometry JSON using sub-zone order indices as coordinates at an arbitrary relative depth / precision.
 
 * <<rc_data-json,DGGS-JSON Data>>
 * <<rc_data-ubjson,DGGS-UBJSON Data>>
-* <<rc_data-dggs-fgjson,DGGS-FG-JSON Data>>
-* <<rc_data-dggs-fgubjson,DGGS-FG-UBJSON Data>>
+* <<rc_data-dggs-jsonfg,DGGS-JSON-FG Data>>
+* <<rc_data-dggs-ubjsonfg,DGGS-UBJSON-FG Data>>
 * <<rc_data-geojson,GeoJSON Data>>
 * <<rc_data-geotiff,GeoTIFF Data>>
 * <<rc_data-netcdf,netCDF Data>>
@@ -80,7 +80,7 @@ The Zone List Encoding Requirements Classes address support for formats efficien
 * <<rc_zone-geotiff,GeoTIFF Zone List>>
 
 Implementations supporting GeoJSON for either zone data or zone lists are strongly encouraged to also support GeoJSON extensions
-defined by the Features & Geometry JSON (FG-JSON) Standard. Conformance to this Standard can be indicated in the Web API deployment's
+defined by the Features & Geometry JSON (JSON-FG) Standard. Conformance to this Standard can be indicated in the Web API deployment's
 conformance declaration using its associated conformance class URIs, such as `http://www.opengis.net/spec/json-fg-1/0.2/conf/core`.
 
 ==== Operation IDs in API definitions
@@ -113,8 +113,8 @@ such as the OpenAPI 3.0 requirements class of _OGC API - Common - Part 1: Core_,
 2+| *_Zone Data Encodings_*
 | <<rc_data-json,DGGS-JSON Data>>                | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-json
 | <<rc_data-ubjson,DGGS-UBJSON Data>>            | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-ubjson
-| <<rc_data-dggs-fgjson,DGGS-FG-JSON Data>>      | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-fgjson
-| <<rc_data-dggs-fgubjson,DGGS-FG-UBJSON Data>>  | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-fgubjson
+| <<rc_data-dggs-jsonfg,DGGS-JSON-FG Data>>      | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-jsonfg
+| <<rc_data-dggs-ubjsonfg,DGGS-UBJSON-FG Data>>  | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-ubjsonfg
 | <<rc_data-geojson,GeoJSON Data>>               | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-geojson
 | <<rc_data-geotiff,GeoTIFF Data>>               | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-geotiff
 | <<rc_data-netcdf,netCDF Data>>                 | https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-netcdf

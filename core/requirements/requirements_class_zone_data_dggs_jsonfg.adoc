@@ -1,24 +1,24 @@
 [[rc_table-data_dggs_fgjson]]
 
 [requirements_class]
-.Requirements Class DGGS-FG-JSON Zone Data
+.Requirements Class DGGS-JSON-FG Zone Data
 ====
 [%metadata]
-identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-dggs-fgjson
+identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-dggs-jsonfg
 subject:: Web API
 inherit:: <<rfc8259, JSON>>
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
 inherit:: https://www.opengis.net/spec/json-fg-1/0.3/req/core
-requirement:: /req/data-dggs-fgjson/content
+requirement:: /req/data-dggs-jsonfg/content
 ====
 
 [requirement]
 ====
 [%metadata]
-identifier:: /req/data-dggs-fgjson/content
-part:: The Implementation SHALL support zone data requests negotiating an `application/geo+json` media type combined with a `profile` query parameter with a value of `jsonfg-dggs`, `jsonfg-dggs-plus`, `jsonfg-dggs-zoneids` or `jsonfg-dggs-zoneids-plus` allowing a client to request a DGGS-FG-JSON response.
-part:: Every 200 response of the server for DGGS-FG-JSON zone data requests SHALL be an extended https://docs.ogc.org/DRAFTS/21-045r1.html[Features & Geometry JSON] (FG-JSON) document representing the vector features within the requested zone.
-part:: The JSON document SHALL follow the JSON Schema for FG-JSON, with geometry stored in a `dggsPlace` property mirroring the FG-JSON `place` schema and supporting all of the same feature types, but where `coordinates` use sub-zone indices (for `profile=jsonfg-dggs` or `jsonfg-dggs-plus`) or global textual zone identifiers (for `profile=jsonfg-dggs-zoneids` or `jsonfg-dggs-zoneids-plus`) as described in later parts of this requirement.
+identifier:: /req/data-dggs-jsonfg/content
+part:: The Implementation SHALL support zone data requests negotiating an `application/geo+json` media type combined with a `profile` query parameter with a value of `jsonfg-dggs`, `jsonfg-dggs-plus`, `jsonfg-dggs-zoneids` or `jsonfg-dggs-zoneids-plus` allowing a client to request a DGGS-JSON-FG response.
+part:: Every 200 response of the server for DGGS-JSON-FG zone data requests SHALL be an extended https://docs.ogc.org/DRAFTS/21-045r1.html[Features & Geometry JSON] (JSON-FG) document representing the vector features within the requested zone.
+part:: The JSON document SHALL follow the JSON Schema for JSON-FG, with geometry stored in a `dggsPlace` property mirroring the JSON-FG `place` schema and supporting all of the same feature types, but where `coordinates` use sub-zone indices (for `profile=jsonfg-dggs` or `jsonfg-dggs-plus`) or global textual zone identifiers (for `profile=jsonfg-dggs-zoneids` or `jsonfg-dggs-zoneids-plus`) as described in later parts of this requirement.
 part:: For `profile=jsonfg-dggs-plus` and `jsonfg-dggs-zoneids-plus`, the JSON document SHALL also include geometry stored in `geometry` or `place` using traditional coordinate reference system coordinates for compatibility.
 part:: The JSON document SHALL additionally contain a `dggrs` property set to the URI or CURIEs of the DGGRS of the response, which replaces the `coordRefSys` property and concept.
 part:: The JSON document SHALL additionally contain a `zoneId` property indicating the requested reference zone.
@@ -34,15 +34,30 @@ with a separate single `0` special sub-zone index (in the case of `profile=jsonf
 representing all outside points before a point inside, after a point inside, or in between two inside points.
 part:: For geometry in two or more dimensions with an outside point (identified by a `0` sub-zone index for `profile=jsonfg-dggs` and `jsonfg-dggs-plus`, or `null` for `profile=jsonfg-dggs-zoneids` and `jsonfg-dggs-zoneids-plus`)
 and which is necessarily between two contour points, the portion of the zone edge(s) between the exit and entry point SHALL be considered inside of that contour.
+part:: The URI of the selected or default DGGS-JSON-FG profile SHALL be included in the `links` section of the JSON-FG response.
 ====
 
 [recommendation]
 ====
 [%metadata]
-identifier:: /rec/data-dggs-fgjson/geometry
+identifier:: /rec/data-dggs-jsonfg/profile-links
+part:: The implementation SHOULD also return a link to the default or selected profile as a `Link` HTTP response header, for example `Link: https://www.opengis.net/def/profile/ogc/0/jsonfg-dggs`.
+====
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/data-dggs-jsonfg/geometry
 part:: The implementation SHOULD support a `geometry` query parameter allowing a client to choose how to return feature geometry.
 part:: The implementation SHOULD support a value of `geometry=zone-centroid` to request a representation where each feature is a zone intersecting the data, with the feature geometry of each feature being a Point geometry for the centroid of that zone.
 part:: The implementation SHOULD support a value of `geometry=vectorized` to request a representation where each feature corresponds to a feature of the data (sharing identical property values).
 part:: If a `geometry` value is not specified, the Implementation SHOULD return the representation closest to the native data.
 part:: If a requested geometry representation is not supported, the Implementation SHOULD return a 4xx HTTP error.
+====
+
+[permission]
+====
+[%metadata]
+identifier:: /per/data-dggs-jsonfg/missing-profile
+part:: An Implementation MAY return any profile when the `profile` query parameter is not specified in the request. As an example, this allows for static servers to return only a DGGS-JSON-FG representation.
 ====
