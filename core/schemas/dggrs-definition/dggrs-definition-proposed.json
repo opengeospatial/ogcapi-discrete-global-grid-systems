@@ -97,21 +97,19 @@
             "zoneTypes": {
               "type": "array",
               "items": {
-                "type": {
-                   "anyOf": [
-                      { "type": "string" },
-                      {
-                         "type": "string",
-                         "enum": [
-                           "triangle",
-                           "square",
-                           "hexagon",
-                           "pentagon",
-                           "rhombus"
-                         ]
-                      }
-                   ]
-                }
+                "anyOf": [
+                   { "type": "string" },
+                   {
+                      "type": "string",
+                      "enum": [
+                        "triangle",
+                        "square",
+                        "hexagon",
+                        "pentagon",
+                        "rhombus"
+                      ]
+                   }
+                ]
               },
               "example": [
                 "hexagon",

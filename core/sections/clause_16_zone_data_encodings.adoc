@@ -10,20 +10,23 @@ For data rasterized to DGGRS sub-zones:
 
 * <<rc_data-json,DGGS-JSON Data>>
 * <<rc_data-ubjson,DGGS-UBJSON Data>>
+
+Depending on a selected profile, for data either rasterized to DGGRS sub-zones, or rasterized data output readily usable in non-DGGS systems (or to facilitate interoperability with other DGGHs):
+
 * <<rc_data-zarr,Zarr Data>>
+* <<rc_data-netcdf,netCDF Data>>
+* <<rc_data-coveragejson,CoverageJSON Data>>
+
+For rasterized data output readily usable in non-DGGS systems or to facilitate interoperability with other DGGHs:
+
+* <<rc_data-geotiff,GeoTIFF Data>>
+* <<rc_data-jpegxl,JPEG XL Data>>
+* <<rc_data-png,PNG Data>>
 
 For vector features whose geometry coordinates are quantized to DGGRS sub-zones:
 
 * <<rc_data-dggs-jsonfg,DGGS-JSON-FG Data>>
 * <<rc_data-dggs-ubjsonfg,DGGS-UBJSON-FG Data>>
-
-For rasterized data output readily usable in non-DGGS systems or to facilitate interoperability with other DGGHs:
-
-* <<rc_data-geotiff,GeoTIFF Data>>
-* <<rc_data-netcdf,netCDF Data>>
-* <<rc_data-coveragejson,CoverageJSON Data>>
-* <<rc_data-jpegxl,JPEG XL Data>>
-* <<rc_data-png,PNG Data>>
 
 For vector features output readily usable in non-DGGS systems or to facilitate interoperability with other DGGHs:
 
@@ -43,11 +46,11 @@ A table of the media types used in the encoding of the Zone Data requirements cl
 |DGGS-UBJSON zone data    |application/ubjson
 |DGGS-JSON-FG zone data   |application/geo+json (with `profile` query parameter values of `jsonfg-dggs`, `jsonfg-dggs-plus`, `jsonfg-dggs-zoneids` or `jsonfg-dggs-zoneids-plus`)
 |DGGS-UBJSON-FG zone data |application/geo+ubjson (with `profile` query parameter values of `jsonfg-dggs`, `jsonfg-dggs-plus`, `jsonfg-dggs-zoneids` or `jsonfg-dggs-zoneids-plus`)
-|GeoJSON / JSON-FG data   |application/geo+json (without `profile` query parameter, or with values of `rfc7946` (default), `jsonfg` or `jsonfg-plus`)
+|GeoJSON / JSON-FG data   |application/geo+json (without `profile` query parameter, or with values of `rfc7946`, `jsonfg` or `jsonfg-plus`)
 |GeoTIFF data             |image/tiff; application=geotiff
-|netCDF zone data         |application/x-netcdf
-|Zarr zone data           |application/zarr+zip
-|CoverageJSON zone data   |application/prs.coverage+json
+|netCDF zone data         |application/x-netcdf (rasterized to sub-zones for `profile` query parameter values of `netcdf3-dggs`, `netcdf3-dggs-zoneids`, `netcdf4-dggs`, `netcdf4-dggs-zoneids` )
+|Zarr zone data           |application/zarr+zip (rasterized to sub-zones for `profile` query parameter values of `zarr2`, `zarr2-dggs` or `zarr2-dggs-zoneids`)
+|CoverageJSON zone data   |application/prs.coverage+json (rasterized to sub-zones for `profile` query parameter values of `covjson-dggs` or `covjson-dggs-zoneids`)
 |PNG zone data            |image/png
 |JPEG XL zone data        |image/jxl
 |====
@@ -92,8 +95,8 @@ The DGGS-UBJSON Zone Data encoding requirements class defines support for encodi
 include::../requirements/requirements_class_zone_data_ubjson.adoc[]
 
 TIP: The https://pypi.org/project/py-ubjson/[py-ubjson] tool can be used to easily convert between JSON and UBJSON.
-After installing with `pip3 install py-ubjson`, a DGGS-JSON file can be converted to DGGS-(UB)JSON with
-`ubjson fromjson zoneData.dggs.json`, and a DGGS-(UB)JSON file can be converted to DGGS-JSON with `ubjson tojson zoneData.dggs.ubj`.
+After installing with `pip3 install py-ubjson`, a DGGS-JSON file can be converted to DGGS-UBJSON with
+`ubjson fromjson zoneData.dggs.json`, and a DGGS-UBJSON file can be converted to DGGS-JSON with `ubjson tojson zoneData.dggs.ubj`.
 
 [[rc_data-dggs-jsonfg]]
 === Requirements Class "DGGS-JSON-FG Zone data encoding" (for geometry coordinates quantized to sub-zones)
@@ -108,6 +111,16 @@ Alternatively, coordinates can be encoded using global zone IDs.
 DGGS-JSON-FG Zone Data is intended to support efficient encoding of vector geometry at arbitrary precision using finer grids to locally address the inside of the reference parent zones.
 This is done in a manner agnostic of the DGGRS (which needs to define a deterministic sub-zone order), in a human-readable format sharing as much as possible with existing practice for exchanging
 geospatial vector data in JSON.
+
+An Implementation may support a DGGS-FG-JSON representation where DGGS-quantized coordinates are specified either as global zone identifiers or as local indices into the deterministic zone order,
+and may also support GeoJSON / JSON-FG compatibility modes where coordinates are additionally specified as positions on spatiotemporal axes for interoperability with non-DGGS clients.
+
+A `profile` query parameter can be used by clients to request a particular DGGS-JSON-FG representation from Implementations supporting multiple options:
+
+- `jsonfg-dggs`: DGGS-JSON-FG with `dggsPlace` coordinates corresponding to local sub-zone indices
+- `jsonfg-dggs-plus`: DGGS-JSON-FG with `dggsPlace` coordinates corresponding to local sub-zone indices, in addition to GeoJSON (`geometry`) and/or JSON-FG compatibility mode (`place`)
+- `jsonfg-dggs-zoneids`: DGGS-JSON-FG with `dggsPlace` coordinates corresponding to global textual identifiers
+- `jsonfg-dggs-zoneids-plus`: DGGS-JSON-FG with `dggsPlace` coordinates corresponding to global textual identifiers, in addition to GeoJSON (`geometry`) and/or JSON-FG compatibility mode (`place`)
 
 Example encodings follow:
 
@@ -166,6 +179,15 @@ Since most Web developers are comfortable with using JSON-based formats, support
 
 JSON-FG is an OGC format for representing features with simple geometries and related properties extending GeoJSON for greater flexibility.
 
+An Implementation may support JSON-FG representations in addition to GeoJSON as defined by RFC 7946.
+
+A `profile` query parameter can be used by clients to request a particular GeoJSON / JSON-FG representation from Implementations supporting multiple options:
+
+- `rfc7946`: GeoJSON as defined by RFC 7946
+- `jsonfg`: GeoJSON as extended by JSON-FG
+- `jsonfg-plus`: JSON-FG extensions in addition to GeoJSON compatibility
+(geometry specified in `geometry` limited to GeoJSON types, with coordinates either in `OGC:CRS84` or in a CRS explicitly requested by the client using `crs` query parameter)
+
 include::../requirements/requirements_class_zone_data_geojson.adoc[]
 
 [[rc_data-netcdf]]
@@ -178,6 +200,18 @@ to any encoding extension such as the https://portal.ogc.org/files/?artifact_id=
 NetCDF (network Common Data Form) is a data model for array-oriented scientific data, a freely distributed collection of access libraries implementing support for that data model, and
 machine-independent formats.
 
+An Implementation may support either a DGGS-optimized netCDF representation where a dimension is associated with sub-zones, with coordinates being global zone identifiers or local indices into the deterministic
+zone order, or a traditional representation interoperable with non-DGGS clients where spatiotemporal axes are individual dimensions.
+
+A `profile` query parameter can be used by clients to request a particular netCDF representation from Implementations supporting multiple options:
+
+- `netcdf3`: NetCDF classic and 64-bit offset format (not quantized to DGGH)
+- `netcdf3-dggs`: NetCDF classic and 64-bit offset format where one axis corresponds to local sub-zone indices
+- `netcdf3-dggs-zoneids`: NetCDF classic and 64-bit offset format where one axis corresponds to the global identifiers of sub-zones (textual or 64-bit integer)
+- `netcdf4`: HFG5-based NetCDF 4 format (not quantized to DGGH)
+- `netcdf4-dggs`: HDF5-based NetCDF 4 format where one axis corresponds to local sub-zone indices
+- `netcdf4-dggs-zoneids`: HDF5-based NetCDF 4 format where one axis corresponds to the global identifiers of sub-zones (textual or 64-bit integer)
+
 include::../requirements/requirements_class_zone_data_netcdf.adoc[]
 
 [[rc_data-zarr]]
@@ -187,6 +221,15 @@ include::../requirements/requirements_class_zone_data_netcdf.adoc[]
 
 The Zarr Zone Data encoding requirements class defines support for encoding a DGGS Zone data response according to the https://www.opengis.net/doc/CS/zarr/2.0[OGC Zarr Storage Specification 2.0 Community Standard], packed into a <<ZIPISO,Zip archive>>.
 
+An Implementation may support either a DGGS-optimized Zarr representation where a dimension is associated with sub-zones, with coordinates being global zone identifiers or local indices into the deterministic
+zone order, or a traditional representation interoperable with non-DGGS clients where spatiotemporal axes are individual dimensions.
+
+A `profile` query parameter can be used by clients to request a particular Zarr representation from Implementations supporting multiple options:
+
+- `zarr2`: Zipped Zarr 2.0 (not quantized to DGGH)
+- `zarr2-dggs`: Zipped Zarr 2.0 where one axis corresponds to local sub-zone indices
+- `zarr2-dggs-zoneids`: Zipped Zarr 2.0 where one axis corresponds to the global identifiers of sub-zones (textual or 64-bit integer)
+
 include::../requirements/requirements_class_zone_data_zarr.adoc[]
 
 [[rc_data-coveragejson]]
@@ -195,6 +238,15 @@ include::../requirements/requirements_class_zone_data_zarr.adoc[]
 ==== Overview
 
 The CoverageJSON requirements class defines support for encoding a DGGS Zone data response according to the https://docs.ogc.org/cs/21-069r2/21-069r2.html[OGC CoverageJSON Community Standard].
+
+An Implementation may support either a DGGS-optimized CoverageJSON representation where a dimension is associated with sub-zones, with coordinates being global zone identifiers or local indices into the deterministic
+zone order, or a traditional representation interoperable with non-DGGS clients where spatiotemporal axes are individual dimensions.
+
+A `profile` query parameter can be used by clients to request a particular CoverageJSON representation from Implementations supporting multiple options:
+
+- `covjson`: CoverageJSON (not quantized to DGGH)
+- `covjson-dggs`: CoverageJSON where one axis corresponds to local sub-zone indices
+- `covjson-dggs-zoneids`: CoverageJSON where one axis corresponds to the global identifiers of sub-zones (textual or 64-bit integer)
 
 include::../requirements/requirements_class_zone_data_coveragejson.adoc[]
 

@@ -17,7 +17,7 @@ requirement:: /req/data-geojson/content
 [%metadata]
 identifier:: /req/data-geojson/content
 part:: Every 200 response of the server for zone data with the media type `application/geo+json` SHALL be a https://datatracker.ietf.org/doc/html/rfc7946[GeoJSON] document representing the features, including their geometry and associated properties, for a single zone.
-part:: Unless otherwise specified by a prior arrangement (for example, an output `crs` query parameter) or by negotiating an JSON-FG profile, the coordinate reference system SHALL be CRS84(h) in longitude and latitude (and optional height above the WGS84 ellipsoid).
+part:: Unless otherwise specified by a prior arrangement (for example, an output `crs` query parameter) or by negotiating a JSON-FG profile, the coordinate reference system SHALL be CRS84(h) in longitude and latitude (and optional height above the WGS84 ellipsoid).
 part:: Features whose geometry lie wholly outside of the zone geometry SHALL NOT be included in the response.
 part:: If returning a JSON-FG profile, the profile URI SHALL be included in the `links` section of the JSON-FG response.
 ====
@@ -36,14 +36,15 @@ geometry types and alternate coordinate reference system without prior agreement
 ====
 [%metadata]
 identifier:: /rec/data-geojson/profile-links
-part:: If returning a JSON-FG representation, the implementation SHOULD also return a link to the default or selected profile as a `Link` HTTP response header, for example `Link: https://www.opengis.net/def/profile/ogc/0/jsonfg`.
+part:: If returning a JSON-FG representation, the implementation SHOULD return a link to the default or selected profile as a `Link` HTTP response header, for example `Link: https://www.opengis.net/def/profile/ogc/0/jsonfg; rel="profile"`.
 ====
 
 [permission]
 ====
 [%metadata]
-identifier:: /per/data-geojson/missing-profile
-part:: An Implementation MAY return any profile when the `profile` query parameter is not specified in the request. As an example, this allows for static servers to return only a JSON-FG representation.
+identifier:: /per/data-geojson/supported-profiles
+part:: An Implementation MAY support only a subset of the defined GeoJSON profiles.
+part:: An Implementation MAY return any profile as the default when the `profile` query parameter is not specified in the request. As an example, this allows for static servers to return only a JSON-FG representation.
 ====
 
 [recommendation]

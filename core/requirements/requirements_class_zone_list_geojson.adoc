@@ -17,7 +17,7 @@ requirement:: /req/zone-geojson/content
 [%metadata]
 identifier:: /req/zone-geojson/content
 part:: Every 200 response of the server for zone query with the media type `application/geo+json` SHALL be a GeoJSON document consisting of a FeatureCollection, where every Feature represents a single zone.
-part:: Unless otherwise specified by a prior arrangement (for example, an output `crs` query parameter) or by negotiating an JSON-FG profile, the coordinate reference system SHALL be CRS84(h) in longitude and latitude (and optional height above the WGS84 ellipsoid).
+part:: Unless otherwise specified by a prior arrangement (for example, an output `crs` query parameter) or by negotiating a JSON-FG profile, the coordinate reference system SHALL be CRS84(h) in longitude and latitude (and optional height above the WGS84 ellipsoid).
 part:: Every feature SHALL have a `zoneID` property corresponding to the textual identifier of the zone.
 part:: The geometry of each feature SHALL be the geometry of the zone.
 part:: If returning a JSON-FG profile, the profile URI SHALL be included in the `links` section of the JSON-FG response.
@@ -37,14 +37,15 @@ geometry types and alternate coordinate reference system without prior agreement
 ====
 [%metadata]
 identifier:: /rec/zone-geojson/profile-links
-part:: If returning a JSON-FG representation, the implementation SHOULD also return a link to the default or selected profile as a `Link` HTTP response header, for example `Link: https://www.opengis.net/def/profile/ogc/0/jsonfg`.
+part:: If returning a JSON-FG representation, the implementation SHOULD also return a link to the default or selected profile as a `Link` HTTP response header, for example `Link: https://www.opengis.net/def/profile/ogc/0/jsonfg; rel="profile"`.
 ====
 
 [permission]
 ====
 [%metadata]
-identifier:: /per/zone-geojson/missing-profile
-part:: An Implementation MAY return any profile when the `profile` query parameter is not specified in the request.
+identifier:: /per/zone-geojson/supported-rofiles
+part:: An Implementation MAY support only a subset of the defined GeoJSON profiles.
+part:: An Implementation MAY return any profile as the default when the `profile` query parameter is not specified in the request.
 ====
 
 [recommendation]

@@ -3,6 +3,12 @@
       "https://www.opengis.net/spec/json-fg-1/0.2/conf/core",
       "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-fgjson"
    ],
+   "links": [
+      {
+         "rel" : "profile",
+         "href" : "https://www.opengis.net/def/profile/ogc/0/jsonfg-dggs"
+      }
+   ],
    "dggrs": "[ogc-dggrs:ISEA3H]",
    "zoneId": "I0-1EFA652-D",
    "depth": "15",

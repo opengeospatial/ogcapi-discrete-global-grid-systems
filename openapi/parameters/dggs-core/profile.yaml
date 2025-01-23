@@ -2,15 +2,31 @@ name: profile
 in: query
 description: |-
    Allows negotiating a particular profile of an output format, such as OGC Feature & Geometry JSON (FG-JSON) or DGGS-FG-JSON output when requesting an `application/geo+json` media type for zone data or zone list requests.
-   For both zone data and zone lists:
+   For both zone data and zone lists in GeoJSON (`application/geo+json`):
    `rfc7946`: return standard GeoJSON without using any extension
    `jsonfg`: return FG-JSON representation
    `jsonfg-plus`: return FG-JSON representation with GeoJSON compatibility
-   For zone data only:
+   For zone data in GeoJSON (`application/geo+json`):
    `jsonfg-dggs`: return DGGS-FG-JSON representation, using `dggsPlace` to encode geometry points quantized to sub-zone, represented as local indices from 1 to the number of sub-zones corresponding to the DGGRS deterministic sub-zone order, with a special value of 0 representing an artificial node
    `jsonfg-dggs-plus`: return DGGS-FG-JSON representation, with GeoJSON compatibility `geometry`
    `jsonfg-dggs-zoneids`: return DGGS-FG-JSON representation, using `dggsPlace` to encode geometry points as textual global zone identifiers, with a special value of _null_ representing an artificial node
    `jsonfg-dggs-zoneids-plus`: return DGGS-FG-JSON representation, encoding geometry points as global zone IDs, with GeoJSON compatibility `geometry`
+   For zone data in netCDF (`application/x-netcdf`):
+   `netcdf3`: return NetCDF classic and 64-bit offset format (not quantized to DGGH)
+   `netcdf3-dggs`: return NetCDF classic and 64-bit offset format where one axis corresponds to local sub-zone indices
+   `netcdf3-dggs-zoneids`: return NetCDF classic and 64-bit offset format where one axis corresponds to the global identifiers of sub-zones (textual or 64-bit integer)
+   `netcdf4`: return HFG5-based NetCDF 4 format (not quantized to DGGH)
+   `netcdf4-dggs`: return HDF5-based NetCDF 4 format where one axis corresponds to local sub-zone indices
+   `netcdf4-dggs-zoneids`: return HDF5-based NetCDF 4 format where one axis corresponds to the global identifiers of sub-zones (textual or 64-bit integer)
+   For zone data in zipped Zarr 2.0 (`application/zarr+zip`):
+   `zarr2`: return zipped Zarr 2.0 (not quantized to DGGH)
+   `zarr2-dggs`: return zipped Zarr 2.0 where one axis corresponds to local sub-zone indices
+   `zarr2-dggs-zoneids`: return zipped Zarr 2.0 where one axis corresponds to the global identifiers of sub-zones (textual or 64-bit integer)
+   For zone data in CoverageJSON (`application/prs.coverage+json`):
+   `covjson`: return CoverageJSON (not quantized to DGGH)
+   `covjson-dggs`: return CoverageJSON where one axis corresponds to local sub-zone indices
+   `covjson-dggs-zoneids`: return CoverageJSON where one axis corresponds to the global identifiers of sub-zones (textual or 64-bit integer)
+
 style: form
 explode: false
 required: false
@@ -24,3 +40,16 @@ schema:
   - jsonfg-dggs-plus
   - jsonfg-dggs-zoneids
   - jsonfg-dggs-zoneids-plus
+  - jsonfg-dggs-zoneids-plus
+  - covjson
+  - covjson-dggs
+  - covjson-dggs-zoneids
+  - netcdf3
+  - netcdf3-dggs
+  - netcdf3-dggs-zoneids
+  - netcdf4
+  - netcdf4-dggs
+  - netcdf4-dggs-zoneids
+  - zarr2
+  - zarr2-dggs
+  - zarr2-dggs-zoneids

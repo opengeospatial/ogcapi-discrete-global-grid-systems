@@ -17,11 +17,15 @@ requirement:: /req/data-zarr/content
 [%metadata]
 identifier:: /req/data-zarr/content
 part:: Every 200 response of the server for zone data with the media type `application/zarr+zip` SHALL be a Zip file containing the data values for all selected fields for a single zone data encoded following the Zarr Storage Specification Version 2 file.
-part:: A dimension of the Zarr data SHALL correspond to the sub-zones for which values are being returned following the DGGRS deterministic sub-zone ordering.
+part:: For a DGGS-optimized profile (`zarr2-dggs`, `zarr2-dggs-zoneids`), the profile URI, the global identifier of the parent zone and a URI or link to the DGGRS definition SHALL be included as metadata.
+part:: For a DGGS-optimized profile, coordinates along one dimension SHALL correspond to sub-zones, either as global zone identifiers (`zarr2-dggs-zoneids`) or
+local sub-zone indices following the deterministic DGGRS sub-zone order (`zarr2-dggs`), while spatiotemporal dimensions of the DGGRS SHALL NOT be defined as separate dimensions.
+part:: For a DGGS-optimized profile, at every depth, each individual value SHALL correspond exactly to the data sampled representative of that sub-zone.
+part:: For non-DGGS-optimized profiles, if the Zarr data incorporates georeferencing information (such as defined by the candidate https://github.com/zarr-developers/geozarr-spec[OGC GeoZarr] Standard), this information SHALL be consistent with the DGGRS Zone ID.
+part:: For non-DGGS-optimized profiles, if the zone geometry is not rectilinear, the closest bounding rectangle (or volume) SHALL be used for referencing the data.
+part:: For non-DGGS-optimized profiles, a distinct value for each sub-zone implied from the requested `zone-depth` SHALL correspond to at least one distinct cell value in the response.
 part:: If multiple relative zone depths are being returned, each depth SHALL be encoded as a separate Zarr dataset within the data packet.
 part:: Every zone depth requested using the `zone-depth` parameter SHALL be included in the response.
-part:: At every depth, each individual value SHALL correspond exactly to the data sampled representative of that sub-zone.
-part:: The list of data values SHALL follow the default zone order as specified by the Discrete Global Grid Reference System (for example based on a scanline or space-filling curved defined therein) for which the request is made.
 ====
 
 [recommendation]
@@ -29,4 +33,42 @@ part:: The list of data values SHALL follow the default zone order as specified 
 [%metadata]
 identifier:: /rec/data-zarr/no-extra-chunking
 part:: Since the zone data packet are for a limited set of sub-zones within a single parent zone, the zone data response SHOULD be encoded as a single chunk.
+====
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/data-zarr/null-values
+part:: For non-DGGS-optimized profiles, null values SHOULD be used for cells lying outside the zone geometry.
+====
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/data-zarr/crs
+part:: For non-DGGS-optimized profiles, if the respone contains georferencing information (such as defined by the candidate https://github.com/zarr-developers/geozarr-spec[OGC GeoZarr] Standard) the spatial reference of the response SHOULD be consistent with either the DGGRS or the underlying geographic CRS (e.g., CRS84).
+====
+
+[recommendation]
+====
+[%metadata]
+identifier:: /req/data-zarr/profile
+part:: The Implementation SHOULD support a `profile` query parameter for zone data requests allowing to negotiate a particular representation, including the selection of
+a dimension representing global sub-zone identifiers (`zarr-dggs-zoneids`) or local sub-zone indices based on the deterministic order as defined by the DGGRS (`zarr2-dggs`),
+or individual spatiotemporal dimensions for interoperability with non-DGGS clients (`zarr2`).
+====
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/data-zarr/profile-links
+part:: The implementation SHOULD return a link to the default or selected profile as a `Link` HTTP response header, for example `Link: https://www.opengis.net/def/profile/ogc/0/zarr2-dggs; rel="profile"`.
+====
+
+[permission]
+====
+[%metadata]
+identifier:: /per/data-zarr/supported-profiles
+part:: An Implementation MAY support only a subset of the defined Zarr profiles.
+part:: An Implementation MAY return any profile as the default when the `profile` query parameter is not specified in the request. As an example, this allows for static servers to return only a DGGS-optimized Zarr 2 representation.
 ====

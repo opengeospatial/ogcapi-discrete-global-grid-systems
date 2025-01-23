@@ -17,23 +17,53 @@ requirement:: /req/data-netcdf/content
 identifier:: /req/data-netcdf/content
 part:: Every 200 response of the server for zone data with the media type `application/netcdf` SHALL be a netCDF file representing the data values for all selected fields for a single zone.
 part:: The response SHALL be encoded using a netCDF encoding extension, such as the https://portal.ogc.org/files/?artifact_id=43734[NetCDF classic and 64-bit offset format], or netCDF version 4 based on
-https://docs.ogc.org/is/18-043r3/18-043r3.html[OGC HDF5] (the selection of a particular netCDF format / version could be negotiated through media type parameters or some other mechanism).
-part:: If the netCDF data incorporates georeferencing information, this information SHALL be consistent with the DGGRS Zone ID.
-part:: If the zone geometry is not rectilinear, the closest bounding rectangle (or volume) SHALL be used for referencing the data.
-part:: A distinct value for each sub-zone implied from the requested `zone-depth` SHALL correspond to at least one distinct cell value in the response.
+https://docs.ogc.org/is/18-043r3/18-043r3.html[OGC HDF5].
+part:: For a DGGS-optimized profile (`netcdf3-dggs`, `netcdf3-dggs-zoneids`, `netcdf4-dggs`, `netcdf3-dggs-zoneids`), the profile URI, the global identifier of the parent zone and a URI or link to the
+DGGRS definition SHALL be included as metadata.
+part:: For a DGGS-optimized profile, coordinates along one dimension SHALL correspond to sub-zones, either as global zone identifiers (`netcdf3-dggs-zoneids`, `netcdf4-dggs-zoneids`) or
+local sub-zone indices following the deterministic DGGRS sub-zone order (`netcdf3-dggs`, `netcdf4-dggs`), while spatiotemporal dimensions of the DGGRS SHALL NOT be defined as separate dimensions.
+part:: For non-DGGS-optimized profiles, if the netCDF data incorporates georeferencing information, this information SHALL be consistent with the DGGRS Zone ID.
+part:: For non-DGGS-optimized profiles, if the zone geometry is not rectilinear, the closest bounding rectangle (or volume) SHALL be used for referencing the data.
+part:: For non-DGGS-optimized profiles, a distinct value for each sub-zone implied from the requested `zone-depth` SHALL correspond to at least one distinct cell value in the response.
 ====
 
 [recommendation]
 ====
 [%metadata]
 identifier:: /rec/data-netcdf/null-values
-part:: Null values SHOULD be used for cells lying outside the zone geometry.
+part:: For non-DGGS-optimized profiles, null values SHOULD be used for cells lying outside the zone geometry.
 ====
 
 [recommendation]
 ====
 [%metadata]
 identifier:: /rec/data-netcdf/crs
-part:: The spatial reference of the response, determined by the units of the coordinate variables and whether or not the `grid_mapping` attribute exists, as well
+part:: For non-DGGS-optimized profiles, the spatial reference of the response, determined by the units of the coordinate variables and whether or not the `grid_mapping` attribute exists, as well
 as any applicable extension in use such as https://portal.ogc.org/files/?artifact_id=51908[CF-netCDF], SHOULD be consistent with either the DGGRS or the underlying geographic CRS (e.g., CRS84).
+====
+
+[recommendation]
+====
+[%metadata]
+identifier:: /req/data-netcdf/profile
+part:: The Implementation SHOULD support a `profile` query parameter for zone data requests allowing to negotiate a particular representation, including the selection of
+https://portal.ogc.org/files/?artifact_id=43734[classic netCDF 3 and 64-bit offset format] (`netcdf3`, `netcdf3-dggs` or `netcdf3-dggs-zoneids`) or netCDF 4 based on
+https://docs.ogc.org/is/18-043r3/18-043r3.html[OGC HDF5] (`netcdf4`, `netcdf4-dggs` or `netcdf4-dggs-zoneids`), as well as the selection of a dimension representing global sub-zone identifiers (`netcdf3-dggs-zoneids` or `netcdf4-dggs-zoneids`) or
+local sub-zone indices based on the deterministic order as defined by the DGGRS (`netcdf3-dggs` or `netcdf4-dggs`),
+or individual spatiotemporal dimensions for interoperability with non-DGGS clients (`netcdf3` or `netcdf4`).
+====
+
+[recommendation]
+====
+[%metadata]
+identifier:: /rec/data-netcdf/profile-links
+part:: The implementation SHOULD return a link to the default or selected profile as a `Link` HTTP response header, for example `Link: https://www.opengis.net/def/profile/ogc/0/netcdf4-dggs; rel="profile"`.
+====
+
+[permission]
+====
+[%metadata]
+identifier:: /per/data-netcdf/supported-profiles
+part:: An Implementation MAY support only a subset of the defined netCDF profiles.
+part:: An Implementation MAY return any profile as the default when the `profile` query parameter is not specified in the request. As an example, this allows for static servers to return only a DGGS-optimized netCDF 3 representation.
 ====
