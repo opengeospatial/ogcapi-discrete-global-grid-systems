@@ -151,7 +151,7 @@ Encoding negotiated with HTTP `Accept:` request header, with some possible encod
 <<rc_data-json,DGGS-JSON Data>> (https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/core/schemas/dggs-json/dggs-json.json[DGGS-JSON Schema]) +
 <<rc_data-ubjson,DGGS-UBJSON Data>> (DGGS-JSON encoded as https://ubjson.org[UBJSON]) +
  +
-*For either DGGS-quantized raster data or traditional coordinate reference system (based on `profile` query parameter):* +
+*For raster data either DGGS-quantized or using traditional coordinate reference system* (based on `profile` query parameter): +
 <<rc_data-netcdf,netCDF Data>> (https://portal.ogc.org/files/?artifact_id=43732[OGC netCDF]: https://portal.ogc.org/files/?artifact_id=43734[3.0 / classic] or 4.0 / https://docs.ogc.org/is/18-043r3/18-043r3.html[HDF5]) +
 <<rc_data-zarr,Zarr Data>> (zipped https://portal.ogc.org/files/100727[OGC Zarr 2.0] and/or GeoZarr) +
 <<rc_data-coveragejson,CoverageJSON Data>> (https://covjson.org/[CoverageJSON]) +
@@ -160,13 +160,13 @@ Encoding negotiated with HTTP `Accept:` request header, with some possible encod
 <<rc_data-dggs-jsonfg,DGGS-JSON-FG Data>> (https://docs.ogc.org/DRAFTS/21-045r1.html[JSON-FG] with `dggsPlace`) +
 <<rc_data-dggs-ubjsonfg,DGGS-UBJSON-FG Data>> (DGGS-JSON-FG encoded as https://ubjson.org[UBJSON]) +
  +
-*2D raster formats for interoperability:* +
+*For 2D raster data* (interoperable with non-DGGS clients): +
 <<rc_data-geotiff,GeoTIFF Data>> (https://docs.ogc.org/is/19-008r4/19-008r4.html[GeoTIFF]) +
 <<rc_data-jpegxl,JPEG XL Data>> (https://jpeg.org/jpegxl/[JPEG XL]) +
-<<rc_data-png,PNG Data>> (https://www.w3.org/TR/png/[PNG]) |
+<<rc_data-png,PNG Data>> (https://www.w3.org/TR/png/[PNG]) +
  +
-*Vector format with traditional coordinate reference systems for interoperability:* +
-<<rc_data-geojson,GeoJSON Data>> (https://geojon.org[GeoJSON] or https://docs.ogc.org/DRAFTS/21-045r1.html[JSON-FG]) +
+*For vector data* (using traditional coordinate reference systems interoperable with non-DGGS clients): +
+<<rc_data-geojson,GeoJSON Data>> (https://geojon.org[GeoJSON] or https://docs.ogc.org/DRAFTS/21-045r1.html[JSON-FG]) |
 Query parameters (recommendation, optional for server to support): +
 https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/crs.yaml[`crs`] +
  +
@@ -174,11 +174,13 @@ https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/maste
 https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/zone-depth.yaml[`zone-depth`] +
 (see <<_requesting_data_at_a_particular_relative_depth, Examples C.9>>) +
  +
-*Defined in <<rc_data-dggs-jsonfg,DGGS-JSON-FG Data>>, <<rc_data-dggs-ubjsonfg,DGGS-UBJSON-FG Data>>, <<rc_data-geojson,GeoJSON Data>>, <<rc_data-netcdf,netCDF Data>>, <<rc_data-zarr,Zarr Data>>, <<rc_data-coveragejson,CoverageJSON Data>>:* (recommendations, optional for server to support) +
+*Defined in <<rc_data-dggs-jsonfg,DGGS-JSON-FG Data>>, <<rc_data-dggs-ubjsonfg,DGGS-UBJSON-FG Data>>, <<rc_data-geojson,GeoJSON Data>>* (recommendation, optional for server to support): +
 https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/geometry.yaml[`geometry`] (see <<_geojson_examples,Examples C.8.1.3>>) +
+ +
+*Defined in <<rc_data-dggs-jsonfg,DGGS-JSON-FG Data>>, <<rc_data-dggs-ubjsonfg,DGGS-UBJSON-FG Data>>, <<rc_data-geojson,GeoJSON Data>>, <<rc_data-netcdf,netCDF Data>>, <<rc_data-zarr,Zarr Data>>, <<rc_data-coveragejson,CoverageJSON Data>>* (recommendation, optional for server to support): +
 https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/profile.yaml[`profile`] (see <<_dggs_json_fg_examples,Examples C.8.1.4>>) +
  +
-*Defined in <<rc_data-png,PNG Data>>:* (recommendation, optional for server to support) +
+*Defined in <<rc_data-png,PNG Data>>* (recommendation, optional for server to support): +
 https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/values-offset.yaml[`values-offset`] +
 https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/values-scale.yaml[`values-scale`] +
  +
