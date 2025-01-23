@@ -326,7 +326,7 @@ This can result in zones being returned of a lower refinement level than the req
 A full globe response would therefore always result in the list of all zones of refinement level 0.
 In these examples, the client will explicitly set `compact-zones=false`.
 
-Following the `[ogc-rel:dggrs-zone-query]` link, specifying these parameters, and negotiating a <<rc_table-zone_json,JSON zone list>> response using an `Accept: application/json` header, the client requests from the endpoint:
+Following the `[ogc-rel:dggrs-zone-query]` link, specifying these parameters, and negotiating a JSON response response using an `Accept: application/json` header, the client requests from the endpoint:
 
 https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones?f=json&zone-level=1&compact-zones=false[\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones?zone-level=1&compact-zones=false]
 
