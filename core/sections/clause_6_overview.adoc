@@ -165,7 +165,7 @@ Encoding negotiated with HTTP `Accept:` request header, with some possible encod
 <<rc_data-jpegxl,JPEG XL Data>> (https://jpeg.org/jpegxl/[JPEG XL]) +
 <<rc_data-png,PNG Data>> (https://www.w3.org/TR/png/[PNG]) +
  +
-*For vector data* (using traditional coordinate reference systems interoperable with non-DGGS clients): +
+*For vector data using traditional coordinate reference system (interoperable with non-DGGS clients): +
 <<rc_data-geojson,GeoJSON Data>> (https://geojon.org[GeoJSON] or https://docs.ogc.org/DRAFTS/21-045r1.html[JSON-FG]) |
 Query parameters (recommendation, optional for server to support): +
 https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/crs.yaml[`crs`] +
