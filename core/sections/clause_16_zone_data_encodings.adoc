@@ -17,7 +17,7 @@ Depending on a selected profile, for data either rasterized to DGGRS sub-zones, 
 * <<rc_data-netcdf,netCDF Data>>
 * <<rc_data-coveragejson,CoverageJSON Data>>
 
-For rasterized data output readily usable in non-DGGS systems or to facilitate interoperability with other DGGHs:
+For 2D rasterized data output readily usable in non-DGGS systems or to facilitate interoperability with other DGGHs:
 
 * <<rc_data-geotiff,GeoTIFF Data>>
 * <<rc_data-jpegxl,JPEG XL Data>>
