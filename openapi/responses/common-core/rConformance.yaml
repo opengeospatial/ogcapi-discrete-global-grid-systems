@@ -34,7 +34,6 @@ content:
            - https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-zarr
            - https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-jpegxl
            - https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-png
-           - https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-json
            - https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-html
            - https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-uint64
            - https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-geojson
