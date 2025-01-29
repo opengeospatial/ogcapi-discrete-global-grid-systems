@@ -15,6 +15,7 @@ requirement:: /req/data-netcdf/content
 ====
 [%metadata]
 identifier:: /req/data-netcdf/content
+description:: For encoding zone data as netCDF
 part:: Every 200 response of the server for zone data with the media type `application/netcdf` SHALL be a netCDF file representing the data values for all selected fields for a single zone.
 part:: The response SHALL be encoded using a netCDF encoding extension, such as the https://portal.ogc.org/files/?artifact_id=43734[NetCDF classic and 64-bit offset format], or netCDF version 4 based on
 https://docs.ogc.org/is/18-043r3/18-043r3.html[OGC HDF5].
@@ -45,7 +46,7 @@ as any applicable extension in use such as https://portal.ogc.org/files/?artifac
 [recommendation]
 ====
 [%metadata]
-identifier:: /req/data-netcdf/profile
+identifier:: /rec/data-netcdf/profile
 part:: The Implementation SHOULD support a `profile` query parameter for zone data requests allowing to negotiate a particular representation, including the selection of
 https://portal.ogc.org/files/?artifact_id=43734[classic netCDF 3 and 64-bit offset format] (`netcdf3`, `netcdf3-dggs` or `netcdf3-dggs-zoneids`) or netCDF 4 based on
 https://docs.ogc.org/is/18-043r3/18-043r3.html[OGC HDF5] (`netcdf4`, `netcdf4-dggs` or `netcdf4-dggs-zoneids`), as well as the selection of a dimension representing global sub-zone identifiers (`netcdf3-dggs-zoneids` or `netcdf4-dggs-zoneids`) or

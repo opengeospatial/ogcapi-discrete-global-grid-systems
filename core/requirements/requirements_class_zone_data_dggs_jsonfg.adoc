@@ -16,6 +16,7 @@ requirement:: /req/data-dggs-jsonfg/content
 ====
 [%metadata]
 identifier:: /req/data-dggs-jsonfg/content
+description:: For encoding zone data as DGGS-JSON-FG
 part:: The Implementation SHALL support zone data requests negotiating an `application/geo+json` media type combined with a `profile` query parameter with a value of `jsonfg-dggs`, `jsonfg-dggs-plus`, `jsonfg-dggs-zoneids` or `jsonfg-dggs-zoneids-plus` allowing a client to request a DGGS-JSON-FG response.
 part:: Every 200 response of the server for DGGS-JSON-FG zone data requests SHALL be an extended https://docs.ogc.org/DRAFTS/21-045r1.html[Features & Geometry JSON] (JSON-FG) document representing the vector features within the requested zone.
 part:: The JSON document SHALL follow the JSON Schema for JSON-FG, with geometry stored in a `dggsPlace` property mirroring the JSON-FG `place` schema and supporting all of the same feature types, but where `coordinates` use sub-zone indices (for `profile=jsonfg-dggs` or `jsonfg-dggs-plus`) or global textual zone identifiers (for `profile=jsonfg-dggs-zoneids` or `jsonfg-dggs-zoneids-plus`) as described in later parts of this requirement.

@@ -16,6 +16,7 @@ requirement:: /req/data-geotiff/content
 ====
 [%metadata]
 identifier:: /req/data-geotiff/content
+description:: For encoding zone data as GeoTIFF
 part:: Every 200 response of the server for zone data with the media type `image/tiff` SHALL be a TIFF image representing the data values for all selected fields for a single zone.
 part:: If the TIFF encoding incorporates a GeoTIFF georeference, this information SHALL be consistent with the DGGRS Zone ID.
 part:: If the zone geometry is not rectangular, the closest bounding rectangle SHALL be used for referencing the image.

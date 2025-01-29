@@ -15,6 +15,7 @@ requirement:: /req/data-json/content
 ====
 [%metadata]
 identifier:: /req/data-json/content
+description:: For encoding zone data as DGGS-JSON:
 part:: Every 200 response of the server for zone data with the media type `application/json` SHALL be a JSON document representing the data values for all selected fields of each included sub-zone.
 part:: The schema for the JSON document SHALL follow the JSON Schema for DGGS-JSON described below.
 part:: Every zone depth requested using the `zone-depth` parameter SHALL be included in the response.

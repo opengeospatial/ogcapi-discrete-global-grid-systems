@@ -15,6 +15,7 @@ requirement:: /req/zone-html/content
 ====
 [%metadata]
 identifier:: /req/zone-html/content
+description:: For returning zone lists encoded as HTML:
 part:: Every 200 response of the server for zone query with the media type `text/html` SHALL be an HTML document listing the textual identifiers for all zones matching the query.
 ====
 

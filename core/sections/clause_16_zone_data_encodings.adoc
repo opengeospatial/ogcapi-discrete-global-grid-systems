@@ -48,7 +48,7 @@ A table of the media types used in the encoding of the Zone Data requirements cl
 |DGGS-UBJSON-FG zone data |application/geo+ubjson (with `profile` query parameter values of `jsonfg-dggs`, `jsonfg-dggs-plus`, `jsonfg-dggs-zoneids` or `jsonfg-dggs-zoneids-plus`)
 |GeoJSON / JSON-FG data   |application/geo+json (without `profile` query parameter, or with values of `rfc7946`, `jsonfg` or `jsonfg-plus`)
 |GeoTIFF data             |image/tiff; application=geotiff
-|netCDF zone data         |application/x-netcdf (rasterized to sub-zones for `profile` query parameter values of `netcdf3-dggs`, `netcdf3-dggs-zoneids`, `netcdf4-dggs`, `netcdf4-dggs-zoneids` )
+|netCDF zone data         |application/netcdf (rasterized to sub-zones for `profile` query parameter values of `netcdf3-dggs`, `netcdf3-dggs-zoneids`, `netcdf4-dggs`, `netcdf4-dggs-zoneids` )
 |Zarr zone data           |application/zarr+zip (rasterized to sub-zones for `profile` query parameter values of `zarr2`, `zarr2-dggs` or `zarr2-dggs-zoneids`)
 |CoverageJSON zone data   |application/prs.coverage+json (rasterized to sub-zones for `profile` query parameter values of `covjson-dggs` or `covjson-dggs-zoneids`)
 |PNG zone data            |image/png

@@ -6,7 +6,7 @@
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-custom-depths
 subject:: Web API
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
-requirement:: /req/data-custom-depths/zone-depth-parameter
+requirement:: /req/data-custom-depths/zone-depth
 ====
 
 === Parameter `zone-depth`
@@ -14,7 +14,7 @@ requirement:: /req/data-custom-depths/zone-depth-parameter
 [requirement]
 ====
 [%metadata]
-identifier:: /req/data-custom-depths/zone-depth-parameter
+identifier:: /req/data-custom-depths/zone-depth
 
 description:: Parameter to specify the DGGS refinement levels beyond the specified DGGS zone's refinement level to include in the response, when retrieving data for that zone
 

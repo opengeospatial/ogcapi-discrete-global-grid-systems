@@ -16,6 +16,7 @@ requirement:: /req/zone-geotiff/content
 ====
 [%metadata]
 identifier:: /req/zone-geotiff/content
+description:: For returning zone lists encoded as GeoTIFF:
 part:: Every 200 response of the server for zone query with the media type `image/tiff` SHALL be a GeoTIFF document representing the zones matching the query in a geo-referenced image
 where each zone corresponds to at least one pixel.
 part:: The GeoTIFF SHALL be encoded as `Pixel-Is-Area`.

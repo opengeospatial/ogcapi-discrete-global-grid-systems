@@ -16,6 +16,7 @@ requirement:: /req/data-zarr/content
 ====
 [%metadata]
 identifier:: /req/data-zarr/content
+description:: For encoding zone data as zipped Zarr 2
 part:: Every 200 response of the server for zone data with the media type `application/zarr+zip` SHALL be a Zip file containing the data values for all selected fields for a single zone data encoded following the Zarr Storage Specification Version 2 file.
 part:: For a DGGS-optimized profile (`zarr2-dggs`, `zarr2-dggs-zoneids`), the profile URI, the global identifier of the parent zone and a URI or link to the DGGRS definition SHALL be included as metadata.
 part:: For a DGGS-optimized profile, coordinates along one dimension SHALL correspond to sub-zones, either as global zone identifiers (`zarr2-dggs-zoneids`) or
@@ -52,7 +53,7 @@ part:: For non-DGGS-optimized profiles, if the respone contains georferencing in
 [recommendation]
 ====
 [%metadata]
-identifier:: /req/data-zarr/profile
+identifier:: /rec/data-zarr/profile
 part:: The Implementation SHOULD support a `profile` query parameter for zone data requests allowing to negotiate a particular representation, including the selection of
 a dimension representing global sub-zone identifiers (`zarr-dggs-zoneids`) or local sub-zone indices based on the deterministic order as defined by the DGGRS (`zarr2-dggs`),
 or individual spatiotemporal dimensions for interoperability with non-DGGS clients (`zarr2`).

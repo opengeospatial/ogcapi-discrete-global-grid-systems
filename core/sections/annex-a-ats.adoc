@@ -12,7 +12,7 @@ identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/core
 target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/core
 classification:: Target Type:Web API
 abstract-test:: /conf/core/dggrs-list
-abstract-test:: /conf/core/dggrs-info
+abstract-test:: /conf/core/dggrs-description
 abstract-test:: /conf/core/zone-info
 ====
 
@@ -33,14 +33,14 @@ test-method::
 *Then:* (assert that all parts of the requirement are fully satisfied)
 ====
 
-==== Abstract Test for Discrete global grid reference system information
+==== Abstract Test for Requirement Discrete global grid reference system description
 
-[[conf_core_dggrs-info,/conf/core/dggrs-info]]
+[[conf_core_dggrs-description,/conf/core/dggrs-description]]
 [abstract_test]
 ====
 [%metadata]
-identifier:: /conf/core/dggrs-info
-target:: /req/core/dggrs-info
+identifier:: /conf/core/dggrs-description
+target:: /req/core/dggrs-description
 test-purpose:: Verify that the Implementation supports retrieving information for a particular DGGRS
 test-method::
 +
@@ -50,7 +50,7 @@ test-method::
 *Then:* (assert that all parts of the requirement are fully satisfied)
 ====
 
-==== Abstract Test for Retrieving zone information
+==== Abstract Test for Requirement Retrieving zone information
 
 [[conf_core_zone-info,/conf/core/zone-info]]
 [abstract_test]
@@ -79,7 +79,7 @@ classification:: Target Type:Web API
 abstract-test:: /conf/data-retrieval/zone-data
 ====
 
-==== Abstract Test for Retrieving data from a zone
+==== Abstract Test for Requirement Retrieving data from a zone
 
 [[conf_data-retrieval_zone-data,/conf/data-retrieval/zone-data]]
 [abstract_test]
@@ -105,6 +105,78 @@ test-method::
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-subsetting
 target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-subsetting
 classification:: Target Type:Web API
+abstract-test:: /conf/data-subsetting/subset
+abstract-test:: /conf/data-subsetting/datetime
+abstract-test:: /conf/data-subsetting/properties
+abstract-test:: /conf/data-subsetting/exclude-properties
+====
+
+==== Abstract Test for Requirement Parameter `subset`
+
+[[conf_data-subsetting_subset,/conf/data-subsetting/subset]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/data-subsetting/subset
+target:: /req/data-subsetting/subset
+test-purpose:: Verify that the Implementation supports specifying a multi-dimensional subset for the zone data being retrieved
+test-method::
++
+--
+*Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS which successfully passed the `/conf/data-retrieval` abstract test +
+*When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with a supported media type and a `subset` parameter identifying an additional dimension not part of the DGGRS supported by the collection +
+*Then:* (assert that all parts of the requirement are fully satisfied)
+====
+
+==== Abstract Test for Requirement Parameter `datetime`
+
+[[conf_data-subsetting_datetime,/conf/data-subsetting/datetime]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/data-subsetting/datetime
+target:: /req/data-subsetting/datetime
+test-purpose:: Verify that the Implementation supports specifying a time instant or interval for which to retrieve data from a zone for a non-temporal DGGS
+test-method::
++
+--
+*Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS which successfully passed the `/conf/data-retrieval` abstract test +
+*When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with a supported media type and a `datetime` parameter identifying a temporal dimension not part of the DGGRS supported by the collection +
+*Then:* (assert that all parts of the requirement are fully satisfied)
+====
+
+==== Abstract Test for Requirement Parameter `properties`
+
+[[conf_data-subsetting_properties,/conf/data-subsetting/properties]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/data-subsetting/properties
+target:: /req/data-subsetting/properties
+test-purpose:: Verify that the Implementation supports specifying fields to include when retrieving zone data
+test-method::
++
+--
+*Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS which successfully passed the `/conf/data-retrieval` abstract test +
+*When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with a supported media type and a `properties` parameter identifying one or more field defined in the collection's logical schema +
+*Then:* (assert that all parts of the requirement are fully satisfied)
+====
+
+==== Abstract Test for Requirement Parameter `exclude-properties`
+
+[[conf_data-subsetting_exclude-properties,/conf/data-subsetting/exclude-properties]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/data-subsetting/exclude-properties
+target:: /req/data-subsetting/exclude-properties
+test-purpose:: Verify that the Implementation supports including all but specific fields when retrieving zone data
+test-method::
++
+--
+*Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS which successfully passed the `/conf/data-retrieval` abstract test +
+*When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with a supported media type and a `exclude-properties` parameter identifying one or more field defined in the collection's logical schema +
+*Then:* (assert that all parts of the requirement are fully satisfied)
 ====
 
 === Conformance Class "Data Custom Depths"
@@ -116,6 +188,24 @@ classification:: Target Type:Web API
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-custom-depths
 target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-custom-depths
 classification:: Target Type:Web API
+abstract-test:: /conf/data-custom-depths/zone-depth
+====
+
+==== Abstract Test for Requirement Parameter `zone-depth`
+
+[[conf_data-custom-depths_zone-depth,/conf/data-custom-depths/zone-depth]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/data-custom-depths/zone-depth
+target:: /req/data-custom-depths/zone-depth
+test-purpose:: Verify that the Implementation supports a parameter to specify the DGGS refinement levels beyond the specified DGGS zone’s refinement level to include in the response, when retrieving data for that zone
+test-method::
++
+--
+*Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS which successfully passed the `/conf/data-retrieval` abstract test +
+*When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with a supported media type and a `zone-depth` parameter identifying the relative depth at which to retrieve the data +
+*Then:* (assert that all parts of the requirement are fully satisfied)
 ====
 
 === Conformance Class "Filtering Zone Data with CQL2"
@@ -127,6 +217,24 @@ classification:: Target Type:Web API
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-cql2-filter
 target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-cql2-filter
 classification:: Target Type:Web API
+abstract-test:: /conf/data-cql2-filter/filter
+====
+
+==== Abstract Test for Requirement Parameter `filter` (for zone data)
+
+[[conf_data-cql2-filter_filter,/conf/data-cql2-filter/filter]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/data-cql2-filter/filter
+target:: /req/data-cql2-filter/filter
+test-purpose:: Verify that the Implementation supports specifying a CQL2 expression filtering the data returned from a zone data request
+test-method::
++
+--
+*Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS which successfully passed the `/conf/data-retrieval` abstract test +
+*When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with a supported media type and a `filter` parameter identifying a CQL2 expression to filter the data being retrieved +
+*Then:* (assert that all parts of the requirement are fully satisfied)
 ====
 
 === Conformance Class "Zone Query"
@@ -139,9 +247,18 @@ identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-query
 target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
 classification:: Target Type:Web API
 abstract-test:: /conf/zone-query/zones-list
+abstract-test:: /conf/zone-query/json-response
+abstract-test:: /conf/zone-query/zone-level
+abstract-test:: /conf/zone-query/compact-zones
+abstract-test:: /conf/zone-query/parent-zone
+abstract-test:: /conf/zone-query/bbox
+abstract-test:: /conf/zone-query/bbox-crs
+abstract-test:: /conf/zone-query/subset
+abstract-test:: /conf/zone-query/subset-crs
+abstract-test:: /conf/zone-query/datetime
 ====
 
-==== Abstract Test for Listing zones
+==== Abstract Test for Requirement Listing zones
 
 [[conf_zone-query_zones-list,/conf/zone-query/zones-list]]
 [abstract_test]
@@ -158,6 +275,159 @@ test-method::
 *Then:* (assert that all parts of the requirement are fully satisfied)
 ====
 
+==== Abstract Test for Requirement JSON zone list encoding
+
+[[conf_zone-query_json-response,/conf/zone-query/json-response]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/zone-query/json-response
+target:: /req/zone-query/json-response
+test-purpose:: Verify that the Implementation supports returning a list of DGGS zones encoded as JSON
+test-method::
++
+--
+*Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link +
+*When:* performing a GET operation on the `.../dggs/{dggrsId}/zones` resource with an `application/json` media type specified in the `Accept:` header +
+*Then:* (assert that all parts of the requirement are fully satisfied)
+====
+
+==== Abstract Test for Requirement parameter `zone-level`
+
+[[conf_zone-query_zone-level,/conf/zone-query/zone-level]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/zone-query/zone-level
+target:: /req/zone-query/zone-level
+test-purpose:: Verify that the Implementation supports specifying a level at which to return a list of DGGS zones using a `zone-level` query parameter
+test-method::
++
+--
+*Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link which passed the `/zone-query/zones-list` abstract test +
+*When:* performing a GET operation on the `.../dggs/{dggrsId}/zones` resource with a `zone-level` parameter +
+*Then:* (assert that all parts of the requirement are fully satisfied)
+====
+
+==== Abstract Test for Requirement parameter `compact-zones`
+
+[[conf_zone-query_compact-zones,/conf/zone-query/compact-zones]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/zone-query/compact-zones
+target:: /req/zone-query/compact-zones
+test-purpose:: Verify that the Implementation supports specifying whether to retrieve a list of DGGS zones using a compact-zones parameter
+test-method::
++
+--
+*Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link which passed the `/zone-query/zones-list` abstract test +
+*When:* performing GET operations on the `.../dggs/{dggrsId}/zones` resource with a `compact-zones` parameter set to true and false +
+*Then:* (assert that all parts of the requirement are fully satisfied)
+====
+
+==== Abstract Test for Requirement parameter `parent-zone`
+
+[[conf_zone-query_parent-zone,/conf/zone-query/parent-zone]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/zone-query/parent-zone
+target:: /req/zone-query/parent-zone
+test-purpose:: Verify that the Implementation supports specifying a parent zone within which to restrict zone listing using a `parent-zone` query parameter
+test-method::
++
+--
+*Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link which passed the `/zone-query/zones-list` abstract test +
+*When:* performing GET operations on the `.../dggs/{dggrsId}/zones` resource with a `parent-zone` parameter set to a valid zone identifier for the selected DGGRS +
+*Then:* (assert that all parts of the requirement are fully satisfied)
+====
+
+==== Abstract Test for Requirement parameter `bbox`
+
+[[conf_zone-query_bbox,/conf/zone-query/bbox]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/zone-query/bbox
+target:: /req/zone-query/bbox
+test-purpose:: Verify that the Implementation supports specifying a spatial bounding box for which to return a list of DGGS zones
+test-method::
++
+--
+*Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link which passed the `/zone-query/zones-list` abstract test +
+*When:* performing GET operations on the `.../dggs/{dggrsId}/zones` resource with a `bbox` parameter set to a geospatial extent in OGC:CRS84 within the extent of the dataset or collection being tested +
+*Then:* (assert that all parts of the requirement are fully satisfied)
+====
+
+==== Abstract Test for Requirement parameter `bbox-crs`
+
+[[conf_zone-query_bbox-crs,/conf/zone-query/bbox-crs]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/zone-query/bbox-crs
+target:: /req/zone-query/bbox-crs
+test-purpose:: Verify that the Implementation supports specifying the CRS used for the bbox parameter using the bbox-crs parameter
+test-method::
++
+--
+*Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link which passed the `/zone-query/zones-list` abstract test and a collection +
+*When:* performing GET operations on the `.../dggs/{dggrsId}/zones` resource with a `bbox` parameter set to a geospatial extent in either OGC:CRS84 or in the `storageCrs` of the dataset or collection within the extent of the dataset or collection being tested and a `bbox-crs` set to that CRS in which the extent is specified +
+*Then:* (assert that all parts of the requirement are fully satisfied)
+====
+
+==== Abstract Test for Requirement parameter `subset`
+
+[[conf_zone-query_subset,/conf/zone-query/subset]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/zone-query/subset
+target:: /req/zone-query/subset
+test-purpose:: Verify that the Implementation supports specifying a spatial bounding box for which to return a list of DGGS zones
+test-method::
++
+--
+*Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link which passed the `/zone-query/zones-list` abstract test +
+*When:* performing GET operations on the `.../dggs/{dggrsId}/zones` resource with a `subset` parameter set to a geospatial extent in OGC:CRS84 within the extent of the dataset or collection being tested, time for temporal dataset or collection, and another dimension (e.g., atmospheric pressure level) if supported by the dataset or collection +
+*Then:* (assert that all parts of the requirement are fully satisfied)
+====
+
+==== Abstract Test for Requirement parameter `subset-crs`
+
+[[conf_zone-query_subset-crs,/conf/zone-query/subset-crs]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/zone-query/subset-crs
+target:: /req/zone-query/subset-crs
+test-purpose:: Verify that the Implementation supports specifying the CRS used for the bbox parameter using the bbox-crs parameter
+test-method::
++
+--
+*Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link which passed the `/zone-query/zones-list` abstract test and a collection +
+*When:* performing GET operations on the `.../dggs/{dggrsId}/zones` resource with a `subset` parameter set to a geospatial extent in either OGC:CRS84 or in the `storageCrs` of the dataset or collection within the extent of the dataset or collection being tested and a `subset-crs` set to that CRS in which the extent is specified +
+*Then:* (assert that all parts of the requirement are fully satisfied)
+====
+
+==== Abstract Test for Requirement parameter `datetime`
+
+[[conf_zone-query_datetime,/conf/zone-query/datetime]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/zone-query/datetime
+target:: /req/zone-query/datetime
+test-purpose:: Verify that the Implementation supports specifying a multi-dimensional subset for which to return a list of DGGS zones
+test-method::
++
+--
+*Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link which passed the `/zone-query/zones-list` abstract test +
+*When:* performing GET operations on the `.../dggs/{dggrsId}/zones` resource with a `datetime` parameter set to a temporal extent within the dataset or collection's temporal extent +
+*Then:* (assert that all parts of the requirement are fully satisfied)
+====
+
 === Conformance Class "Filtering Zone Queries with CQL2"
 
 [[conf_zone-query-cql2-filter,https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-query-cql2-filter]]
@@ -167,6 +437,24 @@ test-method::
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-query-cql2-filter
 target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query-cql2-filter
 classification:: Target Type:Web API
+abstract-test:: /conf/zone-query-cql2-filter/filter
+====
+
+==== Abstract Test for Requirement parameter `filter` (for zone queries)
+
+[[conf_zone-query_filter,/conf/zone-query-cql2-filter/filter]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/zone-query-cql2-filter/filter
+target:: /req/zone-query-cql2-filter/filter
+test-purpose:: Verify that the Implementation supports specifying a CQL2 expression filtering the zones returned from a zone query
+test-method::
++
+--
+*Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link which passed the `/zone-query/zones-list` abstract test +
+*When:* performing GET operations on the `.../dggs/{dggrsId}/zones` resource with a `filter` parameter set to a CQL2 expression filtering zones to return +
+*Then:* (assert that all parts of the requirement are fully satisfied)
 ====
 
 === Conformance Class "Root DGGS"
@@ -178,6 +466,24 @@ classification:: Target Type:Web API
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/root-dggs
 target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/root-dggs
 classification:: Target Type:Web API
+abstract-test:: /conf/root-dggs/dggs
+====
+
+==== Abstract Test for Requirement Root DGGS
+
+[[conf_root-dggs_dggs,/conf/root-dggs/dggs]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/root-dggs/dggs
+target:: /req/root-dggs/dggs
+test-purpose:: Verify that the Implementation supports API/dataset-wide DGGS resources
+test-method::
++
+--
+*Given:* an implementation declaring conformance to Root DGGS +
+*When:* testing the `/conf/core` conformance class as well the `/conf/zone-query` and/or the `/conf/data-retrieval` conformance classes for the DGGS resources originating from the root origin at `/dggs` +
+*Then:* (assert that all parts of the requirement are fully satisfied)
 ====
 
 === Conformance Class "Collection DGGS"
@@ -189,9 +495,27 @@ classification:: Target Type:Web API
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/collection-dggs
 target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/collection-dggs
 classification:: Target Type:Web API
+abstract-test:: /conf/collection-dggs/dggs
 ====
 
-=== Conformance Class "DGGS-JSON encoding for Zone Data"
+==== Abstract Test for Requirement Collection DGGS
+
+[[conf_collection-dggs_dggs,/conf/collection-dggs/dggs]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/collection-dggs/dggs
+target:: /req/collection-dggs/dggs
+test-purpose:: Verify that the Implementation supports collection DGGS resources
+test-method::
++
+--
+*Given:* an implementation declaring conformance to Collection DGGS +
+*When:* testing the `/conf/core` conformance class as well the `/conf/zone-query` and/or the `/conf/data-retrieval` conformance classes for the DGGS resources originating from collections at `/collections/{collectoinId}/dggs` +
+*Then:* (assert that all parts of the requirement are fully satisfied)
+====
+
+=== Conformance Class "DGGS-JSON zone data encoding"
 
 [[conf_data-json,https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-json]]
 [conformance_class]
@@ -200,9 +524,27 @@ classification:: Target Type:Web API
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-json
 target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-json
 classification:: Target Type:Web API
+abstract-test:: /conf/data-json/content
 ====
 
-=== Conformance Class "DGGS-UBJSON encoding for Zone Data"
+==== Abstract Test for Requirement DGGS-JSON Zone data encoding
+
+[[conf_data-json_content,/conf/data-json/content]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/data-json/content
+target:: /req/data-json/content
+test-purpose:: Verify that the Implementation supports encoding zone data as DGGS-JSON
+test-method::
++
+--
+*Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
+*When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `application/json` for DGGS-JSON +
+*Then:* (assert that all parts of the requirement are fully satisfied)
+====
+
+=== Conformance Class "DGGS-UBJSON zone data encoding"
 
 [[conf_data-ubjson,https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-ubjson]]
 [conformance_class]
@@ -211,9 +553,27 @@ classification:: Target Type:Web API
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-ubjson
 target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-ubjson
 classification:: Target Type:Web API
+abstract-test:: /conf/data-ubjson/content
 ====
 
-=== Conformance Class "DGGS-JSON-FG encoding for Zone Data"
+==== Abstract Test for Requirement DGGS-UBJSON Zone data encoding
+
+[[conf_data-ubjson_content,/conf/data-ubjson/content]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/data-ubjson/content
+target:: /req/data-ubjson/content
+test-purpose:: Verify that the Implementation supports encoding zone data as DGGS-UBJSON
+test-method::
++
+--
+*Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
+*When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `application/ubjson` for DGGS-JSON +
+*Then:* (assert that all parts of the requirement are fully satisfied)
+====
+
+=== Conformance Class "DGGS-JSON-FG zone data encoding"
 
 [[conf_data-dggs-jsonfg,https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-jsonfg]]
 [conformance_class]
@@ -222,9 +582,27 @@ classification:: Target Type:Web API
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-jsonfg
 target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-dggs-jsonfg
 classification:: Target Type:Web API
+abstract-test:: /conf/data-dggs-jsonfg/content
 ====
 
-=== Conformance Class "DGGS-UBJSON-FG encoding for Zone Data"
+==== Abstract Test for Requirement DGGS-JSON-FG Zone data encoding
+
+[[conf_data-dggs-jsonfg_content,/conf/data-dggs-jsonfg/content]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/data-dggs-jsonfg/content
+target:: /req/data-dggs-jsonfg/content
+test-purpose:: Verify that the Implementation supports encoding zone data as DGGS-JSON-FG
+test-method::
++
+--
+*Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
+*When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `application/geo+json` and a `profile` query parameter value of `jsonfg-dggs`, `jsonfg-dggs-plus`, `jsonfg-dggs-zoneids` or `jsonfg-dggs-zoneids-plus` for DGGS-JSON-FG +
+*Then:* (assert that all parts of the requirement are fully satisfied)
+====
+
+=== Conformance Class "DGGS-UBJSON-FG zone data encoding"
 
 [[conf_data-dggs-ubjsonfg,https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-ubjsonfg]]
 [conformance_class]
@@ -233,9 +611,27 @@ classification:: Target Type:Web API
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-ubjsonfg
 target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-dggs-ubjsonfg
 classification:: Target Type:Web API
+abstract-test:: /conf/data-dggs-ubjsonfg/content
 ====
 
-=== Conformance Class "GeoTIFF encoding for Zone Data"
+==== Abstract Test for Requirement DGGS-UBJSON-FG Zone data encoding
+
+[[conf_data-dggs-ubjsonfg_content,/conf/data-dggs-ubjsonfg/content]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/data-dggs-ubjsonfg/content
+target:: /req/data-dggs-ubjsonfg/content
+test-purpose:: Verify that the Implementation supports encoding zone data as DGGS-UBJSON-FG
+test-method::
++
+--
+*Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
+*When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `application/geo+ubjson` and a `profile` query parameter value of `jsonfg-dggs`, `jsonfg-dggs-plus`, `jsonfg-dggs-zoneids` or `jsonfg-dggs-zoneids-plus` for DGGS-UBJSON-FG +
+*Then:* (assert that all parts of the requirement are fully satisfied)
+====
+
+=== Conformance Class "GeoTIFF zone data encoding"
 
 [[conf_data-geotiff,https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-geotiff]]
 [conformance_class]
@@ -244,9 +640,27 @@ classification:: Target Type:Web API
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-geotiff
 target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-geotiff
 classification:: Target Type:Web API
+abstract-test:: /conf/data-geotiff/content
 ====
 
-=== Conformance Class "GeoJSON encoding for Zone Data"
+==== Abstract Test for Requirement GeoTIFF Zone data encoding
+
+[[conf_data-geotiff_content,/conf/data-geotiff/content]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/data-geotiff/content
+target:: /req/data-geotiff/content
+test-purpose:: Verify that the Implementation supports encoding zone data as GeoTIFF
+test-method::
++
+--
+*Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
+*When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `image/tiff; application=geotiff` for GeoTIFF +
+*Then:* (assert that all parts of the requirement are fully satisfied)
+====
+
+=== Conformance Class "GeoJSON zone data encoding"
 
 [[conf_data-geojson,https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-geojson]]
 [conformance_class]
@@ -255,9 +669,27 @@ classification:: Target Type:Web API
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-geojson
 target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-geojson
 classification:: Target Type:Web API
+abstract-test:: /conf/data-geojson/content
 ====
 
-=== Conformance Class "netCDF encoding for Zone Data"
+==== Abstract Test for Requirement GeoJSON Zone data encoding
+
+[[conf_data-geojson_content,/conf/data-geojson/content]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/data-geojson/content
+target:: /req/data-geojson/content
+test-purpose:: Verify that the Implementation supports encoding zone data as GeoJSON
+test-method::
++
+--
+*Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
+*When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `application/geo+json` for GeoJSON +
+*Then:* (assert that all parts of the requirement are fully satisfied)
+====
+
+=== Conformance Class "netCDF zone data encoding"
 
 [[conf_data-netcdf,https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-netcdf]]
 [conformance_class]
@@ -266,9 +698,27 @@ classification:: Target Type:Web API
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-netcdf
 target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-netcdf
 classification:: Target Type:Web API
+abstract-test:: /conf/data-netcdf/content
 ====
 
-=== Conformance Class "Zarr encoding for Zone Data"
+==== Abstract Test for Requirement netCDF Zone data encoding
+
+[[conf_data-netcdf_content,/conf/data-netcdf/content]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/data-netcdf/content
+target:: /req/data-netcdf/content
+test-purpose:: Verify that the Implementation supports encoding zone data as netCDF
+test-method::
++
+--
+*Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
+*When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `application/netcdf` for netCDF +
+*Then:* (assert that all parts of the requirement are fully satisfied)
+====
+
+=== Conformance Class "Zarr zone data encoding"
 
 [[conf_data-zarr,https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-zarr]]
 [conformance_class]
@@ -277,9 +727,27 @@ classification:: Target Type:Web API
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-zarr
 target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-zarr
 classification:: Target Type:Web API
+abstract-test:: /conf/data-zarr/content
 ====
 
-=== Conformance Class "CoverageJSON encoding for Zone Data"
+==== Abstract Test for Requirement Zarr Zone data encoding
+
+[[conf_data-zarr_content,/conf/data-zarr/content]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/data-zarr/content
+target:: /req/data-zarr/content
+test-purpose:: Verify that the Implementation supports encoding zone data as zipped Zarr 2
+test-method::
++
+--
+*Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
+*When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `application/zarr+zip` for zipped Zarr 2 +
+*Then:* (assert that all parts of the requirement are fully satisfied)
+====
+
+=== Conformance Class "CoverageJSON zone data encoding"
 
 [[conf_data-coveragejson,https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-coveragejson]]
 [conformance_class]
@@ -288,20 +756,56 @@ classification:: Target Type:Web API
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-coveragejson
 target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-coveragejson
 classification:: Target Type:Web API
+abstract-test:: /conf/data-coveragejson/content
 ====
 
-=== Conformance Class "JPEG XL Encoding for Zone Data"
+==== Abstract Test for Requirement CoverageJSON Zone data encoding
 
-[[conf_data-jpegxlhttps://www.opengis.net/spec/ogcapi-dggs-1/1.0,/conf/data-jpegxl]]
+[[conf_data-coveragejson_content,/conf/data-coveragejson/content]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/data-coveragejson/content
+target:: /req/data-coveragejson/content
+test-purpose:: Verify that the Implementation supports encoding zone data as CoverageJSON
+test-method::
++
+--
+*Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
+*When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `application/prs.coverage+json` for CoverageJSON +
+*Then:* (assert that all parts of the requirement are fully satisfied)
+====
+
+=== Conformance Class "JPEG XL zone data encoding"
+
+[[conf_data-jpegxl,/conf/data-jpegxl]]
 [conformance_class]
 ====
 [%metadata]
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-jpegxl
 target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-jpegxl
 classification:: Target Type:Web API
+abstract-test:: /conf/data-jpegxl/content
 ====
 
-=== Conformance Class "PNG encoding for Zone Data"
+==== Abstract Test for Requirement JPEG XL Zone data encoding
+
+[[conf_data-jpegxl_content,/conf/data-jpegxl/content]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/data-jpegxl/content
+target:: /req/data-jpegxl/content
+test-purpose:: Verify that the Implementation supports encoding zone data as JPEG XL
+test-method::
++
+--
+*Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
+*When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `image/jxl` for JPEG XL +
+*Then:* (assert that all parts of the requirement are fully satisfied)
+====
+
+=== Conformance Class "PNG zone data encoding "
 
 [[conf_data-png,https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-png]]
 [conformance_class]
@@ -310,20 +814,27 @@ classification:: Target Type:Web API
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-png
 target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-png
 classification:: Target Type:Web API
+abstract-test:: /conf/data-png/content
 ====
 
-=== Conformance Class "JSON encoding for Zone Listing"
+==== Abstract Test for Requirement PNG Zone data encoding
 
-[[conf_zone-json,https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-json]]
-[conformance_class]
+[[conf_data-png_content,/conf/data-png/content]]
+[abstract_test]
 ====
 [%metadata]
-identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-json
-target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-json
-classification:: Target Type:Web API
+identifier:: /conf/data-png/content
+target:: /req/data-png/content
+test-purpose:: Verify that the Implementation supports encoding zone data as PNG
+test-method::
++
+--
+*Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
+*When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `image/png` for PNG +
+*Then:* (assert that all parts of the requirement are fully satisfied)
 ====
 
-=== Conformance Class "HTML encoding for Zone Listing"
+=== Conformance Class "HTML zone list encoding"
 
 [[conf_zone-html,https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-html]]
 [conformance_class]
@@ -332,9 +843,27 @@ classification:: Target Type:Web API
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-html
 target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-html
 classification:: Target Type:Web API
+abstract-test:: /conf/zone-html/content
 ====
 
-=== Conformance Class "Binary 64-bit integer encoding for Zone Listing"
+==== Abstract Test for Requirement HTML zone list encoding
+
+[[conf_zone-html_content,/conf/zone-html/content]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/zone-html/content
+target:: /req/zone-html/content
+test-purpose:: Verify that the Implementation supports encoding zone lists as HTML
+test-method::
++
+--
+*Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link +
+*When:* performing a GET operation on the `.../dggs/{dggrsId}/zones` resource with `text/html` media type for HTML +
+*Then:* (assert that all parts of the requirement are fully satisfied)
+====
+
+=== Conformance Class "Binary 64-bit integer zone list encoding"
 
 [[conf_zone-uint64,https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-uint64]]
 [conformance_class]
@@ -343,9 +872,27 @@ classification:: Target Type:Web API
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-uint64
 target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-uint64
 classification:: Target Type:Web API
+abstract-test:: /conf/zone-uint64/content
 ====
 
-=== Conformance Class "GeoJSON encoding for Zone Listing"
+==== Abstract Test for Requirement Binary 64-bit integer zone list encoding
+
+[[conf_zone-uint64_content,/conf/zone-uint64/content]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/zone-uint64/content
+target:: /req/zone-uint64/content
+test-purpose:: Verify that the Implementation supports encoding zone lists as 64-bit unsigned integer
+test-method::
++
+--
+*Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link +
+*When:* performing a GET operation on the `.../dggs/{dggrsId}/zones` resource with `application/x-binary` media type for 64-bit unsigned integers +
+*Then:* (assert that all parts of the requirement are fully satisfied)
+====
+
+=== Conformance Class "GeoJSON zone list encoding "
 
 [[conf_zone-geojson,https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-geojson]]
 [conformance_class]
@@ -354,9 +901,27 @@ classification:: Target Type:Web API
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-geojson
 target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-geojson
 classification:: Target Type:Web API
+abstract-test:: /conf/zone-geojson/content
 ====
 
-=== Conformance Class "GeoTIFF encoding for Zone Listing"
+==== Abstract Test for Requirement GeoJSON zone list encoding
+
+[[conf_zone-geojson_content,/conf/zone-geojson/content]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/zone-geojson/content
+target:: /req/zone-geojson/content
+test-purpose:: Verify that the Implementation supports encoding zone lists as GeoJSON
+test-method::
++
+--
+*Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link +
+*When:* performing a GET operation on the `.../dggs/{dggrsId}/zones` resource with `application/geo+json` media type for GeoJSON +
+*Then:* (assert that all parts of the requirement are fully satisfied)
+====
+
+=== Conformance Class "GeoTIFF zone list encoding"
 
 [[conf_zone-geotiff,https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-geotiff]]
 [conformance_class]
@@ -365,6 +930,24 @@ classification:: Target Type:Web API
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/zone-geotiff
 target:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-geotiff
 classification:: Target Type:Web API
+abstract-test:: /conf/zone-geotiff/content
+====
+
+==== Abstract Test for Requirement GeoTIFF zone list encoding
+
+[[conf_zone-geotiff_content,/conf/zone-geotiff/content]]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/zone-geotiff/content
+target:: /req/zone-geotiff/content
+test-purpose:: Verify that the Implementation supports encoding zone lists as GeoTIFF
+test-method::
++
+--
+*Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link +
+*When:* performing a GET operation on the `.../dggs/{dggrsId}/zones` resource with `image/tiff; application=geotiff` media type for GeoTIFF +
+*Then:* (assert that all parts of the requirement are fully satisfied)
 ====
 
 === Conformance Class "Operation IDs"

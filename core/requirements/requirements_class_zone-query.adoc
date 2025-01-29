@@ -10,7 +10,7 @@ requirement:: /req/zone-query/zones-list
 requirement:: /req/zone-query/json-response
 requirement:: /req/zone-query/zone-level
 requirement:: /req/zone-query/compact-zones
-requirement:: /rec/zone-query/parent-zone
+requirement:: /req/zone-query/parent-zone
 requirement:: /req/zone-query/bbox
 requirement:: /req/zone-query/bbox-crs
 requirement:: /req/zone-query/subset
@@ -46,10 +46,13 @@ part:: The Implementation SHALL support at minimum a JSON encoding (media type `
 
 See also <<_simple_zone_queries, Examples C.5>> and <<_compact_zone_queries, Examples C.6>>.
 
+=== JSON zone list encoding
+
 [requirement]
 ====
 [%metadata]
 identifier:: /req/zone-query/json-response
+description:: For returning a list of DGGS zones encoded as JSON
 part:: Every 200 response of the server for zone query with the media type `application/json` SHALL be a JSON document listing the textual identifiers for all zones matching the query.
 part:: The schema for the JSON document SHALL follow the JSON Schema for DGGS Zone Query described below, where the zone identifiers are strings within a `zones` array property within a JSON object.
 For example,  `{ "zones": [ "1-E-14", "1-E-15", "1-F-14", "1-F-15", "1-F-16" ] }`.
@@ -160,7 +163,7 @@ enabling the exploration of a large list in a hierarchical manner (in combinatio
 [requirement]
 ====
 [%metadata]
-identifier:: /rec/zone-query/parent-zone
+identifier:: /req/zone-query/parent-zone
 description:: For specifying a parent zone within which to restrict zone listing using a `parent-zone` query parameter.
 part:: The Implementation SHALL support a parameter `parent-zone` zone identifier query parameter.
 part:: When specified, the response SHALL NOT contain zones which are not this parent zone itself or a sub-zone of that zone.

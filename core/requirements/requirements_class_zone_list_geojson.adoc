@@ -16,6 +16,7 @@ requirement:: /req/zone-geojson/content
 ====
 [%metadata]
 identifier:: /req/zone-geojson/content
+description:: For returning zone lists encoded as GeoJSON:
 part:: Every 200 response of the server for zone query with the media type `application/geo+json` SHALL be a GeoJSON document consisting of a FeatureCollection, where every Feature represents a single zone.
 part:: Unless otherwise specified by a prior arrangement (for example, an output `crs` query parameter) or by negotiating a JSON-FG profile, the coordinate reference system SHALL be CRS84(h) in longitude and latitude (and optional height above the WGS84 ellipsoid).
 part:: Every feature SHALL have a `zoneID` property corresponding to the textual identifier of the zone.
@@ -26,7 +27,7 @@ part:: If returning a JSON-FG profile, the profile URI SHALL be included in the 
 [recommendation]
 ====
 [%metadata]
-identifier:: /req/zone-geojson/jsonfg-profile
+identifier:: /rec/zone-geojson/jsonfg-profile
 part:: The Implementation SHOULD support a `profile` query parameter for zone query requests allowing to negotiate an https://docs.ogc.org/DRAFTS/21-045r1.html[OGC Feature & Geometry JSON] representation,
 where a value of `rfc7946` corresponds to RFC 7936 GeoJSON, a `jsonfg` value corresponds to a response conforming to JSON-FG, and a `jsonfg-plus` value corresponds to a response conforming to JSON-FG
 fully backward compatible with GeoJSON (e.g., including a GeoJSON geometry in the `geometry` field if geometry is otherwise provided in the JSON-FG-specific `place` property which supports extended

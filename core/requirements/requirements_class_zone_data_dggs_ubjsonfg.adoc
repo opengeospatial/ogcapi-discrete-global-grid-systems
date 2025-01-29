@@ -16,6 +16,7 @@ requirement:: /req/data-dggs-ubjsonfg/content
 ====
 [%metadata]
 identifier:: /req/data-dggs-ubjsonfg/content
+description:: For encoding zone data as DGGS-UBJSON-FG
 part:: The Implementation SHALL support zone data requests negotiating an `application/geo+ubjson` media type combined with a `profile` query parameter with a value of `jsonfg-dggs`, `jsonfg-dggs-plus`, `jsonfg-dggs-zoneids` or `jsonfg-dggs-zoneids-plus` allowing a client to request a DGGS-UBJSON-FG response.
 part:: Every 200 response of the server for DGGS-FG-UBJSON zone data requests SHALL be a https://ubjson.org/[Universal Binary JSON] document representing the vector features within the requested zone
 part:: The content of the UBJSON document SHALL follow all the of same requirements as for DGGS-JSON-FG described above.

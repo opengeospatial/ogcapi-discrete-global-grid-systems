@@ -15,6 +15,7 @@ requirement:: /req/data-ubjson/content
 ====
 [%metadata]
 identifier:: /req/data-ubjson/content
+description:: For encoding zone data as DGGS-UBJSON
 part:: Every 200 response of the server for zone data with the media type `application/ubjson` SHALL be a https://ubjson.org/[Universal Binary JSON] document representing the data values for all selected fields for a single zone.
 part:: The schema for the UBJSON document SHALL follow the same JSON Schema as for DGGS-JSON described above.
 part:: Every zone depth requested using the `zone-depth` parameter SHALL be included in the response.

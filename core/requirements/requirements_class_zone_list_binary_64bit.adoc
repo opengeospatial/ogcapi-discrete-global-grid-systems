@@ -14,6 +14,7 @@ requirement:: /req/zone-uint64/content
 ====
 [%metadata]
 identifier:: /req/zone-uint64/content
+description:: For returning zone lists encoded as binary 64-bit unsigned integers:
 part:: Every 200 response of the server for zone query with the media type `application/x-binary` SHALL be a binary response consisting of a first 64-bit integer count defining the number of zones returned, followed by one 64-bit integer for each zone matching the query.
 part:: The 64-bit integer identifiers SHALL be the one defined by the DGGRS.
 part:: The endianness of the returned count and zones integers SHALL be little endian.

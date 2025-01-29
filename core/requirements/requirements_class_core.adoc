@@ -35,7 +35,7 @@ See also <<_listing_available_dggrss,Examples C.2>>.
 [requirement]
 ====
 [%metadata]
-identifier:: /req/core/dggrs-info
+identifier:: /req/core/dggrs-description
 description:: For retrieving the description of a particular available discrete global grid reference system:
 part:: The Implementation SHALL support an HTTP GET operation at a resource path ending with `.../dggs/{dggrsId}`.
 part:: The Implementation SHALL support a JSON representation of this `.../dggs/{dggrsId}` resource.
