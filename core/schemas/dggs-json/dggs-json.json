@@ -22,17 +22,58 @@
                "unitLang": { "type": "string", "format": "uri" },
                "grid":
                {
+                  "required": [ "cellsCount" ],
+                  "oneOf": [
+                      { "required": [ "resolution", "firstCoordinate" ] },
+                      { "required": [ "coordinates" ] }
+                  ],
                   "type": "object",
                   "properties":
                   {
+                     "boundsCoordinates": {
+                        "items": {
+                           "type": "array",
+                           "items": {
+                              "oneOf": [
+                                 { "nullable": true, "type": "number" },
+                                 { "nullable": true, "type": "string" }
+                              ]
+                           },
+                           "maxItems": 2,
+                           "minItems": 2
+                        },
+                        "type": "array"
+                     },
                      "cellsCount" : { "type": "integer" },
-                     "resolution" : { },
+                     "resolution" : {
+                        "oneOf": [
+                           { "type": "number" },
+                           { "type": "string" }
+                        ]
+                     },
+                     "firstCoordinate": {
+                        "oneOf": [
+                           { "type": "number" },
+                           { "type": "string" }
+                        ]
+                     },
+                     "relativeSpan": {
+                        "items": {
+                           "oneOf": [
+                              { "type": "number" },
+                              { "type": "string" }
+                           ]
+                        },
+                        "maxItems": 2,
+                        "minItems": 2,
+                        "type": "array"
+                     },
                      "coordinates": {
                         "type": "array",
                         "items": {
                            "oneOf": [
-                              { "type": "number", "nullable": true },
-                              { "type": "string", "nullable": true },
+                              { "type": "number" },
+                              { "type": "string" }
                            ]
                         }
                      }
@@ -40,10 +81,12 @@
                },
                "interval": {
                   "type": "array",
+                  "maxItems": 2,
+                  "minItems": 2,
                   "items": {
                      "oneOf": [
                         { "type": "number", "nullable": true },
-                        { "type": "string", "nullable": true },
+                        { "type": "string", "nullable": true }
                      ]
                   }
                }

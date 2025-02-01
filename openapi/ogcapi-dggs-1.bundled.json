@@ -2195,30 +2195,100 @@
                 },
                 "grid": {
                   "type": "object",
+                  "required": [
+                    "cellsCount"
+                  ],
+                  "oneOf": [
+                    {
+                      "required": [
+                        "resolution",
+                        "firstCoordinate"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "coordinates"
+                      ]
+                    }
+                  ],
                   "properties": {
                     "cellsCount": {
                       "type": "integer"
                     },
-                    "resolution": {},
+                    "resolution": {
+                      "oneOf": [
+                        {
+                          "type": "number"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "relativeSpan": {
+                      "type": "array",
+                      "minItems": 2,
+                      "maxItems": 2,
+                      "items": {
+                        "oneOf": [
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "string"
+                          }
+                        ]
+                      }
+                    },
                     "coordinates": {
                       "type": "array",
                       "items": {
                         "oneOf": [
                           {
-                            "type": "number",
-                            "nullable": true
+                            "type": "number"
                           },
                           {
-                            "type": "string",
-                            "nullable": true
+                            "type": "string"
                           }
                         ]
                       }
+                    },
+                    "boundsCoordinates": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "minItems": 2,
+                        "maxItems": 2,
+                        "items": {
+                          "oneOf": [
+                            {
+                              "type": "number",
+                              "nullable": true
+                            },
+                            {
+                              "type": "string",
+                              "nullable": true
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    "firstCoordinate": {
+                      "oneOf": [
+                        {
+                          "type": "number"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ]
                     }
                   }
                 },
                 "interval": {
                   "type": "array",
+                  "minItems": 2,
+                  "maxItems": 2,
                   "items": {
                     "oneOf": [
                       {

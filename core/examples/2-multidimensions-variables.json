@@ -44,7 +44,7 @@
       {
          "name": "time",
          "interval" : [ "2020-01-01", "2020-04-30" ],
-         "grid" : { "cellsCount" : 4, "resolution" : "P1M" }
+         "grid" : { "cellsCount" : 4, "firstCoordinate" : "2020-01-01", "resolution" : "P1M" }
       },
       {
          "name": "pressure",
