@@ -349,7 +349,7 @@ test-method::
 - assert that the content of the response is a list of zones fully covering where data is available (in the case where the resource is associated with a particular dataset), and
 matching any additional query parameters specified by the client (e.g., a filtering query parameter), without any redundancy. +
 - assert that unless the zones are a compact list of zones (see `compact-zones` parameter), the zones returned all are of the same DGGRS hierarchy level. +
-- assert that the selection of an encoding for the returned list of zones SHALL be consistent with HTTP content negotiation. +
+- assert that the selection of an encoding for the returned list of zones is consistent with HTTP content negotiation. +
 - assert that the Implementation supports at minimum a JSON encoding (media type `application/json`).
 ====
 
@@ -804,11 +804,11 @@ test-method::
 *Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `image/tiff; application=geotiff` for GeoTIFF +
 *Then:* +
-- Assert that every 200 response of the server for zone data with the media type `image/tiff` is a TIFF image representing the data values for all selected fields for a single zone.
-- Assert that if the TIFF encoding incorporates a GeoTIFF georeference, this information is consistent with the DGGRS Zone ID.
-- Assert that if the zone geometry is not rectangular, the closest bounding rectangle is used for referencing the image.
-- Assert that there is a distinct value for each sub-zone implied from the requested `zone-depth` has at least one distinct cell value in the response.
-- Assert that for implementations supporting Data Custom Depths, each depth of the requested zone depth pyramid is a separate image (overview) in the response.
+- assert that every 200 response of the server for zone data with the media type `image/tiff` is a TIFF image representing the data values for all selected fields for a single zone.
+- assert that if the TIFF encoding incorporates a GeoTIFF georeference, this information is consistent with the DGGRS Zone ID.
+- assert that if the zone geometry is not rectangular, the closest bounding rectangle is used for referencing the image.
+- assert that there is a distinct value for each sub-zone implied from the requested `zone-depth` has at least one distinct cell value in the response.
+- assert that for implementations supporting Data Custom Depths, each depth of the requested zone depth pyramid is a separate image (overview) in the response.
 
 ====
 
@@ -839,10 +839,10 @@ test-method::
 *Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `application/geo+json` for GeoJSON +
 *Then:* +
-- Assert that every 200 response of the server for zone data with the media type `application/geo+json` is a https://datatracker.ietf.org/doc/html/rfc7946[GeoJSON] document representing the features, including their geometry and associated properties, for a single zone. +
-- Assert that unless otherwise specified by a prior arrangement (for example, an output `crs` query parameter) or by negotiating a JSON-FG profile, the coordinate reference system is CRS84(h) in longitude and latitude (and optional height above the WGS84 ellipsoid). +
-- Assert that features whose geometry lie wholly outside of the zone geometry are not included in the response. + 
-- Assert that if returning a JSON-FG profile, the profile URI is included in the `links` section of the JSON-FG response. + 
+- assert that every 200 response of the server for zone data with the media type `application/geo+json` is a https://datatracker.ietf.org/doc/html/rfc7946[GeoJSON] document representing the features, including their geometry and associated properties, for a single zone. +
+- assert that unless otherwise specified by a prior arrangement (for example, an output `crs` query parameter) or by negotiating a JSON-FG profile, the coordinate reference system is CRS84(h) in longitude and latitude (and optional height above the WGS84 ellipsoid). +
+- assert that features whose geometry lie wholly outside of the zone geometry are not included in the response. +
+- assert that if returning a JSON-FG profile, the profile URI is included in the `links` section of the JSON-FG response. +
 
 ====
 
@@ -930,7 +930,14 @@ test-method::
 --
 *Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `application/prs.coverage+json` for CoverageJSON +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that every 200 response of the server for zone data with the media type `application/prs.coverage+json` is a https://covjson.org/[CoverageJSON] file representing the data values for all selected fields for a single zone. +
+- assert that for a DGGS-optimized profile (`covjson-dggs`, `covjson-dggs-zoneids`), the profile URI, the global identifier of the parent zone and a URI or link to the DGGRS definition is included as metadata. +
+- assert that for a DGGS-optimized profile, coordinates along one dimension corresponds to sub-zones, either as global zone identifiers (`covjson-dggs-zoneids`) or
+local sub-zone indices following the deterministic DGGRS sub-zone order (`covjson-dggs`), while spatiotemporal dimensions of the DGGRS is not be defined as separate dimensions. +
+- assert that for non-DGGS-optimized profiles, if the CoverageJSON encoding incorporates georeferencing information, this information is consistent with the DGGRS Zone ID. +
+- assert that for non-DGGS-optimized profiles, if the zone geometry is not rectilinear, the closest bounding rectangle (or volume) is used for referencing the data. +
+- assert that for non-DGGS-optimized profiles, a distinct value for each sub-zone implied from the requested `zone-depth` corresponds to at least one distinct cell value in the response.
 ====
 
 === Conformance Class "JPEG XL zone data encoding"
@@ -959,7 +966,11 @@ test-method::
 --
 *Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `image/jxl` for JPEG XL +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that every 200 response of the server for zone data with the media type `image/jxl` is a https://jpeg.org/jpegxl/[JPEG XL] image representing the data values for all selected fields for a single zone. +
+- assert that if the zone geometry is not rectangular, the closest bounding rectangle is used for referencing the image. +
+- assert that a distinct value for each sub-zone implied from the requested `zone-depth` corresponds to at least one distinct cell value in the response. +
+- assert that for Implementations supporting Data Custom Depths, each depth of the requested zone depth pyramid is a separate image (overview) in the response.
 ====
 
 === Conformance Class "PNG zone data encoding "
@@ -988,7 +999,13 @@ test-method::
 --
 *Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `image/png` for PNG +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that every 200 response of the server for zone data with the media type `image/png` is a PNG image representing the data values for all selected fields for a single zone. +
+- assert that if the zone geometry is not rectangular, the closest bounding rectangle is used for referencing the image. +
+- assert that a distinct value for each sub-zone implied from the requested `zone-depth` corresponds to at least one distinct cell value in the response. +
+- assert that for Implementations supporting Data Custom Depths, each depth of the requested zone depth pyramid is a separate image (overview) in the response. +
+- assert that a `Values-Scale:` response header with a numeric real value is returned indicating the factor by which values were multiplied before an offset was added to result in the encoded 8-bit or 16-bit PNG unsigned integer values. +
+- assert that a `Values-Offset:` response header with a numeric real value is returned indicating the offset which was added after multiplying values by the scale factor to result in the encoded 8-bit or 16-bit PNG unsigned integer values.
 ====
 
 === Conformance Class "HTML zone list encoding"
@@ -1083,11 +1100,11 @@ test-method::
 *Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones` resource with `application/geo+json` media type for GeoJSON +
 *Then:* +
-- Assert that every 200 response of the server for zone query with the media type `application/geo+json` is a GeoJSON document consisting of a FeatureCollection, where every Feature represents a single zone. +
-- Assert that unless otherwise specified by a prior arrangement (for example, an output `crs` query parameter) or by negotiating a JSON-FG profile, the coordinate reference system is CRS84(h) in longitude and latitude (and optional height above the WGS84 ellipsoid). +
-- Assert that every feature has a `zoneID` property corresponding to the textual identifier of the zone. +
-- Assert that the geometry of each feature is the geometry of the zone. +
-- Assert that if returning a JSON-FG profile, the profile URI is included in the `links` section of the JSON-FG response.
+- assert that every 200 response of the server for zone query with the media type `application/geo+json` is a GeoJSON document consisting of a FeatureCollection, where every Feature represents a single zone. +
+- assert that unless otherwise specified by a prior arrangement (for example, an output `crs` query parameter) or by negotiating a JSON-FG profile, the coordinate reference system is CRS84(h) in longitude and latitude (and optional height above the WGS84 ellipsoid). +
+- assert that every feature has a `zoneID` property corresponding to the textual identifier of the zone. +
+- assert that the geometry of each feature is the geometry of the zone. +
+- assert that if returning a JSON-FG profile, the profile URI is included in the `links` section of the JSON-FG response.
 
 ====
 
@@ -1118,9 +1135,9 @@ test-method::
 *Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones` resource with `image/tiff; application=geotiff` media type for GeoTIFF +
 *Then:* +
-- Assert that every 200 response of the server for zone query with the media type `image/tiff` is a GeoTIFF document representing the zones matching the query in a geo-referenced image
-where each zone corresponds to at least one pixel. + 
-- Assert that the GeoTIFF is encoded as `Pixel-Is-Area`. +
+- assert that every 200 response of the server for zone query with the media type `image/tiff` is a GeoTIFF document representing the zones matching the query in a geo-referenced image
+where each zone corresponds to at least one pixel. +
+- assert that the GeoTIFF is encoded as `Pixel-Is-Area`. +
 ====
 
 === Conformance Class "Operation IDs"
