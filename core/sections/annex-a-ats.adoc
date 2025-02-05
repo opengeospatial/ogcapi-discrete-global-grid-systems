@@ -657,7 +657,13 @@ test-method::
 --
 *Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `image/tiff; application=geotiff` for GeoTIFF +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- Assert that every 200 response of the server for zone data with the media type `image/tiff` is a TIFF image representing the data values for all selected fields for a single zone.
+- Assert that if the TIFF encoding incorporates a GeoTIFF georeference, this information is consistent with the DGGRS Zone ID.
+- Assert that if the zone geometry is not rectangular, the closest bounding rectangle is used for referencing the image.
+- Assert that there is a distinct value for each sub-zone implied from the requested `zone-depth` has at least one distinct cell value in the response.
+- Assert that for implementations supporting Data Custom Depths, each depth of the requested zone depth pyramid is a separate image (overview) in the response.
+
 ====
 
 === Conformance Class "GeoJSON zone data encoding"
@@ -686,7 +692,12 @@ test-method::
 --
 *Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `application/geo+json` for GeoJSON +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- Assert that every 200 response of the server for zone data with the media type `application/geo+json` is a https://datatracker.ietf.org/doc/html/rfc7946[GeoJSON] document representing the features, including their geometry and associated properties, for a single zone. +
+- Assert that unless otherwise specified by a prior arrangement (for example, an output `crs` query parameter) or by negotiating a JSON-FG profile, the coordinate reference system is CRS84(h) in longitude and latitude (and optional height above the WGS84 ellipsoid). +
+- Assert that features whose geometry lie wholly outside of the zone geometry are not included in the response. + 
+- Assert that if returning a JSON-FG profile, the profile URI is included in the `links` section of the JSON-FG response. + 
+
 ====
 
 === Conformance Class "netCDF zone data encoding"
