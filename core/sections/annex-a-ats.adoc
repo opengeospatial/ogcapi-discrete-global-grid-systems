@@ -939,7 +939,16 @@ test-method::
 --
 *Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `application/zarr+zip` for zipped Zarr 2 +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that every 200 response of the server for zone data with the media type `application/zarr+zip` is a Zip file containing the data values for all selected fields for a single zone data encoded following the Zarr Storage Specification Version 2 file. +
+- assert that for a DGGS-optimized profile (`zarr2-dggs`, `zarr2-dggs-zoneids`), the profile URI, the global identifier of the parent zone and a URI or link to the DGGRS definition is included as metadata. +
+- assert that for a DGGS-optimized profile, coordinates along one dimension corresponds to sub-zones, either as global zone identifiers (`zarr2-dggs-zoneids`) or local sub-zone indices following the deterministic DGGRS sub-zone order (`zarr2-dggs`), while spatiotemporal dimensions of the DGGRS is not defined as separate dimensions. +
+- assert that for a DGGS-optimized profile, at every depth, each individual value corresponds exactly to the data sampled representative of that sub-zone. +
+- assert that for non-DGGS-optimized profiles, if the Zarr data incorporates georeferencing information (such as defined by the candidate https://github.com/zarr-developers/geozarr-spec[OGC GeoZarr] Standard), this information is consistent with the DGGRS Zone ID. +
+- assert that for non-DGGS-optimized profiles, if the zone geometry is not rectilinear, the closest bounding rectangle (or volume) is used for referencing the data. +
+- assert that for non-DGGS-optimized profiles, a distinct value for each sub-zone implied from the requested `zone-depth` corresponds to at least one distinct cell value in the response. +
+- assert that if multiple relative zone depths are being returned, each depth is encoded as a separate Zarr dataset within the data packet. +
+- assert that every zone depth requested using the `zone-depth` parameter is included in the response.
 ====
 
 === Conformance Class "CoverageJSON zone data encoding"
