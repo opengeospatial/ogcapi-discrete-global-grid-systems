@@ -801,7 +801,10 @@ test-method::
 --
 *Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `application/geo+ubjson` and a `profile` query parameter value of `jsonfg-dggs`, `jsonfg-dggs-plus`, `jsonfg-dggs-zoneids` or `jsonfg-dggs-zoneids-plus` for DGGS-UBJSON-FG +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that the Implementation supports zone data requests negotiating an `application/geo+ubjson` media type combined with a `profile` query parameter with a value of `jsonfg-dggs`, `jsonfg-dggs-plus`, `jsonfg-dggs-zoneids` or `jsonfg-dggs-zoneids-plus` allowing a client to request a DGGS-UBJSON-FG response. +
+- assert that every 200 response of the server for DGGS-FG-UBJSON zone data requests is a https://ubjson.org/[Universal Binary JSON] document representing the vector features within the requested zone. +
+- assert that the content of the UBJSON document follows all the of same requirements as for DGGS-JSON-FG described above.
 ====
 
 === Conformance Class "GeoTIFF zone data encoding"
