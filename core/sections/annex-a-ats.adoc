@@ -860,7 +860,9 @@ test-method::
 --
 *Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones` resource with `text/html` media type for HTML +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that every 200 response of the server for zone query with the media type `text/html` is a HTML document listing the textual identifiers for all zones matching the query. +
+
 ====
 
 === Conformance Class "Binary 64-bit integer zone list encoding"
@@ -889,7 +891,12 @@ test-method::
 --
 *Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones` resource with `application/x-binary` media type for 64-bit unsigned integers +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that every 200 response of the server for zone query with the media type `application/x-binary` is a binary response consisting of a first 64-bit integer count defining the number of zones returned, followed by one 64-bit integer for each zone matching the query. +
+- assert that the 64-bit integer identifiers are the ones defined by the DGGRS. +
+- assert that the endianness of the returned count and zones integers are little endian. +
+- assert that if the DGGRS does not define a 64-bit integer identifier, a 406 "Not Acceptable" response isreturned.
+
 ====
 
 === Conformance Class "GeoJSON zone list encoding "
@@ -918,7 +925,13 @@ test-method::
 --
 *Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones` resource with `application/geo+json` media type for GeoJSON +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- Assert that every 200 response of the server for zone query with the media type `application/geo+json` is a GeoJSON document consisting of a FeatureCollection, where every Feature represents a single zone. +
+- Assert that unless otherwise specified by a prior arrangement (for example, an output `crs` query parameter) or by negotiating a JSON-FG profile, the coordinate reference system is CRS84(h) in longitude and latitude (and optional height above the WGS84 ellipsoid). +
+- Assert that every feature has a `zoneID` property corresponding to the textual identifier of the zone. +
+- Assert that the geometry of each feature is the geometry of the zone. +
+- Assert that if returning a JSON-FG profile, the profile URI is included in the `links` section of the JSON-FG response.
+
 ====
 
 === Conformance Class "GeoTIFF zone list encoding"
@@ -947,7 +960,10 @@ test-method::
 --
 *Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones` resource with `image/tiff; application=geotiff` media type for GeoTIFF +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- Assert that every 200 response of the server for zone query with the media type `image/tiff` is a GeoTIFF document representing the zones matching the query in a geo-referenced image
+where each zone corresponds to at least one pixel. + 
+- Assert that the GeoTIFF is encoded as `Pixel-Is-Area`. +
 ====
 
 === Conformance Class "Operation IDs"
