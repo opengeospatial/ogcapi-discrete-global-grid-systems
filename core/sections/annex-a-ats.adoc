@@ -503,14 +503,14 @@ test-method::
 - assert that the Implementation supports a `subset` query parameter for the zone query operation (resource path ending with `.../dggs/{dggrsId}/zones`)
 conforming to the ABNF defined in <</req/zone-query/subset>>.
 - assert that the Implementation supports as axis names `Lat` and `Lon` for geographic CRS and `E` and `N` for projected CRS, which are to be interpreted as the best matching spatial axis in the CRS definition. +
-- assert that if a third spatial dimension is supported (if the resource's spatial extent bounding box is three dimensional), the Implementation also supports a `h` dimension (elevation above the ellipsoid in EPSG:4979 or CRS84h) for geographic CRS and `z` for projected CRS, which are to be interpreted as the vertical axis in the CRS definition.
-- assert that the Implementation supports as axis names `time` for a temporal dataset.
-- assert that the Implementation supports as axis names any additional dimension (beyond spatial and temporal) as described in the `extent` property of the collection or dataset description.
-- assert that the Implementation returns a 400 error status code if an axis name does not correspond to one of the axes of the Coordinate Reference System (CRS) of the data or an axis defined in the relevant `extent` property.
+- assert that if a third spatial dimension is supported (if the resource's spatial extent bounding box is three dimensional), the Implementation also supports a `h` dimension (elevation above the ellipsoid in EPSG:4979 or CRS84h) for geographic CRS and `z` for projected CRS, which are to be interpreted as the vertical axis in the CRS definition. +
+- assert that the Implementation supports as axis names `time` for a temporal dataset. +
+- assert that the Implementation supports as axis names any additional dimension (beyond spatial and temporal) as described in the `extent` property of the collection or dataset description. +
+- assert that the Implementation returns a 400 error status code if an axis name does not correspond to one of the axes of the Coordinate Reference System (CRS) of the data or an axis defined in the relevant `extent` property. +
 - assert that for a CRS where an axis can wrap around, such as subsetting across the dateline (anti-meridian) in a geographic CRS, a _low_ value greater than _high_ is
-supported to indicate an extent crossing that wrapping point.
-- assert that the Implementation interprets the coordinates as values for the named axis of the CRS specified in the `subset-crs` parameter value or in https://www.opengis.net/def/crs/OGC/1.3/CRS84 (https://www.opengis.net/def/crs/OGC/1.3/CRS84h for vertical dimension) if the `subset-crs` parameter is missing.
-- assert that if the `subset` parameter including any of the dimensions corresponding to those of the map bounding box is used with a `bbox`, the server returns a 400 client error.
+supported to indicate an extent crossing that wrapping point. +
+- assert that the Implementation interprets the coordinates as values for the named axis of the CRS specified in the `subset-crs` parameter value or in https://www.opengis.net/def/crs/OGC/1.3/CRS84 (https://www.opengis.net/def/crs/OGC/1.3/CRS84h for vertical dimension) if the `subset-crs` parameter is missing. +
+- assert that if the `subset` parameter including any of the dimensions corresponding to those of the map bounding box is used with a `bbox`, the server returns a 400 client error. +
 - assert that the Implementation interprets multiple `subset` parameters, as if all dimension subsetting values were provided in a single `subset` parameter (comma separated).
 ====
 
@@ -834,12 +834,11 @@ test-method::
 *Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `image/tiff; application=geotiff` for GeoTIFF +
 *Then:* +
-- assert that every 200 response of the server for zone data with the media type `image/tiff` is a TIFF image representing the data values for all selected fields for a single zone.
-- assert that if the TIFF encoding incorporates a GeoTIFF georeference, this information is consistent with the DGGRS Zone ID.
-- assert that if the zone geometry is not rectangular, the closest bounding rectangle is used for referencing the image.
-- assert that there is a distinct value for each sub-zone implied from the requested `zone-depth` has at least one distinct cell value in the response.
+- assert that every 200 response of the server for zone data with the media type `image/tiff` is a TIFF image representing the data values for all selected fields for a single zone. +
+- assert that if the TIFF encoding incorporates a GeoTIFF georeference, this information is consistent with the DGGRS Zone ID. +
+- assert that if the zone geometry is not rectangular, the closest bounding rectangle is used for referencing the image. +
+- assert that there is a distinct value for each sub-zone implied from the requested `zone-depth` has at least one distinct cell value in the response. +
 - assert that for implementations supporting Data Custom Depths, each depth of the requested zone depth pyramid is a separate image (overview) in the response.
-
 ====
 
 === Conformance Class "GeoJSON zone data encoding"
@@ -872,8 +871,7 @@ test-method::
 - assert that every 200 response of the server for zone data with the media type `application/geo+json` is a https://datatracker.ietf.org/doc/html/rfc7946[GeoJSON] document representing the features, including their geometry and associated properties, for a single zone. +
 - assert that unless otherwise specified by a prior arrangement (for example, an output `crs` query parameter) or by negotiating a JSON-FG profile, the coordinate reference system is CRS84(h) in longitude and latitude (and optional height above the WGS84 ellipsoid). +
 - assert that features whose geometry lie wholly outside of the zone geometry are not included in the response. +
-- assert that if returning a JSON-FG profile, the profile URI is included in the `links` section of the JSON-FG response. +
-
+- assert that if returning a JSON-FG profile, the profile URI is included in the `links` section of the JSON-FG response.
 ====
 
 === Conformance Class "netCDF zone data encoding"
