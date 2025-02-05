@@ -30,7 +30,14 @@ test-method::
 --
 *Given:* a geospatial data resource conforming to the DGGS API Standard, with an API path including `.../dggs` or discovered following a link with relation type `[ogc-rel:dggrs-list]` +
 *When:* performing a GET operation on the `.../dggs` resource with an `application/json` media type specified in the `Accept:` header (e.g., `Accept: application/json`) +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that the Implementation supports an HTTP GET operation at a resource path ending with `.../dggs`. +
+- assert that the Implementation supports a JSON representation of this `.../dggs` resource. +
+- assert that the `.../dggs` resource includes a `dggrs` array property listing all Discrete Global Grid Reference Systems (DGGRSs) supported by the Implementation. +
+- assert that each element of the `dggrs` array includes a summary description (a subset of the information available in the individual resources describing each DGGRS as per the next requirement below), including at minimum the `id`, `title`, `uri` (if applicable), and `links`. +
+- assert that the `links` property within each DGGRS element includes at minimum a link to the discrete global grid reference system using the `self` link relation type, as well as a link to the discrete global grid reference system definition using the `[ogc-rel:dggrs-definition]` relation type. +
+- assert that the link relation type to use for linking from a particular resource of origin (such as a <<rc_collection-dggs,collection>> at `/collections/{collectionId}`, or <<rc_root-dggs,landing page>>)
+to the list of available DGGRSs for that resource (for example at `/collections/{collectionId}/dggs` or `/dggs`) is `[ogc-rel:dggrs-list]`.
 ====
 
 ==== Abstract Test for Requirement Discrete global grid reference system description
@@ -47,7 +54,18 @@ test-method::
 --
 *Given:* a DGGRS resource identified from listing available DGGRS or discovered by following a link with relation type `[ogc-rel:dggrs]` +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}` resource with an `application/json` media type specified in the `Accept:` header (e.g., `Accept: application/json`) +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that the Implementation supports an HTTP GET operation at a resource path ending with `.../dggs/{dggrsId}`. +
+- assert that the Implementation supports a JSON representation of this `.../dggs/{dggrsId}` resource. +
+- assert that the `.../dggs/{dggrsId}` resource includes an `id` property consistent with the `{dggrsId}` resource path parameter. +
+- assert that the `.../dggs/{dggrsId}` resource includes a link to the resource itself using the `self` link relation type. +
+- assert that the `.../dggs/{dggrsId}` resource includes a link to a definition of the discrete global grid reference system using the link relation type `[ogc-rel:dggrs-definition]`
+(this definition should be based on the draft schema in <<annex-dggrs-def, Annex B - Discrete Global Grid Reference System Definitions>>, although in this first version of the OGC API - DGGS Standard the schema is informative). +
+- assert that the `.../dggs/{dggrsId}` resource includes a templated link in the `linkTemplates` array to request information for a particular zone using the link relation type `[ogc-rel:dggrs-zone-info]` and the template variable `{zoneId}`. +
+- assert that if the discrete global grid reference system (the combination of the discrete global grid and indexing system) is registered with an authority, the resource includes a `uri` property corresponding to that registered discrete global grid reference system. +
+- assert that if the discrete global grid reference system is based on a particular coordinate reference system, the resource specifies that CRS in a `crs` property, preferably as a URI (if one is available). +
+- assert that the Implementation includes a short `title` property identifying the discrete global grid reference system intended for display to a human. +
+- assert that the Implementation includes a `description` property providing a summary description of the discrete global grid reference system.
 ====
 
 ==== Abstract Test for Requirement Retrieving zone information
@@ -64,7 +82,11 @@ test-method::
 --
 *Given:* a DGGRS zone information resource identified from a `[ogc-rel:dggrs-zone-info]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}` resource with an `application/json` media type specified in the `Accept:` header (e.g., `Accept: application/json`) +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that the Implementation supports an HTTP GET operation at a resource path ending with `.../dggs/{dggrsId}/zones/{zoneId}` providing information for valid individual zones of the discrete global grid reference system. +
+- assert that the zone information resource supports a JSON representation. +
+- assert that the zone information resource includes an `id` property corresponding to the `{zoneId}` resource path parameter. +
+- assert that the zone information resource includes a link back to the corresponding DGGRS resource (`.../dggs/{dggrsId}`) using the `[ogc-rel:dggrs]` link relation type.
 ====
 
 === Conformance Class "Data Retrieval"
@@ -93,7 +115,16 @@ test-method::
 --
 *Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with supported media type specified in the `Accept:` header (e.g., `Accept: application/json` for DGGS-JSON) +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that the Implementation supports an HTTP GET operation at a resource path ending with `.../dggs/{dggrsId}/zones/{zoneId}/data`. +
+- assert that the Implementation includes a templated link to this resource path in the "Core" `.../dggs/{dggrsId}` resource link templates, and regular link in the `.../dggs/{dggrsId}/zones/{zoneId}` resource links
+using the link relation type `[ogc-rel:dggrs-zone-data]` for all zones for which data is available. +
+- assert that the response of the HTTP GET operation has a status code of 200. +
+- assert that the content of the response is a data packet corresponding precisely to the area covered by the DGGS zone. +
+- assert that the selection of an encoding for the response is consistent with HTTP content negotiation. +
+- assert that the `.../dggs/{dggrsId}` resource includes a `defaultDepth` property indicating the Implementation's default depth for when the `zone-depth` parameter is omitted.
+This default value could be any valid value and/or form as defined in the `/req/data-custom-depths/zone-depth-parameter` requirement (single depth, range of depths, or list of depths, relative to the `{zoneId}` hierarchy level). +
+- assert that unless a `zone-depth` parameter is specified, the response returns a data packet consistent with this `defaultDepth` property, in accordance with the capabilities of the negotiated data packet encoding.
 ====
 
 === Conformance Class "Data Subsetting"
@@ -125,7 +156,15 @@ test-method::
 --
 *Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS which successfully passed the `/conf/data-retrieval` abstract test +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with a supported media type and a `subset` parameter identifying an additional dimension not part of the DGGRS supported by the collection +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that the Implementation supports a `subset` query parameter for the zone data retrieval operation (resource path ending with `.../dggs/{dggrsId}/zones/{zoneId}/data`)
+conforming to the Augmented Backus Naur Form (ABNF) fragment in <</req/data-subsetting/subset>> +
+- assert that the Implementation supports as an axis names`time` for a temporal dataset, unless this temporal axis is an axis of the discrete global grid reference system. +
+- assert that if a third vertical spatial dimension is supported (if the resource's spatial extent bounding box is three dimensional) and that dimension is not part of the discrete global grid system definition, the Implementation also supports a `h` dimension (elevation above the ellipsoid in EPSG:4979 or CRS84h) for geographic CRS and `z` for projected CRS, which are to be interpreted as the vertical axis in the CRS definition. +
+- assert that the Implementation supports as axis names any additional dimension (beyond spatial and temporal) as described in the `extent` property of the collection or dataset description. +
+- assert that the Implementation returns a 400 error status code if an axis name does not correspond to one of the axes of the Coordinate Reference System (CRS) of the data or an axis defined in the relevant `extent` property. +
+- assert that if a `subset` parameter including any of the dimensions corresponding to the axes of the discrete global grid reference system is used, the server returns a 400 client error. +
+- assert that the Implementation interprets multiple `subset` parameters, as if all dimension subsetting values were provided in a single `subset` parameter (comma separated).
 ====
 
 ==== Abstract Test for Requirement Parameter `datetime`
@@ -142,7 +181,13 @@ test-method::
 --
 *Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS which successfully passed the `/conf/data-retrieval` abstract test +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with a supported media type and a `datetime` parameter identifying a temporal dimension not part of the DGGRS supported by the collection +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that the Implementation supports a `datetime` parameter expressed corresponding to either a date-time instant or a time interval, conforming to the ABNF in <</req/data-subsetting/datetime>> +
+- assert that the implementation supports an `instant` defined as specified by link:https://tools.ietf.org/html/rfc3339#section-5.6[RFC 3339, 5.6], with the exception that the server is
+only required to support the `Z` UTC time notation, and not required to support local time offsets. +
+- assert that only the portions of the data within the specified interval is part of the zone data response, performing a trim operation for an interval or a slicing operation for an instant (in the case of a gridded coverage), or a filtering operation for feature data. +
+- assert that time intervals unbounded at the start or at the end is supported using a double-dot (`..`) or an empty string for the start/end. +
+- assert that if a `datetime` parameter is specified requesting zone data where no temporal dimension applies, the Implementation either ignores the parameter or returns a 4xx client error.
 ====
 
 ==== Abstract Test for Requirement Parameter `properties`
@@ -159,7 +204,12 @@ test-method::
 --
 *Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS which successfully passed the `/conf/data-retrieval` abstract test +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with a supported media type and a `properties` parameter identifying one or more field defined in the collection's logical schema +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that the zone data retrieval operation supports a parameter `properties` where the value is a comma-separated list of fields to be returned. +
+- assert that the Implementation supports selecting a field using the identifier corresponding to the top-level property keys of the logical schema of the resource associated with the DGGRS zone data request, and return 400 status code for an unrecognized selected field. +
+- assert that only the selected fields is returned from the zone data request. +
+- assert that if the zone data encodings response can self-describe its list of fields (as with the `schema` property of the DGGS-JSON encoding), the field description corresponds to the requested list of fields. +
+- assert that if the negotiated format of the response has a concept of field order, then the fields are in the same order as the requested list of selected fields.
 ====
 
 ==== Abstract Test for Requirement Parameter `exclude-properties`
@@ -176,7 +226,11 @@ test-method::
 --
 *Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS which successfully passed the `/conf/data-retrieval` abstract test +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with a supported media type and a `exclude-properties` parameter identifying one or more field defined in the collection's logical schema +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that the zone data retrieval operation supports a parameter `exclude-properties` where the value is a comma-separated list of fields not to be returned. +
+- assert that the Implementation supports selecting fields not to return using the identifier corresponding to the top-level property keys of the logical schema of the resource associated with the DGGRS zone data request, and returns 400 status code for an unrecognized selected field. +
+- assert that all but the selected fields are returned from the zone data request. +
+- assert that the Implementation returns a 4xx error when using the both the `properties` and `exclude-properties` parameters in the same request.
 ====
 
 === Conformance Class "Data Custom Depths"
@@ -205,7 +259,18 @@ test-method::
 --
 *Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS which successfully passed the `/conf/data-retrieval` abstract test +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with a supported media type and a `zone-depth` parameter identifying the relative depth at which to retrieve the data +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that the Implementation supports a `zone-depth` parameter for the HTTP GET operation on a resource path ending with `.../dggs/{dggrsId}/zones/{zoneId}/data`. +
+- assert that the Implementation accepts the different types of values for the `zone-depth` parameter defined in <</req/data-custom-depths/zone-depth>>
+(single positive integer value, a range of positive integer values in the form "{low}-{high}", a comma separated list of at least two (2) positive integer values),
+keeping in mind that some or all of these forms of the `zone-depth` parameter may not be supported with particular data packet encodings. +
+- assert that for each zone depth to be included in the response, the interpretation of a selected depth is:
+0 corresponding to a single set of field value(s) for the requested zone,
+1 corresponding to all zones of the next deeper hierarchy level associated with the requested zone by the indexing scheme,
+_n_ corresponding to all zones for the _n_'th deeper level in the hierarchy level associated with the requested zone by the indexing scheme. +
+- assert that the association of zones of deeper hierarchy levels with the requested zone is based on the DGGRS,
+which takes into consideration both the grid definition as well as the indexing system in use for the DGGS resource. +
+- assert that if a `zone-depth` is specified, the operation returns the data at the refinement level(s) specified.
 ====
 
 === Conformance Class "Filtering Zone Data with CQL2"
@@ -234,7 +299,12 @@ test-method::
 --
 *Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS which successfully passed the `/conf/data-retrieval` abstract test +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with a supported media type and a `filter` parameter identifying a CQL2 expression to filter the data being retrieved +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that the Implementation supports a `filter` query parameter specified using the CQL2-Text encoding of the OGC Common Query Language for the zone data retrieval
+operation (resource path ending with `.../dggs/{dggrsId}/zones/data`). +
+- assert that for a rasterized representation, the data returned has null or NODATA values for sub-zones where the CQL2 expression evaluates to false when considering the geometry and the data of that sub-zone. +
+- assert that or a vector representation, the data returned only includes features where the CQL2 expression evaluates to true when considering the geometry and the data of that sub-zone. +
+- assert that the CQL2 expression evaluator supports the queryables declared in the JSON Schema resource linked to from the origin of the DGGRS resources using the `[ogc-rel:queryables]` link relation type.
 ====
 
 === Conformance Class "Zone Query"
@@ -272,7 +342,15 @@ test-method::
 --
 *Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones` resource with supported media type specified in the `Accept:` header (e.g., `Accept: application/json` for a JSON zone list) +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that the Implementation supports an HTTP GET operation at a resource path ending with `.../dggs/{dggrsId}/zones`. +
+- assert that the Implementation includes a link to this resource path in the "Core" `.../dggs/{dggrsId}` resource links using the link relation type https://www.opengis.net/def/rel/ogc/1.0/dggrs-zone-query. +
+- assert that the response of the HTTP GET operation has a status code of 200. +
+- assert that the content of the response is a list of zones fully covering where data is available (in the case where the resource is associated with a particular dataset), and
+matching any additional query parameters specified by the client (e.g., a filtering query parameter), without any redundancy. +
+- assert that unless the zones are a compact list of zones (see `compact-zones` parameter), the zones returned all are of the same DGGRS hierarchy level. +
+- assert that the selection of an encoding for the returned list of zones SHALL be consistent with HTTP content negotiation. +
+- assert that the Implementation supports at minimum a JSON encoding (media type `application/json`).
 ====
 
 ==== Abstract Test for Requirement JSON zone list encoding
@@ -289,7 +367,11 @@ test-method::
 --
 *Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones` resource with an `application/json` media type specified in the `Accept:` header +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that every 200 response of the server for zone query with the media type `application/json` is a JSON document listing the textual identifiers for all zones matching the query. +
+- assert that the schema for the JSON document follows the JSON Schema for DGGS Zone Query described in <</req/zone-query/json-response>>, where the zone identifiers are strings within a `zones` array property within a JSON object. +
+- assert that the `links` property includes an `[ogc-rel:dggrs]` link to the Discrete Global Grid Reference System description resource. +
+- assert that the `links` property includes an `[ogc-rel:dggrs-definition]` link to the DGGRS definition, using the schema defined in <<annex-dggrs-def, Annex B - DGGRS Definitions>> or a later version.
 ====
 
 ==== Abstract Test for Requirement parameter `zone-level`
@@ -306,7 +388,11 @@ test-method::
 --
 *Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link which passed the `/zone-query/zones-list` abstract test +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones` resource with a `zone-level` parameter +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that the Implementation supports a `zone-level` query parameter for the zone query operation (resource path ending with `.../dggs/{dggrsId}/zones`). +
+- assert that if a compact zones list is returned (which is the default, unless the `compact-zones` parameter is set to _false_), the zones returned in the response are of the DGGRS hierarchy level specified by the `zone-level` query parameter,
+or of a lower hierarchy level standing in for a compact representation of multiple zones at the requested hierarchy level. +
+- assert that if a non-compact zones list is returned (if the `compact-zones` parameter is set to _false_), the zones returned in the response are of the DGGRS hierarchy level specified by the `zone-level` query parameter.
 ====
 
 ==== Abstract Test for Requirement parameter `compact-zones`
@@ -323,7 +409,14 @@ test-method::
 --
 *Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link which passed the `/zone-query/zones-list` abstract test +
 *When:* performing GET operations on the `.../dggs/{dggrsId}/zones` resource with a `compact-zones` parameter set to true and false +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that the Implementation supports a Boolean `compact-zones` query parameter for the zone query
+operation (resource path ending with `.../dggs/{dggrsId}/zones`), where a value of `true` corresponds to the
+default behavior when the parameter is not specified, and a value of `false` disables the use of compact-zones in the response. +
+- assert that when the `compact-zones` parameter is set to _false_, the zones list response is not a compact list, and explicitly lists every individual zone
+at the requested or default DGGRS hierarchy level. +
+- assert that when the `compact-zones` parameter is set to _true_ (or unspecified), the zones list response is a compact list, where children zones completely covering
+the area of a parent zone are replaced by that parent zone, in a recursive manner all the way to the lowest DGGRS hierarchy level.
 ====
 
 ==== Abstract Test for Requirement parameter `parent-zone`
@@ -340,7 +433,9 @@ test-method::
 --
 *Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link which passed the `/zone-query/zones-list` abstract test +
 *When:* performing GET operations on the `.../dggs/{dggrsId}/zones` resource with a `parent-zone` parameter set to a valid zone identifier for the selected DGGRS +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that the Implementation supports a parameter `parent-zone` zone identifier query parameter. +
+- assert that when specified, the response does not contain zones which are not this parent zone itself or a sub-zone of that zone.
 ====
 
 ==== Abstract Test for Requirement parameter `bbox`
@@ -357,7 +452,14 @@ test-method::
 --
 *Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link which passed the `/zone-query/zones-list` abstract test +
 *When:* performing GET operations on the `.../dggs/{dggrsId}/zones` resource with a `bbox` parameter set to a geospatial extent in OGC:CRS84 within the extent of the dataset or collection being tested +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that the Implementation supports a `bbox` query parameter for the zone query
+operation (resource path ending with `.../dggs/{dggrsId}/zones`) as defined in <</req/zone-query/bbox>> +
+- assert that the `bbox` query parameter is interpreted as a comma separated list of four or six floating point numbers,
+that if the bounding box consists of six numbers, the first three numbers are interpreted as the coordinates of the lower bound corner of a three-dimensional bounding box and the last three are interpreted as the coordinates of the upper bound corner. +
+- assert that the axis order is determined by the `bbox-crs` parameter value or longitude and latitude if the parameter is omitted (https://www.opengis.net/def/crs/OGC/1.3/CRS84 axis order for a 2D bounding box,
+https://www.opengis.net/def/crs/OGC/1.3/CRS84h for a 3D bounding box). +
+- assert that the returned list of zone IDs only contain zones inside or intersecting with the spatial extent of the geographical area of the bounding box.
 ====
 
 ==== Abstract Test for Requirement parameter `bbox-crs`
@@ -374,7 +476,13 @@ test-method::
 --
 *Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link which passed the `/zone-query/zones-list` abstract test and a collection +
 *When:* performing GET operations on the `.../dggs/{dggrsId}/zones` resource with a `bbox` parameter set to a geospatial extent in either OGC:CRS84 or in the `storageCrs` of the dataset or collection within the extent of the dataset or collection being tested and a `bbox-crs` set to that CRS in which the extent is specified +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that the list of zones resource supports a `bbox-crs` parameter specifying the CRS used for the `bbox` parameter. +
+- assert that for Earth centric data, the Implementation supports https://www.opengis.net/def/crs/OGC/1.3/CRS84 as a value. +
+- assert that if the `bbox-crs` is not indicated https://www.opengis.net/def/crs/OGC/1.3/CRS84 is assumed. +
+- assert that the native CRS (`storageCrs`) is supported as a value. +
+- assert that both CRS expressed as URIs and as safe CURIEs are supported. +
+- assert that if the `bbox` query parameter is not used, the `bbox-crs` is ignored.
 ====
 
 ==== Abstract Test for Requirement parameter `subset`
@@ -391,7 +499,19 @@ test-method::
 --
 *Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link which passed the `/zone-query/zones-list` abstract test +
 *When:* performing GET operations on the `.../dggs/{dggrsId}/zones` resource with a `subset` parameter set to a geospatial extent in OGC:CRS84 within the extent of the dataset or collection being tested, time for temporal dataset or collection, and another dimension (e.g., atmospheric pressure level) if supported by the dataset or collection +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that the Implementation supports a `subset` query parameter for the zone query operation (resource path ending with `.../dggs/{dggrsId}/zones`)
+conforming to the ABNF defined in <</req/zone-query/subset>>.
+- assert that the Implementation supports as axis names `Lat` and `Lon` for geographic CRS and `E` and `N` for projected CRS, which are to be interpreted as the best matching spatial axis in the CRS definition. +
+- assert that if a third spatial dimension is supported (if the resource's spatial extent bounding box is three dimensional), the Implementation also supports a `h` dimension (elevation above the ellipsoid in EPSG:4979 or CRS84h) for geographic CRS and `z` for projected CRS, which are to be interpreted as the vertical axis in the CRS definition.
+- assert that the Implementation supports as axis names `time` for a temporal dataset.
+- assert that the Implementation supports as axis names any additional dimension (beyond spatial and temporal) as described in the `extent` property of the collection or dataset description.
+- assert that the Implementation returns a 400 error status code if an axis name does not correspond to one of the axes of the Coordinate Reference System (CRS) of the data or an axis defined in the relevant `extent` property.
+- assert that for a CRS where an axis can wrap around, such as subsetting across the dateline (anti-meridian) in a geographic CRS, a _low_ value greater than _high_ is
+supported to indicate an extent crossing that wrapping point.
+- assert that the Implementation interprets the coordinates as values for the named axis of the CRS specified in the `subset-crs` parameter value or in https://www.opengis.net/def/crs/OGC/1.3/CRS84 (https://www.opengis.net/def/crs/OGC/1.3/CRS84h for vertical dimension) if the `subset-crs` parameter is missing.
+- assert that if the `subset` parameter including any of the dimensions corresponding to those of the map bounding box is used with a `bbox`, the server returns a 400 client error.
+- assert that the Implementation interprets multiple `subset` parameters, as if all dimension subsetting values were provided in a single `subset` parameter (comma separated).
 ====
 
 ==== Abstract Test for Requirement parameter `subset-crs`
@@ -408,7 +528,13 @@ test-method::
 --
 *Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link which passed the `/zone-query/zones-list` abstract test and a collection +
 *When:* performing GET operations on the `.../dggs/{dggrsId}/zones` resource with a `subset` parameter set to a geospatial extent in either OGC:CRS84 or in the `storageCrs` of the dataset or collection within the extent of the dataset or collection being tested and a `subset-crs` set to that CRS in which the extent is specified +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that the zone listing operation supports a parameter `subset-crs` identifying the CRS in which the `subset` parameter is specified with a URI or safe CURIE. +
+- assert that for Earth centric data, https://www.opengis.net/def/crs/OGC/1.3/CRS84 as a value is supported. +
+- assert that if the `subset-crs` is not indicated, https://www.opengis.net/def/crs/OGC/1.3/CRS84 is assumed. +
+- assert that the native CRS (`storageCrs`) are supported as a value. Other requirements classes may allow additional values (see `crs` parameter definition). +
+- assert that CRSs expressed both as URIs or as safe CURIEs are supported. +
+- assert that if no `subset` parameter referring to an axis of the CRS is used, the `subset-crs` is ignored.
 ====
 
 ==== Abstract Test for Requirement parameter `datetime`
@@ -425,7 +551,13 @@ test-method::
 --
 *Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link which passed the `/zone-query/zones-list` abstract test +
 *When:* performing GET operations on the `.../dggs/{dggrsId}/zones` resource with a `datetime` parameter set to a temporal extent within the dataset or collection's temporal extent +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that the Implementation supports a `datetime` query parameter expressed corresponding to either a date-time instant or a time interval, conforming to the ABNF in <</req/zone-query/datetime>>. +
+- assert that the implementation supports an `instant` defined as specified by link:https://tools.ietf.org/html/rfc3339#section-5.6[RFC 3339, 5.6], with the exception that the server is
+only required to support the `Z` UTC time notation, and not required to support local time offsets. +
+- assert that only the zones with data whose geometry intersect with the specified temporal interval are part of the zone list response. +
+- assert that time intervals unbounded at the start or at the end are supported using a double-dot (`..`) or an empty string for the start/end. +
+- assert that if a `datetime` parameter is specified requesting zone data where no temporal dimension applies, the Implementation either ignores the parameter or returns a 4xx client error.
 ====
 
 === Conformance Class "Filtering Zone Queries with CQL2"
@@ -454,7 +586,11 @@ test-method::
 --
 *Given:* a DGGRS zones query resource identified from a `[ogc-rel:dggrs-zone-query]` link which passed the `/zone-query/zones-list` abstract test +
 *When:* performing GET operations on the `.../dggs/{dggrsId}/zones` resource with a `filter` parameter set to a CQL2 expression filtering zones to return +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that the Implementation supports a `filter` query parameter specified using the CQL2-Text encoding of the OGC Common Query Language for the zone query
+operation (resource path ending with `.../dggs/{dggrsId}/zones`). +
+- assert that the list of returned zones are only those for which the CQL2 expression evaluates to true when considering the geometry and the data of the DGGS zones resource being queried. +
+- assert that the CQL2 expression evaluator supports the queryables declared in the JSON Schema resource linked to from the origin of the DGGRS resources using the `[ogc-rel:queryables]` link relation type.
 ====
 
 === Conformance Class "Root DGGS"
@@ -483,7 +619,13 @@ test-method::
 --
 *Given:* an implementation declaring conformance to Root DGGS +
 *When:* testing the `/conf/core` conformance class as well the `/conf/zone-query` and/or the `/conf/data-retrieval` conformance classes for the DGGS resources originating from the root origin at `/dggs` +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that the Implementation supports the resource paths and associated HTTP methods defined in the "Core" requirements class, as well as any additional resources defined in other requirements classes to which the
+Implementation declares conformance, for the root of the API as an origin. If the API allows to retrieve and/or query data, this means that the data returned or queried considers all collections comprising the dataset
+(unless an extension is used to select specific collections e.g., using a `collections` parameter).
+Note that the root DGGRS origin could also be used in API deployment not associated with any dataset, solely for the purpose of exploring and demonstrating the DGGRS. +
+- assert that the Implementation includes a link to the list of available DGGRSs for the API/dataset at `/dggs` in the links of the landing page using the link relation type `[ogc-rel:dggrs-list]`. +
+- assert that if the API deployment supports querying or retrieving data from a dataset, the `/dggs` and `/dggs/{dggrsId}` resources include a link to the landing page using the link relation type `[ogc-rel:dataset]`.
 ====
 
 === Conformance Class "Collection DGGS"
@@ -512,7 +654,11 @@ test-method::
 --
 *Given:* an implementation declaring conformance to Collection DGGS +
 *When:* testing the `/conf/core` conformance class as well the `/conf/zone-query` and/or the `/conf/data-retrieval` conformance classes for the DGGS resources originating from collections at `/collections/{collectoinId}/dggs` +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that the Implementation supports the resource paths and associated HTTP methods defined in the "Core" requirements class, as well as any additional resources defined in other requirements classes to which the
+Implementation declares conformance, for at least one collection of the dataset offered by the API deployment. +
+- assert that the Implementation includes a link to the list of available DGGRSs for the collection at `/collections/{collectionId}/dggs` in the links of the collection using the link relation type `[ogc-rel:dggrs-list]`. +
+- assert that the `/collections/{collectionId}/dggs` and `/collections/{collectionId}/dggs/{dggrsId}` resources includes a link to the collection using the link relation type `[ogc-rel:geodata]`.
 ====
 
 === Conformance Class "DGGS-JSON zone data encoding"

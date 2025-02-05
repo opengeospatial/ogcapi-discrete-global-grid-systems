@@ -33,7 +33,7 @@ part:: For each zone depth to be included in the response, the interpretation of
 - ..
 - _n_ corresponding to all zones for the _n_'th deeper level in the hierarchy level associated with the requested zone by the indexing scheme.
 
-part:: The association of zones of deeper hierarchy levels with the requested zone SHALL be based on the DGGS reference system,
+part:: The association of zones of deeper hierarchy levels with the requested zone SHALL be based on the DGGRS reference system,
 which takes into consideration both the grid definition as well as the indexing system in use for the DGGS resource.
 
 part:: If a `zone-depth` is specified, the operation SHALL return the data at the refinement level(s) specified.
