@@ -902,7 +902,15 @@ test-method::
 --
 *Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `application/netcdf` for netCDF +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that every 200 response of the server for zone data with the media type `application/netcdf` is a netCDF file representing the data values for all selected fields for a single zone. +
+- assert that the response is encoded using a netCDF encoding extension, such as the https://portal.ogc.org/files/?artifact_id=43734[NetCDF classic and 64-bit offset format], or netCDF version 4 based on
+https://docs.ogc.org/is/18-043r3/18-043r3.html[OGC HDF5]. +
+- assert that for a DGGS-optimized profile (`netcdf3-dggs`, `netcdf3-dggs-zoneids`, `netcdf4-dggs`, `netcdf3-dggs-zoneids`), the profile URI, the global identifier of the parent zone and a URI or link to the DGGRS definition is included as metadata. +
+- assert that for a DGGS-optimized profile, coordinates along one dimension corresponds to sub-zones, either as global zone identifiers (`netcdf3-dggs-zoneids`, `netcdf4-dggs-zoneids`) or local sub-zone indices following the deterministic DGGRS sub-zone order (`netcdf3-dggs`, `netcdf4-dggs`), while spatiotemporal dimensions of the DGGRS is not defined as separate dimensions. +
+- assert that for non-DGGS-optimized profiles, if the netCDF data incorporates georeferencing information, this information is consistent with the DGGRS Zone ID. +
+- assert that for non-DGGS-optimized profiles, if the zone geometry is not rectilinear, the closest bounding rectangle (or volume) is used for referencing the data. +
+- assert that for non-DGGS-optimized profiles, a distinct value for each sub-zone implied from the requested `zone-depth` corresponds to at least one distinct cell value in the response.
 ====
 
 === Conformance Class "Zarr zone data encoding"
