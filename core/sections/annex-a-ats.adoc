@@ -543,11 +543,11 @@ test-method::
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `application/json` for DGGS-JSON +
 *Then:* +
 - assert that every 200 response of the server for zone data with the media type `application/json` is a JSON document representing the data values for all selected fields of each included sub-zone. +
-- assert that the schema for the JSON document follows the JSON Schema for DGGS-JSON described below. +
+- assert that the schema for the JSON document follows the JSON Schema for DGGS-JSON described in <</req/data-json/content>> +
 - assert that every zone depth requested is using the `zone-depth` parameter included in the response. +
 - assert thatt at every depth, each individual value corresponds exactly to the data sampled representative of that sub-zone. +
-- assert that the list of data values follows the default zone order as specified by the Discrete Global Grid Reference System (for example based on a scanline or space-filling curved defined therein) for which the request is made.
-- assert that Null values use the `null` JSON value. +
+- assert that the list of data values follows the default zone order as specified by the Discrete Global Grid Reference System (for example based on a scanline or space-filling curved defined therein) for which the request is made. +
+- assert that Null values use the `null` JSON value. 
 ====
 
 === Conformance Class "DGGS-UBJSON zone data encoding"
@@ -611,7 +611,22 @@ test-method::
 --
 *Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `application/geo+json` and a `profile` query parameter value of `jsonfg-dggs`, `jsonfg-dggs-plus`, `jsonfg-dggs-zoneids` or `jsonfg-dggs-zoneids-plus` for DGGS-JSON-FG +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that the implementation supports zone data requests negotiating an `application/geo+json` media type combined with a `profile` query parameter with a value of `jsonfg-dggs`, `jsonfg-dggs-plus`, `jsonfg-dggs-zoneids` or `jsonfg-dggs-zoneids-plus` allowing a client to request a DGGS-JSON-FG response. +
+- assert that every 200 response of the server for DGGS-JSON-FG zone data requests is an extended https://docs.ogc.org/DRAFTS/21-045r1.html[Features & Geometry JSON] (JSON-FG) document representing the vector features within the requested zone. +
+- assert that the JSON document follows the JSON Schema for JSON-FG, with geometry stored in a `dggsPlace` property mirroring the JSON-FG `place` schema and supporting all of the same feature types, but where `coordinates` use sub-zone indices (for `profile=jsonfg-dggs` or `jsonfg-dggs-plus`) or global textual zone identifiers (for `profile=jsonfg-dggs-zoneids` or `jsonfg-dggs-zoneids-plus`) as described in later parts of this requirement. +
+- assert that for `profile=jsonfg-dggs-plus` and `jsonfg-dggs-zoneids-plus`, the JSON document also includes geometry stored in `geometry` or `place` using traditional coordinate reference system coordinates for compatibility. +
+- assert that the JSON document additionally contains a `dggrs` property set to the URI or CURIEs of the DGGRS of the response, which replaces the `coordRefSys` property and concept. +
+- assert that the JSON document additionally contains a `zoneId` property indicating the requested reference zone. +
+- assert that the JSON document additionally contains a `depth` property corresponding to the relative zone depth (as specified in the single depth format of the OGC API - DGGS `zone-depth` parameter for zone data retrieval), determining how coordinates are resolved from sub-zone indices (in the case of `profile=jsonfg-dggs` and `jsonfg-dggs-plus`), and as a result, their precision. +
+- assert that for `profile=jsonfg-dggs` and `jsonfg-dggs-plus`, the JSON document contains a `dggsPlace` property specifying geometry using local sub-zone indices ranging from 1 to the number of sub-zones within the reference parent zone at the declared depth, based on the deterministic sub-zone order of the DGGRS. +
+- assert that for `profile=jsonfg-dggs-zoneids` and `jsonfg-dggs-zoneids-plus`, the JSON document contains a `dggsPlace` property specifying geometry using global textual zone identifiers (as defined in the DGGRS zone indexing reference system) at the declared depth. +
+- assert that when all spatial coordinates are dimensions of the DGGRS, the array of coordinates including the square brackets are replaced by the local index or global identifier of the sub-zone within which the coordinates are located. +
+- assert that when additional spatial coordinates that are not part of the DGGRS, such as elevation above ground for a 2D DGGRS, are needed to define the geometry coordinates, only the coordinates corresponding to DGGRS dimensions are replaced by the local index or global identifier of the sub-zone. +
+- assert that only features fully or partly located within the reference zone are included. +
+- assert that for feature geometry intersecting the boundaries of the reference zone, the sub-zone within which the intersection is located are included, with a separate single `0` special sub-zone index (in the case of `profile=jsonfg-dggs` and `jsonfg-dggs-plus`) or a `null` value (in the case of `profile=jsonfg-dggs-zoneids` and `jsonfg-dggs-zoneids-plus`) representing all outside points before a point inside, after a point inside, or in between two inside points. +
+- assert that for geometry in two or more dimensions with an outside point (identified by a `0` sub-zone index for `profile=jsonfg-dggs` and `jsonfg-dggs-plus`, or `null` for `profile=jsonfg-dggs-zoneids` and `jsonfg-dggs-zoneids-plus`) and which is necessarily between two contour points, the portion of the zone edge(s) between the exit and entry point are considered inside of that contour. +
+- assert that the URI of the selected or default DGGS-JSON-FG profile are included in the `links` section of the JSON-FG response.
 ====
 
 === Conformance Class "DGGS-UBJSON-FG zone data encoding"
