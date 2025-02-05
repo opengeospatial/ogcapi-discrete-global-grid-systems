@@ -687,7 +687,13 @@ test-method::
 --
 *Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `application/json` for DGGS-JSON +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that every 200 response of the server for zone data with the media type `application/json` is a JSON document representing the data values for all selected fields of each included sub-zone. +
+- assert that the schema for the JSON document follows the JSON Schema for DGGS-JSON described below. +
+- assert that every zone depth requested is using the `zone-depth` parameter included in the response. +
+- assert thatt at every depth, each individual value corresponds exactly to the data sampled representative of that sub-zone. +
+- assert that the list of data values follows the default zone order as specified by the Discrete Global Grid Reference System (for example based on a scanline or space-filling curved defined therein) for which the request is made.
+- assert that Null values use the `null` JSON value. +
 ====
 
 === Conformance Class "DGGS-UBJSON zone data encoding"
@@ -716,7 +722,13 @@ test-method::
 --
 *Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `application/ubjson` for DGGS-JSON +
-*Then:* (assert that all parts of the requirement are fully satisfied)
+*Then:* +
+- assert that every 200 response of the server for zone data with the media type `application/ubjson` is a https://ubjson.org/[Universal Binary JSON] document representing the data values for all selected fields for a single zone. +
+- assert that the schema for the UBJSON document follows the same JSON Schema as for DGGS-JSON described above. +
+- assert that every zone depth requested using the `zone-depth` parameter is included in the response. +
+- assert that at every depth, each individual value corresponds exactly to the data sampled representative of that zone geometry. +
+- assert that the list of data values follows the default zone order as specified by the Discrete Global Grid Reference System (for example based on a scanline or space-filling curved defined therein) for which the request is made. +
+- assert that Null values use the `null` JSON value.
 ====
 
 === Conformance Class "DGGS-JSON-FG zone data encoding"
