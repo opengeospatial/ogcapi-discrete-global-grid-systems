@@ -34,7 +34,7 @@ test-method::
 - assert that the Implementation supports an HTTP GET operation at a resource path ending with `.../dggs`. +
 - assert that the Implementation supports a JSON representation of this `.../dggs` resource. +
 - assert that the `.../dggs` resource includes a `dggrs` array property listing all Discrete Global Grid Reference Systems (DGGRSs) supported by the Implementation. +
-- assert that each element of the `dggrs` array includes a summary description (a subset of the information available in the individual resources describing each DGGRS as per the next requirement below), including at minimum the `id`, `title`, `uri` (if applicable), and `links`. +
+- assert that each element of the `dggrs` array includes a summary description (a subset of the information available in the individual resources describing each DGGRS as tested for <</conf/core/dggrs-description>>), including at minimum the `id`, `title`, `uri` (if applicable), and `links`. +
 - assert that the `links` property within each DGGRS element includes at minimum a link to the discrete global grid reference system using the `self` link relation type, as well as a link to the discrete global grid reference system definition using the `[ogc-rel:dggrs-definition]` relation type. +
 - assert that the link relation type to use for linking from a particular resource of origin (such as a <<rc_collection-dggs,collection>> at `/collections/{collectionId}`, or <<rc_root-dggs,landing page>>)
 to the list of available DGGRSs for that resource (for example at `/collections/{collectionId}/dggs` or `/dggs`) is `[ogc-rel:dggrs-list]`.
@@ -693,7 +693,7 @@ test-method::
 - assert that every zone depth requested is using the `zone-depth` parameter included in the response. +
 - assert thatt at every depth, each individual value corresponds exactly to the data sampled representative of that sub-zone. +
 - assert that the list of data values follows the default zone order as specified by the Discrete Global Grid Reference System (for example based on a scanline or space-filling curved defined therein) for which the request is made. +
-- assert that Null values use the `null` JSON value. 
+- assert that Null values use the `null` JSON value.
 ====
 
 === Conformance Class "DGGS-UBJSON zone data encoding"
@@ -724,7 +724,7 @@ test-method::
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `application/ubjson` for DGGS-JSON +
 *Then:* +
 - assert that every 200 response of the server for zone data with the media type `application/ubjson` is a https://ubjson.org/[Universal Binary JSON] document representing the data values for all selected fields for a single zone. +
-- assert that the schema for the UBJSON document follows the same JSON Schema as for DGGS-JSON described above. +
+- assert that the schema for the UBJSON document follows the same JSON Schema as for DGGS-JSON described in <</req/data-json/content>>. +
 - assert that every zone depth requested using the `zone-depth` parameter is included in the response. +
 - assert that at every depth, each individual value corresponds exactly to the data sampled representative of that zone geometry. +
 - assert that the list of data values follows the default zone order as specified by the Discrete Global Grid Reference System (for example based on a scanline or space-filling curved defined therein) for which the request is made. +
@@ -804,7 +804,7 @@ test-method::
 *Then:* +
 - assert that the Implementation supports zone data requests negotiating an `application/geo+ubjson` media type combined with a `profile` query parameter with a value of `jsonfg-dggs`, `jsonfg-dggs-plus`, `jsonfg-dggs-zoneids` or `jsonfg-dggs-zoneids-plus` allowing a client to request a DGGS-UBJSON-FG response. +
 - assert that every 200 response of the server for DGGS-FG-UBJSON zone data requests is a https://ubjson.org/[Universal Binary JSON] document representing the vector features within the requested zone. +
-- assert that the content of the UBJSON document follows all the of same requirements as for DGGS-JSON-FG described above.
+- assert that the content of the UBJSON document passes all of the tests described in <</req/data-json/content>> adapted for a UBJSON encoding of the JSON data.
 ====
 
 === Conformance Class "GeoTIFF zone data encoding"
