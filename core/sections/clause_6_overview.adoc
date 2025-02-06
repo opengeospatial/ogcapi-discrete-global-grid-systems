@@ -118,7 +118,7 @@ Some additional possible encodings beyond the mandatory JSON zone list defined i
 <<rc_zone-html,HTML Zone List>> +
  +
 *For easily visualizing zone query responses in traditional GIS software:* +
-<<rc_zone-geojson,GeoJSON Zone List>> (https://geojon.org[GeoJSON] or https://docs.ogc.org/DRAFTS/21-045r1.html[JSON-FG]) +
+<<rc_zone-geojson,GeoJSON Zone List>> (https://geojson.org[GeoJSON] or https://docs.ogc.org/DRAFTS/21-045r1.html[JSON-FG]) +
 <<rc_zone-geotiff,GeoTIFF Zone List>> (https://docs.ogc.org/is/19-008r4/19-008r4.html[GeoTIFF], for DGGRSs with axis-aligned rectangular zones) |
 Query parameters which server needs to suport: +
 https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/compact-zones.yaml[`compact-zones`] (see <<_simple_zone_queries, Examples C.5>> and <<_compact_zone_queries, Examples C.6>>) +
@@ -166,7 +166,7 @@ Encoding negotiated with HTTP `Accept:` request header, with some possible encod
 <<rc_data-png,PNG Data>> (https://www.w3.org/TR/png/[PNG]) +
  +
 *For vector data using traditional coordinate reference system* (interoperable with non-DGGS clients): +
-<<rc_data-geojson,GeoJSON Data>> (https://geojon.org[GeoJSON] or https://docs.ogc.org/DRAFTS/21-045r1.html[JSON-FG]) |
+<<rc_data-geojson,GeoJSON Data>> (https://geojson.org[GeoJSON] or https://docs.ogc.org/DRAFTS/21-045r1.html[JSON-FG]) |
 Query parameters (recommendation, optional for server to support): +
 https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/crs.yaml[`crs`] +
  +

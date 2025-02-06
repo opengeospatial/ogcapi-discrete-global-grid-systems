@@ -1114,7 +1114,7 @@ test-method::
 - assert that every 200 response of the server for zone query with the media type `application/x-binary` is a binary response consisting of a first 64-bit integer count defining the number of zones returned, followed by one 64-bit integer for each zone matching the query. +
 - assert that the 64-bit integer identifiers are the ones defined by the DGGRS. +
 - assert that the endianness of the returned count and zones integers are little endian. +
-- assert that if the DGGRS does not define a 64-bit integer identifier, a 406 "Not Acceptable" response isreturned.
+- assert that if the DGGRS does not define a 64-bit integer identifier, a 406 "Not Acceptable" response is returned.
 
 ====
 
