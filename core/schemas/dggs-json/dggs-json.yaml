@@ -47,7 +47,7 @@ properties:
               oneOf:
                - type: number
                - type: string
-            relativeSpan:
+            relativeBounds:
               type: array
               minItems: 2
               maxItems: 2
@@ -96,6 +96,8 @@ properties:
       type: array
       items:
         type: object
+        required:
+          - data
         properties:
           depth:
             type: integer

@@ -57,7 +57,7 @@
                            { "type": "string" }
                         ]
                      },
-                     "relativeSpan": {
+                     "relativeBounds": {
                         "items": {
                            "oneOf": [
                               { "type": "number" },
@@ -102,6 +102,7 @@
             "items":
             {
                "type": "object",
+               "required": [ "data" ],
                "properties":
                {
                   "depth": { "type": "integer" },

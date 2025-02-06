@@ -2225,7 +2225,7 @@
                         }
                       ]
                     },
-                    "relativeSpan": {
+                    "relativeBounds": {
                       "type": "array",
                       "minItems": 2,
                       "maxItems": 2,
@@ -2315,6 +2315,9 @@
               "type": "array",
               "items": {
                 "type": "object",
+                "required": [
+                  "data"
+                ],
                 "properties": {
                   "depth": {
                     "type": "integer"
