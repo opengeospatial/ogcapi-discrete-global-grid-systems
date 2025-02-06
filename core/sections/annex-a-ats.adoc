@@ -501,7 +501,7 @@ test-method::
 *When:* performing GET operations on the `.../dggs/{dggrsId}/zones` resource with a `subset` parameter set to a geospatial extent in OGC:CRS84 within the extent of the dataset or collection being tested, time for temporal dataset or collection, and another dimension (e.g., atmospheric pressure level) if supported by the dataset or collection +
 *Then:* +
 - assert that the Implementation supports a `subset` query parameter for the zone query operation (resource path ending with `.../dggs/{dggrsId}/zones`)
-conforming to the ABNF defined in <</req/zone-query/subset>>.
+conforming to the ABNF defined in <</req/zone-query/subset>>. +
 - assert that the Implementation supports as axis names `Lat` and `Lon` for geographic CRS and `E` and `N` for projected CRS, which are to be interpreted as the best matching spatial axis in the CRS definition. +
 - assert that if a third spatial dimension is supported (if the resource's spatial extent bounding box is three dimensional), the Implementation also supports a `h` dimension (elevation above the ellipsoid in EPSG:4979 or CRS84h) for geographic CRS and `z` for projected CRS, which are to be interpreted as the vertical axis in the CRS definition. +
 - assert that the Implementation supports as axis names `time` for a temporal dataset. +
