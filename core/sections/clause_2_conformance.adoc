@@ -30,12 +30,17 @@ the Zone Data retrieval (`../dggs/{dggrsId}/zones/{zoneId}/data`) or Zone Query 
 * <<rc_data-retrieval,*Zone Data Retrieval*>>
 * <<rc_zone-query,*Zone Query*>>
 
-=== Requirements classes defining origins
+=== Requirements classes for integration within the OGC API framework
 
-These requirements classes define DGGS resources for the API (`/dggs`) and collections (`/collections/{collectionId}/dggs`).
+These requirements classes define DGGS resources attached to the root of the API (`/dggs`) and collections (`/collections/{collectionId}/dggs`) origin resources defined by the OGC API - Common framework.
 
 * <<rc_root-dggs,*Root DGGS*>>
 * <<rc_collection-dggs,*Collection DGGS*>>
+
+The _Operation IDs_ Requirements Class defines requirements for using specific operation IDs in API definitions, which can be combined with requirements classes for specific API definition,
+such as the OpenAPI 3.0 requirements class of _OGC API - Common - Part 1: Core_, facilitating the identification of DGGS resources.
+
+* <<rc_operation-ids,*Operation IDs*>>
 
 === Requirements classes defining parameters
 
@@ -82,13 +87,6 @@ The Zone List Encoding Requirements Classes address support for formats efficien
 Implementations supporting GeoJSON for either zone data or zone lists are strongly encouraged to also support GeoJSON extensions
 defined by the Features & Geometry JSON (JSON-FG) Standard. Conformance to this Standard can be indicated in the Web API deployment's
 conformance declaration using its associated conformance class URIs, such as `http://www.opengis.net/spec/json-fg-1/0.2/conf/core`.
-
-==== Operation IDs in API definitions
-
-The _Operation IDs_ Requirements Class defines requirements for using specific operation IDs in API definitions, which can be combined with requirements classes for specific API definition,
-such as the OpenAPI 3.0 requirements class of _OGC API - Common - Part 1: Core_, facilitating the identification of DGGS resources.
-
-* <<rc_operation-ids,*Operation IDs*>>
 
 === Summary of conformance URIs
 
