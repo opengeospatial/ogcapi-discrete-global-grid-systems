@@ -1,16 +1,16 @@
 name: profile
 in: query
 description: |-
-   Allows negotiating a particular profile of an output format, such as OGC Feature & Geometry JSON (FG-JSON) or DGGS-FG-JSON output when requesting an `application/geo+json` media type for zone data or zone list requests.
+   Allows negotiating a particular profile of an output format, such as OGC Feature & Geometry JSON (JSON-FG) or DGGS-JSON-FG output when requesting an `application/geo+json` media type for zone data or zone list requests.
    For both zone data and zone lists in GeoJSON (`application/geo+json`):
    `rfc7946`: return standard GeoJSON without using any extension
-   `jsonfg`: return FG-JSON representation
-   `jsonfg-plus`: return FG-JSON representation with GeoJSON compatibility
+   `jsonfg`: return JSON-FG representation
+   `jsonfg-plus`: return JSON-FG representation with GeoJSON compatibility
    For zone data in GeoJSON (`application/geo+json`):
-   `jsonfg-dggs`: return DGGS-FG-JSON representation, using `dggsPlace` to encode geometry points quantized to sub-zone, represented as local indices from 1 to the number of sub-zones corresponding to the DGGRS deterministic sub-zone order, with a special value of 0 representing an artificial node
-   `jsonfg-dggs-plus`: return DGGS-FG-JSON representation, with GeoJSON compatibility `geometry`
-   `jsonfg-dggs-zoneids`: return DGGS-FG-JSON representation, using `dggsPlace` to encode geometry points as textual global zone identifiers, with a special value of _null_ representing an artificial node
-   `jsonfg-dggs-zoneids-plus`: return DGGS-FG-JSON representation, encoding geometry points as global zone IDs, with GeoJSON compatibility `geometry`
+   `jsonfg-dggs`: return DGGS-JSON-FG representation, using `dggsPlace` to encode geometry points quantized to sub-zone, represented as local indices from 1 to the number of sub-zones corresponding to the DGGRS deterministic sub-zone order, with a special value of 0 representing an artificial node
+   `jsonfg-dggs-plus`: return DGGS-JSON-FG representation, with GeoJSON compatibility `geometry`
+   `jsonfg-dggs-zoneids`: return DGGS-JSON-FG representation, using `dggsPlace` to encode geometry points as textual global zone identifiers, with a special value of _null_ representing an artificial node
+   `jsonfg-dggs-zoneids-plus`: return DGGS-JSON-FG representation, encoding geometry points as global zone IDs, with GeoJSON compatibility `geometry`
    For zone data in netCDF (`application/x-netcdf`):
    `netcdf3`: return NetCDF classic and 64-bit offset format (not quantized to DGGH)
    `netcdf3-dggs`: return NetCDF classic and 64-bit offset format where one axis corresponds to local sub-zone indices

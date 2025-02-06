@@ -4,8 +4,8 @@ description: |-
    For vector output formats, specify how to return the geometry and/or what the features of the response should represent.
    `vectorized`: return features with regular non-rasterized, non-quantized geometry
    `zone-centroid`: rasterize to zone features and use a Point geometry representing that zone centroid
-   `zone-region`: rasterize to zone features and use a (Multi)Polygon/Polyhedron geometry representing that zone's region -- not supported for DGGS-FG-JSON profiles (`profile=jsonfg-dggs*`)
-   `none`: (for zone listing) omit zone geometry -- not supported for DGGS-FG-JSON profiles (`profile=jsonfg-dggs*`)
+   `zone-region`: rasterize to zone features and use a (Multi)Polygon/Polyhedron geometry representing that zone's region -- not supported for DGGS-JSON-FG profiles (`profile=jsonfg-dggs*`)
+   `none`: (for zone listing) omit zone geometry -- not supported for DGGS-JSON-FG profiles (`profile=jsonfg-dggs*`)
 style: form
 explode: false
 required: false
