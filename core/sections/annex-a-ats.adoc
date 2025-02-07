@@ -723,7 +723,7 @@ test-method::
 *Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `application/ubjson` for DGGS-JSON +
 *Then:* +
-- assert that every 200 response of the server for zone data with the media type `application/ubjson` is a https://ubjson.org/[Universal Binary JSON] document representing the data values for all selected fields for a single zone. +
+- assert that every 200 response of the server for zone data with the media type `application/ubjson` is a https://ubjson.org/[Universal Binary JSON] document representing the data values for all selected fields of each included sub-zone. +
 - assert that the schema for the UBJSON document follows the same JSON Schema as for DGGS-JSON described in <</req/data-json/content>>. +
 - assert that every zone depth requested using the `zone-depth` parameter is included in the response. +
 - assert that at every depth, each individual value corresponds exactly to the data sampled representative of that zone geometry. +
@@ -834,7 +834,7 @@ test-method::
 *Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `image/tiff; application=geotiff` for GeoTIFF +
 *Then:* +
-- assert that every 200 response of the server for zone data with the media type `image/tiff` is a TIFF image representing the data values for all selected fields for a single zone. +
+- assert that every 200 response of the server for zone data with the media type `image/tiff` is a TIFF image representing the data values for all selected fields within the zone for which data is requested. +
 - assert that if the TIFF encoding incorporates a GeoTIFF georeference, this information is consistent with the DGGRS Zone ID. +
 - assert that if the zone geometry is not rectangular, the closest bounding rectangle is used for referencing the image. +
 - assert that there is a distinct value for each sub-zone implied from the requested `zone-depth` has at least one distinct cell value in the response. +
@@ -868,7 +868,7 @@ test-method::
 *Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `application/geo+json` for GeoJSON +
 *Then:* +
-- assert that every 200 response of the server for zone data with the media type `application/geo+json` is a https://datatracker.ietf.org/doc/html/rfc7946[GeoJSON] document representing the features, including their geometry and associated properties, for a single zone. +
+- assert that every 200 response of the server for zone data with the media type `application/geo+json` is a https://datatracker.ietf.org/doc/html/rfc7946[GeoJSON] document representing the features, including their geometry and associated properties, within the zone for which data is requested. +
 - assert that unless otherwise specified by a prior arrangement (for example, an output `crs` query parameter) or by negotiating a JSON-FG profile, the coordinate reference system is CRS84(h) in longitude and latitude (and optional height above the WGS84 ellipsoid). +
 - assert that features whose geometry lie wholly outside of the zone geometry are not included in the response. +
 - assert that if returning a JSON-FG profile, the profile URI is included in the `links` section of the JSON-FG response.
@@ -901,7 +901,7 @@ test-method::
 *Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `application/netcdf` for netCDF +
 *Then:* +
-- assert that every 200 response of the server for zone data with the media type `application/netcdf` is a netCDF file representing the data values for all selected fields for a single zone. +
+- assert that every 200 response of the server for zone data with the media type `application/netcdf` is a netCDF file representing the data values for all selected fields of each included sub-zone. +
 - assert that the response is encoded using a netCDF encoding extension, such as the https://portal.ogc.org/files/?artifact_id=43734[NetCDF classic and 64-bit offset format], or netCDF version 4 based on
 https://docs.ogc.org/is/18-043r3/18-043r3.html[OGC HDF5]. +
 - assert that for a DGGS-optimized profile (`netcdf3-dggs`, `netcdf3-dggs-zoneids`, `netcdf4-dggs`, `netcdf3-dggs-zoneids`), the profile URI, the global identifier of the parent zone and a URI or link to the DGGRS definition is included as metadata. +
@@ -938,7 +938,7 @@ test-method::
 *Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `application/zarr+zip` for zipped Zarr 2 +
 *Then:* +
-- assert that every 200 response of the server for zone data with the media type `application/zarr+zip` is a Zip file containing the data values for all selected fields for a single zone data encoded following the Zarr Storage Specification Version 2 file. +
+- assert that every 200 response of the server for zone data with the media type `application/zarr+zip` is a Zip file containing the data values for all selected fields of each included sub-zone encoded following the Zarr Storage Specification Version 2 file. +
 - assert that for a DGGS-optimized profile (`zarr2-dggs`, `zarr2-dggs-zoneids`), the profile URI, the global identifier of the parent zone and a URI or link to the DGGRS definition is included as metadata. +
 - assert that for a DGGS-optimized profile, coordinates along one dimension corresponds to sub-zones, either as global zone identifiers (`zarr2-dggs-zoneids`) or local sub-zone indices following the deterministic DGGRS sub-zone order (`zarr2-dggs`), while spatiotemporal dimensions of the DGGRS is not defined as separate dimensions. +
 - assert that for a DGGS-optimized profile, at every depth, each individual value corresponds exactly to the data sampled representative of that sub-zone. +
@@ -976,7 +976,7 @@ test-method::
 *Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `application/prs.coverage+json` for CoverageJSON +
 *Then:* +
-- assert that every 200 response of the server for zone data with the media type `application/prs.coverage+json` is a https://covjson.org/[CoverageJSON] file representing the data values for all selected fields for a single zone. +
+- assert that every 200 response of the server for zone data with the media type `application/prs.coverage+json` is a https://covjson.org/[CoverageJSON] file representing the data values for all selected fields of each included sub-zone. +
 - assert that for a DGGS-optimized profile (`covjson-dggs`, `covjson-dggs-zoneids`), the profile URI, the global identifier of the parent zone and a URI or link to the DGGRS definition is included as metadata. +
 - assert that for a DGGS-optimized profile, coordinates along one dimension corresponds to sub-zones, either as global zone identifiers (`covjson-dggs-zoneids`) or
 local sub-zone indices following the deterministic DGGRS sub-zone order (`covjson-dggs`), while spatiotemporal dimensions of the DGGRS is not be defined as separate dimensions. +
@@ -1012,7 +1012,7 @@ test-method::
 *Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `image/jxl` for JPEG XL +
 *Then:* +
-- assert that every 200 response of the server for zone data with the media type `image/jxl` is a https://jpeg.org/jpegxl/[JPEG XL] image representing the data values for all selected fields for a single zone. +
+- assert that every 200 response of the server for zone data with the media type `image/jxl` is a https://jpeg.org/jpegxl/[JPEG XL] image representing the data values for all selected fields within the zone for which data is requested. +
 - assert that if the zone geometry is not rectangular, the closest bounding rectangle is used for referencing the image. +
 - assert that a distinct value for each sub-zone implied from the requested `zone-depth` corresponds to at least one distinct cell value in the response. +
 - assert that for Implementations supporting Data Custom Depths, each depth of the requested zone depth pyramid is a separate image (overview) in the response.
@@ -1045,7 +1045,7 @@ test-method::
 *Given:* a DGGRS zone data resource identified from a `[ogc-rel:dggrs-zone-data]` link template within a DGGRS description resource, replacing the `{zoneId}` variable with a known valid identifier for the DGGRS, not beyond the `maxRefinementLevel` if one is specified +
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `image/png` for PNG +
 *Then:* +
-- assert that every 200 response of the server for zone data with the media type `image/png` is a PNG image representing the data values for all selected fields for a single zone. +
+- assert that every 200 response of the server for zone data with the media type `image/png` is a PNG image representing the data values for all selected fields within the zone for which data is requested. +
 - assert that if the zone geometry is not rectangular, the closest bounding rectangle is used for referencing the image. +
 - assert that a distinct value for each sub-zone implied from the requested `zone-depth` corresponds to at least one distinct cell value in the response. +
 - assert that for Implementations supporting Data Custom Depths, each depth of the requested zone depth pyramid is a separate image (overview) in the response. +

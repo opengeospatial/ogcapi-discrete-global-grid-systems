@@ -16,7 +16,7 @@ requirement:: /req/data-coveragejson/content
 [%metadata]
 identifier:: /req/data-coveragejson/content
 description:: For encoding zone data as CoverageJSON
-part:: Every 200 response of the server for zone data with the media type `application/prs.coverage+json` SHALL be a https://covjson.org/[CoverageJSON] file representing the data values for all selected fields for a single zone.
+part:: Every 200 response of the server for zone data with the media type `application/prs.coverage+json` SHALL be a https://covjson.org/[CoverageJSON] file representing the data values for all selected fields of each included sub-zone.
 part:: For a DGGS-optimized profile (`covjson-dggs`, `covjson-dggs-zoneids`), the profile URI, the global identifier of the parent zone and a URI or link to the DGGRS definition SHALL be included as metadata.
 part:: For a DGGS-optimized profile, coordinates along one dimension SHALL correspond to sub-zones, either as global zone identifiers (`covjson-dggs-zoneids`) or
 local sub-zone indices following the deterministic DGGRS sub-zone order (`covjson-dggs`), while spatiotemporal dimensions of the DGGRS SHALL NOT be defined as separate dimensions.

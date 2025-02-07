@@ -17,7 +17,7 @@ requirement:: /req/data-jpegxl/content
 [%metadata]
 identifier:: /req/data-jpegxl/content
 description:: For encoding zone data as JPEG XL
-part:: Every 200 response of the server for zone data with the media type `image/jxl` SHALL be a https://jpeg.org/jpegxl/[JPEG XL] image representing the data values for all selected fields for a single zone.
+part:: Every 200 response of the server for zone data with the media type `image/jxl` SHALL be a https://jpeg.org/jpegxl/[JPEG XL] image representing the data values for all selected fields within the zone for which data is requested.
 part:: If the zone geometry is not rectangular, the closest bounding rectangle SHALL be used for referencing the image.
 part:: A distinct value for each sub-zone implied from the requested `zone-depth` SHALL correspond to at least one distinct cell value in the response.
 part:: For Implementations supporting Data Custom Depths, each depth of the requested zone depth pyramid SHALL be a separate image (overview) in the response.
