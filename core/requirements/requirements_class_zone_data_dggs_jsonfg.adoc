@@ -50,7 +50,7 @@ part:: The implementation SHOULD return a link to the default or selected profil
 [%metadata]
 identifier:: /rec/data-dggs-jsonfg/geometry
 part:: The implementation SHOULD support a `geometry` query parameter allowing a client to choose how to return feature geometry.
-part:: The implementation SHOULD support a value of `geometry=zone-centroid` to request a representation where each feature is a zone intersecting the data, with the feature geometry of each feature being a Point geometry for the centroid of that zone.
+part:: The implementation SHOULD support a value of `geometry=zone-centroid` to request a representation where each feature is a zone intersecting the data, with the geometry of each feature being a Point geometry for the centroid of that zone.
 part:: The implementation SHOULD support a value of `geometry=vectorized` to request a representation where each feature corresponds to a feature of the data (sharing identical property values).
 part:: If a `geometry` value is not specified, the Implementation SHOULD return the representation closest to the native data.
 part:: If a requested geometry representation is not supported, the Implementation SHOULD return a 4xx HTTP error.
