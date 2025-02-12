@@ -27,14 +27,14 @@ using the link relation type `[ogc-rel:dggrs-zone-data]` for all zones for which
 part:: The response of the HTTP GET operation SHALL have a status code of 200.
 part:: The content of the response SHALL be a data packet corresponding precisely to the area covered by the DGGS zone.
 part:: The selection of an encoding for the response SHALL be consistent with HTTP content negotiation.
-part:: The `.../dggs/{dggrsId}` resource SHALL include a `defaultDepth` property indicating the Implementation's default depth for when the `zone-depth` parameter is omitted.
+part:: The `.../dggs/{dggrsId}` resource SHALL include a `defaultDepth` property indicating the Implementation's default depth for when the `zone-depth` query parameter is omitted.
 This default value could be any valid value and/or form as defined in the `/req/data-custom-depths/zone-depth-parameter` requirement (single depth, range of depths, or list of depths, relative to the `{zoneId}` hierarchy level).
-part:: Unless a `zone-depth` parameter is specified, the response SHALL return a data packet consistent with this `defaultDepth` property, in accordance with the capabilities of the negotiated data packet encoding.
+part:: Unless a `zone-depth` query parameter is specified, the response SHALL return a data packet consistent with this `defaultDepth` property, in accordance with the capabilities of the negotiated data packet encoding.
 ====
 
 See also <<_retrieving_data_for_a_dggrs_zone, Examples C.8>>.
 
-=== Recommendation for a `crs` parameter
+=== Recommendation for a `crs` query parameter
 
 The following recommendation describe how a server should support a `crs` query parameter for the `.../zones/{zoneId}/data` resource if the data can be returned in multiple applicable CRSs.
 
@@ -46,6 +46,6 @@ The following recommendation describe how a server should support a `crs` query 
 identifier:: /rec/data-retrieval/crs
 description:: For retrieving data in alternate CRSs:
 part:: If the data is available in multiple CRSs, the Implementation SHOULD support a `crs` query parameter for the resource path ending with `.../dggs/{dggrsId}/zones/{zoneId}/data`.
-part:: The value of this parameter SHOULD support values for this parameter specified either as full URIs (e.g., `http://www.opengis.net/def/crs/OGC/1.3/CRS84`) or as CURIEs (e.g., `[OGC:CRS84]`, `[EPSG:4326]`).
+part:: The value of this query parameter SHOULD support values for this query parameter specified either as full URIs (e.g., `http://www.opengis.net/def/crs/OGC/1.3/CRS84`) or as CURIEs (e.g., `[OGC:CRS84]`, `[EPSG:4326]`).
 part:: The list of supported CRSs SHOULD be included in a `crs` property of the DGGS origin resource (such as the collection description) as an array of URIs or CURIEs.
 ====

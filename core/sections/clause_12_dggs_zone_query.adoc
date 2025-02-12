@@ -6,7 +6,7 @@
 The OGC API - DGGS "Zone Query" requirements class supports requesting the list of zones from a specific
 Discrete Global Grid Reference System (DGGRS), that is a specific hierarchy of Discrete Global Grids
 combined with a particular zone indexing reference system (ZIRS), for which there is
-data available, or matching a particular query (e.g., using a filtering parameter).
+data available, or matching a particular query (e.g., using a filtering query parameter).
 This requirements class describes an HTTP GET operation, as well as its response.
 The selected DGGRS is listed as available and described in the <<rc_core,Core requirements class>>,
 and conforms to https://www.opengis.net/doc/AS/dggs/2.0[OGC Topic 21].
@@ -27,6 +27,6 @@ The JSON response consists of a simple object with a `"zones"` array property li
 The object can also include a `"links"` objects linking back to other resources of the DGGRS.
 
 By default, zones are returned as a compacted list of zones, which recursively replaces children zones by their parent if all children of the parent are included in the response.
-A client can override this default behavior by setting the `compact-zones` parameter to _false_.
+A client can override this default behavior by setting the `compact-zones` query parameter to _false_.
 
 include::../requirements/requirements_class_zone-query.adoc[]

@@ -317,7 +317,7 @@ for which the collection has data.
 
 ==== Querying a particular refinement level
 
-If no `zone-level` parameter is provided, the server is free to pick a default zone level for such queries. This would result in a reasonable number of zones returned,
+If no `zone-level` query parameter is provided, the server is free to pick a default zone level for such queries. This would result in a reasonable number of zones returned,
 based on the area and resolution of the data collection. In this example, the client will explicitly request a list of zones at refinement level 1.
 
 By default, if `compact-zones=false` is not specified by the client, zone queries are compacted. This means that
@@ -326,7 +326,7 @@ This can result in zones being returned of a lower refinement level than the req
 A full globe response would therefore always result in the list of all zones of refinement level 0.
 In these examples, the client will explicitly set `compact-zones=false`.
 
-Following the `[ogc-rel:dggrs-zone-query]` link, specifying these parameters, and negotiating a JSON response response using an `Accept: application/json` header, the client requests from the endpoint:
+Following the `[ogc-rel:dggrs-zone-query]` link, specifying these query parameters, and negotiating a JSON response response using an `Accept: application/json` header, the client requests from the endpoint:
 
 https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones?f=json&zone-level=1&compact-zones=false[\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones?zone-level=1&compact-zones=false]
 
@@ -764,7 +764,7 @@ image::images/cql2-5500-depth-bermuda-l11.png[width=500,align="center"]
 
 To illustrate the use of CQL2 arithmetic operators, the following example uses a collection of daily climate CMIP5 data from the https://cds.climate.copernicus.eu/cdsapp#!/dataset/projections-cmip5-daily-single-levels[Copernicus Climate Data Store].
 The request is for zones where the difference between two different fields of the coverage, the maximum (`tasmax`) and minimum (`tasmin`) daily near-surface air temperature, is greater than 10 degrees Kelvin.
-In addition, this request uses the `datetime` parameter to subset the temporal dimension for June 1, 2023.
+In addition, this request uses the `datetime` query parameter to subset the temporal dimension for June 1, 2023.
 
 https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/isea3h/zones?zone-level=7&filter=(tasmax-tasmin)%3E10&datetime=2023-06-01&f=json["\https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/isea3h/zones?zone-level=7&filter=(tasmax-tasmin)>10&datetime=2023-06-01"]
 
@@ -799,13 +799,13 @@ https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:buildings/dggs/GNOSISGlo
 .GeoJSON compact zones response for querying GNOSIS Global Grid DGGRS for Ottawa buildings (© https://openstreetmap.org/[OpenStreetMap] contributors) with CQL2 expression `name='Centre Block'` at level 24, visualized in QGIS
 image::images/cql2-ggg-building.png[width=700,align="center"]
 
-A future extension could also enable cross-collection queries, possibly using a `joinCollections` parameter which would make queryables from different collections available.
+A future extension could also enable cross-collection queries, possibly using a `joinCollections` query parameter which would make queryables from different collections available.
 
 === Retrieving data for a DGGRS Zone
 
 Data can be retrieved for a parent zone of interest, including values for all sub-zones within it, at the `.../dggs/{dggrsId}/zones/{zoneId}/data` resource path.
 
-The following examples illustrate this capability for different DGGRSs, representation encodings, CRSs, and other parameters.
+The following examples illustrate this capability for different DGGRSs, representation encodings, CRSs, and other query parameters.
 
 ==== Retrieving data from an ISEA3H DGGRS
 
@@ -861,7 +861,7 @@ Visualizing this data on 3D globe would look like the following image.
 .Visualization on a 3D Globe of a GeoTIFF response for retrieving data for ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A[A2-0-A] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 8
 image::images/tiff-zoneDataReprojected.png[width=700,align="center"]
 
-Alternatively, the DGGS API implementation also supports the `crs` parameter to select the https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A/data?zone-depth=8&f=geotiff&crs=%5BOGC:1534%5D[ISEA planar projection as an alternate CRS].
+Alternatively, the DGGS API implementation also supports the `crs` query parameter to select the https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A2-0-A/data?zone-depth=8&f=geotiff&crs=%5BOGC:1534%5D[ISEA planar projection as an alternate CRS].
 In this CRS, this pentagonal zone spans the interruption between two triangles of the base icosahedron.
 
 [#img_zone_data_tiff_isea='{figure-caption} {counter:figure-num}']
@@ -1485,7 +1485,7 @@ image::images/sentinel2-isea3h-depth-9.png[width=700,align="center"]
 
 === Subsetting and filtering zone data
 
-In addition to the basic retrieval of zone data, implementations can support additional parameters for the `.../zones/{zoneId}/data` resources to return only a portion of the data associated with the zone.
+In addition to the basic retrieval of zone data, implementations can support additional query parameters for the `.../zones/{zoneId}/data` resources to return only a portion of the data associated with the zone.
 The `subset`, `datetime` and `properties` query parameters are defined in the <<rc_data-subsetting,Data Subsetting>> requirements class, while the `filter` query parameter is defined in the <<rc_data-cql2-filter, Filtering Zone Data with CQL2>> requirements class.
 
 ==== Temporal subsetting
@@ -1649,7 +1649,7 @@ TIP: Temporal subsetting for a slice can also be achieved using the equivalent `
 ==== Subsetting arbitrary dimensions
 
 In addition to spatial and temporal dimensions, datasets may be comprised of additional dimensions, such as atmospheric pressure.
-These dimensions can also be subset in a similar manner using the `subset` parameter.
+These dimensions can also be subset in a similar manner using the `subset` query parameter.
 
 The following request is for relative humidity from an ERA5 dataset at 11:00 PM on April 6th, 2023 at pressure levels between 750 hPa and 900 hPa (inclusively).
 

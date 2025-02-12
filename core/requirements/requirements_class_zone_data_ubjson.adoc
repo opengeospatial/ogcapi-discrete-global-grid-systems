@@ -18,7 +18,7 @@ identifier:: /req/data-ubjson/content
 description:: For encoding zone data as DGGS-UBJSON
 part:: Every 200 response of the server for zone data with the media type `application/ubjson` SHALL be a https://ubjson.org/[Universal Binary JSON] document representing the data values for all selected fields of each included sub-zone.
 part:: The schema for the UBJSON document SHALL follow the same JSON Schema as for DGGS-JSON described above.
-part:: Every zone depth requested using the `zone-depth` parameter SHALL be included in the response.
+part:: Every zone depth requested using the `zone-depth` query parameter SHALL be included in the response.
 part:: At every depth, each individual value SHALL correspond exactly to the data sampled representative of that zone geometry.
 part:: The list of data values SHALL follow the default zone order as specified by the Discrete Global Grid Reference System (for example based on a scanline or space-filling curved defined therein) for which the request is made.
 part:: Null values SHALL use the `null` JSON value.

@@ -11,7 +11,7 @@ requirement:: /req/data-subsetting/datetime
 requirement:: /req/data-subsetting/properties
 ====
 
-=== Parameter `subset`
+=== `subset` query parameter
 
 [requirement]
 ====
@@ -44,8 +44,8 @@ part:: The Implementation SHALL support as an axis names`time` for a temporal da
 part:: If a third vertical spatial dimension is supported (if the resource's spatial extent bounding box is three dimensional) and that dimension is not part of the discrete global grid system definition, the Implementation SHALL also support a `h` dimension (elevation above the ellipsoid in EPSG:4979 or CRS84h) for geographic CRS and `z` for projected CRS, which are to be interpreted as the vertical axis in the CRS definition.
 part:: The Implementation SHALL support as axis names any additional dimension (beyond spatial and temporal) as described in the `extent` property of the collection or dataset description.
 part:: The Implementation SHALL return a 400 error status code if an axis name does not correspond to one of the axes of the Coordinate Reference System (CRS) of the data or an axis defined in the relevant `extent` property.
-part:: If a `subset` parameter including any of the dimensions corresponding to the axes of the discrete global grid reference system is used, the server SHALL return a 400 client error.
-part:: The Implementation SHALL interpret multiple `subset` parameters, as if all dimension subsetting values were provided in a single `subset` parameter (comma separated).
+part:: If a `subset` query parameter including any of the dimensions corresponding to the axes of the discrete global grid reference system is used, the server SHALL return a 400 client error.
+part:: The Implementation SHALL interpret multiple `subset` query parameters, as if all dimension subsetting values were provided in a single `subset` query parameter (comma separated).
 Example: `subset=time("2018-02-12T16:00:0Z":"2018-02-12T20:00:00Z")&subset=atm_pressure_hpa(500:750)` is equivalent to `subset=time("2018-02-12T16:00:0Z":"2018-02-12T20:00:00Z"),atm_pressure_hpa(500:750)`
 ====
 
@@ -53,7 +53,7 @@ NOTE: When the _interval_ values fall partially outside of the range of valid va
 
 See also <<_subsetting_arbitrary_dimensions, Examples C.10.2>>.
 
-=== Parameter `datetime`
+=== `datetime` query parameter
 
 [requirement]
 ====
@@ -63,7 +63,7 @@ description:: For specifying a time instant or interval for which to retrieve da
 part::
 +
 --
-The Implementation SHALL support a `datetime` parameter expressed corresponding to either a date-time instant or a time interval, conforming to the following syntax (using link:https://tools.ietf.org/html/rfc5234[ABNF]):
+The Implementation SHALL support a `datetime` query parameter expressed corresponding to either a date-time instant or a time interval, conforming to the following syntax (using link:https://tools.ietf.org/html/rfc5234[ABNF]):
 
 [source]
 ----
@@ -79,7 +79,7 @@ part:: The implementation SHALL support an `instant` defined as specified by lin
 only required to support the `Z` UTC time notation, and not required to support local time offsets.
 part:: Only the portions of the data within the specified interval SHALL be part of the zone data response, performing a trim operation for an interval or a slicing operation for an instant (in the case of a gridded coverage), or a filtering operation for feature data.
 part:: Time intervals unbounded at the start or at the end SHALL be supported using a double-dot (`..`) or an empty string for the start/end.
-part:: If a `datetime` parameter is specified requesting zone data where no temporal dimension applies, the Implementation SHALL either ignore the parameter or return a 4xx client error.
+part:: If a `datetime` query parameter is specified requesting zone data where no temporal dimension applies, the Implementation SHALL either ignore the query parameter or return a 4xx client error.
 ====
 
 Note: ISO 8601-2 distinguishes unbounded start/end timestamps (double-dot) and unknown start/end timestamps (empty string). For queries, an unspecified start/end has the same effect as an unbounded start/end.
@@ -110,14 +110,14 @@ March 18, 2018, 12:31:12 UTC or earlier:
 
 See also <<_temporal_subsetting, Examples C.10.1>>.
 
-=== Parameter `properties`
+=== `properties` query parameter
 
 [requirement]
 ====
 [%metadata]
 identifier:: /req/data-subsetting/properties
 description:: For specifying fields to include when retrieving zone data
-part:: The zone data retrieval operation SHALL support a parameter `properties` where the value is a comma-separated list of fields to be returned.
+part:: The zone data retrieval operation SHALL support a `properties` query parameter where the value is a comma-separated list of fields to be returned.
 part:: The Implementation SHALL support selecting a field using the identifier corresponding to the top-level property keys of the logical schema of the resource associated with the DGGRS zone data request, and return 400 status code for an unrecognized selected field.
 part:: Only the selected fields SHALL be returned from the zone data request.
 part:: If the zone data encodings response can self-describe its list of fields (as with the `schema` property of the DGGS-JSON encoding), the field description SHALL correspond to the requested list of fields.
@@ -126,15 +126,15 @@ part:: If the negotiated format of the response has a concept of field order, th
 
 See also <<_field_selection, Examples C.10.3>>.
 
-=== Parameter `exclude-properties`
+=== `exclude-properties` query parameter
 
 [requirement]
 ====
 [%metadata]
 identifier:: /req/data-subsetting/exclude-properties
 description:: For including all but specific fields when retrieving zone data
-part:: The zone data retrieval operation SHALL support a parameter `exclude-properties` where the value is a comma-separated list of fields not to be returned.
+part:: The zone data retrieval operation SHALL support an `exclude-properties` query parameter where the value is a comma-separated list of fields not to be returned.
 part:: The Implementation SHALL support selecting fields not to return using the identifier corresponding to the top-level property keys of the logical schema of the resource associated with the DGGRS zone data request, and return 400 status code for an unrecognized selected field.
 part:: All but the selected fields SHALL be returned from the zone data request.
-part:: The Implementation SHALL return a 4xx error when using the both the `properties` and `exclude-properties` parameters in the same request.
+part:: The Implementation SHALL return a 4xx error when using the both the `properties` and `exclude-properties` query parameters in the same request.
 ====

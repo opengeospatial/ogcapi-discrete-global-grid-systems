@@ -26,7 +26,7 @@ part:: For non-DGGS-optimized profiles, if the Zarr data incorporates georeferen
 part:: For non-DGGS-optimized profiles, if the zone geometry is not rectilinear, the closest bounding rectangle (or volume) SHALL be used for referencing the data.
 part:: For non-DGGS-optimized profiles, a distinct value for each sub-zone implied from the requested `zone-depth` SHALL correspond to at least one distinct cell value in the response.
 part:: If multiple relative zone depths are being returned, each depth SHALL be encoded as a separate Zarr dataset within the data packet.
-part:: Every zone depth requested using the `zone-depth` parameter SHALL be included in the response.
+part:: Every zone depth requested using the `zone-depth` query parameter SHALL be included in the response.
 ====
 
 [recommendation]

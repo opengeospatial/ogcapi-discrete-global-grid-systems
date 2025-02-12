@@ -268,7 +268,7 @@ include::../requirements/requirements_class_zone_data_jpegxl.adoc[]
 
 The PNG Zone Data encoding requirements class defines support for encoding a DGGS Zone data response according to the https://www.w3.org/TR/2003/REC-PNG-20031110/[W3C Portable Network Graphics (PNG) Specification] (https://www.iso.org/standard/29581.html[ISO/IEC 15948:2003]).
 
-Because PNG encoding is limited to an integer data values, this requirements class defines additional parameters and response headers allowing a client to request
+Because PNG encoding is limited to an integer data values, this requirements class defines additional query parameters and response headers allowing a client to request
 a specific scale factor and offset to be used to quantize data values, and allowing the implementation to inform the client of the scale factor and offset
 used for that quantization.
 

@@ -9,22 +9,22 @@ inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
 requirement:: /req/data-custom-depths/zone-depth
 ====
 
-=== Parameter `zone-depth`
+=== `zone-depth` query parameter
 
 [requirement]
 ====
 [%metadata]
 identifier:: /req/data-custom-depths/zone-depth
 
-description:: Parameter to specify the DGGS refinement levels beyond the specified DGGS zone's refinement level to include in the response, when retrieving data for that zone
+description:: Query parameter to specify the DGGS refinement levels beyond the specified DGGS zone's refinement level to include in the response, when retrieving data for that zone
 
-part:: The Implementation SHALL support a `zone-depth` parameter for the HTTP GET operation on a resource path ending with `.../dggs/{dggrsId}/zones/{zoneId}/data`.
+part:: The Implementation SHALL support a `zone-depth` query parameter for the HTTP GET operation on a resource path ending with `.../dggs/{dggrsId}/zones/{zoneId}/data`.
 
-part:: The Implementation SHALL accept the following types of values for the `zone-depth` parameter:
+part:: The Implementation SHALL accept the following types of values for the `zone-depth` query parameter:
 - A single positive integer value - representing a specific zone depth to return (e.g., `zone-depth=5`);
 - A range of positive integer values in the form "{low}-{high}" - representing a continuous range of zone depths to return (e.g., `zone-depth=1-8`); or,
 - A comma separated list of at least two (2) positive integer values - representing a set of specific zone depths to return (e.g., `zone-depth=1,3,7`).
-Some or all of these forms of the `zone-depth` parameter may not be supported with particular data packet encodings
+Some or all of these forms of the `zone-depth` query parameter may not be supported with particular data packet encodings
 (the data encoding may support a fixed depth, a range of depths, and/or an arbitrary selection of depths).
 
 part:: For each zone depth to be included in the response, the interpretation of a selected depth (whether requesting a single depth, a range of depths, or a list of depths) SHALL be:

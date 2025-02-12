@@ -23,7 +23,7 @@ The Requirements Classes for _OGC API - Discrete Global Grid Systems_ are:
 === Requirements classes defining resources
 
 In addition to the Core requirements class defining the `../dggs`, `../dggs/{dggrsId}` and `../dggs/{dggrsId}/zones/{zoneId}` resources, either
-the Zone Data retrieval (`../dggs/{dggrsId}/zones/{zoneId}/data`) or Zone Query requirements classes (`../dggs/{dggrsId}/zones` with support for parameters such as
+the Zone Data retrieval (`../dggs/{dggrsId}/zones/{zoneId}/data`) or Zone Query requirements classes (`../dggs/{dggrsId}/zones` with support for query parameters such as
 `zone-level=`, `parent-zone=`, `compact-zones=`, `bbox=`, `bbox-crs`, `datetime=`, `subset=` and `subset-crs=`) need to be implemented for a DGGS API implementation to have practical use.
 
 * <<rc_core,*Core*>>
@@ -42,9 +42,9 @@ such as the OpenAPI 3.0 requirements class of _OGC API - Common - Part 1: Core_,
 
 * <<rc_operation-ids,*Operation IDs*>>
 
-=== Requirements classes defining parameters
+=== Requirements classes defining query parameters
 
-Three requirements classes add support for the `subset`, `properties`, `exclude-properties`, `zone-depth` and `filter` parameters to zone data resources:
+Three requirements classes add support for the `subset`, `properties`, `exclude-properties`, `zone-depth` and `filter` query parameters to zone data resources:
 
 * <<rc_data-subsetting,*Zone data subsetting*>>
 * <<rc_data-custom-depths,*Zone data custom depths*>>

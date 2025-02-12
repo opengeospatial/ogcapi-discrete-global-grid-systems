@@ -10,7 +10,7 @@ inherit:: https://www.opengis.net/spec/cql2/1.0/req/cql2-text
 requirement:: /req/zone-query-cql2-filter/filter
 ====
 
-=== Parameter `filter`
+=== `filter` query parameter
 
 The following requirements describe how a client can specify a filtering CQL2 expression querying a list of zones.
 
