@@ -34,8 +34,8 @@ The columns for each part list the conformance classes of the standard that are 
 | https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/[GNOSIS Map Server]
 | https://github.com/jerstlouis[Jerome St-Louis]
 
-| https://dggs-api-bozea3cspa-ew.a.run.app/dggs-api[Prototype by the University of Tartu]
-| https://github.com/allixender[@allixender]
+| https://hytruck.landscape-geoinformatics.eu/dggs-api/v1-pre/[Prototype by the University of Tartu]
+| https://github.com/LandscapeGeoinformatics/pydggsapi[@LandscapeGeoinformatics]
 
 | TBA
 | TBA
@@ -53,8 +53,8 @@ The columns for each part list the conformance classes of the standard that the 
 |===
 | Product | Contact email or GitHub handle
 
-|https://dggs-api-bozea3cspa-ew.a.run.app/dggs-api[Prototype by the University of Tartu]
-|https://github.com/allixender[@allixender]
+| https://hytruck.landscape-geoinformatics.eu/[Prototype viewer based on MVT tiles by the University of Tartu]
+| https://github.com/LandscapeGeoinformatics/pydggsapi[@LandscapeGeoinformatics]
 
 |https://github.com/opengeospatial/T17-API-D176-dev[Testbed-17 WorldWind Client]
 |https://github.com/karriojala[@karriojala]
