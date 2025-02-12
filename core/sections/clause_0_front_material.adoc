@@ -91,3 +91,18 @@ Readers are strongly encouraged to first familiarize themselves with the Discret
 https://docs.ogc.org/as/20-040r3/20-040r3.html[OGC Abstract Specification Topic 21] laying the foundation for this Standard.
 
 Please note that in the remainder of this document, the Standard will be referred to as the "OGC API – DGGS Standard", "the DGGS API" or "this Standard".
+
+[.preface]
+== Acknowledgements
+
+This OGC Standard builds on a vast amount of research on Discrete Global Grid Systems spanning several decades, in particular from John P. Snyder (<<Snyder1992>>), Michael F. Goodchild (<<Goodchild1992>>),
+Kevin Sahr (<<Sahr2003>>), Robert Gibb (<<Gibb2016>>), Perry R. Peterson (<<Peterson2019>>), and several others.
+
+Initial implementations of a previous iteration of a draft DGGS API and an Engineering Report produced thanks to funding from OGC Testbed 16 (<<OGC20-039r2>>) informed the development of this Standard.
+Note that the API defined by this Standard differs significantly from that earlier iteration, with an emphasis on client requests asking a Web API implementation questions of the type _"What is here?"_ and _"Where is it"_? (<<Peterson2019>>).
+This Standard assumes a shared understanding of a particular Discrete Global Grid Reference System between the client and the server, which could be implemented by a local DGGRS software library,
+avoiding the need to define HTTP resources to query the conceptual grid hierarchy structure. The definition of an API in the traditional software development sense for such DGGRS libraries is beyond the scope of this Standard.
+
+Key work leading to the creation of this OGC Standard was undertaken as part of GeoConnections 2020-2021 project number GNS20-21IFP02 (_Modular OGC API Workflows_) (<<OGC21-033>>) thanks
+to funding from Natural Resources Canada. Research activity and Technology Integration Experiments performed as part of the OGC Federated Marine SDI - Phase 3 (<<OGC23-010>>) pilot project also played
+a key role in refining the design of the API and the Discrete Global Grid Reference Systems based on the ISEA projection included in <<annex-dggrs-def>>.

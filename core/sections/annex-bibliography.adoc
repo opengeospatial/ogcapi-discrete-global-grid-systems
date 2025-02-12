@@ -14,7 +14,7 @@
 
 * [[[OGC20-039r2,OGC 20-039r2]]], Robert Gibb, Byron Cochrane, Matthew Purss, OGC Testbed-16: DGGS and DGGS API Engineering Report (2021). https://docs.ogc.org/per/20-039r2.html
 
-* [[[OGC21-033,OGC 21-033]]], Jérôme Jacovella-St-Louis, Flexible real-time data processing and visualization workflows emerging from OGC API modules (Draft), OGC 21-033 (2021). https://maps.gnosis.earth/moaw/DiscussionPaper-Draft3.pdf
+* [[[OGC21-033,OGC 21-033]]], Jérôme Jacovella-St-Louis, Flexible real-time data processing and visualization workflows emerging from OGC API modules (Draft), OGC 21-033 (2025). https://maps.gnosis.earth/moaw/DiscussionPaper-Draft3.pdf
 
 * [[[Goodchild1992,Goodchild1992]]] Michael F. Goodchild, Yang Shiren, A hierarchical spatial data structure for global geographic information systems, CVGIP: Graphical Models and Image Processing, Volume 54, Issue 1, Pages 31-44, ISSN 1049-9652 (1992). https://doi.org/10.1016/1049-9652(92)90032-S
 
