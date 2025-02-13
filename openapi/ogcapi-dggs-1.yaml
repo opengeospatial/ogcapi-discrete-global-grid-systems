@@ -125,10 +125,14 @@ components:
          $ref: 'schemas/common-geodata/collections.yaml'
       collectionDesc:
          $ref: 'schemas/common-geodata/collectionDesc.yaml'
+      grid:
+         $ref: 'schemas/common-geodata/grid.yaml'
+      regularGrid:
+         $ref: 'schemas/common-geodata/regularGrid.yaml'
+      irregualrGrid:
+         $ref: 'schemas/common-geodata/irregularGrid.yaml'
       extent:
          $ref: 'schemas/common-geodata/extent.yaml'
-      extent-uad:
-         $ref: 'schemas/common-geodata/extent-uad.yaml'
       crs:
          $ref: 'schemas/common-geodata/crs.yaml'
       dataType:
