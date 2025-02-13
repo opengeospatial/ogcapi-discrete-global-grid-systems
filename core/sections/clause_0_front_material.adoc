@@ -76,6 +76,7 @@ All questions regarding this submission should be directed to the editors or the
 | Ferran Gascon                           | European Space Agency
 | Luís Moreira de Sousa                   | Open Geospatial Foundation
 | Perry Peterson                          | University of Calgary
+| Michael Jendryke                        | GeoInsight AG
 |===
 
 [abstract]
