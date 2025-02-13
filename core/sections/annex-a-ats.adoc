@@ -803,7 +803,7 @@ test-method::
 *When:* performing a GET operation on the `.../dggs/{dggrsId}/zones/{zoneID}/data` resource with media type `application/geo+ubjson` and a `profile` query parameter value of `jsonfg-dggs`, `jsonfg-dggs-plus`, `jsonfg-dggs-zoneids` or `jsonfg-dggs-zoneids-plus` for DGGS-UBJSON-FG +
 *Then:* +
 - assert that the Implementation supports zone data requests negotiating an `application/geo+ubjson` media type combined with a `profile` query parameter with a value of `jsonfg-dggs`, `jsonfg-dggs-plus`, `jsonfg-dggs-zoneids` or `jsonfg-dggs-zoneids-plus` allowing a client to request a DGGS-UBJSON-FG response. +
-- assert that every 200 response of the server for DGGS-FG-UBJSON zone data requests is a https://ubjson.org/[Universal Binary JSON] document representing the vector features within the requested zone. +
+- assert that every 200 response of the server for DGGS-UBJSON-FG zone data requests is a https://ubjson.org/[Universal Binary JSON] document representing the vector features within the requested zone. +
 - assert that the content of the UBJSON document passes all of the tests described in <</req/data-json/content>> adapted for a UBJSON encoding of the JSON data.
 ====
 

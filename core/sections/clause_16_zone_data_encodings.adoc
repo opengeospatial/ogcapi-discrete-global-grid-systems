@@ -112,7 +112,7 @@ DGGS-JSON-FG Zone Data is intended to support efficient encoding of vector geome
 This is done in a manner agnostic of the DGGRS (which needs to define a deterministic sub-zone order), in a human-readable format sharing as much as possible with existing practice for exchanging
 geospatial vector data in JSON.
 
-An Implementation may support a DGGS-FG-JSON representation where DGGS-quantized coordinates are specified either as global zone identifiers or as local indices into the deterministic zone order,
+An Implementation may support a DGGS-JSON-FG representation where DGGS-quantized coordinates are specified either as global zone identifiers or as local indices into the deterministic zone order,
 and may also support GeoJSON / JSON-FG compatibility modes where coordinates are additionally specified as positions on spatiotemporal axes for interoperability with non-DGGS clients.
 
 A `profile` query parameter can be used by clients to request a particular DGGS-JSON-FG representation from Implementations supporting multiple options:
