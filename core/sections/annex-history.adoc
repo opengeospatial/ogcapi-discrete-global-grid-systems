@@ -19,4 +19,11 @@ Clarifications (https://github.com/opengeospatial/ogcapi-discrete-global-grid-sy
 |2024-06-18 |0.12 |Jerome St Louis |all | Draft ready for presentation at Montréal Members Meeting
 |2024-08-24 |1.0.0rc1 |Jerome St Louis |all | Complete Zone Data examples. New Zarr requirements class. Clarify DGGS/DGGH terminology and related DGGRS schema adjustments. New DGGS-(UB)JSON-FG encoding for efficient vector format with coordinates quantized to sub-zones. `filter` parameter for zone data. Initial draft ready for OAB review.
 |2024-09-20 |1.0.0rc2 |Carl Reed, Jerome St Louis |all | Applied suggested edits from Carl Reed's review. Draft ready for public comment period.
+|2024-10-16 |1.0.0rc3 |Jerome St Louis |all | Shift ISEA orientation 0.05° West for ISEA3H and ISEA9R DGGRS to avoid vertices on land (using geodetic/authalic latitude conversion). Other fixes and improvements.
+|2025-02-13 |1.0.0rc4 |Jerome St Louis, Matt Purss, Michael Jendryke |all |
+Completed addressing issues raised by Carl. Addressed issues received during RFC period.
+Completed Abstract Test Suite. Merged JSON Zone List encoding requirements classes into Zone Query. Merged GeoJSON/JSON-FG requirements classes.
+Added `profile` query parameter and defined profiles to distinguish encoding variations using same media type.
+Created a new overview section with some content from the examples annex, and with a new table illustrating the paths, responses and parameters, as suggested by João.
+Additional fixes and improvements. Draft ready for final TC vote and publication.
 |===
