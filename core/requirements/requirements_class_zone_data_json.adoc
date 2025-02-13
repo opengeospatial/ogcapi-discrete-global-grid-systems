@@ -11,6 +11,8 @@ inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
 requirement:: /req/data-json/content
 ====
 
+==== DGGS-JSON Zone Data
+
 [requirement]
 ====
 [%metadata]

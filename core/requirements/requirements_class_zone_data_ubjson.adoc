@@ -1,7 +1,7 @@
 [[rc_table-data_ubjson]]
 
 [requirements_class]
-.Requirements Class UBJSON
+.Requirements Class DGGS-UBJSON
 ====
 [%metadata]
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-ubjson
@@ -10,6 +10,8 @@ inherit:: https://ubjson.org/[https://ubjson.org/]
 inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
 requirement:: /req/data-ubjson/content
 ====
+
+==== DGGS-UBJSON Zone Data
 
 [requirement]
 ====

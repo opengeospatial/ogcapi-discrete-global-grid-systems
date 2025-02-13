@@ -12,6 +12,8 @@ inherit:: https://www.opengis.net/spec/json-fg-1/0.3/req/core
 requirement:: /req/data-dggs-ubjsonfg/content
 ====
 
+==== DGGS-UBJSON-FG Zone Data
+
 [requirement]
 ====
 [%metadata]

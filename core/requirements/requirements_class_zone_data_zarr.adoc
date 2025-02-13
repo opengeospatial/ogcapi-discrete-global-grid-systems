@@ -12,6 +12,8 @@ inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/data-retrieval
 requirement:: /req/data-zarr/content
 ====
 
+==== Zarr Zone Data
+
 [requirement]
 ====
 [%metadata]

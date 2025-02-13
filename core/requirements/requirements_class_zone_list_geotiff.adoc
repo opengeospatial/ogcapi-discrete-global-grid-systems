@@ -12,6 +12,8 @@ inherit:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/zone-query
 requirement:: /req/zone-geotiff/content
 ====
 
+==== GeoTIFF Zone List
+
 [requirement]
 ====
 [%metadata]
