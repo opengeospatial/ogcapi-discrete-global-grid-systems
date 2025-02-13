@@ -24,8 +24,8 @@ An example JSON response for this collection description resource, as defined by
       "spatial" : {
          "bbox" : [ [ -180, -90, 180, 90 ] ],
          "grid" : [
-            { "cellsCount" : 65537, "resolution" : 0.0054931640625 },
-            { "cellsCount" : 32769, "resolution" : 0.0054931640625 }
+            { "firstCoordinate": -180, "relativeBounds": [ 0, 0 ], "cellsCount" : 65537, "resolution" : 0.0054931640625 },
+            { "firstCoordinate":  -90, "relativeBounds": [ 0, 0 ], "cellsCount" : 32769, "resolution" : 0.0054931640625 }
          ]
    } },
    "minScaleDenominator" : 2183915.0938621787354,
