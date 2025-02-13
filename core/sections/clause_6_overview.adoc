@@ -88,7 +88,7 @@ https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/maste
 (if implementing <<rc_data-subsetting,Data subsetting>>) | Logical schema for the data returned for this collection (https://json-schema.org/[JSON Schema])
 to be defined in https://github.com/opengeospatial/ogcapi-common/tree/master/proposals/schemas[proposed OGC API - Common part], based on https://docs.ogc.org/DRAFTS/23-058r1.html[OGC API - Features - Part 5: Schemas] |
 | *`/collections/{collectionId}/queryables`* +
-(if implementing <<rc_zone-query-cql2-filter,Filtering Zone Queries with CQL2>> or <<rc_data-cql2-filter,Filtering Zone Data with CQL2>>) | Schema for the queryables that can be used in CQL2 queries for this collection (https://json-schema.org/[JSON Schema]) +
+(if implementing <<rc_zone-query-cql2-filter,Filtering Zone Queries with CQL2>> or <<rc_data-cql2-filter,Filtering Zone Data with CQL2>>) | Schema for the queryables that can be used in CQL2 queries for this collection (https://json-schema.org/[JSON Schema])
 as defined in http://www.opengis.net/doc/IS/ogcapi-features-3/1.0[OGC API - Features - Part 3: Filtering] |
 
 3+| *Defined in requirements class <<rc_core,Core>>:*
