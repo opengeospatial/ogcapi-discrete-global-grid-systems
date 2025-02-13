@@ -6,21 +6,21 @@
 |===
 |Date |Release |Editor | Primary clauses modified |Description
 |2021-05-17 |0.1 |Matthew Purss |all |initial version
-|2022-07-22 |0.3 |Jerome St Louis |all | Renamed Part 1 to core (https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/commit/316d37f3a52cce118601f110e3e837493ca06f9b[316d37f])
+|2022-07-22 |0.3 |Jérôme St-Louis |all | Renamed Part 1 to core (https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/commit/316d37f3a52cce118601f110e3e837493ca06f9b[316d37f])
 Initial set up of conformance classes clauses (https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/commit/b76073c93fc0bb65f70a26359540eec5e7218aba[b76073c])
 |2022-07-26 |0.4 |Gobe Hobona |all | Fixes problem that was breaking auto-build (https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/commit/a13c2a89371b46737de3910d55808f35071133ac[a13c2a8])
-|2022-10-04 |0.5 |Jerome St Louis |7-Data Retrieval | Initial take at Data Retrieval Conformance Class (https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/commit/b67f2901c9de1b2241242c15815f0853f8ef047f[b67f290])
-|2022-11-11 |0.10 |Jerome St Louis |all | Split multi-zone retrieval into separate conformance class (https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/commit/06a426044193c4489f97840e32dbf9b1852172ad[06a4260]).
+|2022-10-04 |0.5 |Jérôme St-Louis |7-Data Retrieval | Initial take at Data Retrieval Conformance Class (https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/commit/b67f2901c9de1b2241242c15815f0853f8ef047f[b67f290])
+|2022-11-11 |0.10 |Jérôme St-Louis |all | Split multi-zone retrieval into separate conformance class (https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/commit/06a426044193c4489f97840e32dbf9b1852172ad[06a4260]).
 Initial progress on Zone Query conformance class (https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/commit/a208502eb6b80f864bcf2d916a3a573599a8b3e7[a208502])
-Added preface, abstract, Jerome added as editor (https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/commit/71e76c613239c4dbd6b813360df4dc5aa174026d[71e76c6])
+Added preface, abstract, Jérôme added as editor (https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/commit/71e76c613239c4dbd6b813360df4dc5aa174026d[71e76c6])
 Clarification regarding resolution (https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/commit/c43bfadd160e62e44bce10120630d2e38c0fdd12[c43bfad])
 Clarifications (https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/commit/cee368507c74932cf266f10250a1f48ccfc6706d[cee3685])
-|2023-02-17 |0.11 |Jerome St Louis |7-Data Retrieval | Added `zone-depth` parameter (https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/commit/2b8fa586aaad9a880e6c5eb586ddc24e725fc2e9[2b8fa58])
-|2024-06-18 |0.12 |Jerome St Louis |all | Draft ready for presentation at Montréal Members Meeting
-|2024-08-24 |1.0.0rc1 |Jerome St Louis |all | Complete Zone Data examples. New Zarr requirements class. Clarify DGGS/DGGH terminology and related DGGRS schema adjustments. New DGGS-(UB)JSON-FG encoding for efficient vector format with coordinates quantized to sub-zones. `filter` parameter for zone data. Initial draft ready for OAB review.
-|2024-09-20 |1.0.0rc2 |Carl Reed, Jerome St Louis |all | Applied suggested edits from Carl Reed's review. Draft ready for public comment period.
-|2024-10-16 |1.0.0rc3 |Jerome St Louis |all | Shift ISEA orientation 0.05° West for ISEA3H and ISEA9R DGGRS to avoid vertices on land (using geodetic/authalic latitude conversion). Other fixes and improvements.
-|2025-02-13 |1.0.0rc4 |Jerome St Louis, Matt Purss, Michael Jendryke |all |
+|2023-02-17 |0.11 |Jérôme St-Louis |7-Data Retrieval | Added `zone-depth` parameter (https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/commit/2b8fa586aaad9a880e6c5eb586ddc24e725fc2e9[2b8fa58])
+|2024-06-18 |0.12 |Jérôme St-Louis |all | Draft ready for presentation at Montréal Members Meeting
+|2024-08-24 |1.0.0rc1 |Jérôme St-Louis |all | Complete Zone Data examples. New Zarr requirements class. Clarify DGGS/DGGH terminology and related DGGRS schema adjustments. New DGGS-(UB)JSON-FG encoding for efficient vector format with coordinates quantized to sub-zones. `filter` parameter for zone data. Initial draft ready for OAB review.
+|2024-09-20 |1.0.0rc2 |Carl Reed, Jérôme St-Louis |all | Applied suggested edits from Carl Reed's review. Draft ready for public comment period.
+|2024-10-16 |1.0.0rc3 |Jérôme St-Louis |all | Shift ISEA orientation 0.05° West for ISEA3H and ISEA9R DGGRS to avoid vertices on land (using geodetic/authalic latitude conversion). Other fixes and improvements.
+|2025-02-13 |1.0.0rc4 |Jérôme St-Louis, Matthew Purss, Michael Jendryke |all |
 Completed addressing issues raised by Carl. Addressed issues received during RFC period.
 Completed Abstract Test Suite. Merged JSON Zone List encoding requirements classes into Zone Query. Merged GeoJSON/JSON-FG requirements classes.
 Added `profile` query parameter and defined profiles to distinguish encoding variations using same media type.
