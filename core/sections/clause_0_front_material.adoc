@@ -95,11 +95,11 @@ Please note that in the remainder of this document, the Standard will be referre
 [.preface]
 == Acknowledgements
 
-This OGC Standard builds on a vast amount of research on Discrete Global Grid Systems spanning several decades, in particular from John P. Snyder (<<Snyder1992>>), Michael F. Goodchild (<<Goodchild1992>>),
+This OGC Standard builds on a vast amount of research on Discrete Global Grid Systems spanning multiple decades, in particular from John P. Snyder (<<Snyder1992>>), Michael F. Goodchild (<<Goodchild1992>>),
 Kevin Sahr (<<Sahr2003>>), Robert Gibb (<<Gibb2016>>), Perry R. Peterson (<<Peterson2019>>), and several others.
 
 Initial implementations of a previous iteration of a draft DGGS API and an Engineering Report produced thanks to funding from OGC Testbed 16 (<<OGC20-039r2>>) informed the development of this Standard.
-Note that the API defined by this Standard differs significantly from that earlier iteration, with an emphasis on client requests asking a Web API implementation questions of the type _"What is here?"_ and _"Where is it"_? (<<Peterson2019>>).
+Note that the API defined by this Standard differs significantly from that earlier iteration, with a greater emphasis on client requests asking a Web API implementation questions of the type _"What is here?"_ and _"Where is it"_? (<<Peterson2019>>).
 This Standard assumes a shared understanding of a particular Discrete Global Grid Reference System between the client and the server, which could be implemented by a local DGGRS software library,
 avoiding the need to define HTTP resources to query the conceptual grid hierarchy structure. The definition of an API in the traditional software development sense for such DGGRS libraries is beyond the scope of this Standard.
 
