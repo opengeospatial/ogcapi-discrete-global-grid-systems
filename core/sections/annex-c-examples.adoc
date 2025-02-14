@@ -1825,13 +1825,13 @@ https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-
 image::images/filter-sentinel2-kgari.png[width=700,align="center"]
 
 [keep-with-next=true]
-The following request specifies a more complex filter using CQL2 arithmetic expressions to filter for a normalized difference vegetation index (NDVI) greater than 0.3, computed using the near-infrared (`B08`) and red bands (`B04`) using the expression `(B08-B04)/(B08+B04)`:
+The following request specifies a more complex filter using CQL2 arithmetic expressions to filter for a normalized difference vegetation index (NDVI) greater than 0.5, computed using the near-infrared (`B08`) and red bands (`B04`) using the expression `(B08-B04)/(B08+B04)`:
 
 // NDVI filter
 
 [keep-with-next=true]
-https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G6-E046-D/data?zone-depth=9&filter=(B08-B04)/(B08+B04)%20%3E%200.3&f=json[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G6-E046-D/data?zone-depth=9&filter=(B08-B04)/(B08+B04)>0.3]
+https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G4-74A6D-E/data?zone-depth=9&filter=(B08-B04)/(B08+B04)%20%3E%200.5&f=json[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G4-74A6D-E/data?zone-depth=9&filter=(B08-B04)/(B08+B04)>0.5]
 
 [#img_filter-sentinel2-ndvi='{figure-caption} {counter:figure-num}']
-.Filtering based on a minimum normalized difference vegetation index (NDVI) for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G6-E046-D[G6-E046-D] from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
+.Filtering based on a minimum normalized difference vegetation index (NDVI) for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G4-74A6D-E[G4-74A6D-E] from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
 image::images/filter-sentinel2-ndvi.png[width=700,align="center"]
