@@ -959,7 +959,7 @@ The features and geometry coordinates in this case have no relation to sub-zones
 The zone depth (default zone depth of 10 in this case) can however control cartographic generalization of the geometry.
 This could potentially include filtering point features, based on rules associated with the dataset, as decided by the implementation, as well as the precision of the coordinates.
 
-https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:roads/dggs/ISEA3H/zones/I0-1EFA652-D/data?f=geojson[\https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:roads/dggs/ISEA3H/zones/I0-1EFA652-D/data]
+https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:roads/dggs/ISEA3H/zones/I0-1EEBFA7-E/data?f=geojson[\https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:roads/dggs/ISEA3H/zones/I0-1EEBFA7-E/data]
 
 [%unnumbered%]
 [source,json]
@@ -993,13 +993,13 @@ https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:roads/dggs/ISEA3H/zones/
 ----
 
 [#img_zone_data_geojson_osmOttawa='{figure-caption} {counter:figure-num}']
-.Visualization in a world Mercator projection of a GeoJSON feature collection with mixed geometry types for data retrieved from ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/osm:ottawa/dggs/ISEA3H/zones/I0-1EFA652-D[I0-1EFA652-D] of https://openstreetmap.org/[OpenStreetMap] (c) OpenStreetMap contributors
+.Visualization in a world Mercator projection of a GeoJSON feature collection with mixed geometry types for data retrieved from ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/osm:ottawa/dggs/ISEA3H/zones/I0-1EEBFA7-E[I0-1EEBFA7-E] of https://openstreetmap.org/[OpenStreetMap] (c) OpenStreetMap contributors
 image::images/geojson-osmOttawa.png[width=700,align="center"]
 
 In an ISEA planar projection, the same data could be visualized as follows.
 
 [#img_zone_data_geojson_osmOttawaISEA='{figure-caption} {counter:figure-num}']
-.Visualization in an ISEA planar projection of a GeoJSON feature collection with mixed geometry types for data retrieved from ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/osm:ottawa/dggs/ISEA3H/zones/I0-1EFA652-D[I0-1EFA652-D] of https://openstreetmap.org/[OpenStreetMap] (c) OpenStreetMap contributors
+.Visualization in an ISEA planar projection of a GeoJSON feature collection with mixed geometry types for data retrieved from ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/osm:ottawa/dggs/ISEA3H/zones/I0-1EEBFA7-E[I0-1EEBFA7-E] of https://openstreetmap.org/[OpenStreetMap] (c) OpenStreetMap contributors
 image::images/geojson-osmOttawaISEA.png[width=700,align="center"]
 
 The following zone data request is for https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:physical:bathymetry[bathymetry polygons] from the https://naturalearthdata.com/[Natural Earth] physical features.
@@ -1171,9 +1171,9 @@ Using centroid points for the geometry of each zone (`geometry=zone-centroid`), 
 .Visualization of a GeoJSON point features response for data retrieved from ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA9R/zones/A2-0[A2-0] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] at a relative depth of 4
 image::images/isea9r-gebco-geojson-points.png[height=800,align="center"]
 
-The following GeoJSON feature collection is requested from an OpenStreetMap dataset of Ottawa for ISEA9R zone J0-116C0097, and illustrated as visualized in different projections.
+The following GeoJSON feature collection is requested from an OpenStreetMap dataset of Ottawa for ISEA9R zone I0-1EEBFA7, and illustrated as visualized in different projections.
 
-https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:roads/dggs/ISEA9R/zones/J0-116C0097/data[\https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:roads/dggs/ISEA9R/zones/J0-116C0097/data]
+https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:roads/dggs/ISEA9R/zones/I0-1EEBFA7/data[\https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:roads/dggs/ISEA9R/zones/I0-1EEBFA7/data]
 
 [%unnumbered%]
 [source,json]
@@ -1210,15 +1210,15 @@ https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:roads/dggs/ISEA9R/zones/
 ----
 
 [#img_zone_data_isea9r_geojson_osmOttawa_Mercator='{figure-caption} {counter:figure-num}']
-.Visualization in a world Mercator projection of a GeoJSON feature collection with mixed geometry types for data retrieved from ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/osm:ottawa/dggs/ISEA9R/zones/J0-116C0097[J0-116C0097] of https://openstreetmap.org/[OpenStreetMap] (c) OpenStreetMap contributors
+.Visualization in a world Mercator projection of a GeoJSON feature collection with mixed geometry types for data retrieved from ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/osm:ottawa/dggs/ISEA9R/zones/I0-1EEBFA7[I0-1EEBFA7] of https://openstreetmap.org/[OpenStreetMap] (c) OpenStreetMap contributors
 image::images/isea9r-osmOttawa-Mercator.png[width=700,align="center"]
 
 [#img_zone_data_isea9r_geojson_osmOttawa_ISEA='{figure-caption} {counter:figure-num}']
-.Visualization in an ISEA planar projection of a GeoJSON feature collection with mixed geometry types for data retrieved from ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/osm:ottawa/dggs/ISEA9R/zones/J0-116C0097[J0-116C0097] of https://openstreetmap.org/[OpenStreetMap] (c) OpenStreetMap contributors
+.Visualization in an ISEA planar projection of a GeoJSON feature collection with mixed geometry types for data retrieved from ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/osm:ottawa/dggs/ISEA9R/zones/I0-1EEBFA7[I0-1EEBFA7] of https://openstreetmap.org/[OpenStreetMap] (c) OpenStreetMap contributors
 image::images/isea9r-osmOttawa-isea.png[height=800,align="center"]
 
 [#img_zone_data_isea9r_geojson_osmOttawa_ISEA5x6='{figure-caption} {counter:figure-num}']
-.Visualization in ISEA 5x6 rotated and sheared space of a GeoJSON feature collection with mixed geometry types for data retrieved from ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/osm:ottawa/dggs/ISEA9R/zones/J0-116C0097[J0-116C0097] of https://openstreetmap.org/[OpenStreetMap] (c) OpenStreetMap contributors
+.Visualization in ISEA 5x6 rotated and sheared space of a GeoJSON feature collection with mixed geometry types for data retrieved from ISEA9R DGGRS zone https://maps.gnosis.earth/ogcapi/collections/osm:ottawa/dggs/ISEA9R/zones/I0-1EEBFA7[I0-1EEBFA7] of https://openstreetmap.org/[OpenStreetMap] (c) OpenStreetMap contributors
 image::images/isea9r-osmOttawa-5x6.png[width=700,align="center"]
 
 [%unnumbered%]
