@@ -338,6 +338,10 @@ The server returned all 32 zones of ISEA3H level 1 (which corresponds to a trunc
 
 A visualization of the response from negotiating `application/geo+json` for the above request is seen below.
 
+TIP: Most of the visualizations in this annex were produced using a regular default installation of QGIS, without any special DGGS plugin.
+Although the use of explicit zone geometry in responses is not ideal for efficient use of this API, this demonstrates the possibility of achieving
+interoperability with traditional GIS software without an awareness of the DGGRS through the use of encodings for zone data and zone lists intended for this purpose.
+
 [#img_zones_globe='{figure-caption} {counter:figure-num}']
 .GeoJSON response for zone query for ISEA3H DGGRS at level 1 visualized in QGIS
 image::images/zones-globe-isea3h-level1.png[width=700,align="center"]
