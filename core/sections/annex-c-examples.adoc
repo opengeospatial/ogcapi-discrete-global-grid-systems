@@ -1485,20 +1485,20 @@ to feature collections with vector geometry with a primary temporal property.
 
 <<<
 
-The following examples retrieve data from a sentinel-2 collection for the 15th of February and May 2021, and for the 28th of October 2022, at relative depth of 12, for ISEA3H zone G7-66F79-F in K'gari, Australia.
+The following examples retrieve data from a sentinel-2 collection for the 15th of February and May 2021, and for the 28th of October 2022, at relative depth of 12, for ISEA3H zone G7-67252-D in K'gari, Australia.
 
 // Fraser Island
 
-https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=12&crs=OGC:1534&datetime=2021-02-15[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=12&datetime=2021-02-15]
+https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&crs=OGC:1534&datetime=2021-02-15[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&datetime=2021-02-15]
 
-https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=12&crs=OGC:1534&datetime=2021-05-15[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=12&datetime=2021-05-15]
+https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&crs=OGC:1534&datetime=2021-05-15[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&datetime=2021-05-15]
 
-// https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=12&crs=OGC:1534&datetime=2021-08-15[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=12&datetime=2021-08-15]
+// https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&crs=OGC:1534&datetime=2021-08-15[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&datetime=2021-08-15]
 
-https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=12&crs=OGC:1534&datetime=2022-10-28[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=12&datetime=2022-10-28]
+https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&crs=OGC:1534&datetime=2022-10-28[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&datetime=2022-10-28]
 
 [#img_datetime-sentinel2-kgari='{figure-caption} {counter:figure-num}']
-.Visualization of different temporal slices for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F[G7-66F79-F] (K'gari, Australia) from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
+.Visualization of different temporal slices for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D[G7-67252-D] (K'gari, Australia) from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
 image::images/datetime-sentinel2-kgari.png[width=700,align="center"]
 
 The following examples retrieve data from a daily CMIP5 climate dataset for the time interval between October 6th to October 10th, 2022 for ISEA3H zone A1-0-E, at a relative depth of 8.
@@ -1707,9 +1707,9 @@ image::images/rh-pressure.png[width=700,align="center"]
 
 Some data has multiple properties for a feature, or fields for a given cell or position, such as the precipitation and windspeed variables in the CMIP5 dataset illustrated above.
 It is possible to retrieve only some of these available fields using the `properties` query parameter.
-The following request retrieves only the red (`B04`), green (`B03`) and blue (`B02`) bands from a sentinel-2 dataset for ISEA3H zone G7-66F79-F at a relative depth of 8.
+The following request retrieves only the red (`B04`), green (`B03`) and blue (`B02`) bands from a sentinel-2 dataset for ISEA3H zone G7-67252-D at a relative depth of 8.
 
-https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=8&datetime=2022-10-28&properties=B04,B03,B02&f=json["https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=8&datetime=2022-10-28&properties=B04,B03,B02"]
+https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=8&datetime=2022-10-28&properties=B04,B03,B02&f=json["https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=8&datetime=2022-10-28&properties=B04,B03,B02"]
 
 The following is a partial DGGS-JSON response for this previous request.
 This collection has twelve other fields available (which are not returned by default, in this case).
@@ -1719,7 +1719,7 @@ This collection has twelve other fields available (which are not returned by def
 ----
 {
    "dggrs" : "[ogc-dggrs:ISEA3H]",
-   "zoneId" : "G7-66F79-F",
+   "zoneId" : "G7-67252-D",
    "depths" : [ 8 ],
    "values" : {
       "B02" : [ {
@@ -1742,7 +1742,7 @@ This collection has twelve other fields available (which are not returned by def
 ----
 
 [#img_field-selection-rgb='{figure-caption} {counter:figure-num}']
-.Visualization of different B04 (red), B03 (green) and B02 (blue) bands for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F[G7-66F79-F] (K'gari, Australia) from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
+.Visualization of different B04 (red), B03 (green) and B02 (blue) bands for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D[G7-67252-D] (K'gari, Australia) from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
 image::images/field-selection-rgb.png[width=700,align="center"]
 
 <<<
@@ -1751,20 +1751,20 @@ image::images/field-selection-rgb.png[width=700,align="center"]
 The following request retrieves only the Scene Classification Layer (`SCL`) for the same zone. This field has a lower resolution than the other bands, and could be returned at a lower depth than the other fields if requesting multiple fields at a `zone-depth` beyond the resolution of the SCL field.
 
 [keep-with-next=true]
-https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=8&datetime=2022-10-28&properties=SCL&f=json[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=8&datetime=2022-10-28&properties=SCL]
+https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=8&datetime=2022-10-28&properties=SCL&f=json[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=8&datetime=2022-10-28&properties=SCL]
 
 [#img_field-selection-scl='{figure-caption} {counter:figure-num}']
-.Visualization of SCL (Scene Classification Layer) field for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F[G7-66F79-F] (K'gari, Australia) from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
+.Visualization of SCL (Scene Classification Layer) field for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D[G7-67252-D] (K'gari, Australia) from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
 image::images/field-selection-scl.png[width=700,align="center"]
 
 [keep-with-next=true]
 The following request retrieves only the near-infrared (`B08`) band for the same zone.
 
 [keep-with-next=true]
-https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=8&datetime=2022-10-28&properties=B08&f=json[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=8&datetime=2022-10-28&properties=B08]
+https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=8&datetime=2022-10-28&properties=B08&f=json[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=8&datetime=2022-10-28&properties=B08]
 
 [#img_field-selection-b08='{figure-caption} {counter:figure-num}']
-.Visualization of B08 (near-infrared) band for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F[G7-66F79-F] (K'gari, Australia) from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
+.Visualization of B08 (near-infrared) band for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D[G7-67252-D] (K'gari, Australia) from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
 image::images/field-selection-b08.png[width=700,align="center"]
 
 TIP: Although the examples illustrated here are all for rasterized data, field selection can also be applied to feature collection outputs so select which properties to include.
@@ -1802,26 +1802,26 @@ image::images/filter-bathymetry-4000.png[width=700,align="center"]
 [keep-with-next=true]
 When retrieving a temporal slice with a filter, the server may fill in the filtered out sub-zones with earlier imagery not excluded by the filter.
 This can be used for example to replace cloudy sub-zones with the closest earlier cloud-free imagery.
-The following requests retrieve sentinel-2 data for zone G7-66F79-F on April 15, 2021 at a relative depth of 12 with:
+The following requests retrieve sentinel-2 data for zone G7-67252-D between August 1, 2022 and August 31, 2022 at a relative depth of 12 with:
 
 _no filter:_
 
-https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=12&crs=OGC:1534&datetime=2021-04-15[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=12&datetime=2021-04-15]
+https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&crs=OGC:1534&datetime=2022-08-01/2022-08-31[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&datetime=2022-08-01/2022-08-31]
 
-_filtering only high probability clouds (SCL = 8):_
+_filtering only high probability clouds (SCL: 9):_
 
-https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=12&crs=OGC:1534&datetime=2021-04-15&filter=SCL<>9[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=12&datetime=2021-04-15&filter=SCL <> 9]
+https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&crs=OGC:1534&datetime=2022-08-01/2022-08-31&filter=SCL<>9[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&datetime=2022-08-01/2022-08-31&filter=SCL <> 9]
 
-_also filtering out medium probability clouds (SCL = 9):_
+_also filtering out medium probability clouds (SCL: 8):_
 
-https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=12&crs=OGC:1534&datetime=2021-04-15&filter=SCL<>8%20and%20SCL<>9[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=12&datetime=2021-04-15&filter=SCL <> 8 and SCL <> 9]
+https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&crs=OGC:1534&datetime=2022-08-01/2022-08-31&filter=SCL<>8%20and%20SCL<>9[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&datetime=2022-08-01/2022-08-31&filter=SCL <> 8 and SCL <> 9]
 
-_also filtering out cirrus clouds (SCL = 10):_
+_also filtering out cirrus clouds (SCL: 10):_
 
-https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=12&crs=OGC:1534&datetime=2021-04-15&filter=SCL%20not%20in%20(8,9,10)["https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F/data?zone-depth=12&datetime=2021-04-15&filter=SCL not in (8, 9, 10)"]
+https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&crs=OGC:1534&datetime=2022-08-01/2022-08-31&filter=SCL%20not%20in%20(8,9,10)["https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&datetime=2022-08-01/2022-08-31&filter=SCL not in (8, 9, 10)"]
 
 [#img_filter-sentinel2-kgari='{figure-caption} {counter:figure-num}']
-.Filtering out high probability clouds, medium probability clouds, and cirrus clouds for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-66F79-F[G7-66F79-F] (K'gari, Australia) from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
+.Filtering out high probability clouds, medium probability clouds, and cirrus clouds for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D[G7-67252-D] (K'gari, Australia) from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
 image::images/filter-sentinel2-kgari.png[width=700,align="center"]
 
 [keep-with-next=true]
