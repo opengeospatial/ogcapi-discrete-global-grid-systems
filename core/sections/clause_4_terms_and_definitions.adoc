@@ -29,7 +29,7 @@ series of <<term-dgg,discrete global grids>> organized in a hierarchy of success
 [.source]
 <<OGC20-040r3>>
 
-NOTE: Example of parameters part of the DGGH definition include the underlying Earth model spheroid, and the orientation of a base polyhedron.
+NOTE: Example of parameters part of the DGGH definition include the underlying Earth model ellipsoid, and the orientation of a base polyhedron.
 
 NOTE: This definition corresponds to the term https://docs.ogc.org/as/20-040r3/20-040r3.html#hierarchy["hierarchy" (4.26)] in OGC Abstract Specification Topic 21,
 and refers strictly to a mathematical structure, excluding the concept of <<term-zoneid,zonal identifiers>>, which are introduced as part of a <<term-dggrs,discrete global grid reference system>>, and
@@ -38,7 +38,7 @@ excluding notions of software functionality or interoperability implied by a <<t
 NOTE: In some DGGS literature, the term DGGS refers to this DGGH meaning, where the word _system_ in "system of discrete global grids" is used in the sense of a "series" of grids
 (e.g., _"A Discrete Global Grid System (DGGS) is a series of discrete global grids"_ [<<Sahr2003>>]), as opposed to a software or data integration / processing system.
 
-NOTE: The ISEA3H (Icosahedral Snyder Equal-Area Aperture 3 Hexagonal) Discrete Global Grid Hierarchy, using the standard ISEA orientation and the WGS84 authalic sphere as the underlying Earth model,
+NOTE: The ISEA3H (Icosahedral Snyder Equal-Area Aperture 3 Hexagonal) Discrete Global Grid Hierarchy, using an ISEA projection with a particular icosahedron orientation mapping the underlying WGS84 ellipsoid Earth model to an authalic sphere,
 irrespective of a particular indexing scheme or sub-zone ordering, is an example of a DGGH.
 
 [[term-dggrs]]
