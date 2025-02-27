@@ -37,6 +37,9 @@ The columns for each part list the conformance classes of the standard that are 
 | https://hytruck.landscape-geoinformatics.eu/dggs-api/v1-pre/[Prototype by the University of Tartu]
 | https://github.com/LandscapeGeoinformatics/pydggsapi[@LandscapeGeoinformatics]
 
+| https://dggs.geoinsight.ai[API prototype by GeoInsight]
+| info@geoinsight.ai[@GeoInsight]
+
 | TBA
 | TBA
 
