@@ -98,8 +98,8 @@ part:: The zone information resource SHOULD include a `bbox` property indicating
 part:: The zone information resource SHOULD include links to its parent(s) zone(s) using link relation `[ogc-rel:dggrs-zone-parent]`.
 part:: The zone information resource SHOULD include links to its immediate children zone using link relation `[ogc-rel:dggrs-zone-child]`.
 part:: The zone information resource SHOULD include links to its neighboring zones using link relation `[ogc-rel:dggrs-zone-neighbor]`.
-part:: The zone information resource SHOULD include an `areaMetersSquare` property indicating the surface area of the zone in square meters.
-part:: For a DGGS with three spatial dimension, the zone information resource SHOULD include a `volumeMetersCube` property indicating the volume of the zone in cubic meters.
+part:: For a DGGS with two spatial dimensions, the zone information resource SHOULD include an `areaMetersSquare` property indicating the surface area of the zone in square meters.
+part:: For a DGGS with three spatial dimensions, the zone information resource SHOULD include a `volumeMetersCube` property indicating the volume of the zone in cubic meters.
 part:: For a temporal DGGS, the zone information resource SHOULD include a `temporalDurationSeconds` property indicating the amount of time covered by the zone in seconds.
 part:: The zone information resource SHOULD include a `geometry` property indicating the 2D and/or 3D spatial geometry of the zone using GeoJSON or OGC Features & Geometry JSON for the JSON encoding,
 and including intermediate points between the vertices of the geometry so as to accurately represent the shape of the zones for DGGRSs defined in a CRS other than the CRS used to express the coordinates of the vertices. The coordinates should be in the CRS specified in the `crs` property.
