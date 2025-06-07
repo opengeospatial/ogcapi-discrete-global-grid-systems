@@ -22,7 +22,7 @@ part:: Every 200 response of the server for zone data with the media type `appli
 part:: The schema for the JSON document SHALL follow the JSON Schema for DGGS-JSON described below.
 part:: Every zone depth requested using the `zone-depth` query parameter SHALL be included in the response.
 part:: At every depth, each individual value SHALL correspond exactly to the data sampled representative of that sub-zone.
-part:: The list of data values SHALL follow the default zone order as specified by the Discrete Global Grid Reference System (for example based on a scanline or space-filling curved defined therein) for which the request is made.
+part:: The list of data values SHALL follow the default zone order as specified by the Discrete Global Grid Reference System (for example based on a scanline or space-filling curve defined therein) for which the request is made.
 part:: Null values SHALL use the `null` JSON value.
 ====
 

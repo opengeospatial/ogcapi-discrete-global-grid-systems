@@ -692,7 +692,7 @@ test-method::
 - assert that the schema for the JSON document follows the JSON Schema for DGGS-JSON described in <</req/data-json/content>> +
 - assert that every zone depth requested is using the `zone-depth` query parameter included in the response. +
 - assert thatt at every depth, each individual value corresponds exactly to the data sampled representative of that sub-zone. +
-- assert that the list of data values follows the default zone order as specified by the Discrete Global Grid Reference System (for example based on a scanline or space-filling curved defined therein) for which the request is made. +
+- assert that the list of data values follows the default zone order as specified by the Discrete Global Grid Reference System (for example based on a scanline or space-filling curve defined therein) for which the request is made. +
 - assert that Null values use the `null` JSON value.
 ====
 
@@ -727,7 +727,7 @@ test-method::
 - assert that the schema for the UBJSON document follows the same JSON Schema as for DGGS-JSON described in <</req/data-json/content>>. +
 - assert that every zone depth requested using the `zone-depth` query parameter is included in the response. +
 - assert that at every depth, each individual value corresponds exactly to the data sampled representative of that zone geometry. +
-- assert that the list of data values follows the default zone order as specified by the Discrete Global Grid Reference System (for example based on a scanline or space-filling curved defined therein) for which the request is made. +
+- assert that the list of data values follows the default zone order as specified by the Discrete Global Grid Reference System (for example based on a scanline or space-filling curve defined therein) for which the request is made. +
 - assert that Null values use the `null` JSON value.
 ====
 
