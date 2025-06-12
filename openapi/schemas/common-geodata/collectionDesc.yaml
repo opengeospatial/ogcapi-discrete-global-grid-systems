@@ -151,12 +151,12 @@ properties:
     description: Maximum cell size for usage of the collection
     type: number
   created:
-    description: Timestamp indicating when the collection was first produced
-    type: string
-    format: date-time
+    allOf:
+      - description: Timestamp indicating when the collection was first produced
+      - $ref: 'timeStamp.yaml'
   updated:
-    description: Timestamp of the last change/revision to the collection
-    type: string
-    format: date-time
+    allOf:
+      - description: Timestamp of the last change/revision to the collection
+      - $ref: 'timeStamp.yaml'
   extent:
     $ref: 'extent.yaml'

@@ -54,9 +54,10 @@ properties:
           pattern: "^\\+[1-9]{1}[0-9]{3,14}$"
           example: "+14165550142"
         roles:
-          description:
-            The type of phone number (e.g. home, work, fax, etc.).
-          $ref: 'roles.yaml'
+          allOf:
+            - description:
+                The type of phone number (e.g. home, work, fax, etc.).
+            - $ref: 'roles.yaml'
   emails:
     type: array
     description: Email addresses at which contact can be made.
@@ -70,9 +71,10 @@ properties:
           description: The value is the email number itself.
           format: email
         roles:
-          description:
-            The type of email (e.g. home, work, etc.).
-          $ref: 'roles.yaml'
+          allOf:
+            - description:
+                The type of email (e.g. home, work, etc.).
+            - $ref: 'roles.yaml'
   addresses:
     type: array
     description: Physical location at which contact can be made.
@@ -97,9 +99,10 @@ properties:
           type: string
           description: Country of the physical address.  ISO 3166-1 is recommended.
         roles:
-          description:
-            The type of address (e.g. office, home, etc.).
-          $ref: 'roles.yaml'
+          allOf:
+            - description:
+                The type of address (e.g. office, home, etc.).
+            - $ref: 'roles.yaml'
   links:
     type: array
     description: On-line information about the contact.
@@ -119,8 +122,9 @@ properties:
       Supplemental instructions on how or when to contact the
       responsible party.
   roles:
-    description:
-      The set of named duties, job functions and/or permissions
-      associated with this contact.
-      (e.g. developer, administrator, etc.).
-    $ref: 'roles.yaml'
+    allOf:
+      - description:
+          The set of named duties, job functions and/or permissions
+          associated with this contact.
+          (e.g. developer, administrator, etc.).
+      - $ref: 'roles.yaml'

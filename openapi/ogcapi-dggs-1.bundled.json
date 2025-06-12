@@ -1084,8 +1084,14 @@
                         "example": "+14165550142"
                       },
                       "roles": {
-                        "description": "The type of phone number (e.g. home, work, fax, etc.).",
-                        "$ref": "#/components/schemas/role"
+                        "allOf": [
+                          {
+                            "description": "The type of phone number (e.g. home, work, fax, etc.)."
+                          },
+                          {
+                            "$ref": "#/components/schemas/role"
+                          }
+                        ]
                       }
                     }
                   }
@@ -1105,8 +1111,14 @@
                         "format": "email"
                       },
                       "roles": {
-                        "description": "The type of email (e.g. home, work, etc.).",
-                        "$ref": "#/components/schemas/role"
+                        "allOf": [
+                          {
+                            "description": "The type of email (e.g. home, work, etc.)."
+                          },
+                          {
+                            "$ref": "#/components/schemas/role"
+                          }
+                        ]
                       }
                     }
                   }
@@ -1141,8 +1153,14 @@
                         "description": "Country of the physical address.  ISO 3166-1 is recommended."
                       },
                       "roles": {
-                        "description": "The type of address (e.g. office, home, etc.).",
-                        "$ref": "#/components/schemas/role"
+                        "allOf": [
+                          {
+                            "description": "The type of address (e.g. office, home, etc.)."
+                          },
+                          {
+                            "$ref": "#/components/schemas/role"
+                          }
+                        ]
                       }
                     }
                   }
@@ -1174,8 +1192,14 @@
                   "description": "Supplemental instructions on how or when to contact the\nresponsible party."
                 },
                 "roles": {
-                  "description": "The set of named duties, job functions and/or permissions associated with this contact. (e.g. developer, administrator, etc.).",
-                  "$ref": "#/components/schemas/role"
+                  "allOf": [
+                    {
+                      "description": "The set of named duties, job functions and/or permissions associated with this contact. (e.g. developer, administrator, etc.)."
+                    },
+                    {
+                      "$ref": "#/components/schemas/role"
+                    }
+                  ]
                 }
               }
             }
@@ -1335,14 +1359,24 @@
             "type": "number"
           },
           "created": {
-            "description": "Timestamp indicating when the collection was first produced",
-            "type": "string",
-            "format": "date-time"
+            "allOf": [
+              {
+                "description": "Timestamp indicating when the collection was first produced"
+              },
+              {
+                "$ref": "#/components/schemas/timeStamp"
+              }
+            ]
           },
           "updated": {
-            "description": "Timestamp of the last change/revision to the collection",
-            "type": "string",
-            "format": "date-time"
+            "allOf": [
+              {
+                "description": "Timestamp of the last change/revision to the collection"
+              },
+              {
+                "$ref": "#/components/schemas/timeStamp"
+              }
+            ]
           },
           "extent": {
             "$ref": "#/components/schemas/extent"
