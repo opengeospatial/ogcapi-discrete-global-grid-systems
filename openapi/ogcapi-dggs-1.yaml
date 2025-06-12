@@ -145,6 +145,8 @@ components:
          $ref: 'schemas/common-geodata/numberReturned.yaml'
       numberMatched:
          $ref: 'schemas/common-geodata/numberMatched.yaml'
+      role:
+         $ref: 'schemas/records-core/roles.yaml'
 
       # Dicrete Global Grid Systems
       dggrs:

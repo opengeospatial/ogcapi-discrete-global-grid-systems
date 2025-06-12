@@ -1085,7 +1085,7 @@
                       },
                       "roles": {
                         "description": "The type of phone number (e.g. home, work, fax, etc.).",
-                        "$ref": "#/paths/~1collections/get/responses/200/content/application~1json/schema/properties/collections/items/properties/contacts/items/properties/roles"
+                        "$ref": "#/components/schemas/role"
                       }
                     }
                   }
@@ -1106,7 +1106,7 @@
                       },
                       "roles": {
                         "description": "The type of email (e.g. home, work, etc.).",
-                        "$ref": "#/paths/~1collections/get/responses/200/content/application~1json/schema/properties/collections/items/properties/contacts/items/properties/roles"
+                        "$ref": "#/components/schemas/role"
                       }
                     }
                   }
@@ -1142,7 +1142,7 @@
                       },
                       "roles": {
                         "description": "The type of address (e.g. office, home, etc.).",
-                        "$ref": "#/paths/~1collections/get/responses/200/content/application~1json/schema/properties/collections/items/properties/contacts/items/properties/roles"
+                        "$ref": "#/components/schemas/role"
                       }
                     }
                   }
@@ -1175,11 +1175,7 @@
                 },
                 "roles": {
                   "description": "The set of named duties, job functions and/or permissions associated with this contact. (e.g. developer, administrator, etc.).",
-                  "type": "array",
-                  "minItems": 1,
-                  "items": {
-                    "type": "string"
-                  }
+                  "$ref": "#/components/schemas/role"
                 }
               }
             }
@@ -1824,6 +1820,14 @@
         "type": "integer",
         "minimum": 0,
         "example": 127
+      },
+      "role": {
+        "description": "The list of duties, job functions or permissions assigned by the system and associated with the context of this member.",
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "string"
+        }
       },
       "dggrs": {
         "title": "Discrete Global Grid Reference System description",
