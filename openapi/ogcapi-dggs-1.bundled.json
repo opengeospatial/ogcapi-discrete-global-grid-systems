@@ -2200,7 +2200,7 @@
         }
       },
       "dggrs-definition": {
-        "description": "Discrete Global Grid System Reference System (DGGRS) Definition.",
+        "description": "Discrete Global Grid System Reference System (DGGRS) Definition. This provisional schema is provided as informative guidance until a normative OGC Topic 21 - Part 5: DGGRS Definition Schema is finalized. DGGRS descriptions for OGC API - DGGS must link to such a definition using the link relation type http://www.opengis.net/def/rel/ogc/1.0/dggrs-definition. A JSON DGGRS definition is intended to provide a complete and unambiguous definition of a DGGRS, including the topology of the grids hierarchy, the mapping to a particular underlying Earth model, the zone identifier reference system and the deterministic sub-zone order, allowing to implement the OGC API - DGGS functionality for that DGGRS in interoperable clients and servers. At least until a normative schema is published as a Topic 21 part, clients should rely on matching URIs associated with specific DGGRS definitions they recognize rather than attempt to parse the definition's content. This is intentionally included in the OGC API - DGGS example OpenAPI definition for reference, but unused in resource paths, since the API is only required to provide a link, but not necessarily host the definition itself at any partiular resource path.",
         "type": "object",
         "required": [
           "dggh",
@@ -2209,10 +2209,12 @@
         ],
         "properties": {
           "title": {
-            "type": "string"
+            "type": "string",
+            "description": "A short human readable title or name for this DGGRS"
           },
           "description": {
-            "type": "string"
+            "type": "string",
+            "description": "A summary textual description of this DGGRS"
           },
           "uri": {
             "type": "string",

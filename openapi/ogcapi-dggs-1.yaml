@@ -38,7 +38,7 @@ paths:
    # -----------------------------
    # ### CORE ### (Conformance Class)
 
-   # DataSet DGGRS definitions (If shared for all collections, or supported for Data Set)
+   # DataSet DGGRS descriptions (If shared for all collections, or supported for Data Set)
    /dggs: # List of DGGRS including URI, link to description ('self'), definition ('dggrs-definition') for each DGGRS -- 'dggrs-list' link relation type from Landing Page
       $ref: 'paths/dggs-core/pDGGRSList.yaml'
    /dggs/{dggrsId}: # DGGRS information including links for retrieval ('dggrs-zone-data') and/or search ('dggrs-zone-query'), link for zone info ('dggrs-zone-info')
@@ -46,7 +46,7 @@ paths:
    /dggs/{dggrsId}/zones/{zoneId}: # Zone information and/or geometry; Including link for retrieval if data is available for this zone
       $ref: 'paths/dggs-core/pZone.yaml'
 
-   # Collection DGGRS definitions: Collection Zone Data (If available for a specific collection)
+   # Collection DGGRS descriptions: Collection Zone Data (If available for a specific collection)
    /collections/{collectionId}/dggs: # List of DGGRS including URI, link to description ('self'), definition ('dggrs-definition') for each DGGRS -- 'dggrs-list' link relation type from Collection
       $ref: 'paths/dggs-core/pCollectionDGGRSList.yaml'
    /collections/{collectionId}/dggs/{dggrsId}: # DGGRS information including links for retrieval ('dggrs-zone-data') and/or search ('dggrs-zone-query'), link for zone info ('dggrs-zone-info')
