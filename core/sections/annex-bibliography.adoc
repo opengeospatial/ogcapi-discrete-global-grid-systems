@@ -21,3 +21,5 @@
 * [[[Peterson2019,Peterson2019]]] Perry R. Peterson, Idan Shatz, An Application Development Framework for Open Geospatial Consortium Discrete Global Grid System Standard, 2019 IEEE International Geoscience and Remote Sensing Symposium (IGARSS), Yokohama, Japan, pp. 5668-5670, doi: 10.1109/IGARSS.2019.8898394 (2019). https://ieeexplore.ieee.org/document/8898394
 
 * [[[Amiri2015,Amiri2015]]] Ali Mahdavi Amiri, Faramarz Samavati, Perry Peterson, Categorization and Conversions for Indexing Methods of Discrete Global Grid Systems, ISPRS International Journal of Geo-Information 4, no. 1: 320-336 doi: 10.3390/ijgi4010320 (2015). https://www.mdpi.com/2220-9964/4/1/320
+
+* [[[vanLeuuwen2006,vanLeuuwen2006]]], Diederik van Leeuwen, Daniel Strebe, A "Slice-and-Dice" Approach to Area Equivalence in Polyhedral Map Projections, Cartography and Geographic Information Science, Volume 33, Issue 4, Pages 269–286 (2006). https://doi.org/10.1559/152304006779500687

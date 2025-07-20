@@ -101,6 +101,43 @@ image::images/isea3h-order-vertex.png[width=700,align="center"]
 .Sub-zone order for odd relative depth starting on an edge (hexagonal and pentagonal parents, depth 3)
 image::images/isea3h-order-edge.png[width=700,align="center"]
 
+[[ivea9r-dggrs]]
+=== IVEA9R DGGRS definition
+
+The IVEA9R DGGRS is very similar to the ISEA9R DGGRS described above, but using the Icosahedral Vertex-oriented Equal-Area (IVEA) projection (<<vanLeuuwen2006>>) instead of ISEA.
+Rather than mapping to straight lines great circles originating from the center of the icosahedron vertices, IVEA uses great circles originating from the icosahedron vertices.
+In terms of how each of the 120 spherical triangles of the disdyakis triacontahedron, which constitute the full spherical icosahedral symmetry, are mapped to flat triangles,
+this is actually equivalent to applying Snyder's projection to the dodecahedron as illustrated in Figure 11 of Snyder's 1992 paper <<Snyder1992>> (which could be called "DSEA"),
+when considering the barycentric coordinates within the corresponding 120 projected triangles, but re-mapping them through an affine transformation to the net of the icosahedron.
+The IVEA projection avoids the perceptible cusps, or sharp changes in direction, of ISEA and therefore yields more regular shapes for zones which in turn should result in
+generally improved measures of the Goodchild criteria.
+
+[#img_isea9r_ivea9r_comparison='{figure-caption} {counter:figure-num}']
+.Comparison of ISEA9R (left) and IVEA9R (right) at refinement level 2
+image::images/isea9r_ivea9r_comparison.png[width=1000,align="center"]
+
+.DGGRS Definition for IVEA9R using same indexing and orientation as for ISEA9R
+[source,json]
+----
+include::../schemas/dggrs-definition/examples/IVEA9R.json[]
+----
+
+[[ivea3h-dggrs]]
+=== IVEA3H DGGRS definition
+
+The IVEA3H DGGRS is very similar to the ISEA3H DGGRS described above, but using IVEA projection (<<vanLeuuwen2006>>) instead of ISEA.
+As with IVEA9R, the IVEA projection avoids the cusps of ISEA, and results in more regular hexagonal zones.
+
+[#img_isea3h_ivea3h_comparison='{figure-caption} {counter:figure-num}']
+.Comparison of ISEA3H (left) and IVEA3H (right) refinement level 3
+image::images/isea3h_ivea3h_comparison.png[width=1000,align="center"]
+
+.DGGRS Definition for IVEA3H using same indexing and orientation as for ISEA3H
+[source,json]
+----
+include::../schemas/dggrs-definition/examples/IVEA3H.json[]
+----
+
 [[ggg-dggrs]]
 === GNOSIS Global Grid DGGRS definition
 
