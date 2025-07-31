@@ -15,7 +15,7 @@
          ],
          "basePolyhedron": "icosahedron",
          "refinementRatio": 9,
-         "refinementStrategy": [ "nestedChildCell" ],
+         "refinementStrategy": [ "nestedChildCell", "nodeCentredChildCell" ],
          "constraints": {
             "cellAxisAligned": true,
             "cellEqualSized": true
@@ -23,7 +23,7 @@
          "zoneTypes": [ "square" ],
       },
       "parameters": {
-         "ellipsoid": "Authalic sphere based on [EPSG:7030] (WGS84) -- NOTE: No identifier defined yet? [ESPG:7048] exists for Authalic sphere based on GRS80 [EPSG:7019]",
+         "ellipsoid": "[EPSG:7030]",
          "orientation":
          {
             "description": "ISEA orientation symmetric about the equator with a single icosahedron vertex falling on land, with first icosahedron vertex at authalic latitude equal to the arctangent of the golden ratio (~58.397145907431° N geodetic latitude), 11.20°E longitude, and second vertex due North from that first vertex.",

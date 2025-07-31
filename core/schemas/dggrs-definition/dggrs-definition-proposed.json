@@ -127,6 +127,7 @@
                     "centredChildCell",
                     "nestedChildCell",
                     "nodeCentredChildCell",
+                    "nodeSharingChildCell",
                     "edgeCentredChildCell",
                     "faceCentredChildCell",
                     "solidCentredChildCell"

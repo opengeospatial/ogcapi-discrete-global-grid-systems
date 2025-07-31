@@ -1,7 +1,7 @@
 {
    "title": "IVEA3H",
-   "description": "An IVEA3H Discrete Global Grid Reference System using the Icosahedral Vertex-oriented Equal-Area (IVEA) projection as described in the 2006 'Slice & Dice' publication (equivalent to applying the 1992 Snyder polyhedral projection to the dodecahedron when considering the barycentric coordinates within the projection of the spherical disdyakis triacontahedron triangles constituting full spherical icosahedral symmetry), an orientation symmetric about the equator with a single vertex on land, and WGS84 authalic sphere (a WGS84 geodetic latitude is mapped to the sphere by converting it to an authalic latitude), a zone indexing system based on an ISEA9R, and a scanline-based sub-zone ordering",
-   "uri": "https://www.opengis.net/def/dggrs/OGC/1.0/ISEA3H",
+   "description": "An IVEA3H Discrete Global Grid Reference System using the Icosahedral Vertex-oriented Equal-Area (IVEA) projection as described in the 2006 'Slice & Dice' publication (equivalent to applying the 1992 Snyder polyhedral projection to the dodecahedron when considering the barycentric coordinates within the projection of the spherical disdyakis triacontahedron triangles constituting full spherical icosahedral symmetry), an orientation symmetric about the equator with a single vertex on land, and WGS84 authalic sphere (a WGS84 geodetic latitude is mapped to the sphere by converting it to an authalic latitude), a zone indexing system based on an IVEA9R, and a scanline-based sub-zone ordering",
+   "uri": "https://www.opengis.net/def/dggrs/OGC/1.0/IVEA3H",
    "links": [ { "rel": "describedby", "href": "https://portal.ogc.org/files/?artifact_id=111278" } ],
    "dggh": {
       "definition": {
@@ -13,14 +13,14 @@
          ],
          "basePolyhedron": "icosahedron",
          "refinementRatio": 3,
-         "refinementStrategy": [ "nestedChildCell", "nodeCentredChildCell" ],
+         "refinementStrategy": [ "centredChildCell", "nodeCentredChildCell" ],
          "constraints": {
             "cellEqualSized": true
          },
          "zoneTypes": [ "hexagon", "pentagon" ],
       },
       "parameters": {
-         "ellipsoid": "Authalic sphere based on [EPSG:7030] (WGS84) -- NOTE: No identifier defined yet? [ESPG:7048] exists for Authalic sphere based on GRS80 [EPSG:7019]",
+         "ellipsoid": "[EPSG:7030]",
          "orientation":
          {
             "description": "IVEA orientation symmetric about the equator with a single icosahedron vertex falling on land, with first icosahedron vertex at authalic latitude equal to the arctangent of the golden ratio (~58.397145907431° N geodetic latitude), 11.20°E longitude, and second vertex due North from that first vertex.",
@@ -32,11 +32,11 @@
    },
    "zirs": {
       "textZIRS": {
-         "description": "An identifier comprised of an uppercase letter representing the ISEA9R level corresponding to the current even or immediate lower odd ISEA3H level (A for level 0, B for level 1...), followed by a number from 0 to 9 representing the root rhombus corresponding to the faces of an icosahedron, in a staircase order from the top-left to the bottom right of an IVEA planar projection after a 60 degrees clockwise rotation, followed by a hyphen, then by an uppercase hexadecimal number identifying a sub-zone starting to count from 0 in row-major order, followed by a second hyphen, then by a letter identifying a hexagonal or pentagonal zone intersecting the sub-rhombus: A: even level regular zone B: even level North pole zone C: even level South pole zone D: odd level zone centered on rhombus vertex E: odd level zone top-right of rhombus vertex F: odd level zone bottom-right of rhombus vertex G: odd level North pole zone H: odd level South pole zone\n",
+         "description": "An identifier comprised of an uppercase letter representing the IVEA9R level corresponding to the current even or immediate lower odd IVEA3H level (A for level 0, B for level 1...), followed by a hexadecimal number from 0 to B, with 0 to 9 representing the root rhombus corresponding to the faces of an icosahedron, in a staircase order from the top-left to the bottom right of an IVEA planar projection after a 60 degrees clockwise rotation, A and B representing the special cases of the 'North' and 'South' poles respectively, followed by a hyphen, then by an uppercase hexadecimal number identifying a sub-rhombus starting to count from 0 in row-major order (except the special pole cases which are always 0), followed by a second hyphen, then by a letter identifying a hexagonal or pentagonal zone intersecting the sub-rhombus: A: even level, B: odd level zone centered on rhombus vertex, C: odd level zone top-right of rhombus vertex, D: odd level zone bottom-right of rhombus vertex\n",
          "type": "levelRootFaceHexRowMajorSubZone"
       },
       "uint64ZIRS": {
-         "description": "A 64-bit integer with the 3 least significant bits corresponding to a hexagonal or pentagonal zone intersecting a sub-rhombus: 0: even level regular zone 1: even level North pole zone 2: even level South pole zone 3: odd level zone centered on rhombus vertex 4: odd level zone top-right of rhombus vertex 5: odd level zone bottom-right of rhombus vertex 6: odd level North pole zone 7: odd level South pole zone, the next 51 bits corresponding to a sub-rhombus index, the next 4 bits corresponding to a root rhombus, the next 5 bits corresponding to an associated ISEA9R level, and the last most significant bit always 0 for a valid zone identifier."
+         "description": "A 64-bit integer with the 2 least significant bits corresponding to a hexagonal or pentagonal zone intersecting a sub-rhombus: 0: even level, 1: odd level zone centered on rhombus vertex, 2: odd level zone top-right of rhombus vertex, 3: odd level zone bottom-right of rhombus vertex, the next 51 bits corresponding to a sub-rhombus index (always 0 for polar zones), the next 4 bits corresponding to a root rhombus (with special values of 0xA and 0xB corresonding to North and South poles respectively), the next 5 bits corresponding to an associated IVEA9R level, and the remaining 2 most significant bits always 0 for a valid zone identifier."
       }
    },
    "subZoneOrder": {

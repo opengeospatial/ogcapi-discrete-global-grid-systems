@@ -10,6 +10,8 @@
 
 * [[[Sahr2003,Sahr2003]]], Kevin Sahr, Denis White, A. Jon Kimerling, Geodesic Discrete Global Grid Systems, Cartography and Geographic Information Science, Vol. 30, No. 2, pp. 121-134 (2003). https://cs.sou.edu/~sahrk/dgg/pubs/gdggs03.pdf
 
+* [[[Sahr2019,Sahr2019]]], Kevin Sahr, Central Place Indexing: Hierarchical Linear Indexing Systems for Mixed-Aperture Hexagonal Discrete Global Grid Systems, Publication: Cartographica: The International Journal for Geographic Information and Geovisualization, Vol. 54, No. 1 (2019). https://doi.org/10.3138/cart.54.1.2018-0022
+
 * [[[Gibb2016,Gibb2016]]], Robert Gibb, The rHEALPix Discrete Global Grid System. IOP Conference Series: Earth and Environmental Science. 34. 012012. 10.1088/1755-1315/34/1/012012 (2016). https://dx.doi.org/10.1088/1755-1315/34/1/012012
 
 * [[[OGC20-039r2,OGC 20-039r2]]], Robert Gibb, Byron Cochrane, Matthew Purss, OGC Testbed-16: DGGS and DGGS API Engineering Report (2021). https://docs.ogc.org/per/20-039r2.html
@@ -23,3 +25,5 @@
 * [[[Amiri2015,Amiri2015]]] Ali Mahdavi Amiri, Faramarz Samavati, Perry Peterson, Categorization and Conversions for Indexing Methods of Discrete Global Grid Systems, ISPRS International Journal of Geo-Information 4, no. 1: 320-336 doi: 10.3390/ijgi4010320 (2015). https://www.mdpi.com/2220-9964/4/1/320
 
 * [[[vanLeuuwen2006,vanLeuuwen2006]]], Diederik van Leeuwen, Daniel Strebe, A "Slice-and-Dice" Approach to Area Equivalence in Polyhedral Map Projections, Cartography and Geographic Information Science, Volume 33, Issue 4, Pages 269–286 (2006). https://doi.org/10.1559/152304006779500687
+
+* [[[kmoch2025]]], Kmoch, A., et al. IGEO7: A new hierarchically indexed hexagonal equal-area discrete global grid system, AGILE GIScience Ser., Volume 6, Page 32 (2025). https://doi.org/10.5194/agile-giss-6-32-2025
