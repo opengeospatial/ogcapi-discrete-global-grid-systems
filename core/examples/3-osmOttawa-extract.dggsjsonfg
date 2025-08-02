@@ -1,7 +1,7 @@
 {
    "conformsTo": [
       "https://www.opengis.net/spec/json-fg-1/0.2/conf/core",
-      "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-fgjson"
+      "https://www.opengis.net/spec/ogcapi-dggs-1/1.0/conf/data-dggs-jsonfg"
    ],
    "links": [
       {
@@ -10,7 +10,7 @@
       }
    ],
    "dggrs": "[ogc-dggrs:ISEA3H]",
-   "zoneId": "I0-1EFA652-D",
+   "zoneId": "I0-1EEBFA7-C",
    "depth": "15",
    "type" : "FeatureCollection",
    "features" : [ {
