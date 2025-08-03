@@ -1048,7 +1048,7 @@ test-method::
 - assert that every 200 response of the server for zone data with the media type `image/png` is a PNG image representing the data values for all selected fields within the zone for which data is requested. +
 - assert that if the zone geometry is not rectangular, the closest bounding rectangle is used for referencing the image. +
 - assert that a distinct value for each sub-zone implied from the requested `zone-depth` corresponds to at least one distinct cell value in the response. +
-- assert that for Implementations supporting Data Custom Depths, each depth of the requested zone depth pyramid is a separate image (overview) in the response. +
+- assert that for Implementations supporting Data Custom Depths, a request for multiple depths results in a 4xx client request error. +
 - assert that a `Values-Scale:` response header with a numeric real value is returned indicating the factor by which values were multiplied before an offset was added to result in the encoded 8-bit or 16-bit PNG unsigned integer values. +
 - assert that a `Values-Offset:` response header with a numeric real value is returned indicating the offset which was added after multiplying values by the scale factor to result in the encoded 8-bit or 16-bit PNG unsigned integer values.
 ====
