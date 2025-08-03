@@ -44,7 +44,7 @@ properties:
                      - type: string
                        format: uri
                        example: EPSG:7789
-                     - $ref: '../../../openapi/schemas/common-geodata/crs.yaml'
+                     - $ref: '../../../openapi/schemas/dggs-core/crs.yaml'
                basePolyhedron:
                   type: string
                   description: The Type/Class of Polyhedron used to construct the Discrete Global Grid System - if it is constructued using a Base Polyhedron.

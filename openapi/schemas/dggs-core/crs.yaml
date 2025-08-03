@@ -1,0 +1,7 @@
+title: CRS
+oneOf:
+- description: String representing the CRS, as a URI when possible
+  type: string
+- type: object
+  description: JSON encoding for Well-known text representation of coordinate reference systems 2.0
+  # $ref: 'projJSON.yaml'

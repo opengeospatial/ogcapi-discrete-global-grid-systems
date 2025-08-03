@@ -904,7 +904,17 @@
           },
           "attribution": {
             "type": "string",
-            "title": "attribution for the collection"
+            "title": "Attribution for the collection",
+            "description": "Attribution for the collection that can contain markup text whose format may be indicated in the `attributionMediaType` property. That format can be either plain text (`text/plain`), HTML (`text/html`) or https://commonmark.org/[CommonMark] (`text/markdown`).\nIf the 'attributionMediaType' indicates something other than `text/plain`, the `attribution` element string should be interpreted by a markup parser selected based on that media type to be presented to the user\n(e.g., `text/markdown` will be parsed by a library supporting CommonMark). By allowing markup, the attribution string can import images (e.g., organization logos) and format the text (e.g., the name of the organization in italics)."
+          },
+          "attributionMediaType": {
+            "title": "Media type of the attribution",
+            "description": "Media type for the markup language of the attribution: It can be either plain text (`text/plain`), HTML (`text/html`) or https://commonmark.org/[CommonMark] (`text/markdown`).",
+            "enum": [
+              "text/plain",
+              "text/html",
+              "text/markdown"
+            ]
           },
           "accessConstraints": {
             "description": "Restrictions on the availability of the collection that the user needs to be aware of before using or redistributing the data:\n\n* unclassified: Available for general disclosure\n* restricted: Not for general disclosure\n* confidential: Available for someone who can be entrusted with information\n* secret: Kept or meant to be kept private, unknown, or hidden from all but a select group of people\n* topSecret: Of the highest secrecy",
@@ -919,96 +929,6 @@
           "publisher": {
             "type": "string",
             "description": "Organization or individual responsible for making the data available"
-          },
-          "license": {
-            "type": "string",
-            "description": "The legal provisions under which the data ofthis collection is made available."
-          },
-          "rights": {
-            "type": "string",
-            "description": "A statement that concerns all rights not addressed by the license such as a copyright statement."
-          },
-          "formats": {
-            "description": "A list of formats in which the data of this collection is distributed",
-            "type": "array",
-            "items": {
-              "type": "object",
-              "anyOf": [
-                {
-                  "required": [
-                    "name"
-                  ]
-                },
-                {
-                  "required": [
-                    "mediaType"
-                  ]
-                }
-              ],
-              "properties": {
-                "name": {
-                  "type": "string"
-                },
-                "mediaType": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "keywords": {
-            "type": "array",
-            "description": "The topic or topics of the resource. Typically represented using free-form keywords, tags, key phrases, or classification codes.",
-            "items": {
-              "type": "string"
-            }
-          },
-          "themes": {
-            "type": "array",
-            "description": "A knowledge organization system used to classify the resource.",
-            "minItems": 1,
-            "items": {
-              "type": "object",
-              "required": [
-                "concepts",
-                "scheme"
-              ],
-              "properties": {
-                "concepts": {
-                  "type": "array",
-                  "description": "One or more entity/concept identifiers from this knowledge system. it is recommended that a resolvable URI be used for each entity/concept identifier.",
-                  "minItems": 1,
-                  "items": {
-                    "type": "object",
-                    "required": [
-                      "id"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "string",
-                        "description": "An identifier for the concept."
-                      },
-                      "title": {
-                        "type": "string",
-                        "description": "A human readable title for the concept."
-                      },
-                      "description": {
-                        "type": "string",
-                        "description": "A human readable description for the concept."
-                      },
-                      "url": {
-                        "type": "string",
-                        "format": "uri",
-                        "description": "A URI providing further description of the concept."
-                      }
-                    }
-                  }
-                },
-                "scheme": {
-                  "type": "string",
-                  "description": "An identifier for the knowledge organization system used to classify the resource.  It is recommended that the identifier be a resolvable URI.  The list of schemes used in a searchable catalog can be determined by inspecting the server's OpenAPI document or, if the server implements CQL2, by exposing a queryable (e.g. named `scheme`) and enumerating the list of schemes in the queryable's schema definition."
-                }
-              }
-            }
           },
           "contacts": {
             "type": "array",
@@ -1204,6 +1124,96 @@
               }
             }
           },
+          "license": {
+            "type": "string",
+            "description": "The legal provisions under which the data of this collection is made available."
+          },
+          "rights": {
+            "type": "string",
+            "description": "A statement that concerns all rights not addressed by the license such as a copyright statement."
+          },
+          "formats": {
+            "description": "A list of formats in which the data of this collection is distributed",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "anyOf": [
+                {
+                  "required": [
+                    "name"
+                  ]
+                },
+                {
+                  "required": [
+                    "mediaType"
+                  ]
+                }
+              ],
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "mediaType": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "keywords": {
+            "type": "array",
+            "description": "The topic or topics of the resource. Typically represented using free-form keywords, tags, key phrases, or classification codes.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "themes": {
+            "type": "array",
+            "description": "A knowledge organization system used to classify the resource.",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "concepts",
+                "scheme"
+              ],
+              "properties": {
+                "concepts": {
+                  "type": "array",
+                  "description": "One or more entity/concept identifiers from this knowledge system. it is recommended that a resolvable URI be used for each entity/concept identifier.",
+                  "minItems": 1,
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "id"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "description": "An identifier for the concept."
+                      },
+                      "title": {
+                        "type": "string",
+                        "description": "A human readable title for the concept."
+                      },
+                      "description": {
+                        "type": "string",
+                        "description": "A human readable description for the concept."
+                      },
+                      "url": {
+                        "type": "string",
+                        "format": "uri",
+                        "description": "A URI providing further description of the concept."
+                      }
+                    }
+                  }
+                },
+                "scheme": {
+                  "type": "string",
+                  "description": "An identifier for the knowledge organization system used to classify the resource.  It is recommended that the identifier be a resolvable URI.  The list of schemes used in a searchable catalog can be determined by inspecting the server's OpenAPI document or, if the server implements CQL2, by exposing a queryable (e.g. named `scheme`) and enumerating the list of schemes in the queryable's schema definition."
+                }
+              }
+            }
+          },
           "resourceLanguages": {
             "type": "array",
             "description": "The list of languages in which the data of this collection is available.",
@@ -1293,6 +1303,33 @@
             "type": "string",
             "default": "feature"
           },
+          "dataType": {
+            "allOf": [
+              {
+                "description": "Type of data represented in the collection"
+              },
+              {
+                "$ref": "#/components/schemas/dataType"
+              }
+            ]
+          },
+          "geoDataClasses": {
+            "description": "URIs identifying a class of data contained in the geospatial data (useful for example to determine compatibility with styles or processes)",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "defaultFields": {
+            "title": "List of property names of the data in the collection",
+            "description": "List of property names. In features is the typical list of properties that complement the geometry and in coverages are toe values of the cells.",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minItems": 1
+            }
+          },
           "crs": {
             "description": "the list of coordinate reference systems supported by the API; the first item is the default coordinate reference system",
             "type": "array",
@@ -1318,26 +1355,9 @@
             "type": "number",
             "example": 2021.33
           },
-          "dataType": {
-            "allOf": [
-              {
-                "description": "Type of data represented in the collection"
-              },
-              {
-                "$ref": "#/components/schemas/dataType"
-              }
-            ]
-          },
-          "geoDataClasses": {
-            "description": "URIs identifying a class of data contained in the geospatial data (useful for example to determine compatibility with styles or processes)",
-            "type": "array",
-            "items": {
-              "type": "string",
-              "format": "uri"
-            }
-          },
           "geometryDimension": {
-            "description": "The geometry dimension of the features shown in this layer (0: points, 1: curves, 2: surfaces, 3: solids), unspecified: mixed or unknown",
+            "title": "Number of spatial dimensions of the primary geometry for the data",
+            "description": "Number of spatial dimensions of the primary geometry of individual elements of the data: 0 for points, 1 for curves, 2 for surfaces, 3 for solids and unspecified when mixed or unknown. Not to be confused with the dimensions of the domain which are defined by the extent element.",
             "type": "integer",
             "minimum": 0,
             "maximum": 3
@@ -1768,60 +1788,6 @@
           }
         ]
       },
-      "crs": {
-        "title": "CRS",
-        "oneOf": [
-          {
-            "description": "Simplification of the object into a url if the other properties are not present",
-            "type": "string"
-          },
-          {
-            "type": "object",
-            "oneOf": [
-              {
-                "required": [
-                  "uri"
-                ],
-                "properties": {
-                  "uri": {
-                    "description": "Reference to one coordinate reference system (CRS)",
-                    "type": "string",
-                    "format": "uri"
-                  }
-                }
-              },
-              {
-                "required": [
-                  "wkt"
-                ],
-                "properties": {
-                  "wkt": {
-                    "allOf": [
-                      {
-                        "description": "An object defining the CRS using the JSON encoding for Well-known text representation of coordinate reference systems 2.0"
-                      },
-                      {
-                        "type": "object"
-                      }
-                    ]
-                  }
-                }
-              },
-              {
-                "required": [
-                  "referenceSystem"
-                ],
-                "properties": {
-                  "referenceSystem": {
-                    "description": "A reference system data structure as defined in the MD_ReferenceSystem of the ISO 19115",
-                    "type": "object"
-                  }
-                }
-              }
-            ]
-          }
-        ]
-      },
       "dataType": {
         "anyOf": [
           {
@@ -2199,6 +2165,19 @@
           }
         }
       },
+      "crs": {
+        "title": "CRS",
+        "oneOf": [
+          {
+            "description": "String representing the CRS, as a URI when possible",
+            "type": "string"
+          },
+          {
+            "type": "object",
+            "description": "JSON encoding for Well-known text representation of coordinate reference systems 2.0"
+          }
+        ]
+      },
       "dggrs-definition": {
         "description": "Discrete Global Grid System Reference System (DGGRS) Definition. This provisional schema is provided as informative guidance until a normative OGC Topic 21 - Part 5: DGGRS Definition Schema is finalized. DGGRS descriptions for OGC API - DGGS must link to such a definition using the link relation type http://www.opengis.net/def/rel/ogc/1.0/dggrs-definition. A JSON DGGRS definition is intended to provide a complete and unambiguous definition of a DGGRS, including the topology of the grids hierarchy, the mapping to a particular underlying Earth model, the zone identifier reference system and the deterministic sub-zone order, allowing to implement the OGC API - DGGS functionality for that DGGRS in interoperable clients and servers. At least until a normative schema is published as a Topic 21 part, clients should rely on matching URIs associated with specific DGGRS definitions they recognize rather than attempt to parse the definition's content. This is intentionally included in the OGC API - DGGS example OpenAPI definition for reference, but unused in resource paths, since the API is only required to provide a link, but not necessarily host the definition itself at any partiular resource path.",
         "type": "object",
@@ -2332,6 +2311,7 @@
                         "centredChildCell",
                         "nestedChildCell",
                         "nodeCentredChildCell",
+                        "nodeSharingChildCell",
                         "edgeCentredChildCell",
                         "faceCentredChildCell",
                         "solidCentredChildCell"

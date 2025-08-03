@@ -30,7 +30,7 @@ properties:
   crs:
     allOf:
       - description: Coordinate Reference System (CRS) used by this DGGS  (mandatory if applicable), specified as a URI if one exists.
-      - $ref: '../common-geodata/crs.yaml'
+      - $ref: 'crs.yaml'
   defaultDepth:
     description: >-
       The default zone depth returned for zone data retrieval when the `zone-depth` parameter is not used.

@@ -17,7 +17,19 @@ properties:
     example: A Digital Elevation Model.
   attribution:
     type: string
-    title: attribution for the collection
+    title: Attribution for the collection
+    description: |-
+     Attribution for the collection that can contain markup text whose format may be indicated in the `attributionMediaType` property. That format can be either plain text (`text/plain`), HTML (`text/html`) or https://commonmark.org/[CommonMark] (`text/markdown`).
+     If the 'attributionMediaType' indicates something other than `text/plain`, the `attribution` element string should be interpreted by a markup parser selected based on that media type to be presented to the user
+     (e.g., `text/markdown` will be parsed by a library supporting CommonMark). By allowing markup, the attribution string can import images (e.g., organization logos) and format the text (e.g., the name of the organization in italics).
+  attributionMediaType:
+    title: Media type of the attribution
+    description: |-
+     Media type for the markup language of the attribution: It can be either plain text (`text/plain`), HTML (`text/html`) or https://commonmark.org/[CommonMark] (`text/markdown`).
+    enum:
+    - text/plain
+    - text/html
+    - text/markdown
   accessConstraints:
     description: |-
        Restrictions on the availability of the collection that the user needs to be aware of before using or redistributing the data:
@@ -36,9 +48,16 @@ properties:
   publisher:
     type: string
     description: Organization or individual responsible for making the data available
+  contacts:
+    type: array
+    description:
+      A list of contacts qualified by their role(s) in association to the collection.
+    minItems: 1
+    items:
+      $ref: '../records-core/contact.yaml'
   license:
     type: string
-    description: The legal provisions under which the data ofthis collection is made available.
+    description: The legal provisions under which the data of this collection is made available.
   rights:
     type: string
     description: A statement that concerns all rights not addressed by the license such as a copyright statement.
@@ -59,13 +78,6 @@ properties:
     minItems: 1
     items:
       $ref: '../records-core/theme.yaml'
-  contacts:
-    type: array
-    description:
-      A list of contacts qualified by their role(s) in association to the collection.
-    minItems: 1
-    items:
-      $ref: '../records-core/contact.yaml'
   resourceLanguages:
     type: array
     description: The list of languages in which the data of this collection is available.
@@ -104,6 +116,23 @@ properties:
     description: indicator about the type of the items in the collection if the collection has an accessible /collections/{collectionId}/items endpoint
     type: string
     default: feature
+  dataType:
+    allOf:
+      - description: Type of data represented in the collection
+      - $ref: '../../schemas/common-geodata/dataType.yaml'
+  geoDataClasses:
+     description: URIs identifying a class of data contained in the geospatial data (useful for example to determine compatibility with styles or processes)
+     type: array
+     items:
+       type: string
+       format: uri
+  defaultFields:
+    title: List of property names of the data in the collection
+    description: List of property names. In features is the typical list of properties that complement the geometry and in coverages are toe values of the cells.
+    type: array
+    items:
+       type: string
+       minItems: 1
   crs:
     description: the list of coordinate reference systems supported by the API; the first item is the default coordinate reference system
     type: array
@@ -123,18 +152,9 @@ properties:
     description: Epoch of the native (storage) Coordinate Reference System (CRS)
     type: number
     example: 2021.33
-  dataType:
-    allOf:
-      - description: Type of data represented in the collection
-      - $ref: '../../schemas/common-geodata/dataType.yaml'
-  geoDataClasses:
-     description: URIs identifying a class of data contained in the geospatial data (useful for example to determine compatibility with styles or processes)
-     type: array
-     items:
-       type: string
-       format: uri
   geometryDimension:
-    description: 'The geometry dimension of the features shown in this layer (0: points, 1: curves, 2: surfaces, 3: solids), unspecified: mixed or unknown'
+    title: Number of spatial dimensions of the primary geometry for the data
+    description: 'Number of spatial dimensions of the primary geometry of individual elements of the data: 0 for points, 1 for curves, 2 for surfaces, 3 for solids and unspecified when mixed or unknown. Not to be confused with the dimensions of the domain which are defined by the extent element.'
     type: integer
     minimum: 0
     maximum: 3

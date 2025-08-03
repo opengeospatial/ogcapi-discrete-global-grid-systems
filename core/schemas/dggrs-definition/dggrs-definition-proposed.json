@@ -44,6 +44,9 @@
                       "type": "string",
                       "format": "uri",
                       "example": "EPSG:7789"
+                    },
+                    {
+                      "type": "object"
                     }
                   ]
                 }

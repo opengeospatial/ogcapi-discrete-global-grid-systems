@@ -133,8 +133,6 @@ components:
          $ref: 'schemas/common-geodata/irregularGrid.yaml'
       extent:
          $ref: 'schemas/common-geodata/extent.yaml'
-      crs:
-         $ref: 'schemas/common-geodata/crs.yaml'
       dataType:
          $ref: 'schemas/common-geodata/dataType.yaml'
       timeStamp:
@@ -155,6 +153,8 @@ components:
          $ref: 'schemas/dggs-core/dggrs-item.yaml'
       zone-info:
          $ref: 'schemas/dggs-core/zone-info.yaml'
+      crs:
+         $ref: 'schemas/dggs-core/crs.yaml'
       dggrs-definition:
          $ref: '../core/schemas/dggrs-definition/dggrs-definition-proposed.yaml'
       dggs-json:

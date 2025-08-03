@@ -55,7 +55,7 @@ properties:
       CRS:
         allOf:
         - description: Coordinate Reference System (CRS)
-        - $ref: '../common-geodata/crs.yaml'
+        - $ref: '../dggs-core/crs.yaml'
         example: EPSG:7789
       GLOBE:
         description: Globe Reference System Identifier/Specification
