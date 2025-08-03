@@ -22,6 +22,9 @@ The two mechanisms may potentially be related to each other, for example using t
 If defining a more optimal sub-zone order for a particular DGGRS is not practical, the ascending sort order of the sub-zone identifiers can be specified as a fallback,
 based on either the ASCII character strings of the textual identifiers, or the 64-bit integer identifiers.
 
+IMPORTANT: When defining sub-zone order based on a space-filling curve, the curve must go through every sub-zone of the parent zone (all zones at least partially within the parent zone), and if the curve goes
+through zones fully outside of the parent zone, those outside zones must be excluded from this local indexing order, as they are not considered sub-zones.
+
 === JSON Schema for defining a DGGRS
 
 .JSON Schema for the DGGRS Definition
