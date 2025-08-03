@@ -85,7 +85,7 @@ include::../schemas/dggrs-definition/examples/IVEA9R.json[]
 
 [#img_isea9r_ivea9r_comparison='{figure-caption} {counter:figure-num}']
 .Comparison of ISEA9R (left) and IVEA9R (right) at refinement level 2
-image::images/isea9r_ivea9r_comparison.png[width=1000,align="center"]
+image::images/isea9r_ivea9r_comparison.png[width=700,align="center"]
 
 [[isea3h-dggrs]]
 === ISEA3H DGGRS definition
@@ -139,7 +139,7 @@ include::../schemas/dggrs-definition/examples/IVEA3H.json[]
 
 [#img_isea3h_ivea3h_comparison='{figure-caption} {counter:figure-num}']
 .Comparison of ISEA3H (left) and IVEA3H (right) refinement level 3
-image::images/isea3h_ivea3h_comparison.png[width=1000,align="center"]
+image::images/isea3h_ivea3h_comparison.png[width=700,align="center"]
 
 [[isea7h-dggrs]]
 === ISEA7H DGGRS definition
@@ -158,15 +158,15 @@ include::../schemas/dggrs-definition/examples/ISEA7H.json[]
 
 [#img_isea7h_level0='{figure-caption} {counter:figure-num}']
 .The ISEA7H level 0 zones and associated identifiers, shown on an ISEA planar projection (https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry])
-image::images/ISEA7H-Level0.png[width=1000,align="center"]
+image::images/ISEA7H-Level0.png[width=700,align="center"]
 
 [#img_isea7h_level1='{figure-caption} {counter:figure-num}']
 .The ISEA7H level 1 zones and associated identifiers, shown on an ISEA planar projection (https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry])
-image::images/ISEA7H-Level1.png[width=1000,align="center"]
+image::images/ISEA7H-Level1.png[width=700,align="center"]
 
 [#img_isea7h_level2='{figure-caption} {counter:figure-num}']
 .The ISEA7H level 2 zones and associated identifiers, shown on an ISEA planar projection (https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry])
-image::images/ISEA7H-Level2.png[width=1000,align="center"]
+image::images/ISEA7H-Level2.png[width=700,align="center"]
 
 [[order_vertex_7h]]
 [#img_7h_order_vertex='{figure-caption} {counter:figure-num}']
@@ -192,7 +192,7 @@ include::../schemas/dggrs-definition/examples/IVEA7H.json[]
 
 [#img_isea7h_ivea7h_comparison='{figure-caption} {counter:figure-num}']
 .Comparison of ISEA7H (left) and IVEA7H (right) refinement level 3
-image::images/isea7h_ivea7h_comparison.png[width=1000,align="center"]
+image::images/isea7h_ivea7h_comparison.png[width=700,align="center"]
 
 [[rHEALPix-dggrs]]
 === rHEALPix DGGRS definition
@@ -218,27 +218,27 @@ include::../schemas/dggrs-definition/examples/rHEALPix.json[]
 
 [#img_rHEALPix_Level0='{figure-caption} {counter:figure-num}']
 .The rHEALPix global grid with level 0 zone identifiers (https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry])
-image::images/rHEALPix-Level0.png[width=800,align="center"]
+image::images/rHEALPix-Level0.png[width=700,align="center"]
 
 [#img_rHEALPix_Level1='{figure-caption} {counter:figure-num}']
 .The rHEALPix global grid with level 1 zone identifiers (https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry])
-image::images/rHEALPix-Level1.png[width=800,align="center"]
+image::images/rHEALPix-Level1.png[width=700,align="center"]
 
 [#img_rHEALPix_Level2='{figure-caption} {counter:figure-num}']
 .The rHEALPix global grid with level 2 zone identifiers  (https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry])
-image::images/rHEALPix-Level2.png[width=800,align="center"]
+image::images/rHEALPix-Level2.png[width=700,align="center"]
 
 [#img_rHEALPix_Level0_WGS84='{figure-caption} {counter:figure-num}']
 .The rHEALPix global grid at level 0 shown on a Plate carrée projection (https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry])
-image::images/rHEALPix-Level0-WGS84.png[width=800,align="center"]
+image::images/rHEALPix-Level0-WGS84.png[width=700,align="center"]
 
 [#img_rHEALPix_Level1_WGS84='{figure-caption} {counter:figure-num}']
 .The rHEALPix global grid at level 1 shown on a Plate carrée projection (https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry])
-image::images/rHEALPix-Level1-WGS84.png[width=800,align="center"]
+image::images/rHEALPix-Level1-WGS84.png[width=700,align="center"]
 
 [#img_rHEALPix_Level2_WGS84='{figure-caption} {counter:figure-num}']
 .The rHEALPix global grid with level 2 zone identifiers shown on a Plate carrée projection (https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry])
-image::images/rHEALPix-Level2-WGS84.png[width=800,align="center"]
+image::images/rHEALPix-Level2-WGS84.png[width=700,align="center"]
 
 [#img_rHEALPix_Level2-Globe='{figure-caption} {counter:figure-num}']
 .The rHEALPix global grid with level 2 zone identifiers shown on a globe (https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry])
