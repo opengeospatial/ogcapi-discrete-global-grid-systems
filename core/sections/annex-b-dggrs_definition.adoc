@@ -143,7 +143,7 @@ image::images/isea3h_ivea3h_comparison.png[width=1000,align="center"]
 
 The ISEA7H DGGRS is also based on the ISEA projection, and uses the same icosahedron orientation as the other DGGRSs described above, but with a refinement ratio of 7.
 
-An alternate ISEA7H DGGRS for the same Discrete Global Grid Hierarchy (DGGH) could be defined using another indexing such as Z7 (<<<sahr2019>>>), as described for IGEO7 (<<<kmoch2025>>>).
+An alternate ISEA7H DGGRS for the same Discrete Global Grid Hierarchy (DGGH) could be defined using another indexing such as Z7 (<<<Sahr2019>>>), as described for IGEO7 (<<<kmoch2025>>>).
 The DGGH would be considered the same, with identical topology and zone geometry, as long as the same ISEA projection, orientation and the WGS84 ellipsoid
 (i.e., converting geodetic latitude to authalic latitude prior to applying the ISEA projection) are used.
 
@@ -178,7 +178,7 @@ image::images/7h-order-depth2.png[width=700,align="center"]
 === IVEA7H DGGRS definition
 
 The IVEA7H DGGRS is very similar to the ISEA7H DGGRS described above, but using the IVEA projection (<<vanLeuuwen2006>>) instead of ISEA.
-As for ISEA7H, alternate indexing schemes such as Z7 (<<<sahr2019>>>) could be used to define an alternate DGGRS for the same DGGH whose topology and zone geometry are identical,
+As for ISEA7H, alternate indexing schemes such as Z7 (<<<Sahr2019>>>) could be used to define an alternate DGGRS for the same DGGH whose topology and zone geometry are identical,
 thus only requiring a mapping of zone identifiers to achieve interoperability.
 
 .DGGRS Definition for IVEA7H using indexing based on sub-division of root rhombuses in powers of 7
