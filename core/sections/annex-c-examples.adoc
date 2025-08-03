@@ -4,6 +4,7 @@
 == Examples
 This annex provides a set of examples illustrating requests and responses for retrieving DGGS <<rc_data-retrieval,zone data>> and performing <<rc_zone-query,zone queries>> using capabilities defined by this DGGS API.
 
+[[examples_collection_description]]
 === Collection description
 DGGS resources can be attached to an https://docs.ogc.org/DRAFTS/20-024.html[_OGC API - Common - Part 2_] collection origin resource path.
 The following global GEBCO 2014 bathymetry collection will be used as an example:
@@ -47,6 +48,7 @@ An example JSON response for this collection description resource, as defined by
 }
 ----
 
+[[examples_listing_available_dggrss]]
 === Listing available DGGRSs
 Whether accessing DGGS resources for the root of the API (which may correspond to a dataset, as stated in https://docs.ogc.org/is/17-069r3/17-069r3.html#_scope[OGC API - Features]) or for a particular collection,
 the first DGGS-specific request made by a client would be to list the available DGGRSs.
@@ -106,6 +108,7 @@ An example JSON response for this DGGRS list, as defined by the <<rc_core,Core r
 }
 ----
 
+[[examples_retrieving_the_description_of_a_specific_dggrs]]
 === Retrieving the description of a specific DGGRS
 A client would then select a particular DGGRS of which it already has built-in knowledge, possibly using a software library implementing support for one or more DGGRS available from the server.
 
@@ -163,6 +166,7 @@ See the informative <<annex-dggrs-def,annex B>> for examples of DGGRS definition
 The annex includes provisionary definitions for the <<isea3h-dggrs,ISEA3H>>, <<isea9r-dggrs,ISEA9R>> and <<ggg-dggrs,GNOSIS Global Grid>> used in these examples
 which will likely be used to initially populate an authoritative registry, Additional DGGRS entries would be submitted, reviewed and registered based on the needs of the community.
 
+[[examples_retrieving_information_for_a_specific_dggrs_zone]]
 === Retrieving information for a specific DGGRS zone
 
 Later examples will demonstrate how to list available zones by performing zone queries, but for now these examples will skip directly to <<zone-info,retrieving information about a particular zone>>.
@@ -282,11 +286,13 @@ could look like the following:
 .Sample HTML response of an ISEA3H DGGRS zone information resource for GEBCO data
 image::images/zone-info-html.png[width=700,align="center"]
 
+[[examples_simple_zone_queries]]
 === Simple zone queries
 Having selected a particular DGGRS, one use case for the API is for a client to perform spatial queries by <<rc_zone-query,requesting a list of zones>>.
 The simplest case is to simply request a list of all available zones for a discrete global grid of a given refinement level (`zone-level`), which in the case of a particular collection implies zones
 for which the collection has data.
 
+[[examples_querying_a_particular_refinement_level]]
 ==== Querying a particular refinement level
 
 If no `zone-level` query parameter is provided, the server is free to pick a default zone level for such queries. This would result in a reasonable number of zones returned,
@@ -346,6 +352,7 @@ interoperability with traditional GIS software without an awareness of the DGGRS
 .GeoJSON response for zone query for ISEA3H DGGRS at level 1 visualized in QGIS
 image::images/zones-globe-isea3h-level1.png[width=700,align="center"]
 
+[[examples_querying_for_a_spatio_temporal_subset]]
 ==== Querying for a spatio-temporal subset
 
 To request a list of zones for an area of interest, the `bbox` or `subset` query parameter can be used.
@@ -439,6 +446,7 @@ image::images/zones-states-isea3h.png[width=700,align="center"]
 
 The similarity between the response for this collection of states and provinces features compared to the same request earlier for a gridded elevation coverages showcases the potential for DGGS zone queries to facilitate data integration.
 
+[[examples_querying_sub_zones_of_a_parent_zone]]
 ==== Querying sub-zones of a parent zone
 
 The Zone Query requirements class defines the `parent-zone` query parameter as one more way to restrict the query spatially (and temporally in the case of a temporal DGGRS), which is particularly useful for hierarchical exploration.
@@ -533,6 +541,7 @@ https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSIS
 .GeoJSON response for zone query for GNOSIS Global Grid DGGRS at level 13 for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSISGlobalGrid/zones/6-1F-98[6-1F-98], for https://viewfinderpanoramas.org/[Viewfinder Panoramas], visualized in QGIS
 image::images/zones-srtm-ggg-level13-parent-zone.png[width=500,align="center"]
 
+[[examples_compact_zone_queries]]
 === Compact zone queries
 The following examples are reprises of some of the earlier examples leaving compact zones enabled.
 These examples showcase how the zone compacting mechanism allows to communicate the same spatial area using fewer zones.
@@ -634,6 +643,7 @@ https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSIS
 .GeoJSON compact zones response for querying GNOSIS Global Grid DGGRS at level 13 for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/GNOSISGlobalGrid/zones/6-1F-98[6-1F-98], for https://viewfinderpanoramas.org/[Viewfinder Panoramas], visualized in QGIS
 image::images/compact-srtm-ggg-level13-parent-zone.png[width=700,align="center"]
 
+[[examples_filtering_zone_queries_using_cql2_expressions]]
 === Filtering zone queries using CQL2 expressions
 The Zone Query capabilities are most useful for use cases where the retrieved zone list is the result of some operation,
 whether a processing workflow or the evaluation of a query expressed by the client.
@@ -777,6 +787,7 @@ image::images/cql2-ggg-building.png[width=700,align="center"]
 
 A future extension could also enable cross-collection queries, possibly using a `joinCollections` query parameter which would make queryables from different collections available.
 
+[[examples_retrieving_data_for_a_dggrs_zone]]
 === Retrieving data for a DGGRS Zone
 
 Data can be retrieved for a parent zone of interest, including values for all sub-zones within it, at the `.../dggs/{dggrsId}/zones/{zoneId}/data` resource path.
@@ -875,6 +886,7 @@ While both DGGS-JSON and GeoTIFF are encodings appropriate for raster data, DGGS
 Encoding vector data in these formats essentially implies rasterizing the vector features, using either a selection of the feature properties as values, or numerical feature identifiers
 for which associated properties may be queryable elsewhere (e.g., in an http://www.opengis.net/doc/IS/ogcapi-features-1/1.0.1[OGC API - Features] deployment).
 
+[[examples_geojson_examples]]
 ===== GeoJSON Examples
 
 Although gridded elevation and bathymetry data is better suited to raster formats such as DGGS-JSON and GeoTIFF, a GeoJSON and/or Features & Geometry JSON representation
@@ -1041,6 +1053,7 @@ image::images/geojson-bathymetry.png[width=700,align="center"]
 .Visualization in an ISEA planar projection of GeoJSON polygon contour features for data retrieved from ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:physical:bathymetry/dggs/ISEA3H/zones/B0-5-A[B0-5-A] of https://naturalearthdata.com/[Natural Earth] bathymetry contours.
 image::images/geojson-bathymetryISEA.png[width=700,align="center"]
 
+[[examples_dggs_json_fg_examples]]
 ===== DGGS-JSON-FG Examples
 
 The DGGS-JSON-FG format is the vector counterpart to DGGS-JSON, leveraging the same concepts of DGGRS, parent zone, sub-zones at a given relative depth, and deterministic sub-zone order,
@@ -1440,6 +1453,7 @@ image::images/ggg-neBathymetry-crs84.png[width=700,align="center"]
 .Visualization in an orthographic projection of GeoJSON polygon contour features for data retrieved from GNOSIS Global Grid DGGRS zone https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:physical:bathymetry/dggs/GNOSISGlobalGrid/zones/1-1-7[1-1-7] of https://naturalearthdata.com/[Natural Earth] bathymetry contours.
 image::images/ggg-neBathymetry-orthographic.png[width=700,align="center"]
 
+[[examples_requesting_data_at_a_particular_relative_depth]]
 === Requesting data at a particular relative depth
 
 Implementations supporting the `zone-depth` query parameter defined in the <<rc_data-custom-depths,"Data Custom Depths">> requirements class allows clients to request data at a particular depth.
@@ -1459,11 +1473,13 @@ https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/H4-
 .Visualization of near-infrared band (`B08`) of ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/H4-A825C-A[H4-A825C-A] at relative depth of 9 from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
 image::images/sentinel2-isea3h-depth-9.png[width=700,align="center"]
 
+[[examples_subsetting_and_filtering_zone_data]]
 === Subsetting and filtering zone data
 
 In addition to the basic retrieval of zone data, implementations can support additional query parameters for the `.../zones/{zoneId}/data` resources to return only a portion of the data associated with the zone.
 The `subset`, `datetime` and `properties` query parameters are defined in the <<rc_data-subsetting,Data Subsetting>> requirements class, while the `filter` query parameter is defined in the <<rc_data-cql2-filter, Filtering Zone Data with CQL2>> requirements class.
 
+[[examples_temporal_subsetting]]
 ==== Temporal subsetting
 
 It is possible to retrieve only a portion of a temporal datasets using one of two query parameters: `datetime`, or `subset` with the `time` dimension.
@@ -1622,6 +1638,7 @@ https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/I
 
 TIP: Temporal subsetting for a slice can also be achieved using the equivalent `subset=time("2022-10-06":"2022-10-10")` syntax for trimming, and `subset=time("2022-10-06")` for slicing.
 
+[[examples_subsetting_arbitrary_dimensions]]
 ==== Subsetting arbitrary dimensions
 
 In addition to spatial and temporal dimensions, datasets may be comprised of additional dimensions, such as atmospheric pressure.
@@ -1707,6 +1724,7 @@ https://maps.gnosis.earth/ogcapi/collections/climate:era5:relativeHumidity/dggs/
 image::images/rh-pressure.png[width=700,align="center"]
 <<<
 
+[[examples_field_selection]]
 ==== Field selection
 
 Some data has multiple properties for a feature, or fields for a given cell or position, such as the precipitation and windspeed variables in the CMIP5 dataset illustrated above.
@@ -1773,6 +1791,7 @@ image::images/field-selection-b08.png[width=700,align="center"]
 
 TIP: Although the examples illustrated here are all for rasterized data, field selection can also be applied to feature collection outputs so select which properties to include.
 
+[[examples_filtering_zone_data_using_cql2_expressions]]
 ==== Filtering zone data using CQL2 expressions
 
 The `filter` query parameter can be used to only include data matching a CQL2 expression, which can reference the queryables of the collections, such as the feature properties or fields.

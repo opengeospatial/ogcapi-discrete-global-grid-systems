@@ -80,7 +80,7 @@ Query parameters for discovery within a large number of collections to be define
 *Filtering Collections with CQL2:* `filter` +
 *Sortable Collections:* `sortby`
 | *`/collections/{collectionId}`* +
-(see <<_collection_description,Examples C.1>>) | Collection Description +
+(see <<examples_collection_description,Examples C.1>>) | Collection Description +
 https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/responses/common-geodata/rCollection.yaml[Response (OpenAPI)] / https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/schemas/common-geodata/collectionDesc.yaml[Schema] |
 https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/common-geodata/collectionId-all.yaml[`{collectionId}` path parameter (OpenAPI)]
 | *`/collections/{collectionId}/dggs...`* | DGGS Resources (defined in <<rc_core,Core>>, as well as <<rc_data-retrieval,Zone Data Retrieval>> and/or <<rc_zone-query,Zone Query>>) for a collection |
@@ -96,28 +96,28 @@ as defined in http://www.opengis.net/doc/IS/ogcapi-features-3/1.0[OGC API - Feat
 (example paths -- could also exist on an authoritative DGGRS register) +
 (see <<annex-dggrs-def, Annex B>>)| DGGRS Definition https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/core/schemas/dggrs-definition/dggrs-definition-proposed.yaml[Schema]  |
 | *`.../dggs`* +
-(see <<_listing_available_dggrss,Examples C.2>>) | DGGRS List https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/responses/dggs-core/rDGGRSList.yaml[Response (OpenAPI)]  |
+(see <<examples_listing_available_dggrss,Examples C.2>>) | DGGRS List https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/responses/dggs-core/rDGGRSList.yaml[Response (OpenAPI)]  |
 | *`.../dggs/{dggrsId}`* +
-(see <<_retrieving_the_description_of_a_specific_dggrs, Examples C.3>>) | DGGRS Description +
+(see <<examples_retrieving_the_description_of_a_specific_dggrs, Examples C.3>>) | DGGRS Description +
 https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/responses/dggs-core/rDGGRS.yaml[Response (OpenAPI)] / https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/schemas/dggs-core/dggrs.yaml[Schema] |
 https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/dggrsId.yaml[`{dggrsId}` path parameter (OpenAPI)]
 | *`.../dggs/{dggrsId}/zones/{zoneId}`* +
-(see <<_retrieving_information_for_a_specific_dggrs_zone, Examples C.4>>) | Zone Information +
+(see <<examples_retrieving_information_for_a_specific_dggrs_zone, Examples C.4>>) | Zone Information +
 https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/responses/dggs-core/rZone.yaml[Response (OpenAPI)] / https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/schemas/dggs-core/zone-info.yaml[Schema] |
 https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/zoneId.yaml[`{zoneId}` path parameter (OpenAPI)]
 3+| *Defined in requirements class <<rc_zone-query,Zone Query>>:*
 .3+| *`.../dggs/{dggrsId}/zones`* +
-(see <<_simple_zone_queries, Examples C.5>> and <<_compact_zone_queries, Examples C.6>>) | Zone Query https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/responses/dggs-core/rZonesList.yaml[Response (OpenAPI)] +
+(see <<examples_simple_zone_queries, Examples C.5>> and <<examples_compact_zone_queries, Examples C.6>>) | Zone Query https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/responses/dggs-core/rZonesList.yaml[Response (OpenAPI)] +
 (defines a mandatory JSON zone list encoding) |
 *Required query parameters:* +
-https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/compact-zones.yaml[`compact-zones`] (see <<_simple_zone_queries, Examples C.5>> and <<_compact_zone_queries, Examples C.6>>) +
-https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/zone-level.yaml[`zone-level`] (see <<_querying_a_particular_refinement_level, Examples C.5.1>>) +
-https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/subset.yaml[`subset`] (see <<_querying_for_a_spatio_temporal_subset, Examples C.5.2>>) +
+https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/compact-zones.yaml[`compact-zones`] (see <<examples_simple_zone_queries, Examples C.5>> and <<examples_compact_zone_queries, Examples C.6>>) +
+https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/zone-level.yaml[`zone-level`] (see <<examples_querying_a_particular_refinement_level, Examples C.5.1>>) +
+https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/subset.yaml[`subset`] (see <<examples_querying_for_a_spatio_temporal_subset, Examples C.5.2>>) +
 https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/subset-crs.yaml[`subset-crs`] +
-https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/common-geodata/bbox.yaml[`bbox`]  (see <<_querying_for_a_spatio_temporal_subset, Examples C.5.2>>) +
+https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/common-geodata/bbox.yaml[`bbox`]  (see <<examples_querying_for_a_spatio_temporal_subset, Examples C.5.2>>) +
 https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/bbox-crs.yaml[`bbox-crs`] +
-https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/common-geodata/datetime.yaml[`datetime`] (see <<_querying_for_a_spatio_temporal_subset, Examples C.5.2>>) +
-https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/parent-zone.yaml[`parent-zone`] (see <<_querying_sub_zones_of_a_parent_zone, Examples C.5.4>>) +
+https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/common-geodata/datetime.yaml[`datetime`] (see <<examples_querying_for_a_spatio_temporal_subset, Examples C.5.2>>) +
+https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/parent-zone.yaml[`parent-zone`] (see <<examples_querying_sub_zones_of_a_parent_zone, Examples C.5.4>>) +
  +
 Recommended query parameter (optional for server to support): +
 https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/limit.yaml[`limit`] (clients should rely on hierarchical paging with `parent-zone` and `zone-level` instead) 
@@ -135,7 +135,7 @@ Some additional possible encodings defined in the following requirements classes
 <<rc_zone-geotiff,GeoTIFF Zone List>> (https://docs.ogc.org/is/19-008r4/19-008r4.html[GeoTIFF], for DGGRSs with axis-aligned rectangular zones) |
 *Required by <<rc_zone-query-cql2-filter,Filtering Zone Queries with CQL2>>:* +
 https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/filter.yaml[`filter`] (http://www.opengis.net/doc/IS/cql2/1.0[CQL2] expression) +
-(see <<_filtering_zone_queries_using_cql2_expressions, Examples C.7>>) +
+(see <<examples_filtering_zone_queries_using_cql2_expressions, Examples C.7>>) +
  +
 Recommended by <<rc_zone-geojson,GeoJSON Zone List>> (optional for server to support): +
 https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/profile.yaml[`profile`] +
@@ -143,7 +143,7 @@ https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/maste
 
 3+| *Defined in requirements class <<rc_data-retrieval,Zone Data Retrieval>>:*
 .3+| *`.../dggs/{dggrsId}/zones/{zoneId}/data`* +
-(see <<_retrieving_data_for_a_dggrs_zone, Examples C.8>> and <<_subsetting_and_filtering_zone_data, Examples C.10>>) | Zone Data https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/responses/dggs-core/rZoneData.yaml[Response (OpenAPI)] +
+(see <<examples_retrieving_data_for_a_dggrs_zone, Examples C.8>> and <<examples_subsetting_and_filtering_zone_data, Examples C.10>>) | Zone Data https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/responses/dggs-core/rZoneData.yaml[Response (OpenAPI)] +
 Encoding negotiated with HTTP `Accept:` request header |
 Recommended query parameters (optional for server to support): +
 https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/crs.yaml[`crs`]
@@ -172,23 +172,23 @@ Some possible encodings defined in the following requirements classes: +
 <<rc_data-geojson,GeoJSON Data>> (https://geojson.org[GeoJSON] or https://docs.ogc.org/DRAFTS/21-045r1.html[JSON-FG]) |
 *Required by <<rc_data-custom-depths,Data custom depths>>:* +
 https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/zone-depth.yaml[`zone-depth`] +
-(see <<_requesting_data_at_a_particular_relative_depth, Examples C.9>>) +
+(see <<examples_requesting_data_at_a_particular_relative_depth, Examples C.9>>) +
  +
 *Required by <<rc_data-subsetting,Data subsetting>>:* +
-https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/common-geodata/datetime.yaml[`datetime`] (see <<_temporal_subsetting, Examples C.10.1>>) +
-https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/subset.yaml[`subset`] (see <<_subsetting_arbitrary_dimensions, Examples C.10.2>>) +
-https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/properties.yaml[`properties`] (see <<_field_selection, Examples C.10.3>>) +
+https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/common-geodata/datetime.yaml[`datetime`] (see <<examples_temporal_subsetting, Examples C.10.1>>) +
+https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/subset.yaml[`subset`] (see <<examples_subsetting_arbitrary_dimensions, Examples C.10.2>>) +
+https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/properties.yaml[`properties`] (see <<examples_field_selection, Examples C.10.3>>) +
    https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/exclude-properties.yaml[`exclude-properties`] +
  +
 *Required by <<rc_data-cql2-filter,Filtering Zone Data with CQL2>>:* +
 https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/filter.yaml[`filter`] (http://www.opengis.net/doc/IS/cql2/1.0[CQL2] expression) +
-(see <<_filtering_zone_data_using_cql2_expressions, Examples C.10.4>>) +
+(see <<examples_filtering_zone_data_using_cql2_expressions, Examples C.10.4>>) +
  +
 Recommended by <<rc_data-dggs-jsonfg,DGGS-JSON-FG Data>>, <<rc_data-dggs-ubjsonfg,DGGS-UBJSON-FG Data>>, <<rc_data-geojson,GeoJSON Data>> (optional for server to support): +
-https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/geometry.yaml[`geometry`] (see <<_geojson_examples,Examples C.8.1.3>>) +
+https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/geometry.yaml[`geometry`] (see <<examples_geojson_examples,Examples C.8.1.3>>) +
  +
 Recommended by <<rc_data-dggs-jsonfg,DGGS-JSON-FG Data>>, <<rc_data-dggs-ubjsonfg,DGGS-UBJSON-FG Data>>, <<rc_data-geojson,GeoJSON Data>>, <<rc_data-netcdf,netCDF Data>>, <<rc_data-zarr,Zarr Data>>, <<rc_data-coveragejson,CoverageJSON Data>> (optional for server to support): +
-https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/profile.yaml[`profile`] (see <<_dggs_json_fg_examples,Examples C.8.1.4>>) +
+https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/profile.yaml[`profile`] (see <<examples_dggs_json_fg_examples,Examples C.8.1.4>>) +
  +
 Recommended by <<rc_data-png,PNG Data>> (optional for server to support): +
 https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/parameters/dggs-core/values-offset.yaml[`values-offset`] +

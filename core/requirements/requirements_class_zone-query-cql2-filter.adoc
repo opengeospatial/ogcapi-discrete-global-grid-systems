@@ -27,4 +27,4 @@ part:: The CQL2 expression evaluator SHALL support the queryables declared in th
 
 NOTE: The available queryables would typically include the fields of the data source, which may also be retrieved using the <<rc_data-retrieval, Data Retrieval>> requirements class.
 
-See also <<_filtering_zone_queries_using_cql2_expressions, Examples C.7>>.
+See also <<examples_filtering_zone_queries_using_cql2_expressions, Examples C.7>>.

@@ -22,4 +22,4 @@ part:: The Implementation SHALL include a link to the list of available DGGRSs f
 part:: The `/collections/{collectionId}/dggs` and `/collections/{collectionId}/dggs/{dggrsId}` resources SHALL include a link to the collection using the link relation type `[ogc-rel:geodata]`.
 ====
 
-See also <<_collection_description,Examples C.1>>.
+See also <<examples_collection_description,Examples C.1>>.

@@ -28,7 +28,7 @@ to the list of available DGGRSs for that resource (for example at `/collections/
 
 NOTE: An optional array of links may also be present at the top-level of the DGGRS list resource, for example to link back to the parent resource such as the data collection using the `[ogc-rel:geodata]` link relation.
 
-See also <<_listing_available_dggrss,Examples C.2>>.
+See also <<examples_listing_available_dggrss,Examples C.2>>.
 
 === Discrete Global Grid Reference System (DGGRS) description (`.../dggs/{dggrsId}`)
 
@@ -69,7 +69,7 @@ part:: The Implementation MAY return a 4xx error for data retrieval and/or zone 
 part:: Alternatively, the Implementation MAY process the request by properly oversampling the data values for handling refinement levels beyond the `maxRefinementLevel`.
 ====
 
-See also <<_retrieving_the_description_of_a_specific_dggrs, Examples C.3>>.
+See also <<examples_retrieving_the_description_of_a_specific_dggrs, Examples C.3>>.
 
 [[zone-info]]
 === Retrieving zone information (`.../dggs/{dggrsId}/zones/{zoneId}`)
@@ -112,7 +112,7 @@ part:: For a zone associated with a particular collection, the Implementation SH
 the respective properties defined above for the overall zones, but considering only the portions of the zone where there is data (e.g., regions of the zone excluding NODATA values for a gridded coverage, or within geometry for a feature collection).
 ====
 
-See also <<_retrieving_information_for_a_specific_dggrs_zone, Examples C.4>>.
+See also <<examples_retrieving_information_for_a_specific_dggrs_zone, Examples C.4>>.
 
 [recommendation]
 ====

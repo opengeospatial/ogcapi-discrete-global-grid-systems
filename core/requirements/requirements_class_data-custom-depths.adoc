@@ -57,4 +57,4 @@ part:: For DGGS resources associated with a data source, the Implementation SHOU
 part:: The Implementation SHOULD return a 4xx error for data retrieval beyond the `maxRelativeDepth` specified in the DGGRS description associated with the request.
 ====
 
-See also <<_requesting_data_at_a_particular_relative_depth, Examples C.9>>.
+See also <<examples_requesting_data_at_a_particular_relative_depth, Examples C.9>>.

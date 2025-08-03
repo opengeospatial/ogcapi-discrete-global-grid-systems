@@ -44,7 +44,7 @@ HTTP content negotiation.
 part:: The Implementation SHALL support at minimum a JSON encoding (media type `application/json`).
 ====
 
-See also <<_simple_zone_queries, Examples C.5>> and <<_compact_zone_queries, Examples C.6>>.
+See also <<examples_simple_zone_queries, Examples C.5>> and <<examples_compact_zone_queries, Examples C.6>>.
 
 === JSON zone list encoding
 
