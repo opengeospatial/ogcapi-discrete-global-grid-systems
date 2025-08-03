@@ -26,4 +26,5 @@ Completed Abstract Test Suite. Merged JSON Zone List encoding requirements class
 Added `profile` query parameter and defined profiles to distinguish encoding variations using same media type.
 Created a new overview section with some content from the examples annex, and with a new table illustrating the paths, responses and parameters, as suggested by João.
 Additional fixes and improvements. Draft ready for final TC vote and publication.
+|2025-08-02 |1.0.0 |Jérôme St-Louis |Annex B, C | Addition of ISEA7H, IVEA9R, IVEA3H, IVEA7H DGGRS; ISEA3H indexing improvements
 |===
