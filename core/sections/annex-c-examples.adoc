@@ -200,27 +200,27 @@ https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-317-A?f=
         "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-317-A/data"
       },
 
-      { "rel" : "[ogc-rel:dggrs-zone-parent]", "title": "Parent zone D6-65-E",
-        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/D6-65-E" },
-      { "rel" : "[ogc-rel:dggrs-zone-parent]", "title": "Parent zone D6-4A-F",
-        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/D6-4A-F" },
-      { "rel" : "[ogc-rel:dggrs-zone-parent]", "title": "Parent zone D6-66-D (centroid child)",
-        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/D6-66-D" },
+      { "rel" : "[ogc-rel:dggrs-zone-parent]", "title": "Parent zone D6-65-C",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/D6-65-C" },
+      { "rel" : "[ogc-rel:dggrs-zone-parent]", "title": "Parent zone D6-4A-D",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/D6-4A-D" },
+      { "rel" : "[ogc-rel:dggrs-zone-parent]", "title": "Parent zone D6-66-B (centroid child)",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/D6-66-B" },
 
-      { "rel" : "[ogc-rel:dggrs-zone-child]", "title": "Child zone E6-317-D (centroid child)",
+      { "rel" : "[ogc-rel:dggrs-zone-child]", "title": "Child zone E6-317-B (centroid child)",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-317-B" },
+      { "rel" : "[ogc-rel:dggrs-zone-child]", "title": "Child zone E6-317-C (vertex child)",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-317-C" },
+      { "rel" : "[ogc-rel:dggrs-zone-child]", "title": "Child zone E6-317-D (vertex child)",
         "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-317-D" },
-      { "rel" : "[ogc-rel:dggrs-zone-child]", "title": "Child zone E6-317-E (vertex child)",
-        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-317-E" },
-      { "rel" : "[ogc-rel:dggrs-zone-child]", "title": "Child zone E6-317-F (vertex child)",
-        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-317-F" },
-      { "rel" : "[ogc-rel:dggrs-zone-child]", "title": "Child zone E6-316-E (vertex child)",
-        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-316-E" },
-      { "rel" : "[ogc-rel:dggrs-zone-child]", "title": "Child zone E6-2C5-F (vertex child)",
-        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-2C5-F" },
-      { "rel" : "[ogc-rel:dggrs-zone-child]", "title": "Child zone E6-2C5-E (vertex child)",
-        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-2C5-E" },
-      { "rel" : "[ogc-rel:dggrs-zone-child]", "title": "Child zone E6-2C6-F (vertex child)",
-        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-2C6-F" },
+      { "rel" : "[ogc-rel:dggrs-zone-child]", "title": "Child zone E6-316-C (vertex child)",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-316-C" },
+      { "rel" : "[ogc-rel:dggrs-zone-child]", "title": "Child zone E6-2C5-D (vertex child)",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-2C5-D" },
+      { "rel" : "[ogc-rel:dggrs-zone-child]", "title": "Child zone E6-2C5-C (vertex child)",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-2C5-C" },
+      { "rel" : "[ogc-rel:dggrs-zone-child]", "title": "Child zone E6-2C6-D (vertex child)",
+        "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-2C6-D" },
 
       { "rel" : "[ogc-rel:dggrs-zone-neighbor]", "title": "Neighboring zone E6-2C5-A (left)",
         "href" : "/ogcapi/collections/gebco/dggs/ISEA3H/zones/E6-2C5-A" },
@@ -309,12 +309,12 @@ An example JSON response for this Zone Query JSON, as defined by the <<rc_zone-q
 ----
 {
    "zones" : [
-      "A0-0-D", "A0-0-E", "A0-0-F", "A0-0-G", "A1-0-D", "A1-0-E",
-      "A1-0-F", "A2-0-D", "A2-0-E", "A2-0-F", "A3-0-D", "A3-0-E",
-      "A3-0-F", "A4-0-D", "A4-0-E", "A4-0-F", "A5-0-D", "A5-0-E",
-      "A5-0-F", "A6-0-D", "A6-0-E", "A6-0-F", "A7-0-D", "A7-0-E",
-      "A7-0-F", "A8-0-D", "A8-0-E", "A8-0-F", "A9-0-D", "A9-0-E",
-      "A9-0-F", "A9-0-H"
+      "A0-0-B", "A0-0-C", "A0-0-D", "A1-0-B", "A1-0-C", "A1-0-D",
+      "A2-0-B", "A2-0-C", "A2-0-D", "A3-0-B", "A3-0-C", "A3-0-D",
+      "A4-0-B", "A4-0-C", "A4-0-D", "A5-0-B", "A5-0-C", "A5-0-D",
+      "A6-0-B", "A6-0-C", "A6-0-D", "A7-0-B", "A7-0-C", "A7-0-D",
+      "A8-0-B", "A8-0-C", "A8-0-D", "A9-0-B", "A9-0-C", "A9-0-D",
+      "AA-0-B", "AB-0-B"
    ],
    "returnedAreaMetersSquare" : 510065621724088.5,
    "links" : [
@@ -362,7 +362,7 @@ and obtain the following response (negotiating a JSON zone list again):
 [source,json]
 ----
 {
-   "zones" : [ "A0-0-G", "A6-0-E" ],
+   "zones" : [ "A6-0-C", "AA-0-B" ],
    "returnedAreaMetersSquare" : 31170676883138.8,
    "links" : [
       { "rel" : "[ogc-rel:dggrs]", "title" : "ISEA3H DGGS for GEBCO",
@@ -390,8 +390,8 @@ A visualization of the response from negotiating `application/geo+json` for the 
 image::images/zones-globe-isea3h-level1-bbox.png[width=300,align="center"]
 
 As seen below, an HTML representation could include rendered previews of the data for the zone area, summary information, as well as links to retrieve the data and access the zone information resource for each zone.
-Note that the significant variance in area (-11.31% and +6.66% from the reference mean zone (whose area is calculated by dividing the Earth surface area by the total number of zones) is due to the fact that `A0-0-G` is a pentagon (in the ISEA projection -- on the Earth surface it looks more like a decagon) which occupies 5/6th the
-area of hexagons such as `A6-0-E` (which on the Earth surface is one of the hexagons appearing as a nonagon), as well as the fact that at level 1, the number of pentagons (12) is significant compared to the total number of zones (32).
+Note that the significant variance in area (-11.11% and +6.67% from the reference mean zone (whose area is calculated by dividing the Earth surface area by the total number of zones) is due to the fact that `AA-0-B` is a pentagon (in the ISEA projection -- on the Earth surface it looks more like a decagon) which occupies 5/6th the
+area of hexagons such as `A6-0-C` (which on the Earth surface is one of the hexagons appearing as a nonagon), as well as the fact that at level 1, the number of pentagons (12) is significant compared to the total number of zones (32).
 
 [#img_zones_html='{figure-caption} {counter:figure-num}']
 .Sample HTML response for a zone query for ISEA3H DGGRS at level 1 for a (40°N, 30°E) to (60°N,50°E) bounding box
@@ -442,12 +442,12 @@ The similarity between the response for this collection of states and provinces 
 ==== Querying sub-zones of a parent zone
 
 The Zone Query requirements class defines the `parent-zone` query parameter as one more way to restrict the query spatially (and temporally in the case of a temporal DGGRS), which is particularly useful for hierarchical exploration.
-For example, to restrict the query to sub-zones of `A6-0-E` rather than using a bounding box, the client could perform the following request (at level 8):
+For example, to restrict the query to sub-zones of `A6-0-C` rather than using a bounding box, the client could perform the following request (at level 8):
 
-https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones?f=json&zone-level=8&parent-zone=A6-0-E&compact-zones=false[\https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones?zone-level=8&parent-zone=A6-0-E&compact-zones=false]
+https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones?f=json&zone-level=8&parent-zone=A6-0-C&compact-zones=false[\https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones?zone-level=8&parent-zone=A6-0-C&compact-zones=false]
 
 [#img_zones_srtm_l8_parent_zone='{figure-caption} {counter:figure-num}']
-.GeoJSON response for zone query for ISEA3H DGGRS at level 8, for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones/A6-0-E[A6-0-E], for a https://viewfinderpanoramas.org/[Viewfinder Panoramas] land elevation collection, visualized in QGIS
+.GeoJSON response for zone query for ISEA3H DGGRS at level 8, for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones/A6-0-C[A6-0-C], for a https://viewfinderpanoramas.org/[Viewfinder Panoramas] land elevation collection, visualized in QGIS
 image::images/zones-srtm-isea3h-level8-parent-zone.png[width=500,align="center"]
 
 The client could then pick one of the returned zones, say `E6-317-A`, for deeper exploration at level 16:
@@ -458,14 +458,14 @@ https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H
 .GeoJSON response for zone query for ISEA3H DGGRS at level 16, for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones/E6-317-A[E6-317-A], for a https://viewfinderpanoramas.org/[Viewfinder Panoramas] land elevation collection, visualized in QGIS
 image::images/zones-srtm-isea3h-level16-parent-zone.png[width=500,align="center"]
 
-Going back to A6-0-E (a level 1 zone), this could also be used to retrieve the immediate children by requesting the next level (2), to step down the hierarchy a single refinement level at a time:
+Going back to A6-0-C (a level 1 zone), this could also be used to retrieve the immediate children by requesting the next level (2), to step down the hierarchy a single refinement level at a time:
 
-https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones?f=json&zone-level=2&parent-zone=A6-0-E&compact-zones=false[\https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones?zone-level=2&parent-zone=A6-0-E&compact-zones=false]
+https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones?f=json&zone-level=2&parent-zone=A6-0-C&compact-zones=false[\https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones?zone-level=2&parent-zone=A6-0-C&compact-zones=false]
 
 Since they all contain data, the seven children zones (one centroid child and six vertex children) are returned.
 
 [#img_zones_srtm_l10_parent_zone='{figure-caption} {counter:figure-num}']
-.GeoJSON response for zone query for ISEA3H DGGRS at level 2, for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones/A6-0-E[A6-0-E] (outline shown), for a https://viewfinderpanoramas.org/[Viewfinder Panoramas] land elevation collection, visualized in QGIS
+.GeoJSON response for zone query for ISEA3H DGGRS at level 2, for parent zone https://maps.gnosis.earth/ogcapi/collections/SRTM_ViewFinderPanorama/dggs/ISEA3H/zones/A6-0-C[A6-0-C] (outline shown), for a https://viewfinderpanoramas.org/[Viewfinder Panoramas] land elevation collection, visualized in QGIS
 image::images/zones-srtm-isea3h-next-level.png[width=400,align="center"]
 
 
@@ -854,7 +854,7 @@ image::images/tiff-ISEA-splitHex.png[width=750,align="center"]
 On the other hand, a hexagon not spanning an interruption will appear in the ISEA planar projection as typical hexagons with two edges aligned with either the horizontal (for odd parent zone levels) or vertical axis (for even levels).
 
 [#img_zone_data_tiff_vertical_hex='{figure-caption} {counter:figure-num}']
-.Visualization of an ISEA planar projection GeoTIFF response for retrieving data for ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A0-0-F[A0-0-F] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
+.Visualization of an ISEA planar projection GeoTIFF response for retrieving data for ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A0-0-D[A0-0-D] of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
 image::images/tiff-zoneDataISEA-HorizontalHex.png[width=700,align="center"]
 
 [#img_zone_data_tiff_horizontal_hex='{figure-caption} {counter:figure-num}']
@@ -864,7 +864,7 @@ image::images/tiff-zoneDataISEA-VerticalHex.png[width=700,align="center"]
 whereas the same zones in OGC:CRS84 will have various shapes not easily recognizable as hexagons:
 
 [#img_zone_data_tiff_wgs84_vertical_hex='{figure-caption} {counter:figure-num}']
-.Visualization of a GeoTIFF response in OGC:CRS84 for retrieving data for ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A0-0-F[A0-0-F] (odd level 1) of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
+.Visualization of a GeoTIFF response in OGC:CRS84 for retrieving data for ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A0-0-D[A0-0-D] (odd level 1) of https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry]
 image::images/tiff-zoneDataWGS84-HorizontalHex.png[width=700,align="center"]
 
 [#img_zone_data_tiff_wgs84_horizontal_hex='{figure-caption} {counter:figure-num}']
@@ -963,7 +963,7 @@ The features and geometry coordinates in this case have no relation to sub-zones
 The zone depth (default zone depth of 10 in this case) can however control cartographic generalization of the geometry.
 This could potentially include filtering point features, based on rules associated with the dataset, as decided by the implementation, as well as the precision of the coordinates.
 
-https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:roads/dggs/ISEA3H/zones/I0-1EEBFA7-E/data?f=geojson[\https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:roads/dggs/ISEA3H/zones/I0-1EEBFA7-E/data]
+https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:roads/dggs/ISEA3H/zones/I0-1EEBFA7-C/data?f=geojson[\https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:roads/dggs/ISEA3H/zones/I0-1EEBFA7-C/data]
 
 [%unnumbered%]
 [source,json]
@@ -997,13 +997,13 @@ https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:roads/dggs/ISEA3H/zones/
 ----
 
 [#img_zone_data_geojson_osmOttawa='{figure-caption} {counter:figure-num}']
-.Visualization in a world Mercator projection of a GeoJSON feature collection with mixed geometry types for data retrieved from ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/osm:ottawa/dggs/ISEA3H/zones/I0-1EEBFA7-E[I0-1EEBFA7-E] of https://openstreetmap.org/[OpenStreetMap] (c) OpenStreetMap contributors
+.Visualization in a world Mercator projection of a GeoJSON feature collection with mixed geometry types for data retrieved from ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/osm:ottawa/dggs/ISEA3H/zones/I0-1EEBFA7-C[I0-1EEBFA7-C] of https://openstreetmap.org/[OpenStreetMap] (c) OpenStreetMap contributors
 image::images/geojson-osmOttawa.png[width=700,align="center"]
 
 In an ISEA planar projection, the same data could be visualized as follows.
 
 [#img_zone_data_geojson_osmOttawaISEA='{figure-caption} {counter:figure-num}']
-.Visualization in an ISEA planar projection of a GeoJSON feature collection with mixed geometry types for data retrieved from ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/osm:ottawa/dggs/ISEA3H/zones/I0-1EEBFA7-E[I0-1EEBFA7-E] of https://openstreetmap.org/[OpenStreetMap] (c) OpenStreetMap contributors
+.Visualization in an ISEA planar projection of a GeoJSON feature collection with mixed geometry types for data retrieved from ISEA3H DGGRS zone https://maps.gnosis.earth/ogcapi/collections/osm:ottawa/dggs/ISEA3H/zones/I0-1EEBFA7-C[I0-1EEBFA7-C] of https://openstreetmap.org/[OpenStreetMap] (c) OpenStreetMap contributors
 image::images/geojson-osmOttawaISEA.png[width=700,align="center"]
 
 The following zone data request is for https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:physical:bathymetry[bathymetry polygons] from the https://naturalearthdata.com/[Natural Earth] physical features.
@@ -1489,25 +1489,25 @@ to feature collections with vector geometry with a primary temporal property.
 
 <<<
 
-The following examples retrieve data from a sentinel-2 collection for the 15th of February and May 2021, and for the 28th of October 2022, at relative depth of 12, for ISEA3H zone G7-67252-D in K'gari, Australia.
+The following examples retrieve data from a sentinel-2 collection for the 15th of February and May 2021, and for the 28th of October 2022, at relative depth of 12, for ISEA3H zone G7-67252-B in K'gari, Australia.
 
 // Fraser Island
 
-https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&crs=OGC:1534&datetime=2021-02-15[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&datetime=2021-02-15]
+https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-B/data?zone-depth=12&crs=OGC:1534&datetime=2021-02-15[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-B/data?zone-depth=12&datetime=2021-02-15]
 
-https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&crs=OGC:1534&datetime=2021-05-15[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&datetime=2021-05-15]
+https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-B/data?zone-depth=12&crs=OGC:1534&datetime=2021-05-15[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-B/data?zone-depth=12&datetime=2021-05-15]
 
-// https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&crs=OGC:1534&datetime=2021-08-15[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&datetime=2021-08-15]
+// https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-B/data?zone-depth=12&crs=OGC:1534&datetime=2021-08-15[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-B/data?zone-depth=12&datetime=2021-08-15]
 
-https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&crs=OGC:1534&datetime=2022-10-28[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&datetime=2022-10-28]
+https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-B/data?zone-depth=12&crs=OGC:1534&datetime=2022-10-28[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-B/data?zone-depth=12&datetime=2022-10-28]
 
 [#img_datetime-sentinel2-kgari='{figure-caption} {counter:figure-num}']
-.Visualization of different temporal slices for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D[G7-67252-D] (K'gari, Australia) from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
+.Visualization of different temporal slices for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-B[G7-67252-B] (K'gari, Australia) from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
 image::images/datetime-sentinel2-kgari.png[width=700,align="center"]
 
-The following examples retrieve data from a daily CMIP5 climate dataset for the time interval between October 6th to October 10th, 2022 for ISEA3H zone A1-0-E, at a relative depth of 8.
+The following examples retrieve data from a daily CMIP5 climate dataset for the time interval between October 6th to October 10th, 2022 for ISEA3H zone A1-0-C, at a relative depth of 8.
 
-https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones/A1-0-E/data?zone-depth=8&datetime=2022-10-06/2022-10-10&f=json[\https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones/A1-0-E/data?zone-depth=8&datetime=2022-10-06/2022-10-10]
+https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones/A1-0-C/data?zone-depth=8&datetime=2022-10-06/2022-10-10&f=json[\https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones/A1-0-C/data?zone-depth=8&datetime=2022-10-06/2022-10-10]
 
 The following JSON data illustrates an extract of a DGGS-JSON response for this request for the precipitation and wind speed variables.
 In addition to the sub-zones, this DGGS-JSON sample has temporal dimension for the 7 days of the response.
@@ -1517,7 +1517,7 @@ In addition to the sub-zones, this DGGS-JSON sample has temporal dimension for t
 ----
 {
    "dggrs" : "[ogc-dggrs:ISEA3H]",
-   "zoneId" : "A1-0-E",
+   "zoneId" : "A1-0-C",
    "depths" : [ 8 ],
    "schema":
    {
@@ -1579,7 +1579,7 @@ In addition to the sub-zones, this DGGS-JSON sample has temporal dimension for t
 
 The following example requests a single day, October 9, 2022, from the same dataset.
 
-https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones/A1-0-E/data?zone-depth=8&datetime=2022-10-09&f=json[\https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones/A1-0-E/data?zone-depth=8&datetime=2022-10-09]
+https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones/A1-0-C/data?zone-depth=8&datetime=2022-10-09&f=json[\https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones/A1-0-C/data?zone-depth=8&datetime=2022-10-09]
 
 The DGGS-JSON extract from the response for this single slice of time does not include an additional time dimension.
 
@@ -1588,7 +1588,7 @@ The DGGS-JSON extract from the response for this single slice of time does not i
 ----
 {
    "dggrs" : "[ogc-dggrs:ISEA3H]",
-   "zoneId" : "A1-0-E",
+   "zoneId" : "A1-0-C",
    "depths" : [ 8 ],
    "values" : {
       "pr" : [ {
@@ -1605,19 +1605,19 @@ The DGGS-JSON extract from the response for this single slice of time does not i
 ----
 
 [#img_pr-time='{figure-caption} {counter:figure-num}']
-.Visualization of precipitations from 2022-10-06 to 2022-10-10 for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones/A1-0-E[A1-0-E] from https://cds.climate.copernicus.eu/cdsapp#!/dataset/projections-cmip5-daily-single-levels[Copernicus Climate Data Store CMIP5 daily data on single levels]
+.Visualization of precipitations from 2022-10-06 to 2022-10-10 for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones/A1-0-C[A1-0-C] from https://cds.climate.copernicus.eu/cdsapp#!/dataset/projections-cmip5-daily-single-levels[Copernicus Climate Data Store CMIP5 daily data on single levels]
 image::images/pr-time.png[width=700,align="center"]
 
 [#img_wind-time='{figure-caption} {counter:figure-num}']
-.Visualization of wind speed from 2022-10-06 to 2022-10-10 for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones/A1-0-E[A1-0-E] from https://cds.climate.copernicus.eu/cdsapp#!/dataset/projections-cmip5-daily-single-levels[Copernicus Climate Data Store CMIP5 daily data on single levels]
+.Visualization of wind speed from 2022-10-06 to 2022-10-10 for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones/A1-0-C[A1-0-C] from https://cds.climate.copernicus.eu/cdsapp#!/dataset/projections-cmip5-daily-single-levels[Copernicus Climate Data Store CMIP5 daily data on single levels]
 image::images/wind-time.png[width=700,align="center"]
 
 ////
-https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones?parent-zone=A1-0-E&zone-level=9&f=geojson&compact-zones=false&&crs=[OGC:1534]&datetime=2022-10-06
-https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones?parent-zone=A1-0-E&zone-level=9&f=geojson&compact-zones=false&&crs=[OGC:1534]&datetime=2022-10-07
-https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones?parent-zone=A1-0-E&zone-level=9&f=geojson&compact-zones=false&&crs=[OGC:1534]&datetime=2022-10-08
-https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones?parent-zone=A1-0-E&zone-level=9&f=geojson&compact-zones=false&&crs=[OGC:1534]&datetime=2022-10-09
-https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones?parent-zone=A1-0-E&zone-level=9&f=geojson&compact-zones=false&&crs=[OGC:1534]&datetime=2022-10-10
+https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones?parent-zone=A1-0-C&zone-level=9&f=geojson&compact-zones=false&&crs=[OGC:1534]&datetime=2022-10-06
+https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones?parent-zone=A1-0-C&zone-level=9&f=geojson&compact-zones=false&&crs=[OGC:1534]&datetime=2022-10-07
+https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones?parent-zone=A1-0-C&zone-level=9&f=geojson&compact-zones=false&&crs=[OGC:1534]&datetime=2022-10-08
+https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones?parent-zone=A1-0-C&zone-level=9&f=geojson&compact-zones=false&&crs=[OGC:1534]&datetime=2022-10-09
+https://maps.gnosis.earth/ogcapi/collections/climate:cmip5:singlePressure/dggs/ISEA3H/zones?parent-zone=A1-0-C&zone-level=9&f=geojson&compact-zones=false&&crs=[OGC:1534]&datetime=2022-10-10
 ////
 
 TIP: Temporal subsetting for a slice can also be achieved using the equivalent `subset=time("2022-10-06":"2022-10-10")` syntax for trimming, and `subset=time("2022-10-06")` for slicing.
@@ -1711,9 +1711,9 @@ image::images/rh-pressure.png[width=700,align="center"]
 
 Some data has multiple properties for a feature, or fields for a given cell or position, such as the precipitation and windspeed variables in the CMIP5 dataset illustrated above.
 It is possible to retrieve only some of these available fields using the `properties` query parameter.
-The following request retrieves only the red (`B04`), green (`B03`) and blue (`B02`) bands from a sentinel-2 dataset for ISEA3H zone G7-67252-D at a relative depth of 8.
+The following request retrieves only the red (`B04`), green (`B03`) and blue (`B02`) bands from a sentinel-2 dataset for ISEA3H zone G7-67252-B at a relative depth of 8.
 
-https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=8&datetime=2022-10-28&properties=B04,B03,B02&f=json["https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=8&datetime=2022-10-28&properties=B04,B03,B02"]
+https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-B/data?zone-depth=8&datetime=2022-10-28&properties=B04,B03,B02&f=json["https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-B/data?zone-depth=8&datetime=2022-10-28&properties=B04,B03,B02"]
 
 The following is a partial DGGS-JSON response for this previous request.
 This collection has twelve other fields available (which are not returned by default, in this case).
@@ -1723,7 +1723,7 @@ This collection has twelve other fields available (which are not returned by def
 ----
 {
    "dggrs" : "[ogc-dggrs:ISEA3H]",
-   "zoneId" : "G7-67252-D",
+   "zoneId" : "G7-67252-B",
    "depths" : [ 8 ],
    "values" : {
       "B02" : [ {
@@ -1746,7 +1746,7 @@ This collection has twelve other fields available (which are not returned by def
 ----
 
 [#img_field-selection-rgb='{figure-caption} {counter:figure-num}']
-.Visualization of different B04 (red), B03 (green) and B02 (blue) bands for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D[G7-67252-D] (K'gari, Australia) from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
+.Visualization of different B04 (red), B03 (green) and B02 (blue) bands for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-B[G7-67252-B] (K'gari, Australia) from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
 image::images/field-selection-rgb.png[width=700,align="center"]
 
 <<<
@@ -1755,20 +1755,20 @@ image::images/field-selection-rgb.png[width=700,align="center"]
 The following request retrieves only the Scene Classification Layer (`SCL`) for the same zone. This field has a lower resolution than the other bands, and could be returned at a lower depth than the other fields if requesting multiple fields at a `zone-depth` beyond the resolution of the SCL field.
 
 [keep-with-next=true]
-https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=8&datetime=2022-10-28&properties=SCL&f=json[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=8&datetime=2022-10-28&properties=SCL]
+https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-B/data?zone-depth=8&datetime=2022-10-28&properties=SCL&f=json[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-B/data?zone-depth=8&datetime=2022-10-28&properties=SCL]
 
 [#img_field-selection-scl='{figure-caption} {counter:figure-num}']
-.Visualization of SCL (Scene Classification Layer) field for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D[G7-67252-D] (K'gari, Australia) from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
+.Visualization of SCL (Scene Classification Layer) field for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-B[G7-67252-B] (K'gari, Australia) from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
 image::images/field-selection-scl.png[width=700,align="center"]
 
 [keep-with-next=true]
 The following request retrieves only the near-infrared (`B08`) band for the same zone.
 
 [keep-with-next=true]
-https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=8&datetime=2022-10-28&properties=B08&f=json[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=8&datetime=2022-10-28&properties=B08]
+https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-B/data?zone-depth=8&datetime=2022-10-28&properties=B08&f=json[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-B/data?zone-depth=8&datetime=2022-10-28&properties=B08]
 
 [#img_field-selection-b08='{figure-caption} {counter:figure-num}']
-.Visualization of B08 (near-infrared) band for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D[G7-67252-D] (K'gari, Australia) from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
+.Visualization of B08 (near-infrared) band for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-B[G7-67252-B] (K'gari, Australia) from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
 image::images/field-selection-b08.png[width=700,align="center"]
 
 TIP: Although the examples illustrated here are all for rasterized data, field selection can also be applied to feature collection outputs so select which properties to include.
@@ -1782,23 +1782,23 @@ In a DGGS-JSON output, sub-zones which are not a match get replaced by a `null` 
 Although the examples illustrated here are all for rasterized data, a CQL2 expression filter can also be applied to feature collections to select which feature to include in the output.
 
 [keep-with-next=true]
-The following request retrieves bathymetry data for ISEA3H zone A8-0-F at a relative depth of 8 without a filter.
+The following request retrieves bathymetry data for ISEA3H zone A8-0-D at a relative depth of 8 without a filter.
 
 [keep-with-next=true]
-https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A8-0-F/data?zone-depth=8&f=json[\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A8-0-F/data?zone-depth=8]
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A8-0-D/data?zone-depth=8&f=json[\https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A8-0-D/data?zone-depth=8]
 
 [#img_filter-bathymetry-nofilter='{figure-caption} {counter:figure-num}']
-.Visualization of ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A8-0-F[A8-0-F] from https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] without a filter
+.Visualization of ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A8-0-D[A8-0-D] from https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] without a filter
 image::images/filter-bathymetry-nofilter.png[width=700,align="center"]
 
 [keep-with-next=true]
 The following request retrieves bathymetry data for the same zone with a filter for sea depths greater than 4000 meters.
 
 [keep-with-next=true]
-https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A8-0-F/data?zone-depth=8&filter=Elevation<-4000&f=json["https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A8-0-F/data?zone-depth=8&filter=Elevation < -4000"]
+https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A8-0-D/data?zone-depth=8&filter=Elevation<-4000&f=json["https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A8-0-D/data?zone-depth=8&filter=Elevation < -4000"]
 
 [#img_filter-bathymetry-4000='{figure-caption} {counter:figure-num}']
-.Filtering of ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A8-0-F[A8-0-F] from https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] for depths 4000 meters below sea level
+.Filtering of ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/gebco/dggs/ISEA3H/zones/A8-0-D[A8-0-D] from https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry] for depths 4000 meters below sea level
 image::images/filter-bathymetry-4000.png[width=700,align="center"]
 
 <<<
@@ -1806,26 +1806,26 @@ image::images/filter-bathymetry-4000.png[width=700,align="center"]
 [keep-with-next=true]
 When retrieving a temporal slice with a filter, the server may fill in the filtered out sub-zones with earlier imagery not excluded by the filter.
 This can be used for example to replace cloudy sub-zones with the closest earlier cloud-free imagery.
-The following requests retrieve sentinel-2 data for zone G7-67252-D between August 1, 2022 and August 31, 2022 at a relative depth of 12 with:
+The following requests retrieve sentinel-2 data for zone G7-67252-B between August 1, 2022 and August 31, 2022 at a relative depth of 12 with:
 
 _no filter:_
 
-https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&crs=OGC:1534&datetime=2022-08-01/2022-08-31[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&datetime=2022-08-01/2022-08-31]
+https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-B/data?zone-depth=12&crs=OGC:1534&datetime=2022-08-01/2022-08-31[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-B/data?zone-depth=12&datetime=2022-08-01/2022-08-31]
 
 _filtering only high probability clouds (SCL: 9):_
 
-https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&crs=OGC:1534&datetime=2022-08-01/2022-08-31&filter=SCL<>9[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&datetime=2022-08-01/2022-08-31&filter=SCL <> 9]
+https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-B/data?zone-depth=12&crs=OGC:1534&datetime=2022-08-01/2022-08-31&filter=SCL<>9[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-B/data?zone-depth=12&datetime=2022-08-01/2022-08-31&filter=SCL <> 9]
 
 _also filtering out medium probability clouds (SCL: 8):_
 
-https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&crs=OGC:1534&datetime=2022-08-01/2022-08-31&filter=SCL<>8%20and%20SCL<>9[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&datetime=2022-08-01/2022-08-31&filter=SCL <> 8 and SCL <> 9]
+https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-B/data?zone-depth=12&crs=OGC:1534&datetime=2022-08-01/2022-08-31&filter=SCL<>8%20and%20SCL<>9[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-B/data?zone-depth=12&datetime=2022-08-01/2022-08-31&filter=SCL <> 8 and SCL <> 9]
 
 _also filtering out cirrus clouds (SCL: 10):_
 
-https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&crs=OGC:1534&datetime=2022-08-01/2022-08-31&filter=SCL%20not%20in%20(8,9,10)["https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D/data?zone-depth=12&datetime=2022-08-01/2022-08-31&filter=SCL not in (8, 9, 10)"]
+https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-B/data?zone-depth=12&crs=OGC:1534&datetime=2022-08-01/2022-08-31&filter=SCL%20not%20in%20(8,9,10)["https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-B/data?zone-depth=12&datetime=2022-08-01/2022-08-31&filter=SCL not in (8, 9, 10)"]
 
 [#img_filter-sentinel2-kgari='{figure-caption} {counter:figure-num}']
-.Filtering out high probability clouds, medium probability clouds, and cirrus clouds for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-D[G7-67252-D] (K'gari, Australia) from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
+.Filtering out high probability clouds, medium probability clouds, and cirrus clouds for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G7-67252-B[G7-67252-B] (K'gari, Australia) from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
 image::images/filter-sentinel2-kgari.png[width=700,align="center"]
 
 [keep-with-next=true]
@@ -1834,8 +1834,8 @@ The following request specifies a more complex filter using CQL2 arithmetic expr
 // NDVI filter
 
 [keep-with-next=true]
-https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G4-74A6D-E/data?zone-depth=9&filter=(B08-B04)/(B08+B04)%20%3E%200.5&f=json[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G4-74A6D-E/data?zone-depth=9&filter=(B08-B04)/(B08+B04)>0.5]
+https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G4-74A6D-C/data?zone-depth=9&filter=(B08-B04)/(B08+B04)%20%3E%200.5&f=json[\https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G4-74A6D-C/data?zone-depth=9&filter=(B08-B04)/(B08+B04)>0.5]
 
 [#img_filter-sentinel2-ndvi='{figure-caption} {counter:figure-num}']
-.Filtering based on a minimum normalized difference vegetation index (NDVI) for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G4-74A6D-E[G4-74A6D-E] from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
+.Filtering based on a minimum normalized difference vegetation index (NDVI) for ISEA3H zone https://maps.gnosis.earth/ogcapi/collections/sentinel2-l2a/dggs/ISEA3H/zones/G4-74A6D-C[G4-74A6D-C] from https://sentinel.esa.int/web/sentinel/missions/sentinel-2[Copernicus SENTINEL-2 operated by ESA]
 image::images/filter-sentinel2-ndvi.png[width=700,align="center"]
