@@ -2,7 +2,7 @@
    "title": "ISEA9R",
    "description": "An ISEA9R Discrete Global Grid Reference System using an ISEA orientation symmetric about the equator with a single vertex on land, and WGS84 authalic sphere (a WGS84 geodetic latitude is mapped to the sphere by converting it to an authalic latitude), a {level}{rootRhombus}-{hexSubZone} indexing system, and scanline-based sub-zone ordering. The ten root rhombuses are formed by combining two icosahedron triangles at their base. Depending on whether the ISEA planar CRS is rotated, sheared and scaled or not, the geometries of the zones are either squares or rhombuses, and the zone edges are either axis-aligned, or the angles and distances are preserved. In either case, the topology, indexing and surface geometry on the Earth model remains the same. The ISEA9R DGGH is a dual of the ISEA3H DGGH even levels (a vertex/node in ISEA9R is the centroid of an ISEA3H zone).",
    "uri": "https://www.opengis.net/def/dggrs/OGC/1.0/ISEA9R",
-   "links": [ { "rel": "describedby", "href": "https://portal.ogc.org/files/?artifact_id=107432" } ],
+   "links": [ { "rel": "describedby", "href": "https://www.opengis.net/doc/is/ogcapi-dggs/1.0" } ],
    "dggh": {
       "definition": {
          "spatialDimensions": 2,

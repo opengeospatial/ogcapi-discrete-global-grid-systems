@@ -2,7 +2,7 @@
    "title": "IVEA9R",
    "description": "An IVEA9R Discrete Global Grid Reference System using the Icosahedral Vertex-oriented Equal-Area (IVEA) projection as described in the 2006 'Slice & Dice' publication (equivalent to applying the 1992 Snyder polyhedral projection to the dodecahedron when considering the barycentric coordinates within the projection of the spherical disdyakis triacontahedron triangles constituting full spherical icosahedral symmetry), an orientation symmetric about the equator with a single vertex on land, and WGS84 authalic sphere (a WGS84 geodetic latitude is mapped to the sphere by converting it to an authalic latitude), a {level}{rootRhombus}-{hexSubZone} indexing system, and scanline-based sub-zone ordering. The ten root rhombuses are formed by combining two icosahedron triangles at their base. Depending on whether the IVEA planar CRS is rotated, sheared and scaled or not, the geometries of the zones are either squares or rhombuses, and the zone edges are either axis-aligned, or the angles and distances are preserved. In either case, the topology, indexing and surface geometry on the Earth model remains the same. The IVEA9R DGGH is a dual of the IVEA3H DGGH even levels (a vertex/node in IVEA9R is the centroid of an IVEA3H zone).",
    "uri": "https://www.opengis.net/def/dggrs/OGC/1.0/IVEA9R",
-   "links": [ { "rel": "describedby", "href": "https://portal.ogc.org/files/?artifact_id=111278" } ],
+   "links": [ { "rel": "describedby", "href": "https://www.opengis.net/doc/is/ogcapi-dggs/1.0" } ],
    "dggh": {
       "definition": {
          "spatialDimensions": 2,

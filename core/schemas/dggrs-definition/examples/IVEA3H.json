@@ -2,7 +2,7 @@
    "title": "IVEA3H",
    "description": "An IVEA3H Discrete Global Grid Reference System using the Icosahedral Vertex-oriented Equal-Area (IVEA) projection as described in the 2006 'Slice & Dice' publication (equivalent to applying the 1992 Snyder polyhedral projection to the dodecahedron when considering the barycentric coordinates within the projection of the spherical disdyakis triacontahedron triangles constituting full spherical icosahedral symmetry), an orientation symmetric about the equator with a single vertex on land, and WGS84 authalic sphere (a WGS84 geodetic latitude is mapped to the sphere by converting it to an authalic latitude), a zone indexing system based on an IVEA9R, and a scanline-based sub-zone ordering",
    "uri": "https://www.opengis.net/def/dggrs/OGC/1.0/IVEA3H",
-   "links": [ { "rel": "describedby", "href": "https://portal.ogc.org/files/?artifact_id=111278" } ],
+   "links": [ { "rel": "describedby", "href": "https://www.opengis.net/doc/is/ogcapi-dggs/1.0" } ],
    "dggh": {
       "definition": {
          "spatialDimensions": 2,
