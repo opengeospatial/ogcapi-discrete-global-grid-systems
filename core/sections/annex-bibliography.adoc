@@ -27,3 +27,5 @@
 * [[[vanLeuuwen2006,vanLeuuwen2006]]], Diederik van Leeuwen, Daniel Strebe, A "Slice-and-Dice" Approach to Area Equivalence in Polyhedral Map Projections, Cartography and Geographic Information Science, Volume 33, Issue 4, Pages 269–286 (2006). https://doi.org/10.1559/152304006779500687
 
 * [[[kmoch2025]]], Kmoch, A., et al. IGEO7: A new hierarchically indexed hexagonal equal-area discrete global grid system, AGILE GIScience Ser., Volume 6, Page 32 (2025). https://doi.org/10.5194/agile-giss-6-32-2025
+
+* [[[Gorski2005]]], Gorski, K., et al., HEALPix: A Framework for High‐Resolution Discretization and Fast Analysis of Data Distributed on the Sphere, American Astronomical Society, The Astrophysical Journal, Volume 522, No 2, Pages 759–771, ISSN 1538-4357, doi: 10.1086/427976 (2005). http://dx.doi.org/10.1086/427976

@@ -194,15 +194,62 @@ include::../schemas/dggrs-definition/examples/IVEA7H.json[]
 .Comparison of ISEA7H (left) and IVEA7H (right) refinement level 3
 image::images/isea7h_ivea7h_comparison.png[width=700,align="center"]
 
+[[HEALPix-dggrs]]
+=== HEALPix DGGRS definition
+
+The following DGGRS is for an axis-aligned and equal-area DGGH based on the Hierarchical Equal Area isoLatitude Pixelisation (HEALPix) projection (<<Gorski2005>>).
+The shape of zones in this projection are squares with a refinement ratio of 4, starting with twelve squares covering the globe at level 0 based on the HEALPix grid configuration Nφ (H) = 4, Nθ (K) = 3.
+Those twelve squares correspond to the faces of a distorted rhombic dodecahedron, with four rhombuses sharing a vertex at each pole and four vertices at the equator.
+This DGGRS can be considered axis-aligned as the edges of all zones align with the axes of the projection rotated by 45°.
+The HEALPix projection is a combination of a Lambert cylindrical equal-area projection for the equatorial band between ±~41.93785° geodetic latitude (arcsin(2.0/3.0) authalic latitude),
+with an interrupted Collignon projection for the polar caps.
+In this definition of a HEALPix DGGRS, an ellipsoid model of the Earth is used (which can be achieved by converting geodetic latitude to authalic latitude prior to the forward projection),
+and the prime meridian is set to 0° East.
+The centroids of all zones along latitude bands circling the globe are at situated at the same latitudes.
+The indexing used is based on identifying the level 0 root rhombus combined with a hexadecimal index of a sub-rhombus using row-major order, bottom-left to top-right, top-left to bottom-right scanlines
+within that root rhombus. The sub-zone order is determined using these same scanlines within the parent zone.
+
+.DGGRS Definition for HEALPix
+[source,json]
+----
+include::../schemas/dggrs-definition/examples/HEALPix.json[]
+----
+
+[#img_HEALPix_Level0='{figure-caption} {counter:figure-num}']
+.The HEALPix global grid with level 0 zone identifiers (https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry])
+image::images/HEALPix-Level0.png[width=700,align="center"]
+
+[#img_HEALPix_Level1='{figure-caption} {counter:figure-num}']
+.The HEALPix global grid with level 1 zone identifiers (https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry])
+image::images/HEALPix-Level1.png[width=700,align="center"]
+
+[#img_HEALPix_Level2='{figure-caption} {counter:figure-num}']
+.The HEALPix global grid with level 2 zone identifiers  (https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry])
+image::images/HEALPix-Level2.png[width=700,align="center"]
+
+[#img_HEALPix_Level0_WGS84='{figure-caption} {counter:figure-num}']
+.The HEALPix global grid at level 0 shown on a Plate carrée projection (https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry])
+image::images/HEALPix-Level0-WGS84.png[width=700,align="center"]
+
+[#img_HEALPix_Level1_WGS84='{figure-caption} {counter:figure-num}']
+.The HEALPix global grid at level 1 shown on a Plate carrée projection (https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry])
+image::images/HEALPix-Level1-WGS84.png[width=700,align="center"]
+
+[#img_HEALPix_Level2_WGS84='{figure-caption} {counter:figure-num}']
+.The HEALPix global grid with level 2 zone identifiers shown on a Plate carrée projection (https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry])
+image::images/HEALPix-Level2-WGS84.png[width=700,align="center"]
+
+[#img_HEALPix_Level2-Globe='{figure-caption} {counter:figure-num}']
+.The HEALPix global grid levels 2, 3 and 4 shown on a globe (https://www.gebco.net/news_and_media/gebco_2014_grid.html[GEBCO 2014 bathymetry])
+image::images/HEALPix-Level2-Globe.png[width=600,align="center"]
+
 [[rHEALPix-dggrs]]
 === rHEALPix DGGRS definition
 
 The following DGGRS is for an axis-aligned and equal-area DGGH based on the rHEALPix projection (<<Gibb2016>>).
 The shape of zones in this projection are squares with a refinement ratio of 9, starting with six squares covering the globe at level 0.
-The rHEALPix projection re-arranges the four triangles of each polar caps of the HEALPix projection so that each pole forms a square the same size as 1/4th of the equatorial band,
+The rHEALPix projection re-arranges the four triangles of each polar caps of the <<HEALPix-dggrs, HEALPix>> projection so that each pole forms a square the same size as 1/4th of the equatorial band,
 resulting in the net of a cube with 6 equal area-faces.
-The HEALPix projection itself is a combination of a Lambert cylindrical equal-area projection for the equatorial band between ±~41.93785° geodetic latitude (arcsin(2.0/3.0) authalic latitude),
-with an interrupted Collignon projection for the polar caps.
 In this definition of a rHEALPix DGGRS, an ellipsoid model of the Earth is used (which can be achieved by converting geodetic latitude to authalic latitude prior to the forward projection),
 and the prime meridian is set to 50° East so as to avoid corners of the cube falling on land.
 The square shape of zones in the rHEALPix projection maps to a variety of shapes on the surface of the Earth ranging from circles at the poles, to triangles, parallelograms, rectangles and squares.

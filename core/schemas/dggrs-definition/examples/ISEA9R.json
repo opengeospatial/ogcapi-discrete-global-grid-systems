@@ -11,7 +11,7 @@
          "projString": "+proj=pipeline +step +proj=isea +R=6371007.18091847 +x_0=19186144.8709340879 +y_0=-3323137.7717834860 +step +proj=affine +inv +s11=3837228.974186818 +s12=3837228.974186818 +s21=6646275.543566972 +s22=-6646275.543566972",
          "links": [
             { "rel": "related", "href": "https://doi.org/10.3138/27H7-8K88-4882-1752" },
-            { "rel": "related", "href": "https://proj.org/en/9.3/operations/projections/isea.html" },
+            { "rel": "related", "href": "https://proj.org/en/9.3/operations/projections/isea.html" }
          ],
          "basePolyhedron": "icosahedron",
          "refinementRatio": 9,
