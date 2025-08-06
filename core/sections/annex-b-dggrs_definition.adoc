@@ -25,6 +25,11 @@ based on either the ASCII character strings of the textual identifiers, or the 6
 IMPORTANT: When defining sub-zone order based on a space-filling curve, the curve must go through every sub-zone of the parent zone (all zones at least partially within the parent zone), and if the curve goes
 through zones fully outside of the parent zone, those outside zones must be excluded from this local indexing order, as they are not considered sub-zones.
 
+NOTE: Some of the DGGRS definitions in this annex include a `projString` property which is not part of the DGGRS definition. This is provided in the hope of improving the understanding of the specific
+coordinate reference system used, as an alternative to a registered URI or a more verbose CRS definition in an encoding such as CRS JSON or PROJJSON (whose potential harmonization are still a subject of discussion).
+The inclusion of this `projString` is not to be understood as an endorsement of any particular software library, and is not expected to be present in an eventual authoritative DGGRS register after
+the corresponding CRS has been registered and is referenceable by URI and/or the CRS JSON schema is finalized.
+
 === JSON Schema for defining a DGGRS
 
 .JSON Schema for the DGGRS Definition
@@ -208,6 +213,10 @@ and the prime meridian is set to 0° East.
 The centroids of all zones along latitude bands circling the globe are at situated at the same latitudes.
 The indexing used is based on identifying the level 0 root rhombus combined with a hexadecimal index of a sub-rhombus using row-major order, bottom-left to top-right, top-left to bottom-right scanlines
 within that root rhombus. The sub-zone order is determined using these same scanlines within the parent zone.
+
+Alternative DGGRSs could also be defined using another zone identifier reference system, such as the "NESTED" or "RING" ZIRS (described here: https://healpix.sourceforge.io/html/intro_Geometric_Algebraic_Propert.htm#fig:Numbering).
+If these ZIRSs are used with the same HEALPix DGGH (same ellipsoid, orientation, refinement ratio), this particular DGGRS should still be highly interoperable with them, since the indices can easily and
+efficiently be converted between them. The indexing presented here has the advantage of allowing very simple and efficient calculation of the centroid and vertices coordinates in the HEALPix projection.
 
 .DGGRS Definition for HEALPix
 [source,json]
