@@ -7,7 +7,7 @@ and/or the <<rc_zone-query,Zone Query>> requirements class answering questions o
 to information resources defined in the <<rc_core,Core>> requirements class that the implementation also needs to support.
 
 Both of these types of request are always made in the context of a specific Discrete Global Grid Reference System (DGGRS).
-Three examples of DGGRSs which can be used with this DGGS API are presented in <<annex-dggrs-def,Annex B>>.
+Nine examples of DGGRSs which can be used with this DGGS API are presented in <<annex-dggrs-def,Annex B>>.
 An implementation of OGC API - DGGS may support one or more DGGRS. Requests using the native DGGRS of the data would normally provide better performance.
 Because the use of any DGGRS implies the concepts of hierarchical refinement levels and global coverage, having the data stored in any DGGRS should still
 be practical to support queries using any other DGGRS supported by the implementation with sub-optimal but acceptable performance.
