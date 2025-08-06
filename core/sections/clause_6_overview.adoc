@@ -37,7 +37,7 @@ Note that regardless of encoding, zone query responses can also be compressed fo
 CAUTION: The transfer of zone geometry in zone queries is not an efficient implementation use of the DGGS API for practical analytics purposes. This is because clients should already have built-in knowledge of the selected DGGRS
 in their local software libraries and can efficiently infer the geometry of a zone from its zone ID alone as needed. In many use cases, the geometry may not be needed at all.
 
-The ability to retrieve zone lists in a geospatial data format such as GeoJSON or <<rc_zone-geotiff,GeoTIFF>> which can readily be visualized in GIS tools is useful for **educational**, **demonstration** and **debugging** purposes.
+The ability to retrieve zone lists in a geospatial data format such as <<rc_zone-geojson,GeoJSON>> or <<rc_zone-geotiff,GeoTIFF>> which can readily be visualized in GIS tools is useful for **educational**, **demonstration** and **debugging** purposes.
 For example, this functionality can be used to generate grids, such as those seen in <<annex-dggrs-def,Annex B>> (a `crs` parameter to request an ISEA planar projection was used in that case to override the default GeoJSON CRS84),
 as well as the zone visualizations seen in the examples in <<annex_examples, Annex C>>.
 
