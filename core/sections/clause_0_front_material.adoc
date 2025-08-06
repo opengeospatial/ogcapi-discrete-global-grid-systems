@@ -104,7 +104,7 @@ Note that the API defined by this Standard differs significantly from that earli
 This Standard assumes a shared understanding of a particular Discrete Global Grid Reference System between the client and the server, which could be implemented by a local DGGRS software library,
 avoiding the need to define HTTP resources to query the conceptual grid hierarchy structure. The definition of an API in the traditional software development sense for such DGGRS libraries is beyond the scope of this Standard.
 
-Key work leading to the creation of this OGC Standard was undertaken as part of GeoConnections 2020-2021 projects GNS20-21IFP02 (_Modular OGC API Workflows_) (<<OGC21-033>>) and GNS25-27IFP2
+Key work leading to the creation of this OGC Standard was undertaken as part of GeoConnections 2020-2021 and 2025-2027 projects GNS20-21IFP02 (_Modular OGC API Workflows_) (<<OGC21-033>>) and GNS25-27IFP2
 (Advancing and Implementing OGC Standards for GeoDataCubes, DGGSs, Data Stores for Digital Twins and Cartographic Symbology).
 Financial support provided by GeoConnections, a national collaborative initiative led by Natural Resources Canada.
 GeoConnections supports the modernization of the Canadian Geospatial Data Infrastructure (CGDI). The CGDI is the collection of geospatial data, standards, policies, applications, and governance that facilitate its access, use, integration, and preservation.
