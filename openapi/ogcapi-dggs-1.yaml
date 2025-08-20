@@ -129,7 +129,7 @@ components:
          $ref: 'schemas/common-geodata/grid.yaml'
       regularGrid:
          $ref: 'schemas/common-geodata/regularGrid.yaml'
-      irregualrGrid:
+      irregularGrid:
          $ref: 'schemas/common-geodata/irregularGrid.yaml'
       extent:
          $ref: 'schemas/common-geodata/extent.yaml'

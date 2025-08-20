@@ -1426,7 +1426,7 @@
                 "$ref": "#/components/schemas/regularGrid"
               },
               {
-                "$ref": "#/components/schemas/irregualrGrid"
+                "$ref": "#/components/schemas/irregularGrid"
               }
             ]
           }
@@ -1492,7 +1492,7 @@
           }
         }
       },
-      "irregualrGrid": {
+      "irregularGrid": {
         "type": "object",
         "description": "Irregular grid with samples spaced at different intervals",
         "required": [
