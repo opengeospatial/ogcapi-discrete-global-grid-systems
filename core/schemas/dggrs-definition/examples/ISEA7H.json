@@ -38,7 +38,7 @@
          "type": "levelRootFaceHexRowMajorSubZone"
       },
       "uint64ZIRS": {
-         "description": "A 64-bit integer with the 3 least significant bits corresponding to a hexagonal or pentagonal zone intersecting a sub-rhombus: 0: even level, 1: odd level zone centered on sub-rhombus vertex, 2: odd level zone top-left of rhombus vertex, 3..7: remaining odd level zones around rhombus vertex in counter-clockwise order, the next 57 bits corresponding to a sub-rhombus index within a root rhombus divided into 7^(equal_or_lower_even_level/2)^2 (always 0 for polar zones), the next 4 bits corresponding to a root rhombus (with special values of 0xA and 0xB corresonding to North and South poles respectively), the next 4 bits corresponding to half of the lower or equal even level (e.g., 1 for levels 2 and 3) with a value between 0 and 10 (0xA) for a valid zone identifier."
+         "description": "A 64-bit integer with the 3 least significant bits corresponding to a hexagonal or pentagonal zone intersecting a sub-rhombus: 0: even level, 1: odd level zone centered on sub-rhombus vertex, 2: odd level zone top-left of rhombus vertex, 3..7: remaining odd level zones around rhombus vertex in counter-clockwise order, the next 51 bits corresponding to a sub-rhombus index within a root rhombus divided into 7^(equal_or_lower_even_level/2)^2 (always 0 for pentagonal zones), the next 4 bits corresponding to a root rhombus (with special values of 0xA and 0xB corresonding to North and South poles respectively), the next 4 bits corresponding to half of the lower or equal even level (e.g., 1 for levels 2 and 3) with a value between 0 and 9 for a valid zone identifier."
       }
    },
    "subZoneOrder": {
