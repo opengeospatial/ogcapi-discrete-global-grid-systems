@@ -46,6 +46,6 @@ The following recommendation describe how a server should support a `crs` query 
 identifier:: /rec/data-retrieval/crs
 description:: For retrieving data in alternate CRSs:
 part:: If the data is available in multiple CRSs, the Implementation SHOULD support a `crs` query parameter for the resource path ending with `.../dggs/{dggrsId}/zones/{zoneId}/data`.
-part:: The value of this query parameter SHOULD support values for this query parameter specified either as full URIs (e.g., `http://www.opengis.net/def/crs/OGC/1.3/CRS84`) or as CURIEs (e.g., `[OGC:CRS84]`, `[EPSG:4326]`).
+part:: This query parameter SHOULD support values specified either as full URIs (e.g., `http://www.opengis.net/def/crs/OGC/1.3/CRS84`) or as CURIEs (e.g., `[OGC:CRS84]`, `[EPSG:4326]`).
 part:: The list of supported CRSs SHOULD be included in a `crs` property of the DGGS origin resource (such as the collection description) as an array of URIs or CURIEs.
 ====
