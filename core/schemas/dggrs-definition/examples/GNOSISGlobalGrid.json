@@ -17,10 +17,10 @@
          "constraints": {
             "cellAxisAligned": true
          },
-         "zoneTypes": [ "rectangle" ],
+         "zoneTypes": [ "rectangle" ]
       },
       "parameters": {
-         "ellipsoid": "[EPSG:7030]"
+         "ellipsoid": "[EPSG:7030]",
          "orientation":
          {
             "latitude": 0,

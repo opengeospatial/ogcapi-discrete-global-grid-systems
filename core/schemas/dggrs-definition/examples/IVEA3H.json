@@ -17,7 +17,7 @@
          "constraints": {
             "cellEqualSized": true
          },
-         "zoneTypes": [ "hexagon", "pentagon" ],
+         "zoneTypes": [ "hexagon", "pentagon" ]
       },
       "parameters": {
          "ellipsoid": "[EPSG:7030]",

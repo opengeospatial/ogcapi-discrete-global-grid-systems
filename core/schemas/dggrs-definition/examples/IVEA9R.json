@@ -18,7 +18,7 @@
             "cellAxisAligned": true,
             "cellEqualSized": true
          },
-         "zoneTypes": [ "square" ],
+         "zoneTypes": [ "square" ]
       },
       "parameters": {
          "ellipsoid": "[EPSG:7030]",
