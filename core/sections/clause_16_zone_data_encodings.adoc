@@ -183,10 +183,10 @@ An Implementation may support JSON-FG representations in addition to GeoJSON as 
 
 A `profile` query parameter can be used by clients to request a particular GeoJSON / JSON-FG representation from Implementations supporting multiple options:
 
-- `rfc7946`: GeoJSON as defined by RFC 7946
-- `jsonfg`: GeoJSON as extended by JSON-FG
+- `rfc7946`: GeoJSON as defined by RFC 7946;
+- `jsonfg`: GeoJSON as extended by JSON-FG; and
 - `jsonfg-plus`: JSON-FG extensions in addition to GeoJSON compatibility
-(geometry specified in `geometry` limited to GeoJSON types, with coordinates either in `OGC:CRS84` or in a CRS explicitly requested by the client using `crs` query parameter)
+(geometry specified in `geometry` limited to GeoJSON types, with coordinates either in `OGC:CRS84` or in a CRS explicitly requested by the client using `crs` query parameter).
 
 include::../requirements/requirements_class_zone_data_geojson.adoc[]
 
@@ -205,12 +205,12 @@ zone order, or a traditional representation interoperable with non-DGGS clients 
 
 A `profile` query parameter can be used by clients to request a particular netCDF representation from Implementations supporting multiple options:
 
-- `netcdf3`: NetCDF classic and 64-bit offset format (not quantized to DGGH)
-- `netcdf3-dggs`: NetCDF classic and 64-bit offset format where one axis corresponds to local sub-zone indices
-- `netcdf3-dggs-zoneids`: NetCDF classic and 64-bit offset format where one axis corresponds to the global identifiers of sub-zones (textual or 64-bit integer)
-- `netcdf4`: HFG5-based NetCDF 4 format (not quantized to DGGH)
-- `netcdf4-dggs`: HDF5-based NetCDF 4 format where one axis corresponds to local sub-zone indices
-- `netcdf4-dggs-zoneids`: HDF5-based NetCDF 4 format where one axis corresponds to the global identifiers of sub-zones (textual or 64-bit integer)
+- `netcdf3`: NetCDF classic and 64-bit offset format (not quantized to DGGH);
+- `netcdf3-dggs`: NetCDF classic and 64-bit offset format where one axis corresponds to local sub-zone indices;
+- `netcdf3-dggs-zoneids`: NetCDF classic and 64-bit offset format where one axis corresponds to the global identifiers of sub-zones (textual or 64-bit integer);
+- `netcdf4`: HFG5-based NetCDF 4 format (not quantized to DGGH);
+- `netcdf4-dggs`: HDF5-based NetCDF 4 format where one axis corresponds to local sub-zone indices; and
+- `netcdf4-dggs-zoneids`: HDF5-based NetCDF 4 format where one axis corresponds to the global identifiers of sub-zones (textual or 64-bit integer).
 
 include::../requirements/requirements_class_zone_data_netcdf.adoc[]
 
@@ -226,9 +226,9 @@ zone order, or a traditional representation interoperable with non-DGGS clients 
 
 A `profile` query parameter can be used by clients to request a particular Zarr representation from Implementations supporting multiple options:
 
-- `zarr2`: Zipped Zarr 2.0 (not quantized to DGGH)
-- `zarr2-dggs`: Zipped Zarr 2.0 where one axis corresponds to local sub-zone indices
-- `zarr2-dggs-zoneids`: Zipped Zarr 2.0 where one axis corresponds to the global identifiers of sub-zones (textual or 64-bit integer)
+- `zarr2`: Zipped Zarr 2.0 (not quantized to DGGH);
+- `zarr2-dggs`: Zipped Zarr 2.0 where one axis corresponds to local sub-zone indices; and
+- `zarr2-dggs-zoneids`: Zipped Zarr 2.0 where one axis corresponds to the global identifiers of sub-zones (textual or 64-bit integer).
 
 include::../requirements/requirements_class_zone_data_zarr.adoc[]
 
@@ -244,9 +244,9 @@ zone order, or a traditional representation interoperable with non-DGGS clients 
 
 A `profile` query parameter can be used by clients to request a particular CoverageJSON representation from Implementations supporting multiple options:
 
-- `covjson`: CoverageJSON (not quantized to DGGH)
-- `covjson-dggs`: CoverageJSON where one axis corresponds to local sub-zone indices
-- `covjson-dggs-zoneids`: CoverageJSON where one axis corresponds to the global identifiers of sub-zones (textual or 64-bit integer)
+- `covjson`: CoverageJSON (not quantized to DGGH);
+- `covjson-dggs`: CoverageJSON where one axis corresponds to local sub-zone indices; and
+- `covjson-dggs-zoneids`: CoverageJSON where one axis corresponds to the global identifiers of sub-zones (textual or 64-bit integer).
 
 include::../requirements/requirements_class_zone_data_coveragejson.adoc[]
 

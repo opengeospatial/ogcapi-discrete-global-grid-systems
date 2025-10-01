@@ -4,8 +4,8 @@
 === Overview
 
 The OGC API - DGGS "Zone Query" requirements class supports requesting the list of zones from a specific
-Discrete Global Grid Reference System (DGGRS), that is a specific hierarchy of Discrete Global Grids
-combined with a particular zone indexing reference system (ZIRS), for which there is
+DGGRS, that is a specific hierarchy of Discrete Global Grids
+combined with a particular ZIRS, for which there is
 data available, or matching a particular query (e.g., using a filtering query parameter).
 This requirements class describes an HTTP GET operation, as well as its response.
 The selected DGGRS is listed as available and described in the <<rc_core,Core requirements class>>,

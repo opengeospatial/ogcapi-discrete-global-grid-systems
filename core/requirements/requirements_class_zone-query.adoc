@@ -317,7 +317,7 @@ a _trimming_ operation (using the _interval_ notation) when the low and high bou
 ====
 [%metadata]
 identifier:: /rec/zone-query/subset-crs-axis-names
-part:: The names of the axis SHOULD be the abbreviated names of the axis in the CRS definition (e.g. the ones defined in the EPSG database).
+part:: The names of the axis SHOULD be the abbreviated names of the axis in the CRS definition (e.g., the ones defined in the EPSG database).
 part:: 'e' (in lowercase), 'X' (lowercase/uppercase) or 'Easting' (lowercase/uppercase) SHOULD be interpreted as synonymous of 'E'.
 part:: 'n' (in lowercase) or 'Y' (lowercase/uppercase) or 'Northing' (lowercase/uppercase) SHOULD be interpreted as synonymous of 'N'.
 part:: 'Long' (lowercase/uppercase) or 'Longitude' SHOULD be interpreted as synonymous of 'Lon'.

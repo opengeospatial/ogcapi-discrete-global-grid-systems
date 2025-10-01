@@ -2,7 +2,7 @@
 == Requirements Classes for Encodings of Zone list
 
 The OGC API - DGGS Standard requires supporting a JSON encoding for returning the `../dggs/{dggrsId}/zones` resources, as described in the <<rc_zone-query,Zone Query>> requirement class.
-In addition to this JSON encoding, DGGRS Zone Lists can be encoded in any suitable data format, as negotiated by erver and client.
+In addition to this JSON encoding, DGGRS Zone Lists can be encoded in any suitable data format, as negotiated by server and client.
 A number of requirements classes are defined for zone list encodings which are expected to be commonly supported in implementations of this Standard.
 These requirements classes include:
 
@@ -64,7 +64,7 @@ and optionally according to the https://docs.ogc.org/DRAFTS/21-045.html[OGC Feat
 
 The response is a feature collection where each feature represents a zone in the list.
 The geometry of the zone should be polygons or multipolygons (e.g., in the case of zone geometry which must be split on the anti-meridian or pole), or in the case of a 3D DGGRS and an JSON-FG
-response polyhedrons, multipolyhedrons, prisms or multiprisms.
+response polyhedrons, multipolyhedrons, prisms, or multiprisms.
 The zone identifier is represented in the `id` field of each feature.
 
 While not intended to efficiently exchange zone list, as the response carries the geometry of the zones which could easily be computed client-side which takes considerable bandwidth and is

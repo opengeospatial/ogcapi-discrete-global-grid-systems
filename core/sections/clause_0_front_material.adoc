@@ -42,7 +42,7 @@ The following paragraphs enumerate some security considerations.
 
 Due to the flexibility in querying DGGS zones, implementations of the _OGC API - DGGS_ Standard that are not optimized can easily encounter requests that take some time to resolve.
 If several of these requests are processed simultaneously, the server can become slow or unresponsive.
-Servers should take advantage of the space partitioning structures of the implemented DGGRSs that guarantee a deterministic maximum amount of data to process,
+Servers should take advantage of the space partitioning structures of the implemented Discrete Global Grid Reference Systems (DGGRSs) that guarantee a deterministic maximum amount of data to process,
 ensuring that maximum refinement level is used for regions covering a larger area, and refusing requests which would otherwise be problematic for the server.
 Servers should also set and apply reasonable limits (e.g., maximum number of zones to return, etc.) to prevent Denial of Service attacks.
 
@@ -83,12 +83,12 @@ All questions regarding this submission should be directed to the editors or the
 == Abstract
 
 The OGC API - Discrete Global Grid Systems - Part 1: Core Standard defines requirements that can be implemented and integrated into a deployed Web API.
-The DGGS API allows to retrieve geospatial data for a specific area, time and resolution of interest, based on a specific Discrete Global Grid Reference System (DGGRS).
+The DGGS API allows to retrieve geospatial data for a specific area, time and resolution of interest, based on a specific DGGRS.
 Additionally, the DGGS API defines operations to query the list of DGGRS zones from which data is available and/or matching a specified query.
 Such queries are expressed by combining HTTP query parameters, including the possibility to express more complex filtering queries using the
 http://www.opengis.net/doc/IS/cql2/1.0[OGC Common Query Language (CQL2)].
 
-Readers are strongly encouraged to first familiarize themselves with the Discrete Global Grid Systems (DGGS) concepts defined in
+Readers are strongly encouraged to first familiarize themselves with the DGGS concepts defined in
 https://docs.ogc.org/as/20-040r3/20-040r3.html[OGC Abstract Specification Topic 21] laying the foundation for this Standard.
 
 Please note that in the remainder of this document, the Standard will be referred to as the "OGC API – DGGS Standard", "the DGGS API" or "this Standard".

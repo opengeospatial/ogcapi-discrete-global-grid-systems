@@ -2,14 +2,14 @@
 :doctype: standard
 :encoding: utf-8
 :lang: en
-:status: swg-draft
+:status: approved
 :committee: technical
 :draft: 1.0
 :external-id: https://www.opengis.net/doc/is/ogcapi-dggs/{m.n}
 :docnumber: 21-038r1
-:received-date: 2025-02-13
-:issued-date: 2025-05-31
-:published-date: 2025-05-31
+:received-date: 2025-02-14
+:issued-date: 2025-05-04
+:published-date: 2025-MM-DD
 :fullname: Dr. Matthew Brian John Purss
 :fullname_2: Jérôme Jacovella-St-Louis
 :docsubtype: implementation

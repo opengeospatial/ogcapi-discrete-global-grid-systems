@@ -1,7 +1,7 @@
 == Scope
 
 This OGC API - DGGS Standard specifies a Web API that enables the direct retrieval of geospatial data for a specified area, time and resolution of interest,
-based on a specific Discrete Global Grid Reference System (DGGRS).
+based on a specific DGGRS.
 Additionally, the DGGS API defines operations to query the list of DGGRS Zones from which data is available and/or matching a particular query.
 Such queries are expressed by combining HTTP query parameters, including the possibility to express more complex filtering queries using the
 http://www.opengis.net/doc/IS/cql2/1.0[OGC Common Query Language (CQL2)].
@@ -9,4 +9,4 @@ http://www.opengis.net/doc/IS/cql2/1.0[OGC Common Query Language (CQL2)].
 This Standard also specifies several encodings for retrieving both DGGS data and lists of zones, including JSON encodings suitable for data quantized to DGGRS zones of arbitrary geometries as well as
 widely adopted geospatial data formats. Compact binary representations for zone data as well as for lists of zones are proposed as well.
 
-An informative annex presents a JSON schema for describing a Discrete Global Grid Reference System (DGGRS), as well as examples of such DGGRS definitions which can be implemented in connection with this standard.
+An informative annex presents a JSON schema for describing a (DGGRS, as well as examples of such DGGRS definitions which can be implemented in connection with this standard.

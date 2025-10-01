@@ -19,7 +19,7 @@ identifier:: /req/core/dggrs-list
 description:: For retrieving the list of available discrete global grid reference systems:
 part:: The Implementation SHALL support an HTTP GET operation at a resource path ending with `.../dggs`.
 part:: The Implementation SHALL support a JSON representation of this `.../dggs` resource.
-part:: The `.../dggs` resource SHALL include a `dggrs` array property listing all Discrete Global Grid Reference Systems (DGGRSs) supported by the Implementation.
+part:: The `.../dggs` resource SHALL include a `dggrs` array property listing all DGGRSs supported by the Implementation.
 part:: Each element of the `dggrs` array SHALL include a summary description (a subset of the information available in the individual resources describing each DGGRS as per the next requirement below), including at minimum the `id`, `title`, `uri` (if applicable), and `links`.
 part:: The `links` property within each DGGRS element SHALL include at minimum a link to the discrete global grid reference system using the `self` link relation type, as well as a link to the discrete global grid reference system definition using the `[ogc-rel:dggrs-definition]` relation type.
 part:: The link relation type to use for linking from a particular resource of origin (such as a <<rc_collection-dggs,collection>> at `/collections/{collectionId}`, or <<rc_root-dggs,landing page>>)

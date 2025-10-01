@@ -4,7 +4,7 @@
 === Overview
 
 The OGC API - DGGS "Data Subsetting" requirements class extends the zone data retrieval requirements with the ability
-to subset data for additional dimensions beyond those defined by the discrete global grid reference systems (DGGRS),
+to subset data for additional dimensions beyond those defined by the DGGRS,
 for example along time or vertical dimension if those axes are not part the DGGRS definition, or along additional dimensions
 such as atmospheric pressure levels. Two query parameters are defined for this purpose: `datetime` (specifically for time) and
 `subset` (for any dimension, including time). Additionally, this requirements class defines the `properties` query parameter

@@ -4,7 +4,7 @@
 === Overview
 
 The OGC API - DGGS "Data Retrieval" requirements class allows retrieving data from a specific
-Discrete Global Grid Reference System (DGGRS), that is a specific hierarchy of Discrete Global Grids
+DGGRS, that is a specific hierarchy of Discrete Global Grids
 combined with a particular zone indexing reference system (ZIRS), for an individual zone.
 It describes an HTTP GET operation, as well as its response.
 The selected DGGRS is listed as available and described in the <<rc_core,Core requirements class>>,
