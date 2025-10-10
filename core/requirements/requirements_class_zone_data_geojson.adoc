@@ -76,8 +76,8 @@ be omitted from the response based on the hierarchy level implied from the `zone
 ====
 [%metadata]
 identifier:: /rec/data-geojson/crs
-part:: For an JSON-FG response for which a `crs` query parameter is not specified, the CRS of the response SHOULD be consistent with the CRS of the DGGRS or the underlying geographic CRS (e.g., CRS84).
-part:: For an JSON-FG response for which a `crs` query parameter is specified, the `geometry` property SHOULD be used to return coordinates if the geometry does not require an extended JSON-FG type, since this constitutes a prior arrangement regarding the CRS of GeoJSON coordinates.
+part:: For a JSON-FG response for which a `crs` query parameter is not specified, the CRS of the response SHOULD be consistent with the CRS of the DGGRS or the underlying geographic CRS (e.g., CRS84).
+part:: For a JSON-FG response for which a `crs` query parameter is specified, the `geometry` property SHOULD be used to return coordinates if the geometry does not require an extended JSON-FG type, since this constitutes a prior arrangement regarding the CRS of GeoJSON coordinates.
 ====
 
 [recommendation]

@@ -49,7 +49,7 @@ part:: For non-DGGS-optimized profiles, null values SHOULD be used for cells lyi
 ====
 [%metadata]
 identifier:: /rec/data-zarr/crs
-part:: For non-DGGS-optimized profiles, if the response contains georferencing information (such as defined by the candidate https://github.com/zarr-developers/geozarr-spec[OGC GeoZarr] Standard) the spatial reference of the response SHOULD be consistent with either the DGGRS or the underlying geographic CRS (e.g., CRS84).
+part:: For non-DGGS-optimized profiles, if the response contains georeferencing information (such as defined by the candidate https://github.com/zarr-developers/geozarr-spec[OGC GeoZarr] Standard) the spatial reference of the response SHOULD be consistent with either the DGGRS or the underlying geographic CRS (e.g., CRS84).
 ====
 
 [recommendation]

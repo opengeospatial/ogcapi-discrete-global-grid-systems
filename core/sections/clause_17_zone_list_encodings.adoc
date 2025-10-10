@@ -63,7 +63,7 @@ The GeoJSON zone list encoding requirements class defines support for encoding a
 and optionally according to the https://docs.ogc.org/DRAFTS/21-045.html[OGC Features & Geometry JSON (JSON-FG) Standard].
 
 The response is a feature collection where each feature represents a zone in the list.
-The geometry of the zone should be polygons or multipolygons (e.g., in the case of zone geometry which must be split on the anti-meridian or pole), or in the case of a 3D DGGRS and an JSON-FG
+The geometry of the zone should be polygons or multipolygons (e.g., in the case of zone geometry which must be split on the anti-meridian or pole), or in the case of a 3D DGGRS and a JSON-FG
 response polyhedrons, multipolyhedrons, prisms, or multiprisms.
 The zone identifier is represented in the `id` field of each feature.
 

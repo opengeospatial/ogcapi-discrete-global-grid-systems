@@ -36,7 +36,7 @@ See also <<examples_retrieving_data_for_a_dggrs_zone, Examples C.8>>.
 
 === Recommendation for a `crs` query parameter
 
-The following recommendation describe how a server should support a `crs` query parameter for the `.../zones/{zoneId}/data` resource if the data can be returned in multiple applicable CRSs.
+The following recommendation describes how a server should support a `crs` query parameter for the `.../zones/{zoneId}/data` resource if the data can be returned in multiple applicable CRSs.
 
 [[rec_data-retrieval_crs]]
 

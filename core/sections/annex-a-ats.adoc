@@ -159,7 +159,7 @@ test-method::
 *Then:* +
 - assert that the Implementation supports a `subset` query parameter for the zone data retrieval operation (resource path ending with `.../dggs/{dggrsId}/zones/{zoneId}/data`)
 conforming to the Augmented Backus Naur Form (ABNF) fragment in <</req/data-subsetting/subset>> +
-- assert that the Implementation supports as an axis names`time` for a temporal dataset, unless this temporal axis is an axis of the discrete global grid reference system. +
+- assert that the Implementation supports as an axis name `time` for a temporal dataset, unless this temporal axis is an axis of the discrete global grid reference system. +
 - assert that if a third vertical spatial dimension is supported (if the resource's spatial extent bounding box is three dimensional) and that dimension is not part of the discrete global grid system definition, the Implementation also supports a `h` dimension (elevation above the ellipsoid in EPSG:4979 or CRS84h) for geographic CRS and `z` for projected CRS, which are to be interpreted as the vertical axis in the CRS definition. +
 - assert that the Implementation supports as axis names any additional dimension (beyond spatial and temporal) as described in the `extent` property of the collection or dataset description. +
 - assert that the Implementation returns a 400 error status code if an axis name does not correspond to one of the axes of the Coordinate Reference System (CRS) of the data or an axis defined in the relevant `extent` property. +
@@ -691,7 +691,7 @@ test-method::
 - assert that every 200 response of the server for zone data with the media type `application/json` is a JSON document representing the data values for all selected fields of each included sub-zone. +
 - assert that the schema for the JSON document follows the JSON Schema for DGGS-JSON described in <</req/data-json/content>> +
 - assert that every zone depth requested is using the `zone-depth` query parameter included in the response. +
-- assert thatt at every depth, each individual value corresponds exactly to the data sampled representative of that sub-zone. +
+- assert that at every depth, each individual value corresponds exactly to the data sampled representative of that sub-zone. +
 - assert that the list of data values follows the default zone order as specified by the Discrete Global Grid Reference System (for example based on a scanline or space-filling curve defined therein) for which the request is made. +
 - assert that Null values use the `null` JSON value.
 ====
@@ -1209,7 +1209,7 @@ test-purpose:: Verify that the correct operation IDs suffixed are used in the AP
 test-method::
 +
 --
-*Given:* an DGGS API implementation providing an API definition with a concept of operation IDs (such as OpenAPI 3.0) +
+*Given:* a DGGS API implementation providing an API definition with a concept of operation IDs (such as OpenAPI 3.0) +
 *When:* inspecting the operations in the API definition for DGGS resources +
 *Then:* +
 - assert that the operation IDs for DGGS resources correspond to those specified in <<api-operation-id-suffixes>>

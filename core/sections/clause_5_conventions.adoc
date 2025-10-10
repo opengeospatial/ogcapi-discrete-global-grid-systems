@@ -44,7 +44,7 @@ In addition, the following link relation types are used for which no applicable 
 
 Each resource representation includes an array of links. Implementations are free to add additional links for all resources provided by the Web API implementing OGC API - DGGS requirement(s).
 
-Used in combination OGC API — Common - Part 1: Core, other link relation types will be used, including:
+Used in combination with OGC API — Common - Part 1: Core, other link relation types will be used, including:
 
 * **https://www.opengis.net/def/rel/ogc/1.0/conformance**: Refers to a resource that identifies the specifications that the link’s context conforms to.
 

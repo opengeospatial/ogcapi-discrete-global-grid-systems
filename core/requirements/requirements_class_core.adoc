@@ -6,7 +6,7 @@
 identifier:: https://www.opengis.net/spec/ogcapi-dggs-1/1.0/req/core
 subject:: Web API
 requirement:: /req/core/dggrs-list
-requirement:: /req/core/dggrs-info
+requirement:: /req/core/dggrs-description
 requirement:: /req/core/zone-info
 ====
 

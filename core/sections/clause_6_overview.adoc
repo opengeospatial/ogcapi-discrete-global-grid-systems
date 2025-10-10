@@ -25,7 +25,7 @@ However, for such use cases, OGC API - DGGS does not present significant advanta
 https://docs.ogc.org/DRAFTS/19-087.html[OGC API - Coverages], https://docs.ogc.org/is/17-069r4/17-069r4.html[OGC API - Features] or https://docs.ogc.org/is/20-057/20-057.html[OGC API - Tiles].
 
 An implementation of OGC API - DGGS may also support other OGC API access mechanisms for the same data collection for this purpose, while
-still leveraging the advantages of Discrete Global Grid Systems under the hood to respond effectively and in a scalable manner to requests for these other APIs.
+still leveraging the advantages of Discrete Global Grid Systems 'under the hood' to respond effectively and in a scalable manner to requests for these other APIs.
 
 Although this Standard defines a number of possible <<zone-data-encodings-section,encodings for retrieving Zone Data>> and <<zone-list-encodings-section,encodings for querying zone lists>>,
 no particular encoding of Zone Data is mandated by this DGGS API, whereas only the simple JSON representation of Zone Query responses (which consists of an array of textual zone identifiers) is required.
