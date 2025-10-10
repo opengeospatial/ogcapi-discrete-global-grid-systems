@@ -16,7 +16,7 @@ requirement:: /req/operation-ids/operation-ids
 [%metadata]
 identifier:: /req/operation-ids/operation-ids
 description:: For specifying the operation identifiers associated with the capabilities defined in OGC API - DGGS
-part:: The API definition SHALL identify the supported operations defined in this Standard using the identifier suffixes defined in table <<api-operation-id-suffixes>>.
+part:: The API definition SHALL identify the supported operations defined in this Standard using the identifier suffixes defined in <<api-operation-id-suffixes>>.
 ====
 
 [#api-operation-id-suffixes,reftext='{table-caption} {counter:table-num}']
