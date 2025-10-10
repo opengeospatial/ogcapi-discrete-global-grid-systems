@@ -48,7 +48,7 @@ Readers are also encouraged to refer as needed to http://www.opengis.net/doc/AS/
 
 === API Definition
 
-An https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/tree/master/openapi[example OpenAPI 3.0 definition for OGC API - DGGS] is provided, defined as individual components
+An https://schemas.opengis.net/ogcapi/dggs/1.0/openapi/[example OpenAPI 3.0 definition for OGC API - DGGS] is provided, defined as individual components
 which can be assembled with the https://apitools.dev/swagger-cli/[swagger-cli tool] after customizing the API definition for a particular implementation or deployment.
 
 Developers may prefer to first read the documentation for OGC API - DGGS generated from the example OpenAPI definition,
@@ -68,7 +68,7 @@ Links to relevant examples in <<annex_examples, Annex C>> are also included.
 | Resource path                                  | Response           |  Parameters
 3+| *Defined in requirements class <<rc_root-dggs,Root DGGS>>* (integration with https://docs.ogc.org/is/19-072/19-072.html[OGC API - Common - Part 1: Core]):
 | *`/`* | Landing Page +
-https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/responses/common-core/rLandingPage.yaml[Response (OpenAPI)] / https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/schemas/common-core/landingPage.yaml[Schema] |
+https://schemas.opengis.net/ogcapi/dggs/1.0/openapi/responses/common-core/rLandingPage.yaml[Response (OpenAPI)] / https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/blob/master/openapi/schemas/common-core/landingPage.yaml[Schema] |
 | *`/dggs...`* | DGGS Resources (defined in <<rc_core,Core>>, as well as <<rc_data-retrieval,Zone Data Retrieval>> and/or <<rc_zone-query,Zone Query>>) for the API deployment and/or dataset as a whole |
 3+| *Defined in requirements class <<rc_collection-dggs,Collection DGGS>>* (integration with https://docs.ogc.org/DRAFTS/20-024.html[OGC API - Common - Part 2: Geospatial Data]):
 | *`/collections`* | Collections List +
