@@ -60,7 +60,7 @@ test-method::
 - assert that the `.../dggs/{dggrsId}` resource includes an `id` property consistent with the `{dggrsId}` resource path parameter. +
 - assert that the `.../dggs/{dggrsId}` resource includes a link to the resource itself using the `self` link relation type. +
 - assert that the `.../dggs/{dggrsId}` resource includes a link to a definition of the discrete global grid reference system using the link relation type `[ogc-rel:dggrs-definition]`
-(this definition should be based on the draft schema in <<annex-dggrs-def, Annex B - Discrete Global Grid Reference System Definitions>>, although in this first version of the OGC API - DGGS Standard the schema is informative). +
+(this definition should be based on the schema in <<annex-dggrs-def, Annex B - Discrete Global Grid Reference System Definitions>>, although in this first version of the OGC API - DGGS Standard the schema is informative). +
 - assert that the `.../dggs/{dggrsId}` resource includes a templated link in the `linkTemplates` array to request information for a particular zone using the link relation type `[ogc-rel:dggrs-zone-info]` and the template variable `{zoneId}`. +
 - assert that if the discrete global grid reference system (the combination of the discrete global grid and indexing system) is registered with an authority, the resource includes a `uri` property corresponding to that registered discrete global grid reference system. +
 - assert that if the discrete global grid reference system is based on a particular coordinate reference system, the resource specifies that CRS in a `crs` property, preferably as a URI (if one is available). +
