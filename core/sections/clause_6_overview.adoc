@@ -120,7 +120,7 @@ https://schemas.opengis.net/ogcapi/dggs/1.0/openapi/parameters/common-geodata/da
 https://schemas.opengis.net/ogcapi/dggs/1.0/openapi/parameters/dggs-core/parent-zone.yaml[`parent-zone`] (see <<examples_querying_sub_zones_of_a_parent_zone, Examples C.5.4>>) +
  +
 Recommended query parameter (optional for server to support): +
-https://schemas.opengis.net/ogcapi/dggs/1.0/openapi/parameters/dggs-core/limit.yaml[`limit`] (clients should rely on hierarchical paging with `parent-zone` and `zone-level` instead) 
+https://schemas.opengis.net/ogcapi/dggs/1.0/openapi/parameters/dggs-core/limit-zones.yaml[`limit`] (clients should rely on hierarchical paging with `parent-zone` and `zone-level` instead) 
 2+|*_Optional requirement classes complementing Zone Query_* |
 Some additional possible encodings defined in the following requirements classes: +
  +
