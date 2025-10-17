@@ -5,24 +5,23 @@
 :status: approved
 :committee: technical
 :draft: 1.0
-:external-id: https://www.opengis.net/doc/is/ogcapi-dggs/{m.n}
+:m.n: 1.0
+:external-id: https://www.opengis.net/doc/is/ogcapi-dggs-1/1.0
 :docnumber: 21-038r1
 :received-date: 2025-02-14
 :issued-date: 2025-05-04
-:published-date: 2025-MM-DD
+:published-date: 2025-10-03
 :fullname: Dr. Matthew Brian John Purss
 :fullname_2: Jérôme Jacovella-St-Louis
 :docsubtype: implementation
 :keywords: ogcdoc, OGC document, API, openapi, html, ogcapi, DGGS, discrete global grid, ISEA, hexagonal grids
-:submitting-organizations: Pangaea Innovations Pty. Ltd.; Ecere Corporation; Landcare Research New Zealand; Peking University Collaborative Innovation Center for Geospatial Big Data; European Commission Joint Research Centre; Natural Resources Canada; University of Tartu; European Space Agency; Open Source Geospatial Foundation; University of Calgary; GeoInsight AG
+:submitting-organizations: Pangaea Innovations Pty. Ltd.; Ecere Corporation; Landcare Research New Zealand; Peking University Collaborative Innovation Center for Geospatial Big Data; European Commission Joint Research Centre; Natural Resources Canada; University of Tartu; European Space Agency; Open Geospatial Foundation; University of Calgary; GeoInsight AG
 :docfile: document.adoc
 :mn-document-class: ogc
-:mn-output-extensions: xml,html,doc,pdf
+:mn-output-extensions: xml,html,pdf
 :local-cache-only:
 :data-uri-image:
-:pdf-uri: ./21-038.pdf
-:xml-uri: ./21-038.xml
-:doc-uri: ./21-038.doc
+:pdf-uri: ./21-038r1.pdf
 :edition: 1.0
 
 ////
