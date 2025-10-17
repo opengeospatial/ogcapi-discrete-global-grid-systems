@@ -74,7 +74,7 @@ All questions regarding this submission should be directed to the editors or the
 | Ryan Ahola                              | Natural Resources Canada
 | Alexander Kmoch                         | University of Tartu
 | Ferran Gascon                           | European Space Agency
-| Luís Moreira de Sousa                   | Open Geospatial Foundation
+| Luís Moreira de Sousa                   | Open Source Geospatial Foundation
 | Perry Peterson                          | University of Calgary
 | Michael Jendryke                        | GeoInsight AG
 |===

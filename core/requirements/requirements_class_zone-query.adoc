@@ -98,9 +98,9 @@ adding only once any overlaps which may occur for compact zone responses where z
 at the refinement level of the zone query).
 part:: In the JSON response, for a 2D DGGS, the Implementation SHOULD include in the response a `returnedAreaMetersSquare` property indicating the total surface area occupied by the zones being returned,
 adding the overlaps which may occur for compact zone responses where zones are non-congruent only once.
-part:: In the JSON response, For a 3D DGGS, the Implementation SHOULD include in the response a `returnedVolumeMetersCube` property indicating the total volume occupied by the zones being returned, still counting overlapping regions only once.
-part:: In the JSON response, For a 2D + Time DGGS, the Implementation SHOULD include in the response a `returnedVolumeMetersSquareSeconds` property indicating the total volume occupied by the zones being returned, still counting overlapping regions only once.
-part:: In the JSON response, For a 3D + Time DGGS, the Implementation SHOULD include in the response a `returnedHyperVolumeMetersCubeSeconds` property indicating the total hypervolume occupied by the zones being returned, still counting overlapping regions only once.
+part:: In the JSON response, for a 3D DGGS, the Implementation SHOULD include in the response a `returnedVolumeMetersCube` property indicating the total volume occupied by the zones being returned, still counting overlapping regions only once.
+part:: In the JSON response, for a 2D + Time DGGS, the Implementation SHOULD include in the response a `returnedVolumeMetersSquareSeconds` property indicating the total volume occupied by the zones being returned, still counting overlapping regions only once.
+part:: In the JSON response, for a 3D + Time DGGS, the Implementation SHOULD include in the response a `returnedHyperVolumeMetersCubeSeconds` property indicating the total hypervolume occupied by the zones being returned, still counting overlapping regions only once.
 ====
 
 [recommendation]
@@ -181,7 +181,7 @@ part:: When the `parent-zone` query parameter is used, the Implementation SHOULD
 === `limit` query parameter for paging (recommendation)
 
 The following recommendation describes how a client can specify a limit to the number of zones to be returned
-and page through large list of zones as multiple requests and responses.
+and page through a large list of zones as multiple requests and responses.
 
 [recommendation]
 ====
