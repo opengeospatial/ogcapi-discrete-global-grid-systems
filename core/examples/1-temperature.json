@@ -1,5 +1,5 @@
 {
-   "$schema" : "https://schemas.opengis.net/ogcapi/dggs/part1/1.0/openapi/schemas/dggs-json/schema",
+   "$schema" : "https://schemas.opengis.net/ogcapi/dggs/1.0/core/schemas/dggs-json/dggs-json.json",
    "dggrs": "https://www.opengis.net/def/dggrs/OGC/1.0/ISEA3H",
    "zoneId": "C0-2B-A",
    "depths": [ 0, 1 ],
