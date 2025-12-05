@@ -653,7 +653,7 @@ test-method::
 +
 --
 *Given:* an implementation declaring conformance to Collection DGGS +
-*When:* testing the `/conf/core` conformance class as well the `/conf/zone-query` and/or the `/conf/data-retrieval` conformance classes for the DGGS resources originating from collections at `/collections/{collectoinId}/dggs` +
+*When:* testing the `/conf/core` conformance class as well the `/conf/zone-query` and/or the `/conf/data-retrieval` conformance classes for the DGGS resources originating from collections at `/collections/{collectionId}/dggs` +
 *Then:* +
 - assert that the Implementation supports the resource paths and associated HTTP methods defined in the "Core" requirements class, as well as any additional resources defined in other requirements classes to which the
 Implementation declares conformance, for at least one collection of the dataset offered by the API deployment. +
