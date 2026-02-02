@@ -1,0 +1,47 @@
+{
+   "title": "HEALPix",
+   "description": "A HEALPix Discrete Global Grid Reference System using a refinement ratio of 4, a 0° East prime meridian, the WGS84 ellipsoid model, grid configuration Nφ (H) = 4, Nθ (K) = 3, indexing based on 12 root rhombuses numbered 0 to B (hex) from West to East, North to South, and a hexadecimal sub-index in row-major, bottom-left to top-right, top-left to bottom-right scanlines, with sub-zone order also based on the same scanlines.",
+   "uri": "https://www.opengis.net/def/dggrs/OGC/1.0/HEALPix",
+   "links": [ { "rel": "describedby", "href": "https://arxiv.org/pdf/astro-ph/0409513" } ],
+   "dggh": {
+      "definition": {
+         "spatialDimensions": 2,
+         "temporalDimensions": 0,
+         "projString": "+proj=healpix +ellps=WGS84",
+         "links": [
+            { "rel": "related", "href": "https://proj.org/en/stable/operations/projections/healpix.html" }
+         ],
+         "basePolyhedron": "rhombic dodecahedron",
+         "refinementRatio": 4,
+         "refinementStrategy": [ "nestedChildCell" ],
+         "constraints": {
+            "cellAxisAligned": true,
+            "cellEqualSized": true
+         },
+         "zoneTypes": [ "square" ]
+      },
+      "parameters": {
+         "ellipsoid": "[EPSG:7030]",
+         "orientation":
+         {
+            "description": "Prime meridian set to 0° East, with two corners of the rhombic dodecahedron positioned at this longitude and latitudes corresponding to the extremities of the equatorial band at ± arcsin(2.0/3.0) authalic latitude (~41.937853910160136 geodetic)",
+            "latitude": -41.937853910160136,
+            "longitude": 0,
+            "azimuth": 0
+         }
+      }
+   },
+   "zirs": {
+      "textZIRS": {
+         "description": "An identifier comprised of an uppercase letter representing a level (A for level 0, B for level 1...), followed by a hexadecimal number from 0 to B representing the root rhombus corresponding to the faces of a rhombic dodecahedron, from left-to-right, then top-to-bottom in the HEALPix projection, followed by a hyphen, then by an uppercase hexadecimal number identifying a sub-zone starting to count from 0 in row-major order, bottom-left to top-right, top-left to bottom-right scanlines.",
+         "type": "levelRootFaceHexRowMajorSubZone"
+      },
+      "uint64ZIRS": {
+         "description": "A 64-bit integer with the 52 least significant bits corresponding to a sub-rhombus index, the next 4 bits corresponding to the root rhombus (from 0 to 11), the next 5 bits corresponding to the refinement level, and the remaining 3 most significant bits always 0 for a valid zone identifier."
+      }
+   },
+   "subZoneOrder": {
+      "description": "The sub-zone order used for this DGGRS definition of HEALPix uses the same row-major, top-left to bottom-right scanlines as the sub-zone indexing.",
+      "type": "scanline"
+   }
+}

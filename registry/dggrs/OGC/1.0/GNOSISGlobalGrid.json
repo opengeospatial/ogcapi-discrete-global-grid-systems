@@ -1,0 +1,45 @@
+{
+   "title": "GNOSISGlobalGrid",
+   "description": "A Discrete Global Grid Reference System based on the GNOSIS Global Grid 2D Tile Matrix Set, a {hexLevel}-{hexRow}-{hexCol} indexing system, and scanline-based sub-zone ordering. Making use of variable matrix widths, zones are divided by 4, unless they touch the pole, in which case the half touching the pole is not split longitude-wise. The error budget is ~-25.8/+66.0% from mean zone size (+/- 45.9% from median) up to level 25 (~849 cm² mean zones).",
+   "uri": "https://www.opengis.net/def/dggrs/OGC/1.0/GNOSISGlobalGrid",
+   "links": [ { "rel": "describedby", "href": "https://docs.ogc.org/is/17-083r4/17-083r4.html#toc58" } ],
+   "dggh": {
+      "definition": {
+         "spatialDimensions": 2,
+         "temporalDimensions": 0,
+         "crs": "https://www.opengis.net/def/crs/EPSG/0/4326",
+         "links": [
+            { "rel": "related", "href": "https://www.opengis.net/def/tilematrixset/OGC/1.0/GNOSISGlobalGrid" }
+         ],
+         "basePolyhedron": "octahedron",
+         "refinementRatio": 4,
+         "refinementStrategy": [ "nestedChildCell" ],
+         "constraints": {
+            "cellAxisAligned": true
+         },
+         "zoneTypes": [ "rectangle" ]
+      },
+      "parameters": {
+         "ellipsoid": "[EPSG:7030]",
+         "orientation":
+         {
+            "latitude": 0,
+            "longitude": 0
+         }
+      }
+   },
+   "zirs": {
+      "textZIRS": {
+         "description": "An identifier comprised of three uppercase hexadecimal numbers separated by hyphens representing the level, row and column of the GNOSIS Global Grid 2D Tile Matrix Set.",
+         "type": "ogc2DTMSHexLevelRowCol"
+      },
+      "uint64ZIRS": {
+         "description": "A 64-bit integer with the 30 least significant bits corresponds to a column, the next 29 bits corresponding to a row, and the 5 most significant bits correspond to a level of an OGC 2D Tile Matrix Set identifier, with individual components using little endian.",
+         "type": "ogc2DTMSHexLevelRowCol"
+      }
+   },
+   "subZoneOrder": {
+      "description": "The zones are ordered as scanlines in row-major order, left to right, then top to bottom, based on the EPSG:4326 CRS.",
+      "type": "scanline"
+   }
+}

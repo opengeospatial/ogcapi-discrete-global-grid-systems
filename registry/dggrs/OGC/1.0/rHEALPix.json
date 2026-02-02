@@ -1,0 +1,49 @@
+{
+   "title": "rHEALPix",
+   "description": "An rHEALPix Discrete Global Grid Reference System using a refinement ratio of 9, a 50° East prime meridian, the WGS84 ellipsoid model, hierarchical indexing with level 0 zones named N,O,P,Q,R,S and further refined zones adding numbers 0-8, and a sub-zone ordering using non-hierarchical row-major, top-to-bottom, left-to-right scanlines.",
+   "uri": "https://www.opengis.net/def/dggrs/OGC/1.0/rHEALPix",
+   "links": [ { "rel": "describedby", "href": "https://dx.doi.org/10.1088/1755-1315/34/1/012012" } ],
+   "dggh": {
+      "definition": {
+         "spatialDimensions": 2,
+         "temporalDimensions": 0,
+         "projString": "+proj=rhealpix +lon_0=50 +ellps=WGS84",
+         "links": [
+            { "rel": "related", "href": "https://proj.org/en/stable/operations/projections/rhealpix.html" },
+            { "rel": "related", "href": "https://proj.org/en/stable/operations/projections/healpix.html" }
+         ],
+         "basePolyhedron": "cube",
+         "refinementRatio": 9,
+         "refinementStrategy": [ "nestedChildCell", "nodeCentredChildCell" ],
+         "constraints": {
+            "cellAxisAligned": true,
+            "cellEqualSized": true
+         },
+         "zoneTypes": [ "square" ]
+      },
+      "parameters": {
+         "ellipsoid": "[EPSG:7030]",
+         "orientation":
+         {
+            "description": "Prime meridian set to 50° East, with two corners of the cube positioned at this longitude and latitudes corresponding to the extremities of the equatorial band at ± arcsin(2.0/3.0) authalic latitude (~41.937853910160136 geodetic)",
+            "latitude": -41.937853910160136,
+            "longitude": 50,
+            "azimuth": 0
+         }
+      }
+   },
+   "zirs": {
+      "textZIRS": {
+         "description": "The indexing used is hierarchical starting at level 0 with the letters N and S for the North and South polar zones, while letters O, P, Q, R are used for the equatorial band. Further refined levels add one digit from 0 to 8 in row-major order from top-to-bottom and left-to-right.",
+         "type": "hierarchicalConcatenation"
+      },
+      "uint64ZIRS": {
+         "description": "A 64-bit integer with the 30 least significant bits corresponds to a column, the next 29 bits corresponding to a row, and the 5 most significant bits correspond to a level of an OGC 2D Tile Matrix Set identifier, with individual components using little endian. The 2D Tile Matrix Set is based on the rHEALPix projection with the North and South polar faces at the leftmost position (0).",
+         "type": "ogc2DTMSHexLevelRowCol"
+      }
+   },
+   "subZoneOrder": {
+      "description": "The sub-zone order used for this DGGRS definition of rHEALPix is not hierarchical, but uses row-major, top-to-bottom, left-to-right scanlines throughout the entire parent zone.",
+      "type": "scanline"
+   }
+}

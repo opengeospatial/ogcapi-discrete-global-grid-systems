@@ -1,0 +1,46 @@
+{
+   "title": "IVEA7H",
+   "description": "An IVEA7H Discrete Global Grid Reference System using the Icosahedral Vertex-oriented Equal-Area (IVEA) projection as described in the 2006 'Slice & Dice' publication (equivalent to applying the 1992 Snyder polyhedral projection to the dodecahedron when considering the barycentric coordinates within the projection of the spherical disdyakis triacontahedron triangles constituting full spherical icosahedral symmetry), an orientation symmetric about the equator with a single vertex on land, and WGS84 authalic sphere (a WGS84 geodetic latitude is mapped to the sphere by converting it to an authalic latitude), a zone indexing system based on dividing root rhombuses into 7^(level/2)^2 sub-rhombuses for even levels, and a scanline-based sub-zone ordering",
+   "uri": "https://www.opengis.net/def/dggrs/OGC/1.0/IVEA7H",
+   "links": [ { "rel": "describedby", "href": "https://www.opengis.net/doc/is/ogcapi-dggs/1.0" } ],
+   "dggh": {
+      "definition": {
+         "spatialDimensions": 2,
+         "temporalDimensions": 0,
+         "links": [
+            { "rel": "related", "href": "https://doi.org/10.1559/152304006779500687" },
+            { "rel": "related", "href": "https://doi.org/10.3138/27H7-8K88-4882-1752" }
+         ],
+         "basePolyhedron": "icosahedron",
+         "refinementRatio": 7,
+         "refinementStrategy": [ "centredChildCell", "nodeSharingChildCell" ],
+         "constraints": {
+            "cellEqualSized": true
+         },
+         "zoneTypes": [ "hexagon", "pentagon" ]
+      },
+      "parameters": {
+         "ellipsoid": "[EPSG:7030]",
+         "orientation":
+         {
+            "description": "IVEA orientation symmetric about the equator with a single icosahedron vertex falling on land, with first icosahedron vertex at authalic latitude equal to the arctangent of the golden ratio (~58.397145907431° N geodetic latitude), 11.20°E longitude, and second vertex due North from that first vertex.",
+            "latitude": 58.397145907431,
+            "longitude": 11.20,
+            "azimuth": 0
+         }
+      }
+   },
+   "zirs": {
+      "textZIRS": {
+         "description": "An identifier comprised of an uppercase letter representing the level (A for level 0, B for level 1...), followed by a hexadecimal number from 0 to B, with 0 to 9 representing the root rhombus corresponding to the faces of an icosahedron, in a staircase order from the top-left to the bottom right of an IVEA planar projection after a 60 degrees clockwise rotation, A and B representing the special cases of the 'North' and 'South' poles respectively, followed by a hyphen, then by an uppercase hexadecimal number identifying one of 7^(equal_or_lower_even_level/2)^2 sub-rhombuses starting to count from 0 in row-major order (except the special pole cases which are always 0), followed by a second hyphen, then by a letter as follows: A: even level zone centered on the sub-rhombus left corner (or polar zone), B: odd level zone centered on sub-rhombus left vertex, C: odd level zone top-left of rhombus vertex (in IVEA projection), D..H: remaining odd level zones around rhombus vertex in counter-clockwise order\n",
+         "type": "levelRootFaceHexRowMajorSubZone"
+      },
+      "uint64ZIRS": {
+         "description": "A 64-bit integer with the 3 least significant bits corresponding to a hexagonal or pentagonal zone intersecting a sub-rhombus: 0: even level, 1: odd level zone centered on sub-rhombus vertex, 2: odd level zone top-left of rhombus vertex, 3..7: remaining odd level zones around rhombus vertex in counter-clockwise order, the next 51 bits corresponding to a sub-rhombus index within a root rhombus divided into 7^(equal_or_lower_even_level/2)^2 (always 0 for pentagonal zones), the next 4 bits corresponding to a root rhombus (with special values of 0xA and 0xB corresonding to North and South poles respectively), the next 4 bits corresponding to half of the lower or equal even level (e.g., 1 for levels 2 and 3) with a value between 0 and 9 for a valid zone identifier."
+      }
+   },
+   "subZoneOrder": {
+      "description": "The zones are ordered in tightly packed scanlines. Scanlines start on a hexagon vertex and run in a clockwise direction. Sub-zones are ordered left to right along a scanline and scanlines are ordered from top to bottom (considering the IVEA planar projection). For polar pentagons, the orientation of the scanlines varies in the IVEA planar projection but is always clockwise, the vertex/edge of the first sub-zone is on the left side of the planar IVEA projection for the north pole (in root rhombus 0), and on the right side for the south pole (in root rhombus 9).",
+      "type": "scanline"
+   }
+}

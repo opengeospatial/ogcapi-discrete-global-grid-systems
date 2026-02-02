@@ -1,0 +1,48 @@
+{
+   "title": "IVEA9R",
+   "description": "An IVEA9R Discrete Global Grid Reference System using the Icosahedral Vertex-oriented Equal-Area (IVEA) projection as described in the 2006 'Slice & Dice' publication (equivalent to applying the 1992 Snyder polyhedral projection to the dodecahedron when considering the barycentric coordinates within the projection of the spherical disdyakis triacontahedron triangles constituting full spherical icosahedral symmetry), an orientation symmetric about the equator with a single vertex on land, and WGS84 authalic sphere (a WGS84 geodetic latitude is mapped to the sphere by converting it to an authalic latitude), a {level}{rootRhombus}-{hexSubZone} indexing system, and scanline-based sub-zone ordering. The ten root rhombuses are formed by combining two icosahedron triangles at their base. Depending on whether the IVEA planar CRS is rotated, sheared and scaled or not, the geometries of the zones are either squares or rhombuses, and the zone edges are either axis-aligned, or the angles and distances are preserved. In either case, the topology, indexing and surface geometry on the Earth model remains the same. The IVEA9R DGGH is a dual of the IVEA3H DGGH even levels (a vertex/node in IVEA9R is the centroid of an IVEA3H zone).",
+   "uri": "https://www.opengis.net/def/dggrs/OGC/1.0/IVEA9R",
+   "links": [ { "rel": "describedby", "href": "https://www.opengis.net/doc/is/ogcapi-dggs/1.0" } ],
+   "dggh": {
+      "definition": {
+         "spatialDimensions": 2,
+         "temporalDimensions": 0,
+         "links": [
+            { "rel": "related", "href": "https://doi.org/10.1559/152304006779500687" },
+            { "rel": "related", "href": "https://doi.org/10.3138/27H7-8K88-4882-1752" }
+         ],
+         "basePolyhedron": "icosahedron",
+         "refinementRatio": 9,
+         "refinementStrategy": [ "nestedChildCell", "nodeCentredChildCell" ],
+         "constraints": {
+            "cellAxisAligned": true,
+            "cellEqualSized": true
+         },
+         "zoneTypes": [ "square" ]
+      },
+      "parameters": {
+         "ellipsoid": "[EPSG:7030]",
+         "orientation":
+         {
+            "description": "IVEA orientation symmetric about the equator with a single icosahedron vertex falling on land, with first icosahedron vertex at authalic latitude equal to the arctangent of the golden ratio (~58.397145907431° N geodetic latitude), 11.20°E longitude, and second vertex due North from that first vertex.",
+            "latitude": 58.397145907431,
+            "longitude": 11.20,
+            "azimuth": 0
+         }
+      }
+   },
+   "zirs": {
+      "textZIRS": {
+         "description": "An identifier comprised of an uppercase letter representing a level (A for level 0, B for level 1...), followed by a number from 0 to 9 representing the root rhombus corresponding to the faces of an icosahedron, in a staircase order from the top-left to the bottom right of an IVEA planar projection after a 60 degrees clockwise rotation, followed by a hyphen, then by an uppercase hexadecimal number identifying a sub-zone starting to count from 0 in row-major order.",
+         "type": "levelRootFaceHexRowMajorSubZone"
+      },
+      "uint64ZIRS": {
+         "description": "A 64-bit integer with the 30 least significant bits corresponds to a column, the next 29 bits corresponding to a row, and the 5 most significant bits correspond to a level of an OGC 2D Tile Matrix Set identifier, with individual components using little endian.",
+         "type": "ogc2DTMSHexLevelRowCol"
+      }
+   },
+   "subZoneOrder": {
+      "description": "The zones are ordered as scanlines in row-major order, left to right, then top to bottom, based on a CRS derived from the planar IVEA projection after rotating it 60° clockwise (-60° rotation) and applying a -60° degrees horizontal shear.",
+      "type": "scanline"
+   }
+}
