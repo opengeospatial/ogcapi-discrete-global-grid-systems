@@ -196,7 +196,7 @@ components:
       zoneId:
          $ref: 'parameters/dggs-core/zoneId.yaml'
       zone-level:
-         $ref: 'parameters/dggs-core/compact-zones.yaml'
+         $ref: 'parameters/dggs-core/zone-level.yaml'
       zone-depth:
          $ref: 'parameters/dggs-core/zone-depth.yaml'
       compact-zones:

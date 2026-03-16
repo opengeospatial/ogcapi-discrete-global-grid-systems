@@ -603,18 +603,10 @@
             "$ref": "#/components/parameters/dggrsId"
           },
           {
-            "name": "zone-level",
-            "in": "query",
-            "description": "The DGGS hierarchy level at which to return the list of zones. The precision of the calculation to return the results depends on this parameter. Returned zones will have a level equal or smaller to this specified level. If `compact-zones` is set to true, all returned zones will be of this zone level. If not specified, this defaults to the most detailed zone that the system is able to return for the specific request.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            },
-            "style": "form",
-            "explode": false
+            "$ref": "#/components/parameters/zone-level"
           },
           {
-            "$ref": "#/components/parameters/zone-level"
+            "$ref": "#/components/parameters/compact-zones"
           },
           {
             "$ref": "#/components/parameters/limit"
@@ -690,10 +682,10 @@
             "$ref": "#/components/parameters/dggrsId"
           },
           {
-            "$ref": "#/paths/~1dggs~1%7BdggrsId%7D~1zones/get/parameters/4"
+            "$ref": "#/components/parameters/zone-level"
           },
           {
-            "$ref": "#/components/parameters/zone-level"
+            "$ref": "#/components/parameters/compact-zones"
           },
           {
             "$ref": "#/components/parameters/limit"
@@ -3198,13 +3190,12 @@
         "example": "B2-1-A"
       },
       "zone-level": {
-        "name": "compact-zones",
+        "name": "zone-level",
         "in": "query",
-        "description": "If set to true (default), when the list of DGGS zones to be returned at the requested resolution (zone-level) includes all children of a parent zone, the parent zone will be returned as a shorthand for that list of children zone. If set to false, all zones returned will be of the requested zone level.",
+        "description": "The DGGS hierarchy level at which to return the list of zones. The precision of the calculation to return the results depends on this parameter. Returned zones will have a level equal or smaller to this specified level. If `compact-zones` is set to true, all returned zones will be of this zone level. If not specified, this defaults to the most detailed zone that the system is able to return for the specific request.",
         "required": false,
         "schema": {
-          "type": "boolean",
-          "default": true
+          "type": "integer"
         },
         "style": "form",
         "explode": false
@@ -3230,7 +3221,16 @@
         "explode": false
       },
       "compact-zones": {
-        "$ref": "#/components/parameters/zone-level"
+        "name": "compact-zones",
+        "in": "query",
+        "description": "If set to true (default), when the list of DGGS zones to be returned at the requested resolution (zone-level) includes all children of a parent zone, the parent zone will be returned as a shorthand for that list of children zone. If set to false, all zones returned will be of the requested zone level.",
+        "required": false,
+        "schema": {
+          "type": "boolean",
+          "default": true
+        },
+        "style": "form",
+        "explode": false
       },
       "limit": {
         "name": "limit",
