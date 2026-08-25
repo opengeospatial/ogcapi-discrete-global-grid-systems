@@ -2,6 +2,8 @@
 
 This GitHub repository contains the draft [OGC API - Discrete Global Grid Systems](https://ogcapi.ogc.org/dggs/) standard, as well as supporting information.
 
+The published version of _OGC API - Discrete Global Grid Systems - Part 1: Core_ (v1.0) can be accessed [here in HTML](https://docs.ogc.org/is/21-038r1/21-038r1.html) and [here in PDF](https://docs.ogc.org/is/21-038r1/21-038r1.pdf).
+
 The latest draft candidate standard can be accessed [here in HTML](https://docs.ogc.org/DRAFTS/21-038r1.html) and [here in PDF](https://docs.ogc.org/DRAFTS/21-038r1.pdf).
 
 The OpenAPI building blocks defined by the specification as well as complete bundled example API definition are [available here](https://github.com/opengeospatial/ogcapi-discrete-global-grid-systems/tree/master/openapi), and can also be visualized and experimented with an example implementation [with SwaggerUI here](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/opengeospatial/ogcapi-discrete-global-grid-systems/master/openapi/ogcapi-dggs-1.bundled.json).
